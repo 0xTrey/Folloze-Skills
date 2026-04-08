@@ -6,6 +6,7 @@ Public home for reusable Folloze-oriented Codex skills.
 
 - `Skills/`
   - `account-org-chart/`
+  - `folloze-sales-doc/`
   - `Salesforce-Update/`
 
 Each skill lives in its own subdirectory so it can carry its own `SKILL.md`, scripts, references, and agent config.
@@ -14,6 +15,9 @@ Each skill lives in its own subdirectory so it can carry its own `SKILL.md`, scr
 
 ### `account-org-chart`
 Builds a company org chart workbook across Marketing, Sales, IT, Digital, AI, Strategy, and Product Marketing, then uploads the result into the correct company folder in Google Drive as a native Google Sheet.
+
+### `folloze-sales-doc`
+Builds branded Folloze sales and customer lifecycle documents such as discovery prep docs, stakeholder maps, onboarding plans, QBRs, renewal prep docs, and account summaries using the shared Folloze design system.
 
 ### `Salesforce-Update`
 Manually reconciles Salesforce open opportunities from Gmail, Google Calendar, and Granola evidence, then writes validated updates through the local Salesforce helper flow.
