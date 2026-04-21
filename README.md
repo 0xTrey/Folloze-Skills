@@ -1,8 +1,20 @@
 # Folloze Skills
 
-Central source of truth for Folloze Codex skills.
+Central source of truth for Folloze Codex skills and the team rollout pattern behind them.
 
-This repo is meant to be the team-managed distribution point. Skills live here, updates are reviewed here, and each teammate syncs this repo into `~/.codex/skills` from one local clone.
+This repo is the managed distribution point for the GTM team's shared AI skills. Skills live here, updates are reviewed here, and each teammate syncs this repo into `~/.codex/skills` from one clean local clone.
+
+## Why The Repo Clone Matters
+
+Cloning the repo locally is the correct model for this rollout.
+
+You are centralizing skill ownership and updates for the wider GTM team. A stable local clone gives each teammate:
+
+- one source of truth to pull from
+- a clean git worktree the updater can verify before syncing
+- a disposable local install under `~/.codex/skills` that can be refreshed from the repo instead of hand-edited
+
+This is more reliable than treating the GitHub installer as the update channel. GitHub install is useful for initial access, but the repo clone is what makes ongoing managed updates predictable.
 
 ## Recommended Team Setup
 
@@ -13,12 +25,12 @@ The recommended rollout model is:
 1. Each teammate clones this repo to a stable local path such as `~/Projects/Folloze-Skills`
 2. They run `python3 scripts/sync_codex_skills.py --overwrite`
 3. The sync script links or copies each repo skill into `~/.codex/skills`
-4. An optional macOS `launchd` job runs `git pull --ff-only` plus the same sync command on a schedule
+4. They create the recurring Codex automation defined in `AutomationTemplates/folloze-skills-weekly-update/template.json`
 5. Teammates restart Codex after skill updates so the app reloads the changed skill files
 
-This is the practical replacement for Codex's built-in GitHub installer, which is install-oriented and not a live team update channel.
+This repo is the source of truth. The recommended automatic update path is a Codex automation, not `launchd`.
 
-If you want the update flow to be callable from inside Codex instead of shell-first, use the `skills-updater` skill in this repo. That skill wraps the repo pull + changed-skill sync process behind one command.
+If someone wants the setup to be callable from inside Codex instead of shell-first, use the `skills-update-folloze` skill in this repo. That skill is the conversational entrypoint for both one-off refreshes and creating the weekly updater automation.
 
 ## What "Automatic Update" Means Here
 
@@ -26,36 +38,42 @@ GitHub push alone will not update a teammate's installed skills.
 
 To make updates propagate automatically, you need two layers:
 
-- This repo as the source of truth
-- A local sync mechanism on each machine that pulls the repo and refreshes `~/.codex/skills`
+- this repo as the source of truth
+- a local scheduled sync mechanism on each machine that pulls the repo and refreshes `~/.codex/skills`
 
-The repo now includes both:
+The repo now includes:
 
 - `skills-manifest.json`
 - `scripts/sync_codex_skills.py`
 - `scripts/validate_skills.py`
+- `AutomationTemplates/folloze-skills-weekly-update/template.json`
 - `ops/launchd/com.folloze.codex-skills-sync.plist.template`
+
+The Codex automation template is the recommended default. The `launchd` plist remains here as a machine-level fallback for teammates who specifically want OS-managed scheduling instead of a Codex automation.
 
 ## Initial Rollout
 
 From a teammate machine:
 
 ```bash
-git clone git@github.com:0xTrey/Folloze-Skills.git ~/Projects/Folloze-Skills
+git clone https://github.com/0xTrey/Folloze-Skills.git ~/Projects/Folloze-Skills
 cd ~/Projects/Folloze-Skills
 python3 scripts/sync_codex_skills.py --overwrite
 ```
 
-For ongoing automatic sync on macOS:
+Then create the recurring Codex automation described in `AutomationTemplates/folloze-skills-weekly-update/template.json`.
 
-1. Copy the launchd template in `ops/launchd/`
+The standard automation is:
+
+- name: `Folloze Skills Weekly Update`
+- schedule: every Wednesday at 12:00 PM in the teammate's local time zone
+- scope: only the shared Folloze skills repo and the local Codex skills install
+
+For teammates who prefer a lower-level machine scheduler instead of Codex automation:
+
+1. Copy the `launchd` template in `ops/launchd/`
 2. Replace `__REPO_ROOT__` with that teammate's local clone path
 3. Load it with `launchctl`
-
-The scheduled command will:
-
-- `git pull --ff-only`
-- refresh the linked skills under `~/.codex/skills`
 
 ## Governance
 
@@ -72,6 +90,7 @@ If these skills include internal sales process, GTM workflow, or customer-specif
 ## Structure
 
 - `Skills/`
+- `AutomationTemplates/`
 - `scripts/`
 - `ops/`
 - `.github/workflows/`
@@ -92,8 +111,8 @@ Runs the Folloze closed-won Sales to Customer Success internal handoff workflow,
 ### `Salesforce-Update`
 Manually reconciles Salesforce open opportunities from Gmail, Google Calendar, and Granola evidence, then writes validated updates through the local Salesforce helper flow.
 
-### `skills-updater`
-Bootstraps or updates the shared Folloze skills repo on a teammate machine, then syncs changed skills into `~/.codex/skills`.
+### `skills-update-folloze`
+Bootstraps or updates the shared Folloze skills repo on a teammate machine, then runs or helps create the standard weekly Codex updater automation for the team.
 
 ### `weekly-customer-action-items`
 Builds a weekly by-account summary of unresolved or unanswered customer action items across Granola, Gmail, and Slack for customer follow-up review.

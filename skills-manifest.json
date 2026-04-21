@@ -27,8 +27,8 @@
       "requires_restart": true
     },
     {
-      "name": "skills-updater",
-      "path": "Skills/skills-updater",
+      "name": "skills-update-folloze",
+      "path": "Skills/skills-update-folloze",
       "enabled": true,
       "requires_restart": true
     },

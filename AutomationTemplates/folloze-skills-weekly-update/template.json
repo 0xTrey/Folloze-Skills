@@ -1,0 +1,15 @@
+{
+  "id": "folloze-skills-weekly-update",
+  "name": "Folloze Skills Weekly Update",
+  "summary": "Weekly Codex automation that keeps the shared Folloze skills repo and the local Codex skills install current.",
+  "runner": "codex-cron",
+  "kind": "cron",
+  "schedule": {
+    "local_time": "Wednesday 12:00 PM",
+    "rrule": "FREQ=WEEKLY;BYDAY=WE;BYHOUR=12;BYMINUTE=0"
+  },
+  "execution_environment": "local",
+  "model": "gpt-5.4",
+  "reasoning_effort": "medium",
+  "cwd_hint": "Use the teammate's home directory as the workspace root.",
+  "prompt": "Use the shared Folloze skills repo as the source of truth. Prefer `FOLLOZE_SKILLS_REPO_ROOT` if it is set; otherwise use `~/Projects/Folloze-Skills`. Prefer `FOLLOZE_SKILLS_REPO_URL` if it is set; otherwise use `https://github.com/0xTrey/Folloze-Skills.git`. Track the `main` branch. If the local repo clone does not exist, clone it. If it does exist, verify it is a git repo and use that clone. Do not overwrite, repair, or clean a dirty repo; if the local clone has uncommitted changes, stop and report that a clean clone is required. Update the repo from `origin/main` with a fast-forward pull. Sync Codex skills from the repo into `${CODEX_HOME:-$HOME/.codex}/skills`. Prefer using the installed helper at `${CODEX_HOME:-$HOME/.codex}/skills/skills-update-folloze/scripts/update_folloze_skills.py` when available. During migration from older installs, `${CODEX_HOME:-$HOME/.codex}/skills/skills-updater/scripts/update_folloze_skills.py` is also acceptable. If neither installed helper is available yet, run the repo helper with equivalent behavior. Make sure the sync includes both changed existing skills and newly added skills from the repo manifest. If the manifest changed or a new skill was added, do a full refresh so new skills are installed automatically, including `weekly-customer-action-items` if it is present and not already installed. Return a short inbox summary stating whether the repo was updated or already current, which skills were refreshed, which new skills were installed, and whether Codex should be restarted. Only touch the shared Folloze skills repo and the local Codex skills install."
