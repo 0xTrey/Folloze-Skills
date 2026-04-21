@@ -15,6 +15,12 @@
       "requires_restart": true
     },
     {
+      "name": "sales-to-cs-internal-handoff-folloze",
+      "path": "Skills/sales-to-cs-internal-handoff-folloze",
+      "enabled": true,
+      "requires_restart": true
+    },
+    {
       "name": "Salesforce-Update",
       "path": "Skills/Salesforce-Update",
       "enabled": true,

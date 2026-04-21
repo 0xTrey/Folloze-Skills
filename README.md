@@ -86,6 +86,9 @@ Builds a company org chart workbook across Marketing, Sales, IT, Digital, AI, St
 ### `folloze-sales-doc`
 Builds branded Folloze sales and customer lifecycle documents such as discovery prep docs, stakeholder maps, onboarding plans, QBRs, renewal prep docs, and account summaries using the shared Folloze design system.
 
+### `sales-to-cs-internal-handoff-folloze`
+Runs the Folloze closed-won Sales to Customer Success internal handoff workflow, creating the internal handoff doc, instance request, onboarding kickoff deck, Drive artifacts, and Slack handoff links.
+
 ### `Salesforce-Update`
 Manually reconciles Salesforce open opportunities from Gmail, Google Calendar, and Granola evidence, then writes validated updates through the local Salesforce helper flow.
 

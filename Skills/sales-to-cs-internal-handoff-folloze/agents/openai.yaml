@@ -1,0 +1,4 @@
+interface:
+  display_name: "Sales to CS Internal Handoff Folloze"
+  short_description: "Closed-won CS handoff automation"
+  default_prompt: "Run the sales to CS internal handoff workflow using the deal notes Google Doc link and Salesforce opportunity link. Gather context from Salesforce, Granola, Gmail, Google Drive, and linked artifacts; create the Google Doc handoff, submit the instance request, update or create the onboarding kickoff deck, store the outputs in Drive, and share the final links in Slack."
