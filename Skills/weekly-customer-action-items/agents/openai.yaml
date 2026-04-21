@@ -1,0 +1,4 @@
+interface:
+  display_name: "Weekly Customer Action Items"
+  short_description: "Weekly by-account view of unresolved customer follow-ups from Granola, Gmail, and Slack"
+  default_prompt: "Use $weekly-customer-action-items to build a weekly by-account summary of unresolved or unanswered customer action items across Granola, Gmail, and Slack for the most recent completed business week in America/New_York, with owner, status, last touch, and compact evidence."

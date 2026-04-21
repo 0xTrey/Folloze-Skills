@@ -92,6 +92,9 @@ Manually reconciles Salesforce open opportunities from Gmail, Google Calendar, a
 ### `skills-updater`
 Bootstraps or updates the shared Folloze skills repo on a teammate machine, then syncs changed skills into `~/.codex/skills`.
 
+### `weekly-customer-action-items`
+Builds a weekly by-account summary of unresolved or unanswered customer action items across Granola, Gmail, and Slack for customer follow-up review.
+
 ## Conventions
 
 - Put each skill in `Skills/<skill-name>/`

@@ -25,6 +25,12 @@
       "path": "Skills/skills-updater",
       "enabled": true,
       "requires_restart": true
+    },
+    {
+      "name": "weekly-customer-action-items",
+      "path": "Skills/weekly-customer-action-items",
+      "enabled": true,
+      "requires_restart": true
     }
   ]
 }
