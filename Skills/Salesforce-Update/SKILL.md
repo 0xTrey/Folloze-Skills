@@ -53,6 +53,12 @@ If unmatched activity looks like a new deal, present it as a create candidate an
 - Google Calendar:
   - Read matching events and attendees.
   - External attendees are eligible for contact creation and opportunity contact-role association.
+  - For any opportunity still in `Meeting Booked`, treat the scheduled first external intro/discovery event as a gating check, not as stage-move evidence by itself.
+  - Before moving an opportunity out of `Meeting Booked`, confirm both:
+    - the relevant first external intro/discovery calendar event is in the past
+    - a matching Granola note exists for that call
+  - If the event is in the past and there is no matching Granola note, search Gmail for reschedule/cancellation evidence before making any stage decision.
+  - If the event is in the past, there is no reschedule/cancellation evidence, and there is still no Granola note, stop and ask the user what stage the opportunity should be in. Do not auto-advance it.
 - Granola:
   - Read meeting notes and summaries for the same opportunity.
   - Granola is a dependency for this skill.
@@ -64,9 +70,17 @@ If unmatched activity looks like a new deal, present it as a create candidate an
 5. Apply stage and field rules
 - Stage flow is forward-only.
 - Default start stage is `Meeting Booked`.
-- `Meeting Booked -> S0` only when the first external intro/discovery call is booked but has not happened yet.
-- If the first external intro/discovery call has actually happened, move the opportunity to at least `Identify`.
-  - If the opportunity was still at `Meeting Booked` or `S0`, do not leave it there after the call occurs.
+- Keep an opportunity in `Meeting Booked` while the first external intro/discovery call is only scheduled and has not yet happened.
+- `Meeting Booked -> S0` only after the first external intro/discovery call has completed and that completion is double-verified:
+  - the scheduled calendar event is in the past
+  - a matching Granola note exists
+- Never use a booked future meeting by itself as justification to move an opportunity from `Meeting Booked` to `S0`.
+- If the scheduled first call is in the past but no Granola note is found:
+  - first check Gmail for clear reschedule/cancellation evidence
+  - if the meeting was rescheduled or cancelled, keep the opportunity in `Meeting Booked` and update only the scheduling fields if needed
+  - if there is no reschedule/cancellation evidence, stop and ask the user what stage the opportunity should be in rather than auto-moving it
+- If the first external intro/discovery call has actually happened and passed the double-verification check, move the opportunity to at least `S0`.
+  - If the opportunity was still at `Meeting Booked`, do not leave it there after the call occurs and the completion is verified.
   - Treat stage progression and deal quality as separate questions. A weak first call can still move to `Identify` while being called out as low-quality or non-viable in the written fields.
 - `Identify -> Discovery` when meaningful buying motion exists, especially if two or more are true:
   - named project or named program

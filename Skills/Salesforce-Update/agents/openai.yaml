@@ -1,4 +1,4 @@
 interface:
   display_name: "Salesforce Update"
   short_description: "Manual Salesforce opportunity reconciliation from Gmail, Calendar, and Granola"
-  default_prompt: "Use $Salesforce-Update to reconcile recent Salesforce opportunities from Gmail, Google Calendar, and Granola evidence with conservative, evidence-backed stage movement and blunt summary/red-flag handling, then write safe updates with the local helper."
+  default_prompt: "Use $Salesforce-Update to reconcile recent Salesforce opportunities from Gmail, Google Calendar, and Granola evidence with conservative, evidence-backed stage movement and blunt summary/red-flag handling. Do not move an opportunity out of Meeting Booked unless the first external call is double-verified by a past calendar event plus a matching Granola note; if the event is past without a Granola note and there is no reschedule email, stop for user guidance. Then write safe updates with the local helper."
