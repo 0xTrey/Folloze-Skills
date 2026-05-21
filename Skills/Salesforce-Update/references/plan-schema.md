@@ -20,7 +20,7 @@ It is created automatically by `init-run`.
   "opportunity_id": "006xxxxxxxxxxxx",
   "summary_reason": "Manual stage recommendation: Discovery after first call showed named initiative and follow-up meeting.",
   "set_fields": {
-    "Next_step__c": "demo with larger team",
+    "Next_step__c": "TH - 3/27/26 - Demo with larger team.",
     "Amount": 40000,
     "Competition__c": "Other",
     "Next_Call_Date__c": "2026-03-30"
@@ -75,6 +75,7 @@ It is created automatically by `init-run`.
 - Append-style MEDDPICC/custom text fields such as `Redflag_s__c`, `Metrics__c`, `Decision_Criteria__c`, `Decision_Process__c`, `Implicate_the_Pain__c`, `Paper_Process__c`, and `What_s_New_Changed__c` should be written through `merge_fields` so older notes stay intact.
 - If a legacy plan still puts `What_s_New_Changed__c` in `set_fields`, the helper remaps it to `merge_fields.What_s_New_Changed__c` with `mode: prepend` and emits a warning.
 - Standard `NextStep` writes are disabled. If a plan still includes `NextStep`, the helper will ignore it and remap the value to `Next_step__c` when possible.
+- `Next_step__c` must use `INITIALS - date - next step note`, for example `TH - 5/21/26 - Send recap and confirm next working session`.
 - `Next_Call_Date__c` must be supplied as an ISO date string like `2026-03-30`.
 - `Competition__c` must match an actual Salesforce picklist value; otherwise use `Other`.
 - `contact_lookup_updates` accepts emails, not contact ids. The helper resolves or creates contacts before writing the lookup field.

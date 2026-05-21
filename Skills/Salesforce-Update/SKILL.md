@@ -112,6 +112,10 @@ If unmatched activity looks like a new deal, present it as a create candidate an
 6. Apply write rules
 - Do not write standard `NextStep`.
 - Write the custom MEDDPICC next-step field `Next_step__c` only.
+- Format `Next_step__c` as `INITIALS - date - next step note`.
+  - Example: `TH - 5/21/26 - Send recap and confirm next working session.`
+  - Use the rep initials, the update date, and a concrete next-step note.
+  - Replace the field with the latest current next step; do not use it as a running history log.
 - `Amount`:
   - early-stage call-note numbers are allowed
   - email-shared numbers trump call-note numbers
@@ -167,7 +171,7 @@ If unmatched activity looks like a new deal, present it as a create candidate an
   - `Summary__c` should say so plainly
   - `What_s_New_Changed__c` should reflect the weak outcome, not a generic product recap
   - `Redflag_s__c` should capture the lack of pain, urgency, or viability
-  - leave `Next_step__c` blank unless there is a real, agreed next step
+  - leave `Next_step__c` blank unless there is a real, agreed next step; when populated, use `INITIALS - date - next step note`
   - do not treat a Zoom-link email or similar logistics as evidence of opportunity progress
 
 8. Handle unmatched external activity

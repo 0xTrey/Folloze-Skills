@@ -92,6 +92,9 @@ LEGACY_DISABLED_SET_FIELDS = {
 LEGACY_SET_TO_MERGE_FIELDS = {
     "What_s_New_Changed__c": "prepend",
 }
+NEXT_STEP_FORMAT_RE = re.compile(
+    r"^[A-Z][A-Z.]{0,9} - (?:\d{1,2}/\d{1,2}/\d{2,4}|\d{4}-\d{2}-\d{2}) - \S.+$"
+)
 
 
 class ScriptError(RuntimeError):
@@ -618,6 +621,14 @@ def validate_string_length(field_name: str, value: str, metadata: dict[str, dict
         errors.append(f"{field_name} exceeds length {limit}")
 
 
+def validate_next_step_format(prefix: str, value: str, errors: list[str]) -> None:
+    if NEXT_STEP_FORMAT_RE.match(value):
+        return
+    errors.append(
+        f"{prefix}.set_fields.Next_step__c must use 'INITIALS - date - next step note' format, for example 'TH - 5/21/26 - Send recap and confirm next working session'"
+    )
+
+
 def validate_plan_payload(plan: dict[str, Any], context: dict[str, Any], config: dict[str, Any]) -> tuple[list[str], list[str]]:
     errors: list[str] = []
     warnings: list[str] = []
@@ -673,6 +684,8 @@ def validate_plan_payload(plan: dict[str, Any], context: dict[str, Any], config:
                 if text is None:
                     errors.append(f"{prefix}.set_fields.{field_name} must be a non-empty string")
                 else:
+                    if field_name == "Next_step__c":
+                        validate_next_step_format(prefix, text, errors)
                     validate_string_length(field_name, text, metadata, errors)
 
         for field_name, spec in merge_fields.items():
