@@ -105,6 +105,9 @@ Builds a company org chart workbook across Marketing, Sales, IT, Digital, AI, St
 ### `folloze-sales-doc`
 Builds branded Folloze sales and customer lifecycle documents such as discovery prep docs, stakeholder maps, onboarding plans, QBRs, renewal prep docs, and account summaries using the shared Folloze design system.
 
+### `folloze-morning-brief`
+Builds a read-only daily Folloze GTM brief for the current teammate from calendar, Granola, Gmail, Google Drive, Salesforce, and available account context, with outbound follow-up verification before tasks are listed as open.
+
 ### `sales-to-cs-internal-handoff-folloze`
 Runs the Folloze closed-won Sales to Customer Success internal handoff workflow, creating the internal handoff doc, instance request, onboarding kickoff deck, Drive artifacts, and Slack handoff links.
 
