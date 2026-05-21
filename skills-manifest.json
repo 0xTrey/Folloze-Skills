@@ -21,6 +21,12 @@
       "requires_restart": true
     },
     {
+      "name": "folloze-eod-pipeline-handoff",
+      "path": "Skills/folloze-eod-pipeline-handoff",
+      "enabled": true,
+      "requires_restart": true
+    },
+    {
       "name": "sales-to-cs-internal-handoff-folloze",
       "path": "Skills/sales-to-cs-internal-handoff-folloze",
       "enabled": true,

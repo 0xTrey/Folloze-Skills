@@ -22,9 +22,19 @@ DEFAULT_REPO_ROOT = Path(
 DEFAULT_BRANCH = os.environ.get("FOLLOZE_SKILLS_REPO_BRANCH", "main")
 DEFAULT_CODEX_HOME = Path(os.environ.get("CODEX_HOME", str(Path.home() / ".codex")))
 DEFAULT_DEST = DEFAULT_CODEX_HOME / "skills"
-MORNING_BRIEF_SKILL = "folloze-morning-brief"
-MORNING_BRIEF_AUTOMATION_TEMPLATE = (
-    "AutomationTemplates/folloze-morning-brief-daily/template.json"
+INSTALL_TRIGGERED_AUTOMATIONS = (
+    {
+        "skill": "folloze-morning-brief",
+        "name": "Folloze Morning Brief",
+        "template": "AutomationTemplates/folloze-morning-brief-daily/template.json",
+        "schedule": "daily at 7:00 AM local time",
+    },
+    {
+        "skill": "folloze-eod-pipeline-handoff",
+        "name": "Folloze EOD Pipeline Handoff",
+        "template": "AutomationTemplates/folloze-eod-pipeline-handoff-daily/template.json",
+        "schedule": "weekdays at 5:00 PM local time",
+    },
 )
 
 
@@ -193,17 +203,18 @@ def sync_skills(
 
 
 def print_install_triggered_automation_notice(repo_root: Path, dest: Path) -> None:
-    if not (dest / MORNING_BRIEF_SKILL).exists():
-        return
-    template = repo_root / MORNING_BRIEF_AUTOMATION_TEMPLATE
-    if not template.exists():
-        return
-    print("install_triggered_automation: Folloze Morning Brief")
-    print(f"automation_template: {template}")
-    print(
-        "next_step: create or update the local Codex automation from this template "
-        "so the morning brief runs daily at 7:00 AM local time."
-    )
+    for automation in INSTALL_TRIGGERED_AUTOMATIONS:
+        if not (dest / automation["skill"]).exists():
+            continue
+        template = repo_root / automation["template"]
+        if not template.exists():
+            continue
+        print(f"install_triggered_automation: {automation['name']}")
+        print(f"automation_template: {template}")
+        print(
+            "next_step: create or update the local Codex automation from this "
+            f"template so it runs {automation['schedule']}."
+        )
 
 
 def main() -> int:

@@ -1,0 +1,53 @@
+{
+  "type": "object",
+  "required": [
+    "account",
+    "opportunity",
+    "risk_reason",
+    "recommended_action",
+    "confidence",
+    "freshness"
+  ],
+  "properties": {
+    "account": {
+      "type": "string"
+    },
+    "opportunity": {
+      "type": ["string", "null"]
+    },
+    "stage": {
+      "type": ["string", "null"]
+    },
+    "amount": {
+      "type": ["number", "null"]
+    },
+    "close_date": {
+      "type": ["string", "null"]
+    },
+    "last_activity": {
+      "type": ["string", "null"]
+    },
+    "forecast_category": {
+      "type": ["string", "null"]
+    },
+    "risk_reason": {
+      "type": "string"
+    },
+    "recommended_action": {
+      "type": "string"
+    },
+    "confidence": {
+      "type": "string",
+      "enum": ["high", "medium", "low"]
+    },
+    "freshness": {
+      "type": "string"
+    },
+    "linked_action_items": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}
