@@ -108,6 +108,9 @@ Builds branded Folloze sales and customer lifecycle documents such as discovery 
 ### `folloze-morning-brief`
 Builds a read-only daily Folloze GTM brief for the current teammate from calendar, Granola, Gmail, Google Drive, Salesforce, and available account context, with outbound follow-up verification before tasks are listed as open.
 
+### `folloze-mcp-microsite-builder`
+Builds and updates vendor-branded Folloze MCP microsites, account-specific solution pages, demo boards, and buyer experiences from a single self-contained HTML page, with design QA defaults, real CTA/link requirements, and one-time initial tracker logging.
+
 ### `sales-to-cs-internal-handoff-folloze`
 Runs the Folloze closed-won Sales to Customer Success internal handoff workflow, creating the internal handoff doc, instance request, onboarding kickoff deck, Drive artifacts, and Slack handoff links.
 

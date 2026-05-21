@@ -20,6 +20,11 @@
       "enabled": true,
       "requires_restart": true
     },
+      "name": "folloze-mcp-microsite-builder",
+      "path": "Skills/folloze-mcp-microsite-builder",
+      "enabled": true,
+      "requires_restart": true
+    },
     {
       "name": "sales-to-cs-internal-handoff-folloze",
       "path": "Skills/sales-to-cs-internal-handoff-folloze",
