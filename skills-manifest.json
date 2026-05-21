@@ -20,8 +20,9 @@
       "enabled": true,
       "requires_restart": true
     },
-      "name": "folloze-mcp-microsite-builder",
-      "path": "Skills/folloze-mcp-microsite-builder",
+    {
+      "name": "Folloze-MCP-Demo-Builder",
+      "path": "Skills/Folloze-MCP-Demo-Builder",
       "enabled": true,
       "requires_restart": true
     },

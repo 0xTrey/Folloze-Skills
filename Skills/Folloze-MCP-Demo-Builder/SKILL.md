@@ -1,9 +1,9 @@
 ---
-name: folloze-mcp-microsite-builder
+name: Folloze-MCP-Demo-Builder
 description: Build and update vendor-branded Folloze MCP microsites, account-specific solution pages, demo boards, and buyer experiences from a single self-contained HTML page. Use when the user asks to use Folloze MCP, build a Folloze board, create a 1:1 account page, or refine an existing Folloze MCP board.
 ---
 
-# Folloze MCP Microsite Builder
+# Folloze-MCP-Demo-Builder
 
 Use this skill for Folloze MCP board and microsite work where the output is a polished buyer-facing page saved through the Folloze MCP landing-page tools.
 
