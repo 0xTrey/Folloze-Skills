@@ -115,7 +115,7 @@ Builds and updates vendor-branded Folloze MCP microsites, account-specific solut
 Runs the Folloze closed-won Sales to Customer Success internal handoff workflow, creating the internal handoff doc, instance request, onboarding kickoff deck, Drive artifacts, and Slack handoff links.
 
 ### `Salesforce-Update`
-Manually reconciles Salesforce open opportunities from Gmail, Google Calendar, and Granola evidence, then writes validated updates through the local Salesforce helper flow.
+Manually reconciles Salesforce open opportunities from Gmail, Google Calendar, and Granola evidence, writes validated non-stage updates through the local Salesforce helper flow, and reports stage movement as manual recommendations.
 
 ### `skills-update-folloze`
 Bootstraps or updates the shared Folloze skills repo on a teammate machine, then runs or helps create the standard weekly Codex updater automation for the team.

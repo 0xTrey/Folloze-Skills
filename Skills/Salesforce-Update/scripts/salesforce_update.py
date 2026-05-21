@@ -47,7 +47,6 @@ SETTABLE_FIELDS = {
     "Summary__c",
     "Competition__c",
     "Next_Call_Date__c",
-    "What_s_New_Changed__c",
     "What_s_New_What_s_Changed_Date__c",
 }
 MERGEABLE_FIELDS = {
@@ -89,6 +88,9 @@ MEDDPICC_WRITE_FIELDS = {
 } | CONTACT_LOOKUP_FIELDS
 LEGACY_DISABLED_SET_FIELDS = {
     "NextStep": "Next_step__c",
+}
+LEGACY_SET_TO_MERGE_FIELDS = {
+    "What_s_New_Changed__c": "prepend",
 }
 
 
@@ -195,6 +197,10 @@ def normalize_plan_payload(plan: dict[str, Any]) -> tuple[dict[str, Any], list[s
         set_fields = update.get("set_fields")
         if not isinstance(set_fields, dict):
             continue
+        merge_fields = update.get("merge_fields")
+        if not isinstance(merge_fields, dict):
+            merge_fields = {}
+            update["merge_fields"] = merge_fields
         for source_field, target_field in LEGACY_DISABLED_SET_FIELDS.items():
             if source_field not in set_fields:
                 continue
@@ -208,6 +214,27 @@ def normalize_plan_payload(plan: dict[str, Any]) -> tuple[dict[str, Any], list[s
                 continue
             warnings.append(
                 f"updates[{idx}].set_fields.{source_field} was ignored because standard {source_field} writes are disabled"
+            )
+
+        for source_field, mode in LEGACY_SET_TO_MERGE_FIELDS.items():
+            if source_field not in set_fields:
+                continue
+            legacy_value = clean_string(set_fields.pop(source_field))
+            existing_spec = merge_fields.get(source_field)
+            existing_value = ""
+            if isinstance(existing_spec, dict):
+                existing_value = clean_string(existing_spec.get("value")) or ""
+            if legacy_value and not existing_value:
+                merge_fields[source_field] = {
+                    "mode": mode,
+                    "value": legacy_value,
+                }
+                warnings.append(
+                    f"updates[{idx}].set_fields.{source_field} was remapped to merge_fields.{source_field} with mode {mode} so prior MEDDPICC notes are preserved"
+                )
+                continue
+            warnings.append(
+                f"updates[{idx}].set_fields.{source_field} was ignored because append-style MEDDPICC text must use merge_fields.{source_field}"
             )
 
     return normalized, warnings
@@ -631,21 +658,10 @@ def validate_plan_payload(plan: dict[str, Any], context: dict[str, Any], config:
                 errors.append(f"{prefix}.set_fields.{field_name} is not allowed")
                 continue
             if field_name == "StageName":
-                current_stage = current_opp["stage_name"]
-                if value not in PIPELINE_STAGE_ORDER:
-                    errors.append(f"{prefix}.set_fields.StageName must be one of {sorted(PIPELINE_STAGE_ORDER)}")
-                elif PIPELINE_STAGE_ORDER[value] < PIPELINE_STAGE_ORDER.get(current_stage, -1):
-                    errors.append(f"{prefix}.set_fields.StageName moves backward from {current_stage} to {value}")
-                else:
-                    validation_threshold = PIPELINE_STAGE_ORDER["Validation"]
-                    current_order = PIPELINE_STAGE_ORDER.get(current_stage, -1)
-                    if current_order < validation_threshold <= PIPELINE_STAGE_ORDER[value]:
-                        existing_sponsor = current_opp.get("customer_executive_sponsor") or {}
-                        incoming_sponsor = clean_string(lookup_fields.get("Customer_Executive_Sponsor__c"))
-                        if not existing_sponsor.get("id") and not incoming_sponsor:
-                            errors.append(
-                                f"{prefix}.set_fields.StageName requires contact_lookup_updates.Customer_Executive_Sponsor__c or an existing Customer_Executive_Sponsor__c before moving into Validation or later"
-                            )
+                errors.append(
+                    f"{prefix}.set_fields.StageName is disabled because stage updates are manual-only; record the recommended stage in summary_reason, notes, or the end-of-run response instead"
+                )
+                continue
             elif field_name == "Competition__c":
                 if value not in competition_values:
                     errors.append(f"{prefix}.set_fields.Competition__c must match the Salesforce picklist or use Other")
@@ -887,7 +903,7 @@ def cmd_apply_plan(args: argparse.Namespace) -> int:
     current_by_id = fetch_current_opportunities(session, [entry["opportunity_id"] for entry in plan["updates"]])
     role_records = fetch_existing_roles(session, [entry["opportunity_id"] for entry in plan["updates"]])
     role_keys = {
-        (record.get("OpportunityId"), (record.get("Contact") or {}).get("Email", "").lower())
+        (record.get("OpportunityId"), ((record.get("Contact") or {}).get("Email") or "").lower())
         for record in role_records
     }
     email_pool: set[str] = set()
