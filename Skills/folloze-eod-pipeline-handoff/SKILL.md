@@ -11,7 +11,7 @@ Generate one daily Folloze GTM end-of-day handoff for the current authenticated 
 
 - Audience: the current Codex user, not Trey by default.
 - Team scope: Folloze GTM teammates who use the shared Codex setup.
-- Schedule: local weekday end-of-day run at 5:00 PM, or as soon as Codex can run after the machine wakes.
+- Schedule: local weekday end-of-day run at 9:00 PM, or as soon as Codex can run after the machine wakes.
 - Window: today from 00:00 through run time in the teammate's local time zone. Default timezone is `America/Chicago` unless `FOLLOZE_TIMEZONE` or the host context says otherwise.
 - Delivery: Codex inbox/thread only.
 - Mode: strictly read-only and report-only. Do not write to Salesforce, Gmail, Granola, Drive, Slack, or any customer system.
@@ -40,7 +40,7 @@ When this skill is installed or synced for a teammate, create or update the loca
 
 The automation should:
 
-- run locally on weekdays at 5:00 PM in the teammate's local time zone
+- run locally on weekdays at 9:00 PM in the teammate's local time zone
 - deliver to the Codex inbox/thread
 - use this skill as the runbook
 - run read-only

@@ -5,8 +5,8 @@
   "runner": "codex-cron",
   "kind": "cron",
   "schedule": {
-    "local_time": "Weekdays 5:00 PM",
-    "rrule": "FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR;BYHOUR=17;BYMINUTE=0"
+    "local_time": "Weekdays 9:00 PM",
+    "rrule": "FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR;BYHOUR=21;BYMINUTE=0"
   },
   "execution_environment": "local",
   "model": "gpt-5.4",
