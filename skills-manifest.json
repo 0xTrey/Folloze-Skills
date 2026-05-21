@@ -15,6 +15,12 @@
       "requires_restart": true
     },
     {
+      "name": "folloze-morning-brief",
+      "path": "Skills/folloze-morning-brief",
+      "enabled": true,
+      "requires_restart": true
+    },
+    {
       "name": "sales-to-cs-internal-handoff-folloze",
       "path": "Skills/sales-to-cs-internal-handoff-folloze",
       "enabled": true,

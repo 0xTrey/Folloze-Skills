@@ -1,0 +1,28 @@
+{
+  "id": "folloze-morning-brief-daily",
+  "name": "Folloze Morning Brief",
+  "summary": "Daily local Codex automation that creates a read-only Folloze GTM chief-of-staff brief for the current teammate.",
+  "runner": "codex-cron",
+  "kind": "cron",
+  "schedule": {
+    "local_time": "Every day 7:00 AM",
+    "rrule": "FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR,SA,SU;BYHOUR=7;BYMINUTE=0",
+    "wake_behavior": "Run at 7:00 AM if the machine and Codex are awake; otherwise run when Codex can execute after the machine wakes. Configure OS wake separately when a teammate wants the Mac to power on before the brief."
+  },
+  "execution_environment": "local",
+  "model": "gpt-5.4",
+  "reasoning_effort": "medium",
+  "cwd_hint": "Use the teammate's home directory as the workspace root.",
+  "delivery": "Codex inbox/thread",
+  "required_connections": [
+    "Salesforce",
+    "Google Calendar",
+    "Granola",
+    "Gmail",
+    "Google Drive"
+  ],
+  "optional_connections": [
+    "Gainwell MCP or other CSM/account MCPs"
+  ],
+  "prompt": "Run the installed `folloze-morning-brief` skill. Generate today's read-only Folloze GTM morning brief for the current authenticated teammate. Use live system date/time. Use only the teammate's Folloze work calendar for today's events. Use Salesforce as the source of truth for pipeline: query open opportunities owned by the current Salesforce user, then group by account so CSM-style users with multiple opportunities on one account get an account-level brief. Use Granola for meeting follow-up context and elevate Granola next-call brief content if the connector or MCP exposes it. Use Gmail for unresolved customer asks and open follow-up tasks. Before listing any Granola, meeting-note, Salesforce-next-step, or email-derived follow-up as an open task, search sent/outbound Gmail after the commitment timestamp and verify whether the teammate or a cc'd Folloze teammate already completed it. If outbound evidence shows the promised email, pricing, recording, deck, resource link, portal, recap, or next-step ask was sent, do not list it as open; if relevant, mention it as completed and now waiting on the customer or next party. Use Google Drive only for targeted account or meeting artifacts when needed. Use optional role-specific MCPs, such as Gainwell, only as read-side enrichment. Continue with short caveats if a source is missing, unavailable, or thin. Do not write to Salesforce, Gmail, Granola, Drive, Slack, or any customer system. Do not deliver outside the Codex inbox/thread. Return the brief in the Codex inbox/thread with these sections in order: Priorities, External meetings, Overview, Pipeline, Signals, risks, and blockers, Recommended next-step actions, Task list. No markdown tables. Keep it concise and chief-of-staff toned."
+}

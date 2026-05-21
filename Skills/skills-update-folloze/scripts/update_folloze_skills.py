@@ -22,6 +22,10 @@ DEFAULT_REPO_ROOT = Path(
 DEFAULT_BRANCH = os.environ.get("FOLLOZE_SKILLS_REPO_BRANCH", "main")
 DEFAULT_CODEX_HOME = Path(os.environ.get("CODEX_HOME", str(Path.home() / ".codex")))
 DEFAULT_DEST = DEFAULT_CODEX_HOME / "skills"
+MORNING_BRIEF_SKILL = "folloze-morning-brief"
+MORNING_BRIEF_AUTOMATION_TEMPLATE = (
+    "AutomationTemplates/folloze-morning-brief-daily/template.json"
+)
 
 
 def parse_args() -> argparse.Namespace:
@@ -188,6 +192,20 @@ def sync_skills(
     run(cmd, dry_run=False)
 
 
+def print_install_triggered_automation_notice(repo_root: Path, dest: Path) -> None:
+    if not (dest / MORNING_BRIEF_SKILL).exists():
+        return
+    template = repo_root / MORNING_BRIEF_AUTOMATION_TEMPLATE
+    if not template.exists():
+        return
+    print("install_triggered_automation: Folloze Morning Brief")
+    print(f"automation_template: {template}")
+    print(
+        "next_step: create or update the local Codex automation from this template "
+        "so the morning brief runs daily at 7:00 AM local time."
+    )
+
+
 def main() -> int:
     args = parse_args()
     repo_root = Path(args.repo_root).expanduser().resolve()
@@ -284,6 +302,7 @@ def main() -> int:
             prune=True,
             dry_run=False,
         )
+        print_install_triggered_automation_notice(repo_root, dest)
         print("Restart Codex if you want the updated skills to be reloaded immediately.")
         return 0
 
@@ -300,6 +319,7 @@ def main() -> int:
         prune=False,
         dry_run=False,
     )
+    print_install_triggered_automation_notice(repo_root, dest)
     print("Restart Codex if you want the updated skills to be reloaded immediately.")
     return 0
 

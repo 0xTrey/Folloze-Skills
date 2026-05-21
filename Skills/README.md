@@ -4,6 +4,7 @@ This directory contains standalone Folloze skill projects.
 
 - `account-org-chart` - org-chart generation plus Google Drive placement
 - `folloze-sales-doc` - branded Folloze sales and lifecycle document generation
+- `folloze-morning-brief` - daily read-only GTM brief with calendar, Granola, Gmail, Salesforce, and outbound follow-up verification
 - `sales-to-cs-internal-handoff-folloze` - closed-won sales-to-CS handoff docs, kickoff deck, and instance request workflow
 - `Salesforce-Update` - evidence-backed Salesforce opportunity updates
 - `skills-update-folloze` - bootstrap and refresh shared skills from the central GitHub repo and create the standard weekly team updater automation
