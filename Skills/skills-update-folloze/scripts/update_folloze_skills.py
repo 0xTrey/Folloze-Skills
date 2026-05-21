@@ -33,7 +33,7 @@ INSTALL_TRIGGERED_AUTOMATIONS = (
         "skill": "folloze-eod-pipeline-handoff",
         "name": "Folloze EOD Pipeline Handoff",
         "template": "AutomationTemplates/folloze-eod-pipeline-handoff-daily/template.json",
-        "schedule": "weekdays at 9:00 PM local time",
+        "schedule": "weekdays at 11:00 PM local time",
     },
 )
 

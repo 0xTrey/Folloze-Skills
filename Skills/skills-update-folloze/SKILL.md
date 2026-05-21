@@ -45,7 +45,7 @@ For the GTM team, the recommended automation pattern is:
 - if `folloze-morning-brief` is installed, create a Codex cron automation named `Folloze Morning Brief`
 - schedule the morning brief for every day at 7:00 AM in the teammate's local time zone
 - if `folloze-eod-pipeline-handoff` is installed, create a Codex cron automation named `Folloze EOD Pipeline Handoff`
-- schedule the EOD handoff for weekdays at 9:00 PM in the teammate's local time zone
+- schedule the EOD handoff for weekdays at 11:00 PM in the teammate's local time zone
 
 Prefer the Codex automation route over a raw `launchd` job when the user wants a managed summary after each run.
 
@@ -124,7 +124,7 @@ If `folloze-eod-pipeline-handoff` is installed or the user asks to set up the EO
 Use this behavior:
 
 - name: `Folloze EOD Pipeline Handoff`
-- schedule: weekdays at 9:00 PM in the user's local time zone
+- schedule: weekdays at 11:00 PM in the user's local time zone
 - workspace root: the user's home directory
 - delivery: Codex inbox/thread
 - scope: read-only Folloze EOD operating handoff for the current authenticated teammate
