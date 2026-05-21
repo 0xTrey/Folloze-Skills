@@ -1,0 +1,28 @@
+{
+  "id": "folloze-eod-pipeline-handoff",
+  "name": "Folloze EOD Pipeline Handoff",
+  "summary": "Weekday Codex automation that creates a read-only end-of-day operating handoff with pipeline risk and open customer action items.",
+  "runner": "codex-cron",
+  "kind": "cron",
+  "schedule": {
+    "local_time": "Weekdays 11:00 PM",
+    "rrule": "FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR;BYHOUR=23;BYMINUTE=0"
+  },
+  "execution_environment": "local",
+  "model": "gpt-5.4",
+  "reasoning_effort": "medium",
+  "cwd_hint": "Use the teammate's home directory as the workspace root.",
+  "required_connections": [
+    "Folloze work calendar",
+    "Salesforce",
+    "Granola",
+    "Gmail"
+  ],
+  "optional_connections": [
+    "Slack",
+    "Google Drive",
+    "daily-sync artifacts",
+    "legacy deal-index artifact"
+  ],
+  "prompt": "Run the installed `folloze-eod-pipeline-handoff` skill. Generate today's read-only Folloze end-of-day pipeline handoff for the current authenticated teammate. Use live system date/time and the teammate's local timezone. Use today's Folloze work calendar, Salesforce open opportunities owned by the current Salesforce user, Granola same-day meeting context, Gmail customer/account threads, Slack customer-action threads when available, targeted Google Drive artifacts when needed, and optional daily-sync or legacy deal-index fallback context. Build one concise handoff with these sections in order: Today in one paragraph, Moved forward today, Pipeline risk snapshot, Open customer/team action items, Blockers / unresolved items, Tomorrow's priorities, What the teammate should personally watch. Before listing any action item as open, check for completion evidence after the ask across outbound Gmail, Slack thread resolution, later Granola notes, or customer/owner confirmation. Prefer Salesforce for pipeline risk; label local fallback data as lower-confidence. Do not write to Salesforce, Gmail, Granola, Drive, Slack, or any customer system. Do not deliver outside the Codex inbox/thread. No markdown tables. Keep it concise and chief-of-staff toned."
+}

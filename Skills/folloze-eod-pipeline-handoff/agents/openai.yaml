@@ -1,0 +1,4 @@
+interface:
+  display_name: "Folloze EOD Pipeline Handoff"
+  short_description: "Daily EOD handoff with pipeline risk and open customer action items"
+  default_prompt: "Use $folloze-eod-pipeline-handoff to build today's read-only Folloze end-of-day pipeline handoff for the current teammate, including moved-forward items, pipeline risks, open customer/team action items, blockers, tomorrow priorities, and what to personally watch."

@@ -1,0 +1,78 @@
+{
+  "type": "object",
+  "required": [
+    "account",
+    "action_item",
+    "owner",
+    "status",
+    "priority",
+    "last_touch",
+    "source_evidence"
+  ],
+  "properties": {
+    "account": {
+      "type": "string",
+      "description": "Normalized customer or account name; use Unmapped when unknown."
+    },
+    "action_item": {
+      "type": "string",
+      "description": "Verb-led task or dependency summary."
+    },
+    "owner": {
+      "type": "string",
+      "description": "Named person or one of Folloze, Customer, Teammate, Shared, Unclear."
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "Needs Folloze reply",
+        "Waiting on customer",
+        "Waiting on teammate",
+        "Blocked",
+        "Owner unclear",
+        "Potentially open - no completion evidence found",
+        "Completed"
+      ]
+    },
+    "priority": {
+      "type": "string",
+      "enum": ["P0", "P1", "P2", "P3"]
+    },
+    "due_or_next_check": {
+      "type": ["string", "null"],
+      "description": "YYYY-MM-DD when known."
+    },
+    "last_touch": {
+      "type": "string",
+      "description": "YYYY-MM-DD of latest meaningful evidence."
+    },
+    "source_evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["source", "date", "summary"],
+        "properties": {
+          "source": {
+            "type": "string",
+            "enum": ["Granola", "Gmail", "Slack", "Salesforce", "Calendar", "Drive", "daily-sync", "deal-index"]
+          },
+          "date": {
+            "type": "string"
+          },
+          "summary": {
+            "type": "string"
+          },
+          "link": {
+            "type": ["string", "null"]
+          }
+        }
+      }
+    },
+    "related_opportunity": {
+      "type": ["string", "null"]
+    },
+    "pipeline_risk_link": {
+      "type": ["string", "null"]
+    }
+  }
+}
