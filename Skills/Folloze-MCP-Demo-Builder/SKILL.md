@@ -18,8 +18,30 @@ Use this skill for Folloze MCP board and microsite work where the output is a po
 - When the user provides a specific source page, treat that page as the visual source of truth before broad brand inference. Extract the page's hero color treatment, headline structure, button variants, section labels, imagery, proof-card styling, repeated benefit language, and final CTA pattern before building or revising the Folloze page.
 - Treat each experience as its own source-brand component system. Do not carry button colors, nav labels, calculator assumptions, card density, or CTA hierarchy from a prior board unless the current source page or user request supports it.
 - Do not trust asset filenames such as `logo-white.svg` or `logo-dark.svg`. Fetch and inspect the actual SVG/image output. If the official logo asset renders with the wrong fill, fails in the Folloze shell, or is unreliable cross-origin, inline the official SVG geometry and set the intended fill explicitly.
+- Verify navbar logo treatment as its own component before publishing. Inspect the actual official logo image/SVG, choose the source-site header variant when available, and do not apply CSS filters, inversions, or forced fills unless the rendered asset has been visually checked on the chosen navbar background.
 - If the user does not know the target account, pick one credible large account and explain the account/page angle briefly before building.
+- For customer demo examples, default to an HTML-driven local preview workflow until Trey explicitly says to publish or save through MCP. Local preview can be a scratch HTML file opened in the Codex app or browser; it does not require localhost unless browser tooling needs it.
 - Do not invent deployment URLs. If MCP only returns a signed-in designer URL, report that and keep public deployment pending.
+
+## Customer Demo Copy Pass
+
+Before local preview and again before MCP save, run a buyer-friendly copy pass across the page:
+
+- Rewrite nav labels, section labels, headlines, subheads, CTA labels, and modal openers for a prospective buyer, not an internal planning team.
+- Avoid internal/demo-production language in buyer-facing UI, including `demo`, `example`, `template`, `conversation assets`, `first meeting`, `fit`, `stack`, `pilot`, `scorecard`, or `technical architecture` unless the user explicitly wants that wording.
+- Prefer action-oriented labels that explain why the buyer should click, such as `Why Daon`, `Protect Key Moments`, `See the Solution`, `Prove the Impact`, `Plan a Trust Workshop`, `Explore the Identity Moments`, or equivalent account-specific language.
+- Make subheads answer the buyer's implicit question: why this matters, what risk it reduces, what business outcome improves, and what the next useful action is.
+- Preserve the underlying content when the content is good; change the framing around it first.
+
+## Source-Site Pattern Harvesting
+
+Before building or revising a customer demo, inspect the vendor's public website for reusable brand and trust patterns:
+
+- Header logo treatment, navbar background, CTA labels, button variants, section rhythm, dark/light bands, typography scale, card radius, imagery, footer structure, and proof/stat styling.
+- Customer logo walls, customer carousels, case-study bands, trust badges, analyst proof, awards, industry grids, and repeated value statements.
+- If the source site has a customer logo carousel or logo wall, include a customer-proof section by default unless the user asks to omit it. Pull logo image URLs from the vendor's own public website, verify the assets load, and keep the section visually close to the source pattern.
+- Do not invent customer logos, customers, awards, or proof points. If public proof is weak, use a buyer-friendly proof section based on verified case studies or named public sources instead.
+- If the vendor site has a strong source module but it does not fit the first viewport, place it early enough to build credibility before the deepest solution detail.
 
 ## Source Boundaries And Motion Fit
 
@@ -47,8 +69,9 @@ Use this skill for Folloze MCP board and microsite work where the output is a po
 2. Use the company theme only after the user has authorized the theme mode. For vendor-branded pages, use non-Folloze theme mode when already authorized by the user or by prior context.
 3. Build a single self-contained HTML file that follows the current MCP guide. Include the theme stylesheet link returned by `get_company_theme` exactly as required by the guide, keep custom CSS and JavaScript inside the document, and avoid separate source files unless using a temporary QA file for MCP upload.
 4. Before save, confirm the HTML actually satisfies all MCP analytics acknowledgements: guide read, CTA clicks tracked, external links use `target="_blank" rel="noopener"`, and meaningful custom interactions are tracked.
-5. Save with the Folloze MCP `save_folloze_board_from_file` or `save_folloze_board_from_html` tool. Pass the existing `boardId` when updating an existing board.
-6. Return the board ID and the exact URL returned by MCP.
+5. If the user is still in local-preview/review mode, stop before MCP save and return the local HTML path plus preview state. Save only after the user explicitly says to publish, save, or update the Folloze board.
+6. Save with the Folloze MCP `save_folloze_board_from_file` or `save_folloze_board_from_html` tool. Pass the existing `boardId` when updating an existing board.
+7. Return the board ID and the exact URL returned by MCP.
 
 ## Existing Board Update Path
 
@@ -122,10 +145,21 @@ When the user provides browser annotations or screenshot comments:
 ## Navigation QA
 
 - Before save, create a nav map in your working notes: nav label, `href`, target element, target eyebrow/section label, target headline, and expected user job.
-- Nav labels should match the content they jump to. Prefer action- or section-specific labels such as "ROI Calculator", "Platform Overview", "Briefs", "Use Cases", or "Proof" over generic taxonomy that is not visible on the page.
+- Nav labels should match the content they jump to and should be enticing enough for the target account to click. Prefer buyer-action labels such as `Why Daon`, `Protect Key Moments`, `See the Solution`, `Prove the Impact`, `Plan a Trust Workshop`, `Use Cases`, or `Proof` over generic taxonomy that is not visible on the page.
+- Replace internally useful but buyer-weak labels such as `Fit`, `Moments`, `Stack`, `Pilot`, `Briefs`, `Resources`, or `Conversation Assets` with labels that name the buyer value or question being answered.
 - For each nav item, verify that the target exists, scrolls below any sticky header using `scroll-margin-top`, updates the URL hash when appropriate, and fires an anchor analytics event.
+- Verify labels at common desktop widths so longer marketing labels do not collide with the logo lockup or CTA.
 - If desktop nav is hidden or simplified on mobile, provide an equivalent mobile path to the same key sections or intentionally keep the primary CTA-only mobile header when the source brand does that.
 - Remove or deprioritize stale section IDs that are not linked, or keep them only when they support deep links from external follow-up.
+
+## Logo Carousel And Proof QA
+
+- For customer demo examples, include an early proof section by default when the vendor has public customer logos, named customer stories, or analyst/award proof available.
+- Prefer source-site customer logo assets over generic image search. Extract logo paths from the vendor site HTML where possible, convert relative paths to absolute URLs, and verify every referenced logo renders.
+- Match the source-site carousel/wall style first: heading language, divider/rule treatment, logo sizing, spacing, motion behavior, and white/dark background choice.
+- Duplicate logo-track content only for animation continuity. Do not imply additional customers beyond the verified source list.
+- Keep proof copy buyer-friendly and external-facing. Avoid saying the section was "borrowed", "pulled", "demoed", or "validated" in the visible page.
+- QA the logo section on desktop and mobile for clipped logos, horizontal overflow, excessive motion speed, and image contrast.
 
 ## Calculator And Interactive Model QA
 
@@ -159,9 +193,9 @@ When the page needs a content item but there is no existing Folloze asset or pub
 
 ## Browser QA Before Final Save
 
-- When possible, keep a temporary local HTML preview available over localhost so the user can review and annotate the page in the Codex app browser. Treat this preview as scratch, not durable source, unless the user explicitly asks to persist it in a repo.
+- When possible, keep a temporary local HTML preview available so the user can review and annotate the page in the Codex app browser. A `file://` scratch HTML preview is acceptable for iteration; use localhost only when browser tooling or asset behavior requires it. Treat this preview as scratch, not durable source, unless the user explicitly asks to persist it in a repo.
 - When the user adds browser annotations, update the source CSS/HTML owner for the selected UI, not just the visible element. Scope the edit to the selected component unless the comment clearly implies a global token or design-system change.
-- Prefer localhost previews with a cache-busting query string over long-lived `file://` tabs during annotation work. Stale local tabs can show old CSS after the source file has changed.
+- If the preview appears stale during annotation work, reload the `file://` scratch HTML, add a cache-busting query string when supported, or switch to a fresh localhost URL. Do not require localhost when the user's Codex app/browser review is working from the local HTML file.
 - Render the local HTML at desktop and mobile widths before saving when possible.
 - Verify that the first viewport shows the vendor/account brand clearly.
 - Verify that section text does not overlap or overflow.
