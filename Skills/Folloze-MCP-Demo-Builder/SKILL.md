@@ -20,6 +20,7 @@ Use this skill for Folloze MCP board and microsite work where the output is a po
 - Do not trust asset filenames such as `logo-white.svg` or `logo-dark.svg`. Fetch and inspect the actual SVG/image output. If the official logo asset renders with the wrong fill, fails in the Folloze shell, or is unreliable cross-origin, inline the official SVG geometry and set the intended fill explicitly.
 - Verify navbar logo treatment as its own component before publishing. Inspect the actual official logo image/SVG, choose the source-site header variant when available, and do not apply CSS filters, inversions, or forced fills unless the rendered asset has been visually checked on the chosen navbar background.
 - If the user does not know the target account, pick one credible large account and explain the account/page angle briefly before building.
+- When the user asks who a vendor targets or should target, write a short account-selection brief before building: target-account clusters, selected account rationale, public account signals, and the solution motion the vendor should sell into that account.
 - For customer demo examples, default to an HTML-driven local preview workflow until Trey explicitly says to publish or save through MCP. Local preview can be a scratch HTML file opened in the Codex app or browser; it does not require localhost unless browser tooling needs it.
 - Do not invent deployment URLs. If MCP only returns a signed-in designer URL, report that and keep public deployment pending.
 
@@ -97,6 +98,7 @@ Before building or revising a customer demo, inspect the vendor's public website
 - Before writing, read row 1 and align writes by header name rather than older column positions. If row 1 differs, stop and adapt to the live headers before writing.
 - For any other operator or team member, do not write to Trey's tracker unless Trey explicitly asks for that specific run. Use a team-provided tracker if one is supplied; otherwise skip tracker logging and state that no tracker was configured.
 - If tracker logging is in scope, search existing rows first by board ID from the designer URL or notes, exact designer URL, exact board name, and company name; update the matching row instead of creating duplicates.
+- Treat company-name-only tracker matches as weak matches. If the matched row's board name, board ID, designer URL, target account, or agent notes clearly refer to a different board or account motion, do not overwrite it silently. Prefer creating a new row, or ask Trey if the row should be repurposed.
 - Always write the saved board title/name returned or passed to MCP into Column B (`Board Name`). For updates, preserve an existing Column B value only when it is already the same board title; otherwise correct it to the current saved board title.
 - Preserve Column E (`Needed By Date`) and Column F (`Luke Feedback`) unless Trey explicitly asks to change them.
 - Preserve Column C (`Deployment URL`) unless MCP returns a real public/live deployment URL; if MCP only returns a signed-in designer URL, keep or write `deployment URL pending from MCP`.
@@ -104,6 +106,7 @@ Before building or revising a customer demo, inspect the vendor's public website
 - Record Column G (`Agent Notes`) as a concise status note with board ID, date, source boundary, theme mode, QA/publish caveat, and latest material change.
 - Do not invent deployment URLs. If MCP only returns a signed-in designer URL, keep deployment pending and say so in the note.
 - The tracker write is a one-time post-save logging/update step; do not repeatedly update the sheet while polishing unless a later successful MCP save materially changes the row.
+- During rapid annotation-driven save loops, keep tracker notes latest-state oriented. Summarize the newest material UX/copy change and QA result instead of appending a long chronology of every microcopy pass.
 - If Google Sheets returns a quota or transient read error after MCP save, do not loop aggressively. Use the last successful search/write result if available; otherwise report tracker logging as skipped or pending while still returning the saved board details.
 
 ## Design QA Defaults
@@ -116,6 +119,7 @@ Before building or revising a customer demo, inspect the vendor's public website
 - Before building or revising CTA styles, define the page's button variant map from the source brand: primary, secondary/outline, light-on-dark, and utility/header. Apply those variants consistently instead of relying on generic class names such as `secondary` when they no longer describe the visual treatment.
 - For every visible CTA, verify label, destination/action, class or variant, computed background color, text color, border color, hover/focus state, text wrapping, external-link safety, and `flzAnalytic` tracking.
 - Treat hero proof/stat cards as first-viewport brand elements. Verify card background, border, stat color, label size, line wrapping, and contrast against the hero background.
+- For hero and section boundaries, verify the final visible cards or panels have clear spacing before the next section at common desktop and mobile viewport heights. Avoid `max-height` caps on content-heavy heroes unless QA proves cards, buttons, and proof rows cannot be clipped.
 - Keep Situation/Solution sections compact. Default to side-by-side panels on desktop and stacked panels on mobile instead of oversized full-width narrative paragraphs.
 - Use small uppercase section labels plus headline-scale summaries for major section intros.
 - If a section intro is intended as a major headline, let it span the full content width. Do not cap it to a narrow card width unless the design specifically calls for it.
@@ -147,6 +151,7 @@ When the user provides browser annotations or screenshot comments:
 - Before save, create a nav map in your working notes: nav label, `href`, target element, target eyebrow/section label, target headline, and expected user job.
 - Nav labels should match the content they jump to and should be enticing enough for the target account to click. Prefer buyer-action labels such as `Why Daon`, `Protect Key Moments`, `See the Solution`, `Prove the Impact`, `Plan a Trust Workshop`, `Use Cases`, or `Proof` over generic taxonomy that is not visible on the page.
 - Replace internally useful but buyer-weak labels such as `Fit`, `Moments`, `Stack`, `Pilot`, `Briefs`, `Resources`, or `Conversation Assets` with labels that name the buyer value or question being answered.
+- Use `Resources` only for a true resource-library/card section, and usually place it last in the nav after higher-intent items such as solution overview, value model, ROI calculator, use cases, or proof.
 - For each nav item, verify that the target exists, scrolls below any sticky header using `scroll-margin-top`, updates the URL hash when appropriate, and fires an anchor analytics event.
 - Verify labels at common desktop widths so longer marketing labels do not collide with the logo lockup or CTA.
 - If desktop nav is hidden or simplified on mobile, provide an equivalent mobile path to the same key sections or intentionally keep the primary CTA-only mobile header when the source brand does that.
