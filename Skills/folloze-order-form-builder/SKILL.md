@@ -20,7 +20,7 @@ The final order form must include:
 - line items for package, customer success, onboarding, additional creators, modules, AI/Data credits, and other add-ons as applicable
 - discounts that reconcile exactly to the requested annual price points
 - contract details table with start date, end date, duration, and payment terms
-- applicable agreement language and signature blocks
+- applicable agreement language that matches the contract-details term length, plus signature blocks
 - MSA, support, DPA, subprocessors, and AI terms appendices from the chosen template when the template includes them
 
 ## Source Priority
@@ -104,6 +104,31 @@ If legal name, address, or contacts are missing:
 - Leave contact fields blank instead of inventing names, emails, or phone numbers.
 - State unresolved blanks in the final response.
 
+## Standard Applicable Agreement Language
+
+Include this applicable agreement language in every standard order form unless the user provides a customer-specific agreement clause. Keep the MSA URL exactly as written. Replace the term placeholders so the language matches the contract details table.
+
+```text
+This Order Form is subject to the terms and conditions of Folloze's Master Service Agreement (https://www.folloze.com/contracts-msa)
+
+The initial term of the Agreement shall be {{TERM_WORDS}} ({{TERM_MONTHS}}) months from the Effective Date (the "Initial Term"), unless stated otherwise above. Upon expiration of the Initial Term, the Agreement will automatically renew and roll over for additional successive {{TERM_WORDS}} ({{TERM_MONTHS}}) months terms on each anniversary of the Effective Date (each, a "Renewal Term" and together with the Initial Term, the "Term"), at an annual increase of at least 7% of the initial price set forth on the last Order Form, unless Customer notifies Folloze in writing of its intent not to renew the Agreement at least thirty (30) days before the scheduled renewal date. If Customer provides Folloze with timely notice of its intent not to renew the Agreement pursuant to this Section, the Agreement shall expire at the end of the current Term, and Customer shall not be obligated to pay such Renewal Term invoice.
+
+The terms in any Customer purchase order or business form will not amend or modify this Agreement and are expressly rejected; any of these Customer documents are for administrative purposes only and have no legal effect. Folloze reserves the right to bill the Customer for any service fees imposed by the Customer and directly incurred during the invoicing and collections process.
+
+For any usage of licenses or boards that exceed the current contract quantity limits by 5% or more for more than 30 days, Folloze reserves the right to automatically upgrade the Customer's subscription and invoice for the increase, which will be co-terminated with the current subscription term.
+```
+
+Term-length rules:
+
+- Default to a two-year agreement unless the user specifies a one-year, three-year, or custom timeframe.
+- The applicable agreement term must match the contract details table exactly.
+- For a one-year agreement, use `twelve (12)` months.
+- For a two-year agreement, use `twenty-four (24)` months.
+- For a three-year agreement, use `thirty-six (36)` months.
+- For a custom term, calculate the month count from the start and end dates when obvious. If the dates do not cleanly map to full months, ask the user for the desired agreement term wording.
+- Use the same term wording in both the Initial Term sentence and the Renewal Term sentence.
+- If the user provides customer-specific agreement language, preserve that language and still verify the term length against the contract details.
+
 ## Build Workflow
 
 ### 1. State the working goal
@@ -115,6 +140,7 @@ Before material edits, state the goal in plain language:
 - price targets
 - term
 - add-ons and discount treatment
+- applicable agreement term wording
 - verification plan
 
 ### 2. Fetch and sample sources
@@ -221,6 +247,8 @@ Before final handoff, verify:
 - no old customer name remains in the commercial front matter
 - prepared, expiration, start, and end dates are correct
 - term duration matches dates
+- applicable agreement language is present and uses the same term length as the contract details table
+- standard two-year language uses `twenty-four (24)` months unless the user requested a different term
 - package row includes the selected package's included modules, platform capabilities, included creators, and included AI/Data credits
 - package row does not hide separately priced add-ons that should be their own line items
 - each requested add-on appears as its own line item
