@@ -11,6 +11,8 @@ Use this skill to build a net-new Folloze order form as a native Google Doc. The
 
 Create a new Google Doc order form. Never overwrite a source template or a previous customer order form unless the user explicitly asks to edit that exact document.
 
+Keep this skill reusable and internal. Do not add real customer names, real order-form links, customer-specific target prices, customer-specific discounts, signature details, contact details, or negotiated commercial terms to the skill itself. When a real deal teaches a useful pattern, abstract it into placeholders, formulas, and generic examples.
+
 The final order form must include:
 
 - prepared date and expiration date
@@ -260,58 +262,58 @@ Before final handoff, verify:
 - connector readback can see the key tables and terms
 - PDF export visual QA is completed when available; otherwise state that rendered page fit was not verified
 
-## Worked Example: Aprio
+## Reusable Commercial Pattern
 
-User request:
+Use this pattern when a user asks for a multi-year package deal with additional creators or AI/Data credits shown as separate line items and discounted to `$0`.
 
-- 2-year deal
-- Year 1: `$50,000`
-- Year 2: `$70,000`
-- Premium package
-- 16 total Creators, which means 8 additional Creators beyond Premium's 8 included users
-- 1,000 additional AI/Data credits
-- show additional Creators and credits as line items and discount them to zero
-- discount the package to reach target annual fees
+Inputs:
+
+- `PACKAGE_NAME`
+- `PACKAGE_LIST_PRICE`
+- `PACKAGE_INCLUDED_CREATORS`
+- `PACKAGE_INCLUDED_AI_DATA_CREDITS`
+- `CUSTOMER_SUCCESS_TIER`
+- `CUSTOMER_SUCCESS_LIST_PRICE`
+- `TOTAL_CREATORS_REQUESTED`
+- `ADDITIONAL_CREATORS_REQUESTED`
+- `ADDITIONAL_CREATOR_UNIT_PRICE`
+- `ADDITIONAL_AI_DATA_CREDIT_TIER`
+- `ADDITIONAL_AI_DATA_CREDIT_PRICE`
+- `ONBOARDING_PRICE`
+- `YEAR_1_TARGET`
+- `YEAR_2_TARGET`
+- `TERM_MONTHS`
+- `EXECUTION_DEADLINE`
+
+Derived values:
+
+- `ADDITIONAL_CREATORS_REQUESTED = TOTAL_CREATORS_REQUESTED - PACKAGE_INCLUDED_CREATORS`, unless the user directly specifies the additional creator count.
+- `ADDITIONAL_CREATORS_TOTAL = ADDITIONAL_CREATORS_REQUESTED * ADDITIONAL_CREATOR_UNIT_PRICE`.
+- `YEAR_1_PRE_DISCOUNT_TOTAL = PACKAGE_LIST_PRICE + ADDITIONAL_CREATORS_TOTAL + ADDITIONAL_AI_DATA_CREDIT_PRICE + ONBOARDING_PRICE`, plus Customer Success only if it is additive rather than included/disclosure-only.
+- `YEAR_2_PRE_DISCOUNT_TOTAL = PACKAGE_LIST_PRICE + ADDITIONAL_CREATORS_TOTAL + ADDITIONAL_AI_DATA_CREDIT_PRICE`, plus Customer Success only if it is additive rather than included/disclosure-only.
+- `YEAR_1_TOTAL_DISCOUNT = YEAR_1_PRE_DISCOUNT_TOTAL - YEAR_1_TARGET`.
+- `YEAR_2_TOTAL_DISCOUNT = YEAR_2_PRE_DISCOUNT_TOTAL - YEAR_2_TARGET`.
+- `TOTAL_CONTRACT_VALUE = sum of all annual target fees across the term`.
 
 Commercial model:
 
 | Line | List price | Quantity | Year 1 treatment | Year 2 treatment |
-|---|---:|---:|---:|---:|
-| Premium Package | $79,995 | 1 | Year 1 package discount `$29,995`, discounted annual total `$50,000` | Year 2 package discount `$9,995`, discounted annual total `$70,000` |
-| Bronze Customer Success | $10,000 | 1 | discount `$10,000`, net `$0` | discount `$10,000`, net `$0` |
-| Additional Creator(s) | $3,300 | 8 | discount `$26,400`, net `$0` | discount `$26,400`, net `$0` |
-| Additional AI/Data Credits - 1,000 | $3,000 | 1 | discount `$3,000`, net `$0` | discount `$3,000`, net `$0` |
-| Onboarding & Implementation (One Time) | $10,000 | 1 | discount `$10,000`, net `$0` | excluded unless recurring |
+|---|---:|---:|---|---|
+| `PACKAGE_NAME` | `PACKAGE_LIST_PRICE` | 1 | package discount needed to reach `YEAR_1_TARGET` after zeroed add-ons | package discount needed to reach `YEAR_2_TARGET` after zeroed add-ons |
+| `CUSTOMER_SUCCESS_TIER` | `CUSTOMER_SUCCESS_LIST_PRICE` | 1 | discount to `$0` when commercially included, or label as included/disclosure-only when already included in the package row | discount to `$0` when commercially included, or label as included/disclosure-only when already included in the package row |
+| Additional Creator(s) | `ADDITIONAL_CREATOR_UNIT_PRICE` | `ADDITIONAL_CREATORS_REQUESTED` | discount `ADDITIONAL_CREATORS_TOTAL` to `$0` | discount `ADDITIONAL_CREATORS_TOTAL` to `$0` |
+| Additional AI/Data Credits - `ADDITIONAL_AI_DATA_CREDIT_TIER` | `ADDITIONAL_AI_DATA_CREDIT_PRICE` | 1 | discount to `$0` | discount to `$0` |
+| Onboarding & Implementation (One Time) | `ONBOARDING_PRICE` | 1 | discount to `$0` when waived | excluded unless recurring |
 
-Aprio package-row inclusion copy:
-
-```text
-Premium Package
-    - ABX, Events, Website Engagement
-    - Account & Contact Intelligence
-    - Content Engine
-    - Integrations
-    - Global Scalability (SSO, DWH, DAM & Localization)
-    - 8 Creators included;
-    - 2,000 AI/Data Credits
-```
-
-Totals:
-
-The Aprio edited table keeps the Premium Package row at `$79,995` and also displays Bronze Customer Success as a `$10,000` row discounted to `$0`. The totals below are correct only if Bronze Customer Success is treated as already included in the `$79,995` package row and not added again to pre-discount totals. If the table format makes every visible row additive, reduce the package row to the platform price or label the Customer Success row as included/disclosure-only so the math is unambiguous.
-
-| Year | Pre-discount total | Total discount | Net total |
-|---|---:|---:|---:|
-| Year 1 | $119,395 | $69,395 | $50,000 |
-| Year 2 | $109,395 | $39,395 | $70,000 |
-
-Use summary rows named `Discounted Year 1 Total` and `Discounted Year 2 Total`. In the discount column, include the approximate discount percentage before the discount amount when helpful, such as `~58% ($69,395)`.
+Use summary rows named `Discounted Year 1 Total`, `Discounted Year 2 Total`, and additional year rows as needed. In the discount column, include the approximate discount percentage before the discount amount when helpful, such as `~NN% ($DISCOUNT_AMOUNT)`.
 
 Add a note below the table in this form:
 
 ```text
-Discounts and Custom Packaging are based on a 2-year agreement executed by 05/31/2026. Year 1 annual fee is $50,000; Year 2 annual fee is $70,000. Total Contract Value: $120,000.
+Discounts and Custom Packaging are based on a {{TERM_LABEL}} agreement executed by {{EXECUTION_DEADLINE}}. Year 1 annual fee is {{YEAR_1_TARGET}}; Year 2 annual fee is {{YEAR_2_TARGET}}. Total Contract Value: {{TOTAL_CONTRACT_VALUE}}.
 ```
+
+For one-year or three-year/custom terms, adjust the annual-fee sentence so it lists only the years included in the contract details table.
 
 ## Final Response
 
