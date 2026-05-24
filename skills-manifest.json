@@ -15,6 +15,12 @@
       "requires_restart": true
     },
     {
+      "name": "folloze-order-form-builder",
+      "path": "Skills/folloze-order-form-builder",
+      "enabled": true,
+      "requires_restart": true
+    },
+    {
       "name": "deal-notes-contact-updater",
       "path": "Skills/deal-notes-contact-updater",
       "enabled": true,

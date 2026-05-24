@@ -1,0 +1,4 @@
+interface:
+  display_name: "Folloze Order Form Builder"
+  short_description: "Create net-new Folloze customer order forms from templates, pricing, add-ons, discounts, and contract terms"
+  default_prompt: "Use $folloze-order-form-builder to build a net-new Folloze order form as a native Google Doc from the current pricing guide and order-form template. Confirm package pricing, add-on creators/modules/AI credits, year-by-year discounts, contract terms, and verification before returning the final link."
