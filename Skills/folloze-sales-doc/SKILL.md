@@ -1,11 +1,11 @@
 ---
 name: folloze-sales-doc
-description: "Use this skill to create branded Folloze sales preparation and customer lifecycle documents. Trigger whenever a Folloze team member asks for a call prep doc, discovery prep, follow-up summary, QBR doc, onboarding plan, renewal prep, champion brief, stakeholder map, or any structured document for a prospect or customer touchpoint — pre-sale through post-sale. Also trigger when someone says 'prep me for a call', 'build me a doc for this account', 'summarize the account', 'put together a brief', or 'create a [lifecycle stage] doc for [company]'. Always use this skill for any Folloze account documentation regardless of lifecycle stage."
+description: "Use this skill to create or deliver Folloze sales preparation and customer lifecycle documents, including call prep docs, executive packages, account briefs, follow-up summaries, QBR docs, onboarding plans, renewal prep, champion briefs, stakeholder maps, and Google Doc packages for a prospect or customer touchpoint. Trigger when a Folloze teammate asks to prep for a call, build a doc, create an account package, summarize an account, turn meeting/email evidence into a shareable brief, or import/share the result as a native Google Doc. Always use this skill for Folloze account documentation regardless of lifecycle stage."
 ---
 
 # Folloze Sales & Customer Lifecycle Doc Skill
 
-This skill produces branded, professional Word (.docx) documents for every stage of the Folloze customer lifecycle — from pre-sale discovery prep through post-sale QBRs and renewals. All docs share the same visual design system (navy/teal brand colors, structured tables, callout boxes) established in the Tailscale discovery prep doc.
+This skill produces branded, professional account documents for every stage of the Folloze customer lifecycle - from pre-sale discovery prep through post-sale QBRs and renewals. Depending on the request, the output may be a repo-backed Markdown source, a DOCX, a native Google Doc, or a paste-ready follow-up package.
 
 ## Quick Reference
 
@@ -19,6 +19,7 @@ This skill produces branded, professional Word (.docx) documents for every stage
 | Post-Sale | QBR / Business Review | Usage stats, wins, gaps, roadmap alignment |
 | Post-Sale | Renewal Prep | Health score, risks, expansion opportunities, renewal narrative |
 | Any Stage | Account Summary | Snapshot of where the account stands right now |
+| Any Stage | Executive Package | Stakeholder-specific brief, meeting follow-up, field/event plan, risks |
 
 ---
 
@@ -32,6 +33,8 @@ Ask the user (or infer from context) the following:
 4. **What do they know?** — any intel already in the conversation (call notes, prior emails, research)
 
 If the user provides call notes or raw information, extract structured content from them. If they provide a company name but no research, use web search to gather company snapshot data before building the doc.
+
+For executive packages or shareable account briefs, infer the stakeholder audiences from the request. Tailor separate sections for the named readers, such as sales, field marketing, events, leadership, customer success, or IT/security, instead of returning one generic meeting recap.
 
 ---
 
@@ -48,6 +51,16 @@ For post-sale docs, pull from:
 - Call notes and CRM data provided by the user
 - Any product usage stats shared
 - Prior correspondence in the conversation
+
+For executive packages and follow-up briefs, use the real evidence stack before writing:
+
+- Salesforce for account, opportunity, owner, stage, health, renewal, and pipeline context when allowed.
+- Granola for meeting notes, attendee context, open questions, and promised follow-ups.
+- Gmail for current thread state, sent follow-through, stakeholder asks, and source discrepancies.
+- Google Drive for existing deal notes, decks, prior briefs, proposals, security notes, or event plans.
+- Public website or web search for company context, current messaging, public proof, news, and martech clues.
+
+If sources disagree, keep the discrepancy visible in the working notes or final caveat. Do not smooth over a customer/account naming conflict before someone sends the package externally.
 
 ---
 
@@ -118,11 +131,22 @@ Use the `docx` npm library. Always follow the **Folloze Design System** defined 
 8. Competitive Threats
 9. Recommended Actions & Timeline
 
+#### Executive Package / Account Brief
+1. Executive summary with the business objective and near-term decision.
+2. Audience-specific sections for each named stakeholder group.
+3. Account and opportunity context from Salesforce or deal notes.
+4. Meeting and email evidence translated into action, not raw transcript.
+5. Field/event plan, sales plan, or follow-up plan when relevant.
+6. Risks, naming/source discrepancies, and open questions.
+7. Next actions with owners and suggested sequence.
+
 ---
 
 ## Step 4 — Code Pattern
 
-Always install and use the `docx` npm package. Save output to `/mnt/user-data/outputs/`.
+For durable docs, first verify the active project is inside a git work tree. Keep the source artifact in the relevant repo, usually under `research/`, `docs/`, or another existing project-specific folder. Do not leave the only durable copy in a temp folder or conversation transcript.
+
+When a DOCX is required, use the `docx` npm library and follow the **Folloze Design System** defined in `references/design-system.md`.
 
 ```javascript
 const { Document, Packer, Paragraph, TextRun, Table, TableRow, TableCell,
@@ -141,14 +165,22 @@ e.g. Tailscale_DiscoveryPrep_Folloze.docx
      Salesforce_QBR_Folloze.docx
 ```
 
+When the user asks to share, deliver, or put the package in Google Docs:
+
+1. Generate a clean local source and, when needed, a DOCX export.
+2. Import or create a native Google Doc through the available Google Workspace, Drive, or Documents tooling.
+3. Verify the imported text with connector readback.
+4. If permissions matter, share the Google Doc through the available Drive path and verify the final permissions list.
+5. Return the Google Doc link and any caveat, such as a naming discrepancy or incomplete source.
+
 ---
 
 ## Step 5 — Validate and Present
 
 After generating:
 1. Run the file and confirm it writes successfully
-2. Use `present_files` to share the `.docx` with the user
-3. Give a 2-3 sentence summary of what's inside and what to customize before the call/meeting
+2. Verify the final artifact in the surface the user asked for: DOCX file, Google Doc, or paste-ready text
+3. Give a 2-3 sentence summary of what's inside and what needs confirmation before the call, meeting, or external send
 
 ---
 
@@ -159,3 +191,5 @@ After generating:
 - **Flag assumptions** — if you assumed something (e.g. their stack, their team size), note it in the doc with `[Verify: ...]`
 - **Tailor pitch angles to their actual pain** — generic Folloze value props are not enough; map each angle to something specific from research or call notes
 - **Keep cheat sheets truly concise** — the quick reference table at the end should be scannable in 30 seconds
+- **Keep source boundaries clear** — separate confirmed live evidence from likely or historical public-stack guesses
+- **Do not send externally without approval** — when the task is a package or follow-up draft, produce the artifact and approval-ready summary unless the user explicitly asks to send or share with a named recipient

@@ -15,6 +15,12 @@
       "requires_restart": true
     },
     {
+      "name": "deal-notes-contact-updater",
+      "path": "Skills/deal-notes-contact-updater",
+      "enabled": true,
+      "requires_restart": true
+    },
+    {
       "name": "folloze-morning-brief",
       "path": "Skills/folloze-morning-brief",
       "enabled": true,

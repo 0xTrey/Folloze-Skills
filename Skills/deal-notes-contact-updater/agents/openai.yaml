@@ -1,0 +1,4 @@
+interface:
+  display_name: "Deal Notes Contact Updater"
+  short_description: "Update deal-note contact cards safely"
+  default_prompt: "Update the existing Folloze deal-notes Google Doc contact section from verified source evidence, preserving meeting attendees and verifying the final document readback."
