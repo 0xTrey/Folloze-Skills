@@ -109,7 +109,7 @@ Builds branded Folloze sales and customer lifecycle documents such as discovery 
 Builds a read-only daily Folloze GTM brief for the current teammate from calendar, Granola, Gmail, Google Drive, Salesforce, and available account context, with outbound follow-up verification before tasks are listed as open.
 
 ### `folloze-brand-kit`
-Provides reusable Folloze public-facing brand, positioning, messaging, claims, proof, voice, color, and logo source material for other Folloze skills.
+Provides reusable Folloze v3.1 public-facing brand, positioning, messaging, claims, proof, voice, color, and logo source material for other Folloze skills.
 
 ### `Folloze-MCP-Demo-Builder`
 Builds and updates vendor-branded Folloze MCP microsites, account-specific solution pages, demo boards, and buyer experiences from a single self-contained HTML page, with MCP guide compliance, analytics hooks, design QA defaults, real CTA/link requirements, source-page brand extraction, browser-comment iteration, and operator-scoped tracker logging after successful MCP saves.

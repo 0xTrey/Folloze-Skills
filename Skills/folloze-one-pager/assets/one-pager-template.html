@@ -94,7 +94,7 @@
     }
 
     .hero-panel,
-    .agent-panel,
+    .motion-panel,
     .program-card {
       border: 1px solid var(--line);
       box-shadow: var(--shadow);
@@ -193,7 +193,7 @@
       line-height: 1.18;
     }
 
-    .agent-panel {
+    .motion-panel {
       min-height: 610px;
       border-radius: 28px;
       padding: clamp(24px, 2.4vw, 30px);
@@ -204,28 +204,28 @@
       gap: 14px;
     }
 
-    .agent-head {
+    .motion-head {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 18px;
       align-items: start;
     }
 
-    .agent-head h2 {
+    .motion-head h2 {
       font-size: clamp(28px, 3.1vw, 34px);
       line-height: 1.02;
       font-weight: 950;
       letter-spacing: 0;
     }
 
-    .agent-head p {
+    .motion-head p {
       color: rgba(255, 255, 255, 0.92);
       font-size: 16px;
       line-height: 1.42;
       text-align: right;
     }
 
-    .agent-card {
+    .motion-card {
       display: grid;
       grid-template-columns: 58px 1fr;
       gap: 16px;
@@ -237,11 +237,11 @@
       background: rgba(255, 255, 255, 0.08);
     }
 
-    .agent-card:last-of-type {
+    .motion-card:last-of-type {
       background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(105, 89, 175, 0.28));
     }
 
-    .agent-number {
+    .motion-number {
       display: grid;
       place-items: center;
       width: 48px;
@@ -252,13 +252,13 @@
       font-weight: 950;
     }
 
-    .agent-card h3 {
+    .motion-card h3 {
       font-size: clamp(22px, 2vw, 30px);
       line-height: 1.05;
       font-weight: 950;
     }
 
-    .agent-card p {
+    .motion-card p {
       margin-top: 6px;
       color: rgba(255, 255, 255, 0.92);
       font-size: 15px;
@@ -278,7 +278,7 @@
       text-transform: uppercase;
     }
 
-    .agent-chips {
+    .motion-chips {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 10px;
@@ -408,7 +408,7 @@
         grid-template-columns: 1fr;
       }
 
-      .agent-panel,
+      .motion-panel,
       .hero-panel {
         min-height: auto;
       }
@@ -433,7 +433,7 @@
       }
 
       .hero-panel,
-      .agent-panel,
+      .motion-panel,
       .program-card {
         border-radius: 20px;
       }
@@ -443,13 +443,13 @@
       }
 
       .metric-row,
-      .agent-head,
-      .agent-card,
-      .agent-chips {
+      .motion-head,
+      .motion-card,
+      .motion-chips {
         grid-template-columns: 1fr;
       }
 
-      .agent-head p {
+      .motion-head p {
         text-align: left;
       }
 
@@ -491,36 +491,36 @@
         </div>
       </div>
 
-      <aside class="agent-panel" aria-label="Folloze motion in action">
-        <div class="agent-head">
+      <aside class="motion-panel" aria-label="Folloze motion in action">
+        <div class="motion-head">
           <h2>{{MOTION_TITLE}}</h2>
           <p>{{MOTION_PROMISE}}</p>
         </div>
-        <article class="agent-card">
-          <div class="agent-number">01</div>
+        <article class="motion-card">
+          <div class="motion-number">01</div>
           <div>
             <h3>{{ROW_1_TITLE}}</h3>
             <p>{{ROW_1_COPY}}</p>
             <span class="tag">{{ROW_1_TAG}}</span>
           </div>
         </article>
-        <article class="agent-card">
-          <div class="agent-number">02</div>
+        <article class="motion-card">
+          <div class="motion-number">02</div>
           <div>
             <h3>{{ROW_2_TITLE}}</h3>
             <p>{{ROW_2_COPY}}</p>
             <span class="tag">{{ROW_2_TAG}}</span>
           </div>
         </article>
-        <article class="agent-card">
-          <div class="agent-number">03</div>
+        <article class="motion-card">
+          <div class="motion-number">03</div>
           <div>
             <h3>{{ROW_3_TITLE}}</h3>
             <p>{{ROW_3_COPY}}</p>
             <span class="tag">{{ROW_3_TAG}}</span>
           </div>
         </article>
-        <div class="agent-chips" aria-label="Capabilities">
+        <div class="motion-chips" aria-label="Capabilities">
           <span class="chip">{{CHIP_1}}</span>
           <span class="chip">{{CHIP_2}}</span>
           <span class="chip">{{CHIP_3}}</span>
@@ -574,4 +574,3 @@
   </main>
 </body>
 </html>
-

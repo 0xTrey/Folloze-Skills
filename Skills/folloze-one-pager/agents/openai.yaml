@@ -1,4 +1,4 @@
 interface:
   display_name: "Folloze One-Pager"
   short_description: "Turn account call notes and research into editable Folloze HTML one-pagers and shareable PDFs"
-  default_prompt: "Use $folloze-one-pager to turn real account call notes, Salesforce and Drive context, prior conversations, and account research into an editable Folloze-branded HTML one-pager first, then export a verified one-page PDF when ready for email sharing."
+  default_prompt: "Use $folloze-one-pager to turn real account call notes, Salesforce and Drive context, prior conversations, and account research into an editable Folloze-branded HTML one-pager first, aligned to the current Build, Activate, Signal messaging, then export a verified one-page PDF when ready for email sharing."

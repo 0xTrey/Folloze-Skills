@@ -2,116 +2,148 @@
 
 Use this file for Folloze category, positioning, audience, and narrative guardrails.
 
-## Category
+## Current External Frame
 
-Official category:
+Folloze helps teams target and convert key accounts.
 
-**AI orchestration platform for B2B go-to-market teams.**
+Targeting and converting key accounts is the work. Folloze is how marketing teams do it with the personalization and speed AI now makes possible.
 
-Folloze is not primarily:
+The job has not changed: find the right accounts, deliver the right message, win the deal. What changed is what AI makes possible. Your AI creates the content. Folloze deploys it, hosts it, governs it, personalizes it, and captures the engagement signals that drive the next move.
 
-- a content hub
-- a landing page builder
-- a page factory
-- an AI copy generator
-- a website personalization point solution
-- a static ABM platform
-- a "Buyer Experience Platform" as the lead category
+Bridge line:
 
-ABX and ABM are important capabilities and motions, but they are not the primary category. Use ABX when it helps explain personalization, campaign execution, or account-based activation inside the larger orchestration story.
-
-## External One-Line Description
-
-Folloze is an AI orchestration platform that enables B2B revenue teams to launch, optimize, and prove autonomous campaigns from prompt to pipeline.
+> Folloze is how your content reaches your accounts. And how your accounts reach back.
 
 ## Positioning Statement
 
-For B2B revenue and marketing leaders who need to scale personalization and prove revenue impact, Folloze enables AI-assisted autonomous campaign execution with full-funnel visibility.
+For B2B marketing and revenue teams that need to target and convert key accounts, Folloze turns AI-generated or team-generated content into live, governed, measurable account experiences.
 
-Unlike point AI tools or static personalization platforms, Folloze connects content, campaigns, signals, and revenue into one intelligent system that launches, optimizes, and measures continuously.
+Unlike AI tools that stop at content creation or platforms that only identify accounts, Folloze deploys the experience, personalizes the journey, captures first-party engagement signals, and feeds the next sales or marketing move.
 
-## Category Evolution
+## Category Guidance
 
-Use this only when context requires historical explanation:
+Use familiar buyer language first:
 
-| Era | Positioning | Focus |
-|---|---|---|
-| 2018-2022 | Buyer Experience Platform | Personalized content hubs and digital experiences |
-| 2022-2024 | ABM and ABX enablement | Account-based personalization and curated buyer journeys |
-| 2025+ | AI orchestration platform | Autonomous execution, continuous optimization, and revenue intelligence |
+- ABM
+- campaign
+- microsite
+- personalized account experience
+- engagement signal
+- account-based campaign
+- first-party intent
+
+Do not lead external customer-facing content with invented category labels when plain language is clearer.
+
+### Internal Or Contextual Language
+
+These terms can be useful in internal strategy, product, sales enablement, or technically fluent conversations, but should not be the default external frame:
+
+- AI orchestration
+- activation layer
+- campaign agent
+- activation agent
+- insight agent
+
+When writing externally, name what happens:
+
+- Folloze deploys, hosts, governs, personalizes, and captures signal.
+- Folloze builds personalized microsites, campaign emails, on-behalf sales emails, LinkedIn ads, and additional content from a brief.
+- Folloze captures first-party engagement signals and surfaces them to sales, SDRs, rev ops, and workflows.
 
 ## Primary Audience
 
 Primary buyers:
 
-- VP Revenue Marketing
 - CMO
+- VP Marketing
+- VP Revenue Marketing
 - Head of Demand Generation
-- Revenue Operations Leaders
+- ABM leaders
+- Field marketing leaders
 
 Secondary buyers:
 
-- ABM Leaders
-- Campaign Managers
-- Marketing Operations
-- Sales Enablement
+- Revenue operations leaders
+- Marketing operations leaders
+- Campaign managers
+- Sales enablement
+- SDR leadership
 - Customer marketing and customer success leaders when the use case is expansion, renewal, or customer engagement
 
 Company profile:
 
 - Mid-market through global enterprise B2B
-- Teams that need revenue ownership, execution scalability, personalization, governance, and proof
-- Not limited to ABM-only buyers
+- Teams that need personalization, campaign speed, governance, and proof
+- Teams using or testing Claude, ChatGPT, Perplexity, Gemini, internal models, custom agents, or marketing automation
+- Teams that already own ABM or intent tools but need to activate what those tools identify
 
 ## Core Pain Points
 
 Folloze messaging should usually connect to one or more of these:
 
-- slow campaign execution
-- too many handoffs between marketing, sales, web, design, operations, and agencies
-- personalization that does not scale across 1:1, 1:few, and 1:many motions
-- disconnected content, campaigns, and engagement signals
-- unclear linkage from campaign activity to pipeline or revenue
-- enterprise governance, security, brand, localization, or approval complexity
-- difficulty making sales follow-up specific to buyer behavior
+- key-account programs take too long to launch
+- AI can create content, but the team still needs deployment, governance, personalization, and measurement
+- web, design, ops, sales, and agency handoffs slow down campaign execution
+- personalization does not scale across 1:1, 1:few, and 1:many motions
+- content destinations are too generic to convert target accounts
+- account engagement data is too shallow to guide sales follow-up
+- first-party signals are disconnected from the revenue workflow
+- enterprise governance, security, brand, localization, or approval complexity slows rollout
+- existing 6sense, Demandbase, Marketo, Salesforce, or ad investments need better activation
 
-## Three Pillars
+## Core Beliefs
 
-Every customer-facing asset should connect to at least one pillar.
+### 1. More Targeted Messaging Equals Higher Conversion
 
-| Pillar | Definition | Buyer-safe summary |
+Generic content reaches everyone and moves no one. The more a message fits the account's reality, including industry, role, and buying moment, the more likely it is to convert.
+
+### 2. AI Accelerates Personalization For Teams That Use It Well
+
+AI lowers the cost of creating personalized content from weeks to minutes. Folloze is where that content becomes a live, governed, measurable account experience.
+
+### 3. Folloze Meets Teams Where They Are
+
+Teams may run ABM, segment marketing, demand gen, field marketing, partner programs, or AI-led workflows. Folloze takes the existing approach and helps it produce more pipeline. No rebuild required.
+
+## External Capability Register
+
+Use plain-language capabilities externally. Do not lead with agent names.
+
+| External register | What it means | Internal vocabulary |
 |---|---|---|
-| Scale | Do more with less | Increase campaign output without increasing headcount |
-| Engage | Campaigns that improve themselves | Use engagement signals to make buyer journeys more relevant |
-| Impact | Revenue visibility | Connect campaign activity to account insight, pipeline, and revenue |
+| Build | Folloze builds personalized microsites, campaign emails, on-behalf sales emails, LinkedIn ads, and more from a brief. It can extract brand structure, organize content, and generate live boards. | Campaign agent |
+| Activate | Folloze deploys, schedules, segments, and routes content across the stack with brand governance applied. | Activation agent |
+| Signal | Folloze captures first-party engagement signals from every interaction, including LLM-driven traffic and buying-group behavior, then surfaces them to sales, SDRs, and workflows. | Insight agent |
 
-## Narrative Mix
+Display copy:
 
-Use the Simple narrative as the default.
+> Build. Activate. Signal.
 
-| Narrative | Use for | Core promise |
+Prose pattern:
+
+> Your AI does X. Folloze does Y.
+
+Example:
+
+> Your AI creates personalized content. Folloze deploys it, hosts it, governs it, and tells you who is paying attention.
+
+## Four Mechanics
+
+1. Bring your own AI. Folloze is the execution platform for content created in Claude, GPT, internal models, custom agents, or other workflows.
+2. Create personalized experiences in minutes. Brief in, personalized microsite live, with campaign emails, sales emails, ads, events, and sales rooms activated around it.
+3. Capture richer first-party signals. Folloze surfaces feature interest, use-case exploration, persona context, buying-group behavior, and LLM-driven traffic that third-party intent tools may not see.
+4. Close the loop. Engagement data flows back into the stack as first-party intelligence so the next campaign targets proven-warm segments.
+
+## Four Modes Of Operation
+
+These are not a maturity ladder. Customers can use multiple modes at once.
+
+| Mode | Description | Best fit |
 |---|---|---|
-| Simple | First touch, practitioners, VPs, CMOs, most follow-up assets | One person can market like a team |
-| Visionary | Leadership audiences, strategic content, after the basic pain is understood | Marketing that runs continuously, guided by strategy |
-
-Avoid returning to balanced, generic platform language that sounds correct but does not create a clear buying reason.
-
-## Autonomy Guardrail
-
-Autonomous marketing does not mean:
-
-- fully self-building campaigns
-- zero human oversight
-- AI replacing marketers
-- set-it-and-forget-it execution
-
-Autonomous marketing means:
-
-- marketers set strategy
-- systems execute workflows
-- campaigns adapt to engagement
-- revenue visibility is continuous
-- humans remain strategic orchestrators
+| LLM-centric | Work in Claude or another LLM, then deploy through Folloze MCP with brand rules applied. | Sophisticated teams with established AI workflows |
+| Headless | External tools such as Slack, Outreach, n8n, Salesforce, or custom workflows trigger Folloze through API or MCP. | Marketing ops, rev ops, and sales ops |
+| On-platform | Use Folloze directly with templates, segment rules, and board structures. | Field marketing, demand gen, and ABM teams |
+| Automated engine | Signal-triggered or deal-triggered workflows build and deploy personalized experiences automatically. | Ops teams orchestrating end-to-end automation |
 
 ## Competitive Frame
 
@@ -119,27 +151,34 @@ Use competitive positioning carefully and only when useful.
 
 | Competitive lane | Their likely frame | Folloze differentiation |
 |---|---|---|
-| Content experience platforms | Content destination layer | Folloze orchestrates campaigns, personalization, signals, and proof |
-| Website personalization tools | Site conversion and page-level personalization | Folloze spans campaign destinations, account journeys, sales activation, and measurement |
-| AI writing tools | Content generation | Folloze executes, activates, optimizes, and measures campaigns |
-| Static ABM platforms | Account targeting and ads | Folloze adds governed digital experiences, first-party engagement, and revenue visibility |
+| AI content tools | Content generation | Folloze deploys, hosts, governs, personalizes, and captures signal |
+| Mutiny-style closed AI workflows | Closed activation path | Folloze can activate content from any source or AI workflow |
+| UserLed-style microsites | Fast page generation | Folloze goes deeper on first-party engagement intelligence and sales-ready signal |
+| HubSpot or Marketo pages | Token-swapped landing pages | Folloze creates account experiences that adapt around buyer behavior |
+| 6sense or Demandbase | Account identification and intent | Folloze activates what those platforms identify |
+| PathFactory-style content hubs | Content destination layer | Folloze adds personalized account journeys and deeper signal capture |
+| Kaltura-style video hosting | Video destination | Folloze activates the broader account experience around the content |
 
 ## Brand Guardrails
 
 Do:
 
-- lead with AI orchestration when the buyer context supports it
-- tie claims to Scale, Engage, or Impact
+- lead with targeting and converting key accounts
+- connect AI creation to Folloze deployment, governance, personalization, and signal capture
+- use `Build. Activate. Signal.` for display copy
+- use `Your AI does X. Folloze does Y.` in prose
+- tie claims to the account's real goal or objection
 - ground autonomy in current product reality
 - use direct, concrete language
 - make it easy for sales to repeat the message
 
 Do not:
 
-- lead with "Buyer Experience Platform"
-- call Folloze an "ABX platform" as the primary category
-- imply full autonomy without review
+- lead with `activation layer` externally
+- lead with agent names externally
+- lead with `Buyer Experience Platform`
+- call Folloze an `ABX platform` as the primary category
+- imply full autonomy without human review
 - imply AI replaces marketers
 - claim predictive planning or future roadmap features
-- use hype words such as revolutionary or cutting-edge
-
+- use hype words such as revolutionary, cutting-edge, or game-changing
