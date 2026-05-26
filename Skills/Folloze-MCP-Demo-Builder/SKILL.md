@@ -21,6 +21,7 @@ Use this skill for Folloze MCP board and microsite work where the output is a po
 - Verify navbar logo treatment as its own component before publishing. Inspect the actual official logo image/SVG, choose the source-site header variant when available, and do not apply CSS filters, inversions, or forced fills unless the rendered asset has been visually checked on the chosen navbar background.
 - If the user does not know the target account, pick one credible large account and explain the account/page angle briefly before building.
 - When the user asks who a vendor targets or should target, write a short account-selection brief before building: target-account clusters, selected account rationale, public account signals, and the solution motion the vendor should sell into that account.
+- Disambiguate similar account names, acronyms, campuses, and systems before applying brand, school colors, or public claims. If a request could mean a university system, a flagship campus, or a similarly named institution, verify the intended entity from the source URL, board name, tracker row, or user-provided context before changing identity-specific styling or copy.
 - For customer demo examples, default to an HTML-driven local preview workflow until Trey explicitly says to publish or save through MCP. Local preview can be a scratch HTML file opened in the Codex app or browser; it does not require localhost unless browser tooling needs it.
 - Do not invent deployment URLs. If MCP only returns a signed-in designer URL, report that and keep public deployment pending.
 
@@ -85,6 +86,21 @@ Before writing new HTML or restructuring a page, choose one experience shape usi
 - Prefer saving through MCP from the verified local file path. Only use inline HTML save when the page truly exists only in the conversation.
 - After meaningful source edits, inspect git status. Commit only the relevant board or skill files when the repo state is ready; leave unrelated dirty files untouched.
 
+## Board Identity Guard
+
+Before any MCP save or tracker write, state the board identity in working notes and verify it against the local source, MCP save target, and tracker row:
+
+- Save intent: existing-board update or net-new board creation.
+- Existing or returned `boardId`.
+- Local source HTML path used for save.
+- Board name/title passed to MCP.
+- Vendor, target account, and account/system acronym expansion.
+- Theme ID and whether theme mode was inherited from the existing board or newly authorized.
+- Designer URL returned by MCP.
+- Public deployment URL status: MCP-returned, user-supplied, verified from public route, or pending.
+
+If any identity field points to a different account, target institution, board ID, or prior example than the current user request, pause the save and resolve the mismatch. Do not overwrite a board that is being used only as a visual reference.
+
 ## Folloze MCP Flow
 
 1. Call the Folloze landing page creation guide before every create or update save. Treat the returned guide as the current MCP system instructions for HTML shape, theme link placement, analytics, external links, and save acknowledgements. If local skill memory conflicts with the returned guide, follow the returned guide.
@@ -123,6 +139,7 @@ Before writing new HTML or restructuring a page, choose one experience shape usi
 - Always write the saved board title/name returned or passed to MCP into Column B (`Board Name`). For updates, preserve an existing Column B value only when it is already the same board title; otherwise correct it to the current saved board title.
 - Preserve Column E (`Needed By Date`) and Column F (`Luke Feedback`) unless Trey explicitly asks to change them.
 - Preserve Column C (`Deployment URL`) unless MCP returns a real public/live deployment URL; if MCP only returns a signed-in designer URL, keep or write `deployment URL pending from MCP`.
+- If Trey provides a real public or published URL after MCP save, write that URL into Column C even if MCP returned only the designer URL. Record in Column G that the deployment URL was user-supplied and, when feasible, verify the route opens before marking it live.
 - Record Column D (`Designer edit URL`) from the exact MCP returned designer URL.
 - Record Column G (`Agent Notes`) as a concise status note with board ID, date, source boundary, theme mode, QA/publish caveat, and latest material change.
 - Do not invent deployment URLs. If MCP only returns a signed-in designer URL, keep deployment pending and say so in the note.
@@ -146,6 +163,27 @@ Before writing new HTML or restructuring a page, choose one experience shape usi
 - If a section intro is intended as a major headline, let it span the full content width. Do not cap it to a narrow card width unless the design specifically calls for it.
 - Match display text to its container. Avoid huge text inside compact cards, panels, nav bars, or sidebars.
 - Avoid UI cards inside other cards and avoid page sections styled as floating cards unless they are true repeated cards, modals, or framed tools.
+
+## Component Token QA
+
+When the user says a component does not match the source site or brand, treat the correction as a token/component issue first:
+
+- Capture the source-site component tokens for border radius, fill, text color, border color, padding, min-height, width behavior, shadow, hover/focus state, and typography weight.
+- Apply the token change consistently to every matching component unless the annotation is clearly a one-off instance.
+- Verify computed styles for the edited component and at least one sibling instance on desktop and mobile.
+- For repeated buttons or cards, confirm all variants still have matching dimensions, no text clipping, no unexpected 90-degree corners, and no mismatched class names that make future edits ambiguous.
+- If a user-supplied screenshot conflicts with earlier inferred brand styling, prefer the screenshot and update the reusable source component/token instead of patching only the selected DOM node.
+
+## Team Section Pattern
+
+When adding or revising a "Meet the Team" section:
+
+- Use real headshots when locally available or publicly usable; otherwise use initials only as a fallback and state the limitation.
+- Verify every headshot renders, has useful alt text, and remains framed consistently across desktop and mobile.
+- Write body copy around each person's specialty, role in the buying process, or useful next-step ownership. Avoid generic copy that only says to connect with the person.
+- Use public profile data, vendor bio pages, and user-provided account context where available. If LinkedIn or a profile is blocked, make a conservative role-based assumption and say so in final notes when material.
+- Give each person one clear CTA with a live destination: `mailto:` for email actions, exact LinkedIn/profile URLs for social actions, or a vendor-owned contact path. Track each CTA with `flzAnalytic('cta_click', ...)`.
+- Keep CTA labels consistent with the action, such as `Send an email to Mike` for mailto or `Connect with Erin on LinkedIn` for LinkedIn.
 
 ## Buyer Experience Quality Gates
 
@@ -174,7 +212,8 @@ When the user provides browser annotations or screenshot comments:
 4. Make the smallest source edit that satisfies the annotation while preserving links, analytics, accessibility, and responsive behavior.
 5. Reload the local preview with a cache-busting query string or a fresh localhost URL before evaluating the result.
 6. Verify the selected element again through DOM/computed-style checks or browser screenshots before saving through MCP.
-7. If the user's visible browser still shows the old state after the source verifies, tell them the tab may be stale and should be refreshed.
+7. For annotation-driven save loops, create targeted QA artifacts when feasible: a small JSON or note with the verified selector/computed-style result, plus desktop/mobile screenshots of the edited section.
+8. If the user's visible browser still shows the old state after the source verifies, tell them the tab may be stale and should be refreshed.
 
 ## Navigation QA
 
@@ -216,6 +255,7 @@ When the user provides browser annotations or screenshot comments:
 - Meaningful non-navigation interactions, including brief modals, tabs, scenario selectors, FAQ expands, anchor clicks, or sliders, should call a descriptive `flzAnalytic` action with useful `text` and `area` values.
 - Do not set MCP analytics acknowledgements to true until these checks are verified against the actual HTML being saved.
 - Do not use `href="#"`, `javascript:void(0)`, placeholder URLs, or dead anchor jumps.
+- Run a live-link intent check before save: nav links must land on the intended section, resource buttons must open a real asset or in-page content item, `mailto:` buttons must use the intended recipient and subject, LinkedIn/profile links must be exact URLs, and any supplied public deployment URL must be recorded separately from the signed-in designer URL.
 
 ## Content Item Fallback
 
@@ -247,6 +287,7 @@ Keep the final response short:
 - Local source file path when one exists.
 - Board ID.
 - Exact designer/live URL returned by MCP.
+- Public deployment URL when MCP returned one or Trey supplied one; otherwise say deployment is pending.
 - Tracker status when tracker logging is in scope.
 - Commit hash when repo-backed source changes were committed.
 - Any caveat, especially pending public deployment or signed-in-only QA.
