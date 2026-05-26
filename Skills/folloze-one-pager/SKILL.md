@@ -14,7 +14,8 @@ This is HTML-first. Build the local HTML source before PDF export so the teammat
 - State the working goal before material edits: account, audience, source context, local HTML target, PDF target if requested, research plan, and private-note boundary.
 - Keep durable files in the relevant git-backed workspace. If no obvious repo exists, ask where the one-pager should live before writing files.
 - Default deliverable is local editable HTML. Create the PDF only when the user asks for a shareable/email version or approves the HTML.
-- Use the Younion-style one-page structure as the default template: Folloze + account lockup, large outcome hero, 3 value cards, right-side motion panel, 4 bottom focus cards, and a clean one-page PDF export.
+- Use the Folloze-blue one-page structure as the default template: Folloze + account lockup, large outcome hero, 3 value cards, right-side `Build. Activate. Signal.` motion panel, 4 bottom focus cards, and a clean one-page landscape PDF export.
+- Keep the visual system primarily Folloze branded. Use Folloze navy, blue, cyan, white, and pale-blue surfaces as the default palette; use account/vendor colors sparingly as accents for one keyword, one signal/proof cue, or a small chip. Do not let pink, purple, orange, or the account palette dominate unless the user explicitly asks for that direction.
 - Use real Folloze and account/company logos. Prefer official company website or official brand/media assets; inspect rendered assets instead of trusting filenames. Do not redraw logos.
 - Use real call and account context. Check the user's supplied notes first, then available call history, Salesforce notes, Drive docs, Gmail/Calendar context, and public account research as needed.
 - Look across multiple calls when possible. The point is to synthesize a specific follow-up, not summarize the latest note in isolation.
@@ -82,6 +83,7 @@ Required page qualities:
 - value cards explain why Folloze is useful for this account
 - right-side motion panel explains how Folloze builds, activates, and captures signal for the program
 - bottom cards map to the account's goals, objections, program route, and enterprise/proof needs
+- page composition is built for a one-page 16:9 landscape PDF: no crowded bottom overlays, no clipped cards, no dominant off-brand color blocks, and no desktop horizontal overflow
 - no browser comment markers, draft placeholders, dead links, or internal-only language remain
 
 ### 4. Review And Iterate
@@ -90,9 +92,11 @@ Open the local HTML in the browser or app preview. Check:
 
 - desktop fit and first-viewport readability
 - mobile layout if the page may be shared as HTML
+- PDF preview rendering, not just `pdfinfo`; visually inspect the generated PDF or a PNG preview of it before sending
 - real logos render correctly
 - value cards do not overflow
 - capability chips line up cleanly
+- dominant palette stays Folloze blue/white/navy with only small account-color accents unless the user requested otherwise
 - no private-note phrasing leaks into buyer-facing copy
 - every visible value prop maps back to the message-fit matrix
 - every account-specific claim has a traceable account source
@@ -109,6 +113,7 @@ When the user asks for an email/shareable version:
 
 - export a one-page landscape PDF when the content fits
 - verify page count, file size, orientation, and preview rendering
+- regenerate desktop/mobile screenshots and the PDF after every visual revision that affects the sent artifact
 - if browser print introduces visual artifacts, use a screenshot-backed PDF so the email version matches the approved HTML
 - save the PDF beside the HTML or in the repo's established output folder
 

@@ -46,7 +46,7 @@ If no approved numeric claim exists, use non-numeric value language. For example
 
 ## Default Value Cards
 
-The Younion-style template can start with these cards when the user has approved them for the motion:
+The Folloze-blue one-pager template can start with these cards when the user has approved them for the motion:
 
 - `5x` faster campaign creation without rebuilding each landing page
 - `4-5x` more relevant buyer engagement from account and persona personalization
