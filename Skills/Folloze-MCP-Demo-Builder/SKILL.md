@@ -37,20 +37,103 @@ Before local preview and again before MCP save, run a buyer-friendly copy pass a
 
 ## Marketing Copy And ABM Messaging
 
-Treat visible copy as a senior product-marketing and ABM deliverable, not as a summary of the build, a sales note, or an explanation of the page. Messaging quality is a launch gate.
+Treat visible copy as a senior product-marketing and ABM deliverable, not as a summary of the build, a sales note, or an explanation of the page. Messaging quality is a launch gate, not a polish step. The experience should feel like the vendor built a serious account-specific case for the buyer, not like an internal plan pasted into a branded wrapper.
 
-- Write like the vendor is speaking directly to the target account's buying team. The page should feel clean, crisp, confident, and commercially useful.
-- Start from a clear ABM message spine: target-account context, buyer priority, vendor promise, concrete proof, and next action.
-- Use account-specific evidence to sharpen relevance, but do not expose private intent mechanics or make the page feel surveilled. Translate engagement and internal notes into public-market buyer problems and useful next steps.
-- Make headlines do real positioning work. Avoid vague headings such as `Built for you`, `Why it matters`, `Explore the solution`, or `What comes next` unless the surrounding copy makes them specific.
-- Keep body copy tight. Prefer one or two concrete sentences over long explanatory paragraphs. Remove filler, throat-clearing, and generic adjectives.
-- Weave data and proof into natural buyer-facing claims. Proof points should support the message, not read like a data dump or internal account brief.
-- Keep the target account name visible where it creates relevance, but avoid over-personalization. Do not mention browsing behavior, intent scores, "engaged account" status, or sales-rep observations in buyer-facing copy.
-- Every section should answer a buyer question: `Why this vendor?`, `Why now?`, `Why this account?`, `What changes operationally?`, `What proof exists?`, or `What should we do next?`
-- CTA labels should match the destination or interaction precisely. If a button opens a customer story, call it `Read the customer story`; if it jumps to a booking section, call it `Book a Demo` or the vendor's equivalent.
-- Run a copy-quality blacklist before preview and save. Rewrite any visible copy that sounds like a build note or sales strategy, including phrases like `this board`, `this demo`, `this page should`, `should be positioned as`, `what the conversation should answer`, `intent signals show`, `higher-intent behavior`, `sales rep`, `stakeholder mapping`, `pitch`, `we can weave`, `example`, `template`, or `proof of concept`, unless the user explicitly asks for internal-facing copy.
-- Check for generic ABM drift. If the copy could apply to any account in the vertical after swapping the logo, sharpen it with the target account's public priorities, scale, operating model, industry language, or verified proof.
-- Before final save, do a second marketing pass after visual layout is stable. Layout changes often reveal awkward line breaks, overlong headlines, weak CTA labels, or copy that reads like annotations instead of marketing.
+### Message Spine Before Writing
+
+Before writing or rewriting visible copy, draft the ABM message spine in working notes:
+
+- Target-account context: the account's scale, operating model, market, system, campus, region, segment, or strategic pressure.
+- Buyer priority: the business, operational, risk, growth, adoption, efficiency, revenue, compliance, learner, customer, or employee outcome that matters most.
+- Why change: what is broken, slow, risky, fragmented, expensive, underused, hard to govern, or hard to prove today.
+- Why now: the renewal, mandate, growth moment, modernization cycle, competitive pressure, regulatory shift, enrollment or pipeline target, budget window, leadership priority, or internal momentum that makes action timely.
+- Vendor promise: the specific outcome the vendor can credibly help the account achieve.
+- Proof: public customer proof, product capability, integration, benchmark, analyst claim, case study, account signal, or user-approved datapoint.
+- Buying committee: the functions that must believe the story and what each needs to see.
+- Next action: the one concrete step the page should make easier.
+
+If this spine is generic, fix it before touching the UI. The page should have one main argument, not a collection of loosely related product cards.
+
+### Audience Mode And Intent Translation
+
+- Decide whether the experience is buyer-facing, seller-enablement, or a mixed demo. Buyer-facing copy must be cleaner, more public, and less self-referential.
+- For buyer-facing pages, do not expose private intent mechanics, browsing behavior, known-contact counts, sales-rep notes, Demandbase mechanics, Salesforce history, meeting notes, or internal account scoring. Translate those inputs into public-market problems and useful next steps.
+- For seller-enablement or demo boards, intent data can appear only when it improves the story. Every number needs interpretation and a recommended action, not just placement in a stat tile.
+- Use private notes from Granola, Salesforce, Gmail, Slack, Demandbase, or internal docs to understand the motion, not to write the copy. Visible claims should come from public vendor messaging, public target-account evidence, verified product facts, or user-approved language.
+- If internal evidence is compelling but not buyer-safe, rewrite it as a problem hypothesis, e.g. `A broad committee will need a shared evaluation path`, not `352 contacts are engaged`.
+
+### Proof And Metric Gate
+
+Every stat, proof point, logo, role, signal, and customer claim must pass this sequence before it appears:
+
+- Fact: what is true, sourced, or user-approved.
+- Implication: what the fact means for the target account's business, team, or decision.
+- Action: what the buyer should do next because of it.
+
+Do not publish naked metrics. A number without interpretation feels like an internal brief. For example, convert `51,838 enrollment` into `Canvas has to support a high-scale learner experience across undergraduate, graduate, and global programs`; convert `D2L incumbent` into `the first conversation should de-risk continuity, migration confidence, faculty adoption, and learner experience`.
+
+### Headline And Section Standards
+
+- Headlines must make strategic claims. They should state the account-specific argument, tension, risk, or opportunity.
+- Avoid default headings such as `Why it matters`, `Resources`, `Explore the solution`, `Built for you`, `What comes next`, `Customer proof`, or `The opportunity` unless the surrounding phrase makes them specific.
+- Prefer headlines that name the turn in the story: `Move from platform continuity to measurable learner progress`, `Give every campus a shared Canvas path`, `Modernize the workflow before asking faculty to switch`, or equivalent account-specific language.
+- Section order should build a persuasive ABM arc: account context, reason to change, vendor fit, operational path, role-specific proof, resources, and next step.
+- If a headline still works after swapping in another account logo, sharpen it with the target account's scale, initiative, geography, operating model, known incumbent, public priority, or committee reality.
+
+### ABM Spice Without Hype
+
+- Add edge by naming the real tension: switching risk, fragmented ownership, adoption confidence, proof before migration, governance, continuity, budget scrutiny, stakeholder alignment, time-to-value, or decision confidence.
+- Use crisp, commercial language. Prefer `reduce faculty switching risk` over `drive a transformative learning experience`; prefer `prove the migration path before the renewal clock drives the decision` over `unlock innovation`.
+- Make the buyer feel recognized, not watched. The copy should say `we understand your operating environment`, not `we know what you clicked`.
+- Do not over-season with adjectives. Specific nouns and verbs create stronger copy than `robust`, `seamless`, `innovative`, `powerful`, `next-generation`, or `best-in-class`.
+- One strong sentence is better than three explanatory ones. Delete throat-clearing such as `In today's environment`, `As organizations look to`, `It is important to note`, and `This section highlights`.
+
+### Copy Patterns To Prefer
+
+Use these structures to turn raw account data into buyer-facing persuasion:
+
+- `The move is not [generic category]. It is [account-specific strategic shift].`
+- `[Account] does not need [tactical fix]. It needs [higher-order operating path].`
+- `[Metric or signal] matters because [operational implication].`
+- `Start with [risk or continuity issue], then prove [upside or future state].`
+- `For [role/function], the value is [specific job, decision, or outcome].`
+- `Before asking [group] to change, give them [proof, workflow, data, or confidence].`
+- `The first conversation should not be [vendor-first pitch]. It should be [buyer-first decision path].`
+- `A credible path starts with [low-friction proof] before expanding to [larger commitment].`
+
+### Copy Patterns To Avoid
+
+Rewrite visible copy that sounds like an internal build note, generic sales strategy, or account-surveillance recap. Avoid phrases such as:
+
+- `this board`, `this demo`, `this page`, `this experience`, `template`, `example`, `proof of concept`, `microsite`, or `we built`.
+- `should be positioned as`, `what the conversation should answer`, `pitch`, `sales motion`, `stakeholder mapping`, `buying committee mapping`, `rep priority`, `AE feedback`, or `ABM assessment`.
+- `intent signals show`, `higher-intent behavior`, `engaged known contacts`, `web visits`, `engagement points`, `Demandbase signal`, `account is surging`, or `we can weave in the data`, unless the page is explicitly seller-enablement.
+- Empty B2B filler such as `unlock`, `leverage`, `empower`, `transform`, `seamless`, `robust`, `innovative`, `future-proof`, `cutting-edge`, `game-changing`, or `best-in-class` when a specific outcome would be stronger.
+
+### Role-Specific Value Pass
+
+For committee-based ABM pages, each major function should get a distinct reason to care:
+
+- Executive and economic buyers: strategic priority, risk reduction, measurable impact, consolidation, governance, reputation, or return on investment.
+- Practitioners and program owners: workflow fit, adoption, ease of use, speed, content quality, collaboration, and day-to-day confidence.
+- IT, security, data, and operations leaders: integration, administration, supportability, accessibility, privacy, reporting, scale, and change management.
+- Customer, learner, employee, or student success leaders: experience quality, engagement, progress, retention, completion, satisfaction, and intervention signals.
+- Sales, enrollment, marketing, or revenue leaders: conversion, pipeline, campaign performance, personalization, account coverage, and proof that moves a decision forward.
+
+Do not give every role the same CTA, card copy, or resource when role-specific value is available. The point of ABM is to make the account and committee feel deliberately understood.
+
+### Final Copy QA
+
+Before local preview and before MCP save, reread the rendered page top to bottom as the buyer:
+
+- Does the first viewport make a clear account-specific argument in less than 10 seconds?
+- Does each section add a new reason to believe, or does it repeat the same claim in new words?
+- Does every stat, proof card, resource, and CTA answer `so what?`
+- Does the page feel vendor-owned and buyer-facing, with no agent, Folloze, or internal planning language?
+- Are the strongest proof points above the deepest product detail?
+- Are CTA labels precise, benefit-oriented, and consistent with the vendor's native website language?
+- Do headlines, cards, buttons, and mobile line breaks still read cleanly after layout changes?
+- If the copy could apply to any account after swapping the logo, sharpen it before saving.
 
 ## Source-Site Pattern Harvesting
 
