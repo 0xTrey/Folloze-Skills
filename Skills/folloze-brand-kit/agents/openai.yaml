@@ -1,0 +1,4 @@
+interface:
+  display_name: "Folloze Brand Kit"
+  short_description: "Reusable Folloze brand, messaging, claims, proof, voice, colors, and logo source material"
+  default_prompt: "Use $folloze-brand-kit to ground Folloze-facing assets in approved public-facing positioning, value pillars, voice, claims, proof points, colors, and logo assets. Keep restricted customer-specific material out and load only the references needed for the task."

@@ -1,0 +1,577 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ACCOUNT_NAME}} | Folloze Follow-Up</title>
+  <meta name="description" content="{{ONE_SENTENCE_DESCRIPTION}}">
+</head>
+<body>
+  <style>
+    :root {
+      --ink: #071326;
+      --navy: #07182f;
+      --blue: #078af0;
+      --orange: #ff8a28;
+      --rose: #c8327a;
+      --line: #cfe6f7;
+      --muted: #5d7193;
+      --shadow: 0 18px 58px rgba(14, 47, 92, 0.11);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      background: #eff8ff;
+      color: var(--ink);
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: linear-gradient(120deg, rgba(230, 247, 255, 0.94) 0%, rgba(247, 252, 255, 0.98) 45%, rgba(255, 243, 250, 0.92) 100%);
+    }
+
+    .page {
+      width: min(1440px, 100%);
+      margin: 0 auto;
+      padding: 16px 20px 32px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      min-height: 62px;
+      padding: 12px 18px;
+      border: 1px solid var(--line);
+      border-radius: 34px;
+      background: rgba(255, 255, 255, 0.82);
+      box-shadow: 0 10px 40px rgba(12, 76, 132, 0.08);
+    }
+
+    .brand-lockup {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .folloze-logo {
+      display: block;
+      width: clamp(132px, 13vw, 170px);
+      height: auto;
+    }
+
+    .joiner {
+      display: grid;
+      place-items: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #e7f2ff;
+      color: #0f6ff1;
+      font-weight: 900;
+      box-shadow: inset 0 0 0 1px #c8e2ff;
+    }
+
+    .account-word {
+      font-size: clamp(18px, 2vw, 26px);
+      font-weight: 900;
+      color: #101727;
+      white-space: nowrap;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(420px, 0.9fr);
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    .hero-panel,
+    .agent-panel,
+    .program-card {
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-panel {
+      min-height: 610px;
+      border-radius: 28px;
+      padding: clamp(28px, 3.2vw, 42px) clamp(28px, 3.6vw, 52px);
+      background: linear-gradient(105deg, rgba(255, 255, 255, 0.96), rgba(250, 254, 255, 0.92)), linear-gradient(0deg, rgba(234, 247, 255, 0.85), rgba(255, 255, 255, 0.9));
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+    }
+
+    .rail-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      width: min(100%, 704px);
+      min-height: 30px;
+      padding: 6px 11px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #eef8ff, rgba(238, 248, 255, 0));
+      color: #071326;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 2.8px;
+      text-transform: uppercase;
+    }
+
+    .rail-label span {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: var(--blue);
+      box-shadow: 0 0 0 4px rgba(7, 138, 240, 0.13);
+      flex: 0 0 auto;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin: 0;
+    }
+
+    h1 {
+      max-width: 700px;
+      margin-top: 18px;
+      color: #071326;
+      font-size: clamp(54px, 5.7vw, 78px);
+      line-height: 0.98;
+      font-weight: 950;
+      letter-spacing: 0;
+    }
+
+    .hero-copy {
+      max-width: 680px;
+      margin-top: 18px;
+      color: #5b7194;
+      font-size: clamp(16px, 1.4vw, 18px);
+      line-height: 1.55;
+    }
+
+    .metric-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 30px;
+    }
+
+    .metric {
+      min-height: 108px;
+      padding: 17px 18px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.82);
+    }
+
+    .metric strong {
+      display: block;
+      margin-bottom: 6px;
+      color: #071326;
+      font-size: clamp(30px, 3vw, 40px);
+      line-height: 1;
+      font-weight: 950;
+      letter-spacing: 0;
+    }
+
+    .metric span {
+      display: block;
+      color: #516d96;
+      font-size: 14px;
+      line-height: 1.18;
+    }
+
+    .agent-panel {
+      min-height: 610px;
+      border-radius: 28px;
+      padding: clamp(24px, 2.4vw, 30px);
+      color: #fff;
+      background: linear-gradient(145deg, #07172f 0%, #0b233e 44%, #2c2e63 100%);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .agent-head {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .agent-head h2 {
+      font-size: clamp(28px, 3.1vw, 34px);
+      line-height: 1.02;
+      font-weight: 950;
+      letter-spacing: 0;
+    }
+
+    .agent-head p {
+      color: rgba(255, 255, 255, 0.92);
+      font-size: 16px;
+      line-height: 1.42;
+      text-align: right;
+    }
+
+    .agent-card {
+      display: grid;
+      grid-template-columns: 58px 1fr;
+      gap: 16px;
+      align-items: start;
+      min-height: 132px;
+      padding: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .agent-card:last-of-type {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(105, 89, 175, 0.28));
+    }
+
+    .agent-number {
+      display: grid;
+      place-items: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 13px;
+      background: rgba(255, 255, 255, 0.12);
+      font-size: 23px;
+      font-weight: 950;
+    }
+
+    .agent-card h3 {
+      font-size: clamp(22px, 2vw, 30px);
+      line-height: 1.05;
+      font-weight: 950;
+    }
+
+    .agent-card p {
+      margin-top: 6px;
+      color: rgba(255, 255, 255, 0.92);
+      font-size: 15px;
+      line-height: 1.35;
+    }
+
+    .tag {
+      display: inline-flex;
+      width: fit-content;
+      margin-top: 11px;
+      padding: 4px 11px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.13);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 950;
+      text-transform: uppercase;
+    }
+
+    .agent-chips {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: auto;
+    }
+
+    .chip {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 30px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 900;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .program-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    .program-card {
+      min-height: 258px;
+      border-radius: 28px;
+      padding: 24px 18px 20px;
+      background: rgba(255, 255, 255, 0.84);
+    }
+
+    .program-card:nth-child(1) {
+      background: linear-gradient(155deg, #eaf6ff, #ffffff 75%);
+    }
+
+    .program-card:nth-child(2) {
+      background: linear-gradient(155deg, #e8f8ff, #ffffff 75%);
+    }
+
+    .program-card:nth-child(3) {
+      background: linear-gradient(155deg, #fff0df, #ffffff 76%);
+    }
+
+    .program-card:nth-child(4) {
+      background: linear-gradient(155deg, #ffeaf6, #ffffff 76%);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      margin-bottom: 14px;
+      padding: 7px 14px;
+      border-radius: 999px;
+      background: #d4edff;
+      color: #075fe5;
+      font-size: 13px;
+      font-weight: 950;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+    }
+
+    .program-card:nth-child(3) .eyebrow {
+      background: #ffe4c6;
+      color: #db6400;
+    }
+
+    .program-card:nth-child(4) .eyebrow {
+      background: #ffd7ea;
+      color: #b41c68;
+    }
+
+    .program-card h3 {
+      font-size: clamp(22px, 2vw, 26px);
+      line-height: 1.05;
+      font-weight: 950;
+      letter-spacing: 0;
+    }
+
+    .program-card p {
+      margin-top: 12px;
+      color: #5d7193;
+      font-size: 15px;
+      line-height: 1.34;
+    }
+
+    .program-card ul {
+      display: grid;
+      gap: 10px;
+      margin: 14px 0 0;
+      padding: 0;
+      list-style: none;
+      color: #071326;
+      font-size: 14px;
+      line-height: 1.32;
+    }
+
+    .program-card li {
+      display: grid;
+      grid-template-columns: 10px 1fr;
+      gap: 10px;
+      align-items: start;
+    }
+
+    .program-card li::before {
+      content: "";
+      width: 9px;
+      height: 9px;
+      margin-top: 5px;
+      border-radius: 50%;
+      background: var(--blue);
+    }
+
+    .program-card:nth-child(3) li::before {
+      background: var(--orange);
+    }
+
+    .program-card:nth-child(4) li::before {
+      background: var(--rose);
+    }
+
+    @media (max-width: 1120px) {
+      .hero-grid,
+      .program-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .agent-panel,
+      .hero-panel {
+        min-height: auto;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .page {
+        padding: 10px;
+      }
+
+      .topbar,
+      .brand-lockup {
+        align-items: flex-start;
+      }
+
+      .topbar {
+        border-radius: 24px;
+      }
+
+      .brand-lockup {
+        flex-wrap: wrap;
+      }
+
+      .hero-panel,
+      .agent-panel,
+      .program-card {
+        border-radius: 20px;
+      }
+
+      h1 {
+        font-size: 45px;
+      }
+
+      .metric-row,
+      .agent-head,
+      .agent-card,
+      .agent-chips {
+        grid-template-columns: 1fr;
+      }
+
+      .agent-head p {
+        text-align: left;
+      }
+
+      .chip {
+        white-space: normal;
+      }
+    }
+  </style>
+
+  <main class="page">
+    <header class="topbar">
+      <div class="brand-lockup">
+        <img class="folloze-logo" src="{{FOLLOZE_LOGO_SRC}}" alt="Folloze">
+        <span class="joiner">x</span>
+        <span class="account-word">{{ACCOUNT_NAME}}</span>
+      </div>
+    </header>
+
+    <section class="hero-grid" aria-label="{{ACCOUNT_NAME}} follow-up">
+      <div class="hero-panel">
+        <div>
+          <div class="rail-label"><span></span>{{EYEBROW}}</div>
+          <h1>{{HEADLINE}}</h1>
+          <p class="hero-copy">{{HERO_COPY}}</p>
+        </div>
+        <div class="metric-row" aria-label="Folloze value cards">
+          <div class="metric">
+            <strong>{{VALUE_1_METRIC}}</strong>
+            <span>{{VALUE_1_TEXT}}</span>
+          </div>
+          <div class="metric">
+            <strong>{{VALUE_2_METRIC}}</strong>
+            <span>{{VALUE_2_TEXT}}</span>
+          </div>
+          <div class="metric">
+            <strong>{{VALUE_3_METRIC}}</strong>
+            <span>{{VALUE_3_TEXT}}</span>
+          </div>
+        </div>
+      </div>
+
+      <aside class="agent-panel" aria-label="Folloze motion in action">
+        <div class="agent-head">
+          <h2>{{MOTION_TITLE}}</h2>
+          <p>{{MOTION_PROMISE}}</p>
+        </div>
+        <article class="agent-card">
+          <div class="agent-number">01</div>
+          <div>
+            <h3>{{ROW_1_TITLE}}</h3>
+            <p>{{ROW_1_COPY}}</p>
+            <span class="tag">{{ROW_1_TAG}}</span>
+          </div>
+        </article>
+        <article class="agent-card">
+          <div class="agent-number">02</div>
+          <div>
+            <h3>{{ROW_2_TITLE}}</h3>
+            <p>{{ROW_2_COPY}}</p>
+            <span class="tag">{{ROW_2_TAG}}</span>
+          </div>
+        </article>
+        <article class="agent-card">
+          <div class="agent-number">03</div>
+          <div>
+            <h3>{{ROW_3_TITLE}}</h3>
+            <p>{{ROW_3_COPY}}</p>
+            <span class="tag">{{ROW_3_TAG}}</span>
+          </div>
+        </article>
+        <div class="agent-chips" aria-label="Capabilities">
+          <span class="chip">{{CHIP_1}}</span>
+          <span class="chip">{{CHIP_2}}</span>
+          <span class="chip">{{CHIP_3}}</span>
+          <span class="chip">{{CHIP_4}}</span>
+        </div>
+      </aside>
+    </section>
+
+    <section class="program-grid" aria-label="Folloze support areas">
+      <article class="program-card">
+        <span class="eyebrow">{{CARD_1_EYEBROW}}</span>
+        <h3>{{CARD_1_TITLE}}</h3>
+        <p>{{CARD_1_COPY}}</p>
+        <ul>
+          <li>{{CARD_1_BULLET_1}}</li>
+          <li>{{CARD_1_BULLET_2}}</li>
+          <li>{{CARD_1_BULLET_3}}</li>
+        </ul>
+      </article>
+      <article class="program-card">
+        <span class="eyebrow">{{CARD_2_EYEBROW}}</span>
+        <h3>{{CARD_2_TITLE}}</h3>
+        <p>{{CARD_2_COPY}}</p>
+        <ul>
+          <li>{{CARD_2_BULLET_1}}</li>
+          <li>{{CARD_2_BULLET_2}}</li>
+          <li>{{CARD_2_BULLET_3}}</li>
+        </ul>
+      </article>
+      <article class="program-card">
+        <span class="eyebrow">{{CARD_3_EYEBROW}}</span>
+        <h3>{{CARD_3_TITLE}}</h3>
+        <p>{{CARD_3_COPY}}</p>
+        <ul>
+          <li>{{CARD_3_BULLET_1}}</li>
+          <li>{{CARD_3_BULLET_2}}</li>
+          <li>{{CARD_3_BULLET_3}}</li>
+        </ul>
+      </article>
+      <article class="program-card">
+        <span class="eyebrow">{{CARD_4_EYEBROW}}</span>
+        <h3>{{CARD_4_TITLE}}</h3>
+        <p>{{CARD_4_COPY}}</p>
+        <ul>
+          <li>{{CARD_4_BULLET_1}}</li>
+          <li>{{CARD_4_BULLET_2}}</li>
+          <li>{{CARD_4_BULLET_3}}</li>
+        </ul>
+      </article>
+    </section>
+  </main>
+</body>
+</html>
+

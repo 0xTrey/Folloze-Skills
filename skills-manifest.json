@@ -33,8 +33,20 @@
       "requires_restart": true
     },
     {
+      "name": "folloze-brand-kit",
+      "path": "Skills/folloze-brand-kit",
+      "enabled": true,
+      "requires_restart": true
+    },
+    {
       "name": "Folloze-MCP-Demo-Builder",
       "path": "Skills/Folloze-MCP-Demo-Builder",
+      "enabled": true,
+      "requires_restart": true
+    },
+    {
+      "name": "folloze-one-pager",
+      "path": "Skills/folloze-one-pager",
       "enabled": true,
       "requires_restart": true
     },
