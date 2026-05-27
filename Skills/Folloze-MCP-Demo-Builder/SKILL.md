@@ -217,6 +217,15 @@ Before any MCP save or tracker write, state the board identity in working notes 
 - Designer URL returned by MCP.
 - Public deployment URL status: MCP-returned, user-supplied, verified from public route, or pending.
 
+Resolve board identity in this order before deciding whether the save is net-new:
+
+1. Current conversation or user-provided board ID/designer URL.
+2. Local research note for the same vendor/account/page.
+3. The shared tracker row, searched by board ID, exact designer URL, exact board name, then company/account name.
+4. Current local source title/name and file path.
+
+Treat "push to Folloze", "push to follows", "publish", "save live", "update board", and "repush" as MCP save requests. If a board ID is found by the lookup above, update that existing board. Create a new board only when no verified board ID exists or Trey explicitly asks for a new board/duplicate.
+
 If any identity field points to a different account, target institution, board ID, or prior example than the current user request, pause the save and resolve the mismatch. Do not overwrite a board that is being used only as a visual reference.
 
 ## Existing Board Update Gate
@@ -239,10 +248,14 @@ If the user says "push to Folloze" after local preview edits, preserve the exist
 2. Use the company theme only after the user has authorized the theme mode. For vendor-branded pages, use non-Folloze theme mode when already authorized by the user or by prior context.
 3. Even when the user chooses no Folloze theme, call `get_company_theme` with the authorized `use_folloze_theme: "no"` value before save. Use the returned `themeId`, and include the returned `themeUrl` as the required `<link rel="stylesheet" href="...">` in `<head>`. No-theme mode means creative styling is unrestricted; it does not mean the MCP-required theme link can be omitted.
 4. Build a single self-contained HTML file that follows the current MCP guide. Include the theme stylesheet link returned by `get_company_theme` exactly as required by the guide, keep custom CSS and JavaScript inside the document, and avoid separate source files unless using a temporary QA file for MCP upload.
-5. Before save, confirm the HTML actually satisfies all MCP analytics acknowledgements: guide read, CTA clicks tracked, external links use `target="_blank" rel="noopener"`, and meaningful custom interactions are tracked.
+5. Before save, confirm the HTML actually satisfies all MCP analytics acknowledgements: guide read, CTA clicks tracked, external links use `target="_blank" rel="noopener"`, and meaningful custom interactions are tracked. For external `<a href="http...">` CTAs, use direct inline `flzAnalytic('cta_click', {text:this.innerText.trim(), area:'...', url:this.href}, this)` instead of a wrapper helper; MCP validation may reject helper-only tracking even when the helper calls `flzAnalytic`.
 6. If the user is still in local-preview/review mode, stop before MCP save and return the local HTML path plus preview state. Save only after the user explicitly says to publish, save, or update the Folloze board.
 7. Save with the Folloze MCP `save_folloze_board_from_file` or `save_folloze_board_from_html` tool. Pass the existing `boardId` when updating an existing board.
 8. Return the board ID and the exact URL returned by MCP.
+
+If MCP returns `needs_fix`, treat it as a save-blocking validation report, not a failed publish to ignore. Patch the durable source file, rerun the targeted pre-save checks, commit the validator fix when it is meaningful, and retry the same save path. Common fixes include direct inline `flzAnalytic('cta_click', ...)` on external CTAs, adding the required theme link, or restoring external link `target`/`rel` attributes.
+
+After a successful save, update the local research/result note for that board with board ID, exact designer URL, public deployment URL status, theme mode, source file, QA status, and tracker status. This local note is required for future board identity lookup even when the shared tracker is not updated again.
 
 ## Existing Board Update Path
 
@@ -255,7 +268,7 @@ If the user says "push to Folloze" after local preview edits, preserve the exist
 
 ## Tracker Rule
 
-- Tracker logging is operator-scoped. For Trey's local Codex runs, update Trey's shared demo-environments tracker after every successful Folloze MCP create or update save.
+- Tracker logging is operator-scoped. For Trey's local Codex runs, write Trey's shared demo-environments tracker only once: immediately after a board is created in Folloze for the first time. Do not update the Google Sheet for later edits, annotation passes, repushes, or existing-board updates unless Trey explicitly asks for that specific tracker change.
 - Tracker: `MCP Demo Environments - May 2026`, tab `Demo Environments`, spreadsheet `1s_NU2O7lO8f_QSVmP2mI5dBNOGgUh7oQo3bfenerMqk`.
 - Current Row A schema is authoritative:
   - Column A: `Company name`
@@ -265,21 +278,19 @@ If the user says "push to Folloze" after local preview edits, preserve the exist
   - Column E: `Needed By Date`
   - Column F: `Luke Feedback`
   - Column G: `Agent Notes`
-- Before writing, read row 1 and align writes by header name rather than older column positions. If row 1 differs, stop and adapt to the live headers before writing.
+- Before a first-create tracker write, read row 1 once and align writes by header name rather than older column positions. If row 1 differs, stop and adapt to the live headers before writing.
 - For any other operator or team member, do not write to Trey's tracker unless Trey explicitly asks for that specific run. Use a team-provided tracker if one is supplied; otherwise skip tracker logging and state that no tracker was configured.
-- If tracker logging is in scope, search existing rows first by board ID from the designer URL or notes, exact designer URL, exact board name, and company name; update the matching row instead of creating duplicates.
+- If tracker logging is in scope for a first create, search existing rows first by board ID from the designer URL or notes, exact designer URL, exact board name, and company name. If a row already exists for that board, do not write again; report that the tracker was already logged.
 - Treat company-name-only tracker matches as weak matches. If the matched row's board name, board ID, designer URL, target account, or agent notes clearly refer to a different board or account motion, do not overwrite it silently. Prefer creating a new row, or ask Trey if the row should be repurposed.
-- Always write the saved board title/name returned or passed to MCP into Column B (`Board Name`). For updates, preserve an existing Column B value only when it is already the same board title; otherwise correct it to the current saved board title.
+- On first-create tracker writes, write the saved board title/name returned or passed to MCP into Column B (`Board Name`).
 - Preserve Column E (`Needed By Date`) and Column F (`Luke Feedback`) unless Trey explicitly asks to change them.
-- Preserve Column C (`Deployment URL`) when it already contains a real public deployment URL, unless MCP returns a replacement public/live URL or Trey explicitly asks to change it. Verify the existing public URL when feasible and mention that verification in Column G.
-- If Column C is empty or already pending, write `deployment URL pending from MCP` when MCP only returns a signed-in designer URL.
-- If Trey provides a real public or published URL after MCP save, write that URL into Column C even if MCP returned only the designer URL. Record in Column G that the deployment URL was user-supplied and, when feasible, verify the route opens before marking it live.
+- If MCP returns only a signed-in designer URL during first creation, write `deployment URL pending from MCP` into Column C. Do not invent deployment URLs.
+- If Trey provides a real public or published URL at the same first-create save moment, write that URL into Column C and record in Column G that it was user-supplied. Later public URL cleanup should happen only when Trey explicitly asks to update the tracker.
 - Record Column D (`Designer edit URL`) from the exact MCP returned designer URL.
 - Record Column G (`Agent Notes`) as a concise status note with board ID, date, source boundary, theme mode, QA/publish caveat, and latest material change.
-- Do not invent deployment URLs. If MCP only returns a signed-in designer URL, keep deployment pending and say so in the note.
-- The tracker write is a one-time post-save logging/update step; do not repeatedly update the sheet while polishing unless a later successful MCP save materially changes the row.
-- During rapid annotation-driven save loops, keep tracker notes latest-state oriented. Summarize the newest material UX/copy change and QA result instead of appending a long chronology of every microcopy pass.
-- If Google Sheets returns a quota or transient read error after MCP save, do not loop aggressively. Use the last successful search/write result if available; otherwise report tracker logging as skipped or pending while still returning the saved board details.
+- For tracker reads, avoid parallel Google Sheets calls. Use one bounded row/header lookup, then one bounded row search if needed.
+- If the append/write succeeds, do not require immediate readback verification. If readback hits `RATE_LIMIT_EXCEEDED`, record that the write request succeeded and report the readback caveat instead of retrying in a loop.
+- If Google Sheets returns a quota or transient read error before the first-create write, do not loop aggressively. Use bounded backoff once or twice; otherwise report tracker logging as pending while still returning the saved board details.
 
 ## Design QA Defaults
 
@@ -364,6 +375,8 @@ When the user provides browser annotations or screenshot comments:
 7. For annotation-driven save loops, create targeted QA artifacts when feasible: a small JSON or note with the verified selector/computed-style result, plus desktop/mobile screenshots of the edited section.
 8. If the user's visible browser still shows the old state after the source verifies, tell them the tab may be stale and should be refreshed.
 
+For copy comments, rewrite in context rather than doing a literal one-for-one replacement. After the edit, search the source and QA notes for stale wording, update only the relevant QA evidence, and verify the new line reads cleanly at desktop and mobile widths.
+
 ## Annotation Layout QA
 
 For browser comments about layout, alignment, spacing, full bleed, line wrapping, color, or dead space, run a selector-specific computed-style check before declaring the fix done:
@@ -447,7 +460,8 @@ Before every MCP save, run a lightweight automated or programmatic check against
 
 - Confirm the current Folloze guide has been read and the required theme stylesheet link is present in `<head>`.
 - Count external links and fail if any external link lacks `target="_blank" rel="noopener"`.
-- Count visible primary/resource CTAs and fail if any lacks `flzAnalytic('cta_click', ...)` or a real destination/action.
+- Count external `<a href="http...">` CTAs and fail if any lacks a direct inline `flzAnalytic('cta_click', ...)` call. Do not rely only on wrapper helpers such as `trackCta(...)` for links that MCP validates as CTAs.
+- Count visible primary/resource CTAs and fail if any lacks direct CTA analytics or a real destination/action.
 - Render desktop, mobile, and narrow mobile widths. Check no horizontal overflow, no broken images, no console errors, and no clipped header/logo/CTA elements.
 - Exercise meaningful custom interactions: nav anchors, tabs, sliders/calculators, modals, carousels, accordions, and any state-changing controls. Verify the UI changes and the analytics action fires or is wired.
 - For pages with external resource links, run bounded live-link checks when feasible. Treat transient provider failures as caveats, but do not ignore obvious 404s or malformed URLs.
@@ -468,6 +482,7 @@ When the page needs a content item but there is no existing Folloze asset or pub
 - When the user adds browser annotations, update the source CSS/HTML owner for the selected UI, not just the visible element. Scope the edit to the selected component unless the comment clearly implies a global token or design-system change.
 - If the preview appears stale during annotation work, reload the `file://` scratch HTML, add a cache-busting query string when supported, or switch to a fresh localhost URL. Do not require localhost when the user's Codex app/browser review is working from the local HTML file.
 - Render the local HTML at desktop and mobile widths before saving when possible.
+- For automated screenshots, disable or override smooth scrolling before capture and explicitly return to the intended scroll position. Otherwise lazy-loaded assets or smooth scroll behavior can produce misleading partial-page screenshots.
 - Verify that the first viewport shows the vendor/account brand clearly.
 - Verify that section text does not overlap or overflow.
 - Verify mobile has no horizontal overflow. A quick DOM check is `document.documentElement.scrollWidth <= window.innerWidth`.
