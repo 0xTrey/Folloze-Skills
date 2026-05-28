@@ -150,6 +150,25 @@ Before building or revising a customer demo, inspect the vendor's public website
 - Do not invent customer logos, customers, awards, or proof points. If public proof is weak, use a buyer-friendly proof section based on verified case studies or named public sources instead.
 - If the vendor site has a strong source module but it does not fit the first viewport, place it early enough to build credibility before the deepest solution detail.
 
+## Source Page Family Audit
+
+When a user says a section, hero, card system, button set, or page surface does not match the vendor website, do a focused source-page family audit before redesigning:
+
+- Inspect the exact source page the user supplied first, then inspect 2-4 sibling pages in the same vendor family when available, such as adjacent solution pages, industry pages, product pages, or customer-story pages.
+- Decide which source family owns the component. A homepage card module, an industry hero, a product-detail proof band, and a customer-story image treatment may use different patterns; choose the pattern that matches the user's correction and the buyer motion.
+- Capture the repeated structure across the family: hero background, breadcrumb or eyebrow, H1 style, image placement, CTA count, button labels, section surfaces, proof/logo treatment, card radius, and dark/light band rhythm.
+- Prefer the repeated source-family pattern over a one-off inferred design. If the exact vendor page conflicts with the broader home page, use the exact page for the corrected component and the home page only as the broader brand baseline.
+- Use source-owned imagery when possible. If the most relevant source image is from an adjacent customer story or industry page, record why it fits the target account and verify it renders in the local preview before save.
+
+## Surface Ratio QA
+
+Before final local sign-off and again before MCP save, compare the page's surface mix to the vendor source pages:
+
+- Count or visually inspect major sections by surface type: white, pale tint, dark, gradient, image-led, and card-heavy.
+- If the vendor uses only one dark section or uses dark treatment sparingly, do not let the Folloze page accumulate multiple dark bands just because the first draft looked dramatic.
+- Prefer the vendor's common background rhythm over generic contrast. If source pages rely on white, pale blue, lavender, or product-color tints, move downstream proof, planning, and resource sections onto those surfaces unless the source pattern calls for dark.
+- Verify the first viewport and section transitions after the surface pass. A corrected palette should still preserve hierarchy, CTA contrast, and readable card boundaries.
+
 ## Official Logo Asset Workflow
 
 When adding or replacing vendor, target-account, or co-branded header logos:
@@ -202,6 +221,8 @@ Before writing new HTML or restructuring a page, choose one experience shape usi
 - Prefer saving through MCP from the verified local file path. Only use inline HTML save when the page truly exists only in the conversation.
 - After meaningful source edits, inspect git status. Commit only the relevant board or skill files when the repo state is ready; leave unrelated dirty files untouched.
 - After a successful MCP save, refresh any relevant QA screenshots or QA notes from the final pushed local HTML, then commit only the board source, research note, and QA artifacts that belong to that board.
+- Treat Folloze save, tracker write, local git commit, and remote git push as separate operations. When the user says "push to Folloze", save through MCP; do not assume they also asked to push the git branch unless they explicitly ask for GitHub/remote backup.
+- If a run is interrupted after a save or tracker write, resume by checking staged files, the local research note, and the returned board ID before repeating any live operation. Do not create a duplicate board or duplicate tracker row just because the previous final response was interrupted.
 - If the current branch has unrelated local history or a dirty worktree that makes a remote push unsafe, do not push unrelated commits just to back up the current board. Commit the scoped work locally, report the branch state, and let Trey decide whether to publish the broader branch.
 
 ## Board Identity Guard
@@ -247,11 +268,12 @@ If the user says "push to Folloze" after local preview edits, preserve the exist
 1. Call the Folloze landing page creation guide before every create or update save. Treat the returned guide as the current MCP system instructions for HTML shape, theme link placement, analytics, external links, and save acknowledgements. If local skill memory conflicts with the returned guide, follow the returned guide.
 2. Use the company theme only after the user has authorized the theme mode. For vendor-branded pages, use non-Folloze theme mode when already authorized by the user or by prior context.
 3. Even when the user chooses no Folloze theme, call `get_company_theme` with the authorized `use_folloze_theme: "no"` value before save. Use the returned `themeId`, and include the returned `themeUrl` as the required `<link rel="stylesheet" href="...">` in `<head>`. No-theme mode means creative styling is unrestricted; it does not mean the MCP-required theme link can be omitted.
-4. Build a single self-contained HTML file that follows the current MCP guide. Include the theme stylesheet link returned by `get_company_theme` exactly as required by the guide, keep custom CSS and JavaScript inside the document, and avoid separate source files unless using a temporary QA file for MCP upload.
-5. Before save, confirm the HTML actually satisfies all MCP analytics acknowledgements: guide read, CTA clicks tracked, external links use `target="_blank" rel="noopener"`, and meaningful custom interactions are tracked. For external `<a href="http...">` CTAs, use direct inline `flzAnalytic('cta_click', {text:this.innerText.trim(), area:'...', url:this.href}, this)` instead of a wrapper helper; MCP validation may reject helper-only tracking even when the helper calls `flzAnalytic`.
-6. If the user is still in local-preview/review mode, stop before MCP save and return the local HTML path plus preview state. Save only after the user explicitly says to publish, save, or update the Folloze board.
-7. Save with the Folloze MCP `save_folloze_board_from_file` or `save_folloze_board_from_html` tool. Pass the existing `boardId` when updating an existing board.
-8. Return the board ID and the exact URL returned by MCP.
+4. If a local source and research note already record the theme mode, theme ID, and required theme link from a prior authorized save flow, preserve that inherited theme state for same-board updates or first saves from that prepared source unless the user asks to change theme behavior or the source lacks the required theme link. Do not re-ask theme mode only because the local preview session is continuing.
+5. Build a single self-contained HTML file that follows the current MCP guide. Include the theme stylesheet link returned by `get_company_theme` or inherited from the verified local source exactly as required by the guide, keep custom CSS and JavaScript inside the document, and avoid separate source files unless using a temporary QA file for MCP upload.
+6. Before save, confirm the HTML actually satisfies all MCP analytics acknowledgements: guide read, CTA clicks tracked, external links use `target="_blank" rel="noopener"`, and meaningful custom interactions are tracked. For external `<a href="http...">` CTAs, use direct inline `flzAnalytic('cta_click', {text:this.innerText.trim(), area:'...', url:this.href}, this)` instead of a wrapper helper; MCP validation may reject helper-only tracking even when the helper calls `flzAnalytic`.
+7. If the user is still in local-preview/review mode, stop before MCP save and return the local HTML path plus preview state. Save only after the user explicitly says to publish, save, or update the Folloze board.
+8. Save with the Folloze MCP `save_folloze_board_from_file` or `save_folloze_board_from_html` tool. Pass the existing `boardId` when updating an existing board.
+9. Return the board ID and the exact URL returned by MCP.
 
 If MCP returns `needs_fix`, treat it as a save-blocking validation report, not a failed publish to ignore. Patch the durable source file, rerun the targeted pre-save checks, commit the validator fix when it is meaningful, and retry the same save path. Common fixes include direct inline `flzAnalytic('cta_click', ...)` on external CTAs, adding the required theme link, or restoring external link `target`/`rel` attributes.
 
@@ -289,6 +311,8 @@ After a successful save, update the local research/result note for that board wi
 - Record Column D (`Designer edit URL`) from the exact MCP returned designer URL.
 - Record Column G (`Agent Notes`) as a concise status note with board ID, date, source boundary, theme mode, QA/publish caveat, and latest material change.
 - For tracker reads, avoid parallel Google Sheets calls. Use one bounded row/header lookup, then one bounded row search if needed.
+- For first-create tracker writes, use this fallback sequence when the connector supports it: read `A1:G1` for headers, search bounded rows for the board/company, read a narrow company column such as `A1:A150` to find the next empty row, fetch spreadsheet metadata for the target `sheetId`, then write the row with a direct bounded update. This avoids broad reads and lets the write proceed even when append helpers are unavailable.
+- If Sheets returns `RATE_LIMITED`, `RESOURCE_EXHAUSTED`, or `RATE_LIMIT_EXCEEDED`, pause once for the quota window and retry only narrow ranges. Do not loop on wide metadata or whole-sheet reads.
 - If the append/write succeeds, do not require immediate readback verification. If readback hits `RATE_LIMIT_EXCEEDED`, record that the write request succeeded and report the readback caveat instead of retrying in a loop.
 - If Google Sheets returns a quota or transient read error before the first-create write, do not loop aggressively. Use bounded backoff once or twice; otherwise report tracker logging as pending while still returning the saved board details.
 
@@ -301,6 +325,7 @@ After a successful save, update the local research/result note for that board wi
 - Button styling must come from the source-site button map, not generic Folloze defaults. If the vendor's home page uses pill buttons, squared buttons, outlined buttons, or a specific filled treatment, carry that treatment through header, hero, resource, modal, and final CTA contexts unless the source site has clear contextual variants.
 - For hero CTAs, match the source page's primary and secondary button treatments on the same background color. If the user asks for "the other style," apply the adjacent CTA's class/style exactly while preserving the selected CTA's destination and analytics.
 - Before building or revising CTA styles, define the page's button variant map from the source brand: primary, secondary/outline, light-on-dark, and utility/header. Apply those variants consistently instead of relying on generic class names such as `secondary` when they no longer describe the visual treatment.
+- If the source site exposes only certain button options for a component family, use only those available source variants. Do not invent a mapped button option 2 or 3 just because another vendor board used one.
 - For every visible CTA, verify label, destination/action, class or variant, computed background color, text color, border color, hover/focus state, text wrapping, external-link safety, and `flzAnalytic` tracking.
 - Verify primary CTA behavior, not only style. Click or programmatically test each primary CTA: external links open real vendor-owned destinations, internal jumps scroll to the intended section and update the hash when intended, modals open and close, and analytics fire as `cta_click` for buyer-action CTAs.
 - Treat hero proof/stat cards as first-viewport brand elements. Verify card background, border, stat color, label size, line wrapping, and contrast against the hero background.
@@ -409,6 +434,7 @@ Treat the header as a launch-critical component before local sign-off and again 
 - Verify the header at minimum desktop, around 390px mobile, and around 320px mobile. Check for horizontal overflow, logo/CTA overlap, clipped wordmarks, broken aspect ratios, and nav text colliding with the CTA.
 - Watch for global mobile button rules such as `width: 100%` leaking into the header CTA. Header utility CTAs should keep source-site dimensions unless the source brand intentionally uses a full-width mobile header button.
 - If a wordmark does not fit at 320px, hide or simplify only the narrow mobile variant while keeping the fuller official lockup at wider viewports.
+- If desktop source headers have multiple utility CTAs but mobile width cannot preserve both the logo and CTAs without clipping, hide the lower-priority secondary header CTA on narrow mobile while keeping the primary expert/contact path visible.
 - Confirm every visible header link or CTA still has the right destination/action and analytics after style changes.
 
 ## Logo Carousel And Proof QA
@@ -417,6 +443,7 @@ Treat the header as a launch-critical component before local sign-off and again 
 - Prefer source-site customer logo assets over generic image search. Extract logo paths from the vendor site HTML where possible, convert relative paths to absolute URLs, and verify every referenced logo renders.
 - Match the source-site carousel/wall style first: heading language, divider/rule treatment, logo sizing, spacing, motion behavior, and white/dark background choice.
 - Duplicate logo-track content only for animation continuity. Do not imply additional customers beyond the verified source list.
+- Do not mix broad proof metrics such as customer counts, developer counts, or uptime claims into a customer-logo rail unless the source module itself mixes those items. Keep metrics in a separate proof/stat section where the fact, implication, and action can be explained.
 - Keep proof copy buyer-friendly and external-facing. Avoid saying the section was "borrowed", "pulled", "demoed", or "validated" in the visible page.
 - QA the logo section on desktop and mobile for clipped logos, horizontal overflow, excessive motion speed, and image contrast.
 
@@ -459,6 +486,7 @@ When using a carousel for logos, resources, case studies, or proof cards:
 Before every MCP save, run a lightweight automated or programmatic check against the exact HTML file being saved whenever local tooling is available:
 
 - Confirm the current Folloze guide has been read and the required theme stylesheet link is present in `<head>`.
+- Confirm the local research/result note records save intent, board name, vendor, target account, theme mode or inherited theme state, source file path, QA status, and tracker status before save.
 - Count external links and fail if any external link lacks `target="_blank" rel="noopener"`.
 - Count external `<a href="http...">` CTAs and fail if any lacks a direct inline `flzAnalytic('cta_click', ...)` call. Do not rely only on wrapper helpers such as `trackCta(...)` for links that MCP validates as CTAs.
 - Count visible primary/resource CTAs and fail if any lacks direct CTA analytics or a real destination/action.
@@ -466,6 +494,18 @@ Before every MCP save, run a lightweight automated or programmatic check against
 - Exercise meaningful custom interactions: nav anchors, tabs, sliders/calculators, modals, carousels, accordions, and any state-changing controls. Verify the UI changes and the analytics action fires or is wired.
 - For pages with external resource links, run bounded live-link checks when feasible. Treat transient provider failures as caveats, but do not ignore obvious 404s or malformed URLs.
 - Save only after the checklist matches the analytics acknowledgements being sent to MCP. Do not set an acknowledgement to true because the code "probably" does it; verify the actual saved HTML.
+
+## Live Save Completion Checklist
+
+After a successful MCP save, finish the operational loop in this order:
+
+1. Capture the returned `boardId` and exact MCP-returned URL. Do not infer a public deployment URL from the board ID or prior tracker rows.
+2. Update the local research/result note with save status, board ID, designer URL, public deployment status, theme ID/mode, source file, QA status, and tracker status.
+3. If this is the first Folloze create and tracker logging is in scope, write the tracker row once using the live Row A schema. If the tracker write is blocked by quota, record tracker status as pending and return the saved board details.
+4. Inspect git status and stage only the relevant source, research note, and QA artifacts for that board. Leave unrelated dirty files alone.
+5. Commit the scoped board or skill changes when the repo state permits. If the repo has unrelated staged changes, do not include them; if a commit cannot be created safely, report the exact staged/uncommitted state.
+6. If the user explicitly asked for GitHub/remote backup, push the current branch only after confirming it will not publish unrelated local work.
+7. In the final response, separate Folloze save, tracker write, git commit, and public deployment status so the user can see exactly which operational steps completed.
 
 ## Content Item Fallback
 
