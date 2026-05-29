@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{BOARD_TITLE}}</title>
+  {{FOLLOZE_THEME_LINK}}
+  <style>
+    :root {
+      --ink: #102033;
+      --muted: #5f6b7a;
+      --line: #d9e0e8;
+      --surface: #f7f9fb;
+      --brand: #1f6feb;
+      --brand-strong: #174ea6;
+      --accent: #12a886;
+      --white: #ffffff;
+      --radius: 8px;
+      --shadow: 0 18px 45px rgba(16, 32, 51, 0.12);
+      --max: 1160px;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; color: var(--ink); background: var(--white); overflow-x: hidden; }
+    body { font-family: inherit; line-height: 1.5; }
+    a { color: inherit; }
+    .wrap { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
+    .topbar { border-bottom: 1px solid var(--line); background: rgba(255,255,255,0.94); position: sticky; top: 0; z-index: 20; backdrop-filter: blur(12px); }
+    .topbar .wrap { min-height: 68px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .lockup { display: flex; align-items: center; gap: 12px; font-weight: 750; }
+    .mark { width: 34px; height: 34px; border-radius: 8px; background: linear-gradient(135deg, var(--brand), var(--accent)); }
+    .nav { display: flex; align-items: center; gap: 18px; font-size: 14px; color: var(--muted); }
+    .nav a { text-decoration: none; white-space: nowrap; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0 18px; border-radius: 6px; border: 1px solid var(--brand); background: var(--brand); color: white; text-decoration: none; font-weight: 700; white-space: nowrap; cursor: pointer; }
+    .btn.secondary { background: white; color: var(--brand-strong); }
+    .hero { padding: 84px 0 64px; background: linear-gradient(180deg, #eef5ff 0%, #ffffff 76%); }
+    .hero-grid { display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(320px, 0.88fr); gap: 42px; align-items: center; }
+    .eyebrow { color: var(--brand-strong); font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: 0; }
+    h1 { margin: 12px 0 18px; font-size: clamp(38px, 6vw, 68px); line-height: 0.98; letter-spacing: 0; }
+    .lead { margin: 0 0 28px; font-size: 20px; color: #314154; max-width: 690px; }
+    .actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .panel { background: white; border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); padding: 24px; }
+    .panel h2, section h2 { margin: 0 0 12px; font-size: 28px; line-height: 1.12; letter-spacing: 0; }
+    .panel p { color: var(--muted); margin: 0; }
+    .meta { display: grid; gap: 14px; margin-top: 22px; }
+    .meta-row { display: grid; grid-template-columns: 118px 1fr; gap: 14px; padding-top: 14px; border-top: 1px solid var(--line); }
+    .meta-row strong { font-size: 13px; color: var(--muted); text-transform: uppercase; letter-spacing: 0; }
+    section { padding: 64px 0; }
+    .section-head { max-width: 780px; margin-bottom: 28px; }
+    .section-head p { color: var(--muted); margin: 0; font-size: 18px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+    .card { border: 1px solid var(--line); border-radius: var(--radius); background: white; padding: 22px; min-height: 180px; }
+    .card h3 { margin: 0 0 10px; font-size: 19px; line-height: 1.2; letter-spacing: 0; }
+    .card p { margin: 0; color: var(--muted); }
+    .band { background: var(--surface); }
+    .steps { display: grid; gap: 14px; }
+    .step { display: grid; grid-template-columns: 42px 1fr; gap: 16px; align-items: start; padding: 18px; border: 1px solid var(--line); border-radius: var(--radius); background: white; }
+    .num { width: 42px; height: 42px; border-radius: 50%; background: var(--ink); color: white; display: grid; place-items: center; font-weight: 800; }
+    .resource { display: flex; flex-direction: column; gap: 14px; }
+    .resource .btn { align-self: flex-start; }
+    .map { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+    .map-item { border-left: 4px solid var(--accent); background: white; border-radius: var(--radius); padding: 18px; min-height: 150px; }
+    .map-item strong { display: block; margin-bottom: 8px; }
+    .final { background: #102033; color: white; }
+    .final p { color: #cbd6e2; }
+    .final .btn.secondary { color: white; background: transparent; border-color: rgba(255,255,255,0.55); }
+    .modal { border: 0; border-radius: var(--radius); padding: 0; max-width: 680px; width: calc(100% - 32px); }
+    .modal::backdrop { background: rgba(16, 32, 51, 0.55); }
+    .modal-inner { padding: 28px; }
+    .modal button { margin-top: 20px; }
+    @media (max-width: 860px) {
+      .nav { display: none; }
+      .hero-grid, .grid-3, .map { grid-template-columns: 1fr; }
+      .hero { padding-top: 54px; }
+      .wrap { width: min(100% - 28px, var(--max)); }
+      h1 { font-size: 42px; }
+      .lead { font-size: 18px; }
+      .actions .btn { width: 100%; }
+      .meta-row { grid-template-columns: 1fr; gap: 4px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <div class="lockup"><span class="mark" aria-hidden="true"></span><span>{{LOCKUP_TEXT}}</span></div>
+      <nav class="nav" aria-label="Page sections">
+        <a href="#path" onclick="trackInteraction('nav_click','Recommended path','nav')">Path</a>
+        <a href="#resources" onclick="trackInteraction('nav_click','Resources','nav')">Resources</a>
+        <a href="#map" onclick="trackInteraction('nav_click','Mutual action plan','nav')">Action plan</a>
+      </nav>
+      <a class="btn" href="{{PRIMARY_CTA_URL}}" target="_blank" rel="noopener" onclick="trackCta('{{PRIMARY_CTA_TEXT}}','topbar','{{PRIMARY_CTA_URL}}', this)">{{PRIMARY_CTA_TEXT}}</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow">{{EYEBROW}}</div>
+          <h1>{{HERO_HEADLINE}}</h1>
+          <p class="lead">{{HERO_SUBHEAD}}</p>
+          <div class="actions">
+            <a class="btn" href="{{PRIMARY_CTA_URL}}" target="_blank" rel="noopener" onclick="trackCta('{{PRIMARY_CTA_TEXT}}','hero','{{PRIMARY_CTA_URL}}', this)">{{PRIMARY_CTA_TEXT}}</a>
+            <a class="btn secondary" href="#resources" onclick="trackInteraction('anchor_click','Review resources','hero')">Review resources</a>
+          </div>
+        </div>
+        <aside class="panel" aria-label="Decision snapshot">
+          <h2>{{SNAPSHOT_TITLE}}</h2>
+          <p>{{SNAPSHOT_SUMMARY}}</p>
+          <div class="meta">
+            <div class="meta-row"><strong>Focus</strong><span>{{SNAPSHOT_FOCUS}}</span></div>
+            <div class="meta-row"><strong>Proof</strong><span>{{SNAPSHOT_PROOF}}</span></div>
+            <div class="meta-row"><strong>Next Step</strong><span>{{SNAPSHOT_NEXT_STEP}}</span></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="path">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>{{PATH_HEADLINE}}</h2>
+          <p>{{PATH_SUBHEAD}}</p>
+        </div>
+        <div class="grid-3">
+          <article class="card"><h3>{{CARD_1_TITLE}}</h3><p>{{CARD_1_BODY}}</p></article>
+          <article class="card"><h3>{{CARD_2_TITLE}}</h3><p>{{CARD_2_BODY}}</p></article>
+          <article class="card"><h3>{{CARD_3_TITLE}}</h3><p>{{CARD_3_BODY}}</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>{{WORKFLOW_HEADLINE}}</h2>
+          <p>{{WORKFLOW_SUBHEAD}}</p>
+        </div>
+        <div class="steps">
+          <div class="step"><span class="num">1</span><div><strong>{{STEP_1_TITLE}}</strong><p>{{STEP_1_BODY}}</p></div></div>
+          <div class="step"><span class="num">2</span><div><strong>{{STEP_2_TITLE}}</strong><p>{{STEP_2_BODY}}</p></div></div>
+          <div class="step"><span class="num">3</span><div><strong>{{STEP_3_TITLE}}</strong><p>{{STEP_3_BODY}}</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="resources">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>{{RESOURCES_HEADLINE}}</h2>
+          <p>{{RESOURCES_SUBHEAD}}</p>
+        </div>
+        <div class="grid-3">
+          <article class="card resource">
+            <h3>{{RESOURCE_1_TITLE}}</h3>
+            <p>{{RESOURCE_1_BODY}}</p>
+            <a class="btn secondary" href="{{RESOURCE_1_URL}}" target="_blank" rel="noopener" onclick="trackCta('{{RESOURCE_1_CTA}}','resources','{{RESOURCE_1_URL}}', this)">{{RESOURCE_1_CTA}}</a>
+          </article>
+          <article class="card resource">
+            <h3>{{RESOURCE_2_TITLE}}</h3>
+            <p>{{RESOURCE_2_BODY}}</p>
+            <button class="btn secondary" type="button" onclick="openModal('resource-two','{{RESOURCE_2_CTA}}')">{{RESOURCE_2_CTA}}</button>
+          </article>
+          <article class="card resource">
+            <h3>{{RESOURCE_3_TITLE}}</h3>
+            <p>{{RESOURCE_3_BODY}}</p>
+            <a class="btn secondary" href="{{RESOURCE_3_URL}}" target="_blank" rel="noopener" onclick="trackCta('{{RESOURCE_3_CTA}}','resources','{{RESOURCE_3_URL}}', this)">{{RESOURCE_3_CTA}}</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="map" class="band">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>{{MAP_HEADLINE}}</h2>
+          <p>{{MAP_SUBHEAD}}</p>
+        </div>
+        <div class="map">
+          <div class="map-item"><strong>{{MAP_1_TITLE}}</strong><span>{{MAP_1_BODY}}</span></div>
+          <div class="map-item"><strong>{{MAP_2_TITLE}}</strong><span>{{MAP_2_BODY}}</span></div>
+          <div class="map-item"><strong>{{MAP_3_TITLE}}</strong><span>{{MAP_3_BODY}}</span></div>
+          <div class="map-item"><strong>{{MAP_4_TITLE}}</strong><span>{{MAP_4_BODY}}</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="final">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>{{FINAL_HEADLINE}}</h2>
+          <p>{{FINAL_SUBHEAD}}</p>
+        </div>
+        <div class="actions">
+          <a class="btn" href="{{PRIMARY_CTA_URL}}" target="_blank" rel="noopener" onclick="trackCta('{{PRIMARY_CTA_TEXT}}','final','{{PRIMARY_CTA_URL}}', this)">{{PRIMARY_CTA_TEXT}}</a>
+          <a class="btn secondary" href="{{SECONDARY_CTA_URL}}" target="_blank" rel="noopener" onclick="trackCta('{{SECONDARY_CTA_TEXT}}','final','{{SECONDARY_CTA_URL}}', this)">{{SECONDARY_CTA_TEXT}}</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <dialog class="modal" id="resource-two">
+    <div class="modal-inner">
+      <h2>{{RESOURCE_2_MODAL_TITLE}}</h2>
+      <p>{{RESOURCE_2_MODAL_BODY}}</p>
+      <button class="btn" type="button" onclick="closeModal('resource-two','Close resource summary')">Close</button>
+    </div>
+  </dialog>
+
+  <script>
+    window.flzAnalytic = window.flzAnalytic || function(actionName, payload) {
+      console.log("flzAnalytic", actionName, payload);
+    };
+    function trackCta(text, area, url, element) {
+      window.flzAnalytic("cta_click", { text: text, area: area, url: url }, element || null);
+    }
+    function trackInteraction(actionName, text, area) {
+      window.flzAnalytic(actionName, { text: text, area: area });
+    }
+    function openModal(id, text) {
+      var modal = document.getElementById(id);
+      if (!modal) return;
+      modal.showModal();
+      trackInteraction("modal_open", text, "resources");
+    }
+    function closeModal(id, text) {
+      var modal = document.getElementById(id);
+      if (!modal) return;
+      modal.close();
+      trackInteraction("modal_close", text, "resources");
+    }
+  </script>
+</body>
+</html>

@@ -21,6 +21,9 @@ Last reviewed: 2026-05-26
 | File | Use when |
 |---|---|
 | `content-system-v3-1.md` | Need the active messaging alignment, source priority, external/internal language boundary, current proof pillars, or content-system rules |
+| `product-capabilities-internal.md` | Need internal Folloze capability, module, license, package-row, integration, Website Engagement, Events, Global Scalability, or AI/Data credit context and Drive/internal access is available |
+| `product-capabilities-customer-ready.md` | Need customer-facing capability descriptions without internal source notes, private provenance, pricing-guide details, or local paths |
+| `product-capabilities-public-safe.md` | Need generic public-safe product capability definitions for public repos, public prompts, or no-Drive fallback |
 | `brand-foundation.md` | Need category, positioning, audience, narrative hierarchy, or messaging guardrails |
 | `messaging-library.md` | Need value props, pillars, page copy, campaign claims, one-pager messaging blocks, or account-signal mapping |
 | `claims-and-proof.md` | Need numeric claims, customer proof, case-study snippets, proof-selection rules, or verification status |
@@ -45,11 +48,12 @@ Last reviewed: 2026-05-26
 For a customer-facing Folloze asset:
 
 1. Load `content-system-v3-1.md`.
-2. Load `brand-foundation.md`.
-3. Load `messaging-library.md`.
-4. Load `claims-and-proof.md` only if you will use proof, numbers, customer names, or benchmark claims.
-5. Load `visual-identity.md` if you are creating HTML, slides, images, PDFs, or other visual output.
-6. Load `voice-and-style.md` before final copy QA.
+2. Load `product-capabilities-customer-ready.md` if the asset mentions product features, modules, user roles, integrations, Website Engagement, Events, Global Scalability, or AI/Data credits.
+3. Load `brand-foundation.md`.
+4. Load `messaging-library.md`.
+5. Load `claims-and-proof.md` only if you will use proof, numbers, customer names, or benchmark claims.
+6. Load `visual-identity.md` if you are creating HTML, slides, images, PDFs, or other visual output.
+7. Load `voice-and-style.md` before final copy QA.
 
 For content creation from a loose request:
 
@@ -61,8 +65,15 @@ For content creation from a loose request:
 For internal planning or skill-building:
 
 1. Load this source index.
-2. Load only the files needed by the target skill.
-3. Keep downstream skill instructions concise and point back to this kit.
+2. Load `product-capabilities-internal.md` when the task needs the internal product capability Google Doc or package-row context.
+3. Load only the other files needed by the target skill.
+4. Keep downstream skill instructions concise and point back to this kit.
+
+For public repo, public prompt, or no-Drive work:
+
+1. Load `content-system-v3-1.md`.
+2. Load `product-capabilities-public-safe.md` if product capability context is needed.
+3. Do not rely on internal Google Docs, pricing guides, order forms, or private source material.
 
 ## What Not To Add
 
@@ -78,3 +89,5 @@ Do not add:
 - raw Salesforce, Gmail, Granola, or Drive snippets
 
 If a private artifact teaches a useful reusable pattern, abstract the pattern and remove all account-specific details before adding it here.
+
+Internal access-controlled Google Doc links may be referenced from this kit when they are explicitly marked as internal pointers and no private content is copied into the repo.

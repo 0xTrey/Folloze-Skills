@@ -37,6 +37,8 @@ Use sources in this order:
 
 Always fetch the live pricing guide and template content before building. Treat static prices in this skill as a cross-check, not as the source of truth.
 
+For plain-language explanations of package rows, modules, user roles, Global Scalability, Website Engagement, Events, and Folloze AI/Data credits, use `folloze-brand-kit` `references/product-capabilities-internal.md`. The live pricing guide, order form, and user-provided commercial instructions still outrank the capability reference for actual prices, quantities, and contracted terms.
+
 ## Current Pricing Cross-Check
 
 Use these values only after confirming the current pricing guide still matches:

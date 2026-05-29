@@ -12,6 +12,7 @@ Use this skill for Folloze MCP board and microsite work where the output is a po
 - Start from the real business context named by the user: vendor site, target account, live board ID, source page, screenshots, Salesforce context if allowed, and any existing designer URL.
 - The deliverable is a repo-backed, vendor-faithful sales experience with measurable interaction QA. It is not a Folloze-specific experience unless the user explicitly asks for Folloze branding or Folloze-owned positioning.
 - For vendor-owned account pages, keep Folloze invisible in buyer-facing copy unless the user explicitly wants a Folloze-branded sales asset.
+- For Folloze-branded or Folloze-owned experiences, use `folloze-brand-kit` and its product capability references. Use customer-ready language for buyer-facing copy and internal capability context only for planning.
 - Avoid customer-facing meta language such as demo, example, proof of concept, microsite, board, or template unless the user explicitly asks for it.
 - Use the vendor's public website as the design reference: logo treatment, section rhythm, dark/light bands, card radius, typography scale, button treatment, imagery, footer structure, and CTA language. Start with the vendor's regular home page unless the user provides a more specific source page.
 - Use real vendor and target-account logos where available. In 1:1 account pages, prefer vendor logo plus account logo only; avoid labels like "Prepared for" unless the source design pattern clearly supports that language.

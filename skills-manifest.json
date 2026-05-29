@@ -39,6 +39,18 @@
       "requires_restart": true
     },
     {
+      "name": "folloze-campaign-board-builder",
+      "path": "Skills/folloze-campaign-board-builder",
+      "enabled": true,
+      "requires_restart": true
+    },
+    {
+      "name": "folloze-zoom-deal-room",
+      "path": "Skills/folloze-zoom-deal-room",
+      "enabled": true,
+      "requires_restart": true
+    },
+    {
       "name": "Folloze-MCP-Demo-Builder",
       "path": "Skills/Folloze-MCP-Demo-Builder",
       "enabled": true,

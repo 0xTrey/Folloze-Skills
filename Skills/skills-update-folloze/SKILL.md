@@ -62,6 +62,8 @@ The helper will:
 - fall back to a full sync when the manifest changes or on first install
 - print a follow-up notice when the morning brief automation should be created
 
+Product capability reference updates are delivered through the `folloze-brand-kit` skill. When `folloze-brand-kit` changes, the sync should refresh its full folder, including `references/product-capabilities-internal.md`, `references/product-capabilities-customer-ready.md`, and `references/product-capabilities-public-safe.md`.
+
 ## Useful Variants
 
 Dry run:
@@ -119,6 +121,7 @@ If the automation tool is unavailable in the current Codex session, report that 
 - If the local repo clone has uncommitted changes, stop and tell the user to use a clean clone for updates
 - Do not edit `~/.codex/skills` by hand as part of normal updates; use the helper script
 - Do not create unrelated automations when setting up the morning brief
+- Do not copy internal Google Doc contents, pricing guides, order forms, or private deal materials into the GitHub repo. Keep internal product capability detail behind the access-controlled Google Doc pointer in `folloze-brand-kit`.
 - After a successful update, tell the user whether Codex should be restarted
 
 ## Expected Response

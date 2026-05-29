@@ -21,18 +21,29 @@ Core external frame:
 - Use the prose pattern `[Your AI does X]. [Folloze does Y].`
 - Keep `activation layer` and named agent framing internal-only unless the audience already knows Folloze.
 
+## Product Capability References
+
+When work needs product feature, package-row, module, license, integration, Website Engagement, Events, Global Scalability, or Folloze AI/Data credit context, use the product capability references:
+
+- For internal Folloze work with Drive access, start with `references/product-capabilities-internal.md`, which points to the internal Google Doc and repo-backed markdown source.
+- For customer-facing work, use `references/product-capabilities-customer-ready.md`.
+- For public repo, public prompt, or no-Drive contexts, use `references/product-capabilities-public-safe.md`.
+
+The internal Google Doc is access-controlled and should guide Folloze employees or internal agents. Do not copy its internal source notes, package rows, pricing-guide provenance, roadmap caveats, or private data-strategy context into public or customer-facing output unless the user explicitly asks for internal commercial context.
+
 ## How To Use
 
 For most work:
 
 1. Read `references/source-index.md` to choose the minimum relevant references.
 2. Use `references/content-system-v3-1.md` for current messaging alignment, source priority, and external/internal language boundaries.
-3. Use `references/brand-foundation.md` for category, positioning, audience, and narrative rules.
-4. Use `references/messaging-library.md` for value props, proof pillars, approved phrases, and module copy options.
-5. Use `references/claims-and-proof.md` before making any numeric or customer-proof claim.
-6. Use `references/voice-and-style.md` for tone, words to use, and words to avoid.
-7. Use `references/content-brief-template.md` when creating new campaign, page, sales, or thought-leadership content from scratch.
-8. Use `references/visual-identity.md` and `assets/logos/` for logo and color usage.
+3. Use the product capability references when the task involves product features, modules, user roles, integrations, global scalability, Website Engagement, Events, or AI/Data credits.
+4. Use `references/brand-foundation.md` for category, positioning, audience, and narrative rules.
+5. Use `references/messaging-library.md` for value props, proof pillars, approved phrases, and module copy options.
+6. Use `references/claims-and-proof.md` before making any numeric or customer-proof claim.
+7. Use `references/voice-and-style.md` for tone, words to use, and words to avoid.
+8. Use `references/content-brief-template.md` when creating new campaign, page, sales, or thought-leadership content from scratch.
+9. Use `references/visual-identity.md` and `assets/logos/` for logo and color usage.
 
 Do not load every reference by default. Use only what the task needs.
 
@@ -49,8 +60,10 @@ Older Folloze materials can still provide historical context, product detail, or
 Other Folloze skills should reference this package instead of copying brand rules into their own instructions. Good downstream usage:
 
 - `folloze-one-pager`: source approved value props, claims, proof, logos, and voice rules.
+- `folloze-order-form-builder`: use internal capability references for package-row interpretation, while current order-form evidence takes priority.
 - `Folloze-MCP-Demo-Builder`: use logo assets and public Folloze positioning only when the user explicitly wants a Folloze-branded experience.
 - `folloze-sales-doc`: use claim, proof, and voice references for customer-facing Folloze documents.
+- `folloze-zoom-deal-room` and board-production skills: use product capability references to ground buyer-safe deal-room structure and board briefs.
 - outbound or follow-up skills: use the message pillars and proof library, then adapt to the account context.
 
 If a downstream skill creates a reusable message pattern, objection pattern, proof pairing, or content brief field, add the generic version here once it has worked in more than one account context.

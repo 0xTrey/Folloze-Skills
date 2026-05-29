@@ -21,6 +21,7 @@ This is HTML-first. Build the local HTML source before PDF export so the teammat
 - Look across multiple calls when possible. The point is to synthesize a specific follow-up, not summarize the latest note in isolation.
 - Treat private notes as strategy inputs. It is acceptable to outline goals, objections, concerns, and required proof, but translate them into buyer-safe language about how Folloze can help. Do not quote private notes or expose internal meeting mechanics unless the user explicitly approves.
 - Use `folloze-brand-kit` plus this skill's `references/messaging-source-priority.md` and `references/folloze-value-props.md` to choose Folloze value props. Pick only the value props that map to the account's goals and objections.
+- Use the `folloze-brand-kit` product capability references when the one-pager needs plain-language explanations of Folloze modules, user roles, integrations, Website Engagement, Events, Global Scalability, or AI/Data credits.
 - Use the current external Folloze register: `Build. Activate. Signal.`
 - Keep `activation layer`, `campaign agent`, `activation agent`, and `insight agent` out of visible customer-facing copy unless the user explicitly asks for internal or sales-enablement language.
 - Create a message-fit matrix before writing page copy. Each visible Folloze claim should map to an account signal, an approved Folloze message, and a page placement.
