@@ -2,6 +2,8 @@
 
 Run these gates after the local HTML build and before publish.
 
+Run `design-quality-gates.md` as part of QA. The page must pass both functional QA and design-quality QA before publish or handoff.
+
 Fix failures before publish unless the marketer explicitly accepts the caveat.
 
 ## Render And Layout
@@ -19,10 +21,23 @@ Fix failures before publish unless the marketer explicitly accepts the caveat.
 
 - The first viewport clearly communicates the campaign value.
 - The page follows the approved source brand or campaign visual direction.
+- The page matches the approved campaign design context.
+- The page does not rely on generic AI-looking design defaults unless those defaults are explicitly supported by the design context.
 - Buyer-facing copy contains no production notes, private notes, placeholder text, or unapproved internal language.
 - Claims are public, customer-approved, or clearly framed as assumptions.
 - Metrics, customer names, quotes, awards, logos, analyst proof, and case studies are verified or approved.
 - Every proof point answers why it matters and what action it supports.
+
+## Design Quality
+
+- The wireframe's visual hierarchy is visible in the rendered page.
+- Typography scale, line lengths, and labels are readable and intentional.
+- Color usage follows the design context and does not collapse into an unsupported one-note palette.
+- Cards, modules, and sections are not nested or over-framed.
+- Buttons match the approved button system and have useful labels.
+- Surface rhythm supports scanning across the whole page.
+- Anti-references from the design context are not present.
+- The page has been inspected visually at desktop and mobile sizes, not only checked by DOM metrics.
 
 ## Controls
 

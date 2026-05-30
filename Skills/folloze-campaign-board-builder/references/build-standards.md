@@ -2,6 +2,8 @@
 
 Use these standards after the marketer approves the wireframe.
 
+Use `campaign-design-context.md` and `design-quality-gates.md` alongside this file. The approved design context should drive the visual system; this file describes how to turn it into local HTML.
+
 ## Local HTML Output
 
 Create one local `.html` file by default.
@@ -17,7 +19,7 @@ If a durable file is required and there is no active workspace, ask where to cre
 
 ## Page Strategy
 
-The page should have one clear campaign argument.
+The page should have one clear campaign argument and one clear design register.
 
 Before writing visible copy, define:
 
@@ -28,10 +30,11 @@ Before writing visible copy, define:
 - the action the page should make easier
 
 If the argument is generic after swapping in another audience, account, or segment, sharpen it before building.
+If the visual direction is generic after swapping in another logo, revisit the campaign design context before building.
 
 ## Visual System
 
-Use the customer's approved source for design direction:
+Use the customer's approved campaign design context for design direction. The context may come from:
 
 - source website
 - landing page
@@ -50,8 +53,10 @@ Capture:
 - proof and resource treatment
 - dark and light section rhythm
 - footer and final CTA style
+- anti-references and patterns to avoid
 
 Do not copy a public page pixel-for-pixel. Adapt the visual system to the approved wireframe.
+Do not force Folloze brand defaults, Folloze palette, or Folloze copy style into customer-owned boards unless Folloze is the brand owner.
 
 ## Copy
 
@@ -78,6 +83,22 @@ Avoid buyer-facing text such as:
 - test page
 
 Do not expose private notes, account scoring, contact behavior, internal meeting comments, sales-stage details, or raw intent data unless the marketer explicitly approves that visible use.
+
+## Anti-Generic Design
+
+Before first local preview, check the draft against `design-quality-gates.md`.
+
+Fix:
+
+- generic SaaS hero structure
+- unsupported purple-blue gradient defaults
+- nested cards
+- decorative fake app or browser chrome
+- meaningless icon tiles
+- dead arrows and decorative buttons
+- three equal feature cards as the main page structure without a campaign reason
+- weak CTA labels that do not explain why to click
+- copy that sounds like a production note rather than a buyer-facing campaign
 
 ## Controls And Links
 

@@ -2,10 +2,13 @@
 
 Choose one wireframe before building. The wireframe is a marketer-facing plan, not buyer-facing copy.
 
+Use the approved campaign brief and campaign design context before choosing the wireframe.
+
 ## Selection Rules
 
 - Match the campaign goal first.
 - Match the audience and campaign style second.
+- Match the approved campaign design context third.
 - Use the available proof, resources, and approved materials honestly.
 - Do not choose a proof-led or stat-led structure unless the proof is real and approved.
 - Avoid a generic hero plus three equal cards unless that is the best fit for the campaign and source brand.
@@ -19,6 +22,8 @@ Wireframe recommendation:
 - Why it fits:
 - Alternatives considered:
 - Section order:
+- Visual hierarchy:
+- Surface rhythm:
 - First viewport:
 - Primary CTA:
 - Secondary CTA:
@@ -26,10 +31,13 @@ Wireframe recommendation:
 - Required materials:
 - Interaction plan:
 - Analytics plan:
+- Anti-references:
 - QA risks:
 ```
 
 Stop after returning this recommendation and ask the marketer to approve or revise it.
+
+The recommendation should describe how the page will look and scan, not just what sections it contains.
 
 ## Wireframes
 

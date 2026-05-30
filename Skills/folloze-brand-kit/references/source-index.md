@@ -29,6 +29,7 @@ Last reviewed: 2026-05-26
 | `claims-and-proof.md` | Need numeric claims, customer proof, case-study snippets, proof-selection rules, or verification status |
 | `voice-and-style.md` | Need tone, style, words to use, words to avoid, or copy-quality checks |
 | `content-brief-template.md` | Need a reusable brief shape for campaign, page, sales, thought-leadership, or one-pager content |
+| `campaign-board-design-context.md` | Need Folloze-specific campaign board design context, campaign registers, anti-references, or board design gates |
 | `visual-identity.md` | Need colors, logo selection, logo file names, or visual usage guidance |
 
 ## Assets
@@ -52,8 +53,9 @@ For a customer-facing Folloze asset:
 3. Load `brand-foundation.md`.
 4. Load `messaging-library.md`.
 5. Load `claims-and-proof.md` only if you will use proof, numbers, customer names, or benchmark claims.
-6. Load `visual-identity.md` if you are creating HTML, slides, images, PDFs, or other visual output.
-7. Load `voice-and-style.md` before final copy QA.
+6. Load `campaign-board-design-context.md` when Folloze is the brand owner for a board, microsite, landing page, or buyer experience.
+7. Load `visual-identity.md` if you are creating HTML, slides, images, PDFs, or other visual output.
+8. Load `voice-and-style.md` before final copy QA.
 
 For content creation from a loose request:
 

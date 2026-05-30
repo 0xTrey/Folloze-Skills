@@ -14,10 +14,12 @@ Campaign brief:
 - Secondary actions:
 - Offer or destination:
 - Brand/source design:
+- Campaign design context:
 - Research and data inputs:
 - Materials available:
 - Buyer-safe proof:
 - Strategy-only inputs:
+- Anti-references:
 - Required integrations or tracking:
 - Review constraints:
 - Missing inputs:
@@ -36,7 +38,8 @@ Minimum questions when the brief is under-specified:
 - What sources, research, or data should inform it?
 - What materials must be included?
 - What action should the page drive?
-- What brand page, screenshot, or design system should it follow?
+- What brand page, screenshot, design system, or design context should it follow?
+- What should the board avoid looking or sounding like?
 
 If the marketer provides data-source names, record how each source should be used:
 
@@ -65,6 +68,7 @@ Common materials:
 
 - logo files or approved logo URLs
 - brand guide, source website, or screenshots
+- design system, design context file, or examples of approved campaign pages
 - approved campaign copy or messaging
 - product pages, one-pagers, decks, videos, webinars, or case studies
 - offer details, form destination, registration link, meeting link, or resource links
@@ -73,6 +77,22 @@ Common materials:
 - compliance, legal, accessibility, localization, or review instructions
 
 If materials are missing, decide whether to proceed with labeled assumptions or stop for required assets.
+
+## Design Context Inputs
+
+Capture design context separately from research context.
+
+Useful design inputs:
+
+- source website or campaign page
+- brand guide or design system
+- approved screenshots
+- customer-owned design context file
+- examples of pages the customer likes
+- examples of pages the customer does not want to resemble
+- known typography, color, button, card, layout, and motion rules
+
+If no design input is provided, ask for the best available source. Do not invent a brand system when a customer source can be supplied.
 
 ## Source Boundaries
 

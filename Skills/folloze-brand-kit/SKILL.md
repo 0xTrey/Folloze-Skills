@@ -43,7 +43,8 @@ For most work:
 6. Use `references/claims-and-proof.md` before making any numeric or customer-proof claim.
 7. Use `references/voice-and-style.md` for tone, words to use, and words to avoid.
 8. Use `references/content-brief-template.md` when creating new campaign, page, sales, or thought-leadership content from scratch.
-9. Use `references/visual-identity.md` and `assets/logos/` for logo and color usage.
+9. Use `references/campaign-board-design-context.md` when Folloze is the brand owner for a campaign board or Folloze-owned buyer experience.
+10. Use `references/visual-identity.md` and `assets/logos/` for logo and color usage.
 
 Do not load every reference by default. Use only what the task needs.
 
@@ -64,6 +65,7 @@ Other Folloze skills should reference this package instead of copying brand rule
 - `Folloze-MCP-Demo-Builder`: use logo assets and public Folloze positioning only when the user explicitly wants a Folloze-branded experience.
 - `folloze-sales-doc`: use claim, proof, and voice references for customer-facing Folloze documents.
 - `folloze-zoom-deal-room` and board-production skills: use product capability references to ground buyer-safe deal-room structure and board briefs.
+- `folloze-campaign-board-builder`: use `campaign-board-design-context.md` only when Folloze is the brand owner; for customer-owned boards, capture the customer's design context instead.
 - outbound or follow-up skills: use the message pillars and proof library, then adapt to the account context.
 
 If a downstream skill creates a reusable message pattern, objection pattern, proof pairing, or content brief field, add the generic version here once it has worked in more than one account context.

@@ -112,7 +112,7 @@ Builds a read-only daily Folloze GTM brief for the current teammate from calenda
 Provides reusable Folloze v3.1 brand, positioning, product capability, messaging, claims, proof, voice, color, and logo source material for other Folloze skills. Includes internal, customer-ready, and public-safe product capability references so downstream skills can choose the right source boundary.
 
 ### `folloze-campaign-board-builder`
-Guides customer marketers from campaign brief to mandatory wireframe approval, local editable HTML, automatic QA, and Folloze publish readiness for ABM microsites, campaign landing pages, demand generation pages, event follow-up experiences, resource hubs, and other buyer experiences.
+Guides customer marketers from campaign brief to campaign design context, mandatory wireframe approval, local editable HTML, automatic QA, and Folloze publish readiness for ABM microsites, campaign landing pages, demand generation pages, event follow-up experiences, resource hubs, and other buyer experiences.
 
 ### `folloze-zoom-deal-room`
 Turns Zoom recaps, meeting-assets emails, and deal context into buyer-safe Folloze deal-room briefs, then routes the build to MCP rich HTML or the external board API when the user asks to create a live board.
