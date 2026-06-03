@@ -9,14 +9,14 @@
       "requires_restart": true
     },
     {
-      "name": "folloze-sales-doc",
-      "path": "Skills/folloze-sales-doc",
+      "name": "customer-renewal-board",
+      "path": "Skills/Troy Folloze Created Skills/customer-renewal-board",
       "enabled": true,
       "requires_restart": true
     },
     {
-      "name": "folloze-order-form-builder",
-      "path": "Skills/folloze-order-form-builder",
+      "name": "daily-email-summary-delivery",
+      "path": "Skills/Troy Folloze Created Skills/daily-email-summary-delivery",
       "enabled": true,
       "requires_restart": true
     },
@@ -27,8 +27,8 @@
       "requires_restart": true
     },
     {
-      "name": "folloze-morning-brief",
-      "path": "Skills/folloze-morning-brief",
+      "name": "doc",
+      "path": "Skills/Troy Folloze Created Skills/doc",
       "enabled": true,
       "requires_restart": true
     },
@@ -39,14 +39,62 @@
       "requires_restart": true
     },
     {
+      "name": "Folloze-Customer-Watchlist",
+      "path": "Skills/Troy Folloze Created Skills/Folloze-Customer-Watchlist",
+      "enabled": true,
+      "requires_restart": true
+    },
+    {
       "name": "Folloze-MCP-Demo-Builder",
       "path": "Skills/Folloze-MCP-Demo-Builder",
       "enabled": true,
       "requires_restart": true
     },
     {
+      "name": "folloze-morning-brief",
+      "path": "Skills/folloze-morning-brief",
+      "enabled": true,
+      "requires_restart": true
+    },
+    {
       "name": "folloze-one-pager",
       "path": "Skills/folloze-one-pager",
+      "enabled": true,
+      "requires_restart": true
+    },
+    {
+      "name": "folloze-order-form-builder",
+      "path": "Skills/folloze-order-form-builder",
+      "enabled": true,
+      "requires_restart": true
+    },
+    {
+      "name": "folloze-sales-doc",
+      "path": "Skills/folloze-sales-doc",
+      "enabled": true,
+      "requires_restart": true
+    },
+    {
+      "name": "gainsight-mcp-connector",
+      "path": "Skills/Troy Folloze Created Skills/gainsight-mcp-connector",
+      "enabled": true,
+      "requires_restart": true
+    },
+    {
+      "name": "linkedin-operator-content",
+      "path": "Skills/Troy Folloze Created Skills/linkedin-operator-content",
+      "enabled": true,
+      "requires_restart": true
+    },
+    {
+      "name": "pdf",
+      "path": "Skills/Troy Folloze Created Skills/pdf",
+      "enabled": true,
+      "requires_restart": true
+    },
+    {
+      "name": "playwright",
+      "path": "Skills/Troy Folloze Created Skills/playwright",
       "enabled": true,
       "requires_restart": true
     },
@@ -65,6 +113,24 @@
     {
       "name": "skills-update-folloze",
       "path": "Skills/skills-update-folloze",
+      "enabled": true,
+      "requires_restart": true
+    },
+    {
+      "name": "skills-updater",
+      "path": "Skills/Troy Folloze Created Skills/skills-updater",
+      "enabled": true,
+      "requires_restart": true
+    },
+    {
+      "name": "sora",
+      "path": "Skills/Troy Folloze Created Skills/sora",
+      "enabled": true,
+      "requires_restart": true
+    },
+    {
+      "name": "spreadsheet",
+      "path": "Skills/Troy Folloze Created Skills/spreadsheet",
       "enabled": true,
       "requires_restart": true
     },

@@ -1,0 +1,7 @@
+interface:
+  display_name: "Customer Renewal Board"
+  short_description: "Create renewal boards from a template."
+  default_prompt: "Use $customer-renewal-board to create a customer renewal board for [customer name] from the shared demo template."
+
+policy:
+  allow_implicit_invocation: true
