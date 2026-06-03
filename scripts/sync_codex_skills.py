@@ -80,6 +80,27 @@ def load_manifest(path: Path) -> dict:
     return json.loads(path.read_text())
 
 
+def latest_mtime(path: Path) -> float:
+    if not path.exists() and not path.is_symlink():
+        return 0.0
+    if path.is_symlink():
+        try:
+            return max(path.lstat().st_mtime, path.resolve().stat().st_mtime)
+        except FileNotFoundError:
+            return path.lstat().st_mtime
+    if path.is_file():
+        return path.stat().st_mtime
+
+    newest = path.stat().st_mtime
+    for child in path.rglob("*"):
+        try:
+            child_mtime = child.lstat().st_mtime if child.is_symlink() else child.stat().st_mtime
+        except FileNotFoundError:
+            continue
+        newest = max(newest, child_mtime)
+    return newest
+
+
 def remove_path(path: Path) -> None:
     if path.is_symlink() or path.is_file():
         path.unlink()
@@ -107,26 +128,30 @@ def resolve_selected_skills(manifest: dict, requested: set[str]) -> list[dict]:
     return selected
 
 
-def install_skill(source: Path, dest: Path, mode: str, overwrite: bool, dry_run: bool) -> None:
+def install_skill(source: Path, dest: Path, mode: str, overwrite: bool, dry_run: bool) -> str:
     action = "link" if mode == "symlink" else "copy"
     print(f"{action}: {source} -> {dest}")
 
     if dry_run:
-        return
+        return "planned"
 
     if dest.exists() or dest.is_symlink():
         same_symlink = mode == "symlink" and dest.is_symlink() and dest.resolve() == source.resolve()
         if same_symlink:
-            return
+            return "unchanged"
+        if latest_mtime(dest) > latest_mtime(source):
+            print(f"keep_local_current: {dest}")
+            return "kept_local"
         if not overwrite:
             raise SystemExit(f"Destination already exists: {dest} (use --overwrite)")
         remove_path(dest)
 
     if mode == "symlink":
         dest.symlink_to(source, target_is_directory=True)
-        return
+        return "updated"
 
     shutil.copytree(source, dest)
+    return "updated"
 
 
 def prune_managed_symlinks(
@@ -178,12 +203,15 @@ def main() -> int:
     if not args.dry_run:
         dest_root.mkdir(parents=True, exist_ok=True)
 
+    kept_local: list[str] = []
     for skill in selected:
         source = (repo_root / skill["path"]).resolve()
         dest = dest_root / skill["name"]
         if not source.exists():
             raise SystemExit(f"Skill source does not exist: {source}")
-        install_skill(source, dest, args.mode, args.overwrite, args.dry_run)
+        result = install_skill(source, dest, args.mode, args.overwrite, args.dry_run)
+        if result == "kept_local":
+            kept_local.append(skill["name"])
 
     if args.prune:
         prune_managed_symlinks(repo_root, dest_root, keep_names, args.dry_run)
@@ -191,6 +219,8 @@ def main() -> int:
     if selected:
         names = ", ".join(sorted(keep_names))
         print(f"synced: {names}")
+        if kept_local:
+            print(f"kept_newer_local_skills: {', '.join(sorted(kept_local))}")
         print("Restart Codex after updates so the changed skills are reloaded.")
     else:
         print("No enabled skills selected.")
