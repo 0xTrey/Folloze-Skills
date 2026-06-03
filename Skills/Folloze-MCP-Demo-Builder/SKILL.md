@@ -156,6 +156,7 @@ Before building or revising a customer demo, inspect the vendor's public website
 - If the vendor site has a strong source module but it does not fit the first viewport, place it early enough to build credibility before the deepest solution detail.
 - If source-page imagery includes a play button, video thumbnail, embedded player, or video CTA, verify whether it is a real video before reproducing the treatment. If the video is real, prefer an in-page lightbox embed with a direct external fallback; if it is only a static image, remove play affordances so the page does not imply playback.
 - For provider-hosted videos such as YouTube, expect local `file://` previews to behave differently from HTTP/Folloze-hosted pages. Provide a graceful local fallback when embeds are blocked, and verify the actual embed over localhost, the saved Folloze designer surface, or the public `experience.folloze.com` URL before calling the video behavior complete.
+- Video fallback states must look intentional and compact. Do not allow blocked embeds to turn into oversized arrows, awkward bottom-aligned links, or large blank panels. Keep the fallback inside the video component, use a clear CTA with normal button/link treatment, and verify the local fallback state as well as the hosted embed path when feasible.
 
 ## Source Page Family Audit
 
@@ -232,6 +233,7 @@ Before writing new HTML or restructuring a page, choose one experience shape usi
 - Treat Folloze save, tracker write, local git commit, and remote git push as separate operations. When the user says "push to Folloze", save through MCP; do not assume they also asked to push the git branch unless they explicitly ask for GitHub/remote backup.
 - If a run is interrupted after a save or tracker write, resume by checking staged files, the local research note, and the returned board ID before repeating any live operation. Do not create a duplicate board or duplicate tracker row just because the previous final response was interrupted.
 - If the current branch has unrelated local history or a dirty worktree that makes a remote push unsafe, do not push unrelated commits just to back up the current board. Commit the scoped work locally, report the branch state, and let Trey decide whether to publish the broader branch.
+- During sequential browser-comment passes on the same board, preserve the active board identity, local source path, theme ID, QA artifacts, and latest scoped commit across comments. When several comments are present in one review cycle, batch them into one local QA, Folloze save, and scoped commit when practical instead of saving or committing after every small annotation.
 
 ## Board Identity Guard
 
@@ -343,6 +345,9 @@ After a successful save, update the local research/result note for that board wi
 - Verify primary CTA behavior, not only style. Click or programmatically test each primary CTA: external links open real vendor-owned destinations, internal jumps scroll to the intended section and update the hash when intended, modals open and close, and analytics fire as `cta_click` for buyer-action CTAs.
 - Treat hero proof/stat cards as first-viewport brand elements. Verify card background, border, stat color, label size, line wrapping, and contrast against the hero background.
 - For hero and section boundaries, verify the final visible cards or panels have clear spacing before the next section at common desktop and mobile viewport heights. Avoid `max-height` caps on content-heavy heroes unless QA proves cards, buttons, and proof rows cannot be clipped.
+- For final, hero, and workshop CTA blocks with centered copy, center the CTA group against the owning content rail unless the source brand intentionally left-aligns actions. Verify the button-group center against the parent rail center, not just the text alignment.
+- Section intros and their card grids should share a coherent content rail unless the design intentionally breaks alignment. For wide section headers, verify the intro left/right edges and the card/grid left/right edges rather than letting a narrow text measure float above a wider card system.
+- When large resource cards feel sparse, add source-owned imagery, media panels, or denser content structure before increasing padding. Verify images load, cards remain balanced, links stay visible above the fold when expected, and no card becomes a mostly empty box.
 - Keep Situation/Solution sections compact. Default to side-by-side panels on desktop and stacked panels on mobile instead of oversized full-width narrative paragraphs.
 - Use small uppercase section labels plus headline-scale summaries for major section intros.
 - If a section intro is intended as a major headline, let it span the full content width. Do not cap it to a narrow card width unless the design specifically calls for it.
@@ -413,6 +418,8 @@ When the user provides browser annotations or screenshot comments:
 7. For annotation-driven save loops, create targeted QA artifacts when feasible: a small JSON or note with the verified selector/computed-style result, plus desktop/mobile screenshots of the edited section.
 8. If the user's visible browser still shows the old state after the source verifies, tell them the tab may be stale and should be refreshed.
 
+For multi-comment passes on the same artifact, maintain one working board identity note with board ID, designer URL, local source path, theme ID, QA artifact paths, and current commit. Reuse that note for each comment so later annotations update the same board instead of creating new board IDs, stale screenshots, or conflicting research notes.
+
 For copy comments, rewrite in context rather than doing a literal one-for-one replacement. After the edit, search the source and QA notes for stale wording, update only the relevant QA evidence, and verify the new line reads cleanly at desktop and mobile widths.
 
 ## Annotation Layout QA
@@ -421,6 +428,9 @@ For browser comments about layout, alignment, spacing, full bleed, line wrapping
 
 - Resolve the exact selector from the annotation and verify the owning component or token was changed.
 - For `single line` or `full bleed`, verify section/header width, text width, computed `white-space`, rendered line count, horizontal overflow, and mobile fallback.
+- For centered CTA comments, verify `justify-content`, button-group bounding box, parent/content-rail bounding box, center delta, wrapping behavior, and mobile full-width behavior when applicable.
+- For section reorder comments, verify the DOM order of the section among its siblings, the visible scroll order after reload, and any affected nav, page-map, or research-note references. A section moved in CSS only is not enough when the story order is supposed to change.
+- For intro/card rail comments, compare the rendered left/right edges of the headline, subhead, and card grid. The grid should not appear detached from the text rail unless the design intentionally uses an asymmetric composition.
 - For number/stat alignment, verify left/right edges, grid or flex columns, gap pixels, text alignment, vertical center deltas, and color contrast.
 - For color changes, verify computed text/background colors on the selected element and at least one sibling or repeated instance.
 - For spacing or dead-space comments, verify actual grid/flex gap, padding, and bounding boxes rather than relying on visual guesswork.
@@ -504,6 +514,7 @@ Before every MCP save, run a lightweight automated or programmatic check against
 - Count external `<a href="http...">` CTAs and fail if any lacks a direct inline `flzAnalytic('cta_click', ...)` call. Do not rely only on wrapper helpers such as `trackCta(...)` for links that MCP validates as CTAs.
 - Count visible primary/resource CTAs and fail if any lacks direct CTA analytics or a real destination/action.
 - Render desktop, mobile, and narrow mobile widths. Check no horizontal overflow, no broken images, no console errors, and no clipped header/logo/CTA elements.
+- For annotation saves, confirm the selected section's selector still resolves, its `getBoundingClientRect()` is inside the screenshot viewport before capture, and the screenshot visibly contains the corrected section. Reject blank, mostly white, stale, or wrong-scroll screenshots even when DOM metrics pass.
 - Exercise meaningful custom interactions: nav anchors, tabs, sliders/calculators, modals, carousels, accordions, and any state-changing controls. Verify the UI changes and the analytics action fires or is wired.
 - For pages with external resource links, run bounded live-link checks when feasible. Treat transient provider failures as caveats, but do not ignore obvious 404s or malformed URLs.
 - Save only after the checklist matches the analytics acknowledgements being sent to MCP. Do not set an acknowledgement to true because the code "probably" does it; verify the actual saved HTML.
@@ -536,6 +547,7 @@ When the page needs a content item but there is no existing Folloze asset or pub
 - If the preview appears stale during annotation work, reload the `file://` scratch HTML, add a cache-busting query string when supported, or switch to a fresh localhost URL. Do not require localhost when the user's Codex app/browser review is working from the local HTML file.
 - Render the local HTML at desktop and mobile widths before saving when possible.
 - For automated screenshots, disable or override smooth scrolling before capture and explicitly return to the intended scroll position. Otherwise lazy-loaded assets or smooth scroll behavior can produce misleading partial-page screenshots.
+- For annotation screenshots, assert that the selected element is visible in the viewport before capture, then inspect or programmatically sanity-check the resulting image for the intended section. If a temporary localhost server or browser tab is used only for QA, close the tab and stop the server before final response.
 - Verify that the first viewport shows the vendor/account brand clearly.
 - Verify that section text does not overlap or overflow.
 - Verify mobile has no horizontal overflow. A quick DOM check is `document.documentElement.scrollWidth <= window.innerWidth`.
