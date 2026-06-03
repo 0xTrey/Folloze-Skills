@@ -51,6 +51,12 @@
       "requires_restart": true
     },
     {
+      "name": "Folloze-Digital-Deal-Room-Internal",
+      "path": "Skills/Folloze-Digital-Deal-Room-Internal",
+      "enabled": true,
+      "requires_restart": true
+    },
+    {
       "name": "Folloze-MCP-Demo-Builder",
       "path": "Skills/Folloze-MCP-Demo-Builder",
       "enabled": true,

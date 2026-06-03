@@ -1,0 +1,4 @@
+interface:
+  display_name: "Folloze Digital Deal Room Internal"
+  short_description: "Build Folloze-owned deal rooms through the direct API and native templates"
+  default_prompt: "Use $Folloze-Digital-Deal-Room-Internal to build or update a Folloze-owned digital deal room from internal deal context using the direct Folloze API and an approved native template. Do not use MCP Save or raw HTML unless I explicitly change scope."
