@@ -1346,7 +1346,7 @@ def run(args: argparse.Namespace) -> int:
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        description="Harvest brand/design signals for Folloze MCP board builds.",
+        description="Harvest public brand/design signals for Folloze boards, ABM pages, and GTM assets.",
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
     )
     parser.add_argument("query", help="Domain, source URL, or account name.")

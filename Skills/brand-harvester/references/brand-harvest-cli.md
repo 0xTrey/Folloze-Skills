@@ -1,6 +1,6 @@
-# Brand Harvest CLI
+# Brand Harvester CLI
 
-Use `scripts/brand_harvest.py` when a Folloze board build needs a fast, structured source-brand capture before writing or revising HTML.
+Use `scripts/brand_harvest.py` when a Folloze board, ABM page, or GTM asset needs a fast, structured source-brand capture before writing or revising HTML.
 
 ## When To Use
 
@@ -12,32 +12,32 @@ Use `scripts/brand_harvest.py` when a Folloze board build needs a fast, structur
 ## Command
 
 ```bash
-python3 Skills/Folloze-MCP-Demo-Builder/scripts/brand_harvest.py forcepoint.com --target "Mayo Clinic"
+python3 Skills/brand-harvester/scripts/brand_harvest.py forcepoint.com --target "Mayo Clinic"
 ```
 
 For a specific source page:
 
 ```bash
-python3 Skills/Folloze-MCP-Demo-Builder/scripts/brand_harvest.py forcepoint.com --source-url https://www.forcepoint.com/platform
+python3 Skills/brand-harvester/scripts/brand_harvest.py forcepoint.com --source-url https://www.forcepoint.com/platform
 ```
 
 To include a GoFullPage or other manual screenshot:
 
 ```bash
-python3 Skills/Folloze-MCP-Demo-Builder/scripts/brand_harvest.py forcepoint.com --manual-screenshot ./screenshots/forcepoint-gofullpage.png
+python3 Skills/brand-harvester/scripts/brand_harvest.py forcepoint.com --manual-screenshot ./screenshots/forcepoint-gofullpage.png
 ```
 
 By default, output goes to a timestamped directory under `/tmp/folloze-brand-harvest/`. For durable board work, pass an output directory inside the active board repo, for example:
 
 ```bash
-python3 Skills/Folloze-MCP-Demo-Builder/scripts/brand_harvest.py forcepoint.com --out research/brand-harvest/forcepoint
+python3 Skills/brand-harvester/scripts/brand_harvest.py forcepoint.com --out research/brand-harvest/forcepoint
 ```
 
 For a vendor page where the source page is the visual truth but the home page may carry broader brand patterns, run both harvests:
 
 ```bash
-python3 Skills/Folloze-MCP-Demo-Builder/scripts/brand_harvest.py younion.live --source-url https://www.younion.live/our-work/aws-gen-ai-loft --target AWS --out research/brand-harvest/younion-aws-gen-ai-loft
-python3 Skills/Folloze-MCP-Demo-Builder/scripts/brand_harvest.py younion.live --source-url https://www.younion.live/ --target AWS --out research/brand-harvest/younion-home
+python3 Skills/brand-harvester/scripts/brand_harvest.py younion.live --source-url https://www.younion.live/our-work/aws-gen-ai-loft --target AWS --out research/brand-harvest/younion-aws-gen-ai-loft
+python3 Skills/brand-harvester/scripts/brand_harvest.py younion.live --source-url https://www.younion.live/ --target AWS --out research/brand-harvest/younion-home
 ```
 
 ## Outputs

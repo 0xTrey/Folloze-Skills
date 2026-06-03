@@ -39,6 +39,12 @@
       "requires_restart": true
     },
     {
+      "name": "brand-harvester",
+      "path": "Skills/brand-harvester",
+      "enabled": true,
+      "requires_restart": true
+    },
+    {
       "name": "folloze-campaign-board-builder",
       "path": "Skills/folloze-campaign-board-builder",
       "enabled": true,
