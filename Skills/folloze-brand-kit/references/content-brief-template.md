@@ -9,11 +9,10 @@ The brief keeps messaging separate from layout. Fill it before writing polished 
 | Field | What to capture |
 |---|---|
 | Content type | One-pager, landing page, blog, email, LinkedIn post, ad, sales follow-up, board copy, slide, or other format |
-| Primary persona | CMO, VP marketing, demand gen, ABM, field marketing, rev ops, marketing ops, seller, CSM, or other |
+| Primary persona | CMO / VP Marketing, demand gen / campaign marketer, rev ops / marketing ops, AE / SDR for expansion, or other |
 | Lead hook | The opening angle or tension |
 | Funnel stage | TOFU, MOFU, BOFU, expansion, renewal, partner, or customer enablement |
 | Pain point | The real problem the piece must answer |
-| Audience maturity | New to Folloze, existing customer, technical buyer, AI-forward buyer, conservative enterprise buyer |
 
 ## Strategic Context
 
@@ -24,7 +23,7 @@ Capture these when available:
 - region or language needs
 - current campaign motion
 - current stack or tools named by the account
-- mode of operation: LLM-centric, headless, on-platform, automated engine, or mixed
+- mode of operation: LLM-centric, stack-driven, on-platform, automated engine, or mixed
 - relationship status: prospect, customer, renewal, expansion, partner, agency, or internal
 
 ## Folloze Message Mapping
@@ -48,7 +47,7 @@ Pick only the options that fit the brief.
 ### Core Frame
 
 - Folloze helps teams target and convert key accounts.
-- Your AI creates content. Folloze deploys, hosts, governs, personalizes, and captures signal.
+- Bring your AI to create. Folloze deploys the content, hosts the experience, captures engagement signals, and helps every campaign learn from the last.
 - Folloze is how your content reaches your accounts. And how your accounts reach back.
 
 ### Display Register
@@ -88,6 +87,7 @@ Before final delivery:
 
 - Does the piece name a real buyer problem?
 - Does it connect AI creation to Folloze deployment, governance, personalization, or signal capture?
+- If AI maturity appears, is it used as internal sales context rather than public audience segmentation?
 - Does it use external language for external audiences?
 - Did it avoid external `activation layer` and agent-name-led messaging?
 - Did it avoid banned generic SaaS phrasing?

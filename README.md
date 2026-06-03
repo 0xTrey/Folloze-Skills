@@ -109,7 +109,7 @@ Builds branded Folloze sales and customer lifecycle documents such as discovery 
 Builds a read-only daily Folloze GTM brief for the current teammate from calendar, Granola, Gmail, Google Drive, Salesforce, and available account context, with outbound follow-up verification before tasks are listed as open.
 
 ### `folloze-brand-kit`
-Provides reusable Folloze v3.1 brand, positioning, product capability, messaging, claims, proof, voice, color, and logo source material for other Folloze skills. Includes internal, customer-ready, and public-safe product capability references so downstream skills can choose the right source boundary.
+Provides reusable Folloze v3.2 brand, positioning, product capability, messaging, claims, proof, voice, color, and logo source material for other Folloze skills. Includes internal, customer-ready, and public-safe product capability references so downstream skills can choose the right source boundary.
 
 ### `folloze-campaign-board-builder`
 Guides customer marketers from campaign brief to campaign design context, mandatory wireframe approval, local editable HTML, automatic QA, and Folloze publish readiness for ABM microsites, campaign landing pages, demand generation pages, event follow-up experiences, resource hubs, and other buyer experiences.

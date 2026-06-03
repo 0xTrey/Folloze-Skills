@@ -7,7 +7,7 @@ Use this reference to keep Folloze one-pagers aligned with approved messaging wh
 Use Folloze messaging sources in this order:
 
 1. User-provided current messaging, sales deck, campaign direction, or review comments for this specific one-pager.
-2. Bundled `folloze-brand-kit` references, especially `content-system-v3-1.md`, `brand-foundation.md`, `messaging-library.md`, `claims-and-proof.md`, `voice-and-style.md`, and `visual-identity.md`.
+2. Bundled `folloze-brand-kit` references, especially `content-system-v3-2.md`, `brand-foundation.md`, `messaging-library.md`, `claims-and-proof.md`, `voice-and-style.md`, and `visual-identity.md`.
 3. Current Folloze website or active public messaging if the Brand Kit appears stale.
 4. Approved prior one-pagers or sales assets that the user explicitly wants to reuse.
 5. This skill's `folloze-value-props.md` reference as the lightweight fallback menu.

@@ -30,6 +30,110 @@ This is a direct API/native-template workflow. Do not use an MCP save tool as th
 5. Keep buyer copy concise and action-oriented. The room should read like a working sales room, not a transcript summary or production note.
 6. Push through the direct Folloze API only after the brief and room map are coherent enough for a live board.
 
+## Template Section Rules
+
+### Header
+
+Use the template's existing header structure and CTA buttons. Do not rename, relink, reorder, remove, or restyle the header CTAs unless the user explicitly asks for a CTA change.
+
+Set the header headline to this pattern:
+
+```text
+[Account], Welcome to Your Folloze Resource Center.
+```
+
+Style the account name with the account's primary brand accent color. For Jitterbit, use the orange brand accent for `Jitterbit` instead of the default template color. Keep the rest of the headline in the template's existing header text style.
+
+Write the header subtext from the call-note problem context. It should describe the room as a focused or custom resource center that helps the buyer validate or solve the main problem surfaced in discovery.
+
+Use this pattern:
+
+```text
+A custom resource center to help you [validate/solve/evaluate] [the buyer's main problem, initiative, or decision] with the right Folloze resources in one place.
+```
+
+For example, if call notes show the buyer is validating ABM scale and first-party engagement signals, the subtext can be:
+
+```text
+A custom resource center to help you validate ABM scale, first-party engagement signal, CRM fit, and the next launch motion.
+```
+
+### Section 2: Start With The Essentials
+
+Keep section 2 as the template's essentials/resource-card section. Preserve the section title exactly:
+
+```text
+Start With The Essentials
+```
+
+Use this section for the first resources a buyer should open after landing in the room. Choose the cards from the most relevant approved Folloze resources for the account's call-note context, but keep the template card layout, spacing, image treatment, and interaction pattern.
+
+The cards should prioritize:
+
+- the highest-signal product or platform overview for the buyer's main question
+- analytics, engagement-signal, or campaign proof when the call notes mention validation, reporting, or ABM scale
+- case studies or examples that match the buyer's industry, use case, or decision concern
+- a deck, demo recording, guide, or technical resource promised in the call notes
+
+Do not turn this section into a generic content library. Keep it to the essential starting set and avoid more than the template's visible card count unless the template itself supports additional native rows.
+
+### Section 3: Hyper-Specific Value Props
+
+Use this section for call-note-derived value-prop cards that explain why Folloze is specifically useful for this account. Preserve the template's card format, icon treatment, and four-card rhythm when present.
+
+Use this title pattern:
+
+```text
+How Folloze Will Help [Company] Crush Their Marketing Goals
+```
+
+If the account or sales tone calls for a more formal register, keep the same meaning but soften the verb:
+
+```text
+How Folloze Will Help [Company] Hit Their Marketing Goals
+```
+
+Write each card from a real problem, initiative, validation need, tool-fit question, or proof gap found in the call notes. Each card should have:
+
+- a short outcome heading, ideally two to four words
+- a specific buyer context line from the call notes, rewritten safely
+- one concise explanation of how Folloze helps with that exact point
+
+Good cards sound like account-specific reasons to work with Folloze, not generic product capabilities. Prefer concrete themes such as ABM scale, first-party engagement signal, content activation speed, CRM or MAP workflow fit, campaign proof, stakeholder-ready reporting, buyer journey personalization, or executive-ready evidence when those themes are grounded in the source notes.
+
+Do not quote private call notes directly. Do not mention internal uncertainty, sales strategy, pricing, or objections. Translate those inputs into buyer-safe value props that make the buyer feel understood.
+
+### Section 4: Resources From Our Calls
+
+Use this section for follow-up assets, recordings, custom examples, and materials created or discussed during the sales process. Preserve the liked header style:
+
+```text
+Resources From Our Calls
+```
+
+If the template or prior version says `Resources For Our Calls`, preserve that wording unless the user asks to change it. Do not make the title overly specific to one meeting.
+
+Use a general-purpose subtext that explains the section without naming individual attendees by default:
+
+```text
+Additional information, follow-up materials, and custom examples based on our conversations to help your team evaluate Folloze and plan the next step.
+```
+
+Only name specific people in the subtext when the user explicitly asks or when the named stakeholder context is clearly buyer-safe and useful. Otherwise, keep the subtext team-oriented and reusable.
+
+Card choices can include call recordings, recap decks, custom mockups, example rooms, proposal follow-ups, integration notes, security materials, or requested proof. Every card must point to a real asset or approved placeholder in the native template content system; do not invent recordings or documents.
+
+### Folloze Team
+
+Treat the Folloze team section as a template-preserved section. Keep the four existing template cards for:
+
+- Trey Harnden
+- Luke Rafferty
+- Etai Beck
+- Troy Bullard
+
+Do not edit the section title, card count, order, headshots, names, roles, body copy, links, CTAs, card styling, layout, or spacing unless the user explicitly asks for a team-section change. If the template contains those four cards, leave the section as-is during account personalization.
+
 ## Direct API Sequence
 
 Use existing authorized Folloze session credentials from the environment or local auth cache, but never print or commit them. Prefer the current Folloze app behavior over stale assumptions if endpoints drift.

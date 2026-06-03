@@ -8,7 +8,7 @@ Folloze helps teams target and convert key accounts.
 
 Longer version:
 
-> Your AI creates content. Folloze deploys it, hosts it, governs it, personalizes it, and captures the signal that drives the next move.
+> Bring your AI to create. Folloze deploys the content, hosts the experience, captures engagement signals, and helps every campaign learn from the last.
 
 Bridge line:
 
@@ -19,8 +19,8 @@ Bridge line:
 Use these as anchor lines or inspiration:
 
 - Build. Activate. Signal.
-- Your AI creates content. Folloze turns it into a live account experience.
 - Bring your own AI.
+- Folloze turns AI-created content into live, governed account experiences.
 - Create personalized experiences in minutes.
 - Capture richer first-party signals.
 - Close the loop.
@@ -34,6 +34,18 @@ Use stronger lines selectively:
 - AI broke your go-to-market playbook.
 - Not your grandma's ABM.
 - Personalization is the single biggest lever you have on conversion.
+
+## Approved Value Statements
+
+Use these as opener seeds or value-prop anchors, adapting them to the brief and audience:
+
+| Angle | Use when | Value statement |
+|---|---|---|
+| Primary | Default for most content | You target and convert your key accounts at the personalization and speed AI now makes possible. |
+| Efficiency-led | CMO, budget-constrained demand gen, pipeline pressure | You hit your pipeline target without growing your team or rebuilding your stack. |
+| Speed-led | Demand gen, web bottleneck, scale pressure | You launch personalized campaigns for every account on your list, in hours instead of weeks. |
+| Signal-led | RevOps, CMO, sales-adjacent content, first-party data | You see what every account actually engages with, and every campaign gets smarter from the last. |
+| Leadership-led | Competitive content, procurement decks, RFP responses | You get comprehensive use-case coverage, an open execution platform, and market-leading first-party signal in one platform. |
 
 Do not use these as the default external frame:
 
@@ -155,6 +167,19 @@ Use these as the current public-facing proof structure.
 | MOFU | Drive to a use-case microsite with proof | Walk through your activation path |
 | BOFU | Drive to a 1:1 microsite or deal room | See your first 30 days with Folloze |
 | Expansion | Drive to advanced use cases, sales enablement, AI workflows, or MCP deployment | What more would you do with personalized content at scale? |
+
+## Modes Of Operation
+
+Use mode language when it helps the buyer understand how the work gets done:
+
+| Mode | Buyer-facing description |
+|---|---|
+| LLM-centric | Work in Claude or another LLM, then use Folloze MCP to deploy content with brand rules applied. |
+| Stack-driven | Trigger Folloze from workflow tools such as Slack, Outreach, n8n, Salesforce, or Clay. |
+| On-platform | Build and deploy directly in Folloze with templates, segment rules, and board structures. |
+| Automated engine | Use deal or engagement signals to trigger microsites, rooms, and nurture paths automatically. |
+
+These are not maturity stages. Most customers use two or three modes simultaneously.
 
 ## Persona Guidance
 

@@ -34,7 +34,42 @@ Examples:
 | Deep engagement intelligence | Sales or leadership needs insight beyond clicks | account activity, content consumed, time spent, buying-group behavior, feature/use-case interest, sales follow-up impact |
 | Enterprise-grade governance | Procurement, InfoSec, regions, partners, or client programs matter | SOC 2, brand controls, permissions, global launch history, enterprise customer examples |
 
-## Candidate Proof From V3.1 Review
+## Current Customer Proof Library From V3.2
+
+Use these only in contexts allowed by the status column. Public quote and public entries can be considered for external use when the asset context and source attribution are appropriate. Internal or pending-verify rows require user approval or source verification before external use.
+
+| Customer / source | Headline proof | Use case | Status |
+|---|---|---|---|
+| HP Public Sector | $559M bookings and $2.4B TOV in one quarter | Public sector ABM | Internal |
+| ServiceNow + AT&T | $4M to $50M after 6-month nurture, 1,000%+ NNACV | ABM 1:1 strategic | Public quote |
+| SAP | $15M ACV in 6 months on a broken relationship | Strategic recovery | Public quote |
+| RingCentral | $1M deal and 98% account engagement in 60 days | ABM at scale | Available |
+| Oracle Strategic Clients | 2.2x open rate and 4 to 15x engagement vs. Eloqua | ABM 1:1 | Internal |
+| Checkpoint Security | 15K to 55K engaged accounts in one year | Multi-use deployment | Internal |
+| Qlik | 30% YoY growth across top 300 accounts | ABM at scale | Public quote |
+| Qlik Virtual Passport | $17M influenced pipeline from 6 virtual events | Events | Internal |
+| 6sense Breakthrough | 170% ROI and 2 closed-won in 3 months | Events | Public |
+| ServiceNow + Microsoft | 516 net new leads and $10M influenced pipeline | ABM 1:1 | Public quote |
+| ServiceNow + Micron | $750K per quarter accelerated spend | Cross-sell | Public quote |
+| Bentley Systems | 10 to 15% product usage increase | Adoption / cross-sell | Internal |
+| On-behalf sales email | 2 to 3x response rate and hundreds of millions in pipeline | Field sales activation | Internal, pending verify |
+
+Current platform benchmark proof:
+
+- 4 to 5x higher campaign outcomes versus traditional campaigns.
+- Up to 40% more known traffic through Folloze identity.
+- 19.5% highly engaged inbound visitors based on a 1 million visitor sample.
+- 67% outbound engagement rate, 4.5x typical, based on 7,675 campaigns.
+- Board creation: 1 hour with Folloze versus about 20 hours of web development time.
+- At 321 boards in 6 months: about 6,100 hours saved, $150K to $450K savings.
+- Tech consolidation: $50K to $100K per 6 months in eliminated tooling spend.
+
+Do not use:
+
+- FireEye. Company merged and acquired.
+- PWC. Per Troy: customer is leaving.
+
+## Historical Candidate Proof From V3.1 Review
 
 These were named in the Head of Marketing v3.1 review source. Verify final number, source, and customer permission before external use.
 

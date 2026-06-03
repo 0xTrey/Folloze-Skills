@@ -1,0 +1,1212 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Folloze for Mid-Market Growth Teams</title>
+  <meta name="description" content="A Folloze campaign experience for mid-market teams that need to build personalized campaigns, activate buyer journeys, and capture first-party engagement signals.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23071428'/%3E%3Cpath d='M7 22c0-7 5-12 15-13v5c-6 0-10 3-12 8H7z' fill='%2300CCFF'/%3E%3Cpath d='M7 27c1-5 4-8 9-9v4c-3 1-5 2-7 5H7z' fill='%23FF469E'/%3E%3C/svg%3E">
+  <style>
+    :root {
+      --paper: #ffffff;
+      --paper-blue: #f3f9fd;
+      --line: #d8ecfa;
+      --line-strong: #b7d5ea;
+      --ink: #071428;
+      --slate: #2c3d59;
+      --muted: #617089;
+      --blue: #0077ff;
+      --blue-deep: #0048de;
+      --cyan: #00adff;
+      --pink: #ff469e;
+      --green: #11d175;
+      --orange: #f98a1b;
+      --yellow: #ffc800;
+      --navy: #1c293f;
+      --radius: 8px;
+      --shadow: 0 18px 48px rgba(7, 20, 40, 0.12);
+      --max: 1180px;
+      color-scheme: light;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      overflow-x: clip;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      overflow-x: clip;
+    }
+
+    body,
+    button,
+    input {
+      font: inherit;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img,
+    svg {
+      max-width: 100%;
+      display: block;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: 16px;
+      top: -60px;
+      z-index: 10;
+      padding: 10px 14px;
+      background: var(--ink);
+      color: var(--paper);
+      border-radius: 6px;
+    }
+
+    .skip-link:focus {
+      top: 16px;
+    }
+
+    .shell {
+      min-height: 100vh;
+      background:
+        linear-gradient(135deg, rgba(0, 204, 255, 0.14), rgba(255, 70, 158, 0.08) 42%, transparent 72%),
+        linear-gradient(180deg, var(--paper-blue), var(--paper) 52%);
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      backdrop-filter: blur(18px);
+      background: rgba(255, 255, 255, 0.88);
+      border-bottom: 1px solid rgba(216, 236, 250, 0.86);
+    }
+
+    .nav {
+      width: min(var(--max), calc(100vw - 40px));
+      margin: 0 auto;
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      width: 122px;
+      min-width: 122px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      color: var(--slate);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .nav-links a {
+      padding: 10px 12px;
+      border-radius: 7px;
+      white-space: nowrap;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      color: var(--blue-deep);
+      background: rgba(0, 119, 255, 0.08);
+      outline: none;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 12px 18px;
+      border-radius: 6px;
+      border: 1px solid transparent;
+      font-weight: 800;
+      line-height: 1;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+    }
+
+    .button:focus-visible {
+      outline: 3px solid rgba(0, 119, 255, 0.32);
+      outline-offset: 2px;
+    }
+
+    .button.primary {
+      color: var(--paper);
+      background: linear-gradient(135deg, var(--blue), var(--blue-deep));
+      box-shadow: 0 12px 26px rgba(0, 72, 222, 0.24);
+    }
+
+    .button.primary:hover {
+      box-shadow: 0 16px 34px rgba(0, 72, 222, 0.3);
+    }
+
+    .button.secondary {
+      color: var(--blue-deep);
+      background: var(--paper);
+      border-color: rgba(0, 119, 255, 0.34);
+    }
+
+    .button.secondary:hover {
+      background: rgba(0, 119, 255, 0.08);
+    }
+
+    .button.dark {
+      color: var(--ink);
+      background: var(--paper);
+      box-shadow: none;
+    }
+
+    .button.ghost {
+      color: var(--paper);
+      border-color: rgba(255, 255, 255, 0.35);
+      background: transparent;
+    }
+
+    .section {
+      padding: 86px 0;
+    }
+
+    .container {
+      width: min(var(--max), calc(100vw - 40px));
+      margin: 0 auto;
+    }
+
+    .hero {
+      min-height: calc(100vh - 72px);
+      display: grid;
+      align-items: center;
+      padding: 72px 0 44px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.04fr) minmax(320px, 0.96fr);
+      align-items: center;
+      gap: 42px;
+    }
+
+    .hero-grid > *,
+    .pressure-grid > *,
+    .chooser > *,
+    .final-grid > * {
+      min-width: 0;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 18px;
+      color: var(--blue-deep);
+      font-size: 13px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--pink);
+      box-shadow: 14px 0 0 var(--cyan), 28px 0 0 var(--green);
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      margin-bottom: 22px;
+      max-width: 820px;
+      color: var(--ink);
+      font-size: clamp(44px, 7vw, 82px);
+      line-height: 0.96;
+      letter-spacing: 0;
+      overflow-wrap: anywhere;
+    }
+
+    .lead {
+      max-width: 680px;
+      margin-bottom: 28px;
+      color: var(--slate);
+      font-size: 20px;
+      line-height: 1.55;
+      overflow-wrap: anywhere;
+    }
+
+    .hero-actions,
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .hero-proof {
+      margin-top: 30px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .proof-chip {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 8px 12px;
+      color: var(--slate);
+      background: rgba(255, 255, 255, 0.76);
+      border: 1px solid rgba(216, 236, 250, 0.96);
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .hero-panel {
+      min-width: 0;
+      border: 1px solid rgba(216, 236, 250, 0.95);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.84);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .panel-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px;
+      border-bottom: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .status-dots {
+      display: flex;
+      gap: 7px;
+    }
+
+    .status-dots span {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--green);
+    }
+
+    .status-dots span:nth-child(2) {
+      background: var(--yellow);
+    }
+
+    .status-dots span:nth-child(3) {
+      background: var(--pink);
+    }
+
+    .journey {
+      padding: 20px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .journey-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 18px;
+      background: var(--paper);
+    }
+
+    .journey-card.accent {
+      background: var(--navy);
+      color: var(--paper);
+      border-color: rgba(255, 255, 255, 0.14);
+    }
+
+    .journey-label {
+      margin-bottom: 8px;
+      color: inherit;
+      opacity: 0.72;
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0;
+    }
+
+    .journey-title {
+      margin: 0;
+      color: inherit;
+      font-size: 18px;
+      line-height: 1.28;
+    }
+
+    .path-row {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr auto 1fr;
+      align-items: center;
+      gap: 8px;
+      margin-top: 12px;
+      color: var(--slate);
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0;
+    }
+
+    .path-node {
+      min-height: 58px;
+      display: grid;
+      place-items: center;
+      padding: 10px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--paper-blue);
+      text-align: center;
+    }
+
+    .path-arrow {
+      color: var(--blue);
+      font-size: 22px;
+    }
+
+    .section-heading {
+      max-width: 760px;
+      margin-bottom: 34px;
+    }
+
+    .section-heading h2 {
+      margin-bottom: 14px;
+      color: var(--ink);
+      font-size: clamp(30px, 4vw, 48px);
+      line-height: 1.02;
+      letter-spacing: 0;
+      overflow-wrap: anywhere;
+    }
+
+    .section-heading p {
+      margin-bottom: 0;
+      color: var(--slate);
+      font-size: 18px;
+      line-height: 1.55;
+    }
+
+    .pressure-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 18px;
+    }
+
+    .pressure-copy {
+      padding: 30px;
+      border-radius: var(--radius);
+      background: var(--paper-blue);
+      border: 1px solid var(--line);
+    }
+
+    .pressure-copy h3 {
+      margin-bottom: 16px;
+      font-size: 28px;
+      line-height: 1.12;
+    }
+
+    .pressure-copy p {
+      margin-bottom: 0;
+      color: var(--slate);
+      font-size: 17px;
+      line-height: 1.58;
+    }
+
+    .signal-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .signal-item {
+      display: grid;
+      grid-template-columns: 12px 1fr;
+      gap: 12px;
+      align-items: start;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--paper);
+    }
+
+    .signal-dot {
+      width: 10px;
+      height: 10px;
+      margin-top: 7px;
+      border-radius: 50%;
+      background: var(--blue);
+    }
+
+    .signal-item:nth-child(2) .signal-dot {
+      background: var(--pink);
+    }
+
+    .signal-item:nth-child(3) .signal-dot {
+      background: var(--green);
+    }
+
+    .signal-item strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--ink);
+    }
+
+    .signal-item span {
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    .value-band {
+      color: var(--paper);
+      background:
+        linear-gradient(135deg, rgba(0, 119, 255, 0.18), rgba(255, 70, 158, 0.1)),
+        var(--navy);
+    }
+
+    .value-band .section-heading h2,
+    .value-band .section-heading p {
+      color: var(--paper);
+    }
+
+    .value-band .section-heading p {
+      opacity: 0.82;
+    }
+
+    .value-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .value-card {
+      padding: 24px;
+      min-height: 238px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .value-number {
+      display: inline-grid;
+      place-items: center;
+      width: 38px;
+      height: 38px;
+      margin-bottom: 24px;
+      border-radius: 50%;
+      color: var(--ink);
+      background: var(--cyan);
+      font-weight: 900;
+    }
+
+    .value-card:nth-child(2) .value-number {
+      background: var(--pink);
+    }
+
+    .value-card:nth-child(3) .value-number {
+      background: var(--green);
+    }
+
+    .value-card h3 {
+      margin-bottom: 12px;
+      font-size: 25px;
+    }
+
+    .value-card p {
+      margin-bottom: 0;
+      color: rgba(255, 255, 255, 0.82);
+      line-height: 1.56;
+    }
+
+    .chooser {
+      display: grid;
+      grid-template-columns: minmax(260px, 0.8fr) minmax(0, 1.2fr);
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .choice-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .choice-button {
+      width: 100%;
+      display: grid;
+      gap: 5px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      color: var(--slate);
+      background: var(--paper);
+      text-align: left;
+      cursor: pointer;
+      transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease, box-shadow 180ms ease;
+    }
+
+    .choice-button strong {
+      color: var(--ink);
+      font-size: 16px;
+    }
+
+    .choice-button span {
+      font-size: 14px;
+      line-height: 1.42;
+    }
+
+    .choice-button[aria-pressed="true"] {
+      border-color: rgba(0, 119, 255, 0.5);
+      background: rgba(0, 119, 255, 0.08);
+      box-shadow: 0 0 0 3px rgba(0, 119, 255, 0.12);
+    }
+
+    .choice-button:focus-visible {
+      outline: 3px solid rgba(0, 119, 255, 0.26);
+      outline-offset: 2px;
+    }
+
+    .recommendation {
+      min-height: 100%;
+      padding: 30px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(135deg, rgba(0, 173, 255, 0.13), rgba(255, 255, 255, 0.72)),
+        var(--paper);
+      box-shadow: 0 14px 36px rgba(7, 20, 40, 0.08);
+    }
+
+    .recommendation h3 {
+      margin-bottom: 12px;
+      color: var(--ink);
+      font-size: 30px;
+      line-height: 1.1;
+    }
+
+    .recommendation p {
+      color: var(--slate);
+      font-size: 17px;
+      line-height: 1.58;
+    }
+
+    .recommendation ul {
+      margin: 22px 0 26px;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 10px;
+    }
+
+    .recommendation li {
+      display: grid;
+      grid-template-columns: 22px 1fr;
+      gap: 10px;
+      color: var(--slate);
+      line-height: 1.45;
+    }
+
+    .recommendation li::before {
+      content: "";
+      width: 11px;
+      height: 11px;
+      margin-top: 6px;
+      border-radius: 50%;
+      background: var(--pink);
+    }
+
+    .proof-section {
+      background: var(--paper-blue);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .resource-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .resource-card {
+      display: flex;
+      flex-direction: column;
+      min-height: 246px;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--paper);
+      transition: border-color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+    }
+
+    .resource-card:hover,
+    .resource-card:focus-visible {
+      transform: translateY(-2px);
+      border-color: rgba(0, 119, 255, 0.42);
+      box-shadow: 0 16px 34px rgba(7, 20, 40, 0.1);
+      outline: none;
+    }
+
+    .resource-type {
+      margin-bottom: 16px;
+      color: var(--blue-deep);
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0;
+    }
+
+    .resource-card h3 {
+      margin-bottom: 12px;
+      font-size: 22px;
+      line-height: 1.16;
+    }
+
+    .resource-card p {
+      margin-bottom: 18px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .resource-action {
+      margin-top: auto;
+      color: var(--blue-deep);
+      font-weight: 900;
+    }
+
+    .final {
+      color: var(--paper);
+      background:
+        linear-gradient(135deg, rgba(17, 209, 117, 0.14), rgba(0, 119, 255, 0.2)),
+        var(--ink);
+    }
+
+    .final-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .final h2 {
+      margin-bottom: 14px;
+      max-width: 780px;
+      color: var(--paper);
+      font-size: clamp(32px, 5vw, 58px);
+      line-height: 1.02;
+      letter-spacing: 0;
+    }
+
+    .final p {
+      margin-bottom: 0;
+      max-width: 680px;
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 18px;
+      line-height: 1.55;
+    }
+
+    footer {
+      padding: 28px 0;
+      color: var(--muted);
+      background: var(--paper);
+      border-top: 1px solid var(--line);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 940px) {
+      .nav {
+        min-height: auto;
+        padding: 14px 0;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        min-height: auto;
+        padding-top: 54px;
+      }
+
+      .hero-grid,
+      .pressure-grid,
+      .chooser,
+      .final-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .value-grid,
+      .resource-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .final-grid {
+        align-items: start;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .container,
+      .nav {
+        width: min(var(--max), calc(100vw - 28px));
+      }
+
+      .section {
+        padding: 62px 0;
+      }
+
+      .hero {
+        padding: 42px 0 36px;
+      }
+
+      h1 {
+        max-width: 100%;
+        font-size: 34px;
+        line-height: 1.02;
+      }
+
+      .lead {
+        max-width: 100%;
+        font-size: 17px;
+      }
+
+      .hero-actions,
+      .cta-row {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      .nav .button {
+        width: auto;
+        min-height: 40px;
+        padding: 10px 12px;
+        font-size: 14px;
+      }
+
+      .brand {
+        width: 112px;
+        min-width: 112px;
+      }
+
+      .proof-chip {
+        max-width: 100%;
+        white-space: normal;
+      }
+
+      .path-row {
+        grid-template-columns: 1fr;
+      }
+
+      .path-arrow {
+        transform: rotate(90deg);
+        justify-self: center;
+      }
+
+      .pressure-copy,
+      .recommendation {
+        padding: 22px;
+      }
+
+      .value-card,
+      .resource-card {
+        min-height: auto;
+      }
+
+      .footer-row {
+        display: grid;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+      }
+
+      .button:hover,
+      .resource-card:hover,
+      .resource-card:focus-visible {
+        transform: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="shell">
+    <header>
+      <nav class="nav" aria-label="Main navigation">
+        <a class="brand" href="#top" aria-label="Folloze home" data-analytics="nav" data-area="header" data-label="Folloze logo">
+          <svg width="99" height="24" viewBox="0 0 99 24" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Folloze">
+            <g clip-path="url(#clip0_1368_8928)">
+              <path d="M37.3747 19.042C34.3649 18.9543 32.0086 17.8919 30.6521 15.2797C28.6819 11.498 30.4343 6.23478 35.8203 5.31858C38.6023 4.86049 41.1071 5.53301 43.0081 7.70655C44.7506 9.72413 45.0575 12.0828 44.1764 14.5195C43.2952 16.9952 41.3746 18.35 38.83 18.8666C38.3053 18.9933 37.7707 19.003 37.3747 19.042ZM37.2559 7.9892C35.0183 7.96971 33.2561 9.75337 33.2363 12.0633C33.2165 14.4318 34.9193 16.235 37.1965 16.2447C39.4538 16.2642 41.2358 14.4805 41.2358 12.1511C41.2655 9.82159 39.5132 7.9892 37.2559 7.9892Z" fill="#2C3D59"/>
+              <path d="M65.819 19.0422C62.5717 19.0031 59.8687 17.2975 58.8985 14.5196C57.4134 10.2993 59.8687 5.97169 64.5122 5.28942C67.2942 4.87031 69.7693 5.55258 71.6307 7.74559C74.6305 11.2252 73.4227 17.6678 67.4328 18.8666C66.8982 18.9933 66.3635 19.0031 65.819 19.0422ZM69.8188 12.3655C69.8188 10.4065 68.8882 8.94445 67.413 8.30116C65.5121 7.49218 63.3736 8.19396 62.3539 9.97761C61.2746 11.8295 61.8191 14.3539 63.5419 15.5235C64.8488 16.4104 66.2546 16.4982 67.6506 15.7867C69.1555 15.0362 69.7693 13.7106 69.8188 12.3655Z" fill="#2C3D59"/>
+              <path d="M89.7289 12.6678C89.6893 14.3832 91.2041 15.9525 92.9962 16.1767C94.5209 16.3716 95.8277 15.9135 97.0653 15.0655C97.194 14.9972 97.3029 14.9095 97.4019 14.8218C97.4217 14.8023 97.4415 14.8218 97.491 14.8023C97.9068 15.4748 98.3128 16.1279 98.7088 16.8199C98.7583 16.9271 98.6395 17.1903 98.5306 17.278C97.2237 18.282 95.7188 18.8862 94.0259 18.9739C91.8575 19.1006 89.8676 18.5841 88.2736 17.0343C86.6994 15.4846 86.1252 13.5742 86.2638 11.4397C86.4024 9.6073 87.0756 7.97958 88.5211 6.74174C90.7784 4.80214 94.5605 4.60721 96.7683 6.33238C98.3425 7.57022 98.9365 9.28565 98.9959 11.2058C99.0157 11.5372 98.9563 11.8588 98.9761 12.1902C98.9959 12.5801 98.8375 12.6483 98.4712 12.6483C95.7485 12.6288 92.9962 12.6288 90.2933 12.6288L89.7289 12.6678ZM89.8379 10.3773H95.5208C95.6495 9.05173 94.5308 7.81389 93.2041 7.74566C91.5209 7.61895 89.927 8.85679 89.8379 10.3773Z" fill="#2C3D59"/>
+              <path d="M73.7098 18.7105C73.7098 18.1257 73.69 17.6188 73.7296 17.1023C73.7494 16.9658 73.8385 16.8001 73.9276 16.6929C76.2444 13.9346 78.5512 11.186 80.8679 8.40816C80.8877 8.38866 80.8877 8.35942 80.9174 8.2717H79.0364C78.571 8.2717 78.0859 8.2717 77.6206 8.2717C76.9573 8.2717 76.7989 8.42765 76.7989 9.07094C76.7989 9.22689 76.7989 9.39258 76.7989 9.56802H73.7296C73.7791 8.52512 73.7989 7.48221 73.888 6.4588C73.9276 6.0202 74.3038 5.71805 74.7297 5.59134C74.9673 5.52312 75.2346 5.48413 75.4821 5.48413C78.67 5.46463 81.8679 5.48413 85.0559 5.48413C85.145 5.48413 85.2342 5.50362 85.3926 5.50362C85.3926 6.08842 85.4124 6.65374 85.3728 7.19956C85.3728 7.30677 85.2837 7.43348 85.2144 7.5212C83.0759 10.0846 80.9472 12.6383 78.8087 15.2016C78.6106 15.4355 78.3928 15.6597 78.1651 15.9229H79.7294C80.5016 15.9229 81.2541 15.9229 82.0263 15.9229C82.7985 15.9229 82.9074 15.8156 82.9272 15.0554C82.9272 14.9287 82.9272 14.8118 82.9272 14.6169H85.0262C85.9371 14.6169 85.9371 14.6169 85.9371 15.533C85.9371 16.1666 85.9569 16.8196 85.8876 17.4531C85.7787 18.2817 85.3134 18.6715 84.452 18.7105C84.3233 18.73 84.2045 18.7105 84.0758 18.7105H74.3929H73.7098Z" fill="#2C3D59"/>
+              <path d="M29.771 0.181885V3.02794C28.7513 3.02794 27.6919 2.95971 26.9593 3.82717C26.6227 4.21705 26.5138 4.71414 26.5831 5.48412H29.3849V8.09626H26.5732V18.652H23.197V8.11575H21.5634V5.50362H23.1376C23.1871 4.9578 23.1871 4.42173 23.296 3.93439C23.6524 1.95579 24.999 0.688717 27.1177 0.34758C27.979 0.220872 28.8602 0.240366 29.771 0.181885Z" fill="#2C3D59"/>
+              <path d="M58.057 15.9522V18.6715C56.7996 18.6715 55.562 18.7105 54.3245 18.652C53.6214 18.613 53.2452 18.1355 53.1561 17.4337C53.1165 17.2192 53.1165 16.995 53.1165 16.7806C53.1165 12.5408 53.1165 8.30096 53.1165 4.09036C53.1165 3.19366 53.0274 3.10593 52.1166 3.10593C51.473 3.10593 51.473 3.10593 51.473 2.43341C51.473 1.74139 51.473 1.07861 51.473 0.318359H53.5323C53.9483 0.318359 54.3542 0.318359 54.77 0.318359C55.8789 0.337853 56.4234 0.844684 56.4333 1.95582C56.4531 2.56987 56.4333 3.21315 56.4333 3.8272C56.4333 7.55046 56.4333 11.264 56.4333 14.9677C56.4333 15.8352 56.5422 15.9424 57.4233 15.9424C57.6411 15.9522 57.8193 15.9522 58.057 15.9522Z" fill="#2C3D59"/>
+              <path d="M51.4038 15.9525V18.6523C51.2751 18.6718 51.1662 18.6913 51.0474 18.6913C50.0574 18.6913 49.0772 18.7108 48.107 18.6913C47.1069 18.6718 46.6218 18.2527 46.5129 17.2584C46.4931 17.083 46.4931 16.8881 46.4931 16.6932C46.4931 12.4338 46.4931 8.20374 46.4931 3.9444C46.4931 3.16465 46.404 3.07694 45.612 3.07694C45.3743 3.07694 45.1466 3.07694 44.8991 3.07694V0.357588C44.9684 0.338094 45.0377 0.3186 45.1169 0.3186C46.1763 0.3186 47.2554 0.299107 48.305 0.3186C49.2356 0.338094 49.7405 0.815685 49.8099 1.71238C49.8297 1.9463 49.8296 2.17049 49.8296 2.41416C49.8296 6.59552 49.8296 10.7866 49.8296 14.9875C49.8296 15.855 49.9386 15.9622 50.8197 15.9622C51.0078 15.9525 51.2058 15.9525 51.4038 15.9525Z" fill="#2C3D59"/>
+              <path d="M0.0396118 14.9971C0.0396118 14.9971 0.376233 1.80972 15.9102 0.026062V7.24841C15.9102 7.24841 5.30672 6.35171 0.0396118 14.9971Z" fill="#2C3D59"/>
+              <path d="M0.0396024 23.74C0.0396024 23.74 0.16831 13.3013 8.96993 11.4006V15.7964C8.96993 15.7964 3.22759 16.6639 0 23.9739" fill="#2C3D59"/>
+            </g>
+            <defs>
+              <clipPath id="clip0_1368_8928">
+                <rect width="99" height="24" fill="white"/>
+              </clipPath>
+            </defs>
+          </svg>
+        </a>
+        <div class="nav-links" aria-label="Page sections">
+          <a href="#pressure" data-analytics="nav" data-area="header" data-label="Pressure">Pressure</a>
+          <a href="#system" data-analytics="nav" data-area="header" data-label="System">System</a>
+          <a href="#diagnose" data-analytics="nav" data-area="header" data-label="Diagnose">Diagnose</a>
+          <a href="#resources" data-analytics="nav" data-area="header" data-label="Resources">Resources</a>
+        </div>
+        <a class="button secondary" href="https://www.folloze.com/request-demo" target="_blank" rel="noopener" data-analytics="cta" data-area="header" data-label="Book a workshop">Book a workshop</a>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="hero" id="top" aria-labelledby="hero-title">
+        <div class="container hero-grid">
+          <div>
+            <p class="eyebrow">For mid-market marketing teams</p>
+            <h1 id="hero-title">Launch more personalized campaigns without adding another production bottleneck.</h1>
+            <p class="lead">Folloze helps lean growth teams turn campaign ideas, AI-generated content, and approved assets into live buyer experiences that can be personalized, measured, and handed to sales with better signal.</p>
+            <div class="hero-actions">
+              <a class="button primary" href="https://www.folloze.com/request-demo" target="_blank" rel="noopener" data-analytics="cta" data-area="hero" data-label="Book a campaign workshop">Book a campaign workshop</a>
+              <a class="button secondary" href="https://www.folloze.com/platform/overview" target="_blank" rel="noopener" data-analytics="cta" data-area="hero" data-label="See how Folloze works">See how Folloze works</a>
+            </div>
+            <div class="hero-proof" aria-label="Folloze value pillars">
+              <span class="proof-chip">Build personalized experiences</span>
+              <span class="proof-chip">Activate across channels</span>
+              <span class="proof-chip">Capture first-party signals</span>
+            </div>
+          </div>
+
+          <aside class="hero-panel" aria-label="Campaign workflow preview">
+            <div class="panel-top">
+              <span>Campaign path</span>
+              <div class="status-dots" aria-hidden="true"><span></span><span></span><span></span></div>
+            </div>
+            <div class="journey">
+              <div class="journey-card">
+                <div class="journey-label">Brief in</div>
+                <p class="journey-title">Audience, offer, source content, and goal are organized into a campaign-ready plan.</p>
+              </div>
+              <div class="path-row" aria-label="Build activate signal workflow">
+                <span class="path-node">Build</span>
+                <span class="path-arrow" aria-hidden="true">-></span>
+                <span class="path-node">Activate</span>
+                <span class="path-arrow" aria-hidden="true">-></span>
+                <span class="path-node">Signal</span>
+              </div>
+              <div class="journey-card accent">
+                <div class="journey-label">Next move</div>
+                <p class="journey-title">Sales sees what the account consumed, which topic mattered, and where to follow up.</p>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <section class="section" id="pressure" aria-labelledby="pressure-title">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">The mid-market gap</p>
+        <h2 id="pressure-title">Your team knows the accounts to pursue. Getting a tailored destination live is the hard part.</h2>
+        <p>Mid-market teams rarely have extra web, design, ops, and agency capacity sitting idle. The campaign idea is clear, but the launch path usually has too many handoffs.</p>
+      </div>
+
+      <div class="pressure-grid">
+        <article class="pressure-copy">
+          <h3>Personalization should not require a new production line every time a segment matters.</h3>
+          <p>Folloze gives marketers a governed way to turn the message, content, and audience logic they already have into experiences that feel specific enough to convert and structured enough for sales to act on.</p>
+        </article>
+        <div class="signal-list" aria-label="Common mid-market blockers">
+          <div class="signal-item">
+            <span class="signal-dot" aria-hidden="true"></span>
+            <span><strong>Web backlog slows launches.</strong> Campaign teams wait for destinations instead of shipping when the audience is warm.</span>
+          </div>
+          <div class="signal-item">
+            <span class="signal-dot" aria-hidden="true"></span>
+            <span><strong>Generic nurture loses context.</strong> The same path treats every visitor like the same buyer with the same problem.</span>
+          </div>
+          <div class="signal-item">
+            <span class="signal-dot" aria-hidden="true"></span>
+            <span><strong>Sales follow-up lacks signal.</strong> Clicks alone do not tell the team what the account cared about or what should happen next.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section value-band" id="system" aria-labelledby="system-title">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Build. Activate. Signal.</p>
+        <h2 id="system-title">A practical campaign system for teams that need relevance and speed.</h2>
+        <p>Folloze does not stop at content creation. It helps marketing teams deploy the experience, personalize the path, govern the brand, and capture the engagement signals that guide the next move.</p>
+      </div>
+
+      <div class="value-grid">
+        <article class="value-card">
+          <span class="value-number">1</span>
+          <h3>Build the destination</h3>
+          <p>Turn a campaign brief, AI output, approved assets, or content set into a live buyer experience without rebuilding every page from scratch.</p>
+        </article>
+        <article class="value-card">
+          <span class="value-number">2</span>
+          <h3>Activate the journey</h3>
+          <p>Route the right content for the right segment, source, buying stage, or known identity across campaign, sales, partner, event, and web motions.</p>
+        </article>
+        <article class="value-card">
+          <span class="value-number">3</span>
+          <h3>Signal the next step</h3>
+          <p>Capture first-party engagement that shows who paid attention, what they consumed, and which follow-up deserves sales or marketing attention.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="diagnose" aria-labelledby="diagnose-title">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Find the campaign constraint</p>
+        <h2 id="diagnose-title">What is slowing your next mid-market campaign?</h2>
+        <p>Select the bottleneck that feels most familiar. The recommendation updates with the Folloze motion that fits the problem.</p>
+      </div>
+
+      <div class="chooser">
+        <div class="choice-list" role="group" aria-label="Campaign constraint choices">
+          <button class="choice-button" type="button" aria-pressed="true" data-choice="web">
+            <strong>Web backlog</strong>
+            <span>The idea is ready, but the destination is waiting on another team.</span>
+          </button>
+          <button class="choice-button" type="button" aria-pressed="false" data-choice="nurture">
+            <strong>Generic nurture</strong>
+            <span>The campaign path is too broad for accounts with different priorities.</span>
+          </button>
+          <button class="choice-button" type="button" aria-pressed="false" data-choice="sales">
+            <strong>Weak sales handoff</strong>
+            <span>Sales sees activity, but not enough context to know the next move.</span>
+          </button>
+          <button class="choice-button" type="button" aria-pressed="false" data-choice="content">
+            <strong>Content sprawl</strong>
+            <span>Assets exist, but buyers need a cleaner path through them.</span>
+          </button>
+        </div>
+
+        <article class="recommendation" aria-live="polite">
+          <h3 id="recommendation-title">Build the campaign destination in Folloze first.</h3>
+          <p id="recommendation-copy">When web capacity is the blocker, Folloze gives campaign teams a governed destination they can launch, adapt, and measure without waiting for a full site update.</p>
+          <ul id="recommendation-list">
+            <li>Use the brief to define the audience, offer, and source content.</li>
+            <li>Publish a focused experience that sales and paid channels can both use.</li>
+            <li>Track CTA and content engagement so follow-up is tied to actual interest.</li>
+          </ul>
+          <a id="recommendation-cta" class="button primary" href="https://www.folloze.com/request-demo" target="_blank" rel="noopener" data-analytics="cta" data-area="diagnose" data-label="Discuss faster launches">Discuss faster launches</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section proof-section" id="resources" aria-labelledby="resources-title">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Explore the platform</p>
+        <h2 id="resources-title">Give the buying group a path that matches how they evaluate.</h2>
+        <p>Use Folloze to package the story, product context, and engagement signal a mid-market committee needs before the first serious sales conversation.</p>
+      </div>
+
+      <div class="resource-grid">
+        <a class="resource-card" href="https://www.folloze.com/platform/overview" target="_blank" rel="noopener" data-analytics="resource" data-area="resources" data-label="Buyer experience platform overview">
+          <span class="resource-type">Platform overview</span>
+          <h3>See how Folloze supports buyer experiences</h3>
+          <p>Learn how Folloze helps teams create connected B2B journeys powered by AI assistance and first-party data insights.</p>
+          <span class="resource-action">View platform overview</span>
+        </a>
+        <a class="resource-card" href="https://www.folloze.com/platform/features" target="_blank" rel="noopener" data-analytics="resource" data-area="resources" data-label="Platform features">
+          <span class="resource-type">Capabilities</span>
+          <h3>Connect creation, personalization, and signal</h3>
+          <p>Explore the platform features that help marketers build rich personalized experiences and understand engagement.</p>
+          <span class="resource-action">Explore features</span>
+        </a>
+        <a class="resource-card" href="https://www.folloze.com/platform/product-tour/" target="_blank" rel="noopener" data-analytics="resource" data-area="resources" data-label="Product tour">
+          <span class="resource-type">Product tour</span>
+          <h3>Walk through the experience buyers see</h3>
+          <p>See how personalized B2B landing page experiences can support campaigns, web journeys, and account-based programs.</p>
+          <span class="resource-action">Take the product tour</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section final" id="workshop" aria-labelledby="workshop-title">
+    <div class="container final-grid">
+      <div>
+        <p class="eyebrow">Campaign acceleration workshop</p>
+        <h2 id="workshop-title">Bring one mid-market campaign idea. Leave with the buyer journey mapped.</h2>
+        <p>Use the session to identify the audience, content path, personalization logic, and engagement signal your next campaign should capture.</p>
+      </div>
+      <div class="cta-row">
+        <a class="button dark" href="https://www.folloze.com/request-demo" target="_blank" rel="noopener" data-analytics="cta" data-area="final" data-label="Book a campaign workshop">Book a campaign workshop</a>
+        <a class="button ghost" href="https://www.folloze.com/" target="_blank" rel="noopener" data-analytics="cta" data-area="final" data-label="Visit Folloze">Visit Folloze</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-row">
+      <span>Folloze for Mid-Market Growth Teams</span>
+      <span>Build. Activate. Signal.</span>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const eventLog = [];
+
+      window.flzAnalytic = window.flzAnalytic || function (eventName, payload) {
+        eventLog.push({ eventName, payload, timestamp: new Date().toISOString() });
+        window.follozeEventLog = eventLog;
+      };
+
+      const recommendations = {
+        web: {
+          title: "Build the campaign destination in Folloze first.",
+          copy: "When web capacity is the blocker, Folloze gives campaign teams a governed destination they can launch, adapt, and measure without waiting for a full site update.",
+          items: [
+            "Use the brief to define the audience, offer, and source content.",
+            "Publish a focused experience that sales and paid channels can both use.",
+            "Track CTA and content engagement so follow-up is tied to actual interest."
+          ],
+          cta: "Discuss faster launches"
+        },
+        nurture: {
+          title: "Personalize the journey around segment reality.",
+          copy: "When nurture feels too broad, Folloze lets marketers route different messages, resources, and CTAs by audience, source, stage, or known account context.",
+          items: [
+            "Create role, segment, or account paths from one governed experience.",
+            "Match resources to the buyer's likely priority instead of sending every visitor through the same flow.",
+            "Use engagement signals to refine the next campaign path."
+          ],
+          cta: "Plan a personalized path"
+        },
+        sales: {
+          title: "Turn engagement into a clearer sales handoff.",
+          copy: "When activity does not translate into action, Folloze captures first-party signals that show what the buying group consumed and which topic deserves follow-up.",
+          items: [
+            "Track content views, CTA clicks, source paths, and topic interest.",
+            "Give sales a follow-up angle based on what the account actually did.",
+            "Feed engagement context back into the revenue workflow."
+          ],
+          cta: "Improve the handoff"
+        },
+        content: {
+          title: "Package approved assets into a guided experience.",
+          copy: "When content is scattered, Folloze gives buyers a cleaner path through the resources that matter for their use case, role, or buying stage.",
+          items: [
+            "Organize assets into a campaign story instead of a static library.",
+            "Feature the strongest resource before deeper product detail.",
+            "Measure which assets create real buying-group interest."
+          ],
+          cta: "Organize your content path"
+        }
+      };
+
+      function track(eventName, payload) {
+        if (typeof window.flzAnalytic === "function") {
+          window.flzAnalytic(eventName, payload);
+        }
+      }
+
+      document.querySelectorAll("[data-analytics]").forEach(function (element) {
+        element.addEventListener("click", function () {
+          const type = element.getAttribute("data-analytics");
+          const url = element.getAttribute("href") || "";
+          const label = element.getAttribute("data-label") || element.textContent.trim();
+          const area = element.getAttribute("data-area") || "page";
+          track(type === "resource" ? "resource_click" : "cta_click", { text: label, area, url });
+        });
+      });
+
+      const title = document.getElementById("recommendation-title");
+      const copy = document.getElementById("recommendation-copy");
+      const list = document.getElementById("recommendation-list");
+      const cta = document.getElementById("recommendation-cta");
+      const buttons = Array.from(document.querySelectorAll(".choice-button"));
+
+      buttons.forEach(function (button) {
+        button.addEventListener("click", function () {
+          const choice = button.getAttribute("data-choice");
+          const recommendation = recommendations[choice];
+          buttons.forEach(function (item) {
+            item.setAttribute("aria-pressed", String(item === button));
+          });
+          title.textContent = recommendation.title;
+          copy.textContent = recommendation.copy;
+          list.innerHTML = recommendation.items.map(function (item) {
+            return "<li>" + item + "</li>";
+          }).join("");
+          cta.textContent = recommendation.cta;
+          cta.setAttribute("data-label", recommendation.cta);
+          track("selector_change", {
+            text: button.querySelector("strong").textContent,
+            area: "diagnose",
+            option: choice
+          });
+        });
+      });
+    }());
+  </script>
+</body>
+</html>

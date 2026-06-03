@@ -1,6 +1,6 @@
 ---
 name: folloze-brand-kit
-description: Reusable Folloze public-facing brand, v3.1 messaging, claims, proof, visual identity, and logo source material for other Folloze skills. Use when a teammate asks for Folloze positioning, value props, brand voice, approved claims, proof points, logo assets, campaign messaging, or when another Folloze skill needs a portable brand source of truth.
+description: Reusable Folloze public-facing brand, v3.2 messaging, claims, proof, visual identity, and logo source material for other Folloze skills. Use when a teammate asks for Folloze positioning, value props, brand voice, approved claims, proof points, logo assets, campaign messaging, or when another Folloze skill needs a portable brand source of truth.
 ---
 
 # Folloze Brand Kit
@@ -11,15 +11,16 @@ This package contains public-facing, generally reusable Folloze brand material. 
 
 ## Current Messaging Source
 
-The active messaging alignment is `references/content-system-v3-1.md`, derived from the Head of Marketing review doc `Folloze Content System - V3.1`.
+The active messaging alignment is `references/content-system-v3-2.md`, derived from the live team-review doc `Folloze Content System - Live`.
 
 Core external frame:
 
 - Folloze helps teams target and convert key accounts.
-- Your AI creates content. Folloze deploys it, hosts it, governs it, personalizes it, and captures the signal that drives the next move.
+- Bring your AI to create. Folloze deploys the content, hosts the experience, captures engagement signals, and helps every campaign learn from the last.
 - Use `Build. Activate. Signal.` as the preferred display-copy register.
-- Use the prose pattern `[Your AI does X]. [Folloze does Y].`
+- Lead with the work buyers recognize: build personalized experiences, activate them across the stack, and capture first-party signal.
 - Keep `activation layer` and named agent framing internal-only unless the audience already knows Folloze.
+- Use AI readiness as an internal sales lens only, not a public marketing segmentation frame.
 
 ## Product Capability References
 
@@ -36,7 +37,7 @@ The internal Google Doc is access-controlled and should guide Folloze employees 
 For most work:
 
 1. Read `references/source-index.md` to choose the minimum relevant references.
-2. Use `references/content-system-v3-1.md` for current messaging alignment, source priority, and external/internal language boundaries.
+2. Use `references/content-system-v3-2.md` for current messaging alignment, source priority, and external/internal language boundaries.
 3. Use the product capability references when the task involves product features, modules, user roles, integrations, global scalability, Website Engagement, Events, or AI/Data credits.
 4. Use `references/brand-foundation.md` for category, positioning, audience, and narrative rules.
 5. Use `references/messaging-library.md` for value props, proof pillars, approved phrases, and module copy options.
@@ -50,7 +51,7 @@ Do not load every reference by default. Use only what the task needs.
 
 ## Source Priority
 
-Use current user-provided direction first when it is clearly intended for the asset being created. Then use this bundled brand kit, with `content-system-v3-1.md` as the active messaging layer. If the user provides a newer approved Folloze deck, website copy, or messaging guide that conflicts with this package, follow the newer source and note the conflict in the working summary.
+Use current user-provided direction first when it is clearly intended for the asset being created. Then use this bundled brand kit, with `content-system-v3-2.md` as the active messaging layer. If the user provides a newer approved Folloze deck, website copy, or messaging guide that conflicts with this package, follow the newer source and note the conflict in the working summary.
 
 For account-specific assets, pair this brand kit with the account research and call-note evidence. Do not let generic Folloze messaging override what the account actually cares about.
 
