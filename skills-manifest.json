@@ -27,12 +27,6 @@
       "requires_restart": true
     },
     {
-      "name": "doc",
-      "path": "Skills/Troy Folloze Created Skills/doc",
-      "enabled": true,
-      "requires_restart": true
-    },
-    {
       "name": "folloze-brand-kit",
       "path": "Skills/folloze-brand-kit",
       "enabled": true,
@@ -87,18 +81,6 @@
       "requires_restart": true
     },
     {
-      "name": "pdf",
-      "path": "Skills/Troy Folloze Created Skills/pdf",
-      "enabled": true,
-      "requires_restart": true
-    },
-    {
-      "name": "playwright",
-      "path": "Skills/Troy Folloze Created Skills/playwright",
-      "enabled": true,
-      "requires_restart": true
-    },
-    {
       "name": "sales-to-cs-internal-handoff-folloze",
       "path": "Skills/sales-to-cs-internal-handoff-folloze",
       "enabled": true,
@@ -113,24 +95,6 @@
     {
       "name": "skills-update-folloze",
       "path": "Skills/skills-update-folloze",
-      "enabled": true,
-      "requires_restart": true
-    },
-    {
-      "name": "skills-updater",
-      "path": "Skills/Troy Folloze Created Skills/skills-updater",
-      "enabled": true,
-      "requires_restart": true
-    },
-    {
-      "name": "sora",
-      "path": "Skills/Troy Folloze Created Skills/sora",
-      "enabled": true,
-      "requires_restart": true
-    },
-    {
-      "name": "spreadsheet",
-      "path": "Skills/Troy Folloze Created Skills/spreadsheet",
       "enabled": true,
       "requires_restart": true
     },
