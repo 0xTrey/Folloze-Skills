@@ -1,0 +1,4 @@
+interface:
+  display_name: "Folloze Zoom Deal Room"
+  short_description: "Turn Zoom recaps and deal context into Folloze deal-room briefs and MCP/API board builds"
+  default_prompt: "Use $folloze-zoom-deal-room to turn a Zoom recap or meeting-assets email into a buyer-safe Folloze deal-room brief. Resolve the account with read-only Salesforce context when available, recommend MCP rich HTML versus the external board API, and do not save or publish a Folloze board unless I explicitly ask."

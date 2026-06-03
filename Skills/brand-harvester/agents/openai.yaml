@@ -1,0 +1,4 @@
+interface:
+  display_name: "Brand Harvester"
+  short_description: "Harvest public brand, design, asset, and screenshot evidence for vendor-faithful GTM work"
+  default_prompt: "Use $brand-harvester to harvest the public brand and source-site design system for a vendor domain or source URL, storing durable outputs under the active repo's research/brand-harvest folder."

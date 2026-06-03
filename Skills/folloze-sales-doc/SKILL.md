@@ -59,6 +59,7 @@ For executive packages and follow-up briefs, use the real evidence stack before 
 - Gmail for current thread state, sent follow-through, stakeholder asks, and source discrepancies.
 - Google Drive for existing deal notes, decks, prior briefs, proposals, security notes, or event plans.
 - Public website or web search for company context, current messaging, public proof, news, and martech clues.
+- `folloze-brand-kit` product capability references for customer-ready Folloze capability language, especially when explaining Campaign Builder, Content Engine, Personalization, integrations, Global Scalability, Website Engagement, Events, user roles, or AI/Data credits.
 
 If sources disagree, keep the discrepancy visible in the working notes or final caveat. Do not smooth over a customer/account naming conflict before someone sends the package externally.
 

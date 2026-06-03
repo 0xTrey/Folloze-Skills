@@ -1,0 +1,73 @@
+flowchart LR
+  %% Folloze + Marketo Embedded Form Integration - internal draft
+
+  subgraph A["Admin setup"]
+    A1["Marketo Admin / MOPs\nCreates and publishes Marketo form"]
+    A2["Marketo embed values\nBase URL + Munchkin ID + Form ID"]
+    A3["Folloze Company Admin\nCompany Admin > Forms > Marketo"]
+    A4["Optional custom script\nMktoForms2 API + Folloze board attributes"]
+  end
+
+  subgraph B["Folloze board experience"]
+    B1["Board Designer\nSelect Marketo form for CTA, gate, registration, or form section"]
+    B2["Live Folloze Board / Site\nRenders embedded Marketo form"]
+    B3["Folloze board context\nBoard ID, campaign, source, custom attributes"]
+    B4["Folloze Identity + Analytics\nKnown lead, Pulse, Impact Dashboard, follow-up"]
+  end
+
+  subgraph C["Visitor browser"]
+    C1["Visitor lands on board\nEmail, ad, direct link, campaign link, or referral"]
+    C2["Visitor submits form"]
+  end
+
+  subgraph D["Marketo"]
+    D1["Marketo Forms 2.0 runtime\nLoads form from Marketo"]
+    D2["Standard Marketo form submission\nVisible fields + hidden fields"]
+    D3["Marketo lead processing\nLead create/update, scoring, routing, smart campaigns"]
+    D4["Marketo Programs\nVisitor, Viewer, Super Viewer, Clicker, event statuses"]
+  end
+
+  subgraph E["Optional connector/API sync"]
+    E1["Folloze-Marketo Connector\nCustom activity, program status, identity matching"]
+    E2["Marketo custom activities\nBoard view, item view, CTA click, form fill, share"]
+  end
+
+  subgraph F["Downstream systems"]
+    F1["Salesforce / CRM\nCampaign attribution, lead/contact records, seller follow-up"]
+    F2["Sales alerts / nurture\nEmail, Slack, tasks, smart campaign triggers"]
+    F3["BI / Data warehouse\nEngagement and attribution reporting"]
+  end
+
+  A1 -->|Retrieve embed code| A2
+  A2 -->|Configure form once| A3
+  A3 -->|Make form available| B1
+  A4 -.->|Hidden field enrichment| B2
+  B1 -->|Publish board| B2
+  C1 -->|View board URL| B2
+  B2 -->|MktoForms2.loadForm| D1
+  D1 -->|Render form in page| B2
+  B3 -.->|Custom attributes into hidden fields| B2
+  C2 -->|Submit| D2
+  D2 -->|Marketo owns form processing| D3
+  C2 -->|Submitted identity + engagement context| B4
+  B4 -.->|Optional activity/status sync| E1
+  E1 -.-> E2
+  E1 -.-> D4
+  D3 --> F1
+  D3 --> F2
+  B4 -.-> F1
+  B4 -.-> F3
+  D4 -.-> F2
+  F1 --> F3
+
+  classDef existing fill:#d9eaff,stroke:#6c93cc,color:#12203a;
+  classDef folloze fill:#fff1c6,stroke:#d8aa2f,color:#241800;
+  classDef optional fill:#ffe0de,stroke:#c45d5d,color:#321111;
+  classDef actor fill:#daf6d7,stroke:#3b993f,color:#0e2910;
+  classDef downstream fill:#e8f0ff,stroke:#6c7eb7,color:#121a33;
+
+  class A1,C1,C2 actor;
+  class A2,D1,D2,D3,D4 existing;
+  class A3,A4,B1,B2,B3,B4 folloze;
+  class E1,E2 optional;
+  class F1,F2,F3 downstream;

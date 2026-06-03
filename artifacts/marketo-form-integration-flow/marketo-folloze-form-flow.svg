@@ -1,0 +1,208 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1220" viewBox="0 0 1800 1220">
+  <defs>
+    <style>
+      .title { font-family: Arial, Helvetica, sans-serif; font-size: 30px; font-weight: 700; fill: #10223f; }
+      .subtitle { font-family: Arial, Helvetica, sans-serif; font-size: 17px; fill: #405168; }
+      .label { font-family: Arial, Helvetica, sans-serif; font-size: 16px; font-weight: 700; fill: #10223f; }
+      .body { font-family: Arial, Helvetica, sans-serif; font-size: 14px; fill: #223047; }
+      .small { font-family: Arial, Helvetica, sans-serif; font-size: 12px; fill: #34445e; }
+      .tiny { font-family: Arial, Helvetica, sans-serif; font-size: 11px; fill: #34445e; }
+      .white { fill: #ffffff; }
+      .actor { fill: #daf6d7; stroke: #228b2e; stroke-width: 1.5; }
+      .existing { fill: #d9eaff; stroke: #6c93cc; stroke-width: 1.5; }
+      .folloze { fill: #fff4ce; stroke: #d8aa2f; stroke-width: 2; stroke-dasharray: 9 7; }
+      .folloze-solid { fill: #fff8e4; stroke: #d8aa2f; stroke-width: 1.5; }
+      .optional { fill: #ffe0de; stroke: #c45d5d; stroke-width: 1.5; }
+      .downstream { fill: #e9f0ff; stroke: #6c7eb7; stroke-width: 1.5; }
+      .note { fill: #f7fafc; stroke: #bac7d7; stroke-width: 1.2; }
+      .arrow { stroke: #1f2937; stroke-width: 2; fill: none; marker-end: url(#arrowBlack); }
+      .runtime { stroke: #0b74bd; stroke-width: 2.3; fill: none; marker-end: url(#arrowBlue); }
+      .custom { stroke: #d08a00; stroke-width: 2.2; stroke-dasharray: 8 6; fill: none; marker-end: url(#arrowOrange); }
+      .optionalLine { stroke: #2f8a4b; stroke-width: 2.2; stroke-dasharray: 8 6; fill: none; marker-end: url(#arrowGreen); }
+    </style>
+    <marker id="arrowBlack" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L8,3 z" fill="#1f2937"/>
+    </marker>
+    <marker id="arrowBlue" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L8,3 z" fill="#0b74bd"/>
+    </marker>
+    <marker id="arrowOrange" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L8,3 z" fill="#d08a00"/>
+    </marker>
+    <marker id="arrowGreen" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L8,3 z" fill="#2f8a4b"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1800" height="1220" fill="#ffffff"/>
+
+  <rect x="34" y="24" width="222" height="54" fill="#fbfb86" stroke="#687078" stroke-width="1.5"/>
+  <text x="145" y="58" text-anchor="middle" class="label">Illustrative</text>
+
+  <text x="34" y="122" class="title">Folloze + Marketo Embedded Form Integration</text>
+  <text x="34" y="150" class="subtitle">Example technical data flow for a Folloze board/site using a Marketo form, custom Folloze attributes, and optional Marketo connector sync.</text>
+
+  <rect x="1100" y="40" width="650" height="145" fill="#ffffff" stroke="#1f2937" stroke-width="1.2"/>
+  <text x="1122" y="68" class="label">Legend</text>
+  <rect x="1122" y="86" width="118" height="34" rx="6" class="existing"/>
+  <text x="1181" y="108" text-anchor="middle" class="tiny">Existing system</text>
+  <rect x="1262" y="86" width="118" height="34" rx="6" class="folloze-solid"/>
+  <text x="1321" y="108" text-anchor="middle" class="tiny">Folloze config</text>
+  <rect x="1402" y="86" width="118" height="34" rx="6" class="optional"/>
+  <text x="1461" y="108" text-anchor="middle" class="tiny">Optional API</text>
+  <line x1="1122" y1="143" x2="1210" y2="143" class="arrow"/>
+  <text x="1224" y="147" class="tiny">Setup/config</text>
+  <line x1="1335" y1="143" x2="1423" y2="143" class="runtime"/>
+  <text x="1438" y="147" class="tiny">Runtime/form data</text>
+  <line x1="1554" y1="143" x2="1642" y2="143" class="custom"/>
+  <text x="1656" y="147" class="tiny">Custom fields</text>
+  <line x1="1122" y1="168" x2="1210" y2="168" class="optionalLine"/>
+  <text x="1224" y="172" class="tiny">Optional activity/status sync</text>
+
+  <!-- Actors -->
+  <rect x="80" y="225" width="230" height="82" rx="10" class="actor"/>
+  <text x="195" y="254" text-anchor="middle" class="label">Marketo Admin</text>
+  <text x="195" y="281" text-anchor="middle" class="body">Creates/publishes form</text>
+
+  <rect x="450" y="225" width="250" height="82" rx="10" class="actor"/>
+  <text x="575" y="254" text-anchor="middle" class="label">Folloze Company Admin</text>
+  <text x="575" y="281" text-anchor="middle" class="body">Adds form configuration</text>
+
+  <rect x="820" y="225" width="230" height="82" rx="10" class="actor"/>
+  <text x="935" y="254" text-anchor="middle" class="label">Board Creator</text>
+  <text x="935" y="281" text-anchor="middle" class="body">Places form on board</text>
+
+  <rect x="1190" y="225" width="230" height="82" rx="10" class="actor"/>
+  <text x="1305" y="254" text-anchor="middle" class="label">Visitor / Lead</text>
+  <text x="1305" y="281" text-anchor="middle" class="body">Views board and submits</text>
+
+  <rect x="1530" y="225" width="220" height="82" rx="10" class="actor"/>
+  <text x="1640" y="254" text-anchor="middle" class="label">Sales + Marketing</text>
+  <text x="1640" y="281" text-anchor="middle" class="body">Acts on signals</text>
+
+  <!-- Left Marketo authoring -->
+  <rect x="58" y="395" width="300" height="250" rx="12" class="existing"/>
+  <text x="208" y="426" text-anchor="middle" class="label">Marketo Form Authoring</text>
+  <text x="208" y="455" text-anchor="middle" class="body">Existing Marketo MAP</text>
+  <rect x="88" y="482" width="240" height="42" rx="8" fill="#ffffff" stroke="#8badde"/>
+  <text x="208" y="508" text-anchor="middle" class="body">Forms 2.0 embed code</text>
+  <rect x="88" y="537" width="240" height="42" rx="8" fill="#ffffff" stroke="#8badde"/>
+  <text x="208" y="563" text-anchor="middle" class="body">Base URL + Munchkin ID</text>
+  <rect x="88" y="592" width="240" height="42" rx="8" fill="#ffffff" stroke="#8badde"/>
+  <text x="208" y="618" text-anchor="middle" class="body">Form ID + fields</text>
+
+  <!-- Folloze central container -->
+  <rect x="430" y="360" width="760" height="500" rx="18" class="folloze"/>
+  <text x="810" y="394" text-anchor="middle" class="label">Folloze Platform / Board Experience</text>
+  <text x="810" y="420" text-anchor="middle" class="body">Stores configuration, renders the embedded form, captures identity and engagement context.</text>
+
+  <rect x="470" y="455" width="300" height="125" rx="10" class="folloze-solid"/>
+  <text x="620" y="484" text-anchor="middle" class="label">Company Admin</text>
+  <text x="620" y="512" text-anchor="middle" class="body">Forms &gt; Marketo</text>
+  <text x="620" y="538" text-anchor="middle" class="small">Base URL, Munchkin ID, Form ID</text>
+  <text x="620" y="560" text-anchor="middle" class="small">Optional custom script</text>
+
+  <rect x="850" y="455" width="300" height="125" rx="10" class="folloze-solid"/>
+  <text x="1000" y="484" text-anchor="middle" class="label">Board Designer</text>
+  <text x="1000" y="512" text-anchor="middle" class="body">Selects configured form</text>
+  <text x="1000" y="538" text-anchor="middle" class="small">CTA, gated asset, registration,</text>
+  <text x="1000" y="560" text-anchor="middle" class="small">header, banner, or form section</text>
+
+  <rect x="470" y="640" width="300" height="135" rx="10" class="folloze-solid"/>
+  <text x="620" y="670" text-anchor="middle" class="label">Live Folloze Board / Site</text>
+  <text x="620" y="698" text-anchor="middle" class="body">Loads Marketo form runtime</text>
+  <text x="620" y="724" text-anchor="middle" class="small">Renders form in page</text>
+  <text x="620" y="747" text-anchor="middle" class="small">Collects board engagement</text>
+
+  <rect x="850" y="640" width="300" height="135" rx="10" class="folloze-solid"/>
+  <text x="1000" y="670" text-anchor="middle" class="label">Folloze Identity + Analytics</text>
+  <text x="1000" y="698" text-anchor="middle" class="body">Submitted identity + behavior</text>
+  <text x="1000" y="724" text-anchor="middle" class="small">Known lead, Pulse, Impact Dashboard,</text>
+  <text x="1000" y="747" text-anchor="middle" class="small">follow-up campaigns</text>
+
+  <rect x="620" y="800" width="380" height="44" rx="8" fill="#fffdf3" stroke="#d8aa2f"/>
+  <text x="810" y="827" text-anchor="middle" class="body">Board custom attributes + UTM/source context</text>
+
+  <!-- Right Marketo runtime -->
+  <rect x="1262" y="390" width="318" height="250" rx="12" class="existing"/>
+  <text x="1421" y="421" text-anchor="middle" class="label">Marketo Runtime + Lead DB</text>
+  <text x="1421" y="450" text-anchor="middle" class="body">Existing Marketo MAP</text>
+  <rect x="1292" y="477" width="258" height="42" rx="8" fill="#ffffff" stroke="#8badde"/>
+  <text x="1421" y="503" text-anchor="middle" class="body">Forms 2.0 script/runtime</text>
+  <rect x="1292" y="532" width="258" height="42" rx="8" fill="#ffffff" stroke="#8badde"/>
+  <text x="1421" y="558" text-anchor="middle" class="body">Standard form submission</text>
+  <rect x="1292" y="587" width="258" height="42" rx="8" fill="#ffffff" stroke="#8badde"/>
+  <text x="1421" y="613" text-anchor="middle" class="body">Smart campaigns + scoring</text>
+
+  <rect x="1262" y="712" width="318" height="150" rx="12" class="optional"/>
+  <text x="1421" y="744" text-anchor="middle" class="label">Optional Folloze-Marketo Connector</text>
+  <text x="1421" y="774" text-anchor="middle" class="body">Custom activities and program status</text>
+  <text x="1421" y="800" text-anchor="middle" class="small">Board view, item view, CTA click,</text>
+  <text x="1421" y="823" text-anchor="middle" class="small">form fill, share, webinar statuses</text>
+
+  <rect x="1262" y="930" width="318" height="120" rx="12" class="downstream"/>
+  <text x="1421" y="962" text-anchor="middle" class="label">Salesforce / CRM</text>
+  <text x="1421" y="992" text-anchor="middle" class="body">Lead/contact records, campaign attribution,</text>
+  <text x="1421" y="1018" text-anchor="middle" class="body">routing, seller follow-up</text>
+
+  <rect x="420" y="955" width="700" height="110" rx="12" class="note"/>
+  <text x="770" y="987" text-anchor="middle" class="label">Reporting Outputs</text>
+  <text x="770" y="1017" text-anchor="middle" class="body">Folloze Pulse / Impact Dashboard + Marketo activity + CRM attribution + BI/Data warehouse where configured</text>
+  <text x="770" y="1043" text-anchor="middle" class="small">Use this row to tailor the diagram to the customer's reporting stack.</text>
+
+  <rect x="64" y="835" width="294" height="140" rx="12" class="note"/>
+  <text x="211" y="866" text-anchor="middle" class="label">Key Distinction</text>
+  <text x="211" y="897" text-anchor="middle" class="body">The Marketo form submit path is</text>
+  <text x="211" y="920" text-anchor="middle" class="body">browser-to-Marketo. The optional</text>
+  <text x="211" y="943" text-anchor="middle" class="body">connector is for activities, statuses,</text>
+  <text x="211" y="966" text-anchor="middle" class="body">identity matching, and API sync.</text>
+
+  <!-- Arrows setup -->
+  <path d="M195 307 C195 340, 208 350, 208 392" class="arrow"/>
+  <path d="M358 520 C390 520, 420 520, 467 520" class="arrow"/>
+  <text x="405" y="500" text-anchor="middle" class="tiny">Copy embed values</text>
+
+  <path d="M575 307 C575 340, 600 398, 615 452" class="arrow"/>
+  <path d="M935 307 C950 350, 975 398, 995 452" class="arrow"/>
+  <path d="M770 518 C800 518, 820 518, 847 518" class="arrow"/>
+  <text x="810" y="503" text-anchor="middle" class="tiny">Available in Designer</text>
+
+  <!-- Runtime arrows -->
+  <path d="M1305 307 L1305 340 L1218 340 L1218 605 L790 605 L790 675 L772 675" class="runtime"/>
+  <text x="1242" y="548" text-anchor="middle" class="tiny">Visit board URL</text>
+
+  <path d="M770 690 L795 690 L795 625 L1220 625 L1260 498" class="runtime"/>
+  <text x="1010" y="617" text-anchor="middle" class="tiny">Load/render Marketo form</text>
+
+  <path d="M1305 307 C1305 360, 1618 366, 1618 553 L1553 553" class="runtime"/>
+  <text x="1545" y="354" text-anchor="middle" class="tiny">Submit form</text>
+
+  <path d="M770 708 L847 708" class="runtime"/>
+  <text x="810" y="695" text-anchor="middle" class="tiny">Capture identity</text>
+
+  <!-- Custom enrichment -->
+  <path d="M810 800 C795 745, 735 715, 772 695" class="custom"/>
+  <text x="805" y="768" text-anchor="middle" class="tiny">Hidden field values</text>
+  <path d="M620 580 C608 606, 608 620, 620 637" class="custom"/>
+  <text x="565" y="613" text-anchor="middle" class="tiny">Custom script</text>
+
+  <!-- Optional sync -->
+  <path d="M1150 710 C1190 730, 1225 760, 1259 782" class="optionalLine"/>
+  <text x="1198" y="742" text-anchor="middle" class="tiny">Optional API sync</text>
+  <path d="M1421 862 C1421 890, 1421 905, 1421 927" class="optionalLine"/>
+  <text x="1560" y="900" text-anchor="middle" class="tiny">Signals and statuses</text>
+
+  <!-- Downstream/reporting -->
+  <path d="M1580 610 L1625 610 L1625 990 L1583 990" class="runtime"/>
+  <text x="1662" y="820" text-anchor="middle" class="tiny">Lead processing and CRM sync</text>
+  <path d="M1262 988 C1208 994, 1165 1000, 1123 1006" class="optionalLine"/>
+  <path d="M1000 775 C962 860, 915 920, 850 952" class="optionalLine"/>
+  <path d="M1421 1050 C1355 1094, 1170 1095, 955 1067" class="optionalLine"/>
+
+  <rect x="64" y="1042" width="294" height="90" rx="10" fill="#fff7db" stroke="#d8aa2f"/>
+  <text x="211" y="1073" text-anchor="middle" class="label">Example hidden fields</text>
+  <text x="211" y="1100" text-anchor="middle" class="small">businessUnit, campaignIdSFDC,</text>
+  <text x="211" y="1122" text-anchor="middle" class="small">productLine, UTM/source fields</text>
+
+  <text x="1740" y="1178" text-anchor="end" class="tiny">Draft: 2026-06-02 | Confirm implementation details before external customer use.</text>
+</svg>

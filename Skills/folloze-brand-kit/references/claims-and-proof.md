@@ -1,6 +1,6 @@
 # Claims And Proof
 
-Use this file before adding numeric claims, customer outcomes, or proof points to Folloze assets.
+Use this file before adding numeric claims, customer outcomes, customer names, benchmark claims, or proof points to Folloze assets.
 
 ## Claim Discipline
 
@@ -20,23 +20,84 @@ When a claim is directionally useful but not verified for the specific account, 
 
 Examples:
 
-- Use "faster campaign creation" when a specific speed claim is not needed.
-- Use "clearer pipeline visibility" when the asset does not need a dollar figure.
-- Use "more relevant buyer journeys" when engagement lift is not sourced.
+- Use `faster campaign creation` when a specific speed claim is not needed.
+- Use `clearer pipeline visibility` when the asset does not need a dollar figure.
+- Use `more relevant buyer journeys` when engagement lift is not sourced.
+- Use `[PROOF]` when the asset requires evidence and no verified evidence is available yet.
 
-## Approved General Claims
+## Current Proof Pillars
 
-Use carefully and keep wording close to the approved form:
+| Pillar | Use when | Proof to look for |
+|---|---|---|
+| Personalization at scale | The buyer needs more relevant experiences without more headcount | number of account experiences, launches, target accounts, persona paths, reused campaign structures |
+| Bring your own AI | The buyer uses Claude, ChatGPT, Gemini, Perplexity, internal models, or custom agents | source workflow, MCP/API activation, content-to-experience speed, governance controls |
+| Deep engagement intelligence | Sales or leadership needs insight beyond clicks | account activity, content consumed, time spent, buying-group behavior, feature/use-case interest, sales follow-up impact |
+| Enterprise-grade governance | Procurement, InfoSec, regions, partners, or client programs matter | SOC 2, brand controls, permissions, global launch history, enterprise customer examples |
+
+## Current Customer Proof Library From V3.2
+
+Use these only in contexts allowed by the status column. Public quote and public entries can be considered for external use when the asset context and source attribution are appropriate. Internal or pending-verify rows require user approval or source verification before external use.
+
+| Customer / source | Headline proof | Use case | Status |
+|---|---|---|---|
+| HP Public Sector | $559M bookings and $2.4B TOV in one quarter | Public sector ABM | Internal |
+| ServiceNow + AT&T | $4M to $50M after 6-month nurture, 1,000%+ NNACV | ABM 1:1 strategic | Public quote |
+| SAP | $15M ACV in 6 months on a broken relationship | Strategic recovery | Public quote |
+| RingCentral | $1M deal and 98% account engagement in 60 days | ABM at scale | Available |
+| Oracle Strategic Clients | 2.2x open rate and 4 to 15x engagement vs. Eloqua | ABM 1:1 | Internal |
+| Checkpoint Security | 15K to 55K engaged accounts in one year | Multi-use deployment | Internal |
+| Qlik | 30% YoY growth across top 300 accounts | ABM at scale | Public quote |
+| Qlik Virtual Passport | $17M influenced pipeline from 6 virtual events | Events | Internal |
+| 6sense Breakthrough | 170% ROI and 2 closed-won in 3 months | Events | Public |
+| ServiceNow + Microsoft | 516 net new leads and $10M influenced pipeline | ABM 1:1 | Public quote |
+| ServiceNow + Micron | $750K per quarter accelerated spend | Cross-sell | Public quote |
+| Bentley Systems | 10 to 15% product usage increase | Adoption / cross-sell | Internal |
+| On-behalf sales email | 2 to 3x response rate and hundreds of millions in pipeline | Field sales activation | Internal, pending verify |
+
+Current platform benchmark proof:
+
+- 4 to 5x higher campaign outcomes versus traditional campaigns.
+- Up to 40% more known traffic through Folloze identity.
+- 19.5% highly engaged inbound visitors based on a 1 million visitor sample.
+- 67% outbound engagement rate, 4.5x typical, based on 7,675 campaigns.
+- Board creation: 1 hour with Folloze versus about 20 hours of web development time.
+- At 321 boards in 6 months: about 6,100 hours saved, $150K to $450K savings.
+- Tech consolidation: $50K to $100K per 6 months in eliminated tooling spend.
+
+Do not use:
+
+- FireEye. Company merged and acquired.
+- PWC. Per Troy: customer is leaving.
+
+## Historical Candidate Proof From V3.1 Review
+
+These were named in the Head of Marketing v3.1 review source. Verify final number, source, and customer permission before external use.
+
+| Customer / source | Candidate proof | Status |
+|---|---|---|
+| Conga | $6.3M influence from 6sense Breakthrough presentation | Verify source and permission before use |
+| Oracle field marketing | $130M+ pipeline in January alone | Confirm before use |
+| HP public sector | $39M bookings in three quarters | Confirm before use |
+| RingCentral | $1M deal driven by on-behalf sales email activation | Confirm before use |
+| Panther | 6sense Breakthrough proof angle | Confirm proof and relationship status |
+| ServiceNow | Retained through enterprise Adobe mandate | Confirm allowed phrasing |
+| Loft Ware | Salesforce-triggered campaign automation | Confirm allowed phrasing |
+| Nutanix | Enterprise reference | Confirm current approved proof |
+
+Do not turn candidate proof into a customer-facing claim until it is verified.
+
+## Approved Or Previously Used General Claims
+
+Use carefully and keep wording close to the approved form. Check the current asset context before using any number.
 
 - 50% faster campaign builds
 - 10x engagement
-- $6.3M attributed pipeline
-- 5x faster campaign creation
-- 4-15x higher engagement compared to benchmarks
+- $6.3M attributed or influenced pipeline for Conga, subject to source approval
+- 5x faster campaign creation, when the user has approved that one-pager claim
+- 4-15x higher engagement compared to benchmarks, when the source material is approved
 - engagement-based optimization
 - AI-assisted workflows
 - revenue attribution visibility
-- from prompt to pipeline
 
 Do not imply that every customer will achieve these results. Pair proof with the specific use case when possible.
 
@@ -47,7 +108,8 @@ Choose proof by relevance, not by largest number.
 | Buyer concern | Best proof type |
 |---|---|
 | Lean team capacity | speed, headcount leverage, implementation simplicity |
-| Campaign orchestration | campaign count, reuse, channel coordination |
+| AI content activation | content-to-experience workflow, MCP/API activation, governance |
+| Campaign execution | campaign count, reuse, channel coordination |
 | Executive engagement | account engagement, C-suite engagement, session depth |
 | Pipeline proof | attributed pipeline, influenced pipeline, direct pipeline |
 | Existing ABM investment | activation of 6sense, Demandbase, Marketo, Salesforce, or ad channels |
@@ -55,110 +117,124 @@ Choose proof by relevance, not by largest number.
 | Events or webinars | registrations, first-time responders, direct/influenced pipeline |
 | Reactivation | dormant accounts reactivated, new opportunities, conversion |
 
-## Customer Proof Library
+## Existing Customer Proof Library
 
-Use customer names only when the asset context and user instructions support named proof.
+Use customer names only when the asset context and user instructions support named proof. If source status is uncertain, verify before external use.
 
 ### Conga
 
 Best for: impact, pipeline attribution, 6sense activation, campaign reuse.
 
-Approved proof:
+Candidate / previously used proof:
 
-- $6.3M attributed pipeline
-- 6 campaigns from 2 boards
+- $6.3M attributed or influenced pipeline, source approval required
+- 6 campaigns from 2 boards, source approval required
 - strong fit for buyers with ABM platforms that need activation and revenue visibility
 
 ### Microsoft
 
 Best for: enterprise scale and pipeline influence.
 
-Approved proof:
+Previously used proof:
 
 - 560 leads
 - 478 MQLs
 - $10M influenced pipeline
 
+Verify source and permission before external use.
+
 ### RingCentral
 
-Best for: executive engagement and account coverage.
+Best for: executive engagement, account coverage, and sales activation.
 
-Approved proof:
+Previously used or candidate proof:
 
 - 98% target account engagement to date
 - 48% to 50% C-level engagement in cited materials
 - about 5 minutes average session time
-- strong fit for enterprise multi-threading
+- $1M deal driven by on-behalf sales email activation, confirm before use
 
 ### Oracle
 
-Best for: 1:1 ABM and multi-stakeholder engagement.
+Best for: 1:1 ABM, field marketing, and multi-stakeholder engagement.
 
-Approved proof:
+Previously used or candidate proof:
 
 - 102 stakeholders engaged
 - 68% explored multiple content assets
 - closed-won in under 90 days in the referenced campaign
+- $130M+ field marketing pipeline in January alone, confirm before use
 
 ### Autodesk
 
-Best for: ABM orchestration across channels.
+Best for: ABM activation across channels.
 
-Approved proof:
+Previously used proof:
 
 - multi-million-dollar pipeline per account
-- Folloze as a central orchestration hub for media, email, BDR, direct mail, and digital experiences
+- Folloze as a central activation hub for media, email, BDR, direct mail, and digital experiences
+
+Verify source and permission before external use.
 
 ### ServiceNow
 
-Best for: efficiency and cost-conscious enterprise buyers.
+Best for: enterprise governance and standardization.
 
-Approved proof:
+Candidate / previously used proof:
 
-- $750K per year savings in the approved source material
+- retained through enterprise Adobe mandate, confirm allowed phrasing
+- older savings claims require source verification before reuse
 
 ### Qlik Virtual Passport
 
 Best for: events, field marketing, and webinar programs.
 
-Approved proof:
+Previously used proof:
 
 - 678 participants in 6 weeks
 - $1.6M direct pipeline
 - $16M influenced pipeline
 - 60%+ first-time responders
 
+Verify source and permission before external use.
+
 ### Wake The Dead Campaign
 
 Best for: dormant-account reactivation.
 
-Approved proof:
+Previously used proof:
 
 - 42 dormant accounts reactivated
 - $1.1M pipeline generated
 - 19% conversion to new opportunities
 - 79% CTR on display ads
 
+Verify source and permission before external use.
+
 ### Genesys And Google
 
-Best for: executive meetings and public sector-style motions.
+Best for: executive meetings and public-sector-style motions.
 
-Approved proof:
+Previously used proof:
 
 - 12 executive meetings
 - 6 opportunities created
+
+Verify source and permission before external use.
 
 ### Spokeo
 
 Best for: implementation simplicity and speed.
 
-Approved proof:
+Previously used proof:
 
 - onboarding completed in 45 minutes
 
+Verify source and permission before external use.
+
 ## Reference Logo Guidance
 
-Reference logos cleared for outbound-style use in approved materials include:
+Reference logos cleared for outbound-style use in approved materials may include:
 
 - Oracle
 - Autodesk
@@ -185,6 +261,6 @@ Do not claim:
 - future roadmap features
 - guaranteed performance results
 - product capabilities that are only experimental
+- that customer outcomes are typical unless the approved source says so
 
 When in doubt, make the claim qualitative and cite the proof type in the working summary rather than overfitting the page copy.
-

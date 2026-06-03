@@ -1,0 +1,10 @@
+{
+  "ok": true,
+  "run_dir": "./artifacts/hatch-pets/deck-dock",
+  "spritesheet": "./artifacts/hatch-pets/deck-dock/final/spritesheet.webp",
+  "validation": "./artifacts/hatch-pets/deck-dock/final/validation.json",
+  "contact_sheet": "./artifacts/hatch-pets/deck-dock/qa/contact-sheet.png",
+  "review": "./artifacts/hatch-pets/deck-dock/qa/review.json",
+  "package": "~/.codex/pets/deck-dock",
+  "visual_qa": "pass"
+}

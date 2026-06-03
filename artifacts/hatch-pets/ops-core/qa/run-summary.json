@@ -1,0 +1,10 @@
+{
+  "ok": true,
+  "run_dir": "./artifacts/hatch-pets/ops-core",
+  "spritesheet": "./artifacts/hatch-pets/ops-core/final/spritesheet.webp",
+  "validation": "./artifacts/hatch-pets/ops-core/final/validation.json",
+  "contact_sheet": "./artifacts/hatch-pets/ops-core/qa/contact-sheet.png",
+  "review": "./artifacts/hatch-pets/ops-core/qa/review.json",
+  "package": "~/.codex/pets/ops-core",
+  "visual_qa": "pass"
+}

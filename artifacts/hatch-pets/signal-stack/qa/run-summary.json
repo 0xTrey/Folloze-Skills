@@ -1,0 +1,10 @@
+{
+  "ok": true,
+  "run_dir": "./artifacts/hatch-pets/signal-stack",
+  "spritesheet": "./artifacts/hatch-pets/signal-stack/final/spritesheet.webp",
+  "validation": "./artifacts/hatch-pets/signal-stack/final/validation.json",
+  "contact_sheet": "./artifacts/hatch-pets/signal-stack/qa/contact-sheet.png",
+  "review": "./artifacts/hatch-pets/signal-stack/qa/review.json",
+  "package": "~/.codex/pets/signal-stack",
+  "visual_qa": "pass"
+}

@@ -1,0 +1,142 @@
+{
+  "page": "http://127.0.0.1:59218/folloze-mid-market-campaign-board.html",
+  "outputs": [
+    {
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "metrics": {
+        "title": "Folloze for Mid-Market Growth Teams",
+        "innerWidth": 1440,
+        "scrollWidth": 1425,
+        "overflow": false,
+        "badLinks": [],
+        "unsafeExternal": [],
+        "analyticsLinks": 14,
+        "unlabeledControls": 0,
+        "h1Count": 1,
+        "visibleBadTerms": [],
+        "overflowers": []
+      }
+    },
+    {
+      "viewport": {
+        "name": "mobile390",
+        "width": 390,
+        "height": 1200
+      },
+      "metrics": {
+        "title": "Folloze for Mid-Market Growth Teams",
+        "innerWidth": 390,
+        "scrollWidth": 375,
+        "overflow": false,
+        "badLinks": [],
+        "unsafeExternal": [],
+        "analyticsLinks": 14,
+        "unlabeledControls": 0,
+        "h1Count": 1,
+        "visibleBadTerms": [],
+        "overflowers": []
+      }
+    },
+    {
+      "viewport": {
+        "name": "mobile320",
+        "width": 320,
+        "height": 1100
+      },
+      "metrics": {
+        "title": "Folloze for Mid-Market Growth Teams",
+        "innerWidth": 320,
+        "scrollWidth": 305,
+        "overflow": false,
+        "badLinks": [],
+        "unsafeExternal": [],
+        "analyticsLinks": 14,
+        "unlabeledControls": 0,
+        "h1Count": 1,
+        "visibleBadTerms": [],
+        "overflowers": []
+      }
+    },
+    {
+      "viewport": {
+        "name": "tablet768",
+        "width": 768,
+        "height": 1100
+      },
+      "metrics": {
+        "title": "Folloze for Mid-Market Growth Teams",
+        "innerWidth": 768,
+        "scrollWidth": 753,
+        "overflow": false,
+        "badLinks": [],
+        "unsafeExternal": [],
+        "analyticsLinks": 14,
+        "unlabeledControls": 0,
+        "h1Count": 1,
+        "visibleBadTerms": [],
+        "overflowers": []
+      }
+    }
+  ],
+  "interaction": {
+    "choices": [
+      {
+        "choice": "web",
+        "pressed": "true",
+        "title": "Build the campaign destination in Folloze first.",
+        "cta": "Discuss faster launches"
+      },
+      {
+        "choice": "nurture",
+        "pressed": "true",
+        "title": "Personalize the journey around segment reality.",
+        "cta": "Plan a personalized path"
+      },
+      {
+        "choice": "sales",
+        "pressed": "true",
+        "title": "Turn engagement into a clearer sales handoff.",
+        "cta": "Improve the handoff"
+      },
+      {
+        "choice": "content",
+        "pressed": "true",
+        "title": "Package approved assets into a guided experience.",
+        "cta": "Organize your content path"
+      }
+    ],
+    "eventCount": 18,
+    "events": [
+      "selector_change",
+      "selector_change",
+      "selector_change",
+      "selector_change",
+      "cta_click",
+      "cta_click",
+      "cta_click",
+      "cta_click",
+      "cta_click",
+      "cta_click",
+      "cta_click",
+      "cta_click",
+      "cta_click",
+      "resource_click",
+      "resource_click",
+      "resource_click",
+      "cta_click",
+      "cta_click"
+    ]
+  },
+  "consoleEventCount": 0,
+  "externalLinkStatus": {
+    "https://www.folloze.com/request-demo": 200,
+    "https://www.folloze.com/platform/overview": 200,
+    "https://www.folloze.com/platform/features": 200,
+    "https://www.folloze.com/platform/product-tour/": 200,
+    "https://www.folloze.com/": 200
+  }
+}

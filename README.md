@@ -109,7 +109,13 @@ Builds branded Folloze sales and customer lifecycle documents such as discovery 
 Builds a read-only daily Folloze GTM brief for the current teammate from calendar, Granola, Gmail, Google Drive, Salesforce, and available account context, with outbound follow-up verification before tasks are listed as open.
 
 ### `folloze-brand-kit`
-Provides reusable Folloze public-facing brand, positioning, messaging, claims, proof, voice, color, and logo source material for other Folloze skills.
+Provides reusable Folloze v3.2 brand, positioning, product capability, messaging, claims, proof, voice, color, and logo source material for other Folloze skills. Includes internal, customer-ready, and public-safe product capability references so downstream skills can choose the right source boundary.
+
+### `folloze-campaign-board-builder`
+Guides customer marketers from campaign brief to campaign design context, mandatory wireframe approval, local editable HTML, automatic QA, and Folloze publish readiness for ABM microsites, campaign landing pages, demand generation pages, event follow-up experiences, resource hubs, and other buyer experiences.
+
+### `folloze-zoom-deal-room`
+Turns Zoom recaps, meeting-assets emails, and deal context into buyer-safe Folloze deal-room briefs, then routes the build to MCP rich HTML or the external board API when the user asks to create a live board.
 
 ### `Folloze-MCP-Demo-Builder`
 Builds and updates vendor-branded Folloze MCP microsites, account-specific solution pages, demo boards, and buyer experiences from a single self-contained HTML page, with MCP guide compliance, analytics hooks, design QA defaults, real CTA/link requirements, source-page brand extraction, browser-comment iteration, and operator-scoped tracker logging after successful MCP saves.
@@ -137,3 +143,15 @@ Builds a weekly by-account summary of unresolved or unanswered customer action i
 - Put reference docs and examples in `references/`
 - Keep skills machine-independent and avoid user-specific absolute paths
 - Avoid generated artifacts and local caches in git
+
+## Reference Source Boundaries
+
+The shared skills repo can include public-safe reusable source material and internal pointers, but it should not copy restricted deal artifacts into GitHub.
+
+For Folloze product capability guidance:
+
+- `Skills/folloze-brand-kit/references/product-capabilities-internal.md` points internal agents to the access-controlled Google Doc and canonical markdown source.
+- `Skills/folloze-brand-kit/references/product-capabilities-customer-ready.md` is the customer-facing fallback for sales docs, one-pagers, deal rooms, and board copy.
+- `Skills/folloze-brand-kit/references/product-capabilities-public-safe.md` is the public/no-Drive fallback for prompts, public repos, and contexts where internal Drive access is unavailable.
+
+Downstream skills should reference `folloze-brand-kit` instead of copying these capability definitions into their own folders.
