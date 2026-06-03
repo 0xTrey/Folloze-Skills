@@ -10,9 +10,10 @@
     },
     {
       "name": "customer-renewal-board",
-      "path": "Skills/Troy Folloze Created Skills/customer-renewal-board",
+      "path": "Skills/Customer Renewal Board/customer-renewal-board",
       "enabled": true,
-      "requires_restart": true
+      "requires_restart": true,
+      "description": "Build Folloze customer renewal conversation boards from the shared Folloze demo template board or reusable single-page HTML template."
     },
     {
       "name": "daily-email-summary-delivery",
