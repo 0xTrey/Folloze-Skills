@@ -9,14 +9,14 @@
       "requires_restart": true
     },
     {
-      "name": "folloze-sales-doc",
-      "path": "Skills/folloze-sales-doc",
+      "name": "customer-renewal-board",
+      "path": "Skills/Troy Folloze Created Skills/customer-renewal-board",
       "enabled": true,
       "requires_restart": true
     },
     {
-      "name": "folloze-order-form-builder",
-      "path": "Skills/folloze-order-form-builder",
+      "name": "daily-email-summary-delivery",
+      "path": "Skills/Troy Folloze Created Skills/daily-email-summary-delivery",
       "enabled": true,
       "requires_restart": true
     },
@@ -27,14 +27,14 @@
       "requires_restart": true
     },
     {
-      "name": "folloze-morning-brief",
-      "path": "Skills/folloze-morning-brief",
+      "name": "folloze-brand-kit",
+      "path": "Skills/folloze-brand-kit",
       "enabled": true,
       "requires_restart": true
     },
     {
-      "name": "folloze-brand-kit",
-      "path": "Skills/folloze-brand-kit",
+      "name": "Folloze-Customer-Watchlist",
+      "path": "Skills/Troy Folloze Created Skills/Folloze-Customer-Watchlist",
       "enabled": true,
       "requires_restart": true
     },
@@ -69,8 +69,38 @@
       "requires_restart": true
     },
     {
+      "name": "folloze-morning-brief",
+      "path": "Skills/folloze-morning-brief",
+      "enabled": true,
+      "requires_restart": true
+    },
+    {
       "name": "folloze-one-pager",
       "path": "Skills/folloze-one-pager",
+      "enabled": true,
+      "requires_restart": true
+    },
+    {
+      "name": "folloze-order-form-builder",
+      "path": "Skills/folloze-order-form-builder",
+      "enabled": true,
+      "requires_restart": true
+    },
+    {
+      "name": "folloze-sales-doc",
+      "path": "Skills/folloze-sales-doc",
+      "enabled": true,
+      "requires_restart": true
+    },
+    {
+      "name": "gainsight-mcp-connector",
+      "path": "Skills/Troy Folloze Created Skills/gainsight-mcp-connector",
+      "enabled": true,
+      "requires_restart": true
+    },
+    {
+      "name": "linkedin-operator-content",
+      "path": "Skills/Troy Folloze Created Skills/linkedin-operator-content",
       "enabled": true,
       "requires_restart": true
     },

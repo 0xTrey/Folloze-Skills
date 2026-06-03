@@ -1,0 +1,13 @@
+interface:
+  display_name: "Gainsight MCP Connector"
+  short_description: "Connect and verify Gainsight PX MCP auth"
+  default_prompt: "Use $gainsight-mcp-connector to connect Gainsight PX through the MCP endpoint and verify the tools are available."
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "gainsight"
+      description: "Gainsight PX MCP server"
+      transport: "streamable_http"
+      url: "https://mcp.aptrinsic.com/mcp"
+policy:
+  allow_implicit_invocation: true
