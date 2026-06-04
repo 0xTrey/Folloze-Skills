@@ -305,30 +305,25 @@ After a successful save, update the local research/result note for that board wi
 
 - Tracker logging is operator-scoped. For Trey's local Codex runs, write Trey's shared demo-environments tracker only once: immediately after a board is created in Folloze for the first time. Do not update the Google Sheet for later edits, annotation passes, repushes, or existing-board updates unless Trey explicitly asks for that specific tracker change.
 - Tracker: `MCP Demo Environments - May 2026`, tab `Demo Environments`, spreadsheet `1s_NU2O7lO8f_QSVmP2mI5dBNOGgUh7oQo3bfenerMqk`.
-- Current Row A schema is authoritative:
-  - Column A: `Company name`
-  - Column B: `Board Name`
-  - Column C: `Deployment URL`
-  - Column D: `Designer edit URL`
-  - Column E: `Needed By Date`
-  - Column F: `Luke Feedback`
-  - Column G: `Agent Notes`
-- Before a first-create tracker write, read row 1 once and align writes by header name rather than older column positions. If row 1 differs, stop and adapt to the live headers before writing.
+- Row 1 is authoritative. Do not assume fixed column letters beyond reading the live header row first. Known tracker headers include `Company name`, `Board Name`, `Deployment URL`, `Designer edit URL`, `Needed By Date`, `Luke Feedback`, `Agent Notes`, `Production Date`, and `Board Builder`.
+- Before a first-create tracker write or a production URL update, read row 1 once and map writes by header name. If the sheet has added, removed, or reordered columns, adapt to the live headers instead of forcing the older A:G shape.
 - For any other operator or team member, do not write to Trey's tracker unless Trey explicitly asks for that specific run. Use a team-provided tracker if one is supplied; otherwise skip tracker logging and state that no tracker was configured.
 - If tracker logging is in scope for a first create, search existing rows first by board ID from the designer URL or notes, exact designer URL, exact board name, and company name. If a row already exists for that board, do not write again; report that the tracker was already logged.
 - Treat company-name-only tracker matches as weak matches. If the matched row's board name, board ID, designer URL, target account, or agent notes clearly refer to a different board or account motion, do not overwrite it silently. Prefer creating a new row, or ask Trey if the row should be repurposed.
 - Never use Google Sheets `appendCells` for Trey's shared tracker. The sheet can contain preallocated blank rows, so append may write below the visible working table instead of the next available row.
-- For a net-new row, read a bounded visible range such as `A1:G120` and choose the next visible blank row: the first row after the last contiguous tracker row where columns A-D contain a company name, board name, deployment URL, or designer URL. Ignore trailing preallocated rows and do not write below the visible working table just because the sheet grid has more allocated rows.
-- Write the full A:G tracker record in one bounded `updateCells` request. Do not update only Column C, Column D, or Column G unless updating an already-canonical row, and do not leave notes stranded in a separate row.
-- On first-create tracker writes, write the saved board title/name returned or passed to MCP into Column B (`Board Name`).
-- Preserve Column E (`Needed By Date`) and Column F (`Luke Feedback`) unless Trey explicitly asks to change them.
-- If MCP returns only a signed-in designer URL during first creation, write `deployment URL pending from MCP` into Column C. Do not invent deployment URLs.
-- If Trey provides a real public or published URL at the same first-create save moment, write that URL into Column C and record in Column G that it was user-supplied.
-- If Trey later supplies a real public `experience.folloze.com` URL for an already-saved board, verify it with a bounded HTTP check, update the existing canonical tracker row by board ID/designer URL, and update the local research note. Do not create a new row and do not resave the board unless Trey explicitly asks.
-- Record Column D (`Designer edit URL`) from the exact MCP returned designer URL.
-- Record Column G (`Agent Notes`) as a concise status note with board ID, date, source boundary, theme mode, QA/publish caveat, and latest material change.
+- For a net-new row, read a bounded visible range across the live header width, such as `A1:H120` or `A1:I120`, and choose the next visible blank row: the first row after the last contiguous tracker row where the company, board name, deployment URL, or designer URL headers contain data. Ignore trailing preallocated rows and do not write below the visible working table just because the sheet grid has more allocated rows.
+- Write the full tracker record across the live header width in one bounded `updateCells` request. Do not update only deployment URL, designer URL, or notes unless updating an already-canonical row, and do not leave notes stranded in a separate row.
+- On first-create tracker writes, write the saved board title/name returned or passed to MCP into `Board Name`.
+- Preserve `Needed By Date`, `Luke Feedback`, and any other human-owned fields unless Trey explicitly asks to change them.
+- If MCP returns only a signed-in designer URL during first creation, write `deployment URL pending from MCP` into `Deployment URL`. Do not invent deployment URLs.
+- If Trey provides a real public or published URL at the same first-create save moment, verify it with a bounded HTTP check, write that URL into `Deployment URL`, and record in `Agent Notes` that it was user-supplied and verified.
+- If Trey later supplies a real public `experience.folloze.com` URL for an already-saved board, verify it with a bounded HTTP check, update the existing canonical tracker row by board ID/designer URL, update `Deployment URL`, update `Production Date` when that header exists, and update the local research note. Do not create a new row and do not resave the board unless Trey explicitly asks.
+- Record `Designer edit URL` from the exact MCP returned designer URL.
+- Record `Board Builder` when that header exists. For Trey's local Codex runs, default to `Trey` unless the user names a different builder or evidence clearly shows another builder, such as David building a PwC example. Preserve an existing nonblank builder value unless Trey asks to correct it.
+- Record `Production Date` when that header exists and a real production URL has been verified. Use the current local date in `YYYY-MM-DD` format unless Trey supplies a different production date. Leave it blank while deployment remains pending.
+- Record `Agent Notes` as a concise status note with board ID, date, source boundary, theme mode, QA/publish caveat, latest material change, and whether the production URL was MCP-returned, user-supplied, or verified.
 - For tracker reads, avoid parallel Google Sheets calls. Use one bounded row/header lookup, then one bounded row search if needed.
-- For first-create tracker writes, use this fallback sequence when the connector supports it: read `A1:G1` for headers, search bounded rows for the board/company, read a bounded visible table range such as `A1:G120` to find the next visible blank row, fetch spreadsheet metadata for the target `sheetId`, then write the row with a direct bounded update. This avoids broad reads and avoids append helpers that can skip to the bottom of preallocated rows.
+- For first-create tracker writes, use this fallback sequence when the connector supports it: read row 1 for headers, search bounded rows for the board/company, read a bounded visible table range across the live header width such as `A1:H120` or `A1:I120` to find the next visible blank row, fetch spreadsheet metadata for the target `sheetId`, then write the row with a direct bounded update. This avoids broad reads and avoids append helpers that can skip to the bottom of preallocated rows.
 - If a tracker search finds the same board ID, designer URL, board name, or public URL in multiple rows, preserve the most complete row in the visible tracker table as canonical. Move missing cells into that row, then clear orphan partial rows. Do not report tracker completion until one canonical row remains, unless readback is rate-limited after a successful repair write.
 - If Sheets returns `RATE_LIMITED`, `RESOURCE_EXHAUSTED`, or `RATE_LIMIT_EXCEEDED`, pause once for the quota window and retry only narrow ranges. Do not loop on wide metadata or whole-sheet reads.
 - If the write succeeds, do not require immediate readback verification. If readback hits `RATE_LIMIT_EXCEEDED`, record that the write request succeeded and report the readback caveat instead of retrying in a loop.
@@ -546,8 +541,8 @@ Before every MCP save, run a lightweight automated or programmatic check against
 After a successful MCP save, finish the operational loop in this order:
 
 1. Capture the returned `boardId` and exact MCP-returned URL. Do not infer a public deployment URL from the board ID or prior tracker rows.
-2. Update the local research/result note with save status, board ID, designer URL, public deployment status, theme ID/mode, source file, QA status, and tracker status.
-3. If this is the first Folloze create and tracker logging is in scope, write the tracker row once using the live Row A schema and the next visible blank row in the bounded tracker table. Do not use `appendCells`. If the tracker write is blocked by quota, record tracker status as pending and return the saved board details.
+2. Update the local research/result note with save status, board ID, designer URL, public deployment status, production date when available, theme ID/mode, source file, QA status, and tracker status.
+3. If this is the first Folloze create and tracker logging is in scope, write the tracker row once using the live Row 1 schema and the next visible blank row in the bounded tracker table. Fill `Board Builder` and `Production Date` when those headers exist and the values are known. Do not use `appendCells`. If the tracker write is blocked by quota, record tracker status as pending and return the saved board details.
 4. Inspect git status and stage only the relevant source, research note, and QA artifacts for that board. Leave unrelated dirty files alone.
 5. Commit the scoped board or skill changes when the repo state permits. If the repo has unrelated staged changes, do not include them; if a commit cannot be created safely, report the exact staged/uncommitted state.
 6. If the user explicitly asked for GitHub/remote backup, push the current branch only after confirming it will not publish unrelated local work.
@@ -586,6 +581,6 @@ Keep the final response short:
 - Board ID.
 - Exact designer/live URL returned by MCP.
 - Public deployment URL when MCP returned one or Trey supplied one; otherwise say deployment is pending.
-- Tracker status when tracker logging is in scope.
+- Tracker status when tracker logging is in scope, including `Board Builder` and `Production Date` when those fields were written or intentionally left blank.
 - Commit hash when repo-backed source changes were committed.
 - Any caveat, especially pending public deployment or signed-in-only QA.
