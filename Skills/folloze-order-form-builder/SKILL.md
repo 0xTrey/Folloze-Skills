@@ -31,56 +31,29 @@ Use sources in this order:
 
 1. User-provided instructions in the current conversation.
 2. User-provided pricing-guide, template, or prior-order-form links.
-3. Current Folloze pricing guide in Drive, if the user did not provide one: `https://docs.google.com/presentation/d/1QzO5UjWo-Z62qKeg8QFP6NvSSDqhhfYogJJgYkD1MfY/edit`
-4. Current full native Google Doc template, if the user did not provide one: `https://docs.google.com/document/d/1-6kyilfoeIbr_u0i476V2KGHF24r7RVJhLMlJFqKxac/edit`
-5. Secondary prior DOCX template for alternate wording or redline examples: `https://docs.google.com/document/d/1DEdpK4aIXeBJ8CRRzoTJFHm54q5zaYww/edit`
+3. The local private pricing and terms reference, resolved from `FOLLOZE_ORDER_FORM_PRICING_PATH` when set.
+4. The repo-local private fallback at `private/pricing/folloze-order-form-pricing.md` when present.
+5. User-provided customer-specific agreement language or customer-specific commercial instructions.
 
-Always fetch the live pricing guide and template content before building. Treat static prices in this skill as a cross-check, not as the source of truth.
+Never store live pricing-guide URLs, order-form template URLs, exact package prices, package entitlements, renewal percentages, customer-specific targets, customer-specific discounts, or negotiated commercial terms in this shared skill file.
+
+Always load the current private pricing reference before building. If no private reference or user-provided pricing source is available, stop and ask for an approved current pricing guide, order-form template, or local private reference path.
 
 For plain-language explanations of package rows, modules, user roles, Global Scalability, Website Engagement, Events, and Folloze AI/Data credits, use `folloze-brand-kit` `references/product-capabilities-internal.md`. The live pricing guide, order form, and user-provided commercial instructions still outrank the capability reference for actual prices, quantities, and contracted terms.
 
-## Current Pricing Cross-Check
+## Private Pricing And Terms Reference
 
-Use these values only after confirming the current pricing guide still matches:
+Use the private reference for:
 
-| Item | Price |
-|---|---:|
-| Starter package | $19,995 |
-| Professional package | $39,995 |
-| Premium package | $69,995 |
-| Enterprise package | $89,995 |
-| Bronze Customer Success | $10,000 |
-| Silver Customer Success | $20,000 |
-| Gold Customer Success | $50,000 |
-| Sales Enablement module | $15,000 |
-| Website Engagement module | $15,000 |
-| Events module | $15,000 |
-| Additional Creator | $3,300 |
-| Additional Collaborator | $950 |
-| 250 AI/Data credits | $1,000 |
-| 1,000 AI/Data credits | $3,000 |
-| 2,500 AI/Data credits | $6,250 |
-| 5,000 AI/Data credits | $10,000 |
-
-Package entitlements from the current pricing guide, if still current:
-
-| Package | Users Included | AI/Data Credits Included | Modules Included |
-|---|---:|---:|---|
-| Starter | 2 | 250 | ABX |
-| Professional | 4 | 1,000 | ABX + Events |
-| Premium | 8 | 2,000 | ABX + Events + Website Engagement |
-| Enterprise | 12 | 5,000 | ABX + Events + Website Engagement + Sales Enablement |
-
-Use the package row to show what is included in the selected package. The first cell of the package row should include the package name plus the included package scope as indented bullets.
-
-Standard package-row inclusion copy:
-
-| Package | Package-row bullets |
-|---|---|
-| Starter | ABX; Account & Contact Intelligence; Content Engine; 2 Creators included; 250 AI/Data Credits |
-| Professional | ABX, Events; Account & Contact Intelligence; Content Engine; Integrations; 4 Creators included; 1,000 AI/Data Credits |
-| Premium | ABX, Events, Website Engagement; Account & Contact Intelligence; Content Engine; Integrations; Global Scalability (SSO, DWH, DAM & Localization); 8 Creators included; 2,000 AI/Data Credits |
-| Enterprise | ABX, Events, Website Engagement, Sales Enablement; Account & Contact Intelligence; Content Engine; Integrations; Global Scalability (SSO, DWH, DAM & Localization); 12 Creators included; 5,000 AI/Data Credits |
+- current pricing-guide and order-form template links
+- package list prices
+- customer success tiers
+- module and add-on prices
+- AI/Data credit tiers
+- package entitlements and package-row inclusion copy
+- standard applicable agreement language
+- term-length wording rules
+- renewal, overage, and auto-upgrade clauses
 
 ## Inputs To Resolve
 
@@ -108,30 +81,11 @@ If legal name, address, or contacts are missing:
 - Leave contact fields blank instead of inventing names, emails, or phone numbers.
 - State unresolved blanks in the final response.
 
-## Standard Applicable Agreement Language
+## Applicable Agreement Language
 
-Include this applicable agreement language in every standard order form unless the user provides a customer-specific agreement clause. Keep the MSA URL exactly as written. Replace the term placeholders so the language matches the contract details table.
+Load standard applicable agreement language and term-length rules from the private pricing and terms reference, unless the user provides customer-specific agreement language. Preserve customer-specific language when supplied and still verify that the term length matches the contract details table.
 
-```text
-This Order Form is subject to the terms and conditions of Folloze's Master Service Agreement (https://www.folloze.com/contracts-msa)
-
-The initial term of the Agreement shall be {{TERM_WORDS}} ({{TERM_MONTHS}}) months from the Effective Date (the "Initial Term"), unless stated otherwise above. Upon expiration of the Initial Term, the Agreement will automatically renew and roll over for additional successive {{TERM_WORDS}} ({{TERM_MONTHS}}) months terms on each anniversary of the Effective Date (each, a "Renewal Term" and together with the Initial Term, the "Term"), at an annual increase of at least 7% of the initial price set forth on the last Order Form, unless Customer notifies Folloze in writing of its intent not to renew the Agreement at least thirty (30) days before the scheduled renewal date. If Customer provides Folloze with timely notice of its intent not to renew the Agreement pursuant to this Section, the Agreement shall expire at the end of the current Term, and Customer shall not be obligated to pay such Renewal Term invoice.
-
-The terms in any Customer purchase order or business form will not amend or modify this Agreement and are expressly rejected; any of these Customer documents are for administrative purposes only and have no legal effect. Folloze reserves the right to bill the Customer for any service fees imposed by the Customer and directly incurred during the invoicing and collections process.
-
-For any usage of licenses or boards that exceed the current contract quantity limits by 5% or more for more than 30 days, Folloze reserves the right to automatically upgrade the Customer's subscription and invoice for the increase, which will be co-terminated with the current subscription term.
-```
-
-Term-length rules:
-
-- Default to a two-year agreement unless the user specifies a one-year, three-year, or custom timeframe.
-- The applicable agreement term must match the contract details table exactly.
-- For a one-year agreement, use `twelve (12)` months.
-- For a two-year agreement, use `twenty-four (24)` months.
-- For a three-year agreement, use `thirty-six (36)` months.
-- For a custom term, calculate the month count from the start and end dates when obvious. If the dates do not cleanly map to full months, ask the user for the desired agreement term wording.
-- Use the same term wording in both the Initial Term sentence and the Renewal Term sentence.
-- If the user provides customer-specific agreement language, preserve that language and still verify the term length against the contract details.
+Do not hardcode renewal percentages, overage thresholds, auto-upgrade clauses, or standard legal language in this shared skill. Those belong in the private reference or in the user-provided customer-specific source.
 
 ## Build Workflow
 
@@ -151,9 +105,9 @@ Before material edits, state the goal in plain language:
 
 Use Google Drive/Docs/Slides connector tools to fetch:
 
-- the pricing guide text or slide data
-- the primary order-form template text and tables
-- any secondary template the user provided
+- the pricing guide text or slide data from the private reference or user-provided source
+- the primary order-form template text and tables from the private reference or user-provided source
+- any secondary template the private reference or user provided
 
 For native Google Docs, use connector readback for structure. For Office-format files in Drive, use Drive fetch/export.
 

@@ -8,3 +8,7 @@ __pycache__/
 venv/
 dist/
 build/
+
+# Local private references. Do not commit pricing, order-form, or deal data.
+private/
+.local/

@@ -114,7 +114,7 @@ This returns:
 - `employment_history` — use to add tenure context (start dates, prior roles at same company)
 - `linkedin_url` — use if returned; otherwise construct best-guess
 
-Write the verified email into the **Tenure / Notes** cell (e.g., `"Email: deepti.arora@okta.com (verified)"`).
+Write the verified email into the **Tenure / Notes** cell (e.g., `"Email: jane@acme.com (verified)"`).
 
 **f) User-provided notes**
 - Parse any pasted meeting notes, call notes, or raw intel

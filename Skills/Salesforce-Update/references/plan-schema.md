@@ -49,7 +49,7 @@ It is created automatically by `init-run`.
   },
   "contact_lookup_updates": {
     "Customer_Executive_Sponsor__c": "vp@acme.com",
-    "Champion__c": "melissa.bradbury@zilliant.com",
+    "Champion__c": "champion@acme.com",
     "Decision_Maker__c": "jane@acme.com"
   },
   "contacts_to_ensure": [
