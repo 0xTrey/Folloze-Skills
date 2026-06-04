@@ -36,6 +36,7 @@ Before local preview and again before MCP save, run a buyer-friendly copy pass a
 - Avoid internal/demo-production language in buyer-facing UI, including `demo`, `example`, `template`, `conversation assets`, `first meeting`, `fit`, `stack`, `pilot`, `scorecard`, or `technical architecture` unless the user explicitly wants that wording.
 - Prefer action-oriented labels that explain why the buyer should click, such as `Why Daon`, `Protect Key Moments`, `See the Solution`, `Prove the Impact`, `Plan a Trust Workshop`, `Explore the Identity Moments`, or equivalent account-specific language.
 - Make subheads answer the buyer's implicit question: why this matters, what risk it reduces, what business outcome improves, and what the next useful action is.
+- Rename ambiguous internal signal labels before save. A metric, resource section, or widget label must explain what the buyer is seeing, such as `Sponsor movement`, `Learn about the Gainsight products`, or `Modeled spend reduction`, instead of shorthand that only makes sense to the builder.
 - Preserve the underlying content when the content is good; change the framing around it first.
 
 ## Marketing Copy And ABM Messaging
@@ -188,6 +189,7 @@ When adding or replacing vendor, target-account, or co-branded header logos:
 - For logos from official asset pages, keep the source URL in the HTML when it is stable and publicly accessible; otherwise inline the verified SVG geometry or use a repo-backed local asset only when the repo is the right durable home.
 - For header lockups, verify the final rendered logo treatment on its actual background. Check black/white versions, wordmarks, clearspace, aspect ratio, object-fit, crop, and mobile fallback. Do not rely on filenames such as `logo-white`, `logo-dark`, or `wordmark` without visual verification.
 - When official target-account marks include both an icon and a wordmark, prefer the fuller lockup on desktop and tablet. On very narrow mobile widths, hide the wordmark only if it prevents overlap or forces the CTA/logo row to break.
+- For 1:1 header account chips, use the target account's real logo or wordmark rather than text such as `for Google`, `Prepared for`, or `Staircase AI for Google`, unless the source brand explicitly uses that label pattern. The default lockup is vendor logo plus target-account logo, with accessible labels but no visible explanatory chip copy.
 
 ## Source Design DNA Capture
 
@@ -406,6 +408,17 @@ Use `references/buyer-experience-quality-gates.md` before local preview and agai
 - Treat screenshots from the user as visual source-of-truth corrections. If screenshot guidance conflicts with a prior implementation, update the source component/token and verify the computed styles.
 - Do not borrow visual patterns from another vendor board unless the current vendor source supports them.
 
+## Browser Comment Correction Workflow
+
+When the user is steering through browser comments, keep a small correction backlog before editing:
+
+- Group comments by section, selected selector, requested change, and whether the edit is copy, layout, component token, interaction, proof, or publish readiness.
+- Obey sequencing language. If the user says `do not edit yet`, `line by line`, or similar, record the backlog but wait for explicit edit approval. If the user later says `do all annotations`, execute the backlog in one focused pass.
+- Convert each comment into the owning source change, not just the highlighted DOM node. If a comment targets a repeated card, button, logo, or calculator control, decide whether the reusable component should change everywhere.
+- Preserve links, analytics, accessibility, board identity, theme mode, and the local source path while editing annotations. Do not rebuild from scratch unless the user explicitly asks for a redesign.
+- After a meaningful annotation pass, create targeted visual QA for the corrected component or section, not only a full-page screenshot. Include desktop and narrow mobile checks when the edit touches header, cards, calculator, nav, or layout.
+- Before Folloze save after comment-driven edits, verify the latest visible correction is present in the exact local file being saved.
+
 ## Annotation-Driven Revision Flow
 
 When the user provides browser annotations or screenshot comments:
@@ -465,6 +478,8 @@ Treat the header as a launch-critical component before local sign-off and again 
 
 - For customer demo examples, include an early proof section by default when the vendor has public customer logos, named customer stories, or analyst/award proof available.
 - Prefer source-site customer logo assets over generic image search. Extract logo paths from the vendor site HTML where possible, convert relative paths to absolute URLs, and verify every referenced logo renders.
+- When the proof rail claims a product-specific customer relationship, verify the listed customers are publicly tied to that specific product or product family. If only broad company proof is available, label the section as broader vendor proof or remove the product-specific claim.
+- Use real logo assets, not text-only placeholders, whenever a source-owned logo is available. If a logo cannot be verified, omit that customer or state the limitation outside buyer-facing copy.
 - Match the source-site carousel/wall style first: heading language, divider/rule treatment, logo sizing, spacing, motion behavior, and white/dark background choice.
 - Duplicate logo-track content only for animation continuity. Do not imply additional customers beyond the verified source list.
 - Do not mix broad proof metrics such as customer counts, developer counts, or uptime claims into a customer-logo rail unless the source module itself mixes those items. Keep metrics in a separate proof/stat section where the fact, implication, and action can be explained.
@@ -488,6 +503,11 @@ When using a carousel for logos, resources, case studies, or proof cards:
 - Match the calculator dimensions to the vendor's product and target account motion. For example, use invoice volume, locations, exception rate, cycle time, recovery opportunity, or labor cost for AP automation rather than a generic revenue-growth model.
 - Use public account data or clearly labeled planning assumptions for defaults. Do not expose private-note numbers as buyer-facing assumptions unless the user explicitly authorizes that use.
 - Every slider, input, tab, scenario selector, or toggle must update its own displayed value and all dependent visible outputs.
+- Remove controls that do not visibly affect modeled value, product mix, or next-step guidance. A decorative slider, scenario pill, or toggle is worse than no control because it undermines trust in the model.
+- When product selection and ROI are part of the same story, merge them into a single workbench or pane so the buyer can see how adding or removing products changes value without jumping sections.
+- If one product is the strategic upsell, make it visually dominant and highest-value in the workbench. Clarify how it relates to renewal-core products instead of letting all modules appear equal.
+- Use scenario selectors only when scenario comparison is a real buyer task. Otherwise hard-code the most defensible default scenario and make the assumptions visible.
+- Layout the workbench so inputs, primary modeled value, and supporting value cards have clear hierarchy. The primary value result should be the largest result, planning inputs should be readable, and supporting cards should fill remaining space without dead empty panels.
 - For ROI or value models, verify at least the default state, one mid-range change, and one edge or high-value change before save. The primary dollar amount, supporting metrics, and label text should all stay consistent.
 - Make model assumptions visible in buyer-friendly language. If a lift, multiplier, payback period, or conversion delta is fixed in code, disclose it in the UI or make it adjustable when the buyer is likely to challenge it.
 - Prefer showing current state, projected state, and incremental lift separately when space allows. For conversion models, show the before/after rate, current conversions or revenue, incremental conversions or revenue, and projected total.
@@ -511,6 +531,7 @@ Before every MCP save, run a lightweight automated or programmatic check against
 
 - Confirm the current Folloze guide has been read and the required theme stylesheet link is present in `<head>`.
 - Confirm the local research/result note records save intent, board name, vendor, target account, theme mode or inherited theme state, source file path, QA status, and tracker status before save.
+- Confirm the exact local file being saved contains the latest user-approved corrections, especially header logos, annotated copy changes, ROI/widget changes, and removed sections.
 - Count external links and fail if any external link lacks `target="_blank" rel="noopener"`.
 - Count external `<a href="http...">` CTAs and fail if any lacks a direct inline `flzAnalytic('cta_click', ...)` call. Do not rely only on wrapper helpers such as `trackCta(...)` for links that MCP validates as CTAs.
 - Count visible primary/resource CTAs and fail if any lacks direct CTA analytics or a real destination/action.
