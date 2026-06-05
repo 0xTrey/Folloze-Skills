@@ -123,6 +123,9 @@ Builds and updates vendor-branded Folloze MCP microsites, account-specific solut
 ### `folloze-one-pager`
 Turns real account call notes, Salesforce and Drive context, prior conversations, and account research into an editable Folloze-branded HTML one-pager first, then exports a verified one-page PDF when ready for email sharing.
 
+### `folloze-sales-handoff`
+Generates the O&E-facing new-logo Folloze Sales Handoff DOCX from Drive, Salesforce, Granola, and web context, using the approved fixed template, consistent `-- needs review --` gaps, prompt-injection screening, and a Slack-ready heads-up draft.
+
 ### `sales-to-cs-internal-handoff-folloze`
 Runs the Folloze closed-won Sales to Customer Success internal handoff workflow, creating the internal handoff doc, instance request, onboarding kickoff deck, Drive artifacts, and Slack handoff links.
 

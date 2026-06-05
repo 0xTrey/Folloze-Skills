@@ -93,6 +93,12 @@
       "requires_restart": true
     },
     {
+      "name": "folloze-sales-handoff",
+      "path": "Skills/folloze-sales-handoff",
+      "enabled": true,
+      "requires_restart": true
+    },
+    {
       "name": "gainsight-mcp-connector",
       "path": "Skills/Troy Folloze Created Skills/gainsight-mcp-connector",
       "enabled": true,
