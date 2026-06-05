@@ -103,6 +103,40 @@ Good cards sound like account-specific reasons to work with Folloze, not generic
 
 Do not quote private call notes directly. Do not mention internal uncertainty, sales strategy, pricing, or objections. Translate those inputs into buyer-safe value props that make the buyer feel understood.
 
+### Text-Only Section Above The Funnel Visual
+
+Use the text-only section above the funnel or `Yesterday/Today` visual as a strategic narrative bridge. Keep the section focused on how Folloze helps the customer:
+
+- scale their marketing program
+- target and convert key accounts
+- do more with less across marketing, sales, and web teams
+
+Ground the headline and paragraph in those three themes while weaving in the specific problem Folloze is helping solve from the call notes. The section should connect Folloze's broader value to the buyer's actual evaluation context, not repeat generic ABM language.
+
+Use this headline direction:
+
+```text
+Helping [Company] Scale Key-Account Marketing Without Scaling The Work
+```
+
+Alternative headline patterns are acceptable if they keep the same meaning:
+
+```text
+Helping [Company] Target, Convert, And Scale Key Accounts
+```
+
+```text
+Doing More With Less Across [Company]'s Key-Account Programs
+```
+
+Use this paragraph pattern:
+
+```text
+Folloze helps [Company] scale personalized marketing programs, focus every interaction on the accounts that matter most, and convert more buying teams with less manual effort. Based on our conversations, this room focuses on [call-note-specific problem or initiative] so your team can move from [current constraint] to [desired outcome].
+```
+
+Keep the language buyer-safe. Do not quote raw call notes, name internal blockers, or expose sales strategy. Translate the source context into a clear business outcome.
+
 ### Section 4: Resources From Our Calls
 
 Use this section for follow-up assets, recordings, custom examples, and materials created or discussed during the sales process. Preserve the liked header style:
@@ -122,6 +156,28 @@ Additional information, follow-up materials, and custom examples based on our co
 Only name specific people in the subtext when the user explicitly asks or when the named stakeholder context is clearly buyer-safe and useful. Otherwise, keep the subtext team-oriented and reusable.
 
 Card choices can include call recordings, recap decks, custom mockups, example rooms, proposal follow-ups, integration notes, security materials, or requested proof. Every card must point to a real asset or approved placeholder in the native template content system; do not invent recordings or documents.
+
+Do not link buyer-facing cards directly to external Google Slides, Google Docs, Zoom, Kaia, Outreach, Drive, or other third-party URLs. Treat those URLs as source locations only. Before adding the card to this section, upload or create the asset as a Folloze content item and attach the card to that Folloze content item.
+
+For Folloze presentations, decks, or Google Slides discussed in the call, export or otherwise prepare the approved deck format, upload it as a Folloze content item, and use that content item in `Resources From Our Calls`. Do not use the external presentation URL as the card link.
+
+For call recordings from Zoom or Kaia/Outreach, upload the approved recording as a Folloze content item when the recording is available and appropriate to share. Permissioned or expiring recording URLs should not be used as the buyer-facing destination. If the recording cannot be uploaded or approved, omit the card or label the missing asset in the internal brief instead of linking externally.
+
+Record the uploaded content item name and ID in the internal brief so the final board readback can confirm that the resource card points to Folloze-hosted content.
+
+### Integration Guides
+
+Use this section for integration guides that match the buyer's actual systems and evaluation questions. Select integration cards from the best available source evidence in this priority order:
+
+1. Call notes, meeting recaps, and email notes that mention tools, systems, integrations, routing paths, or data-flow questions.
+2. Salesforce opportunity, account, or contact tech-stack fields when the notes do not mention a conflicting stack.
+3. Public or inferred tech-stack signals only when neither notes nor Salesforce provide enough detail, and mark the assumption internally.
+
+When sources conflict, assume call notes and email notes are more accurate than Salesforce. Use Salesforce as supporting context, not the source of truth, if notes or emails name a different tool.
+
+Choose only integration guides that map to confirmed or strongly implied systems, such as CRM, marketing automation, sales engagement, intent, web analytics, enrichment, chat, data warehouse, or content systems. Do not include a generic integration guide just to fill a card slot.
+
+If an integration is important but no approved guide or native content item exists, either use an approved placeholder card labeled internally for follow-up or omit the card and note the missing asset in the internal brief. Do not invent integration documentation.
 
 ### Folloze Team
 
