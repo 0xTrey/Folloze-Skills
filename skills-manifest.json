@@ -63,6 +63,12 @@
       "requires_restart": true
     },
     {
+      "name": "Folloze-Content-Magic-Builder",
+      "path": "Skills/Folloze-Content-Magic-Builder",
+      "enabled": true,
+      "requires_restart": true
+    },
+    {
       "name": "Folloze-MCP-Demo-Builder",
       "path": "Skills/Folloze-MCP-Demo-Builder",
       "enabled": true,
