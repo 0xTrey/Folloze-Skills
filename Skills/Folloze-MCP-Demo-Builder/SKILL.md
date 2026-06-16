@@ -343,7 +343,7 @@ After a successful save, update the local research/result note for that board wi
 - Before building or revising CTA styles, define the page's button variant map from the source brand: primary, secondary/outline, light-on-dark, and utility/header. Apply those variants consistently instead of relying on generic class names such as `secondary` when they no longer describe the visual treatment.
 - If the source site exposes only certain button options for a component family, use only those available source variants. Do not invent a mapped button option 2 or 3 just because another vendor board used one.
 - For every visible CTA, verify label, destination/action, class or variant, computed background color, text color, border color, hover/focus state, text wrapping, external-link safety, and `flzAnalytic` tracking.
-- Verify primary CTA behavior, not only style. Click or programmatically test each primary CTA: external links open real vendor-owned destinations, internal jumps scroll to the intended section and update the hash when intended, modals open and close, and analytics fire as `cta_click` for buyer-action CTAs.
+- Verify primary CTA behavior, not only style. Click or programmatically test each primary CTA: external links open real vendor-owned destinations, internal jumps scroll to the intended section without relying on raw hash links, modals open and close, and analytics fire as `cta_click` for buyer-action CTAs.
 - Treat hero proof/stat cards as first-viewport brand elements. Verify card background, border, stat color, label size, line wrapping, and contrast against the hero background.
 - For hero and section boundaries, verify the final visible cards or panels have clear spacing before the next section at common desktop and mobile viewport heights. Avoid `max-height` caps on content-heavy heroes unless QA proves cards, buttons, and proof rows cannot be clipped.
 - For final, hero, and workshop CTA blocks with centered copy, center the CTA group against the owning content rail unless the source brand intentionally left-aligns actions. Verify the button-group center against the parent rail center, not just the text alignment.
@@ -373,7 +373,7 @@ Before preview sign-off and before MCP save, test every visible primary CTA as a
 
 - Classify each CTA as external navigation, internal section jump, modal/drawer open, mailto/contact action, or state-changing interaction.
 - Verify the label matches the action and destination. Do not use `Read`, `Explore`, `Book`, or `Watch` unless the click actually performs that job.
-- Verify internal jumps land on the intended section with sticky-header offset handled and URL hash behavior intentional.
+- Verify internal jumps land on the intended section with sticky-header offset handled. For Folloze-hosted boards, do not use raw `href="#section"` anchors for in-page jumps; use the shell-safe scroll-control pattern in Navigation QA.
 - Verify external CTAs use a real destination, `target="_blank" rel="noopener"`, and `flzAnalytic('cta_click', ...)`.
 - Verify modal/drawer CTAs open visible content, trap or preserve focus reasonably, close with a visible control, and track both open and close when meaningful.
 - Treat a visible CTA that only changes the URL hash without moving the viewport, opens nothing, or depends on a broken local-only behavior as a blocker before save.
@@ -440,11 +440,13 @@ For browser comments about layout, alignment, spacing, full bleed, line wrapping
 
 ## Navigation QA
 
-- Before save, create a nav map in your working notes: nav label, `href`, target element, target eyebrow/section label, target headline, and expected user job.
+- Before save, create a nav map in your working notes: nav label, control type, target ID, target element, target eyebrow/section label, target headline, and expected user job.
 - Nav labels should match the content they jump to and should be enticing enough for the target account to click. Prefer buyer-action labels such as `Why Daon`, `Protect Key Moments`, `See the Solution`, `Prove the Impact`, `Plan a Trust Workshop`, `Use Cases`, or `Proof` over generic taxonomy that is not visible on the page.
 - Replace internally useful but buyer-weak labels such as `Fit`, `Moments`, `Stack`, `Pilot`, `Briefs`, `Resources`, or `Conversation Assets` with labels that name the buyer value or question being answered.
 - Use `Resources` only for a true resource-library/card section, and usually place it last in the nav after higher-intent items such as solution overview, value model, ROI calculator, use cases, or proof.
-- For each nav item, verify that the target exists, scrolls below any sticky header using `scroll-margin-top`, updates the URL hash when appropriate, and fires an anchor analytics event.
+- For Folloze-hosted boards, never use raw in-page hash anchors such as `<a href="#workflow">` for section navigation. The hosted Folloze shell can intercept hash navigation as a board route and send visitors to a content-unavailable state even when the same HTML works locally.
+- Use shell-safe scroll controls for section navigation: render `<button type="button" data-scroll-target="section-id">Label</button>`, give each target section a stable `id` and `scroll-margin-top`, and attach one listener that calls `flzAnalytic("anchor_click", { text, area, target }, control)` before `target.scrollIntoView({ behavior: "smooth", block: "start" })`.
+- For each nav item, verify that the target exists, scrolls below any sticky header using `scroll-margin-top`, does not mutate the URL into a hosted-board hash route, and fires an anchor analytics event.
 - Verify labels at common desktop widths so longer marketing labels do not collide with the logo lockup or CTA.
 - If desktop nav is hidden or simplified on mobile, provide an equivalent mobile path to the same key sections or intentionally keep the primary CTA-only mobile header when the source brand does that.
 - Remove or deprioritize stale section IDs that are not linked, or keep them only when they support deep links from external follow-up.
@@ -500,7 +502,7 @@ When using a carousel for logos, resources, case studies, or proof cards:
 - Every external CTA/link must include `target="_blank" rel="noopener"`.
 - Every primary CTA and resource CTA should call `flzAnalytic('cta_click', {text:this.innerText.trim(), area:'section name', url:this.href}, this)`.
 - Meaningful non-navigation interactions, including brief modals, tabs, scenario selectors, FAQ expands, anchor clicks, or sliders, should call a descriptive `flzAnalytic` action with useful `text` and `area` values.
-- Internal navigation that is presented as a primary buyer action, such as `Book a Demo`, should track as `cta_click` even if it jumps to an in-page section. Pure navigation labels such as `Resources` or `Back to top` can track as anchor/navigation events.
+- Internal navigation that is presented as a primary buyer action, such as `Book a Demo`, should track as `cta_click` even if it jumps to an in-page section. Pure navigation labels such as `Resources` or `Back to top` can track as anchor/navigation events. In Folloze-hosted boards, implement those jumps with scroll buttons, not `href="#..."` links.
 - Do not set MCP analytics acknowledgements to true until these checks are verified against the actual HTML being saved.
 - Do not use `href="#"`, `javascript:void(0)`, placeholder URLs, or dead anchor jumps.
 - Run a live-link intent check before save: nav links must land on the intended section, resource buttons must open a real asset or in-page content item, `mailto:` buttons must use the intended recipient and subject, LinkedIn/profile links must be exact URLs, and any supplied public deployment URL must be recorded separately from the signed-in designer URL.
@@ -513,6 +515,7 @@ Before every MCP save, run a lightweight automated or programmatic check against
 - Confirm the local research/result note records save intent, board name, vendor, target account, theme mode or inherited theme state, source file path, QA status, and tracker status before save.
 - Count external links and fail if any external link lacks `target="_blank" rel="noopener"`.
 - Count external `<a href="http...">` CTAs and fail if any lacks a direct inline `flzAnalytic('cta_click', ...)` call. Do not rely only on wrapper helpers such as `trackCta(...)` for links that MCP validates as CTAs.
+- Fail Folloze-hosted in-page navigation if the HTML contains raw section hashes such as `href="#workflow"`, `href='#value'`, or `location.hash` for scroll behavior. Convert them to `button[type="button"][data-scroll-target]` plus `scrollIntoView()` and `anchor_click` analytics before save.
 - Count visible primary/resource CTAs and fail if any lacks direct CTA analytics or a real destination/action.
 - Render desktop, mobile, and narrow mobile widths. Check no horizontal overflow, no broken images, no console errors, and no clipped header/logo/CTA elements.
 - For annotation saves, confirm the selected section's selector still resolves, its `getBoundingClientRect()` is inside the screenshot viewport before capture, and the screenshot visibly contains the corrected section. Reject blank, mostly white, stale, or wrong-scroll screenshots even when DOM metrics pass.
