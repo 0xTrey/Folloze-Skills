@@ -28,6 +28,7 @@ Gather only what is missing:
 - Preserve compliance-sensitive claims exactly only when they are in the approved source. If a claim is unclear, label it for review.
 - Keep internal content, notes, or unpublished materials out of buyer-facing copy unless explicitly approved.
 - If the input is only a concept for an asset that does not yet exist or cannot be accessed, read `references/idea-only-assets.md` before outlining, writing, linking, or saving.
+- When the experience includes gated content, form capture, asset download, registration, unlocking a full asset, or deciding what value is ungated vs gated, read `references/common-gating-models.md` before deciding the content structure, CTA path, or asset access model. Also read it for guides, reports, webinars, checklists, assessments, ebooks, gated resources, or idea-only assets where the final full asset is not yet available.
 
 ## Workflow
 
