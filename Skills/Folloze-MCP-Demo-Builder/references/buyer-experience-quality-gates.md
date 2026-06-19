@@ -5,10 +5,13 @@ Run these gates before local preview and again before saving through Folloze MCP
 ## Brand And Copy
 
 - The first viewport clearly shows the vendor and, for 1:1 pages, the target-account context when public evidence supports it.
+- For cross-sell, upsell, decision-stage, or existing-customer pages, the first viewport and first proof section make the expansion thesis clear: what the customer already proved, what should scale next, and why that matters now.
 - Buyer-facing copy avoids internal production terms, including demo, example, proof of concept, microsite, board, template, conversation assets, first meeting, fit, stack, pilot, scorecard, and technical architecture unless the user explicitly asked for them.
+- Buyer-facing copy also avoids internal section scaffolding such as existing customer proof, expansion workbench, proof for the expansion case, stakeholder mapping, decision team, resources, evaluation hub, or demo example unless those phrases are explicitly buyer-facing in the source brand.
 - All claims come from public vendor messaging, public target-account evidence, user-approved copy, or clearly labeled planning assumptions.
 - No invented metrics, logos, customer names, awards, analyst quotes, case studies, or testimonials.
 - Private notes shape strategy only; they are not quoted or paraphrased into visible buyer-facing claims.
+- Every major section adds a new reason to believe, decision input, proof point, or useful next action. Delete sections that only explain the page's purpose or repeat the same claim in different words.
 
 ## Structure
 
@@ -18,6 +21,7 @@ Run these gates before local preview and again before saving through Folloze MCP
 - No fake browser chrome, fake phone frames, fake IDE frames, or decorative UI shells.
 - Hero, proof rows, calculators, and section transitions are not clipped at common desktop or mobile viewport heights.
 - Situation/Solution content stays compact and scannable.
+- Major ABM narrative sections use full-rail headlines when the headline carries the argument. Decorative eyebrows, category labels, and right-side subheads are removed when they only expose internal page structure.
 
 ## Controls And Analytics
 
@@ -43,6 +47,7 @@ Run these gates before local preview and again before saving through Folloze MCP
 ## Tokens, Motion, And CSS
 
 - Brand colors, neutrals, accents, fonts, radius, shadows, and spacing are centralized as named tokens or clearly grouped custom properties.
+- The typography map matches the vendor source or user-provided screenshot: computed font family, heading/body weights, line height, and letter spacing are checked on hero H1, section H2s, nav, buttons, and body copy.
 - Avoid one-off color and font improvisation outside the token block unless the value is a verified source-brand asset requirement.
 - No `transition: all`; transition only the properties that change.
 - Animate transform and opacity where possible, not layout properties such as width, height, top, left, margin, or padding.
@@ -56,6 +61,8 @@ Run these gates before local preview and again before saving through Folloze MCP
 - Logo carousels duplicate content only for animation continuity, not to imply additional customers.
 - Auto-moving content pauses on hover/focus or is slow enough not to distract.
 - Official SVGs are inspected before use; do not rely on misleading filenames such as `logo-white.svg`.
+- Vendor and target-account logos render as clean official marks without boxes, pills, borders, or card containers unless the source brand uses that treatment.
+- Public case studies for the exact target account are treated as proof assets: links, embeds, or redirects are verified, CTA labels match the real action, and the proof appears where it strengthens the expansion argument.
 
 ## Save Readiness
 
@@ -65,3 +72,4 @@ Run these gates before local preview and again before saving through Folloze MCP
 - The local HTML file is the source of truth when one exists.
 - Existing board ID is preserved for updates unless the user explicitly asked for a new board.
 - Save only after local preview/review mode is complete and the user has asked to save, publish, update, or push to Folloze.
+- When the user provides a specific sheet URL, that sheet is inspected and used for the requested logging task instead of the default tracker unless the user asks for both.
