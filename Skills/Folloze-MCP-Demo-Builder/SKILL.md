@@ -30,6 +30,34 @@ Use this skill for Folloze MCP board and microsite work where the output is a po
 - For existing-board annotation loops, preserve the active board identity and local source state across turns. A small browser-comment edit should not trigger a new board, a tracker rewrite, a full rebuild, or broad QA churn unless the comment changes the page architecture or Trey explicitly asks for that wider work.
 - Existing-board tracker rows are historical creation records by default. Later browser comments, repushes, and visual refinements should update the local research note and QA artifacts, not the tracker, unless Trey explicitly asks for tracker maintenance.
 
+## Working Order
+
+Use this order for every build, revision, and save. Do not jump straight into HTML until the early gates are satisfied.
+
+1. Establish board identity: source path, vendor, account or segment, motion, board ID or net-new intent, theme state, tracker state, and public URL status.
+2. Gather source truth: user-provided files, vendor pages, brand harvest output, public proof, attached content, and any existing local research note.
+3. Select motion and shape: one-to-one, one-to-few, one-to-many, industry play, workbench, narrative workflow, split studio, map/diagram, carousel, or proof-led.
+4. Draft the ABM message spine and launch gates before writing UI copy.
+5. Build or revise the local self-contained HTML file in the repo.
+6. Run copy, proof, component, layout, interaction, mobile, link, analytics, and render QA against the exact local file.
+7. Save through Folloze only after the user asks to publish, save, update, repush, or push to Folloze.
+8. After save, update the local research note, write the first-create tracker row when in scope, stage only relevant files, and commit scoped work when safe.
+
+## Campaign Board Launch Gates
+
+For one-to-many and one-to-few campaign boards, the first local preview must feel like a campaign the vendor could actually launch. If it reads like a wireframe, enablement outline, internal page map, or explanation of the build, stop and rewrite before showing it.
+
+- Singular solution spine: anchor the board in one vendor solution or campaign promise, then let workload, role, proof, and resource paths branch from that spine. Avoid a loose collection of product cards.
+- Section headers: default major campaign sections to full-bleed or full-rail headers. Remove decorative eyebrows, small proof labels, and subheads when they only explain the section. A subhead must add campaign tension, buyer value, or a concrete next move; otherwise delete it.
+- Customer stories: use real company logos, not red text labels. Do not duplicate the same customer story. When the public proof set supports it, mix at least one case study and one video story, and make each CTA label match the actual action.
+- Resource libraries: when there are more than three strong assets, default to an image-led stepped carousel. Include one verified image per item, arrows, dots, hover/focus pause, reduced-motion handling, and automatic rotation about every 4 seconds unless the source brand clearly discourages motion.
+- Visual explanation: if a map, architecture graphic, or process diagram needs arrows, tiny labels, or explanatory copy to be understood, replace it with fewer large value blocks, source-owned imagery, or a simpler `how it runs` grid.
+- Card density: reject cards with large dead space, unbalanced image/copy ratios, or floating CTAs. Align repeated-card CTAs to the bottom, keep card heights intentional, and use imagery or denser structure before increasing padding.
+- CTA completeness: every visible button, card action, carousel control, and resource link must do real work. If no external asset exists, create an in-page content item or modal with a useful buyer-facing brief.
+- Number and badge tokens: numeric badges, stat labels, and workload indices need stable dimensions, readable contrast, and consistent active/inactive states. Treat them as components, not decoration.
+- Buyer-team value: avoid generic buying-committee wording in visible copy. For data, AI, platform, infrastructure, network, security, and economic teams, explain the distinct value each team gets from putting data to work.
+- Surface discipline: use dark, pale, white, and image-led sections deliberately. If later comments repeatedly ask for white headers, full bleed, or less dark surface, update the source rhythm for the whole board family, not only the selected section.
+
 ## Customer Demo Copy Pass
 
 Before local preview and again before MCP save, run a buyer-friendly copy pass across the page:
@@ -37,7 +65,7 @@ Before local preview and again before MCP save, run a buyer-friendly copy pass a
 - Rewrite nav labels, section labels, headlines, subheads, CTA labels, and modal openers for a prospective buyer, not an internal planning team.
 - Avoid internal/demo-production language in buyer-facing UI, including `demo`, `example`, `template`, `conversation assets`, `first meeting`, `fit`, `stack`, `pilot`, `scorecard`, or `technical architecture` unless the user explicitly wants that wording.
 - Prefer action-oriented labels that explain why the buyer should click, such as `Why Daon`, `Protect Key Moments`, `See the Solution`, `Prove the Impact`, `Plan a Trust Workshop`, `Explore the Identity Moments`, or equivalent account-specific language.
-- Make subheads answer the buyer's implicit question: why this matters, what risk it reduces, what business outcome improves, and what the next useful action is.
+- Treat subheads as campaign copy, not explainer copy. A subhead should create urgency, sharpen the buyer's next move, or add a proof-driven implication; if it merely explains what the section is, delete it.
 - Preserve the underlying content when the content is good; change the framing around it first.
 
 ## Marketing Copy And ABM Messaging
@@ -145,9 +173,9 @@ Rewrite visible copy that sounds like an internal build note, generic sales stra
 - `intent signals show`, `higher-intent behavior`, `engaged known contacts`, `web visits`, `engagement points`, `Demandbase signal`, `account is surging`, or `we can weave in the data`, unless the page is explicitly seller-enablement.
 - Empty B2B filler such as `unlock`, `leverage`, `empower`, `transform`, `seamless`, `robust`, `innovative`, `future-proof`, `cutting-edge`, `game-changing`, or `best-in-class` when a specific outcome would be stronger.
 
-### Role-Specific Value Pass
+### Buyer-Team Value Pass
 
-For committee-based ABM pages, each major function should get a distinct reason to care:
+For committee-based ABM pages, keep `buying committee` as internal planning language. Visible copy should talk about the value different teams get from the solution. Each major function should get a distinct reason to care:
 
 - Executive and economic buyers: strategic priority, risk reduction, measurable impact, consolidation, governance, reputation, or return on investment.
 - Practitioners and program owners: workflow fit, adoption, ease of use, speed, content quality, collaboration, and day-to-day confidence.
@@ -155,7 +183,7 @@ For committee-based ABM pages, each major function should get a distinct reason 
 - Customer, learner, employee, or student success leaders: experience quality, engagement, progress, retention, completion, satisfaction, and intervention signals.
 - Sales, enrollment, marketing, or revenue leaders: conversion, pipeline, campaign performance, personalization, account coverage, and proof that moves a decision forward.
 
-Do not give every role the same CTA, card copy, or resource when role-specific value is available. The point of ABM is to make the account and committee feel deliberately understood.
+Do not give every role the same CTA, card copy, or resource when role-specific value is available. The point of ABM is to make the account and each team feel deliberately understood without exposing internal committee mapping.
 
 ### Final Copy QA
 
@@ -239,13 +267,14 @@ Before building a new page or materially revising an existing one, use `referenc
 
 ## Narrative Section Pattern
 
-For decision-stage 1:1 ABM pages, prefer a strong narrative section pattern over a stack of labeled modules:
+For decision-stage 1:1 ABM pages and launchable one-to-few or one-to-many campaign boards, prefer a strong narrative section pattern over a stack of labeled modules:
 
 - Lead major story turns with one full-width headline when the section's job is persuasion, not data entry. Do not cap the headline to a narrow card rail unless the source design requires it.
 - Avoid decorative eyebrows, red category labels, and right-side explanatory subheads unless they add buyer value or match the source site. Remove labels that merely name the internal function of the section.
 - Use deliberate line breaks for two-part claims, such as first sentence on the top line and consequence on the second line. Verify desktop line count and mobile fallback.
 - Keep supporting copy short and below the headline or in the next component. If the subhead restates the headline, delete it.
 - Do not use a section because the first draft had it. Keep only sections that advance the story: prior success, hidden cost, next decision, operating path, data-stack support, proof asset, or final review.
+- For campaign boards, default pressure, workload, proof, buyer-team, and resource section headers to full bleed or full rail. If the header needs an explanatory subtitle to make sense, the headline is not sharp enough yet.
 
 ## Experience Shape Selection
 
@@ -253,6 +282,7 @@ Before writing new HTML or restructuring a page, choose one experience shape usi
 
 - Record the selected shape, why it fits the vendor and buyer motion, section order, first-viewport signal, nav strategy, final CTA pattern, and proof required before use.
 - Prefer `Workbench`, `Narrative Workflow`, `Map Or Diagram`, or `Split Studio` for most B2B 1:1 account pages.
+- For one-to-many and one-to-few solution campaigns, prefer `Workbench`, `Proof-Led Resource Hub`, `Narrative Workflow`, or a source-style carousel resource hub only when the content supports a launchable campaign arc.
 - Use `Bento Grid` only when content is genuinely modular enough to avoid uniform card rows.
 - Use `Quote-Led Or Proof-Led` only with verified public proof.
 - Preserve the approved shape on existing-board updates unless the user asks for a redesign or the current page has a clear quality problem.
@@ -373,33 +403,24 @@ After a successful save, update the local research/result note for that board wi
 ## Tracker Rule
 
 - Tracker logging is operator-scoped. For Trey's local Codex runs, write Trey's shared demo-environments tracker only once: immediately after a board is created in Folloze for the first time. Do not update the Google Sheet for later edits, annotation passes, repushes, or existing-board updates unless Trey explicitly asks for that specific tracker change.
-- Tracker: `MCP Demo Environments - May 2026`, tab `Demo Environments`, spreadsheet `1s_NU2O7lO8f_QSVmP2mI5dBNOGgUh7oQo3bfenerMqk`.
+- Default tracker: `MCP Demo Environments - May 2026`, tab `Demo Environments`, spreadsheet `1s_NU2O7lO8f_QSVmP2mI5dBNOGgUh7oQo3bfenerMqk`.
 - When Trey provides a specific Google Sheet URL for the project, that sheet overrides the default tracker for the requested logging task. Inspect workbook metadata and tabs, identify the sheet that matches the operating context, read headers before writing, and record the board in the supplied sheet instead of Trey's default tracker unless he explicitly asks for both.
 - For non-tracker campaign blueprint sheets, do not force the default A:G tracker schema. Use the live tab headers and the closest system/output row structure, then write board ID, designer URL, public deployment status, theme mode, source path or QA status, owner/handoff, and notes into the appropriate columns.
-- Current Row A schema is authoritative:
-  - Column A: `Company name`
-  - Column B: `Board Name`
-  - Column C: `Deployment URL`
-  - Column D: `Designer edit URL`
-  - Column E: `Needed By Date`
-  - Column F: `Luke Feedback`
-  - Column G: `Agent Notes`
-- Before a first-create tracker write, read row 1 once and align writes by header name rather than older column positions. If row 1 differs, stop and adapt to the live headers before writing.
+- Row 1 is authoritative. Always read the live header row before writing and map values by header name. Do not assume columns F and G are `Luke Feedback` and `Agent Notes`; the default tracker has also used schemas such as `Production Date` and `Board Builder`.
 - For any other operator or team member, do not write to Trey's tracker unless Trey explicitly asks for that specific run. Use a team-provided tracker if one is supplied; otherwise skip tracker logging and state that no tracker was configured.
 - If tracker logging is in scope for a first create, search existing rows first by board ID from the designer URL or notes, exact designer URL, exact board name, and company name. If a row already exists for that board, do not write again; report that the tracker was already logged.
 - Treat company-name-only tracker matches as weak matches. If the matched row's board name, board ID, designer URL, target account, or agent notes clearly refer to a different board or account motion, do not overwrite it silently. Prefer creating a new row, or ask Trey if the row should be repurposed.
 - Never use Google Sheets `appendCells` for Trey's shared tracker. The sheet can contain preallocated blank rows, so append may write below the visible working table instead of the next available row.
-- For a net-new row, read a bounded visible range such as `A1:G120` and choose the next visible blank row: the first row after the last contiguous tracker row where columns A-D contain a company name, board name, deployment URL, or designer URL. Ignore trailing preallocated rows and do not write below the visible working table just because the sheet grid has more allocated rows.
-- Write the full A:G tracker record in one bounded `updateCells` request. Do not update only Column C, Column D, or Column G unless updating an already-canonical row, and do not leave notes stranded in a separate row.
-- On first-create tracker writes, write the saved board title/name returned or passed to MCP into Column B (`Board Name`).
-- Preserve Column E (`Needed By Date`) and Column F (`Luke Feedback`) unless Trey explicitly asks to change them.
-- If MCP returns only a signed-in designer URL during first creation, write `deployment URL pending from MCP` into Column C. Do not invent deployment URLs.
-- If Trey provides a real public or published URL at the same first-create save moment, write that URL into Column C and record in Column G that it was user-supplied.
+- For a net-new row, read a bounded visible range such as `A1:G120` and choose the next visible blank row: the first row after the last contiguous tracker row where identity columns contain a company name, board name, deployment URL, or designer URL. Ignore trailing preallocated rows and do not write below the visible working table just because the sheet grid has more allocated rows.
+- Write the full tracker record in one bounded `updateCells` request, preserving blank or owner/date columns unless Trey explicitly asks to change them. Do not update only one URL cell unless updating an already-canonical row.
+- On first-create tracker writes, write the saved board title/name returned or passed to MCP into the live `Board Name` or equivalent column.
+- If MCP returns only a signed-in designer URL during first creation, write `deployment URL pending from MCP` into the live deployment/public URL column. Do not invent deployment URLs.
+- If Trey provides a real public or published URL at the same first-create save moment, write that URL into the live deployment/public URL column and record in notes that it was user-supplied when a notes column exists.
 - If Trey later supplies a real public `experience.folloze.com` URL for an already-saved board, verify it with a bounded HTTP check, update the existing canonical tracker row by board ID/designer URL, and update the local research note. Do not create a new row and do not resave the board unless Trey explicitly asks.
-- Record Column D (`Designer edit URL`) from the exact MCP returned designer URL.
-- Record Column G (`Agent Notes`) as a concise status note with board ID, date, source boundary, theme mode, QA/publish caveat, and latest material change.
+- Record the exact MCP-returned designer URL in the live designer/edit URL column.
+- When a notes column exists, record a concise status note with board ID, date, source boundary, theme mode, QA/publish caveat, and latest material change.
 - For tracker reads, avoid parallel Google Sheets calls. Use one bounded row/header lookup, then one bounded row search if needed.
-- For first-create tracker writes, use this fallback sequence when the connector supports it: read `A1:G1` for headers, search bounded rows for the board/company, read a bounded visible table range such as `A1:G120` to find the next visible blank row, fetch spreadsheet metadata for the target `sheetId`, then write the row with a direct bounded update. This avoids broad reads and avoids append helpers that can skip to the bottom of preallocated rows.
+- For first-create tracker writes, use this fallback sequence when the connector supports it: read the header row, search bounded rows for the board/company, read a bounded visible table range such as `A1:G120` to find the next visible blank row, fetch spreadsheet metadata for the target `sheetId`, then write the row with a direct bounded update. This avoids broad reads and avoids append helpers that can skip to the bottom of preallocated rows.
 - If a tracker search finds the same board ID, designer URL, board name, or public URL in multiple rows, preserve the most complete row in the visible tracker table as canonical. Move missing cells into that row, then clear orphan partial rows. Do not report tracker completion until one canonical row remains, unless readback is rate-limited after a successful repair write.
 - If Sheets returns `RATE_LIMITED`, `RESOURCE_EXHAUSTED`, or `RATE_LIMIT_EXCEEDED`, pause once for the quota window and retry only narrow ranges. Do not loop on wide metadata or whole-sheet reads.
 - If the write succeeds, do not require immediate readback verification. If readback hits `RATE_LIMIT_EXCEEDED`, record that the write request succeeded and report the readback caveat instead of retrying in a loop.
@@ -411,6 +432,9 @@ After a successful save, update the local research/result note for that board wi
 - CTA arrows should never be dead decoration when they appear clickable. Either turn the full card or arrow into a real link with `target="_blank" rel="noopener"` and `flzAnalytic('cta_click', ...)`, or remove the arrow.
 - If a resource card does not have an existing external asset, create a simple in-page content item such as a brief modal or drawer. Track open and close interactions.
 - If a public proof asset exists for the exact target account, do not bury it in a generic resource section. Place it where it strengthens the expansion argument, give it a real action, and verify the hosted behavior: link opens, PDF loads or redirects cleanly, embed is not blocked, and analytics fire.
+- Align repeated-card CTAs to the bottom by default. Verify card copy heights, link bottom offsets, and mobile wrapping so CTAs do not float at inconsistent positions.
+- For numeric badges, workload indices, stat labels, and step counters, define component tokens for size, alignment, active/inactive color, border, and contrast. Verify the first item and at least one inactive sibling.
+- If a visual map or diagram is hard to consume because of arrows, tiny labels, dense connectors, or unclear flow, replace it with fewer larger blocks, source imagery, and value props before trying to add more explanatory copy.
 - On dark hero imagery, primary CTAs should be high contrast. Use a white button with dark text when the brand allows it.
 - Button styling must come from the source-site button map, not generic Folloze defaults. If the vendor's home page uses pill buttons, squared buttons, outlined buttons, or a specific filled treatment, carry that treatment through header, hero, resource, modal, and final CTA contexts unless the source site has clear contextual variants.
 - For hero CTAs, match the source page's primary and secondary button treatments on the same background color. If the user asks for "the other style," apply the adjacent CTA's class/style exactly while preserving the selected CTA's destination and analytics.
@@ -424,6 +448,7 @@ After a successful save, update the local research/result note for that board wi
 - Section intros and their card grids should share a coherent content rail unless the design intentionally breaks alignment. For wide section headers, verify the intro left/right edges and the card/grid left/right edges rather than letting a narrow text measure float above a wider card system.
 - For major ABM story sections, use full-bleed or full-rail headlines when the selected copy is meant to carry the argument. Remove small labels and subtext when they make the section feel like an internal page map rather than a buyer story.
 - When large resource cards feel sparse, add source-owned imagery, media panels, or denser content structure before increasing padding. Verify images load, cards remain balanced, links stay visible above the fold when expected, and no card becomes a mostly empty box.
+- For image-led cards, verify image-to-copy ratio and remaining dead space at wide desktop, normal desktop, and mobile. If a card has large blank panels, resize the media row, rearrange the grid, or reduce the number of visible blocks.
 - Keep Situation/Solution sections compact. Default to side-by-side panels on desktop and stacked panels on mobile instead of oversized full-width narrative paragraphs.
 - Use small uppercase section labels plus headline-scale summaries for major section intros.
 - If a section intro is intended as a major headline, let it span the full content width. Do not cap it to a narrow card width unless the design specifically calls for it.
@@ -440,6 +465,7 @@ When the user says a component does not match the source site or brand, treat th
 - Apply the token change consistently to every matching component unless the annotation is clearly a one-off instance.
 - Verify computed styles for the edited component and at least one sibling instance on desktop and mobile.
 - For repeated buttons or cards, confirm all variants still have matching dimensions, no text clipping, no unexpected 90-degree corners, and no mismatched class names that make future edits ambiguous.
+- For repeated badges, step numbers, stat chips, or selectors, confirm stable dimensions, centered text, color contrast, active/inactive state distinction, and no layout shift across all siblings.
 - If a user-supplied screenshot conflicts with earlier inferred brand styling, prefer the screenshot and update the reusable source component/token instead of patching only the selected DOM node.
 
 ## Primary CTA Behavior QA
@@ -498,6 +524,8 @@ For multi-comment passes on the same artifact, maintain one working board identi
 
 For copy comments, rewrite in context rather than doing a literal one-for-one replacement. After the edit, search the source and QA notes for stale wording, update only the relevant QA evidence, and verify the new line reads cleanly at desktop and mobile widths.
 
+After five or more annotations on the same board, add a short `post-annotation lessons` note to the local research file before the final save or handoff. Summarize repeated correction patterns such as header treatment, missing assets, card density, CTA alignment, resource motion, proof quality, or tracker/schema issues. If a pattern should become a future default, update this skill or the relevant reusable reference instead of leaving the lesson only in the thread.
+
 ## Targeted QA Artifacts
 
 For small annotation fixes, produce targeted evidence instead of defaulting to a full screenshot refresh:
@@ -549,10 +577,13 @@ Treat the header as a launch-critical component before local sign-off and again 
 - If desktop source headers have multiple utility CTAs but mobile width cannot preserve both the logo and CTAs without clipping, hide the lower-priority secondary header CTA on narrow mobile while keeping the primary expert/contact path visible.
 - Confirm every visible header link or CTA still has the right destination/action and analytics after style changes.
 
-## Logo Carousel And Proof QA
+## Customer Stories, Logos, And Proof QA
 
 - For customer demo examples, include an early proof section by default when the vendor has public customer logos, named customer stories, or analyst/award proof available.
-- Prefer source-site customer logo assets over generic image search. Extract logo paths from the vendor site HTML where possible, convert relative paths to absolute URLs, and verify every referenced logo renders.
+- Prefer source-site customer logo assets over generic image search. Extract logo paths from the vendor site HTML where possible, convert relative paths to absolute URLs, and verify every referenced logo renders. Do not use styled text as a company-logo substitute when a real logo is available.
+- Remove duplicate customer stories unless the repeated customer is intentionally used for two clearly different proof points and the page explains that distinction.
+- For campaign proof sections, mix proof types when sources allow it: at least one public case study, one customer video or video story, one analyst/resource proof, or one named partner/customer proof. Do not force a mix when it would require invented sources.
+- Treat customer-story CTAs as action-specific: `Watch the video`, `Read the case study`, `Open the analyst brief`, or equivalent. Do not use `Explore` or `Use` when the click opens a known asset type.
 - Match the source-site carousel/wall style first: heading language, divider/rule treatment, logo sizing, spacing, motion behavior, and white/dark background choice.
 - Duplicate logo-track content only for animation continuity. Do not imply additional customers beyond the verified source list.
 - Do not mix broad proof metrics such as customer counts, developer counts, or uptime claims into a customer-logo rail unless the source module itself mixes those items. Keep metrics in a separate proof/stat section where the fact, implication, and action can be explained.
@@ -564,6 +595,8 @@ Treat the header as a launch-critical component before local sign-off and again 
 When using a carousel for logos, resources, case studies, or proof cards:
 
 - Choose the motion pattern deliberately: a stepped carousel for content that needs deliberate reading, or a continuous logo-strip carousel for lightweight scan/brand motion. If the user asks for "like logos," prefer continuous movement.
+- For resource sections with more than three credible assets, default to an image-led stepped carousel instead of a static card grid. Each slide needs a verified image, asset type label, count indicator, useful CTA, arrows, dots, and no blank image panels.
+- Resource carousels should auto-rotate about every 4 seconds when idle, pause on hover and keyboard focus, resume after the user leaves, and respect reduced-motion preferences.
 - Continuous carousels should duplicate track content only for seamless animation. Mark cloned cards or logos `aria-hidden="true"` and remove cloned links/buttons from the tab order with `tabindex="-1"`.
 - Carousels must pause on hover and keyboard focus. They should resume only when the user leaves the carousel or focus leaves the carousel, and should respect reduced-motion preferences.
 - Arrow controls, dots, or other manual controls must still work after continuous animation is added. Track meaningful manual controls with a descriptive `flzAnalytic` action.
