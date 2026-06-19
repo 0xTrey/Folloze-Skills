@@ -27,6 +27,8 @@ Use this skill for Folloze MCP board and microsite work where the output is a po
 - Disambiguate similar account names, acronyms, campuses, and systems before applying brand, school colors, or public claims. If a request could mean a university system, a flagship campus, or a similarly named institution, verify the intended entity from the source URL, board name, tracker row, or user-provided context before changing identity-specific styling or copy.
 - For customer demo examples, default to an HTML-driven local preview workflow until Trey explicitly says to publish or save through MCP. Local preview can be a scratch HTML file opened in the Codex app or browser; it does not require localhost unless browser tooling needs it.
 - Do not invent deployment URLs. If MCP only returns a signed-in designer URL, report that and keep public deployment pending.
+- For existing-board annotation loops, preserve the active board identity and local source state across turns. A small browser-comment edit should not trigger a new board, a tracker rewrite, a full rebuild, or broad QA churn unless the comment changes the page architecture or Trey explicitly asks for that wider work.
+- Existing-board tracker rows are historical creation records by default. Later browser comments, repushes, and visual refinements should update the local research note and QA artifacts, not the tracker, unless Trey explicitly asks for tracker maintenance.
 
 ## Customer Demo Copy Pass
 
@@ -209,6 +211,7 @@ Before final local sign-off and again before MCP save, compare the page's surfac
 - If the vendor uses only one dark section or uses dark treatment sparingly, do not let the Folloze page accumulate multiple dark bands just because the first draft looked dramatic.
 - Prefer the vendor's common background rhythm over generic contrast. If source pages rely on white, pale blue, lavender, or product-color tints, move downstream proof, planning, and resource sections onto those surfaces unless the source pattern calls for dark.
 - Verify the first viewport and section transitions after the surface pass. A corrected palette should still preserve hierarchy, CTA contrast, and readable card boundaries.
+- When changing a section background, verify the adjacent upstream and downstream surfaces as part of the same check. A section-level color fix is not complete until the transition into the previous section, the selected section, the first repeated card row, and the following section all still read coherently on desktop and mobile.
 
 ## Official Logo Asset Workflow
 
@@ -279,6 +282,30 @@ Before writing new HTML or restructuring a page, choose one experience shape usi
 - If a run is interrupted after a save or tracker write, resume by checking staged files, the local research note, and the returned board ID before repeating any live operation. Do not create a duplicate board or duplicate tracker row just because the previous final response was interrupted.
 - If the current branch has unrelated local history or a dirty worktree that makes a remote push unsafe, do not push unrelated commits just to back up the current board. Commit the scoped work locally, report the branch state, and let Trey decide whether to publish the broader branch.
 - During sequential browser-comment passes on the same board, preserve the active board identity, local source path, theme ID, QA artifacts, and latest scoped commit across comments. When several comments are present in one review cycle, batch them into one local QA, Folloze save, and scoped commit when practical instead of saving or committing after every small annotation.
+
+## Active Board State For Iteration
+
+For any second or later change to the same board, reconstruct and maintain a compact active-board state before editing, saving, or reporting:
+
+- `boardId`, board name/title, designer URL, and public deployment URL status.
+- Local source HTML path and whether it is the source of truth.
+- Vendor, target account or segment, motion type, and source page.
+- Theme mode, theme ID, and required theme stylesheet URL.
+- Tracker status and tracker row if a first-create row already exists.
+- Current QA artifact paths, targeted screenshots, and latest scoped commit.
+- Save intent: local-only edit, existing-board MCP update, or net-new board creation.
+
+Use this state to avoid re-solving identity on every browser comment. If the user says `push to Folloze`, treat the current verified local source as the upload target and preserve the existing board ID. If the user asks only for a local visual edit, stop after local verification and report that Folloze has not been updated yet.
+
+## Browser Comment Batch Flow
+
+For annotation-driven work on an existing board, run a small deterministic loop:
+
+1. Resolve each selected element by selector, text, surrounding section, and owning CSS/HTML pattern.
+2. Classify the comment as local-only, publish-bound, or architecture-changing. If the latest user message says `push`, `publish`, `save`, or `update board`, it is publish-bound.
+3. Batch multiple comments in the same review pass into one source edit, one local QA pass, one MCP save, one post-save QA refresh, one research-note update, and one scoped commit when practical.
+4. For a single small visual comment, verify the changed selector plus the core save gates instead of refreshing every broad screenshot. Keep broader screenshots when the change affects first viewport, navigation, hero layout, mobile layout, section order, or repeated component tokens.
+5. Do not create a new tracker row, new board ID, or duplicate local artifact path during same-board annotation loops.
 
 ## Board Identity Guard
 
@@ -471,6 +498,16 @@ For multi-comment passes on the same artifact, maintain one working board identi
 
 For copy comments, rewrite in context rather than doing a literal one-for-one replacement. After the edit, search the source and QA notes for stale wording, update only the relevant QA evidence, and verify the new line reads cleanly at desktop and mobile widths.
 
+## Targeted QA Artifacts
+
+For small annotation fixes, produce targeted evidence instead of defaulting to a full screenshot refresh:
+
+- Write a small QA record or enrich the board QA JSON with selector, expected style or behavior, computed style or DOM result, viewport sizes tested, overflow result, and screenshot path when a screenshot is useful.
+- Name targeted screenshots by board and component, such as `qa/<slug>-story-header-desktop.png`, rather than overwriting broad top/video/mobile captures that did not change.
+- Keep broad screenshots for first-viewport, hero, navigation, mobile, section-order, carousel, video-player, and repeated-token changes.
+- If a targeted screenshot is mostly blank, stale, captures the wrong scroll position, or does not visibly contain the selected element, reject it and recapture before save or final response.
+- For color, spacing, and surface comments, include adjacent-section proof: selected background/text colors, first repeated card background, previous/next section background, and no horizontal overflow.
+
 ## Annotation Layout QA
 
 For browser comments about layout, alignment, spacing, full bleed, line wrapping, color, or dead space, run a selector-specific computed-style check before declaring the fix done:
@@ -482,6 +519,7 @@ For browser comments about layout, alignment, spacing, full bleed, line wrapping
 - For intro/card rail comments, compare the rendered left/right edges of the headline, subhead, and card grid. The grid should not appear detached from the text rail unless the design intentionally uses an asymmetric composition.
 - For number/stat alignment, verify left/right edges, grid or flex columns, gap pixels, text alignment, vertical center deltas, and color contrast.
 - For color changes, verify computed text/background colors on the selected element and at least one sibling or repeated instance.
+- For section background changes, verify adjacent section transitions and first-card/card-grid surfaces, not only the selected heading or band.
 - For spacing or dead-space comments, verify actual grid/flex gap, padding, and bounding boxes rather than relying on visual guesswork.
 - Preserve responsive behavior. A desktop no-wrap or full-bleed fix must not create mobile horizontal overflow.
 - If the edit changes a reusable token, inspect at least one sibling component to confirm the token change helped broadly and did not damage another state.
@@ -567,6 +605,8 @@ Before every MCP save, run a lightweight automated or programmatic check against
 - Count visible primary/resource CTAs and fail if any lacks direct CTA analytics or a real destination/action.
 - Render desktop, mobile, and narrow mobile widths. Check no horizontal overflow, no broken images, no console errors, and no clipped header/logo/CTA elements.
 - For annotation saves, confirm the selected section's selector still resolves, its `getBoundingClientRect()` is inside the screenshot viewport before capture, and the screenshot visibly contains the corrected section. Reject blank, mostly white, stale, or wrong-scroll screenshots even when DOM metrics pass.
+- For annotation saves that involve smooth scrolling, lazy images, sticky headers, or iframes, force screenshot QA into a deterministic state: disable or override smooth scrolling, scroll the target with a fixed offset, wait for lazy images and fonts when feasible, assert the selected element is inside the viewport, then capture.
+- For YouTube or other provider embeds, do not fail the save solely because `file://` preview shows a provider configuration error. Verify iframe wiring, dimensions, fallback state, external YouTube/open link, and hosted behavior when a Folloze designer or public URL is available. Local embed blocking is a caveat, not proof that the saved board is broken.
 - Exercise meaningful custom interactions: nav anchors, tabs, sliders/calculators, modals, carousels, accordions, and any state-changing controls. Verify the UI changes and the analytics action fires or is wired.
 - For pages with external resource links, run bounded live-link checks when feasible. Treat transient provider failures as caveats, but do not ignore obvious 404s or malformed URLs.
 - Save only after the checklist matches the analytics acknowledgements being sent to MCP. Do not set an acknowledgement to true because the code "probably" does it; verify the actual saved HTML.
@@ -598,13 +638,14 @@ When the page needs a content item but there is no existing Folloze asset or pub
 - When the user adds browser annotations, update the source CSS/HTML owner for the selected UI, not just the visible element. Scope the edit to the selected component unless the comment clearly implies a global token or design-system change.
 - If the preview appears stale during annotation work, reload the `file://` scratch HTML, add a cache-busting query string when supported, or switch to a fresh localhost URL. Do not require localhost when the user's Codex app/browser review is working from the local HTML file.
 - Render the local HTML at desktop and mobile widths before saving when possible.
-- For automated screenshots, disable or override smooth scrolling before capture and explicitly return to the intended scroll position. Otherwise lazy-loaded assets or smooth scroll behavior can produce misleading partial-page screenshots.
+- For automated screenshots, disable or override smooth scrolling before capture, wait for lazy-loaded assets and fonts when feasible, and explicitly return to the intended scroll position. Otherwise lazy-loaded assets or smooth scroll behavior can produce misleading partial-page screenshots.
 - For annotation screenshots, assert that the selected element is visible in the viewport before capture, then inspect or programmatically sanity-check the resulting image for the intended section. If a temporary localhost server or browser tab is used only for QA, close the tab and stop the server before final response.
 - Verify that the first viewport shows the vendor/account brand clearly.
 - Verify that section text does not overlap or overflow.
 - Verify mobile has no horizontal overflow. A quick DOM check is `document.documentElement.scrollWidth <= window.innerWidth`.
 - Verify referenced images render, cards remain bounded, modals open/close, and linked controls go to real destinations.
 - For annotation-driven revisions, repeat the specific component QA that matches the edit: button computed styles, nav map and target checks, calculator/input output checks, modal open/close checks, or image rendering checks.
+- For local YouTube previews, expect `file://` to differ from hosted behavior. Validate the local fallback presentation and iframe/link wiring locally, then verify hosted playback on the saved Folloze designer or public page when available. Report the caveat if only local file QA was possible.
 - If Folloze only returns a signed-in designer URL, say that unauthenticated public QA is not complete.
 
 ## Final Response
@@ -619,3 +660,5 @@ Keep the final response short:
 - Tracker status when tracker logging is in scope.
 - Commit hash when repo-backed source changes were committed.
 - Any caveat, especially pending public deployment or signed-in-only QA.
+
+For publish/update loops, separate these operational states explicitly: Folloze save status, designer/live URL, public deployment status, tracker status, QA status, local commit status, and whether any GitHub/remote push occurred. Do not imply one of these happened because another one succeeded.
