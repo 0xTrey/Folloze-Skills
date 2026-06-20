@@ -8,6 +8,10 @@ Run these gates before local preview and again before saving through Folloze MCP
 - For cross-sell, upsell, decision-stage, or existing-customer pages, the first viewport and first proof section make the expansion thesis clear: what the customer already proved, what should scale next, and why that matters now.
 - Buyer-facing copy avoids internal production terms, including demo, example, proof of concept, microsite, board, template, conversation assets, first meeting, fit, stack, pilot, scorecard, and technical architecture unless the user explicitly asked for them.
 - Buyer-facing copy also avoids internal section scaffolding such as existing customer proof, expansion workbench, proof for the expansion case, stakeholder mapping, decision team, resources, evaluation hub, or demo example unless those phrases are explicitly buyer-facing in the source brand.
+- The page has one holistic buyer goal, and every visible sentence supports that goal as a decision path, proof point, role-specific value, or useful next action.
+- No buyer-facing copy explains why the page, section, resource, or card was created, selected, arranged, or included. Replace demo-explainer copy with buyer outcomes or remove it.
+- Major section subheads and subheaders are absent by default. If the user explicitly requests one or the source brand requires one, it must be buyer-facing proof, decision, or action copy, not a section description.
+- Leadership, persona, team-value, or "leaders" sections describe selection support for each role: what they need to evaluate, what proof they get, what risk is reduced, and how the vendor helps them move forward.
 - All claims come from public vendor messaging, public target-account evidence, user-approved copy, or clearly labeled planning assumptions.
 - No invented metrics, logos, customer names, awards, analyst quotes, case studies, or testimonials.
 - Private notes shape strategy only; they are not quoted or paraphrased into visible buyer-facing claims.
@@ -22,6 +26,7 @@ Run these gates before local preview and again before saving through Folloze MCP
 - Hero, proof rows, calculators, and section transitions are not clipped at common desktop or mobile viewport heights.
 - Situation/Solution content stays compact and scannable.
 - Major ABM narrative sections use full-rail headlines when the headline carries the argument. Decorative eyebrows, category labels, and right-side subheads are removed when they only expose internal page structure.
+- Major narrative headers are headline-led. If the header needs a subhead to make sense, rewrite the headline or the next component instead of adding explanatory text.
 
 ## Controls And Analytics
 
@@ -73,3 +78,4 @@ Run these gates before local preview and again before saving through Folloze MCP
 - Existing board ID is preserved for updates unless the user explicitly asked for a new board.
 - Save only after local preview/review mode is complete and the user has asked to save, publish, update, or push to Folloze.
 - When the user provides a specific sheet URL, that sheet is inspected and used for the requested logging task instead of the default tracker unless the user asks for both.
+- The holistic buyer-goal pass has removed subheaders and demo-explainer leftovers, and leadership/persona value sections are role-specific selection support rather than internal mapping.

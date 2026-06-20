@@ -48,7 +48,7 @@ Use this order for every build, revision, and save. Do not jump straight into HT
 For one-to-many and one-to-few campaign boards, the first local preview must feel like a campaign the vendor could actually launch. If it reads like a wireframe, enablement outline, internal page map, or explanation of the build, stop and rewrite before showing it.
 
 - Singular solution spine: anchor the board in one vendor solution or campaign promise, then let workload, role, proof, and resource paths branch from that spine. Avoid a loose collection of product cards.
-- Section headers: default major campaign sections to full-bleed or full-rail headers. Remove decorative eyebrows, small proof labels, and subheads when they only explain the section. A subhead must add campaign tension, buyer value, or a concrete next move; otherwise delete it.
+- Section headers: default major campaign sections to full-bleed or full-rail headline-only headers. For Trey's customer-facing boards, remove subheader and subhead text unless the user explicitly asks for it or the source brand requires a real proof, decision, or action line. Do not use a subhead to explain what the section contains, why it exists, or why content was selected; sharpen the headline or move essential proof into the body/cards instead.
 - Customer stories: use real company logos, not red text labels. Do not duplicate the same customer story. When the public proof set supports it, mix at least one case study and one video story, and make each CTA label match the actual action.
 - Resource libraries: when there are more than three strong assets, default to an image-led stepped carousel. Include one verified image per item, arrows, dots, hover/focus pause, reduced-motion handling, and automatic rotation about every 4 seconds unless the source brand clearly discourages motion.
 - Visual explanation: if a map, architecture graphic, or process diagram needs arrows, tiny labels, or explanatory copy to be understood, replace it with fewer large value blocks, source-owned imagery, or a simpler `how it runs` grid.
@@ -65,7 +65,7 @@ Before local preview and again before MCP save, run a buyer-friendly copy pass a
 - Rewrite nav labels, section labels, headlines, subheads, CTA labels, and modal openers for a prospective buyer, not an internal planning team.
 - Avoid internal/demo-production language in buyer-facing UI, including `demo`, `example`, `template`, `conversation assets`, `first meeting`, `fit`, `stack`, `pilot`, `scorecard`, or `technical architecture` unless the user explicitly wants that wording.
 - Prefer action-oriented labels that explain why the buyer should click, such as `Why Daon`, `Protect Key Moments`, `See the Solution`, `Prove the Impact`, `Plan a Trust Workshop`, `Explore the Identity Moments`, or equivalent account-specific language.
-- Treat subheads as campaign copy, not explainer copy. A subhead should create urgency, sharpen the buyer's next move, or add a proof-driven implication; if it merely explains what the section is, delete it.
+- Remove section subheads and subheaders by default. If a supporting line is necessary, it must be a buyer-facing proof, decision prompt, or next action that supports the page goal; never a description of the section.
 - Preserve the underlying content when the content is good; change the framing around it first.
 
 ## Marketing Copy And ABM Messaging
@@ -86,6 +86,15 @@ Before writing or rewriting visible copy, draft the ABM message spine in working
 - Next action: the one concrete step the page should make easier.
 
 If this spine is generic, fix it before touching the UI. The page should have one main argument, not a collection of loosely related product cards.
+
+### Holistic Page Goal Gate
+
+Before writing or revising visible copy, name the holistic buyer goal in working notes: the decision, selection process, alignment moment, or confidence gap the page is meant to support. Every visible headline, card, resource, CTA, modal, stat, and role/persona line must support that goal.
+
+- Delete copy that explains why the agent chose a section, why a resource appears, how the page was constructed, or what the board is trying to demonstrate. Replace it only when there is a buyer-facing decision, proof, or next action to say.
+- Avoid visible phrases such as `these source paths anchor`, `this section frames`, `this page highlights`, `we created`, `selected for this demo`, `use public evidence to frame`, or any sentence that reads like rationale for the build.
+- When a sentence exists only to orient the reader to the page structure, remove it. If the buyer still needs context, rewrite the headline, card title, or CTA so the business value is self-evident.
+- The page should read like one account-specific argument from the vendor to the customer, not like a guided tour of modules.
 
 ### Cross-Sell And Upsell Motion Gate
 
@@ -177,6 +186,8 @@ Rewrite visible copy that sounds like an internal build note, generic sales stra
 
 For committee-based ABM pages, keep `buying committee` as internal planning language. Visible copy should talk about the value different teams get from the solution. Each major function should get a distinct reason to care:
 
+For `Leaders`, `Value by team`, persona, stakeholder, account-team, or "support for leadership" sections, write the section as customer selection support, not as a vendor stakeholder map. Each card should help that leader understand what to evaluate, what proof to ask for, what risk to reduce, and how the vendor supports a confident selection path. Avoid visible labels such as `leadership lane`, `decision team`, `stakeholder mapping`, or `buying committee` unless the source brand uses them as buyer-facing language.
+
 - Executive and economic buyers: strategic priority, risk reduction, measurable impact, consolidation, governance, reputation, or return on investment.
 - Practitioners and program owners: workflow fit, adoption, ease of use, speed, content quality, collaboration, and day-to-day confidence.
 - IT, security, data, and operations leaders: integration, administration, supportability, accessibility, privacy, reporting, scale, and change management.
@@ -195,6 +206,9 @@ Before local preview and before MCP save, reread the rendered page top to bottom
 - Does the page feel vendor-owned and buyer-facing, with no agent, Folloze, or internal planning language?
 - Are the strongest proof points above the deepest product detail?
 - Are CTA labels precise, benefit-oriented, and consistent with the vendor's native website language?
+- Does every visible sentence support the holistic buyer goal? Delete or rewrite anything that only explains the demo, build choice, section choice, or content curation.
+- Are any section subheads or subheaders still present? Delete them unless the user explicitly requested one or the source brand requires a buyer-facing proof, decision, or action line.
+- Do leadership, persona, and team-value cards support each leader through selection with role-specific proof, risk, and next-step help rather than internal stakeholder mapping?
 - Do headlines, cards, buttons, and mobile line breaks still read cleanly after layout changes?
 - If the copy could apply to any account after swapping the logo, sharpen it before saving.
 - Delete any section that only explains why the page exists, repeats a prior claim, or exposes the builder's logic. Each section must add a new reason to believe, a new decision input, a new proof point, or a useful next action.
@@ -485,7 +499,7 @@ When adding or revising a "Meet the Team" section:
 
 - Use real headshots when locally available or publicly usable; otherwise use initials only as a fallback and state the limitation.
 - Verify every headshot renders, has useful alt text, and remains framed consistently across desktop and mobile.
-- Write body copy around each person's specialty, role in the buying process, or useful next-step ownership. Avoid generic copy that only says to connect with the person.
+- Write body copy around how each person supports the buyer through evaluation and selection: the decision they clarify, the evidence they can bring, the risk they help reduce, or the next step they own. Avoid generic bio copy or copy that only says to connect with the person.
 - Use public profile data, vendor bio pages, and user-provided account context where available. If LinkedIn or a profile is blocked, make a conservative role-based assumption and say so in final notes when material.
 - Give each person one clear CTA with a live destination: `mailto:` for email actions, exact LinkedIn/profile URLs for social actions, or a vendor-owned contact path. Track each CTA with `flzAnalytic('cta_click', ...)`.
 - Keep CTA labels consistent with the action, such as `Send an email to Mike` for mailto or `Connect with Erin on LinkedIn` for LinkedIn.
