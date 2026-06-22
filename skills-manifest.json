@@ -15,6 +15,13 @@
       "requires_restart": true
     },
     {
+      "name": "build-customer-abx-program",
+      "path": "Skills/Troy Folloze Created Skills/build-customer-abx-program",
+      "description": "Builds customer-specific 12-month ABX strategies and implementation workbooks from the Folloze Academy Blueprint, reusable templates, and customer source folders.",
+      "enabled": true,
+      "requires_restart": true
+    },
+    {
       "name": "daily-email-summary-delivery",
       "path": "Skills/Troy Folloze Created Skills/daily-email-summary-delivery",
       "enabled": true,
