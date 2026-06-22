@@ -1,0 +1,4 @@
+interface:
+  display_name: "Build Customer ABX Program"
+  short_description: "Create customer-specific 12-month ABX programs"
+  default_prompt: "Use $build-customer-abx-program to create a customer-specific ABX strategy, workbook, campaigns, prompts, and measurement plan."
