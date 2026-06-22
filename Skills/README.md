@@ -8,6 +8,7 @@ This directory contains standalone Folloze skill projects.
 - `folloze-brand-kit` - reusable Folloze messaging, product capability references, proof, voice, colors, and logo source material for downstream skills
 - `folloze-morning-brief` - daily read-only GTM brief with calendar, Granola, Gmail, Salesforce, and outbound follow-up verification
 - `folloze-campaign-board-builder` - customer-facing marketer workflow from campaign brief to design context, approved wireframe, local editable HTML, automatic QA, and Folloze publish readiness
+- `folloze-demo-pack-builder` - repeatable three-part company demo packs with separate campaign, one-to-one, and event promotion experiences
 - `folloze-zoom-deal-room` - Zoom recap intake, buyer-safe deal-room briefs, and MCP/API Folloze board routing
 - `Folloze-MCP-Demo-Builder` - vendor-branded Folloze MCP microsite, account page, demo board, and buyer experience builder
 - `folloze-one-pager` - account-specific Folloze follow-up one-pagers from call notes, Salesforce, Drive, and account research

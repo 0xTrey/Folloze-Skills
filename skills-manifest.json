@@ -51,6 +51,12 @@
       "requires_restart": true
     },
     {
+      "name": "folloze-demo-pack-builder",
+      "path": "Skills/folloze-demo-pack-builder",
+      "enabled": true,
+      "requires_restart": true
+    },
+    {
       "name": "folloze-zoom-deal-room",
       "path": "Skills/folloze-zoom-deal-room",
       "enabled": true,

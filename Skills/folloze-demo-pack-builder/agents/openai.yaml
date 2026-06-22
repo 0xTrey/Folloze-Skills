@@ -1,0 +1,4 @@
+interface:
+  display_name: "Folloze Demo Pack Builder"
+  short_description: "Build three-part customer demo packs"
+  default_prompt: "Use $folloze-demo-pack-builder to create a campaign, one-to-one, and event demo pack for a company."

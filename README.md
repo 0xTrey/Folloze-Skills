@@ -114,6 +114,9 @@ Provides reusable Folloze v3.2 brand, positioning, product capability, messaging
 ### `folloze-campaign-board-builder`
 Guides customer marketers from campaign brief to campaign design context, mandatory wireframe approval, local editable HTML, automatic QA, and Folloze publish readiness for ABM microsites, campaign landing pages, demand generation pages, event follow-up experiences, resource hubs, and other buyer experiences.
 
+### `folloze-demo-pack-builder`
+Orchestrates a repeatable three-part demo example pack from one company name: a campaign landing page, one-to-one account page, and event promotion page, each kicked off separately through the Demo Builder workflow with source-safe research, bounded subagents, and customer-ready quality loops.
+
 ### `folloze-zoom-deal-room`
 Turns Zoom recaps, meeting-assets emails, and deal context into buyer-safe Folloze deal-room briefs, then routes the build to MCP rich HTML or the external board API when the user asks to create a live board.
 
