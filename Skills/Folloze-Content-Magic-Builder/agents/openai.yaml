@@ -1,0 +1,4 @@
+interface:
+  display_name: "Folloze Content Magic"
+  short_description: "Turn one content item or concept into an interactive Folloze buyer experience"
+  default_prompt: "Use $Folloze-Content-Magic-Builder to transform an approved content item or idea into an interactive Folloze experience with a clear asset spine, buyer journey, real interactions, local HTML, QA, and MCP publish handoff."
