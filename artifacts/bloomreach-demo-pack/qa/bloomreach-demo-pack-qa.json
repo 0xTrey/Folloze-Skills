@@ -1,0 +1,235 @@
+{
+  "generatedAt": "2026-07-06T12:58:12.804Z",
+  "pages": [
+    {
+      "key": "campaign",
+      "file": "artifacts/bloomreach-demo-pack/bloomreach-campaign-landing.html",
+      "externalLinks": 9,
+      "ctaAnalytics": 9,
+      "unsafeExternalLinks": 0,
+      "rawHashLinks": 0,
+      "navTargets": [
+        "proof",
+        "workbench",
+        "use-cases",
+        "customer-proof"
+      ],
+      "viewports": [
+        {
+          "viewport": {
+            "key": "desktop",
+            "width": 1440,
+            "height": 1100
+          },
+          "screenshot": "artifacts/bloomreach-demo-pack/qa/bloomreach-campaign-desktop.png",
+          "title": "Bloomreach | Turn Campaign Ideas Into Live Lifecycle Flows",
+          "horizontalOverflow": false,
+          "scrollWidth": 1440,
+          "innerWidth": 1440,
+          "imageCount": 5,
+          "missingImages": [],
+          "navTargetsMissing": [],
+          "anchorAnalyticsFired": 4,
+          "hashAfterNavClicks": "",
+          "consoleErrors": [],
+          "failedRequests": []
+        },
+        {
+          "viewport": {
+            "key": "mobile-390",
+            "width": 390,
+            "height": 900
+          },
+          "screenshot": "artifacts/bloomreach-demo-pack/qa/bloomreach-campaign-mobile-390.png",
+          "title": "Bloomreach | Turn Campaign Ideas Into Live Lifecycle Flows",
+          "horizontalOverflow": false,
+          "scrollWidth": 390,
+          "innerWidth": 390,
+          "imageCount": 5,
+          "missingImages": [],
+          "navTargetsMissing": [],
+          "anchorAnalyticsFired": 4,
+          "hashAfterNavClicks": "",
+          "consoleErrors": [],
+          "failedRequests": []
+        },
+        {
+          "viewport": {
+            "key": "mobile-320",
+            "width": 320,
+            "height": 820
+          },
+          "screenshot": "artifacts/bloomreach-demo-pack/qa/bloomreach-campaign-mobile-320.png",
+          "title": "Bloomreach | Turn Campaign Ideas Into Live Lifecycle Flows",
+          "horizontalOverflow": false,
+          "scrollWidth": 320,
+          "innerWidth": 320,
+          "imageCount": 5,
+          "missingImages": [],
+          "navTargetsMissing": [],
+          "anchorAnalyticsFired": 4,
+          "hashAfterNavClicks": "",
+          "consoleErrors": [],
+          "failedRequests": []
+        }
+      ]
+    },
+    {
+      "key": "one-to-one-tfg-bash",
+      "file": "artifacts/bloomreach-demo-pack/bloomreach-one-to-one-tfg-bash.html",
+      "externalLinks": 7,
+      "ctaAnalytics": 7,
+      "unsafeExternalLinks": 0,
+      "rawHashLinks": 0,
+      "navTargets": [
+        "proof",
+        "path",
+        "teams",
+        "workshop"
+      ],
+      "viewports": [
+        {
+          "viewport": {
+            "key": "desktop",
+            "width": 1440,
+            "height": 1100
+          },
+          "screenshot": "artifacts/bloomreach-demo-pack/qa/bloomreach-one-to-one-tfg-bash-desktop.png",
+          "title": "Bloomreach | Bash Conversational Growth Path",
+          "horizontalOverflow": false,
+          "scrollWidth": 1440,
+          "innerWidth": 1440,
+          "imageCount": 6,
+          "missingImages": [],
+          "navTargetsMissing": [],
+          "anchorAnalyticsFired": 4,
+          "hashAfterNavClicks": "",
+          "consoleErrors": [],
+          "failedRequests": []
+        },
+        {
+          "viewport": {
+            "key": "mobile-390",
+            "width": 390,
+            "height": 900
+          },
+          "screenshot": "artifacts/bloomreach-demo-pack/qa/bloomreach-one-to-one-tfg-bash-mobile-390.png",
+          "title": "Bloomreach | Bash Conversational Growth Path",
+          "horizontalOverflow": false,
+          "scrollWidth": 390,
+          "innerWidth": 390,
+          "imageCount": 6,
+          "missingImages": [],
+          "navTargetsMissing": [],
+          "anchorAnalyticsFired": 4,
+          "hashAfterNavClicks": "",
+          "consoleErrors": [],
+          "failedRequests": []
+        },
+        {
+          "viewport": {
+            "key": "mobile-320",
+            "width": 320,
+            "height": 820
+          },
+          "screenshot": "artifacts/bloomreach-demo-pack/qa/bloomreach-one-to-one-tfg-bash-mobile-320.png",
+          "title": "Bloomreach | Bash Conversational Growth Path",
+          "horizontalOverflow": false,
+          "scrollWidth": 320,
+          "innerWidth": 320,
+          "imageCount": 6,
+          "missingImages": [],
+          "navTargetsMissing": [],
+          "anchorAnalyticsFired": 4,
+          "hashAfterNavClicks": "",
+          "consoleErrors": [],
+          "failedRequests": []
+        }
+      ]
+    },
+    {
+      "key": "edge-summit-la",
+      "file": "artifacts/bloomreach-demo-pack/bloomreach-edge-summit-la.html",
+      "externalLinks": 7,
+      "ctaAnalytics": 7,
+      "unsafeExternalLinks": 0,
+      "rawHashLinks": 0,
+      "navTargets": [
+        "why",
+        "tracks",
+        "agenda",
+        "venue"
+      ],
+      "viewports": [
+        {
+          "viewport": {
+            "key": "desktop",
+            "width": 1440,
+            "height": 1100
+          },
+          "screenshot": "artifacts/bloomreach-demo-pack/qa/bloomreach-edge-summit-la-desktop.png",
+          "title": "Bloomreach | The Edge Summit Los Angeles",
+          "horizontalOverflow": false,
+          "scrollWidth": 1440,
+          "innerWidth": 1440,
+          "imageCount": 13,
+          "missingImages": [],
+          "navTargetsMissing": [],
+          "anchorAnalyticsFired": 4,
+          "hashAfterNavClicks": "",
+          "consoleErrors": [],
+          "failedRequests": []
+        },
+        {
+          "viewport": {
+            "key": "mobile-390",
+            "width": 390,
+            "height": 900
+          },
+          "screenshot": "artifacts/bloomreach-demo-pack/qa/bloomreach-edge-summit-la-mobile-390.png",
+          "title": "Bloomreach | The Edge Summit Los Angeles",
+          "horizontalOverflow": false,
+          "scrollWidth": 390,
+          "innerWidth": 390,
+          "imageCount": 13,
+          "missingImages": [],
+          "navTargetsMissing": [],
+          "anchorAnalyticsFired": 4,
+          "hashAfterNavClicks": "",
+          "consoleErrors": [],
+          "failedRequests": []
+        },
+        {
+          "viewport": {
+            "key": "mobile-320",
+            "width": 320,
+            "height": 820
+          },
+          "screenshot": "artifacts/bloomreach-demo-pack/qa/bloomreach-edge-summit-la-mobile-320.png",
+          "title": "Bloomreach | The Edge Summit Los Angeles",
+          "horizontalOverflow": false,
+          "scrollWidth": 320,
+          "innerWidth": 320,
+          "imageCount": 13,
+          "missingImages": [],
+          "navTargetsMissing": [],
+          "anchorAnalyticsFired": 4,
+          "hashAfterNavClicks": "",
+          "consoleErrors": [],
+          "failedRequests": []
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "pages": 3,
+    "screenshots": 9,
+    "unsafeExternalLinks": 0,
+    "rawHashLinks": 0,
+    "horizontalOverflowFindings": [],
+    "missingImageFindings": [],
+    "consoleErrorFindings": [],
+    "failedRequestFindings": [],
+    "navTargetsMissing": []
+  }
+}

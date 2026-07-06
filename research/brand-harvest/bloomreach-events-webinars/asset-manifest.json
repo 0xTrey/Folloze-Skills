@@ -1,0 +1,881 @@
+{
+  "logos": [
+    {
+      "src": "https://www.bloomreach.com/wp-content/themes/hello-theme-child-master/assets/img/bloomreach-logo-icon.svg",
+      "alt": "",
+      "className": "l-icon",
+      "width": 40,
+      "height": 40,
+      "rect": {
+        "x": 40,
+        "y": 65,
+        "width": 40,
+        "height": 40
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/themes/hello-theme-child-master/assets/img/bloomreach-logo-text.svg",
+      "alt": "Bloomreach",
+      "className": "l-text",
+      "width": 136,
+      "height": 18,
+      "rect": {
+        "x": 88,
+        "y": 76,
+        "width": 136,
+        "height": 18
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2026/01/aws-logo-nav.svg",
+      "alt": "",
+      "className": "",
+      "width": 40,
+      "height": 40,
+      "rect": {
+        "x": 1210,
+        "y": 24,
+        "width": 29,
+        "height": 29
+      }
+    },
+    {
+      "src": "data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20698%20488'%3E%3C/svg%3E",
+      "alt": "BR_Weblayers_Email-Marketing-Page",
+      "className": "ew-image-img wp-post-image",
+      "width": 215,
+      "height": 150,
+      "rect": {
+        "x": 925,
+        "y": 3175,
+        "width": 350,
+        "height": 232
+      }
+    }
+  ],
+  "images": [
+    {
+      "src": "https://cdn-cookieyes.com/assets/images/close.svg",
+      "alt": "",
+      "className": "",
+      "width": 10,
+      "height": 10,
+      "rect": {
+        "x": 1394,
+        "y": 790,
+        "width": 20,
+        "height": 20
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/themes/hello-theme-child-master/assets/img/bloomreach-logo-icon.svg",
+      "alt": "",
+      "className": "l-icon",
+      "width": 40,
+      "height": 40,
+      "rect": {
+        "x": 40,
+        "y": 65,
+        "width": 40,
+        "height": 40
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/themes/hello-theme-child-master/assets/img/bloomreach-logo-text.svg",
+      "alt": "Bloomreach",
+      "className": "l-text",
+      "width": 136,
+      "height": 18,
+      "rect": {
+        "x": 88,
+        "y": 76,
+        "width": 136,
+        "height": 18
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2025/07/int-shopify.svg",
+      "alt": "",
+      "className": "",
+      "width": 40,
+      "height": 40,
+      "rect": {
+        "x": 1066,
+        "y": 24,
+        "width": 29,
+        "height": 29
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2025/07/int-snowflake.svg",
+      "alt": "",
+      "className": "",
+      "width": 40,
+      "height": 40,
+      "rect": {
+        "x": 1102,
+        "y": 24,
+        "width": 29,
+        "height": 29
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2025/07/int-google.svg",
+      "alt": "",
+      "className": "",
+      "width": 40,
+      "height": 40,
+      "rect": {
+        "x": 1138,
+        "y": 24,
+        "width": 29,
+        "height": 29
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2025/11/databrics-ico.png",
+      "alt": "",
+      "className": "",
+      "width": 80,
+      "height": 80,
+      "rect": {
+        "x": 1174,
+        "y": 24,
+        "width": 29,
+        "height": 29
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2026/01/aws-logo-nav.svg",
+      "alt": "",
+      "className": "",
+      "width": 40,
+      "height": 40,
+      "rect": {
+        "x": 1210,
+        "y": 24,
+        "width": 29,
+        "height": 29
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2025/07/int-antavo.svg",
+      "alt": "",
+      "className": "",
+      "width": 40,
+      "height": 40,
+      "rect": {
+        "x": 1246,
+        "y": 24,
+        "width": 29,
+        "height": 29
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2026/04/Edge26-Event-Image-LA-1@2x.jpg",
+      "alt": "Edge26-Event-Image-LA-1@2x",
+      "className": "attachment-full size-full wp-image-88024",
+      "width": 1330,
+      "height": 860,
+      "rect": {
+        "x": 165,
+        "y": 210,
+        "width": 530,
+        "height": 351
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2024/05/calendar.svg",
+      "alt": "Event",
+      "className": "",
+      "width": 14,
+      "height": 14,
+      "rect": {
+        "x": 192,
+        "y": 231,
+        "width": 14,
+        "height": 14
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2024/05/calendar.svg",
+      "alt": "Events",
+      "className": "",
+      "width": 14,
+      "height": 14,
+      "rect": {
+        "x": 192,
+        "y": 893,
+        "width": 14,
+        "height": 14
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2026/04/Edge26-Event-Image-LA-1@2x-768x497.jpg",
+      "alt": "Edge26-Event-Image-LA-1@2x",
+      "className": "ew-image-img wp-post-image",
+      "width": 768,
+      "height": 497,
+      "rect": {
+        "x": 165,
+        "y": 873,
+        "width": 350,
+        "height": 232
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2024/05/calendar.svg",
+      "alt": "Events",
+      "className": "",
+      "width": 14,
+      "height": 14,
+      "rect": {
+        "x": 572,
+        "y": 893,
+        "width": 14,
+        "height": 14
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2026/06/Vibe-Martech-Fest-Dubai-768x512.png",
+      "alt": "Vibe-Martech-Fest-Dubai",
+      "className": "ew-image-img wp-post-image",
+      "width": 768,
+      "height": 512,
+      "rect": {
+        "x": 545,
+        "y": 873,
+        "width": 350,
+        "height": 232
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2024/05/calendar.svg",
+      "alt": "Events",
+      "className": "",
+      "width": 14,
+      "height": 14,
+      "rect": {
+        "x": 952,
+        "y": 893,
+        "width": 14,
+        "height": 14
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2026/06/SBC-Summit-768x496.jpg",
+      "alt": "SBC-Summit",
+      "className": "ew-image-img wp-post-image entered lazyloaded",
+      "width": 768,
+      "height": 496,
+      "rect": {
+        "x": 925,
+        "y": 873,
+        "width": 350,
+        "height": 232
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2024/05/calendar.svg",
+      "alt": "Events",
+      "className": "",
+      "width": 14,
+      "height": 14,
+      "rect": {
+        "x": 192,
+        "y": 1292,
+        "width": 14,
+        "height": 14
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2026/06/DMEXCO-768x494.png",
+      "alt": "DMEXCO",
+      "className": "ew-image-img wp-post-image entered lazyloaded",
+      "width": 768,
+      "height": 494,
+      "rect": {
+        "x": 165,
+        "y": 1272,
+        "width": 350,
+        "height": 232
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2024/05/calendar.svg",
+      "alt": "Events",
+      "className": "",
+      "width": 14,
+      "height": 14,
+      "rect": {
+        "x": 572,
+        "y": 1292,
+        "width": 14,
+        "height": 14
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2026/06/Hospitality-Tech-Expo-768x512.png",
+      "alt": "Hospitality-Tech-Expo",
+      "className": "ew-image-img wp-post-image entered lazyloaded",
+      "width": 768,
+      "height": 512,
+      "rect": {
+        "x": 545,
+        "y": 1272,
+        "width": 350,
+        "height": 232
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2024/05/calendar.svg",
+      "alt": "Events",
+      "className": "",
+      "width": 14,
+      "height": 14,
+      "rect": {
+        "x": 952,
+        "y": 1292,
+        "width": 14,
+        "height": 14
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2026/06/EcomExpo-768x512.png",
+      "alt": "EcomExpo",
+      "className": "ew-image-img wp-post-image entered lazyloaded",
+      "width": 768,
+      "height": 512,
+      "rect": {
+        "x": 925,
+        "y": 1272,
+        "width": 350,
+        "height": 232
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2024/05/calendar.svg",
+      "alt": "Events",
+      "className": "",
+      "width": 14,
+      "height": 14,
+      "rect": {
+        "x": 192,
+        "y": 1690,
+        "width": 14,
+        "height": 14
+      }
+    },
+    {
+      "src": "data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20768%20512'%3E%3C/svg%3E",
+      "alt": "TBH-Loyalty",
+      "className": "ew-image-img wp-post-image",
+      "width": 225,
+      "height": 150,
+      "rect": {
+        "x": 165,
+        "y": 1670,
+        "width": 350,
+        "height": 232
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2024/05/calendar.svg",
+      "alt": "Events",
+      "className": "",
+      "width": 14,
+      "height": 14,
+      "rect": {
+        "x": 572,
+        "y": 1690,
+        "width": 14,
+        "height": 14
+      }
+    },
+    {
+      "src": "data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20768%20497'%3E%3C/svg%3E",
+      "alt": "Edge26-Event-Image-LDN-1@2x",
+      "className": "ew-image-img wp-post-image",
+      "width": 232,
+      "height": 150,
+      "rect": {
+        "x": 545,
+        "y": 1670,
+        "width": 350,
+        "height": 232
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2024/05/calendar.svg",
+      "alt": "Events",
+      "className": "",
+      "width": 14,
+      "height": 14,
+      "rect": {
+        "x": 952,
+        "y": 1690,
+        "width": 14,
+        "height": 14
+      }
+    },
+    {
+      "src": "data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20768%20512'%3E%3C/svg%3E",
+      "alt": "Sigma",
+      "className": "ew-image-img wp-post-image",
+      "width": 225,
+      "height": 150,
+      "rect": {
+        "x": 925,
+        "y": 1670,
+        "width": 350,
+        "height": 232
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2024/05/calendar.svg",
+      "alt": "Events",
+      "className": "",
+      "width": 14,
+      "height": 14,
+      "rect": {
+        "x": 192,
+        "y": 2089,
+        "width": 14,
+        "height": 14
+      }
+    },
+    {
+      "src": "data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20650%20420'%3E%3C/svg%3E",
+      "alt": "The-Martech-Summit-London",
+      "className": "ew-image-img wp-post-image",
+      "width": 232,
+      "height": 150,
+      "rect": {
+        "x": 165,
+        "y": 2069,
+        "width": 350,
+        "height": 232
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2024/05/calendar.svg",
+      "alt": "Events",
+      "className": "",
+      "width": 14,
+      "height": 14,
+      "rect": {
+        "x": 572,
+        "y": 2089,
+        "width": 14,
+        "height": 14
+      }
+    },
+    {
+      "src": "data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20650%20420'%3E%3C/svg%3E",
+      "alt": "Tech-for-Retail",
+      "className": "ew-image-img wp-post-image",
+      "width": 232,
+      "height": 150,
+      "rect": {
+        "x": 545,
+        "y": 2069,
+        "width": 350,
+        "height": 232
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2024/05/video-player.svg",
+      "alt": "Webinars",
+      "className": "",
+      "width": 14,
+      "height": 14,
+      "rect": {
+        "x": 192,
+        "y": 2769,
+        "width": 14,
+        "height": 14
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2026/05/Webinar-768x497@2x-768x497.jpg",
+      "alt": "Webinar-768x497@2x",
+      "className": "ew-image-img wp-post-image",
+      "width": 768,
+      "height": 497,
+      "rect": {
+        "x": 165,
+        "y": 2749,
+        "width": 350,
+        "height": 232
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2024/05/video-player.svg",
+      "alt": "Webinars",
+      "className": "",
+      "width": 14,
+      "height": 14,
+      "rect": {
+        "x": 572,
+        "y": 2769,
+        "width": 14,
+        "height": 14
+      }
+    },
+    {
+      "src": "data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20768%20512'%3E%3C/svg%3E",
+      "alt": "Hero-1@2x",
+      "className": "ew-image-img wp-post-image",
+      "width": 225,
+      "height": 150,
+      "rect": {
+        "x": 545,
+        "y": 2749,
+        "width": 350,
+        "height": 232
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2024/05/video-player.svg",
+      "alt": "Webinars",
+      "className": "",
+      "width": 14,
+      "height": 14,
+      "rect": {
+        "x": 952,
+        "y": 2769,
+        "width": 14,
+        "height": 14
+      }
+    },
+    {
+      "src": "data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20768%20432'%3E%3C/svg%3E",
+      "alt": "BR-SFMC-Live-Demo-webinar-image@2x",
+      "className": "ew-image-img wp-post-image",
+      "width": 267,
+      "height": 150,
+      "rect": {
+        "x": 925,
+        "y": 2749,
+        "width": 350,
+        "height": 232
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2024/05/video-player.svg",
+      "alt": "Webinars",
+      "className": "",
+      "width": 14,
+      "height": 14,
+      "rect": {
+        "x": 192,
+        "y": 3195,
+        "width": 14,
+        "height": 14
+      }
+    },
+    {
+      "src": "data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20768%20446'%3E%3C/svg%3E",
+      "alt": "Thumbnail-1000x581@2x",
+      "className": "ew-image-img wp-post-image",
+      "width": 258,
+      "height": 150,
+      "rect": {
+        "x": 165,
+        "y": 3175,
+        "width": 350,
+        "height": 232
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2024/05/video-player.svg",
+      "alt": "Webinars",
+      "className": "",
+      "width": 14,
+      "height": 14,
+      "rect": {
+        "x": 572,
+        "y": 3195,
+        "width": 14,
+        "height": 14
+      }
+    },
+    {
+      "src": "data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20768%20446'%3E%3C/svg%3E",
+      "alt": "Resources-Center-Image",
+      "className": "ew-image-img wp-post-image",
+      "width": 258,
+      "height": 150,
+      "rect": {
+        "x": 545,
+        "y": 3175,
+        "width": 350,
+        "height": 232
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2024/05/video-player.svg",
+      "alt": "Webinars",
+      "className": "",
+      "width": 14,
+      "height": 14,
+      "rect": {
+        "x": 952,
+        "y": 3195,
+        "width": 14,
+        "height": 14
+      }
+    },
+    {
+      "src": "data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20698%20488'%3E%3C/svg%3E",
+      "alt": "BR_Weblayers_Email-Marketing-Page",
+      "className": "ew-image-img wp-post-image",
+      "width": 215,
+      "height": 150,
+      "rect": {
+        "x": 925,
+        "y": 3175,
+        "width": 350,
+        "height": 232
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2024/05/calendar.svg",
+      "alt": "Events",
+      "className": "",
+      "width": 14,
+      "height": 14,
+      "rect": {
+        "x": 192,
+        "y": 3879,
+        "width": 14,
+        "height": 14
+      }
+    },
+    {
+      "src": "data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20768%20497'%3E%3C/svg%3E",
+      "alt": "665x430px-CommerceNext-Events-Page-@2x-1",
+      "className": "ew-image-img wp-post-image",
+      "width": 232,
+      "height": 150,
+      "rect": {
+        "x": 165,
+        "y": 3859,
+        "width": 350,
+        "height": 232
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2024/05/calendar.svg",
+      "alt": "Events",
+      "className": "",
+      "width": 14,
+      "height": 14,
+      "rect": {
+        "x": 572,
+        "y": 3879,
+        "width": 14,
+        "height": 14
+      }
+    },
+    {
+      "src": "data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20768%20512'%3E%3C/svg%3E",
+      "alt": "CX-Financial-Services",
+      "className": "ew-image-img wp-post-image",
+      "width": 225,
+      "height": 150,
+      "rect": {
+        "x": 545,
+        "y": 3859,
+        "width": 350,
+        "height": 232
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2024/05/calendar.svg",
+      "alt": "Events",
+      "className": "",
+      "width": 14,
+      "height": 14,
+      "rect": {
+        "x": 952,
+        "y": 3879,
+        "width": 14,
+        "height": 14
+      }
+    },
+    {
+      "src": "data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20768%20496'%3E%3C/svg%3E",
+      "alt": "650x420px-SBC-Summit-Events-Page-@2x",
+      "className": "ew-image-img wp-post-image",
+      "width": 232,
+      "height": 150,
+      "rect": {
+        "x": 925,
+        "y": 3859,
+        "width": 350,
+        "height": 232
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2024/05/calendar.svg",
+      "alt": "Events",
+      "className": "",
+      "width": 14,
+      "height": 14,
+      "rect": {
+        "x": 192,
+        "y": 4278,
+        "width": 14,
+        "height": 14
+      }
+    },
+    {
+      "src": "data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20768%20497'%3E%3C/svg%3E",
+      "alt": "shoptalk-europe-event-page-image@2x-1",
+      "className": "ew-image-img wp-post-image",
+      "width": 232,
+      "height": 150,
+      "rect": {
+        "x": 165,
+        "y": 4258,
+        "width": 350,
+        "height": 232
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2024/05/calendar.svg",
+      "alt": "Events",
+      "className": "",
+      "width": 14,
+      "height": 14,
+      "rect": {
+        "x": 572,
+        "y": 4278,
+        "width": 14,
+        "height": 14
+      }
+    },
+    {
+      "src": "data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20768%20497'%3E%3C/svg%3E",
+      "alt": "CRMC@2x",
+      "className": "ew-image-img wp-post-image",
+      "width": 232,
+      "height": 150,
+      "rect": {
+        "x": 545,
+        "y": 4258,
+        "width": 350,
+        "height": 232
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2024/05/calendar.svg",
+      "alt": "Events",
+      "className": "",
+      "width": 14,
+      "height": 14,
+      "rect": {
+        "x": 952,
+        "y": 4278,
+        "width": 14,
+        "height": 14
+      }
+    },
+    {
+      "src": "data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20768%20497'%3E%3C/svg%3E",
+      "alt": "The-Lead@2x",
+      "className": "ew-image-img wp-post-image",
+      "width": 232,
+      "height": 150,
+      "rect": {
+        "x": 925,
+        "y": 4258,
+        "width": 350,
+        "height": 232
+      }
+    },
+    {
+      "src": "data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20108%20129'%3E%3C/svg%3E",
+      "alt": "g2-top-50-2025",
+      "className": "attachment-full size-full wp-image-68788",
+      "width": 126,
+      "height": 150,
+      "rect": {
+        "x": 755,
+        "y": 5061,
+        "width": 35,
+        "height": 42
+      }
+    },
+    {
+      "src": "data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20112%20129'%3E%3C/svg%3E",
+      "alt": "g2-summer-2025",
+      "className": "attachment-full size-full wp-image-68785",
+      "width": 130,
+      "height": 150,
+      "rect": {
+        "x": 830,
+        "y": 5061,
+        "width": 36,
+        "height": 42
+      }
+    },
+    {
+      "src": "data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20124%20129'%3E%3C/svg%3E",
+      "alt": "tr-top-rated-2025",
+      "className": "attachment-full size-full wp-image-68782",
+      "width": 144,
+      "height": 150,
+      "rect": {
+        "x": 907,
+        "y": 5061,
+        "width": 40,
+        "height": 42
+      }
+    },
+    {
+      "src": "data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20124%20129'%3E%3C/svg%3E",
+      "alt": "aicpa",
+      "className": "attachment-full size-full wp-image-68779",
+      "width": 144,
+      "height": 150,
+      "rect": {
+        "x": 987,
+        "y": 5061,
+        "width": 40,
+        "height": 42
+      }
+    },
+    {
+      "src": "data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20316%2064'%3E%3C/svg%3E",
+      "alt": "iso-all-w",
+      "className": "attachment-full size-full wp-image-68804",
+      "width": 300,
+      "height": 61,
+      "rect": {
+        "x": 1068,
+        "y": 5061,
+        "width": 207,
+        "height": 42
+      }
+    }
+  ],
+  "background_images": [],
+  "brandfetch_logos": [],
+  "screenshots": {
+    "desktop_full": {
+      "path": "research/brand-harvest/bloomreach-events-webinars/screenshots/homepage-desktop-full.png",
+      "width": 1440,
+      "height": 5271,
+      "clipped": false
+    },
+    "mobile_full": {
+      "path": "research/brand-harvest/bloomreach-events-webinars/screenshots/homepage-mobile-full.png",
+      "width": 390,
+      "height": 11135,
+      "clipped": false
+    }
+  },
+  "manual_screenshots": []
+}

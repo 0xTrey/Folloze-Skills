@@ -1,0 +1,98 @@
+# Bloomreach Demo Pack Brief
+
+Generated: 2026-07-06
+
+## Pack Control
+
+- Company: Bloomreach
+- Domain: https://www.bloomreach.com/
+- Category: AI personalization platform for commerce, powered by Loomi AI.
+- Pack mode: local preview only. No Folloze save, no tracker write, and no public deployment requested.
+- Theme mode: not authorized yet. If Trey asks to save through Folloze MCP, ask the required no-theme/company-theme question first; recommended answer is no Folloze company theme so Bloomreach brand styling stays in control.
+- Local source paths:
+  - Campaign: artifacts/bloomreach-demo-pack/bloomreach-campaign-landing.html
+  - One-to-one: artifacts/bloomreach-demo-pack/bloomreach-one-to-one-tfg-bash.html
+  - Event: artifacts/bloomreach-demo-pack/bloomreach-edge-summit-la.html
+- QA plan: render desktop, tablet, 390px mobile, and 320px mobile; check overflow, external links, CTA analytics wiring, image rendering, and shell-safe in-page navigation.
+
+## Brand And Source DNA
+
+- Source harvests:
+  - research/brand-harvest/bloomreach-home/
+  - research/brand-harvest/bloomreach-loomi-marketing-agent/
+  - research/brand-harvest/bloomreach-events-webinars/
+- Surface: white sections, black/dark-navy hero sections, yellow CTAs/proof accents, cyan secondary actions, occasional pale cyan panels.
+- Type: Bloomreach Sans from Bloomreach public font assets with Montserrat/Arial fallback.
+- Structure: fixed header, compact nav, pill CTAs, large claim-led sections, square or near-square cards, proof metrics close to claims.
+- Button map:
+  - Primary: yellow pill on dark or white surface.
+  - Secondary: cyan pill or outlined pill depending on surface.
+  - Utility/header: small white or yellow pill.
+  - Resource action: text/cyan link or compact pill with direct external link.
+- Asset rules: use Bloomreach-hosted logos/images only where verified. Do not create generic logo walls without source proof links.
+
+## Pack Promise
+
+The three examples show how Bloomreach could use Folloze-style buyer experiences without exposing Folloze in the copy:
+
+1. Campaign landing page: one-to-many Loomi Marketing Agent campaign for retail CRM and lifecycle teams with public customer proof.
+2. One-to-one account page: TFG/Bash expansion path from proven PDP conversational guidance to earlier PLP and journey-level guidance.
+3. Event promotion page: The Edge Summit Los Angeles registration path for AI and commerce leaders.
+
+## Experience Briefs
+
+### Campaign Landing Page
+
+- Motion: one-to-many campaign.
+- Holistic buyer goal: help retail CRM leaders decide whether Loomi Marketing Agent can clear lifecycle campaign backlog without adding developer or ops load.
+- Audience: CRM, loyalty, lifecycle, and retention marketers at retail and commerce brands.
+- Message spine:
+  - Context: teams have more campaign ideas than production capacity.
+  - Why change: manual segmentation, timing logic, creative assembly, and product-personalization rules slow down high-value lifecycle flows.
+  - Why now: Bloomreach announced Loomi Marketing Agent GA on June 2, 2026, and the product page shows live customer proof.
+  - Vendor promise: one prompt can become audience, timing, personalization, and reviewable campaign logic.
+  - Proof: 260 Sample Sale, Sideshow, Revolution Beauty, plus product-page proof that the agent is live in production.
+  - Next action: bring a hard campaign idea to a 30-minute demo.
+- Shape: Workbench with proof-led cards.
+- Section order: hero, proof strip, workload tension, campaign workbench, use cases, control/review, proof cards, final CTA.
+- CTAs: Loomi Marketing Agent page, schedule demo, 260 Sample Sale case, Sideshow case, Revolution Beauty case.
+
+### One-To-One Account Page
+
+- Motion: account-specific expansion page.
+- Target account: TFG/Bash.
+- Holistic buyer goal: help Bash evaluate how to move conversational guidance earlier in the shopping journey while preserving control, catalog grounding, and measurable conversion proof.
+- Account context: Bloomreach case study says TFG implemented Loomi Conversational Agent on Bash and tested it during Black Friday.
+- Why change: product-page assistance proved value after shoppers viewed multiple PDPs; the next decision is where guidance should appear earlier.
+- Why now: June 24, 2026 Conversational Agent enhancements add insights, advanced reasoning, and connected ecosystem claims.
+- Vendor promise: expand from late-stage PDP help to guided discovery and PLP confidence without hallucinated products or unsupported answers.
+- Proof: TFG/Bash Black Friday A/B test, Conversational Agent product capabilities, June 2026 enhancements.
+- Next action: run a PLP expansion workshop.
+- Shape: Narrative Workflow.
+- Section order: hero, proof results, first win/next move, expansion path, selection support by team, workshop path, final CTA.
+- CTAs: TFG case study, Loomi Conversational Agent page, request demo.
+
+### Event Promotion Page
+
+- Motion: event promotion.
+- Event: The Edge Summit Los Angeles.
+- Source status: future event as of 2026-07-06.
+- Holistic buyer goal: convert AI/commerce leaders into registrants or meeting-ready attendees by making the event agenda and value clear.
+- Audience: commerce, marketing, CX, search/product discovery, and AI leaders.
+- Message spine:
+  - Context: AI in commerce is moving from generic tools to business-specific intelligent experiences.
+  - Why change: teams need practical examples, data-foundation guidance, and peer discussion around agentic commerce.
+  - Why now: Edge Summit LA is scheduled for September 9-10, 2026.
+  - Vendor promise: Bloomreach convenes peers, speakers, and hands-on tracks around intelligent experiences.
+  - Proof: official Edge Summit agenda, keynote, tracks, venue, attendee/session counts.
+  - Next action: get tickets or plan the sessions to attend.
+- Shape: Photographic plus Agenda Workflow.
+- Section order: hero, event proof strip, why attend, tracks, schedule, keynote/venue, final CTA.
+- CTAs: Edge Summit North America page and Bloomreach events hub.
+
+## Quality Notes
+
+- Buyer-facing pages avoid the words Folloze, demo pack, example, template, proof-of-concept, and board.
+- Source citations live in research notes and external CTAs; visible copy keeps claims concise and buyer-facing.
+- Pages use button-based in-page scroll controls instead of raw hash anchors.
+- Each external CTA includes `target="_blank" rel="noopener"` and inline `flzAnalytic('cta_click', ...)`.

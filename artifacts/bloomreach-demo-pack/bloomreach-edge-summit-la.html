@@ -1,0 +1,573 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bloomreach | The Edge Summit Los Angeles</title>
+  <meta name="description" content="A Bloomreach event experience for The Edge Summit Los Angeles, September 9-10, 2026.">
+  <style>
+    @font-face {
+      font-family: "Bloomreach Sans";
+      src: url("https://www.bloomreach.com/wp-content/uploads/2024/04/BloomreachSans-Regular.woff2") format("woff2");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "Bloomreach Sans";
+      src: url("https://www.bloomreach.com/wp-content/uploads/2024/04/BloomreachSans-Medium.woff2") format("woff2");
+      font-weight: 600;
+      font-style: normal;
+      font-display: swap;
+    }
+    :root {
+      --ink: #050505;
+      --night: #02141e;
+      --deep: #002840;
+      --cyan: #019ace;
+      --cyan-soft: #eafdff;
+      --yellow: #feed1b;
+      --white: #ffffff;
+      --line: rgba(0, 40, 64, 0.14);
+      --muted: #5f6a72;
+      --pill: 999px;
+      --max: 1180px;
+      --header: 76px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    body {
+      margin: 0;
+      font-family: "Bloomreach Sans", Montserrat, Arial, sans-serif;
+      color: var(--ink);
+      background: var(--white);
+      overflow-x: hidden;
+      letter-spacing: 0;
+    }
+    img { display: block; max-width: 100%; }
+    a, button { font: inherit; }
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(5, 5, 5, 0.94);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(18px);
+    }
+    .nav {
+      max-width: var(--max);
+      min-height: var(--header);
+      margin: 0 auto;
+      padding: 14px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 190px;
+    }
+    .brand img:first-child { width: 30px; height: 30px; }
+    .brand img:last-child { width: 122px; filter: brightness(0) invert(1); }
+    .navlinks {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .navlinks button {
+      border: 0;
+      background: transparent;
+      color: rgba(255, 255, 255, 0.78);
+      min-height: 36px;
+      padding: 9px 11px;
+      border-radius: var(--pill);
+      cursor: pointer;
+      transition: background-color 160ms ease, color 160ms ease;
+    }
+    .navlinks button:hover,
+    .navlinks button:focus-visible { background: rgba(1, 154, 206, 0.18); color: var(--white); outline: none; }
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 0 18px;
+      border-radius: var(--pill);
+      border: 1px solid transparent;
+      text-decoration: none;
+      font-weight: 600;
+      white-space: nowrap;
+      transition: transform 160ms ease, outline-color 160ms ease;
+    }
+    .cta:hover,
+    .cta:focus-visible { transform: translateY(-1px); outline: 3px solid rgba(1, 154, 206, 0.26); outline-offset: 2px; }
+    .cta.primary { background: var(--yellow); color: var(--ink); }
+    .cta.secondary { background: var(--cyan); color: var(--white); }
+    .cta.dark { background: var(--ink); color: var(--white); }
+    .cta.ghost { background: transparent; color: var(--white); border-color: rgba(255, 255, 255, 0.36); }
+    .section { scroll-margin-top: calc(var(--header) + 24px); }
+    .hero {
+      min-height: calc(100vh - var(--header));
+      color: var(--white);
+      background:
+        linear-gradient(90deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 25, 35, 0.76) 48%, rgba(0, 0, 0, 0.35) 100%),
+        url("https://theedgesummit.com/hubfs/location-la.jpg") center/cover;
+      padding: 72px 22px 54px;
+      display: flex;
+      align-items: center;
+    }
+    .hero-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      width: 100%;
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(320px, 0.72fr);
+      gap: 46px;
+      align-items: end;
+    }
+    .edge-logo {
+      width: min(420px, 82vw);
+      margin-bottom: 28px;
+    }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 {
+      margin-bottom: 22px;
+      font-size: clamp(46px, 7.4vw, 88px);
+      line-height: 0.92;
+      letter-spacing: 0;
+      max-width: 860px;
+    }
+    h2 {
+      font-size: clamp(34px, 5vw, 64px);
+      line-height: 0.98;
+      letter-spacing: 0;
+      margin-bottom: 28px;
+    }
+    h3 {
+      font-size: 23px;
+      line-height: 1.12;
+      margin-bottom: 12px;
+    }
+    p {
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: 17px;
+    }
+    .hero p { color: rgba(255, 255, 255, 0.84); max-width: 680px; }
+    .eyebrow {
+      margin: 0 0 16px;
+      color: var(--cyan);
+      font-size: 13px;
+      line-height: 1.2;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      margin-top: 30px;
+    }
+    .event-card {
+      background: rgba(0, 0, 0, 0.66);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      padding: 26px;
+      display: grid;
+      gap: 18px;
+    }
+    .event-row {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+      padding-bottom: 16px;
+    }
+    .event-row:last-child { border-bottom: 0; padding-bottom: 0; }
+    .event-row span {
+      color: var(--yellow);
+      font-size: 13px;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+    .event-row strong {
+      display: block;
+      margin-top: 8px;
+      color: var(--white);
+      font-size: 24px;
+      line-height: 1.12;
+    }
+    .proof-strip {
+      background: var(--yellow);
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    .proof-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 26px 22px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .metric strong {
+      display: block;
+      font-size: clamp(32px, 5vw, 58px);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .metric span { color: rgba(0, 0, 0, 0.72); line-height: 1.35; }
+    .band { padding: 84px 22px; }
+    .band.dark { background: var(--ink); color: var(--white); }
+    .band.soft { background: var(--cyan-soft); }
+    .band.dark p { color: rgba(255, 255, 255, 0.72); }
+    .inner { max-width: var(--max); margin: 0 auto; }
+    .split {
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(340px, 1.05fr);
+      gap: 44px;
+      align-items: start;
+    }
+    .tracks {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 34px;
+    }
+    .track {
+      background: var(--white);
+      border: 1px solid var(--line);
+      padding: 24px;
+      min-height: 280px;
+      display: flex;
+      flex-direction: column;
+    }
+    .track .tag {
+      color: var(--cyan);
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .track p { margin-bottom: 0; }
+    .agenda {
+      display: grid;
+      gap: 14px;
+    }
+    .agenda-item {
+      display: grid;
+      grid-template-columns: 92px 1fr;
+      gap: 18px;
+      padding: 20px;
+      background: #08151e;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+    }
+    .agenda-item time {
+      color: var(--yellow);
+      font-weight: 600;
+      line-height: 1.2;
+    }
+    .agenda-item h3 { color: var(--white); margin-bottom: 8px; }
+    .agenda-item p { color: rgba(255, 255, 255, 0.7); margin-bottom: 0; }
+    .photo {
+      border: 1px solid var(--line);
+      overflow: hidden;
+      background: var(--ink);
+      min-height: 100%;
+    }
+    .photo img {
+      width: 100%;
+      height: 100%;
+      min-height: 420px;
+      object-fit: cover;
+    }
+    .speaker-grid {
+      display: grid;
+      grid-template-columns: 0.72fr 1.28fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+    .speaker-grid img {
+      width: 100%;
+      height: 100%;
+      min-height: 360px;
+      object-fit: cover;
+    }
+    .speaker-copy {
+      background: var(--white);
+      border: 1px solid var(--line);
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .logos {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 34px;
+      align-items: center;
+    }
+    .logos img {
+      width: 100%;
+      max-height: 52px;
+      object-fit: contain;
+      background: rgba(255, 255, 255, 0.08);
+      padding: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+    .final {
+      padding: 74px 22px;
+      background: var(--yellow);
+      text-align: center;
+    }
+    .final .inner { max-width: 900px; }
+    .final p { color: rgba(0, 0, 0, 0.68); }
+    .footer {
+      background: var(--ink);
+      color: var(--white);
+      padding: 38px 22px;
+    }
+    .footer .inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+    .footer-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .footer-brand img:first-child { width: 28px; height: 28px; }
+    .footer-brand img:last-child { width: 126px; filter: brightness(0) invert(1); }
+    .footer small { color: rgba(255, 255, 255, 0.58); }
+    @media (max-width: 1000px) {
+      .navlinks { display: none; }
+      .hero { min-height: auto; }
+      .hero-inner,
+      .split,
+      .speaker-grid { grid-template-columns: 1fr; }
+      .tracks { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .logos { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .photo img { min-height: 320px; }
+    }
+    @media (max-width: 680px) {
+      :root { --header: 68px; }
+      .nav { padding: 12px 16px; min-height: var(--header); }
+      .brand { min-width: 0; }
+      .brand img:last-child { width: 108px; }
+      .nav .cta { min-height: 38px; padding: 0 12px; font-size: 14px; }
+      .hero { padding: 52px 18px 42px; }
+      h1 { font-size: clamp(42px, 13vw, 58px); }
+      h2 { font-size: clamp(32px, 10vw, 44px); }
+      .proof-inner,
+      .tracks,
+      .logos { grid-template-columns: 1fr; }
+      .band { padding: 58px 18px; }
+      .agenda-item { grid-template-columns: 1fr; padding: 18px; }
+      .photo img,
+      .speaker-grid img { min-height: 260px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .cta, .navlinks button { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav" aria-label="Bloomreach event navigation">
+      <div class="brand" aria-label="Bloomreach">
+        <img src="https://www.bloomreach.com/wp-content/themes/hello-theme-child-master/assets/img/bloomreach-logo-icon.svg" alt="">
+        <img src="https://www.bloomreach.com/wp-content/themes/hello-theme-child-master/assets/img/bloomreach-logo-text.svg" alt="Bloomreach">
+      </div>
+      <div class="navlinks" aria-label="Page sections">
+        <button type="button" data-scroll-target="why">Why Attend</button>
+        <button type="button" data-scroll-target="tracks">Tracks</button>
+        <button type="button" data-scroll-target="agenda">Agenda</button>
+        <button type="button" data-scroll-target="venue">Venue</button>
+      </div>
+      <a class="cta primary" href="https://theedgesummit.com/north-america" target="_blank" rel="noopener" onclick="flzAnalytic('cta_click', {text:this.innerText.trim(), area:'header', url:this.href}, this)">Get Tickets</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero section" id="top">
+      <div class="hero-inner">
+        <div>
+          <img class="edge-logo" src="https://theedgesummit.com/hubfs/raw_assets/public/Bloomreach%20-%20Global/img/edge26/logo-the-edge-summit-26.svg" alt="The Edge Summit 2026">
+          <p class="eyebrow">Los Angeles | September 9-10, 2026</p>
+          <h1>The Art of AI starts with the business you actually run.</h1>
+          <p>The Edge Summit brings commerce, marketing, and AI leaders together to build intelligent experiences around their data, customers, and operating realities.</p>
+          <div class="actions">
+            <a class="cta primary" href="https://theedgesummit.com/north-america" target="_blank" rel="noopener" onclick="flzAnalytic('cta_click', {text:this.innerText.trim(), area:'hero', url:this.href}, this)">Get Tickets</a>
+            <a class="cta ghost" href="https://www.bloomreach.com/en/library/events-webinars" target="_blank" rel="noopener" onclick="flzAnalytic('cta_click', {text:this.innerText.trim(), area:'hero', url:this.href}, this)">View Bloomreach Events</a>
+          </div>
+        </div>
+        <aside class="event-card" aria-label="Event details">
+          <div class="event-row"><span>Where</span><strong>InterContinental Los Angeles Downtown</strong></div>
+          <div class="event-row"><span>When</span><strong>September 9-10, 2026</strong></div>
+          <div class="event-row"><span>Theme</span><strong>Master the art of intelligent experiences</strong></div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="proof-strip section" id="proof" aria-label="Event proof points">
+      <div class="proof-inner">
+        <div class="metric"><strong>500+</strong><span>attendees listed on the official North America page.</span></div>
+        <div class="metric"><strong>3</strong><span>mainstage sessions to frame the AI and commerce agenda.</span></div>
+        <div class="metric"><strong>12</strong><span>breakout sessions across connected marketing, personalized CX, and agentic AI.</span></div>
+      </div>
+    </section>
+
+    <section class="band section" id="why">
+      <div class="inner split">
+        <div>
+          <p class="eyebrow">Why attend</p>
+          <h2>Generic AI advice will not answer the commerce questions your team has to solve.</h2>
+        </div>
+        <div>
+          <p>The official summit page frames the event around shaping AI to the business, not the other way around. That makes the buyer job clear: hear from teams building intelligent experiences around real customer data, merchandising rules, service paths, and growth targets.</p>
+          <p>The value is practical alignment. Leave with a sharper view of where AI belongs in customer engagement, what data foundation it needs, and how peer teams are moving from experiments to operating models.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="band soft section" id="tracks">
+      <div class="inner">
+        <p class="eyebrow">Breakout paths</p>
+        <h2>Choose the sessions around the decision your team has to make next.</h2>
+        <div class="tracks">
+          <article class="track">
+            <div class="tag">Track 1</div>
+            <h3>The Connected Marketer</h3>
+            <p>For teams moving from running campaigns to orchestrating cross-channel engagement with AI-powered coordination and reengagement strategies.</p>
+          </article>
+          <article class="track">
+            <div class="tag">Track 2</div>
+            <h3>Personalized CX</h3>
+            <p>For teams focused on how customers find and discover products through search personalization, merchandising, and conversational AI.</p>
+          </article>
+          <article class="track">
+            <div class="tag">Track 3</div>
+            <h3>The Agentic Horizon</h3>
+            <p>For leaders thinking through compounding AI investments, unifying customer data, and deciding where to build or buy agentic workflows.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="band dark section" id="agenda">
+      <div class="inner split">
+        <div>
+          <p class="eyebrow">Agenda gravity</p>
+          <h2>A two-day path from reception to mainstage, breakout tracks, and awards.</h2>
+          <p>The Los Angeles program combines a welcome reception at Paramount Pictures, keynote sessions, practical breakouts, and an evening reception with awards.</p>
+        </div>
+        <div class="agenda">
+          <article class="agenda-item">
+            <time>Day 01<br>6:00 PM</time>
+            <div><h3>Paramount Pictures Welcome Reception</h3><p>Cocktails, music, and conversation among the historic backlot and soundstages.</p></div>
+          </article>
+          <article class="agenda-item">
+            <time>Day 02<br>9:00 AM</time>
+            <div><h3>Opening Keynote with Musa Tariq</h3><p>A brand and community leader opens the day on humanizing technology and growth.</p></div>
+          </article>
+          <article class="agenda-item">
+            <time>Day 02<br>9:40 AM</time>
+            <div><h3>Bloomreach Keynote</h3><p>Co-founder and CEO Raj De Datta anchors the Bloomreach perspective on intelligent experiences.</p></div>
+          </article>
+          <article class="agenda-item">
+            <time>Day 02<br>11:00 AM</time>
+            <div><h3>Why AI Cannot Fix a Broken Foundation</h3><p>A panel on the data, latency, and architecture demands behind production-grade AI.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="band section" id="keynote">
+      <div class="inner speaker-grid">
+        <img src="https://theedgesummit.com/hubfs/musa-tariq.jpg" alt="Musa Tariq">
+        <div class="speaker-copy">
+          <p class="eyebrow">Keynote speaker</p>
+          <h2>Musa Tariq brings the brand strategy lens AI events usually miss.</h2>
+          <p>The official page describes Musa Tariq as a veteran marketing executive who has shaped brand strategy and community engagement for global organizations including GoFundMe, Airbnb, Ford, Apple, and Nike.</p>
+          <div class="actions">
+            <a class="cta secondary" href="https://theedgesummit.com/north-america" target="_blank" rel="noopener" onclick="flzAnalytic('cta_click', {text:this.innerText.trim(), area:'keynote', url:this.href}, this)">See the Program</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="band dark section" id="venue">
+      <div class="inner split">
+        <div>
+          <p class="eyebrow">Venue</p>
+          <h2>InterContinental Los Angeles puts the summit above the city.</h2>
+          <p>The official page lists the InterContinental at 900 Wilshire Blvd, Los Angeles, CA 90017, with programming designed around focused conversation rather than passive conference attendance.</p>
+          <div class="actions">
+            <a class="cta primary" href="https://theedgesummit.com/north-america" target="_blank" rel="noopener" onclick="flzAnalytic('cta_click', {text:this.innerText.trim(), area:'venue', url:this.href}, this)">Plan Your Attendance</a>
+          </div>
+        </div>
+        <div class="photo">
+          <img src="https://theedgesummit.com/hubfs/location-la-2.jpg" alt="InterContinental Los Angeles venue view">
+        </div>
+      </div>
+      <div class="inner logos" aria-label="Companies represented by last year's attendees">
+        <img src="https://theedgesummit.com/hubfs/logo-redbull.svg" alt="Red Bull">
+        <img src="https://theedgesummit.com/hubfs/logo-miami-heat.svg" alt="Miami Heat">
+        <img src="https://theedgesummit.com/hubfs/logo-levis.svg" alt="Levi's">
+        <img src="https://theedgesummit.com/hubfs/logo-champion.svg" alt="Champion">
+        <img src="https://theedgesummit.com/hubfs/logo-lands-end.svg" alt="Lands' End">
+        <img src="https://theedgesummit.com/hubfs/logo-foot-locker.svg" alt="Foot Locker">
+      </div>
+    </section>
+
+    <section class="final section" id="next">
+      <div class="inner">
+        <p class="eyebrow">Will you join Bloomreach in LA?</p>
+        <h2>Use the summit to pressure-test the AI experience your commerce team actually needs.</h2>
+        <p>Bring the questions that matter: where data must be unified, where campaigns need orchestration, where product discovery breaks, and where agentic workflows can move from theory to growth.</p>
+        <div class="actions" style="justify-content:center">
+          <a class="cta dark" href="https://theedgesummit.com/north-america" target="_blank" rel="noopener" onclick="flzAnalytic('cta_click', {text:this.innerText.trim(), area:'final', url:this.href}, this)">Get Tickets</a>
+          <a class="cta secondary" href="https://www.bloomreach.com/en/library/events-webinars" target="_blank" rel="noopener" onclick="flzAnalytic('cta_click', {text:this.innerText.trim(), area:'final', url:this.href}, this)">Browse Bloomreach Events</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="inner">
+      <div class="footer-brand">
+        <img src="https://www.bloomreach.com/wp-content/themes/hello-theme-child-master/assets/img/bloomreach-logo-icon.svg" alt="">
+        <img src="https://www.bloomreach.com/wp-content/themes/hello-theme-child-master/assets/img/bloomreach-logo-text.svg" alt="Bloomreach">
+      </div>
+      <small>Event details sourced from Bloomreach and The Edge Summit.</small>
+    </div>
+  </footer>
+
+  <script>
+    window.flzAnalytic = window.flzAnalytic || function(action, payload) {
+      window.__bloomreachPackAnalytics = window.__bloomreachPackAnalytics || [];
+      window.__bloomreachPackAnalytics.push({ action: action, payload: payload });
+    };
+
+    document.querySelectorAll("[data-scroll-target]").forEach(function(control) {
+      control.addEventListener("click", function() {
+        var target = document.getElementById(control.getAttribute("data-scroll-target"));
+        if (!target) return;
+        flzAnalytic("anchor_click", {
+          text: control.innerText.trim(),
+          area: "navigation",
+          target: target.id
+        }, control);
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
+  </script>
+</body>
+</html>

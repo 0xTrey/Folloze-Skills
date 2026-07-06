@@ -1,0 +1,13 @@
+:root {
+  --brand-primary: #002840;
+  --brand-accent: #019ACE;
+  --brand-text: #111827;
+  --brand-surface: #FFFFFF;
+  --brand-font-display: BloomreachSans, "Bloomreach Sans", Montserrat, Arial;
+  --brand-font-body: "Bloomreach Sans", sans-serif;
+  --brand-button-radius: 99px;
+  --brand-button-padding: 0px;
+  --brand-button-font-weight: 500;
+  --brand-card-radius: 0px;
+  --brand-card-shadow: none;
+}

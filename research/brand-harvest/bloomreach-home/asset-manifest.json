@@ -1,0 +1,790 @@
+{
+  "logos": [
+    {
+      "src": "https://www.bloomreach.com/wp-content/themes/hello-theme-child-master/assets/img/bloomreach-logo-icon.svg",
+      "alt": "",
+      "className": "l-icon",
+      "width": 40,
+      "height": 40,
+      "rect": {
+        "x": 40,
+        "y": 65,
+        "width": 40,
+        "height": 40
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/themes/hello-theme-child-master/assets/img/bloomreach-logo-text.svg",
+      "alt": "Bloomreach",
+      "className": "l-text",
+      "width": 136,
+      "height": 18,
+      "rect": {
+        "x": 88,
+        "y": 76,
+        "width": 136,
+        "height": 18
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2026/01/aws-logo-nav.svg",
+      "alt": "",
+      "className": "",
+      "width": 40,
+      "height": 40,
+      "rect": {
+        "x": 1210,
+        "y": 24,
+        "width": 29,
+        "height": 29
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2025/11/heroselect-img-1.jpg",
+      "alt": "Email Marketing",
+      "className": "",
+      "width": 3444,
+      "height": 1308,
+      "rect": {
+        "x": 80,
+        "y": 1136,
+        "width": 1280,
+        "height": 492
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2025/06/redbull-black.svg",
+      "alt": "",
+      "className": "br-logo-slider__logo",
+      "width": 164,
+      "height": 68,
+      "rect": {
+        "x": -30,
+        "y": 2049,
+        "width": 210,
+        "height": 87
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2025/06/benefit-black.svg",
+      "alt": "",
+      "className": "br-logo-slider__logo",
+      "width": 164,
+      "height": 68,
+      "rect": {
+        "x": 270,
+        "y": 2049,
+        "width": 210,
+        "height": 87
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2025/06/telekom-black.svg",
+      "alt": "",
+      "className": "br-logo-slider__logo",
+      "width": 164,
+      "height": 68,
+      "rect": {
+        "x": 570,
+        "y": 2049,
+        "width": 210,
+        "height": 87
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2025/06/pandora-black.svg",
+      "alt": "",
+      "className": "br-logo-slider__logo",
+      "width": 164,
+      "height": 68,
+      "rect": {
+        "x": 870,
+        "y": 2049,
+        "width": 210,
+        "height": 87
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2025/06/bosch-black.svg",
+      "alt": "",
+      "className": "br-logo-slider__logo",
+      "width": 164,
+      "height": 68,
+      "rect": {
+        "x": 1170,
+        "y": 2049,
+        "width": 210,
+        "height": 87
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2025/06/puma-black.svg",
+      "alt": "",
+      "className": "br-logo-slider__logo",
+      "width": 164,
+      "height": 68,
+      "rect": {
+        "x": 1470,
+        "y": 2049,
+        "width": 210,
+        "height": 87
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2025/06/freshdirect-black.svg",
+      "alt": "",
+      "className": "br-logo-slider__logo",
+      "width": 164,
+      "height": 68,
+      "rect": {
+        "x": 1770,
+        "y": 2049,
+        "width": 210,
+        "height": 87
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2025/06/virgin-megastore-black.svg",
+      "alt": "",
+      "className": "br-logo-slider__logo",
+      "width": 164,
+      "height": 68,
+      "rect": {
+        "x": 2070,
+        "y": 2049,
+        "width": 210,
+        "height": 87
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2025/06/redbull-black.svg",
+      "alt": "",
+      "className": "br-logo-slider__logo",
+      "width": 164,
+      "height": 68,
+      "rect": {
+        "x": 2370,
+        "y": 2049,
+        "width": 210,
+        "height": 87
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2025/06/benefit-black.svg",
+      "alt": "",
+      "className": "br-logo-slider__logo",
+      "width": 164,
+      "height": 68,
+      "rect": {
+        "x": 2670,
+        "y": 2049,
+        "width": 210,
+        "height": 87
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2025/06/telekom-black.svg",
+      "alt": "",
+      "className": "br-logo-slider__logo",
+      "width": 164,
+      "height": 68,
+      "rect": {
+        "x": 2970,
+        "y": 2049,
+        "width": 210,
+        "height": 87
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2025/06/pandora-black.svg",
+      "alt": "",
+      "className": "br-logo-slider__logo",
+      "width": 164,
+      "height": 68,
+      "rect": {
+        "x": 3270,
+        "y": 2049,
+        "width": 210,
+        "height": 87
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2025/06/bosch-black.svg",
+      "alt": "",
+      "className": "br-logo-slider__logo",
+      "width": 164,
+      "height": 68,
+      "rect": {
+        "x": 3570,
+        "y": 2049,
+        "width": 210,
+        "height": 87
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2025/06/puma-black.svg",
+      "alt": "",
+      "className": "br-logo-slider__logo",
+      "width": 164,
+      "height": 68,
+      "rect": {
+        "x": 3870,
+        "y": 2049,
+        "width": 210,
+        "height": 87
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2025/06/freshdirect-black.svg",
+      "alt": "",
+      "className": "br-logo-slider__logo",
+      "width": 164,
+      "height": 68,
+      "rect": {
+        "x": 4170,
+        "y": 2049,
+        "width": 210,
+        "height": 87
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2025/06/virgin-megastore-black.svg",
+      "alt": "",
+      "className": "br-logo-slider__logo",
+      "width": 164,
+      "height": 68,
+      "rect": {
+        "x": 4470,
+        "y": 2049,
+        "width": 210,
+        "height": 87
+      }
+    }
+  ],
+  "images": [
+    {
+      "src": "https://cdn-cookieyes.com/assets/images/close.svg",
+      "alt": "",
+      "className": "",
+      "width": 10,
+      "height": 10,
+      "rect": {
+        "x": 1394,
+        "y": 790,
+        "width": 20,
+        "height": 20
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/themes/hello-theme-child-master/assets/img/bloomreach-logo-icon.svg",
+      "alt": "",
+      "className": "l-icon",
+      "width": 40,
+      "height": 40,
+      "rect": {
+        "x": 40,
+        "y": 65,
+        "width": 40,
+        "height": 40
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/themes/hello-theme-child-master/assets/img/bloomreach-logo-text.svg",
+      "alt": "Bloomreach",
+      "className": "l-text",
+      "width": 136,
+      "height": 18,
+      "rect": {
+        "x": 88,
+        "y": 76,
+        "width": 136,
+        "height": 18
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2025/07/int-shopify.svg",
+      "alt": "",
+      "className": "",
+      "width": 40,
+      "height": 40,
+      "rect": {
+        "x": 1066,
+        "y": 24,
+        "width": 29,
+        "height": 29
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2025/07/int-snowflake.svg",
+      "alt": "",
+      "className": "",
+      "width": 40,
+      "height": 40,
+      "rect": {
+        "x": 1102,
+        "y": 24,
+        "width": 29,
+        "height": 29
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2025/07/int-google.svg",
+      "alt": "",
+      "className": "",
+      "width": 40,
+      "height": 40,
+      "rect": {
+        "x": 1138,
+        "y": 24,
+        "width": 29,
+        "height": 29
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2025/11/databrics-ico.png",
+      "alt": "",
+      "className": "",
+      "width": 80,
+      "height": 80,
+      "rect": {
+        "x": 1174,
+        "y": 24,
+        "width": 29,
+        "height": 29
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2026/01/aws-logo-nav.svg",
+      "alt": "",
+      "className": "",
+      "width": 40,
+      "height": 40,
+      "rect": {
+        "x": 1210,
+        "y": 24,
+        "width": 29,
+        "height": 29
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2025/07/int-antavo.svg",
+      "alt": "",
+      "className": "",
+      "width": 40,
+      "height": 40,
+      "rect": {
+        "x": 1246,
+        "y": 24,
+        "width": 29,
+        "height": 29
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2025/11/heroselect-img-1.jpg",
+      "alt": "Email Marketing",
+      "className": "",
+      "width": 3444,
+      "height": 1308,
+      "rect": {
+        "x": 80,
+        "y": 1136,
+        "width": 1280,
+        "height": 492
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2025/06/redbull-black.svg",
+      "alt": "",
+      "className": "br-logo-slider__logo",
+      "width": 164,
+      "height": 68,
+      "rect": {
+        "x": -30,
+        "y": 2049,
+        "width": 210,
+        "height": 87
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2025/06/benefit-black.svg",
+      "alt": "",
+      "className": "br-logo-slider__logo",
+      "width": 164,
+      "height": 68,
+      "rect": {
+        "x": 270,
+        "y": 2049,
+        "width": 210,
+        "height": 87
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2025/06/telekom-black.svg",
+      "alt": "",
+      "className": "br-logo-slider__logo",
+      "width": 164,
+      "height": 68,
+      "rect": {
+        "x": 570,
+        "y": 2049,
+        "width": 210,
+        "height": 87
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2025/06/pandora-black.svg",
+      "alt": "",
+      "className": "br-logo-slider__logo",
+      "width": 164,
+      "height": 68,
+      "rect": {
+        "x": 870,
+        "y": 2049,
+        "width": 210,
+        "height": 87
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2025/06/bosch-black.svg",
+      "alt": "",
+      "className": "br-logo-slider__logo",
+      "width": 164,
+      "height": 68,
+      "rect": {
+        "x": 1170,
+        "y": 2049,
+        "width": 210,
+        "height": 87
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2025/06/puma-black.svg",
+      "alt": "",
+      "className": "br-logo-slider__logo",
+      "width": 164,
+      "height": 68,
+      "rect": {
+        "x": 1470,
+        "y": 2049,
+        "width": 210,
+        "height": 87
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2025/06/freshdirect-black.svg",
+      "alt": "",
+      "className": "br-logo-slider__logo",
+      "width": 164,
+      "height": 68,
+      "rect": {
+        "x": 1770,
+        "y": 2049,
+        "width": 210,
+        "height": 87
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2025/06/virgin-megastore-black.svg",
+      "alt": "",
+      "className": "br-logo-slider__logo",
+      "width": 164,
+      "height": 68,
+      "rect": {
+        "x": 2070,
+        "y": 2049,
+        "width": 210,
+        "height": 87
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2025/06/redbull-black.svg",
+      "alt": "",
+      "className": "br-logo-slider__logo",
+      "width": 164,
+      "height": 68,
+      "rect": {
+        "x": 2370,
+        "y": 2049,
+        "width": 210,
+        "height": 87
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2025/06/benefit-black.svg",
+      "alt": "",
+      "className": "br-logo-slider__logo",
+      "width": 164,
+      "height": 68,
+      "rect": {
+        "x": 2670,
+        "y": 2049,
+        "width": 210,
+        "height": 87
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2025/06/telekom-black.svg",
+      "alt": "",
+      "className": "br-logo-slider__logo",
+      "width": 164,
+      "height": 68,
+      "rect": {
+        "x": 2970,
+        "y": 2049,
+        "width": 210,
+        "height": 87
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2025/06/pandora-black.svg",
+      "alt": "",
+      "className": "br-logo-slider__logo",
+      "width": 164,
+      "height": 68,
+      "rect": {
+        "x": 3270,
+        "y": 2049,
+        "width": 210,
+        "height": 87
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2025/06/bosch-black.svg",
+      "alt": "",
+      "className": "br-logo-slider__logo",
+      "width": 164,
+      "height": 68,
+      "rect": {
+        "x": 3570,
+        "y": 2049,
+        "width": 210,
+        "height": 87
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2025/06/puma-black.svg",
+      "alt": "",
+      "className": "br-logo-slider__logo",
+      "width": 164,
+      "height": 68,
+      "rect": {
+        "x": 3870,
+        "y": 2049,
+        "width": 210,
+        "height": 87
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2025/06/freshdirect-black.svg",
+      "alt": "",
+      "className": "br-logo-slider__logo",
+      "width": 164,
+      "height": 68,
+      "rect": {
+        "x": 4170,
+        "y": 2049,
+        "width": 210,
+        "height": 87
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2025/06/virgin-megastore-black.svg",
+      "alt": "",
+      "className": "br-logo-slider__logo",
+      "width": 164,
+      "height": 68,
+      "rect": {
+        "x": 4470,
+        "y": 2049,
+        "width": 210,
+        "height": 87
+      }
+    },
+    {
+      "src": "data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20600%20510'%3E%3C/svg%3E",
+      "alt": "",
+      "className": "",
+      "width": 176,
+      "height": 150,
+      "rect": {
+        "x": 80,
+        "y": 2493,
+        "width": 560,
+        "height": 340
+      }
+    },
+    {
+      "src": "data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20845%20510'%3E%3C/svg%3E",
+      "alt": "",
+      "className": "",
+      "width": 249,
+      "height": 150,
+      "rect": {
+        "x": 670,
+        "y": 2493,
+        "width": 400,
+        "height": 340
+      }
+    },
+    {
+      "src": "data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20600%20510'%3E%3C/svg%3E",
+      "alt": "",
+      "className": "",
+      "width": 176,
+      "height": 150,
+      "rect": {
+        "x": 1100,
+        "y": 2493,
+        "width": 400,
+        "height": 340
+      }
+    },
+    {
+      "src": "data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20600%20510'%3E%3C/svg%3E",
+      "alt": "",
+      "className": "",
+      "width": 176,
+      "height": 150,
+      "rect": {
+        "x": 1530,
+        "y": 2493,
+        "width": 400,
+        "height": 340
+      }
+    },
+    {
+      "src": "data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20600%20510'%3E%3C/svg%3E",
+      "alt": "",
+      "className": "",
+      "width": 176,
+      "height": 150,
+      "rect": {
+        "x": 1960,
+        "y": 2493,
+        "width": 400,
+        "height": 340
+      }
+    },
+    {
+      "src": "data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2026%2026'%3E%3C/svg%3E",
+      "alt": "hp-ico-01-1",
+      "className": "attachment-full size-full wp-image-62670",
+      "width": 150,
+      "height": 150,
+      "rect": {
+        "x": 100,
+        "y": 3901,
+        "width": 26,
+        "height": 26
+      }
+    },
+    {
+      "src": "data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2026%2026'%3E%3C/svg%3E",
+      "alt": "hp-ico-02-1",
+      "className": "attachment-full size-full wp-image-62673",
+      "width": 150,
+      "height": 150,
+      "rect": {
+        "x": 540,
+        "y": 3901,
+        "width": 26,
+        "height": 26
+      }
+    },
+    {
+      "src": "data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3C/svg%3E",
+      "alt": "hp-ico-03-1",
+      "className": "attachment-full size-full wp-image-62676",
+      "width": 150,
+      "height": 150,
+      "rect": {
+        "x": 977,
+        "y": 3897,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "src": "data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20108%20129'%3E%3C/svg%3E",
+      "alt": "g2-top-50-2025",
+      "className": "attachment-full size-full wp-image-68788",
+      "width": 126,
+      "height": 150,
+      "rect": {
+        "x": 755,
+        "y": 7222,
+        "width": 35,
+        "height": 42
+      }
+    },
+    {
+      "src": "data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20112%20129'%3E%3C/svg%3E",
+      "alt": "g2-summer-2025",
+      "className": "attachment-full size-full wp-image-68785",
+      "width": 130,
+      "height": 150,
+      "rect": {
+        "x": 830,
+        "y": 7222,
+        "width": 36,
+        "height": 42
+      }
+    },
+    {
+      "src": "data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20124%20129'%3E%3C/svg%3E",
+      "alt": "tr-top-rated-2025",
+      "className": "attachment-full size-full wp-image-68782",
+      "width": 144,
+      "height": 150,
+      "rect": {
+        "x": 907,
+        "y": 7222,
+        "width": 40,
+        "height": 42
+      }
+    },
+    {
+      "src": "data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20124%20129'%3E%3C/svg%3E",
+      "alt": "aicpa",
+      "className": "attachment-full size-full wp-image-68779",
+      "width": 144,
+      "height": 150,
+      "rect": {
+        "x": 987,
+        "y": 7222,
+        "width": 40,
+        "height": 42
+      }
+    },
+    {
+      "src": "data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20316%2064'%3E%3C/svg%3E",
+      "alt": "iso-all-w",
+      "className": "attachment-full size-full wp-image-68804",
+      "width": 300,
+      "height": 61,
+      "rect": {
+        "x": 1068,
+        "y": 7222,
+        "width": 207,
+        "height": 42
+      }
+    }
+  ],
+  "background_images": [],
+  "brandfetch_logos": [],
+  "screenshots": {
+    "desktop_full": {
+      "path": "research/brand-harvest/bloomreach-home/screenshots/homepage-desktop-full.png",
+      "width": 1440,
+      "height": 7432,
+      "clipped": false
+    },
+    "mobile_full": {
+      "path": "research/brand-harvest/bloomreach-home/screenshots/homepage-mobile-full.png",
+      "width": 390,
+      "height": 7444,
+      "clipped": false
+    }
+  },
+  "manual_screenshots": []
+}

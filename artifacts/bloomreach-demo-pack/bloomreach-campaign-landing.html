@@ -1,0 +1,599 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bloomreach | Turn Campaign Ideas Into Live Lifecycle Flows</title>
+  <meta name="description" content="A Bloomreach campaign experience for retail CRM teams evaluating Loomi Marketing Agent.">
+  <style>
+    @font-face {
+      font-family: "Bloomreach Sans";
+      src: url("https://www.bloomreach.com/wp-content/uploads/2024/04/BloomreachSans-Regular.woff2") format("woff2");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "Bloomreach Sans";
+      src: url("https://www.bloomreach.com/wp-content/uploads/2024/04/BloomreachSans-Medium.woff2") format("woff2");
+      font-weight: 600;
+      font-style: normal;
+      font-display: swap;
+    }
+    :root {
+      --ink: #050505;
+      --night: #001c2b;
+      --deep: #002840;
+      --cyan: #019ace;
+      --cyan-soft: #eafdff;
+      --yellow: #feed1b;
+      --white: #ffffff;
+      --line: rgba(0, 40, 64, 0.14);
+      --muted: #5b6670;
+      --radius-pill: 999px;
+      --max: 1180px;
+      --header: 76px;
+      --shadow: 0 22px 70px rgba(0, 40, 64, 0.16);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    body {
+      margin: 0;
+      font-family: "Bloomreach Sans", Montserrat, Arial, sans-serif;
+      color: var(--ink);
+      background: var(--white);
+      overflow-x: hidden;
+      letter-spacing: 0;
+    }
+    img { max-width: 100%; display: block; }
+    button, a { font: inherit; }
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(255, 255, 255, 0.96);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(18px);
+    }
+    .nav {
+      max-width: var(--max);
+      min-height: var(--header);
+      margin: 0 auto;
+      padding: 14px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 190px;
+    }
+    .brand img:first-child { width: 30px; height: 30px; }
+    .brand img:last-child { width: 122px; height: auto; }
+    .navlinks {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .navlinks button {
+      border: 0;
+      background: transparent;
+      color: #19384b;
+      padding: 9px 11px;
+      border-radius: var(--radius-pill);
+      cursor: pointer;
+      min-height: 36px;
+      transition: background-color 160ms ease, color 160ms ease;
+    }
+    .navlinks button:hover,
+    .navlinks button:focus-visible { background: var(--cyan-soft); color: var(--deep); outline: none; }
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 42px;
+      padding: 0 18px;
+      border-radius: var(--radius-pill);
+      text-decoration: none;
+      font-weight: 600;
+      border: 1px solid transparent;
+      white-space: nowrap;
+      transition: transform 160ms ease, border-color 160ms ease, background-color 160ms ease;
+    }
+    .cta:hover,
+    .cta:focus-visible { transform: translateY(-1px); outline: 3px solid rgba(1, 154, 206, 0.28); outline-offset: 2px; }
+    .cta.primary { background: var(--yellow); color: var(--ink); }
+    .cta.secondary { background: var(--cyan); color: var(--white); }
+    .cta.ghost { background: transparent; color: var(--white); border-color: rgba(255, 255, 255, 0.34); }
+    .cta.dark { background: var(--ink); color: var(--white); }
+    .section { scroll-margin-top: calc(var(--header) + 26px); }
+    .hero {
+      background:
+        radial-gradient(circle at 78% 18%, rgba(1, 154, 206, 0.26), transparent 28%),
+        linear-gradient(135deg, #00121e 0%, #003958 58%, #00110d 100%);
+      color: var(--white);
+      padding: 74px 22px 58px;
+    }
+    .hero-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(320px, 1.05fr);
+      gap: 44px;
+      align-items: center;
+    }
+    .eyebrow {
+      margin: 0 0 18px;
+      color: var(--cyan);
+      font-size: 13px;
+      line-height: 1.2;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 {
+      margin-bottom: 22px;
+      font-size: clamp(44px, 7vw, 82px);
+      line-height: 0.94;
+      letter-spacing: 0;
+      max-width: 800px;
+    }
+    h2 {
+      font-size: clamp(34px, 5vw, 62px);
+      line-height: 0.98;
+      letter-spacing: 0;
+      margin-bottom: 28px;
+    }
+    h3 {
+      font-size: 22px;
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+    p {
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: 17px;
+    }
+    .hero p { color: rgba(255, 255, 255, 0.82); max-width: 650px; }
+    .hero-actions,
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      margin-top: 30px;
+    }
+    .console {
+      background: #07131d;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      box-shadow: var(--shadow);
+      padding: 26px;
+      min-height: 500px;
+      display: grid;
+      gap: 18px;
+    }
+    .prompt {
+      border: 1px solid rgba(1, 154, 206, 0.34);
+      background: rgba(1, 154, 206, 0.08);
+      border-radius: 20px;
+      padding: 18px;
+      color: var(--white);
+    }
+    .prompt span {
+      display: block;
+      color: var(--yellow);
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .workflow {
+      display: grid;
+      gap: 12px;
+    }
+    .node {
+      display: grid;
+      grid-template-columns: 42px 1fr auto;
+      align-items: center;
+      gap: 13px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 14px;
+    }
+    .badge {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--yellow);
+      color: var(--ink);
+      display: grid;
+      place-items: center;
+      font-weight: 600;
+    }
+    .node strong { display: block; color: var(--white); }
+    .node small { color: rgba(255, 255, 255, 0.64); }
+    .node em { color: var(--cyan); font-style: normal; font-weight: 600; }
+    .proof-strip {
+      background: var(--yellow);
+      border-top: 1px solid rgba(0, 0, 0, 0.08);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    }
+    .proof-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 26px 22px;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .metric strong {
+      display: block;
+      font-size: clamp(26px, 4vw, 46px);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .metric span {
+      color: rgba(0, 0, 0, 0.72);
+      font-size: 14px;
+      line-height: 1.35;
+    }
+    .band {
+      padding: 84px 22px;
+    }
+    .band.dark {
+      background: var(--ink);
+      color: var(--white);
+    }
+    .band.dark p { color: rgba(255, 255, 255, 0.72); }
+    .band.soft { background: var(--cyan-soft); }
+    .inner { max-width: var(--max); margin: 0 auto; }
+    .split {
+      display: grid;
+      grid-template-columns: minmax(0, 0.88fr) minmax(340px, 1.12fr);
+      gap: 42px;
+      align-items: start;
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      padding: 24px;
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .dark .card {
+      background: #08151e;
+      border-color: rgba(255, 255, 255, 0.14);
+    }
+    .dark .card p { color: rgba(255, 255, 255, 0.72); }
+    .card .mini {
+      color: var(--cyan);
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+    .card a {
+      margin-top: auto;
+      color: var(--cyan);
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+    }
+    .card a:hover,
+    .card a:focus-visible { text-decoration: underline; outline: none; }
+    .rail {
+      display: grid;
+      gap: 16px;
+    }
+    .step {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 18px;
+      padding: 22px;
+      background: var(--white);
+      border: 1px solid var(--line);
+    }
+    .step strong { font-size: 20px; }
+    .step p { margin: 8px 0 0; }
+    .use-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .use {
+      background: #07131d;
+      color: var(--white);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      padding: 24px;
+      min-height: 210px;
+    }
+    .use p { color: rgba(255, 255, 255, 0.72); }
+    .image-panel {
+      border: 1px solid var(--line);
+      overflow: hidden;
+      background: #06131f;
+      box-shadow: var(--shadow);
+    }
+    .image-panel img {
+      width: 100%;
+      height: 100%;
+      min-height: 360px;
+      object-fit: cover;
+    }
+    .final {
+      background: var(--yellow);
+      padding: 72px 22px;
+      text-align: center;
+    }
+    .final .inner { max-width: 880px; }
+    .final p { color: rgba(0, 0, 0, 0.68); }
+    .footer {
+      background: var(--ink);
+      color: var(--white);
+      padding: 38px 22px;
+    }
+    .footer .inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+    .footer-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .footer-brand img:first-child { width: 28px; height: 28px; }
+    .footer-brand img:last-child { width: 126px; filter: brightness(0) invert(1); }
+    .footer small { color: rgba(255, 255, 255, 0.56); }
+    @media (max-width: 980px) {
+      .nav { align-items: flex-start; }
+      .navlinks { display: none; }
+      .hero-inner,
+      .split { grid-template-columns: 1fr; }
+      .proof-inner,
+      .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 640px) {
+      :root { --header: 68px; }
+      .nav { padding: 12px 16px; min-height: var(--header); }
+      .brand { min-width: 0; }
+      .brand img:last-child { width: 108px; }
+      .nav .cta { min-height: 38px; padding: 0 12px; font-size: 14px; }
+      .hero { padding: 52px 18px 42px; }
+      h1 { font-size: clamp(42px, 13vw, 58px); }
+      h2 { font-size: clamp(32px, 10vw, 44px); }
+      .console { min-height: auto; padding: 18px; }
+      .node { grid-template-columns: 38px 1fr; }
+      .node em { grid-column: 2; }
+      .proof-inner,
+      .cards,
+      .use-grid { grid-template-columns: 1fr; }
+      .band { padding: 58px 18px; }
+      .step { grid-template-columns: 44px 1fr; padding: 18px; }
+      .image-panel img { min-height: 260px; }
+      .footer .inner { align-items: flex-start; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .cta, .navlinks button { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav" aria-label="Bloomreach campaign navigation">
+      <div class="brand" aria-label="Bloomreach">
+        <img src="https://www.bloomreach.com/wp-content/themes/hello-theme-child-master/assets/img/bloomreach-logo-icon.svg" alt="">
+        <img src="https://www.bloomreach.com/wp-content/themes/hello-theme-child-master/assets/img/bloomreach-logo-text.svg" alt="Bloomreach">
+      </div>
+      <div class="navlinks" aria-label="Page sections">
+        <button type="button" data-scroll-target="proof">Proof</button>
+        <button type="button" data-scroll-target="workbench">Build Flow</button>
+        <button type="button" data-scroll-target="use-cases">Use Cases</button>
+        <button type="button" data-scroll-target="customer-proof">Results</button>
+      </div>
+      <a class="cta primary" href="https://www.bloomreach.com/en/products/loomi-marketing-agent" target="_blank" rel="noopener" onclick="flzAnalytic('cta_click', {text:this.innerText.trim(), area:'header', url:this.href}, this)">See It Live</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero section" id="top">
+      <div class="hero-inner">
+        <div>
+          <p class="eyebrow">Loomi Marketing Agent</p>
+          <h1>Turn the campaign backlog into live revenue flows.</h1>
+          <p>Bloomreach helps retail CRM teams move from one plain-English idea to audience logic, timing, personalization, and reviewable campaign structure in minutes.</p>
+          <div class="hero-actions">
+            <a class="cta primary" href="https://www.bloomreach.com/en/products/loomi-marketing-agent" target="_blank" rel="noopener" onclick="flzAnalytic('cta_click', {text:this.innerText.trim(), area:'hero', url:this.href}, this)">Explore Marketing Agent</a>
+            <a class="cta ghost" href="https://www.bloomreach.com/en/case-studies/260-sample-sale" target="_blank" rel="noopener" onclick="flzAnalytic('cta_click', {text:this.innerText.trim(), area:'hero', url:this.href}, this)">Read 260 Sample Sale</a>
+          </div>
+        </div>
+        <div class="console" aria-label="Loomi campaign workbench">
+          <div class="prompt">
+            <span>Prompt</span>
+            Build a last-chance flash-sale journey for high-intent shoppers who browsed but did not buy.
+          </div>
+          <div class="workflow">
+            <div class="node">
+              <div class="badge">01</div>
+              <div><strong>Find the right buyers</strong><small>Behavior, product interest, and purchase context.</small></div>
+              <em>Audience</em>
+            </div>
+            <div class="node">
+              <div class="badge">02</div>
+              <div><strong>Set timing and triggers</strong><small>Send when the customer is most likely to act.</small></div>
+              <em>Logic</em>
+            </div>
+            <div class="node">
+              <div class="badge">03</div>
+              <div><strong>Personalize every product block</strong><small>Recommendations stay tied to catalog and shopper context.</small></div>
+              <em>Content</em>
+            </div>
+            <div class="node">
+              <div class="badge">04</div>
+              <div><strong>Review before launch</strong><small>Your team keeps final approval before anything ships.</small></div>
+              <em>Control</em>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="proof-strip section" id="proof" aria-label="Public customer proof">
+      <div class="proof-inner">
+        <div class="metric"><strong>15 min</strong><span>Sideshow reported idea-to-launch speed with Loomi Marketing Agent.</span></div>
+        <div class="metric"><strong>2.4x</strong><span>260 Sample Sale reported higher conversion from AI-powered Last Chance emails.</span></div>
+        <div class="metric"><strong>5x</strong><span>Revolution Beauty reported more revenue per email from autonomous campaigns.</span></div>
+        <div class="metric"><strong>1,400+</strong><span>Bloomreach says Loomi runs on commerce data from global brands.</span></div>
+      </div>
+    </section>
+
+    <section class="band section" id="pressure">
+      <div class="inner split">
+        <div>
+          <p class="eyebrow">Campaign capacity</p>
+          <h2>Your best lifecycle ideas should not wait for a production window.</h2>
+        </div>
+        <div class="rail">
+          <div class="step">
+            <div class="badge">1</div>
+            <div><strong>Manual segmentation hides the next buyer.</strong><p>High-intent shoppers look different by product, timing, history, and behavior. Broad sends flatten that signal.</p></div>
+          </div>
+          <div class="step">
+            <div class="badge">2</div>
+            <div><strong>Complex flows stall behind technical work.</strong><p>Loyalty tiers, replenishment timing, ad-angle context, and product substitutions are valuable because they are specific.</p></div>
+          </div>
+          <div class="step">
+            <div class="badge">3</div>
+            <div><strong>Review still matters.</strong><p>Loomi Marketing Agent can build the campaign structure, but the team keeps the final decision before launch.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="band dark section" id="workbench">
+      <div class="inner split">
+        <div>
+          <p class="eyebrow">Build flow</p>
+          <h2>One prompt should create the campaign path, not another ticket.</h2>
+          <p>The agent translates a business objective into audience conditions, timing, personalization logic, and a reviewable campaign draft. The workbench lets the team inspect the logic before it goes live.</p>
+          <div class="actions">
+            <a class="cta primary" href="https://www.bloomreach.com/en/products/loomi-marketing-agent" target="_blank" rel="noopener" onclick="flzAnalytic('cta_click', {text:this.innerText.trim(), area:'workbench', url:this.href}, this)">Watch the Agent Build</a>
+          </div>
+        </div>
+        <div class="image-panel">
+          <img src="https://www.bloomreach.com/wp-content/uploads/2025/09/Marketing-Agent-OG-Image.jpg" alt="Bloomreach Loomi Marketing Agent interface preview" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <section class="band soft section" id="use-cases">
+      <div class="inner">
+        <p class="eyebrow">Campaigns worth automating first</p>
+        <h2>Start where timing, audience, and product context decide the outcome.</h2>
+        <div class="use-grid">
+          <article class="use">
+            <h3>Abandoned browse with product substitution</h3>
+            <p>When a shopper leaves after viewing a product, Loomi can identify relevant alternatives and avoid repeating weak recommendations.</p>
+          </article>
+          <article class="use">
+            <h3>Loyalty tier win-back</h3>
+            <p>Use loyalty status and next-step thresholds to make the message specific enough to act on.</p>
+          </article>
+          <article class="use">
+            <h3>Individual purchase cadence</h3>
+            <p>Replace generic reactivation timing with each shopper's actual buying rhythm.</p>
+          </article>
+          <article class="use">
+            <h3>Ad-angle contextual personalization</h3>
+            <p>Carry the original ad promise into the campaign message so the follow-up feels connected.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="band section" id="customer-proof">
+      <div class="inner">
+        <p class="eyebrow">Public customer proof</p>
+        <h2>Use the results as decision evidence, not as generic promises.</h2>
+        <div class="cards">
+          <article class="card">
+            <span class="mini">260 Sample Sale</span>
+            <h3>Smaller audiences, stronger Last Chance performance.</h3>
+            <p>Bloomreach reports 2.4x higher conversion, 82% more efficient targeting, and +$10K revenue from AI-targeted sends to 18% of the audience.</p>
+            <a href="https://www.bloomreach.com/en/case-studies/260-sample-sale" target="_blank" rel="noopener" onclick="flzAnalytic('cta_click', {text:this.innerText.trim(), area:'customer proof', url:this.href}, this)">Read the case study</a>
+          </article>
+          <article class="card">
+            <span class="mini">Sideshow</span>
+            <h3>Campaign ideas moved at product-drop speed.</h3>
+            <p>Sideshow reported campaign idea to launch in under 15 minutes, 2x value per email, and $10K revenue from a single Loomi-powered campaign.</p>
+            <a href="https://www.bloomreach.com/en/case-studies/sideshow-campaign-agents" target="_blank" rel="noopener" onclick="flzAnalytic('cta_click', {text:this.innerText.trim(), area:'customer proof', url:this.href}, this)">Read the Sideshow story</a>
+          </article>
+          <article class="card">
+            <span class="mini">Revolution Beauty</span>
+            <h3>More campaign output with the same team size.</h3>
+            <p>Revolution Beauty reported 5x revenue per email and more than 5% of total email revenue from new autonomous campaigns.</p>
+            <a href="https://www.bloomreach.com/en/case-studies/revolution-beauty-campaign-agents" target="_blank" rel="noopener" onclick="flzAnalytic('cta_click', {text:this.innerText.trim(), area:'customer proof', url:this.href}, this)">Read the beauty story</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="final section" id="next">
+      <div class="inner">
+        <p class="eyebrow">See it on a real use case</p>
+        <h2>Bring the campaign your team keeps postponing.</h2>
+        <p>Use the first conversation to watch Bloomreach build the audience, timing, and personalization path around a campaign that already matters to your team.</p>
+        <div class="hero-actions" style="justify-content:center">
+          <a class="cta dark" href="https://www.bloomreach.com/en/products/loomi-marketing-agent" target="_blank" rel="noopener" onclick="flzAnalytic('cta_click', {text:this.innerText.trim(), area:'final', url:this.href}, this)">Schedule a 30-Minute Demo</a>
+          <a class="cta secondary" href="https://www.bloomreach.com/en/news/2026/bloomreach-announces-the-general-availability-of-loomi-marketing-agent/" target="_blank" rel="noopener" onclick="flzAnalytic('cta_click', {text:this.innerText.trim(), area:'final', url:this.href}, this)">Read the GA News</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="inner">
+      <div class="footer-brand">
+        <img src="https://www.bloomreach.com/wp-content/themes/hello-theme-child-master/assets/img/bloomreach-logo-icon.svg" alt="">
+        <img src="https://www.bloomreach.com/wp-content/themes/hello-theme-child-master/assets/img/bloomreach-logo-text.svg" alt="Bloomreach">
+      </div>
+      <small>Bloomreach resources and public customer proof.</small>
+    </div>
+  </footer>
+
+  <script>
+    window.flzAnalytic = window.flzAnalytic || function(action, payload) {
+      window.__bloomreachPackAnalytics = window.__bloomreachPackAnalytics || [];
+      window.__bloomreachPackAnalytics.push({ action: action, payload: payload });
+    };
+
+    document.querySelectorAll("[data-scroll-target]").forEach(function(control) {
+      control.addEventListener("click", function() {
+        var target = document.getElementById(control.getAttribute("data-scroll-target"));
+        if (!target) return;
+        flzAnalytic("anchor_click", {
+          text: control.innerText.trim(),
+          area: "navigation",
+          target: target.id
+        }, control);
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
+  </script>
+</body>
+</html>

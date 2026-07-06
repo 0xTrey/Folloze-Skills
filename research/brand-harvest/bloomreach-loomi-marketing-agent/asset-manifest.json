@@ -1,0 +1,582 @@
+{
+  "logos": [
+    {
+      "src": "https://www.bloomreach.com/wp-content/themes/hello-theme-child-master/assets/img/bloomreach-logo-icon.svg",
+      "alt": "",
+      "className": "l-icon",
+      "width": 40,
+      "height": 40,
+      "rect": {
+        "x": 40,
+        "y": 65,
+        "width": 40,
+        "height": 40
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/themes/hello-theme-child-master/assets/img/bloomreach-logo-text.svg",
+      "alt": "Bloomreach",
+      "className": "l-text",
+      "width": 136,
+      "height": 18,
+      "rect": {
+        "x": 88,
+        "y": 76,
+        "width": 136,
+        "height": 18
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2026/01/aws-logo-nav.svg",
+      "alt": "",
+      "className": "",
+      "width": 40,
+      "height": 40,
+      "rect": {
+        "x": 1210,
+        "y": 24,
+        "width": 29,
+        "height": 29
+      }
+    }
+  ],
+  "images": [
+    {
+      "src": "https://cdn-cookieyes.com/assets/images/close.svg",
+      "alt": "",
+      "className": "",
+      "width": 10,
+      "height": 10,
+      "rect": {
+        "x": 1394,
+        "y": 790,
+        "width": 20,
+        "height": 20
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/themes/hello-theme-child-master/assets/img/bloomreach-logo-icon.svg",
+      "alt": "",
+      "className": "l-icon",
+      "width": 40,
+      "height": 40,
+      "rect": {
+        "x": 40,
+        "y": 65,
+        "width": 40,
+        "height": 40
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/themes/hello-theme-child-master/assets/img/bloomreach-logo-text.svg",
+      "alt": "Bloomreach",
+      "className": "l-text",
+      "width": 136,
+      "height": 18,
+      "rect": {
+        "x": 88,
+        "y": 76,
+        "width": 136,
+        "height": 18
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2025/07/int-shopify.svg",
+      "alt": "",
+      "className": "",
+      "width": 40,
+      "height": 40,
+      "rect": {
+        "x": 1066,
+        "y": 24,
+        "width": 29,
+        "height": 29
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2025/07/int-snowflake.svg",
+      "alt": "",
+      "className": "",
+      "width": 40,
+      "height": 40,
+      "rect": {
+        "x": 1102,
+        "y": 24,
+        "width": 29,
+        "height": 29
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2025/07/int-google.svg",
+      "alt": "",
+      "className": "",
+      "width": 40,
+      "height": 40,
+      "rect": {
+        "x": 1138,
+        "y": 24,
+        "width": 29,
+        "height": 29
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2025/11/databrics-ico.png",
+      "alt": "",
+      "className": "",
+      "width": 80,
+      "height": 80,
+      "rect": {
+        "x": 1174,
+        "y": 24,
+        "width": 29,
+        "height": 29
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2026/01/aws-logo-nav.svg",
+      "alt": "",
+      "className": "",
+      "width": 40,
+      "height": 40,
+      "rect": {
+        "x": 1210,
+        "y": 24,
+        "width": 29,
+        "height": 29
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2025/07/int-antavo.svg",
+      "alt": "",
+      "className": "",
+      "width": 40,
+      "height": 40,
+      "rect": {
+        "x": 1246,
+        "y": 24,
+        "width": 29,
+        "height": 29
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2026/04/stars-5.svg",
+      "alt": "stars-5",
+      "className": "attachment-full size-full wp-image-86445",
+      "width": 140,
+      "height": 28,
+      "rect": {
+        "x": 965,
+        "y": 2948,
+        "width": 140,
+        "height": 28
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2025/09/laura-digiovanna-circle.png",
+      "alt": "laura-digiovanna-circle",
+      "className": "attachment-full size-full wp-image-90297",
+      "width": 128,
+      "height": 128,
+      "rect": {
+        "x": 935,
+        "y": 3208,
+        "width": 64,
+        "height": 64
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2025/09/ma-img1.jpg",
+      "alt": "ma-img1",
+      "className": "attachment-medium_large size-medium_large wp-image-90270",
+      "width": 553,
+      "height": 430,
+      "rect": {
+        "x": 120,
+        "y": 3869,
+        "width": 373,
+        "height": 290
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2025/09/ma-img2.jpg",
+      "alt": "ma-img2",
+      "className": "attachment-medium_large size-medium_large wp-image-90273",
+      "width": 553,
+      "height": 430,
+      "rect": {
+        "x": 533,
+        "y": 3869,
+        "width": 373,
+        "height": 290
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2025/09/ma-img3.jpg",
+      "alt": "ma-img3",
+      "className": "attachment-medium_large size-medium_large wp-image-90276",
+      "width": 553,
+      "height": 430,
+      "rect": {
+        "x": 947,
+        "y": 3869,
+        "width": 373,
+        "height": 290
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2026/04/ico-001.svg",
+      "alt": "",
+      "className": "",
+      "width": 72,
+      "height": 72,
+      "rect": {
+        "x": 684,
+        "y": 4934,
+        "width": 72,
+        "height": 72
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2026/04/ico-002.svg",
+      "alt": "",
+      "className": "",
+      "width": 72,
+      "height": 72,
+      "rect": {
+        "x": 684,
+        "y": 4881,
+        "width": 72,
+        "height": 72
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2026/04/ico-003.svg",
+      "alt": "",
+      "className": "",
+      "width": 72,
+      "height": 72,
+      "rect": {
+        "x": 684,
+        "y": 4881,
+        "width": 72,
+        "height": 72
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2026/04/ico-004.svg",
+      "alt": "",
+      "className": "",
+      "width": 72,
+      "height": 72,
+      "rect": {
+        "x": 684,
+        "y": 4908,
+        "width": 72,
+        "height": 72
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2026/04/ico-005.svg",
+      "alt": "",
+      "className": "",
+      "width": 72,
+      "height": 72,
+      "rect": {
+        "x": 684,
+        "y": 4908,
+        "width": 72,
+        "height": 72
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2025/09/sideshow@2x.jpg",
+      "alt": "",
+      "className": "",
+      "width": 2220,
+      "height": 1248,
+      "rect": {
+        "x": -1440,
+        "y": 5933,
+        "width": 800,
+        "height": 450
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2025/09/bennis-bower.png",
+      "alt": "",
+      "className": "",
+      "width": 118,
+      "height": 118,
+      "rect": {
+        "x": -1440,
+        "y": 6654,
+        "width": 60,
+        "height": 60
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2025/09/revolution-beauty@2x.jpg",
+      "alt": "",
+      "className": "",
+      "width": 2220,
+      "height": 1248,
+      "rect": {
+        "x": -560,
+        "y": 5933,
+        "width": 800,
+        "height": 450
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2025/09/ash-madhav.png",
+      "alt": "",
+      "className": "",
+      "width": 118,
+      "height": 118,
+      "rect": {
+        "x": -560,
+        "y": 6755,
+        "width": 60,
+        "height": 60
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2026/04/260-sample-sale.jpg",
+      "alt": "",
+      "className": "",
+      "width": 1016,
+      "height": 624,
+      "rect": {
+        "x": 320,
+        "y": 5933,
+        "width": 800,
+        "height": 450
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2026/04/laura-digiovanna.png",
+      "alt": "",
+      "className": "",
+      "width": 64,
+      "height": 64,
+      "rect": {
+        "x": 320,
+        "y": 6614,
+        "width": 60,
+        "height": 60
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2025/09/sideshow@2x.jpg",
+      "alt": "",
+      "className": "",
+      "width": 2220,
+      "height": 1248,
+      "rect": {
+        "x": 1200,
+        "y": 5933,
+        "width": 800,
+        "height": 450
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2025/09/bennis-bower.png",
+      "alt": "",
+      "className": "",
+      "width": 118,
+      "height": 118,
+      "rect": {
+        "x": 1200,
+        "y": 6654,
+        "width": 60,
+        "height": 60
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2025/09/revolution-beauty@2x.jpg",
+      "alt": "",
+      "className": "",
+      "width": 2220,
+      "height": 1248,
+      "rect": {
+        "x": 2080,
+        "y": 5933,
+        "width": 800,
+        "height": 450
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2025/09/ash-madhav.png",
+      "alt": "",
+      "className": "",
+      "width": 118,
+      "height": 118,
+      "rect": {
+        "x": 2080,
+        "y": 6755,
+        "width": 60,
+        "height": 60
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2026/04/260-sample-sale.jpg",
+      "alt": "",
+      "className": "",
+      "width": 1016,
+      "height": 624,
+      "rect": {
+        "x": 2960,
+        "y": 5933,
+        "width": 800,
+        "height": 450
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2026/04/laura-digiovanna.png",
+      "alt": "",
+      "className": "",
+      "width": 64,
+      "height": 64,
+      "rect": {
+        "x": 2960,
+        "y": 6654,
+        "width": 60,
+        "height": 60
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2025/09/ico-01.svg",
+      "alt": "ico-01",
+      "className": "attachment-full size-full wp-image-90285",
+      "width": 24,
+      "height": 24,
+      "rect": {
+        "x": 141,
+        "y": 7383,
+        "width": 24,
+        "height": 24
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2025/09/ico-02.svg",
+      "alt": "ico-02",
+      "className": "attachment-full size-full wp-image-90282",
+      "width": 24,
+      "height": 24,
+      "rect": {
+        "x": 554,
+        "y": 7383,
+        "width": 24,
+        "height": 24
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2026/04/play-small.svg",
+      "alt": "play-small",
+      "className": "attachment-full size-full wp-image-87373",
+      "width": 24,
+      "height": 24,
+      "rect": {
+        "x": 968,
+        "y": 7383,
+        "width": 24,
+        "height": 24
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2026/04/demo-img.jpg",
+      "alt": "demo-img",
+      "className": "attachment-full size-full wp-image-87463",
+      "width": 308,
+      "height": 192,
+      "rect": {
+        "x": 120,
+        "y": 7853,
+        "width": 152,
+        "height": 95
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2025/09/g2-top-50-2025.png",
+      "alt": "g2-top-50-2025",
+      "className": "attachment-full size-full wp-image-68788",
+      "width": 108,
+      "height": 129,
+      "rect": {
+        "x": 755,
+        "y": 11031,
+        "width": 35,
+        "height": 42
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2025/09/g2-summer-2025.png",
+      "alt": "g2-summer-2025",
+      "className": "attachment-full size-full wp-image-68785",
+      "width": 112,
+      "height": 129,
+      "rect": {
+        "x": 830,
+        "y": 11031,
+        "width": 36,
+        "height": 42
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2025/09/tr-top-rated-2025.png",
+      "alt": "tr-top-rated-2025",
+      "className": "attachment-full size-full wp-image-68782",
+      "width": 124,
+      "height": 129,
+      "rect": {
+        "x": 907,
+        "y": 11031,
+        "width": 40,
+        "height": 42
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2025/09/aicpa.png",
+      "alt": "aicpa",
+      "className": "attachment-full size-full wp-image-68779",
+      "width": 124,
+      "height": 129,
+      "rect": {
+        "x": 987,
+        "y": 11031,
+        "width": 40,
+        "height": 42
+      }
+    },
+    {
+      "src": "https://www.bloomreach.com/wp-content/uploads/2025/09/iso-all-w.png",
+      "alt": "iso-all-w",
+      "className": "attachment-full size-full wp-image-68804",
+      "width": 316,
+      "height": 64,
+      "rect": {
+        "x": 1068,
+        "y": 11031,
+        "width": 207,
+        "height": 42
+      }
+    }
+  ],
+  "background_images": [],
+  "brandfetch_logos": [],
+  "screenshots": {
+    "desktop_full": {
+      "path": "research/brand-harvest/bloomreach-loomi-marketing-agent/screenshots/homepage-desktop-full.png",
+      "width": 1440,
+      "height": 11241,
+      "clipped": false
+    },
+    "mobile_full": {
+      "path": "research/brand-harvest/bloomreach-loomi-marketing-agent/screenshots/homepage-mobile-full.png",
+      "width": 390,
+      "height": 13612,
+      "clipped": false
+    }
+  },
+  "manual_screenshots": []
+}
