@@ -31,6 +31,10 @@
       --line: rgba(0, 40, 64, 0.14);
       --muted: #5c6871;
       --pill: 999px;
+      --radius-panel: 24px;
+      --radius-media: 20px;
+      --radius-card: 16px;
+      --radius-small: 8px;
       --max: 1180px;
       --header: 76px;
     }
@@ -139,6 +143,7 @@
       border: 1px solid rgba(255, 255, 255, 0.2);
       padding: 12px 16px;
       min-height: 56px;
+      border-radius: var(--radius-small);
       display: grid;
       place-items: center;
     }
@@ -193,6 +198,7 @@
     .evidence-panel {
       background: rgba(255, 255, 255, 0.08);
       border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: var(--radius-panel);
       padding: 26px;
       min-height: 420px;
       display: grid;
@@ -235,6 +241,7 @@
     .proof-tile {
       background: var(--white);
       border: 1px solid var(--line);
+      border-radius: var(--radius-card);
       padding: 24px;
       min-height: 180px;
     }
@@ -256,6 +263,7 @@
       padding: 22px;
       background: var(--white);
       border: 1px solid var(--line);
+      border-radius: var(--radius-card);
     }
     .dark .stage {
       background: #08151e;
@@ -280,6 +288,7 @@
     .team-card {
       background: var(--white);
       border: 1px solid var(--line);
+      border-radius: var(--radius-card);
       padding: 24px;
       min-height: 270px;
       display: flex;
@@ -298,6 +307,7 @@
       color: var(--white);
       padding: 26px;
       border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: var(--radius-panel);
       min-height: 100%;
     }
     .source-card p { color: rgba(255, 255, 255, 0.72); }
@@ -307,6 +317,7 @@
       object-fit: contain;
       background: var(--white);
       padding: 20px;
+      border-radius: var(--radius-card);
       margin-bottom: 22px;
     }
     .workshop {
@@ -318,6 +329,7 @@
     .workshop article {
       background: var(--yellow);
       border: 1px solid rgba(0, 0, 0, 0.12);
+      border-radius: var(--radius-card);
       padding: 24px;
       min-height: 220px;
     }

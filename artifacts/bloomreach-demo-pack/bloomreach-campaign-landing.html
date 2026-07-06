@@ -31,6 +31,10 @@
       --line: rgba(0, 40, 64, 0.14);
       --muted: #5b6670;
       --radius-pill: 999px;
+      --radius-panel: 24px;
+      --radius-media: 20px;
+      --radius-card: 16px;
+      --radius-small: 8px;
       --max: 1180px;
       --header: 76px;
       --shadow: 0 22px 70px rgba(0, 40, 64, 0.16);
@@ -172,6 +176,7 @@
     .console {
       background: #07131d;
       border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: var(--radius-panel);
       box-shadow: var(--shadow);
       padding: 26px;
       min-height: 500px;
@@ -181,7 +186,7 @@
     .prompt {
       border: 1px solid rgba(1, 154, 206, 0.34);
       background: rgba(1, 154, 206, 0.08);
-      border-radius: 20px;
+      border-radius: var(--radius-media);
       padding: 18px;
       color: var(--white);
     }
@@ -202,6 +207,7 @@
       gap: 13px;
       background: rgba(255, 255, 255, 0.06);
       border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius-card);
       padding: 14px;
     }
     .badge {
@@ -265,6 +271,7 @@
     .card {
       background: var(--white);
       border: 1px solid var(--line);
+      border-radius: var(--radius-card);
       padding: 24px;
       min-height: 100%;
       display: flex;
@@ -304,6 +311,7 @@
       padding: 22px;
       background: var(--white);
       border: 1px solid var(--line);
+      border-radius: var(--radius-card);
     }
     .step strong { font-size: 20px; }
     .step p { margin: 8px 0 0; }
@@ -316,12 +324,14 @@
       background: #07131d;
       color: var(--white);
       border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: var(--radius-card);
       padding: 24px;
       min-height: 210px;
     }
     .use p { color: rgba(255, 255, 255, 0.72); }
     .image-panel {
       border: 1px solid var(--line);
+      border-radius: var(--radius-media);
       overflow: hidden;
       background: #06131f;
       box-shadow: var(--shadow);

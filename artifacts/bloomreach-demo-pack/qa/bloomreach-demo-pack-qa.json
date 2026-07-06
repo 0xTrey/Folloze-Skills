@@ -1,5 +1,15 @@
 {
-  "generatedAt": "2026-07-06T12:58:12.804Z",
+  "generatedAt": "2026-07-06T14:34:53.943Z",
+  "sourceRadiusReference": {
+    "url": "https://www.bloomreach.com/en",
+    "values": {
+      "largePanel": "24px from .heroselect-box",
+      "media": "20px from source media blocks",
+      "contentTile": "16px from header/content tiles",
+      "smallUtility": "8px from dropdown/small utility boxes",
+      "ctaPill": "50px from .br-cta"
+    }
+  },
   "pages": [
     {
       "key": "campaign",
@@ -31,6 +41,50 @@
           "navTargetsMissing": [],
           "anchorAnalyticsFired": 4,
           "hashAfterNavClicks": "",
+          "computedRadii": [
+            {
+              "selector": ".console",
+              "found": true,
+              "radius": "24px",
+              "width": 596,
+              "height": 500
+            },
+            {
+              "selector": ".node",
+              "found": true,
+              "radius": "16px",
+              "width": 542,
+              "height": 72
+            },
+            {
+              "selector": ".step",
+              "found": true,
+              "radius": "16px",
+              "width": 637,
+              "height": 131
+            },
+            {
+              "selector": ".use",
+              "found": true,
+              "radius": "16px",
+              "width": 581,
+              "height": 210
+            },
+            {
+              "selector": ".card",
+              "found": true,
+              "radius": "16px",
+              "width": 381,
+              "height": 326
+            },
+            {
+              "selector": ".image-panel",
+              "found": true,
+              "radius": "20px",
+              "width": 637,
+              "height": 362
+            }
+          ],
           "consoleErrors": [],
           "failedRequests": []
         },
@@ -50,6 +104,50 @@
           "navTargetsMissing": [],
           "anchorAnalyticsFired": 4,
           "hashAfterNavClicks": "",
+          "computedRadii": [
+            {
+              "selector": ".console",
+              "found": true,
+              "radius": "24px",
+              "width": 354,
+              "height": 709
+            },
+            {
+              "selector": ".node",
+              "found": true,
+              "radius": "16px",
+              "width": 316,
+              "height": 119
+            },
+            {
+              "selector": ".step",
+              "found": true,
+              "radius": "16px",
+              "width": 354,
+              "height": 199
+            },
+            {
+              "selector": ".use",
+              "found": true,
+              "radius": "16px",
+              "width": 354,
+              "height": 233
+            },
+            {
+              "selector": ".card",
+              "found": true,
+              "radius": "16px",
+              "width": 354,
+              "height": 352
+            },
+            {
+              "selector": ".image-panel",
+              "found": true,
+              "radius": "20px",
+              "width": 354,
+              "height": 262
+            }
+          ],
           "consoleErrors": [],
           "failedRequests": []
         },
@@ -69,6 +167,50 @@
           "navTargetsMissing": [],
           "anchorAnalyticsFired": 4,
           "hashAfterNavClicks": "",
+          "computedRadii": [
+            {
+              "selector": ".console",
+              "found": true,
+              "radius": "24px",
+              "width": 284,
+              "height": 785
+            },
+            {
+              "selector": ".node",
+              "found": true,
+              "radius": "16px",
+              "width": 246,
+              "height": 119
+            },
+            {
+              "selector": ".step",
+              "found": true,
+              "radius": "16px",
+              "width": 284,
+              "height": 300
+            },
+            {
+              "selector": ".use",
+              "found": true,
+              "radius": "16px",
+              "width": 284,
+              "height": 310
+            },
+            {
+              "selector": ".card",
+              "found": true,
+              "radius": "16px",
+              "width": 284,
+              "height": 403
+            },
+            {
+              "selector": ".image-panel",
+              "found": true,
+              "radius": "20px",
+              "width": 284,
+              "height": 262
+            }
+          ],
           "consoleErrors": [],
           "failedRequests": []
         }
@@ -104,6 +246,50 @@
           "navTargetsMissing": [],
           "anchorAnalyticsFired": 4,
           "hashAfterNavClicks": "",
+          "computedRadii": [
+            {
+              "selector": ".evidence-panel",
+              "found": true,
+              "radius": "24px",
+              "width": 380,
+              "height": 497
+            },
+            {
+              "selector": ".proof-tile",
+              "found": true,
+              "radius": "16px",
+              "width": 381,
+              "height": 202
+            },
+            {
+              "selector": ".stage",
+              "found": true,
+              "radius": "16px",
+              "width": 613,
+              "height": 152
+            },
+            {
+              "selector": ".team-card",
+              "found": true,
+              "radius": "16px",
+              "width": 282,
+              "height": 299
+            },
+            {
+              "selector": ".source-card",
+              "found": true,
+              "radius": "24px",
+              "width": 613,
+              "height": 443
+            },
+            {
+              "selector": ".workshop article",
+              "found": true,
+              "radius": "16px",
+              "width": 381,
+              "height": 220
+            }
+          ],
           "consoleErrors": [],
           "failedRequests": []
         },
@@ -123,6 +309,50 @@
           "navTargetsMissing": [],
           "anchorAnalyticsFired": 4,
           "hashAfterNavClicks": "",
+          "computedRadii": [
+            {
+              "selector": ".evidence-panel",
+              "found": true,
+              "radius": "24px",
+              "width": 354,
+              "height": 419
+            },
+            {
+              "selector": ".proof-tile",
+              "found": true,
+              "radius": "16px",
+              "width": 354,
+              "height": 202
+            },
+            {
+              "selector": ".stage",
+              "found": true,
+              "radius": "16px",
+              "width": 354,
+              "height": 221
+            },
+            {
+              "selector": ".team-card",
+              "found": true,
+              "radius": "16px",
+              "width": 354,
+              "height": 270
+            },
+            {
+              "selector": ".source-card",
+              "found": true,
+              "radius": "24px",
+              "width": 354,
+              "height": 520
+            },
+            {
+              "selector": ".workshop article",
+              "found": true,
+              "radius": "16px",
+              "width": 354,
+              "height": 220
+            }
+          ],
           "consoleErrors": [],
           "failedRequests": []
         },
@@ -142,6 +372,50 @@
           "navTargetsMissing": [],
           "anchorAnalyticsFired": 4,
           "hashAfterNavClicks": "",
+          "computedRadii": [
+            {
+              "selector": ".evidence-panel",
+              "found": true,
+              "radius": "24px",
+              "width": 284,
+              "height": 441
+            },
+            {
+              "selector": ".proof-tile",
+              "found": true,
+              "radius": "16px",
+              "width": 284,
+              "height": 228
+            },
+            {
+              "selector": ".stage",
+              "found": true,
+              "radius": "16px",
+              "width": 284,
+              "height": 271
+            },
+            {
+              "selector": ".team-card",
+              "found": true,
+              "radius": "16px",
+              "width": 284,
+              "height": 299
+            },
+            {
+              "selector": ".source-card",
+              "found": true,
+              "radius": "24px",
+              "width": 284,
+              "height": 537
+            },
+            {
+              "selector": ".workshop article",
+              "found": true,
+              "radius": "16px",
+              "width": 284,
+              "height": 233
+            }
+          ],
           "consoleErrors": [],
           "failedRequests": []
         }
@@ -177,6 +451,50 @@
           "navTargetsMissing": [],
           "anchorAnalyticsFired": 4,
           "hashAfterNavClicks": "",
+          "computedRadii": [
+            {
+              "selector": ".event-card",
+              "found": true,
+              "radius": "24px",
+              "width": 489,
+              "height": 339
+            },
+            {
+              "selector": ".track",
+              "found": true,
+              "radius": "16px",
+              "width": 381,
+              "height": 280
+            },
+            {
+              "selector": ".agenda-item",
+              "found": true,
+              "radius": "16px",
+              "width": 596,
+              "height": 128
+            },
+            {
+              "selector": ".photo",
+              "found": true,
+              "radius": "20px",
+              "width": 596,
+              "height": 468
+            },
+            {
+              "selector": ".speaker-copy",
+              "found": true,
+              "radius": "16px",
+              "width": 737,
+              "height": 478
+            },
+            {
+              "selector": ".logos img",
+              "found": true,
+              "radius": "8px",
+              "width": 182,
+              "height": 48
+            }
+          ],
           "consoleErrors": [],
           "failedRequests": []
         },
@@ -196,6 +514,50 @@
           "navTargetsMissing": [],
           "anchorAnalyticsFired": 4,
           "hashAfterNavClicks": "",
+          "computedRadii": [
+            {
+              "selector": ".event-card",
+              "found": true,
+              "radius": "24px",
+              "width": 354,
+              "height": 339
+            },
+            {
+              "selector": ".track",
+              "found": true,
+              "radius": "16px",
+              "width": 354,
+              "height": 280
+            },
+            {
+              "selector": ".agenda-item",
+              "found": true,
+              "radius": "16px",
+              "width": 354,
+              "height": 233
+            },
+            {
+              "selector": ".photo",
+              "found": true,
+              "radius": "20px",
+              "width": 354,
+              "height": 278
+            },
+            {
+              "selector": ".speaker-copy",
+              "found": true,
+              "radius": "16px",
+              "width": 354,
+              "height": 586
+            },
+            {
+              "selector": ".logos img",
+              "found": true,
+              "radius": "8px",
+              "width": 354,
+              "height": 52
+            }
+          ],
           "consoleErrors": [],
           "failedRequests": []
         },
@@ -215,6 +577,50 @@
           "navTargetsMissing": [],
           "anchorAnalyticsFired": 4,
           "hashAfterNavClicks": "",
+          "computedRadii": [
+            {
+              "selector": ".event-card",
+              "found": true,
+              "radius": "24px",
+              "width": 284,
+              "height": 393
+            },
+            {
+              "selector": ".track",
+              "found": true,
+              "radius": "16px",
+              "width": 284,
+              "height": 303
+            },
+            {
+              "selector": ".agenda-item",
+              "found": true,
+              "radius": "16px",
+              "width": 284,
+              "height": 259
+            },
+            {
+              "selector": ".photo",
+              "found": true,
+              "radius": "20px",
+              "width": 284,
+              "height": 262
+            },
+            {
+              "selector": ".speaker-copy",
+              "found": true,
+              "radius": "16px",
+              "width": 284,
+              "height": 636
+            },
+            {
+              "selector": ".logos img",
+              "found": true,
+              "radius": "8px",
+              "width": 284,
+              "height": 52
+            }
+          ],
           "consoleErrors": [],
           "failedRequests": []
         }

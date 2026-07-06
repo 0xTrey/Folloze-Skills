@@ -29,6 +29,12 @@ Generated: 2026-07-06
   - Secondary: cyan pill or outlined pill depending on surface.
   - Utility/header: small white or yellow pill.
   - Resource action: text/cyan link or compact pill with direct external link.
+- Rounded-corner source tokens from the live Bloomreach homepage:
+  - `.heroselect-box`: 24px for large product panels and hero/evidence containers.
+  - Source media blocks: 20px.
+  - Header/promo/content tiles: 16px.
+  - Dropdown/small utility containers: 8px.
+  - `.br-cta`: 50px pill treatment for buttons.
 - Asset rules: use Bloomreach-hosted logos/images only where verified. Do not create generic logo walls without source proof links.
 
 ## Pack Promise
