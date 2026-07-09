@@ -39,7 +39,7 @@ The board should show:
 - delete any program, including the last one
 - switch active program
 - assign a program to Q1, Q2, Q3, or Q4
-- choose customer success manager: `Meghan Richardson`, `Matthew Brown`, or `Steven Nguyen`
+- choose customer success manager: `Meghan Richardson`, `Matthew Brown`, `Steven Nguyen`, or `Flor Estrada`
 - update details and assumptions
 - switch benchmark mode between Standard and Custom
 - edit custom benchmark values

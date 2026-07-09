@@ -14,7 +14,7 @@ Build a Folloze MCP board that gives customers the same capabilities as the prog
 - organize the one-year plan by Q1, Q2, Q3, and Q4
 - enter quarter, program type, program name, segment, channels, content, notes, accounts targeted, and average deal size
 - delete any added program section
-- select the customer success manager from `Meghan Richardson`, `Matthew Brown`, or `Steven Nguyen`
+- select the customer success manager from `Meghan Richardson`, `Matthew Brown`, `Steven Nguyen`, or `Flor Estrada`
 - choose standard or custom benchmarks per program
 - calculate account-to-pipeline waterfall values in real time
 - show quarterly rollups, cumulative quarter-to-date totals, full-year totals, and shareable waterfall sections
