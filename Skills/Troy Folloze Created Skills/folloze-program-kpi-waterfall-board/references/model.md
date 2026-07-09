@@ -62,8 +62,12 @@ Before saving a Folloze board, ask for the customer's name if it is not already 
 - Digital deal room
 - Renewal / QBR
 - Customer expansion
-- Other
 - Web Engager Program
 - Resource Center
 - Enablement Program
 - Newsletter
+- Test
+- New Product Launch
+- Content Hub
+- Article Hub
+- Other
