@@ -17,7 +17,7 @@ Build a Folloze MCP board that gives customers the same capabilities as the prog
 - select the customer success manager from `Meghan Richardson`, `Matthew Brown`, `Steven Nguyen`, or `Flor Estrada`
 - choose standard or custom benchmarks per program
 - calculate account-to-pipeline waterfall values in real time
-- show quarterly rollups, cumulative quarter-to-date totals, full-year totals, and shareable waterfall sections
+- show quarter-only rollups, Q2/Q3/Q4 year-to-date totals, full-year totals, and shareable waterfall sections
 - link the hero `View waterfalls` CTA to a generated cumulative pipeline-waterfall image that updates from the live model
 - include an `Output to slides` control that exports the live planner state as slide-ready JSON and opens the generated Google Slides deck when a deck URL is available
 - include an `Output to sheets` control that exports the live planner state as sheet-ready JSON and opens the generated Google Sheet when a sheet URL is available
@@ -58,8 +58,8 @@ The template is a single self-contained HTML file with:
 - standard benchmark model: `100% -> 30% -> 10% -> 50% -> 30%`
 - custom benchmark inputs
 - live full-year totals for programs, pipeline goal, bookings, and meetings
-- quarterly rollup cards
-- cumulative Q1, Q2, Q3, Q4, and full-year summary table
+- quarterly rollup cards that show each quarter independently
+- quarter/YTD summary table with Q1, Q2, Q3, and Q4 quarter-only rows plus Q2 YTD, Q3 YTD, Q4 YTD, and full-year rows
 - generated cumulative pipeline-waterfall image linked from the hero `View waterfalls` CTA
 - generated waterfall sections grouped by quarter
 - overflow-safe number formatting so large values fit inside cards and tables

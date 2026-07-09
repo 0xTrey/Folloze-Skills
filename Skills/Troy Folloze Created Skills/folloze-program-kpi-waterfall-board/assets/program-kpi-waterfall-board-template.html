@@ -551,6 +551,24 @@
     text-overflow: ellipsis;
     font-variant-numeric: tabular-nums;
   }
+  .quarter-metrics {
+    display: grid;
+    gap: 6px;
+    margin-top: 10px;
+  }
+  .quarter-metrics div {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    color: var(--flz-slate);
+    font-size: 12px;
+    font-weight: 800;
+  }
+  .quarter-metrics b {
+    color: var(--flz-navy);
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
 
   .summary-band {
     background: var(--flz-navy);
@@ -635,6 +653,14 @@
   .cumulative-table td {
     color: white;
     font-weight: 800;
+  }
+  .cumulative-table tr.ytd-row td {
+    background: rgba(0, 119, 255, .18);
+    color: #ffffff;
+  }
+  .cumulative-table tr.total-row td {
+    background: rgba(255,255,255,.1);
+    color: #ffffff;
   }
 
   .waterfall-visual-section {
@@ -1417,30 +1443,52 @@
     document.getElementById('quarterRollup').innerHTML = quarterTotals().map(({ quarter, programs: quarterPrograms, totals: qt }) => `
       <article class="quarter-card">
         <h3>${quarter}</h3>
-        <p>${whole.format(quarterPrograms.length)} programs · ${whole.format(qt.meetings)} meetings</p>
+        <p>Quarter only · ${whole.format(quarterPrograms.length)} programs</p>
         <strong>${money(qt.pipelineGoal)} pipeline</strong>
+        <div class="quarter-metrics">
+          <div><span>Meetings</span><b>${whole.format(qt.meetings)}</b></div>
+          <div><span>Opps</span><b>${whole.format(qt.pipelineOpps)}</b></div>
+          <div><span>Closed</span><b>${whole.format(qt.closedDeals)}</b></div>
+          <div><span>Bookings</span><b>${money(qt.bookings)}</b></div>
+        </div>
       </article>`).join('');
     document.getElementById('portfolioCards').innerHTML = [
       ['Account coverage', [['Accounts targeted', whole.format(t.accounts)], ['Accounts in market', whole.format(t.inMarket)], ['Engaged accounts', whole.format(t.engaged)]]],
       ['Conversion output', [['Sales meetings', whole.format(t.meetings)], ['Pipeline opportunities', whole.format(t.pipelineOpps)], ['Closed deals', whole.format(t.closedDeals)]]],
       ['Full-year business value', [['Pipeline goal', money(t.pipelineGoal)], ['Bookings', money(t.bookings)], ['Programs modeled', whole.format(programs.length)]]]
     ].map(([title, rows]) => `<article class="summary-card"><h3>${title}</h3><dl>${rows.map(([k, v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join('')}</dl></article>`).join('');
-    const cumulativeRows = cumulativeQuarterTotals().map(({ quarter, totals: ct }) => `
-      <tr>
-        <td>${quarter} YTD</td>
-        <td>${whole.format(ct.programs)}</td>
-        <td>${whole.format(ct.meetings)}</td>
-        <td>${whole.format(ct.pipelineOpps)}</td>
-        <td>${whole.format(ct.closedDeals)}</td>
-        <td>${money(ct.pipelineGoal)}</td>
-        <td>${money(ct.bookings)}</td>
-      </tr>`).join('');
+    const quarterly = quarterTotals();
+    const cumulative = cumulativeQuarterTotals();
+    const quarterAndYtdRows = quarterly.map(({ quarter, totals: qt }, index) => {
+      const quarterRow = `
+        <tr>
+          <td>${quarter} only</td>
+          <td>${whole.format(qt.programs)}</td>
+          <td>${whole.format(qt.meetings)}</td>
+          <td>${whole.format(qt.pipelineOpps)}</td>
+          <td>${whole.format(qt.closedDeals)}</td>
+          <td>${money(qt.pipelineGoal)}</td>
+          <td>${money(qt.bookings)}</td>
+        </tr>`;
+      if (index === 0) return quarterRow;
+      const ytd = cumulative[index].totals;
+      return `${quarterRow}
+        <tr class="ytd-row">
+          <td>${quarter} YTD</td>
+          <td>${whole.format(ytd.programs)}</td>
+          <td>${whole.format(ytd.meetings)}</td>
+          <td>${whole.format(ytd.pipelineOpps)}</td>
+          <td>${whole.format(ytd.closedDeals)}</td>
+          <td>${money(ytd.pipelineGoal)}</td>
+          <td>${money(ytd.bookings)}</td>
+        </tr>`;
+    }).join('');
     document.getElementById('cumulativeSummary').innerHTML = `
       <table>
-        <thead><tr><th>Cumulative quarter</th><th>Programs</th><th>Meetings</th><th>Opps</th><th>Closed</th><th>Pipeline</th><th>Bookings</th></tr></thead>
+        <thead><tr><th>Quarter / YTD view</th><th>Programs</th><th>Meetings</th><th>Opps</th><th>Closed</th><th>Pipeline</th><th>Bookings</th></tr></thead>
         <tbody>
-          ${cumulativeRows}
-          <tr><td>Full year</td><td>${whole.format(t.programs)}</td><td>${whole.format(t.meetings)}</td><td>${whole.format(t.pipelineOpps)}</td><td>${whole.format(t.closedDeals)}</td><td>${money(t.pipelineGoal)}</td><td>${money(t.bookings)}</td></tr>
+          ${quarterAndYtdRows}
+          <tr class="total-row"><td>Full year</td><td>${whole.format(t.programs)}</td><td>${whole.format(t.meetings)}</td><td>${whole.format(t.pipelineOpps)}</td><td>${whole.format(t.closedDeals)}</td><td>${money(t.pipelineGoal)}</td><td>${money(t.bookings)}</td></tr>
         </tbody>
       </table>`;
     renderPipelineWaterfallImage(t);
