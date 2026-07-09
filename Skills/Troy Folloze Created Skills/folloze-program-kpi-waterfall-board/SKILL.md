@@ -18,6 +18,7 @@ Build a Folloze MCP board that gives customers the same capabilities as the prog
 - choose standard or custom benchmarks per program
 - calculate account-to-pipeline waterfall values in real time
 - show quarterly rollups, cumulative quarter-to-date totals, full-year totals, and shareable waterfall sections
+- link the hero `View waterfalls` CTA to a generated cumulative pipeline-waterfall image that updates from the live model
 - include an `Output to slides` control that exports the live planner state as slide-ready JSON and opens the generated Google Slides deck when a deck URL is available
 - include an `Output to sheets` control that exports the live planner state as sheet-ready JSON and opens the generated Google Sheet when a sheet URL is available
 
@@ -59,6 +60,7 @@ The template is a single self-contained HTML file with:
 - live full-year totals for programs, pipeline goal, bookings, and meetings
 - quarterly rollup cards
 - cumulative Q1, Q2, Q3, Q4, and full-year summary table
+- generated cumulative pipeline-waterfall image linked from the hero `View waterfalls` CTA
 - generated waterfall sections grouped by quarter
 - overflow-safe number formatting so large values fit inside cards and tables
 - slide-output button that downloads the current planner state as `folloze-program-kpi-slide-output.json` and opens the verified Google Slides deck URL
@@ -97,6 +99,7 @@ Before saving:
 - choose each customer CSM and verify the waterfall sections show the selected CSM
 - switch a program to `Custom`, change a benchmark, and verify totals update
 - confirm generated waterfall sections are grouped by quarter and match the program count
+- click `View waterfalls` and verify it lands on the cumulative pipeline-waterfall image, not only the detailed waterfall section
 - click `Output to slides` and verify it calls analytics, exports JSON, and opens the verified deck URL when present
 - click `Output to sheets` and verify it calls analytics, exports JSON, and opens the verified JDP-template sheet URL when present
 - confirm CTA buttons and meaningful interactions call `flzAnalytic`

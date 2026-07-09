@@ -585,6 +585,30 @@
     font-weight: 800;
   }
 
+  .waterfall-visual-section {
+    background: linear-gradient(180deg, #f7fbff 0%, #ffffff 100%);
+  }
+  .visual-card {
+    border: 1px solid var(--flz-line);
+    border-radius: var(--radius);
+    background: white;
+    box-shadow: var(--shadow);
+    padding: 16px;
+  }
+  .visual-card img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--flz-line);
+    border-radius: calc(var(--radius) - 4px);
+    background: #f8fbfe;
+  }
+  .visual-caption {
+    margin: 12px 0 0;
+    color: var(--flz-slate);
+    font-size: 14px;
+  }
+
   .sections-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -773,7 +797,7 @@
         <p>Use this waterfall model to plan CUSTOMER_NAME_PLACEHOLDER's customer programs by quarter. Add program sections, choose standard or custom benchmarks, and see quarterly, cumulative, and full-year impact update in real time.</p>
         <div class="hero-actions">
           <a class="primary-btn" href="#planner" onclick="flzAnalytic('cta_click', {text:this.innerText.trim(), area:'main hero banner'}, this)">Start planning</a>
-          <a class="secondary-btn" href="#sections" onclick="flzAnalytic('cta_click', {text:this.innerText.trim(), area:'main hero banner'}, this)">View waterfalls</a>
+          <a class="secondary-btn" href="#pipelineWaterfallImage" onclick="return viewWaterfallsImage(this, event)">View waterfalls</a>
           <button class="ghost-btn" type="button" onclick="exportSlideContent(this)">Output to slides</button>
           <button class="ghost-btn" type="button" onclick="exportSheetContent(this)">Output to sheets</button>
         </div>
@@ -838,6 +862,20 @@
       <div class="cumulative-table" id="cumulativeSummary" aria-label="Cumulative quarterly summary"></div>
     </section>
   </div>
+
+  <section class="section waterfall-visual-section" id="pipeline-waterfall" aria-labelledby="pipeline-waterfall-title">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Cumulative waterfall</div>
+        <h2 id="pipeline-waterfall-title">See the full-year program plan as one pipeline waterfall.</h2>
+        <p>The image below turns the cumulative program details into a single visual path from targeted accounts to modeled pipeline and bookings.</p>
+      </div>
+    </div>
+    <figure class="visual-card">
+      <img id="pipelineWaterfallImage" alt="Cumulative pipeline waterfall visual showing program details from accounts targeted through pipeline and bookings">
+      <figcaption class="visual-caption" id="pipelineWaterfallCaption">Cumulative waterfall updates as program details and benchmarks change.</figcaption>
+    </figure>
+  </section>
 
   <section class="section" id="sections" aria-labelledby="sections-title">
     <div class="section-head">
@@ -929,6 +967,17 @@
     if (typeof flzAnalytic === 'function') {
       flzAnalytic(action, payload, el);
     }
+  }
+
+  function viewWaterfallsImage(link, event) {
+    if (event) event.preventDefault();
+    safeAnalytic('cta_click', { text: link.innerText.trim(), area: 'main hero banner' }, link);
+    const image = document.getElementById('pipelineWaterfallImage');
+    if (image) {
+      image.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      history.pushState(null, '', '#pipelineWaterfallImage');
+    }
+    return false;
   }
 
   function benchmarkFor(program) {
@@ -1238,6 +1287,61 @@
           <tr><td>Full year</td><td>${whole.format(t.programs)}</td><td>${whole.format(t.meetings)}</td><td>${whole.format(t.pipelineOpps)}</td><td>${whole.format(t.closedDeals)}</td><td>${money(t.pipelineGoal)}</td><td>${money(t.bookings)}</td></tr>
         </tbody>
       </table>`;
+    renderPipelineWaterfallImage(t);
+  }
+
+  function renderPipelineWaterfallImage(t) {
+    const image = document.getElementById('pipelineWaterfallImage');
+    const caption = document.getElementById('pipelineWaterfallCaption');
+    if (!image) return;
+    const svg = buildPipelineWaterfallSvg(t);
+    image.src = `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`;
+    if (caption) {
+      caption.textContent = `${whole.format(t.programs)} programs modeled across Q1-Q4 · ${whole.format(t.accounts)} accounts targeted · ${money(t.pipelineGoal)} pipeline · ${money(t.bookings)} bookings.`;
+    }
+  }
+
+  function buildPipelineWaterfallSvg(t) {
+    const stages = [
+      { label: 'Accounts targeted', value: t.accounts, display: whole.format(t.accounts), color: '#0077ff' },
+      { label: 'In market', value: t.inMarket, display: whole.format(t.inMarket), color: '#00a8ff' },
+      { label: 'Engaged', value: t.engaged, display: whole.format(t.engaged), color: '#00ccff' },
+      { label: 'Sales meetings', value: t.meetings, display: whole.format(t.meetings), color: '#48bd64' },
+      { label: 'Pipeline opps', value: t.pipelineOpps, display: whole.format(t.pipelineOpps), color: '#7c5cff' },
+      { label: 'Closed deals', value: t.closedDeals, display: whole.format(t.closedDeals), color: '#ff469e' }
+    ];
+    const max = Math.max(...stages.map(stage => stage.value), 1);
+    const chartWidth = 1040;
+    const left = 230;
+    const top = 150;
+    const rowGap = 76;
+    const maxBar = 640;
+    const minBar = 18;
+    const rows = stages.map((stage, index) => {
+      const width = Math.max(stage.value > 0 ? minBar : 0, Math.round((stage.value / max) * maxBar));
+      const y = top + index * rowGap;
+      const next = index < stages.length - 1
+        ? `<path d="M ${left + width + 8} ${y + 22} C ${left + width + 46} ${y + 22}, ${left + 58} ${y + rowGap + 22}, ${left + 96} ${y + rowGap + 22}" fill="none" stroke="#b8d8ec" stroke-width="2.5" stroke-dasharray="7 8"/>`
+        : '';
+      return `
+        <text x="56" y="${y + 27}" fill="#2c3d59" font-size="21" font-weight="800">${escapeHtml(stage.label)}</text>
+        <rect x="${left}" y="${y}" width="${width}" height="44" rx="22" fill="${stage.color}"/>
+        <text x="${left + width + 24}" y="${y + 29}" fill="#071428" font-size="23" font-weight="900">${escapeHtml(stage.display)}</text>
+        ${next}`;
+    }).join('');
+    return `<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc" viewBox="0 0 ${chartWidth} 720">
+      <title id="title">Cumulative pipeline waterfall</title>
+      <desc id="desc">Full-year cumulative program waterfall from accounts targeted to closed deals, pipeline, and bookings.</desc>
+      <rect width="${chartWidth}" height="720" rx="24" fill="#f8fbfe"/>
+      <rect x="24" y="24" width="992" height="672" rx="22" fill="#ffffff" stroke="#d8ecfa"/>
+      <text x="56" y="76" fill="#0077ff" font-size="18" font-weight="900" letter-spacing="2">CUMULATIVE PIPELINE WATERFALL</text>
+      <text x="56" y="114" fill="#071428" font-size="34" font-weight="900">Full-year program detail</text>
+      ${rows}
+      <rect x="56" y="632" width="436" height="44" rx="22" fill="#eaf7ff"/>
+      <text x="78" y="661" fill="#071428" font-size="21" font-weight="900">Pipeline: ${escapeHtml(money(t.pipelineGoal))}</text>
+      <rect x="520" y="632" width="436" height="44" rx="22" fill="#eaf8ee"/>
+      <text x="542" y="661" fill="#071428" font-size="21" font-weight="900">Bookings: ${escapeHtml(money(t.bookings))}</text>
+    </svg>`;
   }
 
   function renderSections() {
