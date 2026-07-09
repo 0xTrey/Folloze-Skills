@@ -397,9 +397,31 @@
   }
   .program-tab-row {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-columns: auto minmax(0, 1fr) auto;
     gap: 8px;
     align-items: stretch;
+  }
+  .program-tab-row.dragging {
+    opacity: .54;
+  }
+  .program-tab-row.drag-over {
+    outline: 2px solid var(--flz-blue);
+    outline-offset: 2px;
+    border-radius: var(--radius);
+  }
+  .drag-handle {
+    border: 1px solid var(--flz-line);
+    border-radius: var(--radius);
+    background: white;
+    color: var(--flz-slate);
+    cursor: grab;
+    font-size: 18px;
+    font-weight: 900;
+    padding: 0 9px;
+    line-height: 1;
+  }
+  .drag-handle:active {
+    cursor: grabbing;
   }
   .program-tab {
     width: 100%;
@@ -1285,6 +1307,44 @@
     addProgram({ ...active, name: `${active.name} copy`, custom: { ...active.custom } });
   }
 
+  function reorderPrograms(draggedId, targetId) {
+    if (!draggedId || !targetId || draggedId === targetId) return;
+    const from = programs.findIndex(program => program.id === draggedId);
+    const to = programs.findIndex(program => program.id === targetId);
+    if (from < 0 || to < 0) return;
+    const [moved] = programs.splice(from, 1);
+    programs.splice(to, 0, moved);
+    render();
+    safeAnalytic('program_reorder', { text: moved.name || moved.type, area: 'program planner', from: from + 1, to: to + 1 });
+  }
+
+  function handleProgramDragStart(event, id) {
+    event.dataTransfer.effectAllowed = 'move';
+    event.dataTransfer.setData('text/plain', id);
+    event.currentTarget.classList.add('dragging');
+  }
+
+  function handleProgramDragEnd(event) {
+    event.currentTarget.classList.remove('dragging');
+    document.querySelectorAll('.program-tab-row.drag-over').forEach(row => row.classList.remove('drag-over'));
+  }
+
+  function handleProgramDragOver(event) {
+    event.preventDefault();
+    event.dataTransfer.dropEffect = 'move';
+    event.currentTarget.classList.add('drag-over');
+  }
+
+  function handleProgramDragLeave(event) {
+    event.currentTarget.classList.remove('drag-over');
+  }
+
+  function handleProgramDrop(event, targetId) {
+    event.preventDefault();
+    event.currentTarget.classList.remove('drag-over');
+    reorderPrograms(event.dataTransfer.getData('text/plain'), targetId);
+  }
+
   function removeProgram(id, button) {
     const doomed = programs.find(p => p.id === id);
     programs = programs.filter(p => p.id !== id);
@@ -1335,7 +1395,8 @@
     }
     tabs.innerHTML = programs.map((program, index) => {
       const c = calculate(program);
-      return `<div class="program-tab-row">
+      return `<div class="program-tab-row" draggable="true" data-program-id="${program.id}" ondragstart="handleProgramDragStart(event, '${program.id}')" ondragend="handleProgramDragEnd(event)" ondragover="handleProgramDragOver(event)" ondragleave="handleProgramDragLeave(event)" ondrop="handleProgramDrop(event, '${program.id}')">
+        <button class="drag-handle" type="button" aria-label="Drag ${escapeHtml(program.name || program.type)} to reorder" title="Drag to reorder">⋮⋮</button>
         <button class="program-tab" type="button" role="tab" aria-selected="${program.id === activeId}" onclick="setActive('${program.id}', this)">
           <strong>${index + 1}. ${escapeHtml(program.quarter || 'Q1')} · ${escapeHtml(program.type)}</strong>
           <small>${escapeHtml(program.name || 'Unnamed program')} · ${money(c.pipelineGoal)} pipeline</small>
