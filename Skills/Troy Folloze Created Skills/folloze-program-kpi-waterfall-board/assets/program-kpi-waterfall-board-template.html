@@ -868,7 +868,7 @@
       <span>Program KPI Planner</span>
     </div>
     <div class="navlinks">
-      <a href="#add-program-section" onclick="flzAnalytic('anchor-click', {text:this.innerText.trim(), area:'main nav header bar'}, this)">Planner</a>
+      <a href="#add-program-section" onclick="return scrollToPrograms(this, event, 'main nav header bar', 'anchor-click')">Planner</a>
       <a href="#pipelineWaterfallImage" onclick="return viewWaterfallsImage(this, event, 'main nav header bar', 'anchor-click')">Waterfalls</a>
       <div class="csm-picker">
         <label for="customerCsm">Your Customer Success Manager</label>
@@ -891,7 +891,7 @@
         <h1 id="hero-title">Plan CUSTOMER_NAME_PLACEHOLDER's one-year program mix from engagement to pipeline.</h1>
         <p>Use this waterfall model to plan CUSTOMER_NAME_PLACEHOLDER's customer programs by quarter. Add program sections, choose standard or custom benchmarks, and see quarterly, cumulative, and full-year impact update in real time.</p>
         <div class="hero-actions">
-          <a class="primary-btn" href="#planner" onclick="flzAnalytic('cta_click', {text:this.innerText.trim(), area:'main hero banner'}, this)">Start planning</a>
+          <a class="primary-btn" href="#add-program-section" onclick="return scrollToPrograms(this, event, 'main hero banner', 'cta_click')">Start planning</a>
           <a class="secondary-btn" href="#pipelineWaterfallImage" onclick="return viewWaterfallsImage(this, event)">View waterfalls</a>
           <button class="ghost-btn" type="button" onclick="exportSlideContent(this)">Output to slides</button>
           <button class="ghost-btn" type="button" onclick="exportSheetContent(this)">Output to sheets</button>
@@ -1071,6 +1071,17 @@
     if (image) {
       image.scrollIntoView({ behavior: 'smooth', block: 'start' });
       history.pushState(null, '', '#pipelineWaterfallImage');
+    }
+    return false;
+  }
+
+  function scrollToPrograms(link, event, area = 'main hero banner', action = 'cta_click') {
+    if (event) event.preventDefault();
+    safeAnalytic(action, { text: link.innerText.trim(), area }, link);
+    const programsSection = document.getElementById('add-program-section');
+    if (programsSection) {
+      programsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      history.pushState(null, '', '#add-program-section');
     }
     return false;
   }
