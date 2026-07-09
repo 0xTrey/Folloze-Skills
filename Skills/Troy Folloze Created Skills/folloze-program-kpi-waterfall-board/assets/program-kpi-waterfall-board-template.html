@@ -195,6 +195,12 @@
     max-width: 780px;
   }
   .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+  .section-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
   .hero-panel {
     background: rgba(255, 255, 255, .86);
     border: 1px solid rgba(216, 236, 250, .95);
@@ -768,6 +774,7 @@
         <div class="hero-actions">
           <a class="primary-btn" href="#planner" onclick="flzAnalytic('cta_click', {text:this.innerText.trim(), area:'main hero banner'}, this)">Start planning</a>
           <a class="secondary-btn" href="#sections" onclick="flzAnalytic('cta_click', {text:this.innerText.trim(), area:'main hero banner'}, this)">View waterfalls</a>
+          <button class="ghost-btn" type="button" onclick="exportSlideContent(this)">Output to slides</button>
         </div>
       </div>
       <aside class="hero-panel" aria-label="Standard benchmark waterfall">
@@ -838,7 +845,10 @@
         <h2 id="sections-title">Every quarter gets ready-to-share program waterfalls.</h2>
         <p>These sections mirror the planning sheet while giving customers a clearer view of the quarterly program detail, selected benchmarks, and modeled business value.</p>
       </div>
-      <button class="secondary-btn" type="button" onclick="copySummary(this)">Copy summary</button>
+      <div class="section-actions">
+        <button class="secondary-btn" type="button" onclick="copySummary(this)">Copy summary</button>
+        <button class="primary-btn" type="button" onclick="exportSlideContent(this)">Output to slides</button>
+      </div>
     </div>
     <div id="waterfallSections"></div>
   </section>
@@ -905,6 +915,7 @@
   const compactCurrency = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', notation: 'compact', maximumFractionDigits: 1 });
   const whole = new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 });
   const pct = new Intl.NumberFormat('en-US', { style: 'percent', maximumFractionDigits: 0 });
+  const slidesDeckUrl = 'SLIDES_DECK_URL_PLACEHOLDER';
 
   function money(value) {
     const amount = Number(value) || 0;
@@ -1289,6 +1300,62 @@
     }
     flzAnalytic('cta_click', { text: 'Copy summary', area: 'waterfall sections' }, button);
     safeAnalytic('copy_summary', { text: 'Portfolio summary', area: 'waterfall sections' });
+  }
+
+  function slideExportPayload() {
+    const fullYear = totals();
+    return {
+      exportedAt: new Date().toISOString(),
+      customerHeadline: document.getElementById('hero-title').textContent.trim(),
+      customerSuccessManager: selectedCsm,
+      slidesDeckUrl,
+      fullYear,
+      quarters: quarterTotals().map(({ quarter, programs: quarterPrograms, totals: qt }) => ({
+        quarter,
+        programCount: quarterPrograms.length,
+        totals: qt
+      })),
+      cumulative: cumulativeQuarterTotals(),
+      programs: programs.map((program, index) => ({
+        index: index + 1,
+        id: program.id,
+        quarter: program.quarter || 'Q1',
+        type: program.type,
+        name: program.name,
+        segment: program.segment,
+        channels: program.channels,
+        content: program.content,
+        notes: program.notes,
+        benchmarkMode: program.mode,
+        assumptions: benchmarkFor(program),
+        calculations: calculate(program)
+      }))
+    };
+  }
+
+  function downloadJson(filename, payload) {
+    const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = filename;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    URL.revokeObjectURL(url);
+  }
+
+  function exportSlideContent(button) {
+    const payload = slideExportPayload();
+    downloadJson('folloze-program-kpi-slide-output.json', payload);
+    if (slidesDeckUrl && !slidesDeckUrl.includes('PLACEHOLDER')) {
+      window.open(slidesDeckUrl, '_blank', 'noopener');
+    }
+    const original = button.textContent;
+    button.textContent = 'Slides output ready';
+    setTimeout(() => { button.textContent = original; }, 1800);
+    flzAnalytic('cta_click', { text: original.trim(), area: 'slide output' }, button);
+    safeAnalytic('slides_export', { text: 'Google Slides output', area: 'slide output', deckUrl: slidesDeckUrl });
   }
 
   function render() {
