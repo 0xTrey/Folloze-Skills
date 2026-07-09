@@ -65,7 +65,7 @@ The template is a single self-contained HTML file with:
 - overflow-safe number formatting so large values fit inside cards and tables
 - slide-output button that downloads the current planner state as `folloze-program-kpi-slide-output.json` and opens the verified Google Slides deck URL
 - sheet-output button that downloads the current planner state as `folloze-program-kpi-sheet-output.json` and opens the verified JDP-template Google Sheet URL
-- analytics wiring for CTAs, nav, tab switches, model updates, copy summary, add/remove actions
+- analytics wiring for CTAs, nav, tab switches, model updates, add/remove actions
 - local `flzAnalytic` fallback for browser QA
 
 ## Copy And Positioning
@@ -134,7 +134,7 @@ Use `save_folloze_board_from_file` with:
 - `themeId`: returned from `get_company_theme`
 - `analyticsAcknowledgements.readGuide`: true only after reading the MCP guide
 - `analyticsAcknowledgements.ctaClicksTracked`: true only after confirming CTA analytics
-- `analyticsAcknowledgements.customInteractionsTracked`: true only after confirming model/nav/tab/copy interactions
+- `analyticsAcknowledgements.customInteractionsTracked`: true only after confirming model/nav/tab/add/remove/export interactions
 - `analyticsAcknowledgements.externalLinksHaveTargetBlank`: true; the template does not use external URLs by default, and any added external links must use `target="_blank" rel="noopener"`
 
 If the MCP save returns `needs_fix`, patch the durable local HTML file, rerun targeted QA, then retry saving the same file.

@@ -340,10 +340,12 @@
   .stat strong {
     display: block;
     color: var(--flz-navy);
-    font-size: clamp(20px, 2.3vw, 34px);
+    font-size: clamp(19px, 2vw, 30px);
     line-height: 1.05;
     margin-top: 8px;
-    overflow-wrap: anywhere;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     font-variant-numeric: tabular-nums;
   }
   .stat em {
@@ -370,6 +372,14 @@
     padding: 14px;
     position: sticky;
     top: 92px;
+  }
+  .program-list-label {
+    margin: 0 0 10px;
+    color: var(--flz-blue);
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: .1em;
+    text-transform: uppercase;
   }
   .list-actions {
     display: flex;
@@ -493,16 +503,16 @@
   }
   .waterfall-row {
     display: grid;
-    grid-template-columns: 180px minmax(0, 1fr) 96px;
-    gap: 12px;
+    grid-template-columns: 156px minmax(70px, 1fr) minmax(108px, max-content);
+    gap: 10px;
     align-items: center;
-    padding: 9px 0;
+    padding: 7px 0;
     border-bottom: 1px solid rgba(216, 236, 250, .75);
   }
   .waterfall-row:last-child { border-bottom: 0; }
   .waterfall-row span { color: var(--flz-slate); font-weight: 700; }
-  .waterfall-row strong { color: var(--flz-navy); text-align: right; font-size: 18px; }
-  .waterfall-row .bar { height: 12px; background: white; }
+  .waterfall-row strong { color: var(--flz-navy); text-align: right; font-size: 16px; }
+  .waterfall-row .bar { height: 10px; background: white; }
 
   .quarter-rollup {
     display: grid;
@@ -533,9 +543,11 @@
     display: block;
     margin-top: 8px;
     color: var(--flz-blue);
-    font-size: clamp(18px, 1.8vw, 26px);
+    font-size: clamp(16px, 1.45vw, 22px);
     line-height: 1.05;
-    overflow-wrap: anywhere;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     font-variant-numeric: tabular-nums;
   }
 
@@ -579,10 +591,16 @@
   .program-section td:nth-child(3),
   .waterfall-row strong {
     min-width: 0;
-    overflow-wrap: anywhere;
+    white-space: nowrap;
+    overflow-wrap: normal;
+    word-break: keep-all;
     font-variant-numeric: tabular-nums;
   }
-  .summary-card dd { font-size: clamp(14px, 1.2vw, 18px); }
+  .summary-card dd {
+    font-size: clamp(13px, 1vw, 16px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 
   .cumulative-table {
     margin-top: 16px;
@@ -602,7 +620,7 @@
     padding: 12px 14px;
     border-bottom: 1px solid rgba(255,255,255,.12);
     text-align: right;
-    overflow-wrap: anywhere;
+    white-space: nowrap;
     font-variant-numeric: tabular-nums;
   }
   .cumulative-table th:first-child,
@@ -626,7 +644,9 @@
     border-radius: var(--radius);
     background: white;
     box-shadow: var(--shadow);
-    padding: 16px;
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 12px;
   }
   .visual-card img {
     display: block;
@@ -672,6 +692,7 @@
   .program-section table {
     width: 100%;
     border-collapse: collapse;
+    table-layout: fixed;
   }
   .program-section th,
   .program-section td {
@@ -692,7 +713,46 @@
     text-align: right;
     font-weight: 800;
     color: var(--flz-navy);
-    font-size: clamp(13px, 1.1vw, 16px);
+    font-size: clamp(12px, .95vw, 14px);
+  }
+  .program-section th:nth-child(1),
+  .program-section td:nth-child(1) { width: 38%; }
+  .program-section th:nth-child(2),
+  .program-section td:nth-child(2) { width: 24%; }
+  .program-section th:nth-child(3),
+  .program-section td:nth-child(3) { width: 38%; }
+  .program-value-strip {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+    margin-top: 12px;
+  }
+  .program-value-strip span {
+    min-width: 0;
+    border: 1px solid var(--flz-line);
+    border-radius: 8px;
+    background: white;
+    padding: 8px 10px;
+  }
+  .program-value-strip em {
+    display: block;
+    color: var(--flz-muted);
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 900;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+  .program-value-strip strong {
+    display: block;
+    color: var(--flz-navy);
+    font-size: clamp(13px, 1vw, 15px);
+    line-height: 1.15;
+    margin-top: 3px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-variant-numeric: tabular-nums;
   }
   .note-row {
     padding: 14px;
@@ -768,6 +828,7 @@
     .hero-actions, .list-actions { flex-direction: column; }
     .primary-btn, .secondary-btn, .ghost-btn { width: 100%; }
     .totals, .editor-grid, .benchmark-grid { grid-template-columns: 1fr; }
+    .program-value-strip { grid-template-columns: 1fr; }
     .waterfall-row, .mini-step {
       grid-template-columns: 1fr;
       gap: 6px;
@@ -874,6 +935,7 @@
 
     <div class="builder-shell" id="add-program-section">
       <aside class="program-list" aria-label="Program list">
+        <div class="program-list-label">Programs</div>
         <div class="list-actions">
           <button class="secondary-btn" type="button" onclick="addProgramFromButton(this)">Add</button>
           <button class="ghost-btn" type="button" onclick="duplicateActiveProgram(this)">Duplicate</button>
@@ -921,7 +983,6 @@
         <p>These sections mirror the planning sheet while giving customers a clearer view of the quarterly program detail, selected benchmarks, and modeled business value.</p>
       </div>
       <div class="section-actions">
-        <button class="secondary-btn" type="button" onclick="copySummary(this)">Copy summary</button>
         <button class="primary-btn" type="button" onclick="exportSlideContent(this)">Output to slides</button>
         <button class="primary-btn" type="button" onclick="exportSheetContent(this)">Output to sheets</button>
       </div>
@@ -1347,36 +1408,36 @@
       { label: 'Closed deals', value: t.closedDeals, display: whole.format(t.closedDeals), color: '#ff469e' }
     ];
     const max = Math.max(...stages.map(stage => stage.value), 1);
-    const chartWidth = 1040;
-    const left = 230;
-    const top = 150;
-    const rowGap = 76;
-    const maxBar = 640;
-    const minBar = 18;
+    const chartWidth = 940;
+    const left = 210;
+    const top = 132;
+    const rowGap = 66;
+    const maxBar = 560;
+    const minBar = 16;
     const rows = stages.map((stage, index) => {
       const width = Math.max(stage.value > 0 ? minBar : 0, Math.round((stage.value / max) * maxBar));
       const y = top + index * rowGap;
       const next = index < stages.length - 1
-        ? `<path d="M ${left + width + 8} ${y + 22} C ${left + width + 46} ${y + 22}, ${left + 58} ${y + rowGap + 22}, ${left + 96} ${y + rowGap + 22}" fill="none" stroke="#b8d8ec" stroke-width="2.5" stroke-dasharray="7 8"/>`
+        ? `<path d="M ${left + width + 8} ${y + 18} C ${left + width + 42} ${y + 18}, ${left + 56} ${y + rowGap + 18}, ${left + 90} ${y + rowGap + 18}" fill="none" stroke="#b8d8ec" stroke-width="2.5" stroke-dasharray="7 8"/>`
         : '';
       return `
-        <text x="56" y="${y + 27}" fill="#2c3d59" font-size="21" font-weight="800">${escapeHtml(stage.label)}</text>
-        <rect x="${left}" y="${y}" width="${width}" height="44" rx="22" fill="${stage.color}"/>
-        <text x="${left + width + 24}" y="${y + 29}" fill="#071428" font-size="23" font-weight="900">${escapeHtml(stage.display)}</text>
+        <text x="50" y="${y + 23}" fill="#2c3d59" font-size="18" font-weight="800">${escapeHtml(stage.label)}</text>
+        <rect x="${left}" y="${y}" width="${width}" height="38" rx="19" fill="${stage.color}"/>
+        <text x="${left + width + 20}" y="${y + 25}" fill="#071428" font-size="19" font-weight="900">${escapeHtml(stage.display)}</text>
         ${next}`;
     }).join('');
-    return `<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc" viewBox="0 0 ${chartWidth} 720">
+    return `<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc" viewBox="0 0 ${chartWidth} 620">
       <title id="title">Cumulative pipeline waterfall</title>
       <desc id="desc">Full-year cumulative program waterfall from accounts targeted to closed deals, pipeline, and bookings.</desc>
-      <rect width="${chartWidth}" height="720" rx="24" fill="#f8fbfe"/>
-      <rect x="24" y="24" width="992" height="672" rx="22" fill="#ffffff" stroke="#d8ecfa"/>
-      <text x="56" y="76" fill="#0077ff" font-size="18" font-weight="900" letter-spacing="2">CUMULATIVE PIPELINE WATERFALL</text>
-      <text x="56" y="114" fill="#071428" font-size="34" font-weight="900">Full-year program detail</text>
+      <rect width="${chartWidth}" height="620" rx="24" fill="#f8fbfe"/>
+      <rect x="24" y="24" width="892" height="572" rx="22" fill="#ffffff" stroke="#d8ecfa"/>
+      <text x="50" y="70" fill="#0077ff" font-size="16" font-weight="900" letter-spacing="2">CUMULATIVE PIPELINE WATERFALL</text>
+      <text x="50" y="104" fill="#071428" font-size="28" font-weight="900">Full-year program detail</text>
       ${rows}
-      <rect x="56" y="632" width="436" height="44" rx="22" fill="#eaf7ff"/>
-      <text x="78" y="661" fill="#071428" font-size="21" font-weight="900">Pipeline: ${escapeHtml(money(t.pipelineGoal))}</text>
-      <rect x="520" y="632" width="436" height="44" rx="22" fill="#eaf8ee"/>
-      <text x="542" y="661" fill="#071428" font-size="21" font-weight="900">Bookings: ${escapeHtml(money(t.bookings))}</text>
+      <rect x="50" y="542" width="392" height="38" rx="19" fill="#eaf7ff"/>
+      <text x="70" y="567" fill="#071428" font-size="17" font-weight="900">Pipeline: ${escapeHtml(money(t.pipelineGoal))}</text>
+      <rect x="470" y="542" width="392" height="38" rx="19" fill="#eaf8ee"/>
+      <text x="490" y="567" fill="#071428" font-size="17" font-weight="900">Bookings: ${escapeHtml(money(t.bookings))}</text>
     </svg>`;
   }
 
@@ -1412,6 +1473,11 @@
             ${p.segment ? `<span class="chip">${escapeHtml(p.segment)}</span>` : ''}
             ${p.channels ? `<span class="chip">${escapeHtml(p.channels)}</span>` : ''}
           </div>
+          <div class="program-value-strip" aria-label="Program value summary">
+            <span><em>Closed deals</em><strong>${whole.format(c.closedDeals)}</strong></span>
+            <span><em>Pipeline</em><strong>${money(c.pipelineGoal)}</strong></span>
+            <span><em>Bookings</em><strong>${money(c.bookings)}</strong></span>
+          </div>
         </header>
         <table>
           <thead><tr><th>Waterfall metric</th><th>Value</th><th>Benchmark / formula</th></tr></thead>
@@ -1428,21 +1494,6 @@
         <div class="sections-grid">${cards}</div>
       </section>`;
     }).join('');
-  }
-
-  async function copySummary(button) {
-    const t = totals();
-    const text = `Folloze one-year program KPI plan: ${programs.length} programs, ${whole.format(t.accounts)} accounts targeted, ${whole.format(t.meetings)} sales meetings, ${money(t.pipelineGoal)} pipeline goal, ${money(t.bookings)} bookings.`;
-    try {
-      await navigator.clipboard.writeText(text);
-      button.textContent = 'Summary copied';
-      setTimeout(() => { button.textContent = 'Copy summary'; }, 1800);
-    } catch (err) {
-      button.textContent = 'Copy unavailable';
-      setTimeout(() => { button.textContent = 'Copy summary'; }, 1800);
-    }
-    flzAnalytic('cta_click', { text: 'Copy summary', area: 'waterfall sections' }, button);
-    safeAnalytic('copy_summary', { text: 'Portfolio summary', area: 'waterfall sections' });
   }
 
   function slideExportPayload() {

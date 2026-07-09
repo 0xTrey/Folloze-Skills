@@ -43,11 +43,10 @@ The board should show:
 - update details and assumptions
 - switch benchmark mode between Standard and Custom
 - edit custom benchmark values
-- copy summary
 - output to slides by exporting the current planner state and opening the generated Google Slides deck URL
 - output to sheets by exporting the current planner state and opening the generated JDP-template Google Sheet URL
 
-Each interaction should either track `cta_click` when it is a CTA/button or a descriptive custom event such as `model_update`, `tab-switch`, `program_add`, `program_remove`, `copy_summary`, `slides_export`, or `sheets_export`.
+Each interaction should either track `cta_click` when it is a CTA/button or a descriptive custom event such as `model_update`, `tab-switch`, `program_add`, `program_remove`, `slides_export`, or `sheets_export`.
 
 ## Customer Name Personalization
 
