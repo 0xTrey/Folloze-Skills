@@ -774,7 +774,7 @@
     <div class="navlinks">
       <a href="#add-program-section" onclick="flzAnalytic('anchor-click', {text:this.innerText.trim(), area:'main nav header bar'}, this)">Planner</a>
       <a href="#portfolio" onclick="flzAnalytic('anchor-click', {text:this.innerText.trim(), area:'main nav header bar'}, this)">Portfolio</a>
-      <a href="#sections" onclick="flzAnalytic('anchor-click', {text:this.innerText.trim(), area:'main nav header bar'}, this)">Waterfalls</a>
+      <a href="#pipelineWaterfallImage" onclick="return viewWaterfallsImage(this, event, 'main nav header bar', 'anchor-click')">Waterfalls</a>
       <div class="csm-picker">
         <label for="customerCsm">Your Customer Success Manager</label>
         <select id="customerCsm" onchange="updateCsm(this.value)">
@@ -970,9 +970,9 @@
     }
   }
 
-  function viewWaterfallsImage(link, event) {
+  function viewWaterfallsImage(link, event, area = 'main hero banner', action = 'cta_click') {
     if (event) event.preventDefault();
-    safeAnalytic('cta_click', { text: link.innerText.trim(), area: 'main hero banner' }, link);
+    safeAnalytic(action, { text: link.innerText.trim(), area }, link);
     const image = document.getElementById('pipelineWaterfallImage');
     if (image) {
       image.scrollIntoView({ behavior: 'smooth', block: 'start' });
