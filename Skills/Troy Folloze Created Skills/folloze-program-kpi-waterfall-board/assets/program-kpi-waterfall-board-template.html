@@ -817,7 +817,7 @@
   @media (max-width: 740px) {
     :root { --rail: min(100vw - 28px, 1536px); }
     .nav { min-height: 64px; }
-    .brand span, .customer-placeholder, .navlinks a:not(.keep-mobile) { display: none; }
+    .brand span, .customer-placeholder, .navlinks a { display: none; }
     .csm-picker {
       order: 3;
       width: 100%;
@@ -879,7 +879,6 @@
           <option value="Flor Estrada">Flor Estrada</option>
         </select>
       </div>
-      <button class="utility-btn keep-mobile" type="button" onclick="addProgramFromNav(this)">+ Program</button>
     </div>
   </nav>
 </header>
@@ -1186,12 +1185,6 @@
   function addProgramFromButton(button) {
     flzAnalytic('cta_click', { text: button.innerText.trim(), area: 'program planner' }, button);
     addProgram();
-  }
-
-  function addProgramFromNav(button) {
-    flzAnalytic('cta_click', { text: button.innerText.trim(), area: 'main nav header bar' }, button);
-    addProgram();
-    document.getElementById('planner').scrollIntoView({ behavior: 'smooth' });
   }
 
   function duplicateActiveProgram(button) {
