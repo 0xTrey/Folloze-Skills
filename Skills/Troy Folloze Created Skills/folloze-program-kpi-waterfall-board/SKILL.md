@@ -12,7 +12,7 @@ Build a Folloze MCP board that gives customers the same capabilities as the prog
 - add as many program sections as needed
 - customize the top of the board with the customer's name
 - organize the one-year plan by Q1, Q2, Q3, and Q4
-- enter quarter, program type, program name, segment, marketing channel dropdown, primary and secondary content/messaging category dropdowns, notes, accounts targeted, and average deal size
+- enter quarter, program type, program name, primary segment/audience, sub-category segment/audience, marketing channel dropdown, primary and secondary content/messaging category dropdowns, notes, accounts targeted, and average deal size
 - delete any added program section
 - select the customer success manager from `Meghan Richardson`, `Matthew Brown`, `Steven Nguyen`, or `Flor Estrada`
 - choose standard or custom benchmarks per program

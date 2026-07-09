@@ -1084,6 +1084,7 @@
       type: '1:1 ABM',
       name: 'Example Program (replace)',
       segment: 'Target account segment',
+      subSegment: 'Priority audience',
       channels: 'Integrated mix',
       content: 'Thought leadership',
       secondaryContent: 'Solution proof',
@@ -1230,6 +1231,7 @@
       type: seed.type || '1:few ABM',
       name: seed.name || `Program ${programs.length + 1}`,
       segment: seed.segment || '',
+      subSegment: seed.subSegment || '',
       channels: seed.channels || '',
       content: seed.content || '',
       secondaryContent: seed.secondaryContent || '',
@@ -1334,8 +1336,9 @@
       <div class="editor-grid">
         ${selectField(program, 'quarter', 'Quarter', program.quarter || 'Q1', quarters)}
         ${selectField(program, 'type', '+ Program Type', program.type, programTypes)}
-        ${inputField(program, 'name', 'Program Name', program.name, 'text')}
-        ${inputField(program, 'segment', 'Segment / Audience', program.segment, 'text', { wide: true })}
+        ${inputField(program, 'name', 'Program Name', program.name, 'text', { wide: true })}
+        ${inputField(program, 'segment', 'Primary Segment/Audience', program.segment, 'text')}
+        ${inputField(program, 'subSegment', 'Sub Category Segment/Audience', program.subSegment, 'text')}
         ${selectField(program, 'channels', 'Channels', program.channels || 'Integrated mix', marketingChannels, { wide: true })}
         ${selectField(program, 'content', 'Primary Content / Messaging', program.content || 'Thought leadership', contentCategories)}
         ${selectField(program, 'secondaryContent', 'Secondary Content / Messaging', program.secondaryContent || 'Solution proof', contentCategories)}
@@ -1527,6 +1530,7 @@
             <span class="chip">CSM: ${escapeHtml(selectedCsm)}</span>
             <span class="chip">${escapeHtml(p.mode)} benchmarks</span>
             ${p.segment ? `<span class="chip">${escapeHtml(p.segment)}</span>` : ''}
+            ${p.subSegment ? `<span class="chip">${escapeHtml(p.subSegment)}</span>` : ''}
             ${p.channels ? `<span class="chip">${escapeHtml(p.channels)}</span>` : ''}
           </div>
           <div class="program-value-strip" aria-label="Program value summary">
@@ -1574,6 +1578,7 @@
         type: program.type,
         name: program.name,
         segment: program.segment,
+        subSegment: program.subSegment,
         channels: program.channels,
         content: program.content,
         secondaryContent: program.secondaryContent,
