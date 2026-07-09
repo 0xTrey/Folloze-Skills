@@ -76,6 +76,30 @@
     min-width: 0;
   }
   .brand svg { width: 99px; height: 24px; flex: 0 0 auto; }
+  .customer-placeholder {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    min-width: 0;
+    color: var(--flz-muted);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .02em;
+    white-space: nowrap;
+  }
+  .customer-logo-placeholder {
+    width: 22px;
+    height: 22px;
+    border: 1px dashed rgba(44, 61, 89, .38);
+    border-radius: 6px;
+    background: rgba(216, 236, 250, .36);
+    flex: 0 0 auto;
+  }
+  .customer-placeholder strong {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font: inherit;
+  }
   .brand span {
     border-left: 1px solid var(--flz-line);
     padding-left: 14px;
@@ -732,7 +756,7 @@
   @media (max-width: 740px) {
     :root { --rail: min(100vw - 28px, 1536px); }
     .nav { min-height: 64px; }
-    .brand span, .navlinks a:not(.keep-mobile) { display: none; }
+    .brand span, .customer-placeholder, .navlinks a:not(.keep-mobile) { display: none; }
     .csm-picker {
       order: 3;
       width: 100%;
@@ -777,6 +801,10 @@
         <path d="M0.0396118 14.9971C0.0396118 14.9971 0.376233 1.80972 15.9102 0.026062V7.24841C15.9102 7.24841 5.30672 6.35171 0.0396118 14.9971Z" fill="#2C3D59"/>
         <path d="M0.0396024 23.74C0.0396024 23.74 0.16831 13.3013 8.96993 11.4006V15.7964C8.96993 15.7964 3.22759 16.6639 0 23.9739" fill="#2C3D59"/>
       </svg>
+      <div class="customer-placeholder" aria-label="Customer name or logo placeholder">
+        <div class="customer-logo-placeholder" aria-hidden="true"></div>
+        <strong>Customer name / logo</strong>
+      </div>
       <span>Program KPI Planner</span>
     </div>
     <div class="navlinks">
