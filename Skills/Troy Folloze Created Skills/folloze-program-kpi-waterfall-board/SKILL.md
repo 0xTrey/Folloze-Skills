@@ -11,13 +11,15 @@ Build a Folloze MCP board that gives customers the same capabilities as the prog
 
 - add as many program sections as needed
 - customize the top of the board with the customer's name
-- organize the one-year plan by Q1, Q2, Q3, and Q4
-- enter quarter, program type, program name, primary segment/audience, sub-category segment/audience, marketing channel dropdown, primary and secondary content/messaging category dropdowns, notes, accounts targeted, and average deal size
+- organize the one-year plan by company/fiscal year, program year, and Q1, Q2, Q3, and Q4
+- customize the company year start quarter so sequences such as `Q2 -> Q3 -> Q4 -> Q1` are supported
+- enter program year, quarter, program type, program name, primary segment/audience, sub-category segment/audience, multi-select marketing channels, primary and secondary content/messaging category dropdowns, notes, accounts targeted, average deal size, and projected live boards
 - delete any added program section
 - select the customer success manager from `Meghan Richardson`, `Matthew Brown`, `Steven Nguyen`, or `Flor Estrada`
 - choose standard or custom benchmarks per program
 - calculate account-to-pipeline waterfall values in real time
-- show quarter-only rollups, Q2/Q3 year-to-date totals, full-year totals, and shareable waterfall sections
+- track actual live boards, actual funnel counts, actual pipeline, and actual bookings against the projected benchmark model for each program
+- show quarter-only rollups, fiscal year-to-date totals, full-year totals, board-creation growth by quarter, projected-vs-actual totals, and shareable waterfall sections
 - link the hero `View waterfalls` CTA to a generated cumulative pipeline-waterfall image that updates from the live model
 - include an `Output to slides` control that exports the live planner state as slide-ready JSON and opens the generated Google Slides deck when a deck URL is available
 - include an `Output to sheets` control that exports the live planner state as sheet-ready JSON and opens the generated Google Sheet when a sheet URL is available
@@ -57,12 +59,18 @@ The template is a single self-contained HTML file with:
 - interactive program list
 - add, duplicate, drag-to-reorder, and delete program controls
 - per-program lock toggle that disables detail edits until unlocked
+- planning-year and company-year-start controls
+- per-program year dropdown with `2026`, `2027`, `2028`, and `2029`
 - Q1, Q2, Q3, and Q4 assignment per program
+- fiscal quarter sequencing that can wrap Q1 to the end of the company year
+- multi-select channel picker
 - standard benchmark model: `100% -> 30% -> 10% -> 50% -> 30%`
 - custom benchmark inputs
-- live full-year totals for programs, pipeline goal, bookings, and meetings
-- quarterly rollup cards that show each quarter independently
-- quarter/YTD summary table with Q1, Q2, Q3, and Q4 quarter-only rows plus Q2 YTD, Q3 YTD, and full-year rows
+- projected live board and actual live board tracking
+- actuals inputs for in-market accounts, engaged accounts, meetings, pipeline opportunities, closed deals, pipeline, and bookings
+- live full-year totals for programs, projected/actual live boards, pipeline goal, actual pipeline, bookings, actual bookings, and meetings
+- quarterly rollup cards that show each fiscal period independently
+- quarter/YTD summary table with fiscal-period rows, year-to-date rows, projected values, and actual values
 - generated cumulative pipeline-waterfall image linked from the hero `View waterfalls` CTA
 - generated waterfall sections grouped by quarter
 - overflow-safe number formatting so large values fit inside cards and tables
@@ -100,6 +108,11 @@ Before saving:
 - drag programs in the list and verify their order changes without changing quarter assignment or calculations
 - lock a program and verify detail fields, benchmark controls, and remove controls are disabled until unlocked
 - move programs between Q1, Q2, Q3, and Q4 and verify quarterly and cumulative totals update
+- change the company year start to Q2 and verify the displayed period order becomes `Q2 -> Q3 -> Q4 -> Q1`
+- choose program years `2026`, `2027`, `2028`, and `2029` and verify the year appears in quarter rollups, waterfall sections, and sheet export payloads
+- select more than one channel and verify the program stores/exports all selected channels
+- enter projected live boards and actual live boards and verify board growth, attainment, quarter cards, and YTD totals update
+- enter actual pipeline and bookings and verify actual-vs-projected attainment updates
 - delete a program and verify the count, active editor, quarterly rollups, and waterfall sections update
 - choose each customer CSM and verify the waterfall sections show the selected CSM
 - switch a program to `Custom`, change a benchmark, and verify totals update

@@ -10,10 +10,14 @@ description: Build Excel or Google Sheets-ready program KPI waterfall workbooks 
 Create a customer-facing workbook that turns program assumptions into waterfall calculations:
 
 - quarter, program type, name, segment, channels, content, and notes
+- program year dropdown values `2026`, `2027`, `2028`, and `2029`
+- projected live boards and actual live boards by program
+- actual in-market accounts, engaged accounts, meetings, pipeline opportunities, closed deals, pipeline, and bookings
 - standard benchmark chain: `100% -> 30% -> 10% -> 50% -> 30%`
 - optional custom benchmark overrides per program
 - calculated accounts in market, engaged accounts, sales meetings, pipeline opportunities, closed deals, pipeline goal, and bookings
 - quarterly and full-year summaries for a one-year plan
+- quarter summaries for projected live boards, actual live boards, actual meetings, actual pipeline, and actual bookings
 - as many program rows/sections as needed
 
 Current program type dropdown values:
@@ -26,11 +30,15 @@ Current program type dropdown values:
 - `Digital deal room`
 - `Renewal / QBR`
 - `Customer expansion`
-- `Other`
 - `Web Engager Program`
 - `Resource Center`
 - `Enablement Program`
 - `Newsletter`
+- `Test`
+- `New Product Launch`
+- `Content Hub`
+- `Article Hub`
+- `Other`
 
 ## Default Workflow
 
@@ -77,6 +85,7 @@ If `python3` cannot import `openpyxl`, call `codex_app.load_workspace_dependenci
   {
     "program_type": "1:1 ABM",
     "quarter": "Q1",
+    "program_year": "2026",
     "program_name": "Strategic account motion",
     "segment": "Enterprise target accounts",
     "channels": "Display ads + email + sales outreach",
@@ -85,6 +94,15 @@ If `python3` cannot import `openpyxl`, call `codex_app.load_workspace_dependenci
     "benchmark_mode": "Standard",
     "accounts_targeted": 1200,
     "avg_deal_size": 5000000,
+    "projected_live_boards": 1,
+    "actual_live_boards": 0,
+    "actual_in_market": 0,
+    "actual_engaged": 0,
+    "actual_meetings": 0,
+    "actual_pipeline_opps": 0,
+    "actual_closed_deals": 0,
+    "actual_pipeline": 0,
+    "actual_bookings": 0,
     "custom_in_market": 1,
     "custom_engage": 0.3,
     "custom_meeting": 0.1,
@@ -110,6 +128,7 @@ The builder creates:
 Use the same row-level logic as the original model:
 
 - selected benchmark = custom value when `Benchmark Mode = Custom` and the custom cell is filled, otherwise the standard benchmark
+- live board attainment = actual live boards / projected live boards
 - accounts in market = accounts targeted x selected in-market %
 - engaged accounts = accounts in market x selected engage %
 - sales meetings = engaged accounts x selected meeting %
@@ -117,6 +136,8 @@ Use the same row-level logic as the original model:
 - closed deals = pipeline opportunities x selected close %
 - pipeline goal = average deal size x pipeline opportunities
 - bookings = average deal size x closed deals
+- pipeline attainment = actual pipeline / projected pipeline goal
+- bookings attainment = actual bookings / projected bookings
 
 ## Quality Checks
 
@@ -125,5 +146,6 @@ Before returning:
 - confirm the workbook exists at the requested path
 - confirm the first program row calculates to the expected sample values when using defaults: `1,200 -> 1,200 -> 360 -> 36 -> 18 -> 5`, `$90M` pipeline, `$25M` bookings
 - confirm the first program row appears in `Q1` and the `Quarter Summary` tab rolls it into the full-year total
+- confirm `Program Year`, projected live boards, actual fields, and attainment columns appear after `Quarter`
 - if imported into Google Sheets, read back the `Customer Program Form` and `Waterfall Sections` tabs after import
 - mention any verification that could not be completed
