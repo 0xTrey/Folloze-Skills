@@ -1086,6 +1086,7 @@
       segment: 'Target account segment',
       channels: 'Integrated mix',
       content: 'Thought leadership',
+      secondaryContent: 'Solution proof',
       notes: 'Replace this example row with the customer program details.',
       mode: 'Standard',
       accounts: 1200,
@@ -1231,6 +1232,7 @@
       segment: seed.segment || '',
       channels: seed.channels || '',
       content: seed.content || '',
+      secondaryContent: seed.secondaryContent || '',
       notes: seed.notes || '',
       mode: seed.mode || 'Standard',
       accounts: seed.accounts || 0,
@@ -1335,7 +1337,8 @@
         ${inputField(program, 'name', 'Program Name', program.name, 'text')}
         ${inputField(program, 'segment', 'Segment / Audience', program.segment, 'text', { wide: true })}
         ${selectField(program, 'channels', 'Channels', program.channels || 'Integrated mix', marketingChannels, { wide: true })}
-        ${selectField(program, 'content', 'Content / Messaging', program.content || 'Thought leadership', contentCategories, { wide: true })}
+        ${selectField(program, 'content', 'Primary Content / Messaging', program.content || 'Thought leadership', contentCategories)}
+        ${selectField(program, 'secondaryContent', 'Secondary Content / Messaging', program.secondaryContent || 'Solution proof', contentCategories)}
         ${selectField(program, 'mode', 'Benchmark Mode', program.mode, ['Standard', 'Custom'])}
         ${inputField(program, 'accounts', 'Accounts Targeted', program.accounts, 'number', { min: 0, step: 1 })}
         ${inputField(program, 'dealSize', 'Average Deal Size', program.dealSize, 'number', { min: 0, step: 1000 })}
@@ -1536,7 +1539,7 @@
           <thead><tr><th>Waterfall metric</th><th>Value</th><th>Benchmark / formula</th></tr></thead>
           <tbody>${rows.map(row => `<tr><td>${row[0]}</td><td>${row[1]}</td><td>${row[2]}</td></tr>`).join('')}</tbody>
         </table>
-        ${p.content || p.notes ? `<div class="note-row"><strong>Program detail:</strong> ${escapeHtml([p.content, p.notes].filter(Boolean).join(' · '))}</div>` : ''}
+        ${p.content || p.secondaryContent || p.notes ? `<div class="note-row"><strong>Program detail:</strong> ${escapeHtml([p.content, p.secondaryContent, p.notes].filter(Boolean).join(' · '))}</div>` : ''}
       </article>`;
       }).join('') : '<div class="empty">No programs planned for this quarter yet.</div>';
       return `<section class="quarter-section" aria-label="${quarter} program waterfalls">
@@ -1573,6 +1576,7 @@
         segment: program.segment,
         channels: program.channels,
         content: program.content,
+        secondaryContent: program.secondaryContent,
         notes: program.notes,
         benchmarkMode: program.mode,
         assumptions: benchmarkFor(program),
