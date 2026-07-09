@@ -1470,7 +1470,7 @@
           <td>${money(qt.pipelineGoal)}</td>
           <td>${money(qt.bookings)}</td>
         </tr>`;
-      if (index === 0) return quarterRow;
+      if (index === 0 || quarter === 'Q4') return quarterRow;
       const ytd = cumulative[index].totals;
       return `${quarterRow}
         <tr class="ytd-row">
