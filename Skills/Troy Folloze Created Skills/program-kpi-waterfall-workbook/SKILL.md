@@ -55,22 +55,20 @@ Current program type dropdown values:
 Run:
 
 ```bash
-/Users/troysmith/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3 \
-  /Users/troysmith/.codex/skills/program-kpi-waterfall-workbook/scripts/build_program_kpi_workbook.py \
+python3 "${CODEX_HOME:-$HOME/.codex}/skills/program-kpi-waterfall-workbook/scripts/build_program_kpi_workbook.py" \
   --output /absolute/path/program-kpi-waterfall.xlsx
 ```
 
 Optional inputs:
 
 ```bash
-/Users/troysmith/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3 \
-  .../build_program_kpi_workbook.py \
+python3 "${CODEX_HOME:-$HOME/.codex}/skills/program-kpi-waterfall-workbook/scripts/build_program_kpi_workbook.py" \
   --output /absolute/path/program-kpi-waterfall.xlsx \
   --programs /absolute/path/programs.json \
   --rows 250
 ```
 
-If that bundled runtime is unavailable, call `codex_app.load_workspace_dependencies` to locate the current Python runtime with spreadsheet libraries. Use bare `python3` only after confirming it can import `openpyxl`.
+If `python3` cannot import `openpyxl`, call `codex_app.load_workspace_dependencies` to locate the current Python runtime with spreadsheet libraries and rerun the installed-skill-relative script path with that runtime.
 
 `--programs` accepts a JSON array of objects with keys:
 

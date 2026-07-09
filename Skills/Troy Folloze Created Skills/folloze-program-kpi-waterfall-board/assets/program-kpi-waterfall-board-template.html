@@ -1396,6 +1396,10 @@
 
   function removeProgram(id, button) {
     const doomed = programs.find(p => p.id === id);
+    if (!doomed || doomed.locked) {
+      safeAnalytic('program_remove_blocked', { text: doomed ? doomed.name : 'program', area: 'program planner' }, button);
+      return;
+    }
     programs = programs.filter(p => p.id !== id);
     activeId = programs[0] ? programs[0].id : null;
     render();
@@ -1778,7 +1782,7 @@
       'Std Pipeline %', 'Std Close %', 'Custom In-Market %', 'Custom Engage %', 'Custom Meeting %', 'Custom Pipeline %',
       'Custom Close %', 'Selected In-Market %', 'Selected Engage %', 'Selected Meeting %', 'Selected Pipeline %',
       'Selected Close %', 'Accounts In Market', 'Engaged Accounts', 'Sales Meetings', 'Pipeline Opps', 'Closed Deals',
-      'Pipeline Goal', 'Bookings'
+      'Pipeline Goal', 'Bookings', 'Quarter'
     ];
     return {
       ...base,
@@ -1822,7 +1826,8 @@
             program.calculations.pipelineOpps,
             program.calculations.closedDeals,
             program.calculations.pipelineGoal,
-            program.calculations.bookings
+            program.calculations.bookings,
+            program.quarter
           ])
         },
         programsAndKpis: {

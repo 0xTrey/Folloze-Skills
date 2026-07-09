@@ -30,11 +30,15 @@ PROGRAM_TYPES = [
     "Digital deal room",
     "Renewal / QBR",
     "Customer expansion",
-    "Other",
     "Web Engager Program",
     "Resource Center",
     "Enablement Program",
     "Newsletter",
+    "Test",
+    "New Product Launch",
+    "Content Hub",
+    "Article Hub",
+    "Other",
 ]
 QUARTERS = ["Q1", "Q2", "Q3", "Q4"]
 

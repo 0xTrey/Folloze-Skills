@@ -44,8 +44,10 @@ Build a Folloze MCP board that gives customers the same capabilities as the prog
 Use:
 
 ```text
-/Users/troysmith/.codex/skills/folloze-program-kpi-waterfall-board/assets/program-kpi-waterfall-board-template.html
+${CODEX_HOME:-$HOME/.codex}/skills/folloze-program-kpi-waterfall-board/assets/program-kpi-waterfall-board-template.html
 ```
+
+Resolve the template path from the installed skill directory first. If the skill is running from a checked-out repo instead of `~/.codex/skills`, use the `assets/` folder next to this `SKILL.md`.
 
 The template is a single self-contained HTML file with:
 
