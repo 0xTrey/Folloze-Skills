@@ -1762,6 +1762,95 @@
     };
   }
 
+  function customerNameForSheet() {
+    const headline = document.getElementById('hero-title').textContent.trim();
+    const match = headline.match(/^Plan (.+?)'s one-year/i);
+    if (!match) return 'Customer';
+    const name = match[1].replace(/^your customer$/i, 'Customer').trim();
+    return name || 'Customer';
+  }
+
+  function sheetExportPayload() {
+    const base = slideExportPayload();
+    const customerProgramHeaders = [
+      'Program #', '+ Program Type', 'Program Name', 'Segment / Audience', 'Channels', 'Content / Messaging', 'Notes',
+      'Benchmark Mode', 'Accounts Targeted', 'Avg Deal Size', 'Std In-Market %', 'Std Engage %', 'Std Meeting %',
+      'Std Pipeline %', 'Std Close %', 'Custom In-Market %', 'Custom Engage %', 'Custom Meeting %', 'Custom Pipeline %',
+      'Custom Close %', 'Selected In-Market %', 'Selected Engage %', 'Selected Meeting %', 'Selected Pipeline %',
+      'Selected Close %', 'Accounts In Market', 'Engaged Accounts', 'Sales Meetings', 'Pipeline Opps', 'Closed Deals',
+      'Pipeline Goal', 'Bookings'
+    ];
+    return {
+      ...base,
+      customerName: customerNameForSheet(),
+      outputWorkbookUrl: sheetsOutputUrl,
+      templateSourceTabs: ['Programs and KPIs', 'Customer Program Form'],
+      outputTabs: {
+        customerProgramForm: {
+          tabName: 'Customer Program Form',
+          title: `${customerNameForSheet()} Program Waterfall Form`,
+          headers: customerProgramHeaders,
+          rows: base.programs.map(program => [
+            program.index,
+            program.type,
+            program.name,
+            [program.segment, program.subSegment].filter(Boolean).join(' / '),
+            program.channels,
+            [program.content, program.secondaryContent].filter(Boolean).join(' / '),
+            program.notes,
+            program.benchmarkMode,
+            program.calculations.accounts,
+            program.calculations.dealSize,
+            standardBenchmarks.inMarket,
+            standardBenchmarks.engaged,
+            standardBenchmarks.meeting,
+            standardBenchmarks.pipeline,
+            standardBenchmarks.close,
+            program.benchmarkMode === 'Custom' ? program.assumptions.inMarket : '',
+            program.benchmarkMode === 'Custom' ? program.assumptions.engaged : '',
+            program.benchmarkMode === 'Custom' ? program.assumptions.meeting : '',
+            program.benchmarkMode === 'Custom' ? program.assumptions.pipeline : '',
+            program.benchmarkMode === 'Custom' ? program.assumptions.close : '',
+            program.assumptions.inMarket,
+            program.assumptions.engaged,
+            program.assumptions.meeting,
+            program.assumptions.pipeline,
+            program.assumptions.close,
+            program.calculations.inMarket,
+            program.calculations.engaged,
+            program.calculations.meetings,
+            program.calculations.pipelineOpps,
+            program.calculations.closedDeals,
+            program.calculations.pipelineGoal,
+            program.calculations.bookings
+          ])
+        },
+        programsAndKpis: {
+          tabName: 'Programs and KPIs',
+          sections: base.programs.map(program => ({
+            heading: `Segment/ Program ${program.index}: ${program.type}`,
+            programName: program.name,
+            description: program.notes,
+            channels: program.channels,
+            primaryContent: program.content,
+            secondaryContent: program.secondaryContent,
+            metrics: [
+              ['Number of accounts targeted actively', program.calculations.accounts, '', ''],
+              ['Number of accounts in market', program.calculations.inMarket, program.assumptions.inMarket, '% accounts in market'],
+              ['Number of engaged accounts', program.calculations.engaged, program.assumptions.engaged, '% conversion from in market to engaged'],
+              ['Number of sales meetings scheduled', program.calculations.meetings, program.assumptions.meeting, '% conversion from engaged to sales meeting'],
+              ['Number of sales meetings that go into pipeline', program.calculations.pipelineOpps, program.assumptions.pipeline, '% conversion from sales meeting to pipeline'],
+              ['Number of deals closed', program.calculations.closedDeals, program.assumptions.close, '% conversion from pipeline to deal close'],
+              ['Deal size', program.calculations.dealSize, '', ''],
+              ['Pipeline goal', program.calculations.pipelineGoal, '', ''],
+              ['Bookings', program.calculations.bookings, '', '']
+            ]
+          }))
+        }
+      }
+    };
+  }
+
   function downloadJson(filename, payload) {
     const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
@@ -1788,7 +1877,7 @@
   }
 
   function exportSheetContent(button) {
-    const payload = slideExportPayload();
+    const payload = sheetExportPayload();
     downloadJson('folloze-program-kpi-sheet-output.json', payload);
     if (sheetsOutputUrl && !sheetsOutputUrl.includes('PLACEHOLDER')) {
       window.open(sheetsOutputUrl, '_blank', 'noopener');

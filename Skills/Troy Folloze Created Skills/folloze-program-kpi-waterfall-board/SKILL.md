@@ -34,7 +34,7 @@ Build a Folloze MCP board that gives customers the same capabilities as the prog
 6. Replace `THEME_URL_PLACEHOLDER` in the copied HTML with the returned `themeUrl`.
 7. Replace every `CUSTOMER_NAME_PLACEHOLDER` token with the HTML-escaped customer name.
 8. If a Google Slides deck has been generated, replace `SLIDES_DECK_URL_PLACEHOLDER` with the verified Google Slides edit URL. If no deck exists yet, leave the placeholder in the skill template but do not save a board with a broken external link.
-9. If a Google Sheet output has been generated, copy the JDP template sheet, add or populate board-output tabs, and replace `SHEETS_OUTPUT_URL_PLACEHOLDER` with the verified Google Sheets edit URL. If no sheet exists yet, leave the placeholder in the skill template but do not save a board with a broken external link.
+9. If a Google Sheet output has been generated, copy the full JDP template workbook, title the copy with the customer name, populate `Customer Program Form` and `Programs and KPIs` using the board payload, and replace `SHEETS_OUTPUT_URL_PLACEHOLDER` with the verified Google Sheets edit URL. If no sheet exists yet, leave the placeholder in the skill template but do not save a board with a broken external link.
 10. Keep the returned `themeId` for save.
 11. QA the local HTML before save.
 12. Save with `save_folloze_board_from_file`.
@@ -65,7 +65,7 @@ The template is a single self-contained HTML file with:
 - generated waterfall sections grouped by quarter
 - overflow-safe number formatting so large values fit inside cards and tables
 - slide-output button that downloads the current planner state as `folloze-program-kpi-slide-output.json` and opens the verified Google Slides deck URL
-- sheet-output button that downloads the current planner state as `folloze-program-kpi-sheet-output.json` and opens the verified JDP-template Google Sheet URL
+- sheet-output button that downloads the current planner state as `folloze-program-kpi-sheet-output.json` shaped for `Customer Program Form` and `Programs and KPIs`, then opens the verified customer-named JDP-template Google Sheet URL
 - analytics wiring for CTAs, nav, tab switches, model updates, add/remove actions
 - local `flzAnalytic` fallback for browser QA
 
