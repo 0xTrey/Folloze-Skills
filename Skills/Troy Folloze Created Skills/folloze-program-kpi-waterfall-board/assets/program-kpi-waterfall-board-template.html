@@ -1051,6 +1051,30 @@
     'Newsletter',
     'Other'
   ];
+  const contentCategories = [
+    'Thought leadership',
+    'Solution proof',
+    'Case study',
+    'Customer story',
+    'Product overview',
+    'New product announcement',
+    'Use case guide',
+    'Industry content',
+    'Executive brief',
+    'ROI / business case',
+    'Analyst report',
+    'Whitepaper',
+    'Ebook',
+    'Article / blog',
+    'Webinar replay',
+    'Demo / product tour',
+    'Comparison guide',
+    'Implementation guide',
+    'Best practices',
+    'Event follow-up',
+    'Newsletter content',
+    'Other'
+  ];
   const quarters = ['Q1', 'Q2', 'Q3', 'Q4'];
 
   let programs = [
@@ -1061,7 +1085,7 @@
       name: 'Example Program (replace)',
       segment: 'Target account segment',
       channels: 'Integrated mix',
-      content: 'Thought leadership, solution proof, case studies',
+      content: 'Thought leadership',
       notes: 'Replace this example row with the customer program details.',
       mode: 'Standard',
       accounts: 1200,
@@ -1311,7 +1335,7 @@
         ${inputField(program, 'name', 'Program Name', program.name, 'text')}
         ${inputField(program, 'segment', 'Segment / Audience', program.segment, 'text', { wide: true })}
         ${selectField(program, 'channels', 'Channels', program.channels || 'Integrated mix', marketingChannels, { wide: true })}
-        ${inputField(program, 'content', 'Content / Messaging', program.content, 'text', { wide: true })}
+        ${selectField(program, 'content', 'Content / Messaging', program.content || 'Thought leadership', contentCategories, { wide: true })}
         ${selectField(program, 'mode', 'Benchmark Mode', program.mode, ['Standard', 'Custom'])}
         ${inputField(program, 'accounts', 'Accounts Targeted', program.accounts, 'number', { min: 0, step: 1 })}
         ${inputField(program, 'dealSize', 'Average Deal Size', program.dealSize, 'number', { min: 0, step: 1000 })}
