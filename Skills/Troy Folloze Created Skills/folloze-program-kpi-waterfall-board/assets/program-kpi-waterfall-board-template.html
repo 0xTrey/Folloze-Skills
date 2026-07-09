@@ -461,6 +461,46 @@
   }
 
   .program-editor { padding: 18px; }
+  .lock-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    border: 1px solid var(--flz-line);
+    border-radius: var(--radius);
+    background: var(--flz-soft);
+    padding: 12px 14px;
+    margin-bottom: 16px;
+  }
+  .lock-toggle span {
+    display: block;
+    color: var(--flz-navy);
+    font-weight: 900;
+  }
+  .lock-toggle small {
+    color: var(--flz-muted);
+    font-weight: 700;
+  }
+  .lock-switch {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--flz-slate);
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: .07em;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+  .lock-switch input {
+    width: 44px;
+    min-height: 24px;
+    accent-color: var(--flz-blue);
+  }
+  input:disabled, select:disabled, textarea:disabled, button:disabled {
+    cursor: not-allowed;
+    opacity: .62;
+  }
   .editor-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1137,6 +1177,7 @@
       content: 'Thought leadership',
       secondaryContent: 'Solution proof',
       notes: 'Replace this example row with the customer program details.',
+      locked: false,
       mode: 'Standard',
       accounts: 1200,
       dealSize: 5000000,
@@ -1251,6 +1292,13 @@
   function updateProgram(id, key, value) {
     const program = programs.find(p => p.id === id);
     if (!program) return;
+    if (program.locked && key !== 'locked') return;
+    if (key === 'locked') {
+      program.locked = value === true || value === 'true';
+      render();
+      safeAnalytic('program_lock_toggle', { text: program.locked ? 'Lock program' : 'Unlock program', area: 'program planner', value: String(program.locked) });
+      return;
+    }
     if (key.includes('.')) {
       const [, subKey] = key.split('.');
       program.custom[subKey] = Number(value) / 100;
@@ -1284,6 +1332,7 @@
       content: seed.content || '',
       secondaryContent: seed.secondaryContent || '',
       notes: seed.notes || '',
+      locked: Boolean(seed.locked),
       mode: seed.mode || 'Standard',
       accounts: seed.accounts || 0,
       dealSize: seed.dealSize || 0,
@@ -1363,25 +1412,28 @@
   function inputField(program, key, label, value, type = 'text', opts = {}) {
     const id = `${key.replace('.', '-')}-${program.id}`;
     const attr = type === 'number' ? `inputmode="decimal" min="${opts.min ?? 0}" step="${opts.step ?? 1}"` : '';
+    const disabled = program.locked ? 'disabled' : '';
     return `<div class="${opts.wide ? 'wide-field' : 'field'}">
       <label for="${id}">${label}</label>
-      <input id="${id}" type="${type}" ${attr} value="${escapeHtml(value ?? '')}" oninput="updateProgram('${program.id}', '${key}', this.value)">
+      <input id="${id}" type="${type}" ${attr} ${disabled} value="${escapeHtml(value ?? '')}" oninput="updateProgram('${program.id}', '${key}', this.value)">
     </div>`;
   }
 
   function textareaField(program, key, label, value) {
     const id = `${key}-${program.id}`;
+    const disabled = program.locked ? 'disabled' : '';
     return `<div class="wide-field">
       <label for="${id}">${label}</label>
-      <textarea id="${id}" oninput="updateProgram('${program.id}', '${key}', this.value)">${escapeHtml(value ?? '')}</textarea>
+      <textarea id="${id}" ${disabled} oninput="updateProgram('${program.id}', '${key}', this.value)">${escapeHtml(value ?? '')}</textarea>
     </div>`;
   }
 
   function selectField(program, key, label, value, choices, opts = {}) {
     const id = `${key}-${program.id}`;
+    const disabled = program.locked ? 'disabled' : '';
     return `<div class="${opts.wide ? 'wide-field' : 'field'}">
       <label for="${id}">${label}</label>
-      <select id="${id}" onchange="updateProgram('${program.id}', '${key}', this.value)">
+      <select id="${id}" ${disabled} onchange="updateProgram('${program.id}', '${key}', this.value)">
         ${choices.map(choice => `<option value="${escapeHtml(choice)}" ${choice === value ? 'selected' : ''}>${escapeHtml(choice)}</option>`).join('')}
       </select>
     </div>`;
@@ -1420,6 +1472,16 @@
     const c = calculate(program);
     const maxStage = Math.max(c.accounts, c.inMarket, c.engaged, c.meetings, c.pipelineOpps, c.closedDeals, 1);
     document.getElementById('programEditor').innerHTML = `
+      <div class="lock-toggle">
+        <div>
+          <span>${program.locked ? 'Program locked' : 'Program unlocked'}</span>
+          <small>${program.locked ? 'Unlock to edit this program.' : 'Lock to prevent accidental edits.'}</small>
+        </div>
+        <label class="lock-switch" for="locked-${program.id}">
+          <input id="locked-${program.id}" type="checkbox" ${program.locked ? 'checked' : ''} onchange="updateProgram('${program.id}', 'locked', this.checked)">
+          ${program.locked ? 'Locked' : 'Unlocked'}
+        </label>
+      </div>
       <div class="editor-grid">
         ${selectField(program, 'quarter', 'Quarter', program.quarter || 'Q1', quarters)}
         ${selectField(program, 'type', '+ Program Type', program.type, programTypes)}
@@ -1437,7 +1499,7 @@
       <div class="benchmarks">
         <div class="benchmark-head">
           <h3>${program.mode === 'Custom' ? 'Custom benchmarks' : 'Standard benchmarks'}</h3>
-          <button class="ghost-btn" type="button" onclick="resetBenchmarks('${program.id}', this)">Reset to standard</button>
+          <button class="ghost-btn" type="button" ${program.locked ? 'disabled' : ''} onclick="resetBenchmarks('${program.id}', this)">Reset to standard</button>
         </div>
         <div class="benchmark-grid">
           ${inputField(program, 'custom.inMarket', 'In market %', Math.round(program.custom.inMarket * 100), 'number', { min: 0, step: 1 })}
@@ -1450,7 +1512,7 @@
       </div>
       <div class="waterfall-preview" id="waterfallPreview" aria-label="Waterfall preview">${waterfallPreview(program)}</div>
       <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap">
-        <button class="secondary-btn" type="button" onclick="removeProgram('${program.id}', this)">Remove program</button>
+        <button class="secondary-btn" type="button" ${program.locked ? 'disabled' : ''} onclick="removeProgram('${program.id}', this)">Remove program</button>
       </div>`;
   }
 
@@ -1489,6 +1551,7 @@
   function resetBenchmarks(id, button) {
     const program = programs.find(p => p.id === id);
     if (!program) return;
+    if (program.locked) return;
     program.custom = { ...standardBenchmarks };
     render();
     flzAnalytic('cta_click', { text: button.innerText.trim(), area: 'program planner' }, button);

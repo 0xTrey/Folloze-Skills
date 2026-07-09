@@ -54,6 +54,7 @@ The template is a single self-contained HTML file with:
 - customer CSM dropdown in the top-right header
 - interactive program list
 - add, duplicate, drag-to-reorder, and delete program controls
+- per-program lock toggle that disables detail edits until unlocked
 - Q1, Q2, Q3, and Q4 assignment per program
 - standard benchmark model: `100% -> 30% -> 10% -> 50% -> 30%`
 - custom benchmark inputs
@@ -95,6 +96,7 @@ Before saving:
 - confirm large currency values fit inside stat, quarter, summary, preview, and waterfall boxes
 - add a program and verify the program count increments
 - drag programs in the list and verify their order changes without changing quarter assignment or calculations
+- lock a program and verify detail fields, benchmark controls, and remove controls are disabled until unlocked
 - move programs between Q1, Q2, Q3, and Q4 and verify quarterly and cumulative totals update
 - delete a program and verify the count, active editor, quarterly rollups, and waterfall sections update
 - choose each customer CSM and verify the waterfall sections show the selected CSM
