@@ -36,6 +36,7 @@ PROGRAM_TYPES = [
     "Enablement Program",
     "Newsletter",
 ]
+QUARTERS = ["Q1", "Q2", "Q3", "Q4"]
 
 HEADERS = [
     "Program #",
@@ -70,6 +71,7 @@ HEADERS = [
     "Closed Deals",
     "Pipeline Goal",
     "Bookings",
+    "Quarter",
 ]
 
 
@@ -78,6 +80,7 @@ def load_programs(path: str | None) -> list[dict]:
         return [
             {
                 "program_type": "1:1 ABM",
+                "quarter": "Q1",
                 "program_name": "Example Program (replace)",
                 "segment": "Target account segment",
                 "channels": "Display ads + email + sales outreach",
@@ -113,6 +116,7 @@ def build(output: Path, programs: list[dict], rows: int) -> None:
     form = wb.active
     form.title = "Customer Program Form"
     sections = wb.create_sheet("Waterfall Sections")
+    quarter_summary = wb.create_sheet("Quarter Summary")
     bench = wb.create_sheet("Benchmarks")
 
     blue = PatternFill("solid", fgColor="3C78D8")
@@ -120,12 +124,12 @@ def build(output: Path, programs: list[dict], rows: int) -> None:
     calc_fill = PatternFill("solid", fgColor="F3F9FD")
     border = Border(bottom=Side(style="thin", color="D8ECFA"))
 
-    form.merge_cells("A1:AF1")
+    form.merge_cells("A1:AG1")
     form["A1"] = "Customer Program Waterfall Form"
     form["A1"].font = Font(bold=True, color="FFFFFF", size=14)
     form["A1"].fill = blue
     form["A1"].alignment = Alignment(vertical="center")
-    form["A2"] = "Yellow cells are customer inputs. Select a + Program Type to add each program row; choose Custom to override the standard benchmark chain."
+    form["A2"] = "Yellow cells are customer inputs. Select a + Program Type and Quarter to build the one-year plan; choose Custom to override the standard benchmark chain."
     form["H2"] = "Standard: 100% in-market, 30% engaged, 10% meeting, 50% pipeline, 30% closed"
     form["A2"].font = Font(italic=True)
     form["H2"].font = Font(italic=True)
@@ -138,8 +142,10 @@ def build(output: Path, programs: list[dict], rows: int) -> None:
 
     max_rows = max(rows, len(programs) + 25)
     type_validation = DataValidation(type="list", formula1=f'"{",".join(PROGRAM_TYPES)}"', allow_blank=True)
+    quarter_validation = DataValidation(type="list", formula1=f'"{",".join(QUARTERS)}"', allow_blank=True)
     mode_validation = DataValidation(type="list", formula1='"Standard,Custom"', allow_blank=False)
     form.add_data_validation(type_validation)
+    form.add_data_validation(quarter_validation)
     form.add_data_validation(mode_validation)
 
     for row in range(4, max_rows + 4):
@@ -178,16 +184,18 @@ def build(output: Path, programs: list[dict], rows: int) -> None:
             f'=IF($B{row}="","",ROUND($AC{row}*$Y{row},0))',
             f'=IF($B{row}="","",$J{row}*$AC{row})',
             f'=IF($B{row}="","",$J{row}*$AD{row})',
+            p.get("quarter", "Q1") if p else None,
         ]
         for col, value in enumerate(values, 1):
             cell = form.cell(row=row, column=col, value=value)
             cell.border = border
             cell.alignment = Alignment(wrap_text=True, vertical="center")
-            if 2 <= col <= 10 or 16 <= col <= 20:
+            if 2 <= col <= 10 or 16 <= col <= 20 or col == 33:
                 cell.fill = input_fill
             elif col >= 21 or 11 <= col <= 15:
                 cell.fill = calc_fill
         type_validation.add(form[f"B{row}"])
+        quarter_validation.add(form[f"AG{row}"])
         mode_validation.add(form[f"H{row}"])
 
     for col in range(11, 26):
@@ -202,14 +210,14 @@ def build(output: Path, programs: list[dict], rows: int) -> None:
             form.cell(row=row, column=col).number_format = '"$"#,##0'
 
     form.freeze_panes = "A4"
-    form.auto_filter.ref = f"A3:AF{max_rows + 3}"
-    set_col_widths(form, [12, 18, 24, 28, 30, 32, 36, 17, 16, 16] + [14] * 22)
+    form.auto_filter.ref = f"A3:AG{max_rows + 3}"
+    set_col_widths(form, [12, 18, 24, 28, 30, 32, 36, 17, 16, 16] + [14] * 22 + [12])
 
     headers = ["Waterfall Metric", "Calculated Value", "Selected Benchmark", "Benchmark / Formula"]
     for block in range(max_rows):
         start = block * 16 + 1
         row_ref = block + 4
-        sections.cell(start, 1, f'=IF(\'Customer Program Form\'!B{row_ref}="","","Program "&\'Customer Program Form\'!A{row_ref}&": "&\'Customer Program Form\'!B{row_ref}&" - "&\'Customer Program Form\'!C{row_ref})')
+        sections.cell(start, 1, f'=IF(\'Customer Program Form\'!B{row_ref}="","",\'Customer Program Form\'!AG{row_ref}&" Program "&\'Customer Program Form\'!A{row_ref}&": "&\'Customer Program Form\'!B{row_ref}&" - "&\'Customer Program Form\'!C{row_ref})')
         sections.cell(start + 1, 1, "Segment / Audience")
         sections.cell(start + 1, 2, f'=IF(\'Customer Program Form\'!B{row_ref}="","",\'Customer Program Form\'!D{row_ref})')
         sections.cell(start + 1, 3, "Benchmark Mode")
@@ -250,6 +258,30 @@ def build(output: Path, programs: list[dict], rows: int) -> None:
     set_col_widths(sections, [32, 22, 20, 42])
     for row in range(1, max_rows * 16 + 1):
         sections.row_dimensions[row].height = 22
+
+    quarter_summary.append(["Quarter", "Programs", "Accounts Targeted", "Sales Meetings", "Pipeline Opps", "Closed Deals", "Pipeline Goal", "Bookings"])
+    style_header(quarter_summary[1])
+    for idx, quarter in enumerate(QUARTERS, 2):
+        quarter_summary.cell(idx, 1, quarter)
+        quarter_summary.cell(idx, 2, f'=COUNTIFS(\'Customer Program Form\'!$AG:$AG,A{idx},\'Customer Program Form\'!$B:$B,"<>")')
+        quarter_summary.cell(idx, 3, f'=SUMIF(\'Customer Program Form\'!$AG:$AG,A{idx},\'Customer Program Form\'!$I:$I)')
+        quarter_summary.cell(idx, 4, f'=SUMIF(\'Customer Program Form\'!$AG:$AG,A{idx},\'Customer Program Form\'!$AB:$AB)')
+        quarter_summary.cell(idx, 5, f'=SUMIF(\'Customer Program Form\'!$AG:$AG,A{idx},\'Customer Program Form\'!$AC:$AC)')
+        quarter_summary.cell(idx, 6, f'=SUMIF(\'Customer Program Form\'!$AG:$AG,A{idx},\'Customer Program Form\'!$AD:$AD)')
+        quarter_summary.cell(idx, 7, f'=SUMIF(\'Customer Program Form\'!$AG:$AG,A{idx},\'Customer Program Form\'!$AE:$AE)')
+        quarter_summary.cell(idx, 8, f'=SUMIF(\'Customer Program Form\'!$AG:$AG,A{idx},\'Customer Program Form\'!$AF:$AF)')
+    full_row = len(QUARTERS) + 2
+    quarter_summary.cell(full_row, 1, "Full Year")
+    for col in range(2, 9):
+        letter = get_column_letter(col)
+        quarter_summary.cell(full_row, col, f"=SUM({letter}2:{letter}{full_row - 1})")
+    for row in range(2, full_row + 1):
+        for col in range(1, 9):
+            quarter_summary.cell(row, col).border = border
+            quarter_summary.cell(row, col).alignment = Alignment(wrap_text=True, vertical="center")
+        for col in range(7, 9):
+            quarter_summary.cell(row, col).number_format = '"$"#,##0'
+    set_col_widths(quarter_summary, [14, 12, 18, 18, 18, 16, 18, 18])
 
     bench.append(["Metric", "Standard Benchmark", "Definition"])
     style_header(bench[1])

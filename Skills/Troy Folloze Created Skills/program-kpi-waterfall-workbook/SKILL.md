@@ -9,10 +9,11 @@ description: Build Excel or Google Sheets-ready program KPI waterfall workbooks 
 
 Create a customer-facing workbook that turns program assumptions into waterfall calculations:
 
-- program type, name, segment, channels, content, and notes
+- quarter, program type, name, segment, channels, content, and notes
 - standard benchmark chain: `100% -> 30% -> 10% -> 50% -> 30%`
 - optional custom benchmark overrides per program
 - calculated accounts in market, engaged accounts, sales meetings, pipeline opportunities, closed deals, pipeline goal, and bookings
+- quarterly and full-year summaries for a one-year plan
 - as many program rows/sections as needed
 
 Current program type dropdown values:
@@ -77,6 +78,7 @@ If that bundled runtime is unavailable, call `codex_app.load_workspace_dependenc
 [
   {
     "program_type": "1:1 ABM",
+    "quarter": "Q1",
     "program_name": "Strategic account motion",
     "segment": "Enterprise target accounts",
     "channels": "Display ads + email + sales outreach",
@@ -102,6 +104,7 @@ The builder creates:
 
 - `Customer Program Form`: row-based form with dropdowns and formulas, designed to behave like a `+ Program Type` control by filling the next blank row.
 - `Waterfall Sections`: printable/shareable section view for every prepared program row.
+- `Quarter Summary`: Q1, Q2, Q3, Q4, and full-year rollups.
 - `Benchmarks`: reference tab with the standard benchmark chain and metric definitions.
 
 ## Formula Rules
@@ -123,5 +126,6 @@ Before returning:
 
 - confirm the workbook exists at the requested path
 - confirm the first program row calculates to the expected sample values when using defaults: `1,200 -> 1,200 -> 360 -> 36 -> 18 -> 5`, `$90M` pipeline, `$25M` bookings
+- confirm the first program row appears in `Q1` and the `Quarter Summary` tab rolls it into the full-year total
 - if imported into Google Sheets, read back the `Customer Program Form` and `Waterfall Sections` tabs after import
 - mention any verification that could not be completed

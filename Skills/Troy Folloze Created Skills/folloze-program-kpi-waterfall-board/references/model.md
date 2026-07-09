@@ -20,12 +20,25 @@
 - pipeline goal = average deal size x pipeline opportunities
 - bookings = average deal size x closed deals
 
+## One-Year Quarterly Plan
+
+Each program belongs to one quarter: `Q1`, `Q2`, `Q3`, or `Q4`.
+
+The board should show:
+
+- program-level waterfall logic inside the selected quarter
+- quarterly rollups for Q1, Q2, Q3, and Q4
+- cumulative quarter-to-date totals for Q1 YTD, Q2 YTD, Q3 YTD, and Q4 YTD
+- a full-year total row
+- overflow-safe number formatting so large values stay inside their boxes
+
 ## Required Interactions
 
 - add program
 - duplicate active program
-- remove program when more than one exists
+- delete any program, including the last one
 - switch active program
+- assign a program to Q1, Q2, Q3, or Q4
 - choose customer success manager: `Meghan Richardson`, `Matthew Brown`, or `Steven Nguyen`
 - update details and assumptions
 - switch benchmark mode between Standard and Custom

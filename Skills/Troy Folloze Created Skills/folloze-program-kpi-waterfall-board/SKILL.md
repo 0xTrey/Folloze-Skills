@@ -11,11 +11,13 @@ Build a Folloze MCP board that gives customers the same capabilities as the prog
 
 - add as many program sections as needed
 - customize the top of the board with the customer's name
-- enter program type, program name, segment, channels, content, notes, accounts targeted, and average deal size
+- organize the one-year plan by Q1, Q2, Q3, and Q4
+- enter quarter, program type, program name, segment, channels, content, notes, accounts targeted, and average deal size
+- delete any added program section
 - select the customer success manager from `Meghan Richardson`, `Matthew Brown`, or `Steven Nguyen`
 - choose standard or custom benchmarks per program
 - calculate account-to-pipeline waterfall values in real time
-- show portfolio totals and shareable waterfall sections
+- show quarterly rollups, cumulative quarter-to-date totals, full-year totals, and shareable waterfall sections
 
 ## Required MCP Flow
 
@@ -46,12 +48,15 @@ The template is a single self-contained HTML file with:
 - customer-name placeholder in the hero headline and subcopy
 - customer CSM dropdown in the top-right header
 - interactive program list
-- add, duplicate, and remove program controls
+- add, duplicate, and delete program controls
+- Q1, Q2, Q3, and Q4 assignment per program
 - standard benchmark model: `100% -> 30% -> 10% -> 50% -> 30%`
 - custom benchmark inputs
-- live totals for programs, pipeline goal, bookings, and meetings
-- portfolio rollup section
-- generated waterfall sections
+- live full-year totals for programs, pipeline goal, bookings, and meetings
+- quarterly rollup cards
+- cumulative Q1, Q2, Q3, Q4, and full-year summary table
+- generated waterfall sections grouped by quarter
+- overflow-safe number formatting so large values fit inside cards and tables
 - analytics wiring for CTAs, nav, tab switches, model updates, copy summary, add/remove actions
 - local `flzAnalytic` fallback for browser QA
 
@@ -61,9 +66,9 @@ Use customer-ready language. Keep the page focused on the planner itself, not on
 
 Preferred framing:
 
-- `Plan [Customer]'s program mix from engagement to pipeline.`
-- `Add programs, tune benchmarks, model the waterfall.`
-- `Every program gets a ready-to-share waterfall.`
+- `Plan [Customer]'s one-year program mix from engagement to pipeline.`
+- `Build the year by quarter, tune benchmarks, model the waterfall.`
+- `Every quarter gets ready-to-share program waterfalls.`
 
 Avoid visible terms such as `demo`, `template`, `internal`, `agent`, or `proof of concept` unless the user explicitly asks.
 
@@ -77,10 +82,13 @@ Before saving:
 - confirm there are no placeholder `href="#"` or `javascript:void(0)` links
 - render desktop and mobile widths
 - confirm no horizontal overflow at 390px and 320px
+- confirm large currency values fit inside stat, quarter, summary, preview, and waterfall boxes
 - add a program and verify the program count increments
+- move programs between Q1, Q2, Q3, and Q4 and verify quarterly and cumulative totals update
+- delete a program and verify the count, active editor, quarterly rollups, and waterfall sections update
 - choose each customer CSM and verify the waterfall sections show the selected CSM
 - switch a program to `Custom`, change a benchmark, and verify totals update
-- confirm generated waterfall sections match the program count
+- confirm generated waterfall sections are grouped by quarter and match the program count
 - confirm CTA buttons and meaningful interactions call `flzAnalytic`
 
 Suggested local Playwright-style check:

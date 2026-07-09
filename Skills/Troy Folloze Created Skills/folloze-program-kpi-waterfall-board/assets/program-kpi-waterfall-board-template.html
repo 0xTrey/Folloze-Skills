@@ -290,6 +290,7 @@
     padding: 16px;
     background: white;
     min-width: 0;
+    overflow: hidden;
   }
   .stat span {
     color: var(--flz-muted);
@@ -301,9 +302,11 @@
   .stat strong {
     display: block;
     color: var(--flz-navy);
-    font-size: clamp(24px, 2.6vw, 38px);
-    line-height: 1;
+    font-size: clamp(20px, 2.3vw, 34px);
+    line-height: 1.05;
     margin-top: 8px;
+    overflow-wrap: anywhere;
+    font-variant-numeric: tabular-nums;
   }
   .stat em {
     display: block;
@@ -342,6 +345,12 @@
     overflow: auto;
     padding-right: 4px;
   }
+  .program-tab-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 8px;
+    align-items: stretch;
+  }
   .program-tab {
     width: 100%;
     text-align: left;
@@ -364,6 +373,20 @@
     margin-bottom: 3px;
   }
   .program-tab small { font-weight: 700; opacity: .78; }
+  .delete-tab-btn {
+    border: 1px solid #f3c6d8;
+    background: #fff7fb;
+    color: #b3195b;
+    border-radius: var(--radius);
+    padding: 0 10px;
+    font-size: 12px;
+    font-weight: 900;
+  }
+  .program-tab[aria-selected="true"] + .delete-tab-btn {
+    border-color: rgba(255,255,255,.24);
+    background: var(--flz-navy);
+    color: white;
+  }
 
   .program-editor { padding: 18px; }
   .editor-grid {
@@ -442,6 +465,41 @@
   .waterfall-row strong { color: var(--flz-navy); text-align: right; font-size: 18px; }
   .waterfall-row .bar { height: 12px; background: white; }
 
+  .quarter-rollup {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+  .quarter-card {
+    border: 1px solid var(--flz-line);
+    border-radius: var(--radius);
+    padding: 14px;
+    background: linear-gradient(180deg, #fff, var(--flz-soft));
+    min-width: 0;
+    overflow: hidden;
+  }
+  .quarter-card h3 {
+    margin: 0 0 8px;
+    color: var(--flz-navy);
+    font-size: 18px;
+  }
+  .quarter-card p {
+    margin: 0;
+    color: var(--flz-muted);
+    font-size: 13px;
+    font-weight: 800;
+  }
+  .quarter-card strong {
+    display: block;
+    margin-top: 8px;
+    color: var(--flz-blue);
+    font-size: clamp(18px, 1.8vw, 26px);
+    line-height: 1.05;
+    overflow-wrap: anywhere;
+    font-variant-numeric: tabular-nums;
+  }
+
   .summary-band {
     background: var(--flz-navy);
     color: white;
@@ -477,6 +535,49 @@
   }
   .summary-card dt { color: rgba(255,255,255,.72); }
   .summary-card dd { margin: 0; font-weight: 900; text-align: right; }
+  .summary-card dd,
+  .program-section td:nth-child(2),
+  .program-section td:nth-child(3),
+  .waterfall-row strong {
+    min-width: 0;
+    overflow-wrap: anywhere;
+    font-variant-numeric: tabular-nums;
+  }
+  .summary-card dd { font-size: clamp(14px, 1.2vw, 18px); }
+
+  .cumulative-table {
+    margin-top: 16px;
+    border: 1px solid rgba(216, 236, 250, .18);
+    border-radius: var(--radius);
+    overflow-x: auto;
+    background: rgba(255,255,255,.04);
+  }
+  .cumulative-table table {
+    width: 100%;
+    min-width: 760px;
+    border-collapse: collapse;
+    table-layout: fixed;
+  }
+  .cumulative-table th,
+  .cumulative-table td {
+    padding: 12px 14px;
+    border-bottom: 1px solid rgba(255,255,255,.12);
+    text-align: right;
+    overflow-wrap: anywhere;
+    font-variant-numeric: tabular-nums;
+  }
+  .cumulative-table th:first-child,
+  .cumulative-table td:first-child { text-align: left; }
+  .cumulative-table th {
+    color: rgba(255,255,255,.72);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: .07em;
+  }
+  .cumulative-table td {
+    color: white;
+    font-weight: 800;
+  }
 
   .sections-grid {
     display: grid;
@@ -528,6 +629,7 @@
     text-align: right;
     font-weight: 800;
     color: var(--flz-navy);
+    font-size: clamp(13px, 1.1vw, 16px);
   }
   .note-row {
     padding: 14px;
@@ -542,6 +644,29 @@
     padding: 28px;
     color: var(--flz-slate);
     text-align: center;
+  }
+  .quarter-section {
+    display: grid;
+    gap: 14px;
+    margin-bottom: 24px;
+  }
+  .quarter-section > header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    border-bottom: 1px solid var(--flz-line);
+    padding-bottom: 10px;
+  }
+  .quarter-section h3 {
+    margin: 0;
+    color: var(--flz-navy);
+    font-size: 26px;
+  }
+  .quarter-section p {
+    margin: 0;
+    color: var(--flz-muted);
+    font-weight: 800;
   }
   .footer {
     border-top: 1px solid var(--flz-line);
@@ -562,7 +687,7 @@
   @media (max-width: 1080px) {
     .hero-inner, .builder-shell { grid-template-columns: 1fr; }
     .program-list { position: static; }
-    .summary-grid, .sections-grid { grid-template-columns: 1fr; }
+    .summary-grid, .sections-grid, .quarter-rollup { grid-template-columns: 1fr; }
     .totals { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
   @media (max-width: 740px) {
@@ -637,8 +762,8 @@
     <div class="hero-inner">
       <div>
         <div class="eyebrow">Build. Activate. Signal.</div>
-        <h1 id="hero-title">Plan CUSTOMER_NAME_PLACEHOLDER's program mix from engagement to pipeline.</h1>
-        <p>Use this waterfall model to plan CUSTOMER_NAME_PLACEHOLDER's customer programs in a cleaner customer experience. Add program sections, choose standard or custom benchmarks, and see pipeline and bookings update in real time.</p>
+        <h1 id="hero-title">Plan CUSTOMER_NAME_PLACEHOLDER's one-year program mix from engagement to pipeline.</h1>
+        <p>Use this waterfall model to plan CUSTOMER_NAME_PLACEHOLDER's customer programs by quarter. Add program sections, choose standard or custom benchmarks, and see quarterly, cumulative, and full-year impact update in real time.</p>
         <div class="hero-actions">
           <a class="primary-btn" href="#planner" onclick="flzAnalytic('cta_click', {text:this.innerText.trim(), area:'main hero banner'}, this)">Start planning</a>
           <a class="secondary-btn" href="#sections" onclick="flzAnalytic('cta_click', {text:this.innerText.trim(), area:'main hero banner'}, this)">View waterfalls</a>
@@ -664,8 +789,8 @@
     <div class="section-head">
       <div>
         <div class="eyebrow">Interactive model</div>
-        <h2 id="planner-title">Add programs, tune benchmarks, model the waterfall.</h2>
-        <p>Each program works like a section in the spreadsheet. Standard benchmarks are preloaded, and custom benchmarks can override the standard chain for any program.</p>
+        <h2 id="planner-title">Build the year by quarter, tune benchmarks, model the waterfall.</h2>
+        <p>Each program works like a section in the spreadsheet and rolls into Q1, Q2, Q3, or Q4. Standard benchmarks are preloaded, and custom benchmarks can override the standard chain for any program.</p>
       </div>
       <button class="primary-btn" type="button" onclick="addProgramFromButton(this)">+ Program type</button>
     </div>
@@ -676,6 +801,7 @@
       <div class="stat"><span>Bookings</span><strong id="totalBookings">$0</strong><em>Modeled closed-won value</em></div>
       <div class="stat"><span>Sales meetings</span><strong id="totalMeetings">0</strong><em>Scheduled from engagement</em></div>
     </div>
+    <div class="quarter-rollup" id="quarterRollup" aria-label="Quarter rollup"></div>
 
     <div class="builder-shell">
       <aside class="program-list" aria-label="Program list">
@@ -695,11 +821,12 @@
       <div class="section-head">
         <div>
           <div class="eyebrow">Portfolio rollup</div>
-          <h2 id="portfolio-title">The plan stays honest because every total ties back to a program row.</h2>
-          <p>Portfolio totals roll up from the waterfall calculations. The model is deliberately transparent: the assumptions are visible, editable, and attached to the program that uses them.</p>
+          <h2 id="portfolio-title">The plan stays honest because every total ties back to a quarterly program row.</h2>
+          <p>Quarter and full-year totals roll up from the waterfall calculations. The model is deliberately transparent: the assumptions are visible, editable, and attached to the program that uses them.</p>
         </div>
       </div>
       <div class="summary-grid" id="portfolioCards"></div>
+      <div class="cumulative-table" id="cumulativeSummary" aria-label="Cumulative quarterly summary"></div>
     </section>
   </div>
 
@@ -707,12 +834,12 @@
     <div class="section-head">
       <div>
         <div class="eyebrow">Waterfall sections</div>
-        <h2 id="sections-title">Every program gets a ready-to-share waterfall.</h2>
-        <p>These sections mirror the planning sheet while giving customers a clearer view of the program detail, selected benchmarks, and modeled business value.</p>
+        <h2 id="sections-title">Every quarter gets ready-to-share program waterfalls.</h2>
+        <p>These sections mirror the planning sheet while giving customers a clearer view of the quarterly program detail, selected benchmarks, and modeled business value.</p>
       </div>
       <button class="secondary-btn" type="button" onclick="copySummary(this)">Copy summary</button>
     </div>
-    <div class="sections-grid" id="waterfallSections"></div>
+    <div id="waterfallSections"></div>
   </section>
 </main>
 
@@ -752,10 +879,12 @@
     'Enablement Program',
     'Newsletter'
   ];
+  const quarters = ['Q1', 'Q2', 'Q3', 'Q4'];
 
   let programs = [
     {
       id: crypto.randomUUID ? crypto.randomUUID() : String(Date.now()),
+      quarter: 'Q1',
       type: '1:1 ABM',
       name: 'Example Program (replace)',
       segment: 'Target account segment',
@@ -772,8 +901,14 @@
   let selectedCsm = 'Meghan Richardson';
 
   const currency = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
+  const compactCurrency = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', notation: 'compact', maximumFractionDigits: 1 });
   const whole = new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 });
   const pct = new Intl.NumberFormat('en-US', { style: 'percent', maximumFractionDigits: 0 });
+
+  function money(value) {
+    const amount = Number(value) || 0;
+    return Math.abs(amount) >= 1000000000 ? compactCurrency.format(amount) : currency.format(amount);
+  }
 
   function safeAnalytic(action, payload, el) {
     if (typeof flzAnalytic === 'function') {
@@ -808,8 +943,8 @@
     };
   }
 
-  function totals() {
-    return programs.reduce((acc, p) => {
+  function totals(sourcePrograms = programs) {
+    return sourcePrograms.reduce((acc, p) => {
       const c = calculate(p);
       acc.accounts += c.accounts;
       acc.inMarket += c.inMarket;
@@ -820,7 +955,27 @@
       acc.pipelineGoal += c.pipelineGoal;
       acc.bookings += c.bookings;
       return acc;
-    }, { accounts: 0, inMarket: 0, engaged: 0, meetings: 0, pipelineOpps: 0, closedDeals: 0, pipelineGoal: 0, bookings: 0 });
+    }, { programs: sourcePrograms.length, accounts: 0, inMarket: 0, engaged: 0, meetings: 0, pipelineOpps: 0, closedDeals: 0, pipelineGoal: 0, bookings: 0 });
+  }
+
+  function programsForQuarter(quarter) {
+    return programs.filter(p => (p.quarter || 'Q1') === quarter);
+  }
+
+  function quarterTotals() {
+    return quarters.map(quarter => ({
+      quarter,
+      programs: programsForQuarter(quarter),
+      totals: totals(programsForQuarter(quarter))
+    }));
+  }
+
+  function cumulativeQuarterTotals() {
+    let running = [];
+    return quarters.map(quarter => {
+      running = running.concat(programsForQuarter(quarter));
+      return { quarter, totals: totals(running) };
+    });
   }
 
   function updateProgram(id, key, value) {
@@ -850,6 +1005,7 @@
   function addProgram(seed = {}) {
     const next = {
       id: crypto.randomUUID ? crypto.randomUUID() : String(Date.now() + Math.random()),
+      quarter: seed.quarter || 'Q1',
       type: seed.type || '1:few ABM',
       name: seed.name || `Program ${programs.length + 1}`,
       segment: seed.segment || '',
@@ -886,12 +1042,11 @@
   }
 
   function removeProgram(id, button) {
-    if (programs.length === 1) return;
     const doomed = programs.find(p => p.id === id);
     programs = programs.filter(p => p.id !== id);
-    activeId = programs[0].id;
+    activeId = programs[0] ? programs[0].id : null;
     render();
-    flzAnalytic('cta_click', { text: button.innerText.trim(), area: 'program planner' }, button);
+    flzAnalytic('cta_click', { text: button ? button.innerText.trim() : 'Delete', area: 'program planner' }, button);
     safeAnalytic('program_remove', { text: doomed ? doomed.name : 'program', area: 'program planner' });
   }
 
@@ -930,21 +1085,38 @@
 
   function renderTabs() {
     const tabs = document.getElementById('programTabs');
+    if (!programs.length) {
+      tabs.innerHTML = '<div class="empty">No programs yet. Add a program type to start Q1.</div>';
+      return;
+    }
     tabs.innerHTML = programs.map((program, index) => {
       const c = calculate(program);
-      return `<button class="program-tab" type="button" role="tab" aria-selected="${program.id === activeId}" onclick="setActive('${program.id}', this)">
-        <strong>${index + 1}. ${escapeHtml(program.type)}</strong>
-        <small>${escapeHtml(program.name || 'Unnamed program')} · ${currency.format(c.pipelineGoal)} pipeline</small>
-      </button>`;
+      return `<div class="program-tab-row">
+        <button class="program-tab" type="button" role="tab" aria-selected="${program.id === activeId}" onclick="setActive('${program.id}', this)">
+          <strong>${index + 1}. ${escapeHtml(program.quarter || 'Q1')} · ${escapeHtml(program.type)}</strong>
+          <small>${escapeHtml(program.name || 'Unnamed program')} · ${money(c.pipelineGoal)} pipeline</small>
+        </button>
+        <button class="delete-tab-btn" type="button" onclick="removeProgram('${program.id}', this)" aria-label="Delete ${escapeHtml(program.name || program.type)}">Delete</button>
+      </div>`;
     }).join('');
   }
 
   function renderEditor() {
     const program = programs.find(p => p.id === activeId) || programs[0];
+    if (!program) {
+      document.getElementById('programEditor').innerHTML = `
+        <div class="empty">
+          <strong>No programs in the one-year plan yet.</strong>
+          <p>Add a program type to create the first quarterly waterfall section.</p>
+          <button class="primary-btn" type="button" onclick="addProgramFromButton(this)">+ Program type</button>
+        </div>`;
+      return;
+    }
     const c = calculate(program);
     const maxStage = Math.max(c.accounts, c.inMarket, c.engaged, c.meetings, c.pipelineOpps, c.closedDeals, 1);
     document.getElementById('programEditor').innerHTML = `
       <div class="editor-grid">
+        ${selectField(program, 'quarter', 'Quarter', program.quarter || 'Q1', quarters)}
         ${selectField(program, 'type', '+ Program Type', program.type, programTypes)}
         ${inputField(program, 'name', 'Program Name', program.name, 'text')}
         ${inputField(program, 'segment', 'Segment / Audience', program.segment, 'text', { wide: true })}
@@ -971,7 +1143,7 @@
       </div>
       <div class="waterfall-preview" id="waterfallPreview" aria-label="Waterfall preview">${waterfallPreview(program)}</div>
       <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap">
-        <button class="secondary-btn" type="button" onclick="removeProgram('${program.id}', this)" ${programs.length === 1 ? 'disabled aria-disabled="true"' : ''}>Remove program</button>
+        <button class="secondary-btn" type="button" onclick="removeProgram('${program.id}', this)">Remove program</button>
       </div>`;
   }
 
@@ -985,8 +1157,8 @@
       ${waterfallPreviewRow('Sales meetings', c.meetings, c.b.meeting, c.meetings, maxStage)}
       ${waterfallPreviewRow('Pipeline opps', c.pipelineOpps, c.b.pipeline, c.pipelineOpps, maxStage)}
       ${waterfallPreviewRow('Closed deals', c.closedDeals, c.b.close, c.closedDeals, maxStage)}
-      ${waterfallPreviewRow('Pipeline goal', currency.format(c.pipelineGoal), null, c.pipelineOpps, maxStage)}
-      ${waterfallPreviewRow('Bookings', currency.format(c.bookings), null, c.closedDeals, maxStage)}
+      ${waterfallPreviewRow('Pipeline goal', money(c.pipelineGoal), null, c.pipelineOpps, maxStage)}
+      ${waterfallPreviewRow('Bookings', money(c.bookings), null, c.closedDeals, maxStage)}
     `;
   }
 
@@ -1019,14 +1191,38 @@
   function renderTotals() {
     const t = totals();
     document.getElementById('totalPrograms').textContent = whole.format(programs.length);
-    document.getElementById('totalPipeline').textContent = currency.format(t.pipelineGoal);
-    document.getElementById('totalBookings').textContent = currency.format(t.bookings);
+    document.getElementById('totalPipeline').textContent = money(t.pipelineGoal);
+    document.getElementById('totalBookings').textContent = money(t.bookings);
     document.getElementById('totalMeetings').textContent = whole.format(t.meetings);
+    document.getElementById('quarterRollup').innerHTML = quarterTotals().map(({ quarter, programs: quarterPrograms, totals: qt }) => `
+      <article class="quarter-card">
+        <h3>${quarter}</h3>
+        <p>${whole.format(quarterPrograms.length)} programs · ${whole.format(qt.meetings)} meetings</p>
+        <strong>${money(qt.pipelineGoal)} pipeline</strong>
+      </article>`).join('');
     document.getElementById('portfolioCards').innerHTML = [
       ['Account coverage', [['Accounts targeted', whole.format(t.accounts)], ['Accounts in market', whole.format(t.inMarket)], ['Engaged accounts', whole.format(t.engaged)]]],
       ['Conversion output', [['Sales meetings', whole.format(t.meetings)], ['Pipeline opportunities', whole.format(t.pipelineOpps)], ['Closed deals', whole.format(t.closedDeals)]]],
-      ['Business value', [['Pipeline goal', currency.format(t.pipelineGoal)], ['Bookings', currency.format(t.bookings)], ['Programs modeled', whole.format(programs.length)]]]
+      ['Full-year business value', [['Pipeline goal', money(t.pipelineGoal)], ['Bookings', money(t.bookings)], ['Programs modeled', whole.format(programs.length)]]]
     ].map(([title, rows]) => `<article class="summary-card"><h3>${title}</h3><dl>${rows.map(([k, v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join('')}</dl></article>`).join('');
+    const cumulativeRows = cumulativeQuarterTotals().map(({ quarter, totals: ct }) => `
+      <tr>
+        <td>${quarter} YTD</td>
+        <td>${whole.format(ct.programs)}</td>
+        <td>${whole.format(ct.meetings)}</td>
+        <td>${whole.format(ct.pipelineOpps)}</td>
+        <td>${whole.format(ct.closedDeals)}</td>
+        <td>${money(ct.pipelineGoal)}</td>
+        <td>${money(ct.bookings)}</td>
+      </tr>`).join('');
+    document.getElementById('cumulativeSummary').innerHTML = `
+      <table>
+        <thead><tr><th>Cumulative quarter</th><th>Programs</th><th>Meetings</th><th>Opps</th><th>Closed</th><th>Pipeline</th><th>Bookings</th></tr></thead>
+        <tbody>
+          ${cumulativeRows}
+          <tr><td>Full year</td><td>${whole.format(t.programs)}</td><td>${whole.format(t.meetings)}</td><td>${whole.format(t.pipelineOpps)}</td><td>${whole.format(t.closedDeals)}</td><td>${money(t.pipelineGoal)}</td><td>${money(t.bookings)}</td></tr>
+        </tbody>
+      </table>`;
   }
 
   function renderSections() {
@@ -1035,7 +1231,10 @@
       target.innerHTML = '<div class="empty">Add a program type to generate the first waterfall section.</div>';
       return;
     }
-    target.innerHTML = programs.map((p, index) => {
+    target.innerHTML = quarters.map(quarter => {
+      const quarterPrograms = programsForQuarter(quarter);
+      const qt = totals(quarterPrograms);
+      const cards = quarterPrograms.length ? quarterPrograms.map((p, index) => {
       const c = calculate(p);
       const rows = [
         ['Accounts targeted actively', whole.format(c.accounts), 'Customer input'],
@@ -1044,13 +1243,13 @@
         ['Sales meetings scheduled', whole.format(c.meetings), pct.format(c.b.meeting)],
         ['Pipeline opportunities', whole.format(c.pipelineOpps), pct.format(c.b.pipeline)],
         ['Closed deals', whole.format(c.closedDeals), pct.format(c.b.close)],
-        ['Average deal size', currency.format(c.dealSize), 'Customer input'],
-        ['Pipeline goal', currency.format(c.pipelineGoal), 'Deal size x pipeline opps'],
-        ['Bookings', currency.format(c.bookings), 'Deal size x closed deals']
+        ['Average deal size', money(c.dealSize), 'Customer input'],
+        ['Pipeline goal', money(c.pipelineGoal), 'Deal size x pipeline opps'],
+        ['Bookings', money(c.bookings), 'Deal size x closed deals']
       ];
       return `<article class="program-section">
         <header>
-          <span class="chip">Program ${index + 1}</span>
+          <span class="chip">${escapeHtml(p.quarter || quarter)} · Program ${index + 1}</span>
           <h3>${escapeHtml(p.type)}${p.name ? ` · ${escapeHtml(p.name)}` : ''}</h3>
           <div class="meta">
             <span class="chip">CSM: ${escapeHtml(selectedCsm)}</span>
@@ -1065,12 +1264,20 @@
         </table>
         ${p.content || p.notes ? `<div class="note-row"><strong>Program detail:</strong> ${escapeHtml([p.content, p.notes].filter(Boolean).join(' · '))}</div>` : ''}
       </article>`;
+      }).join('') : '<div class="empty">No programs planned for this quarter yet.</div>';
+      return `<section class="quarter-section" aria-label="${quarter} program waterfalls">
+        <header>
+          <h3>${quarter}</h3>
+          <p>${whole.format(quarterPrograms.length)} programs · ${money(qt.pipelineGoal)} pipeline · ${money(qt.bookings)} bookings</p>
+        </header>
+        <div class="sections-grid">${cards}</div>
+      </section>`;
     }).join('');
   }
 
   async function copySummary(button) {
     const t = totals();
-    const text = `Folloze program KPI plan: ${programs.length} programs, ${whole.format(t.accounts)} accounts targeted, ${whole.format(t.meetings)} sales meetings, ${currency.format(t.pipelineGoal)} pipeline goal, ${currency.format(t.bookings)} bookings.`;
+    const text = `Folloze one-year program KPI plan: ${programs.length} programs, ${whole.format(t.accounts)} accounts targeted, ${whole.format(t.meetings)} sales meetings, ${money(t.pipelineGoal)} pipeline goal, ${money(t.bookings)} bookings.`;
     try {
       await navigator.clipboard.writeText(text);
       button.textContent = 'Summary copied';
