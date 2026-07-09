@@ -775,6 +775,7 @@
           <a class="primary-btn" href="#planner" onclick="flzAnalytic('cta_click', {text:this.innerText.trim(), area:'main hero banner'}, this)">Start planning</a>
           <a class="secondary-btn" href="#sections" onclick="flzAnalytic('cta_click', {text:this.innerText.trim(), area:'main hero banner'}, this)">View waterfalls</a>
           <button class="ghost-btn" type="button" onclick="exportSlideContent(this)">Output to slides</button>
+          <button class="ghost-btn" type="button" onclick="exportSheetContent(this)">Output to sheets</button>
         </div>
       </div>
       <aside class="hero-panel" aria-label="Standard benchmark waterfall">
@@ -848,6 +849,7 @@
       <div class="section-actions">
         <button class="secondary-btn" type="button" onclick="copySummary(this)">Copy summary</button>
         <button class="primary-btn" type="button" onclick="exportSlideContent(this)">Output to slides</button>
+        <button class="primary-btn" type="button" onclick="exportSheetContent(this)">Output to sheets</button>
       </div>
     </div>
     <div id="waterfallSections"></div>
@@ -916,6 +918,7 @@
   const whole = new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 });
   const pct = new Intl.NumberFormat('en-US', { style: 'percent', maximumFractionDigits: 0 });
   const slidesDeckUrl = 'SLIDES_DECK_URL_PLACEHOLDER';
+  const sheetsOutputUrl = 'SHEETS_OUTPUT_URL_PLACEHOLDER';
 
   function money(value) {
     const amount = Number(value) || 0;
@@ -1309,6 +1312,7 @@
       customerHeadline: document.getElementById('hero-title').textContent.trim(),
       customerSuccessManager: selectedCsm,
       slidesDeckUrl,
+      sheetsOutputUrl,
       fullYear,
       quarters: quarterTotals().map(({ quarter, programs: quarterPrograms, totals: qt }) => ({
         quarter,
@@ -1356,6 +1360,19 @@
     setTimeout(() => { button.textContent = original; }, 1800);
     flzAnalytic('cta_click', { text: original.trim(), area: 'slide output' }, button);
     safeAnalytic('slides_export', { text: 'Google Slides output', area: 'slide output', deckUrl: slidesDeckUrl });
+  }
+
+  function exportSheetContent(button) {
+    const payload = slideExportPayload();
+    downloadJson('folloze-program-kpi-sheet-output.json', payload);
+    if (sheetsOutputUrl && !sheetsOutputUrl.includes('PLACEHOLDER')) {
+      window.open(sheetsOutputUrl, '_blank', 'noopener');
+    }
+    const original = button.textContent;
+    button.textContent = 'Sheets output ready';
+    setTimeout(() => { button.textContent = original; }, 1800);
+    flzAnalytic('cta_click', { text: original.trim(), area: 'sheet output' }, button);
+    safeAnalytic('sheets_export', { text: 'Google Sheets output', area: 'sheet output', sheetUrl: sheetsOutputUrl });
   }
 
   function render() {

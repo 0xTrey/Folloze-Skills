@@ -19,6 +19,7 @@ Build a Folloze MCP board that gives customers the same capabilities as the prog
 - calculate account-to-pipeline waterfall values in real time
 - show quarterly rollups, cumulative quarter-to-date totals, full-year totals, and shareable waterfall sections
 - include an `Output to slides` control that exports the live planner state as slide-ready JSON and opens the generated Google Slides deck when a deck URL is available
+- include an `Output to sheets` control that exports the live planner state as sheet-ready JSON and opens the generated Google Sheet when a sheet URL is available
 
 ## Required MCP Flow
 
@@ -32,9 +33,10 @@ Build a Folloze MCP board that gives customers the same capabilities as the prog
 6. Replace `THEME_URL_PLACEHOLDER` in the copied HTML with the returned `themeUrl`.
 7. Replace every `CUSTOMER_NAME_PLACEHOLDER` token with the HTML-escaped customer name.
 8. If a Google Slides deck has been generated, replace `SLIDES_DECK_URL_PLACEHOLDER` with the verified Google Slides edit URL. If no deck exists yet, leave the placeholder in the skill template but do not save a board with a broken external link.
-9. Keep the returned `themeId` for save.
-10. QA the local HTML before save.
-11. Save with `save_folloze_board_from_file`.
+9. If a Google Sheet output has been generated, copy the JDP template sheet, add or populate board-output tabs, and replace `SHEETS_OUTPUT_URL_PLACEHOLDER` with the verified Google Sheets edit URL. If no sheet exists yet, leave the placeholder in the skill template but do not save a board with a broken external link.
+10. Keep the returned `themeId` for save.
+11. QA the local HTML before save.
+12. Save with `save_folloze_board_from_file`.
 
 ## Template
 
@@ -60,6 +62,7 @@ The template is a single self-contained HTML file with:
 - generated waterfall sections grouped by quarter
 - overflow-safe number formatting so large values fit inside cards and tables
 - slide-output button that downloads the current planner state as `folloze-program-kpi-slide-output.json` and opens the verified Google Slides deck URL
+- sheet-output button that downloads the current planner state as `folloze-program-kpi-sheet-output.json` and opens the verified JDP-template Google Sheet URL
 - analytics wiring for CTAs, nav, tab switches, model updates, copy summary, add/remove actions
 - local `flzAnalytic` fallback for browser QA
 
@@ -83,6 +86,7 @@ Before saving:
 - confirm the HTML no longer contains `CUSTOMER_NAME_PLACEHOLDER`
 - confirm the hero headline includes the customer name
 - confirm any saved board no longer contains `SLIDES_DECK_URL_PLACEHOLDER` if the slide-output button is visible
+- confirm any saved board no longer contains `SHEETS_OUTPUT_URL_PLACEHOLDER` if the sheet-output button is visible
 - confirm there are no placeholder `href="#"` or `javascript:void(0)` links
 - render desktop and mobile widths
 - confirm no horizontal overflow at 390px and 320px
@@ -94,6 +98,7 @@ Before saving:
 - switch a program to `Custom`, change a benchmark, and verify totals update
 - confirm generated waterfall sections are grouped by quarter and match the program count
 - click `Output to slides` and verify it calls analytics, exports JSON, and opens the verified deck URL when present
+- click `Output to sheets` and verify it calls analytics, exports JSON, and opens the verified JDP-template sheet URL when present
 - confirm CTA buttons and meaningful interactions call `flzAnalytic`
 
 Suggested local Playwright-style check:
