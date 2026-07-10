@@ -18,7 +18,7 @@ Build a Folloze MCP board that gives customers the same capabilities as the prog
 - select the customer success manager from `Meghan Richardson`, `Matthew Brown`, `Steven Nguyen`, or `Flor Estrada`
 - choose standard or custom benchmarks per program
 - calculate account-to-pipeline waterfall values in real time
-- track actual live boards, actual funnel counts, actual pipeline, and actual bookings against the projected benchmark model for each program
+- track published boards, actual funnel counts, actual pipeline, and actual bookings against the projected benchmark model for each program
 - show quarter-only rollups, fiscal year-to-date totals, full-year totals, board-creation growth by quarter, projected-vs-actual totals, and shareable waterfall sections
 - link the hero `View waterfalls` CTA to a generated cumulative pipeline-waterfall image that updates from the live model
 - include an `Output to slides` control that exports the live planner state as slide-ready JSON and opens the generated Google Slides deck when a deck URL is available
@@ -63,12 +63,12 @@ The template is a single self-contained HTML file with:
 - per-program year dropdown with `2026`, `2027`, `2028`, and `2029`
 - Q1, Q2, Q3, and Q4 assignment per program
 - fiscal quarter sequencing that can wrap Q1 to the end of the company year
-- multi-select channel picker
+- collapsed multi-select channel picker that shows selected channels first and expands only when editing
 - standard benchmark model: `100% -> 30% -> 10% -> 50% -> 30%`
 - custom benchmark inputs
-- projected live board and actual live board tracking
-- actuals inputs for in-market accounts, engaged accounts, meetings, pipeline opportunities, closed deals, pipeline, and bookings
-- live full-year totals for programs, projected/actual live boards, pipeline goal, actual pipeline, bookings, actual bookings, and meetings
+- projected live board and published board tracking
+- actuals inputs for engaged accounts, meetings, pipeline opportunities, closed deals, pipeline, and bookings
+- live full-year totals for programs, projected boards, published boards, pipeline goal, actual pipeline, bookings, actual bookings, and meetings
 - quarterly rollup cards that show each fiscal period independently
 - quarter/YTD summary table with fiscal-period rows, year-to-date rows, projected values, and actual values
 - generated cumulative pipeline-waterfall image linked from the hero `View waterfalls` CTA
@@ -111,7 +111,7 @@ Before saving:
 - change the company year start to Q2 and verify the displayed period order becomes `Q2 -> Q3 -> Q4 -> Q1`
 - choose program years `2026`, `2027`, `2028`, and `2029` and verify the year appears in quarter rollups, waterfall sections, and sheet export payloads
 - select more than one channel and verify the program stores/exports all selected channels
-- enter projected live boards and actual live boards and verify board growth, attainment, quarter cards, and YTD totals update
+- enter projected live boards and published boards and verify board growth, attainment, quarter cards, and YTD totals update
 - enter actual pipeline and bookings and verify actual-vs-projected attainment updates
 - delete a program and verify the count, active editor, quarterly rollups, and waterfall sections update
 - choose each customer CSM and verify the waterfall sections show the selected CSM

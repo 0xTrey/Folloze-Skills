@@ -524,14 +524,25 @@
   .channel-picker {
     border: 1px solid #cce1f2;
     border-radius: 6px;
-    padding: 10px;
     background: #fff;
+    overflow: hidden;
   }
-  .channel-summary {
+  .channel-picker summary {
+    display: block;
     color: var(--flz-navy);
     font-weight: 900;
     font-size: 13px;
-    margin-bottom: 8px;
+    padding: 11px 12px;
+    cursor: pointer;
+  }
+  .channel-picker summary::-webkit-details-marker { display: none; }
+  .channel-picker summary::after {
+    content: "Edit";
+    float: right;
+    color: var(--flz-blue);
+    font-size: 11px;
+    letter-spacing: .07em;
+    text-transform: uppercase;
   }
   .channel-options {
     display: grid;
@@ -539,7 +550,7 @@
     gap: 6px 10px;
     max-height: 128px;
     overflow: auto;
-    padding-right: 4px;
+    padding: 0 10px 10px;
   }
   .channel-options label {
     display: flex;
@@ -1368,7 +1379,6 @@
     const actual = program.actual || {};
     return {
       liveBoards: Number(actual.liveBoards) || 0,
-      inMarket: Number(actual.inMarket) || 0,
       engaged: Number(actual.engaged) || 0,
       meetings: Number(actual.meetings) || 0,
       pipelineOpps: Number(actual.pipelineOpps) || 0,
@@ -1430,7 +1440,6 @@
       actual,
       variance: {
         liveBoards: actual.liveBoards - projectedBoards,
-        inMarket: actual.inMarket - inMarket,
         engaged: actual.engaged - engaged,
         meetings: actual.meetings - meetings,
         pipelineOpps: actual.pipelineOpps - pipelineOpps,
@@ -1440,7 +1449,6 @@
       },
       attainment: {
         liveBoards: attainment(actual.liveBoards, projectedBoards),
-        inMarket: attainment(actual.inMarket, inMarket),
         engaged: attainment(actual.engaged, engaged),
         meetings: attainment(actual.meetings, meetings),
         pipelineOpps: attainment(actual.pipelineOpps, pipelineOpps),
@@ -1464,7 +1472,6 @@
       acc.bookings += c.bookings;
       acc.projectedBoards += c.projectedBoards;
       acc.actualLiveBoards += c.actual.liveBoards;
-      acc.actualInMarket += c.actual.inMarket;
       acc.actualEngaged += c.actual.engaged;
       acc.actualMeetings += c.actual.meetings;
       acc.actualPipelineOpps += c.actual.pipelineOpps;
@@ -1472,7 +1479,7 @@
       acc.actualPipelineGoal += c.actual.pipelineGoal;
       acc.actualBookings += c.actual.bookings;
       return acc;
-    }, { programs: sourcePrograms.length, accounts: 0, inMarket: 0, engaged: 0, meetings: 0, pipelineOpps: 0, closedDeals: 0, pipelineGoal: 0, bookings: 0, projectedBoards: 0, actualLiveBoards: 0, actualInMarket: 0, actualEngaged: 0, actualMeetings: 0, actualPipelineOpps: 0, actualClosedDeals: 0, actualPipelineGoal: 0, actualBookings: 0 });
+    }, { programs: sourcePrograms.length, accounts: 0, inMarket: 0, engaged: 0, meetings: 0, pipelineOpps: 0, closedDeals: 0, pipelineGoal: 0, bookings: 0, projectedBoards: 0, actualLiveBoards: 0, actualEngaged: 0, actualMeetings: 0, actualPipelineOpps: 0, actualClosedDeals: 0, actualPipelineGoal: 0, actualBookings: 0 });
   }
 
   function programsForPeriod(year, quarter) {
@@ -1590,7 +1597,7 @@
       accounts: seed.accounts || 0,
       dealSize: seed.dealSize || 0,
       projectedBoards: seed.projectedBoards || 0,
-      actual: seed.actual ? { ...seed.actual } : { liveBoards: 0, inMarket: 0, engaged: 0, meetings: 0, pipelineOpps: 0, closedDeals: 0, pipelineGoal: 0, bookings: 0 },
+      actual: seed.actual ? { ...seed.actual } : { liveBoards: 0, engaged: 0, meetings: 0, pipelineOpps: 0, closedDeals: 0, pipelineGoal: 0, bookings: 0 },
       custom: seed.custom ? { ...seed.custom } : { ...standardBenchmarks }
     };
     programs.push(next);
@@ -1703,8 +1710,8 @@
     const disabled = program.locked ? 'disabled' : '';
     return `<div class="wide-field">
       <label>Channels</label>
-      <div class="channel-picker">
-        <div class="channel-summary">${escapeHtml(channelsLabel(program.channels))}</div>
+      <details class="channel-picker">
+        <summary>${escapeHtml(channelsLabel(program.channels))}</summary>
         <div class="channel-options">
           ${marketingChannels.map(channel => `
             <label>
@@ -1713,7 +1720,7 @@
             </label>
           `).join('')}
         </div>
-      </div>
+      </details>
     </div>`;
   }
 
@@ -1804,8 +1811,7 @@
         <h3>Actuals against projection</h3>
         <p class="hint">Populate actuals as programs launch. Attainment compares each actual value against the current modeled benchmark output.</p>
         <div class="actuals-grid">
-          ${inputField(program, 'actual.liveBoards', 'Actual Live Boards', actual.liveBoards, 'number', { min: 0, step: 1 })}
-          ${inputField(program, 'actual.inMarket', 'Actual In Market', actual.inMarket, 'number', { min: 0, step: 1 })}
+          ${inputField(program, 'actual.liveBoards', 'Published Boards', actual.liveBoards, 'number', { min: 0, step: 1 })}
           ${inputField(program, 'actual.engaged', 'Actual Engaged', actual.engaged, 'number', { min: 0, step: 1 })}
           ${inputField(program, 'actual.meetings', 'Actual Meetings', actual.meetings, 'number', { min: 0, step: 1 })}
           ${inputField(program, 'actual.pipelineOpps', 'Actual Pipeline Opps', actual.pipelineOpps, 'number', { min: 0, step: 1 })}
@@ -1825,7 +1831,7 @@
     const c = calculate(program);
     const actual = c.actual;
     return `
-      <span><em>Board creation</em><strong>${whole.format(actual.liveBoards)} / ${whole.format(c.projectedBoards)} · ${pct.format(c.attainment.liveBoards)}</strong></span>
+      <span><em>Published Boards</em><strong>${whole.format(actual.liveBoards)} / ${whole.format(c.projectedBoards)} · ${pct.format(c.attainment.liveBoards)}</strong></span>
       <span><em>Meeting attainment</em><strong>${whole.format(actual.meetings)} / ${whole.format(c.meetings)} · ${pct.format(c.attainment.meetings)}</strong></span>
       <span><em>Pipeline attainment</em><strong>${money(actual.pipelineGoal)} / ${money(c.pipelineGoal)} · ${pct.format(c.attainment.pipelineGoal)}</strong></span>
       <span><em>Bookings attainment</em><strong>${money(actual.bookings)} / ${money(c.bookings)} · ${pct.format(c.attainment.bookings)}</strong></span>
@@ -1850,7 +1856,7 @@
       ${waterfallPreviewRow('Pipeline opps', c.pipelineOpps, c.b.pipeline, c.pipelineOpps, maxStage)}
       ${waterfallPreviewRow('Closed deals', c.closedDeals, c.b.close, c.closedDeals, maxStage)}
       ${waterfallPreviewRow('Projected live boards', c.projectedBoards, null, c.projectedBoards, Math.max(maxStage, c.projectedBoards, 1))}
-      ${waterfallPreviewRow('Actual live boards', `${whole.format(c.actual.liveBoards)} · ${pct.format(c.attainment.liveBoards)}`, null, c.actual.liveBoards, Math.max(maxStage, c.projectedBoards, c.actual.liveBoards, 1))}
+      ${waterfallPreviewRow('Published Boards', `${whole.format(c.actual.liveBoards)} · ${pct.format(c.attainment.liveBoards)}`, null, c.actual.liveBoards, Math.max(maxStage, c.projectedBoards, c.actual.liveBoards, 1))}
       ${waterfallPreviewRow('Pipeline goal', money(c.pipelineGoal), null, c.pipelineOpps, maxStage)}
       ${waterfallPreviewRow('Actual pipeline', `${money(c.actual.pipelineGoal)} · ${pct.format(c.attainment.pipelineGoal)}`, null, c.actual.pipelineOpps, maxStage)}
       ${waterfallPreviewRow('Bookings', money(c.bookings), null, c.closedDeals, maxStage)}
@@ -1906,7 +1912,7 @@
         <strong>${money(qt.pipelineGoal)} pipeline</strong>
         <div class="quarter-metrics">
           <div><span>Projected boards</span><b>${whole.format(qt.projectedBoards)}</b></div>
-          <div><span>Actual live boards</span><b>${whole.format(qt.actualLiveBoards)}</b></div>
+          <div><span>Published Boards</span><b>${whole.format(qt.actualLiveBoards)}</b></div>
           <div><span>Board growth</span><b>${boardGrowth(visiblePeriods, index)}</b></div>
           <div><span>Meetings</span><b>${whole.format(qt.meetings)}</b></div>
           <div><span>Opps</span><b>${whole.format(qt.pipelineOpps)}</b></div>
@@ -1918,7 +1924,7 @@
     document.getElementById('portfolioCards').innerHTML = [
       ['Account coverage', [['Accounts targeted', whole.format(t.accounts)], ['Accounts in market', whole.format(t.inMarket)], ['Engaged accounts', whole.format(t.engaged)]]],
       ['Conversion output', [['Sales meetings', whole.format(t.meetings)], ['Pipeline opportunities', whole.format(t.pipelineOpps)], ['Closed deals', whole.format(t.closedDeals)]]],
-      ['Board scaling', [['Projected live boards', whole.format(t.projectedBoards)], ['Actual live boards', whole.format(t.actualLiveBoards)], ['Live board attainment', pct.format(attainment(t.actualLiveBoards, t.projectedBoards))]]],
+      ['Board scaling', [['Projected live boards', whole.format(t.projectedBoards)], ['Published Boards', whole.format(t.actualLiveBoards)], ['Published board attainment', pct.format(attainment(t.actualLiveBoards, t.projectedBoards))]]],
       ['Actual performance', [['Actual meetings', whole.format(t.actualMeetings)], ['Actual pipeline', money(t.actualPipelineGoal)], ['Actual bookings', money(t.actualBookings)]]],
       ['Full-year business value', [['Pipeline goal', money(t.pipelineGoal)], ['Bookings', money(t.bookings)], ['Programs modeled', whole.format(programs.length)]]]
     ].map(([title, rows]) => `<article class="summary-card"><h3>${title}</h3><dl>${rows.map(([k, v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join('')}</dl></article>`).join('');
@@ -1960,7 +1966,7 @@
     }).join('');
     document.getElementById('cumulativeSummary').innerHTML = `
       <table>
-        <thead><tr><th>Quarter / YTD view</th><th>Programs</th><th>Proj boards</th><th>Actual boards</th><th>Proj meetings</th><th>Actual meetings</th><th>Opps</th><th>Closed</th><th>Proj pipeline</th><th>Actual pipeline</th><th>Proj bookings</th><th>Actual bookings</th></tr></thead>
+        <thead><tr><th>Quarter / YTD view</th><th>Programs</th><th>Proj boards</th><th>Published Boards</th><th>Proj meetings</th><th>Actual meetings</th><th>Opps</th><th>Closed</th><th>Proj pipeline</th><th>Actual pipeline</th><th>Proj bookings</th><th>Actual bookings</th></tr></thead>
         <tbody>
           ${quarterAndYtdRows}
           <tr class="total-row"><td>Full year</td><td>${whole.format(t.programs)}</td><td>${whole.format(t.projectedBoards)}</td><td>${whole.format(t.actualLiveBoards)}</td><td>${whole.format(t.meetings)}</td><td>${whole.format(t.actualMeetings)}</td><td>${whole.format(t.pipelineOpps)}</td><td>${whole.format(t.closedDeals)}</td><td>${money(t.pipelineGoal)}</td><td>${money(t.actualPipelineGoal)}</td><td>${money(t.bookings)}</td><td>${money(t.actualBookings)}</td></tr>
@@ -1976,7 +1982,7 @@
     const svg = buildPipelineWaterfallSvg(t);
     image.src = `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`;
     if (caption) {
-      caption.textContent = `${whole.format(t.programs)} programs modeled across ${quarterSequence().join('-')} · ${whole.format(t.projectedBoards)} projected live boards · ${whole.format(t.actualLiveBoards)} actual live boards · ${money(t.pipelineGoal)} projected pipeline · ${money(t.actualPipelineGoal)} actual pipeline.`;
+      caption.textContent = `${whole.format(t.programs)} programs modeled across ${quarterSequence().join('-')} · ${whole.format(t.projectedBoards)} projected live boards · ${whole.format(t.actualLiveBoards)} published boards · ${money(t.pipelineGoal)} projected pipeline · ${money(t.actualPipelineGoal)} actual pipeline.`;
     }
   }
 
@@ -2043,7 +2049,7 @@
         ['Pipeline opportunities', whole.format(c.pipelineOpps), pct.format(c.b.pipeline)],
         ['Closed deals', whole.format(c.closedDeals), pct.format(c.b.close)],
         ['Projected live boards', whole.format(c.projectedBoards), 'Board creation plan'],
-        ['Actual live boards', whole.format(c.actual.liveBoards), `${pct.format(c.attainment.liveBoards)} attainment`],
+        ['Published Boards', whole.format(c.actual.liveBoards), `${pct.format(c.attainment.liveBoards)} attainment`],
         ['Average deal size', money(c.dealSize), 'Customer input'],
         ['Pipeline goal', money(c.pipelineGoal), 'Deal size x pipeline opps'],
         ['Actual pipeline', money(c.actual.pipelineGoal), `${pct.format(c.attainment.pipelineGoal)} attainment`],
@@ -2078,7 +2084,7 @@
       return `<section class="quarter-section" aria-label="${label} program waterfalls">
         <header>
           <h3>${label}</h3>
-          <p>${whole.format(quarterPrograms.length)} programs · ${whole.format(qt.actualLiveBoards)} actual live boards · ${money(qt.pipelineGoal)} projected pipeline · ${money(qt.actualPipelineGoal)} actual pipeline</p>
+          <p>${whole.format(quarterPrograms.length)} programs · ${whole.format(qt.actualLiveBoards)} published boards · ${money(qt.pipelineGoal)} projected pipeline · ${money(qt.actualPipelineGoal)} actual pipeline</p>
         </header>
         <div class="sections-grid">${cards}</div>
       </section>`;
@@ -2141,9 +2147,9 @@
       'Std Pipeline %', 'Std Close %', 'Custom In-Market %', 'Custom Engage %', 'Custom Meeting %', 'Custom Pipeline %',
       'Custom Close %', 'Selected In-Market %', 'Selected Engage %', 'Selected Meeting %', 'Selected Pipeline %',
       'Selected Close %', 'Accounts In Market', 'Engaged Accounts', 'Sales Meetings', 'Pipeline Opps', 'Closed Deals',
-      'Pipeline Goal', 'Bookings', 'Quarter', 'Program Year', 'Projected Live Boards', 'Actual Live Boards', 'Actual In Market', 'Actual Engaged',
+      'Pipeline Goal', 'Bookings', 'Quarter', 'Program Year', 'Projected Live Boards', 'Published Boards', 'Actual Engaged',
       'Actual Meetings', 'Actual Pipeline Opps', 'Actual Closed Deals', 'Actual Pipeline', 'Actual Bookings',
-      'Live Board Attainment', 'Pipeline Attainment', 'Bookings Attainment'
+      'Published Board Attainment', 'Pipeline Attainment', 'Bookings Attainment'
     ];
     return {
       ...base,
@@ -2192,7 +2198,6 @@
             program.programYear,
             program.calculations.projectedBoards,
             program.calculations.actual.liveBoards,
-            program.calculations.actual.inMarket,
             program.calculations.actual.engaged,
             program.calculations.actual.meetings,
             program.calculations.actual.pipelineOpps,
@@ -2225,7 +2230,7 @@
               ['Number of sales meetings that go into pipeline', program.calculations.pipelineOpps, program.assumptions.pipeline, '% conversion from sales meeting to pipeline'],
               ['Number of deals closed', program.calculations.closedDeals, program.assumptions.close, '% conversion from pipeline to deal close'],
               ['Projected live boards', program.calculations.projectedBoards, '', 'Board creation plan'],
-              ['Actual live boards', program.calculations.actual.liveBoards, program.calculations.attainment.liveBoards, 'Live board attainment'],
+              ['Published Boards', program.calculations.actual.liveBoards, program.calculations.attainment.liveBoards, 'Published board attainment'],
               ['Deal size', program.calculations.dealSize, '', ''],
               ['Pipeline goal', program.calculations.pipelineGoal, '', ''],
               ['Actual pipeline', program.calculations.actual.pipelineGoal, program.calculations.attainment.pipelineGoal, 'Actual vs projected pipeline'],

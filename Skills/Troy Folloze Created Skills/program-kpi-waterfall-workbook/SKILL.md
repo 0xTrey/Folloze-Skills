@@ -11,13 +11,13 @@ Create a customer-facing workbook that turns program assumptions into waterfall 
 
 - quarter, program type, name, segment, channels, content, and notes
 - program year dropdown values `2026`, `2027`, `2028`, and `2029`
-- projected live boards and actual live boards by program
-- actual in-market accounts, engaged accounts, meetings, pipeline opportunities, closed deals, pipeline, and bookings
+- projected live boards and published boards by program
+- actual engaged accounts, meetings, pipeline opportunities, closed deals, pipeline, and bookings
 - standard benchmark chain: `100% -> 30% -> 10% -> 50% -> 30%`
 - optional custom benchmark overrides per program
 - calculated accounts in market, engaged accounts, sales meetings, pipeline opportunities, closed deals, pipeline goal, and bookings
 - quarterly and full-year summaries for a one-year plan
-- quarter summaries for projected live boards, actual live boards, actual meetings, actual pipeline, and actual bookings
+- quarter summaries for projected live boards, published boards, actual meetings, actual pipeline, and actual bookings
 - as many program rows/sections as needed
 
 Current program type dropdown values:
@@ -95,8 +95,7 @@ If `python3` cannot import `openpyxl`, call `codex_app.load_workspace_dependenci
     "accounts_targeted": 1200,
     "avg_deal_size": 5000000,
     "projected_live_boards": 1,
-    "actual_live_boards": 0,
-    "actual_in_market": 0,
+    "published_boards": 0,
     "actual_engaged": 0,
     "actual_meetings": 0,
     "actual_pipeline_opps": 0,
@@ -128,7 +127,7 @@ The builder creates:
 Use the same row-level logic as the original model:
 
 - selected benchmark = custom value when `Benchmark Mode = Custom` and the custom cell is filled, otherwise the standard benchmark
-- live board attainment = actual live boards / projected live boards
+- published board attainment = published boards / projected live boards
 - accounts in market = accounts targeted x selected in-market %
 - engaged accounts = accounts in market x selected engage %
 - sales meetings = engaged accounts x selected meeting %

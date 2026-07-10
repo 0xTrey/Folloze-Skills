@@ -79,15 +79,14 @@ HEADERS = [
     "Quarter",
     "Program Year",
     "Projected Live Boards",
-    "Actual Live Boards",
-    "Actual In Market",
+    "Published Boards",
     "Actual Engaged",
     "Actual Meetings",
     "Actual Pipeline Opps",
     "Actual Closed Deals",
     "Actual Pipeline",
     "Actual Bookings",
-    "Live Board Attainment",
+    "Published Board Attainment",
     "Pipeline Attainment",
     "Bookings Attainment",
 ]
@@ -210,8 +209,7 @@ def build(output: Path, programs: list[dict], rows: int) -> None:
             p.get("quarter", "Q1") if p else None,
             p.get("program_year", "2026") if p else None,
             p.get("projected_live_boards"),
-            p.get("actual_live_boards", actual.get("liveBoards")),
-            p.get("actual_in_market", actual.get("inMarket")),
+            p.get("published_boards", p.get("actual_live_boards", actual.get("liveBoards"))),
             p.get("actual_engaged", actual.get("engaged")),
             p.get("actual_meetings", actual.get("meetings")),
             p.get("actual_pipeline_opps", actual.get("pipelineOpps")),
@@ -219,14 +217,14 @@ def build(output: Path, programs: list[dict], rows: int) -> None:
             p.get("actual_pipeline", actual.get("pipelineGoal")),
             p.get("actual_bookings", actual.get("bookings")),
             f'=IF($B{row}="","",IFERROR($AJ{row}/$AI{row},0))',
-            f'=IF($B{row}="","",IFERROR($AP{row}/$AE{row},0))',
-            f'=IF($B{row}="","",IFERROR($AQ{row}/$AF{row},0))',
+            f'=IF($B{row}="","",IFERROR($AO{row}/$AE{row},0))',
+            f'=IF($B{row}="","",IFERROR($AP{row}/$AF{row},0))',
         ]
         for col, value in enumerate(values, 1):
             cell = form.cell(row=row, column=col, value=value)
             cell.border = border
             cell.alignment = Alignment(wrap_text=True, vertical="center")
-            if 2 <= col <= 10 or 16 <= col <= 20 or 33 <= col <= 43:
+            if 2 <= col <= 10 or 16 <= col <= 20 or 33 <= col <= 42:
                 cell.fill = input_fill
             elif col >= 21 or 11 <= col <= 15:
                 cell.fill = calc_fill
@@ -245,17 +243,17 @@ def build(output: Path, programs: list[dict], rows: int) -> None:
             form.cell(row=row, column=col).number_format = "#,##0"
         for col in range(31, 33):
             form.cell(row=row, column=col).number_format = '"$"#,##0'
-        for col in range(35, 42):
+        for col in range(35, 41):
             form.cell(row=row, column=col).number_format = "#,##0"
-        for col in range(42, 44):
+        for col in range(41, 43):
             form.cell(row=row, column=col).number_format = '"$"#,##0'
-        for col in range(44, 47):
+        for col in range(43, 46):
             form.cell(row=row, column=col).number_format = "0%"
 
     form.freeze_panes = "A4"
     last_col = get_column_letter(len(HEADERS))
     form.auto_filter.ref = f"A3:{last_col}{max_rows + 3}"
-    set_col_widths(form, [12, 18, 24, 28, 30, 32, 36, 17, 16, 16] + [14] * 22 + [12, 14, 18, 17, 17, 17, 17, 18, 17, 18, 18, 18, 18, 18])
+    set_col_widths(form, [12, 18, 24, 28, 30, 32, 36, 17, 16, 16] + [14] * 22 + [12, 14, 18, 17, 17, 17, 18, 17, 18, 18, 18, 18, 18])
 
     headers = ["Waterfall Metric", "Calculated Value", "Selected Benchmark", "Benchmark / Formula"]
     block_height = 22
@@ -279,12 +277,12 @@ def build(output: Path, programs: list[dict], rows: int) -> None:
             ("Pipeline opportunities", "AC", "X", "Sales meetings x selected pipeline %"),
             ("Closed deals", "AD", "Y", "Pipeline opportunities x selected close %"),
             ("Projected live boards", "AI", "", "Board creation plan"),
-            ("Actual live boards", "AJ", "AR", "Actual board creation attainment"),
+            ("Published Boards", "AJ", "AQ", "Published board attainment"),
             ("Average deal size", "J", "", "Customer input"),
             ("Pipeline goal", "AE", "", "Average deal size x pipeline opportunities"),
-            ("Actual pipeline", "AP", "AS", "Actual vs projected pipeline"),
+            ("Actual pipeline", "AO", "AR", "Actual vs projected pipeline"),
             ("Bookings", "AF", "", "Average deal size x closed deals"),
-            ("Actual bookings", "AQ", "AT", "Actual vs projected bookings"),
+            ("Actual bookings", "AP", "AS", "Actual vs projected bookings"),
         ]
         for offset, (metric, value_col, bench_col, note) in enumerate(rowspec, 4):
             sections.cell(start + offset, 1, metric)
@@ -309,7 +307,7 @@ def build(output: Path, programs: list[dict], rows: int) -> None:
     for row in range(1, max_rows * block_height + 1):
         sections.row_dimensions[row].height = 22
 
-    quarter_summary.append(["Quarter", "Programs", "Accounts Targeted", "Projected Live Boards", "Actual Live Boards", "Sales Meetings", "Actual Meetings", "Pipeline Opps", "Closed Deals", "Pipeline Goal", "Actual Pipeline", "Bookings", "Actual Bookings"])
+    quarter_summary.append(["Quarter", "Programs", "Accounts Targeted", "Projected Live Boards", "Published Boards", "Sales Meetings", "Actual Meetings", "Pipeline Opps", "Closed Deals", "Pipeline Goal", "Actual Pipeline", "Bookings", "Actual Bookings"])
     style_header(quarter_summary[1])
     for idx, quarter in enumerate(QUARTERS, 2):
         quarter_summary.cell(idx, 1, quarter)
@@ -318,13 +316,13 @@ def build(output: Path, programs: list[dict], rows: int) -> None:
         quarter_summary.cell(idx, 4, f'=SUMIF(\'Customer Program Form\'!$AG:$AG,A{idx},\'Customer Program Form\'!$AI:$AI)')
         quarter_summary.cell(idx, 5, f'=SUMIF(\'Customer Program Form\'!$AG:$AG,A{idx},\'Customer Program Form\'!$AJ:$AJ)')
         quarter_summary.cell(idx, 6, f'=SUMIF(\'Customer Program Form\'!$AG:$AG,A{idx},\'Customer Program Form\'!$AB:$AB)')
-        quarter_summary.cell(idx, 7, f'=SUMIF(\'Customer Program Form\'!$AG:$AG,A{idx},\'Customer Program Form\'!$AM:$AM)')
+        quarter_summary.cell(idx, 7, f'=SUMIF(\'Customer Program Form\'!$AG:$AG,A{idx},\'Customer Program Form\'!$AL:$AL)')
         quarter_summary.cell(idx, 8, f'=SUMIF(\'Customer Program Form\'!$AG:$AG,A{idx},\'Customer Program Form\'!$AC:$AC)')
         quarter_summary.cell(idx, 9, f'=SUMIF(\'Customer Program Form\'!$AG:$AG,A{idx},\'Customer Program Form\'!$AD:$AD)')
         quarter_summary.cell(idx, 10, f'=SUMIF(\'Customer Program Form\'!$AG:$AG,A{idx},\'Customer Program Form\'!$AE:$AE)')
-        quarter_summary.cell(idx, 11, f'=SUMIF(\'Customer Program Form\'!$AG:$AG,A{idx},\'Customer Program Form\'!$AP:$AP)')
+        quarter_summary.cell(idx, 11, f'=SUMIF(\'Customer Program Form\'!$AG:$AG,A{idx},\'Customer Program Form\'!$AO:$AO)')
         quarter_summary.cell(idx, 12, f'=SUMIF(\'Customer Program Form\'!$AG:$AG,A{idx},\'Customer Program Form\'!$AF:$AF)')
-        quarter_summary.cell(idx, 13, f'=SUMIF(\'Customer Program Form\'!$AG:$AG,A{idx},\'Customer Program Form\'!$AQ:$AQ)')
+        quarter_summary.cell(idx, 13, f'=SUMIF(\'Customer Program Form\'!$AG:$AG,A{idx},\'Customer Program Form\'!$AP:$AP)')
     full_row = len(QUARTERS) + 2
     quarter_summary.cell(full_row, 1, "Full Year")
     for col in range(2, 14):
