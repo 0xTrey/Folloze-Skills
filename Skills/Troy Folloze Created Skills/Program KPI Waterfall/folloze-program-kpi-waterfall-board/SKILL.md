@@ -56,7 +56,9 @@ The Vercel app provides:
 - email-address login with a signed session cookie
 - customer board creation from the dashboard
 - ownership checks so an email only sees its own boards
-- `/boards/[boardId]` hosted planner pages
+- `/boards/[boardId]` hosted pages that redirect to the full skill-template board runtime
+- the copied skill template at `apps/jdp-board-portal/public/program-kpi-waterfall-board-template.html`
+- Vercel API-backed replacements for the board template's shared save/load hooks
 - local browser autosave plus server persistence
 - private Vercel Blob storage in production through `BLOB_READ_WRITE_TOKEN`
 - local `.data/` JSON fallback for development
