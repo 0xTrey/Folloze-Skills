@@ -26,7 +26,7 @@ Build a Folloze MCP board that gives customers the same capabilities as the prog
 - include an `Export PDF` control that generates and downloads a full-board PDF from the live board content
 - autosave program inputs, quarter settings, active program order, CSM selection, actuals, and benchmark changes to browser `localStorage`
 - when deployed with the state web app, save and restore the same board state from shared durable Google Drive storage so users can return to the board later from another session
-- for customer-facing boards that must maintain history across devices/users, create or link the board through the Vercel app in `troy-folloze-customer-success-vercel-projects/apps/jdp-board-portal`; it provides email login, per-user board ownership, local autosave, and Vercel Blob-backed durable state
+- for customer-facing boards that must maintain history across devices/users, create or link the board through the Vercel app in `troy-folloze-customer-success-vercel-projects/apps/jdp-board-portal`; it provides email login, per-user board ownership, local autosave, and private Vercel Blob-backed durable state
 
 ## Required MCP Flow
 
@@ -58,14 +58,14 @@ The Vercel app provides:
 - ownership checks so an email only sees its own boards
 - `/boards/[boardId]` hosted planner pages
 - local browser autosave plus server persistence
-- Vercel Blob storage in production through `BLOB_READ_WRITE_TOKEN`
+- private Vercel Blob storage in production through `BLOB_READ_WRITE_TOKEN`
 - local `.data/` JSON fallback for development
 
 Vercel project setup:
 
 - Root Directory: `apps/jdp-board-portal`
 - `AUTH_SECRET`: long random session-signing secret
-- `BLOB_READ_WRITE_TOKEN`: Vercel Blob read/write token
+- `BLOB_READ_WRITE_TOKEN`: private Vercel Blob read/write token
 
 Use this hosted path for customer-facing board links when the user says the board must remember edits after returning later, must connect to a customer login, or must preserve history across sessions.
 
