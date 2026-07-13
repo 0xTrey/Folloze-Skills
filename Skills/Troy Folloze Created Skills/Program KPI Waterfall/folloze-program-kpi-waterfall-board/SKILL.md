@@ -107,7 +107,7 @@ The template is a single self-contained HTML file with:
 - slide-output button that downloads the current planner state as `folloze-program-kpi-slide-output.json` and opens the verified Google Slides deck URL
 - sheet-output button that submits the current planner state to the configured sheet-builder web app; the web app copies the JDP template workbook, writes `Customer Program Form` rows and `Programs and KPIs` sections from the live board data, then opens the generated customer-named Google Sheet
 - the visible `Output to sheets` button must never download a JSON file as its normal behavior; if the sheet-builder endpoint is missing, show a setup-needed state rather than opening the generic template or downloading JSON
-- PDF-output button that loads the PDF renderer on demand, hides interactive controls during capture, and downloads a full-board `.pdf` while preserving program, rollup, and waterfall sections
+- PDF-output button that loads the PDF renderer on demand, hides interactive controls during capture, condenses charts/images/tables into a standard 8.5x11 portrait layout, and downloads a full-board `.pdf` while preserving program, rollup, and waterfall sections
 - local autosave and restore from `localStorage` for all user-entered planner state
 - shared durable save/load through `BOARD_STATE_ENDPOINT_URL_PLACEHOLDER` when the Apps Script state web app has been deployed
 - analytics wiring for CTAs, nav, tab switches, model updates, add/remove actions
@@ -157,6 +157,7 @@ Before saving:
 - click `Output to sheets` and verify it calls analytics, posts the board payload to the sheet-builder endpoint, and opens a newly generated customer workbook populated from the board data
 - confirm `Output to sheets` does not download `folloze-program-kpi-sheet-output.json` from the live board
 - click `Export PDF` and verify it calls analytics, builds the PDF, and downloads a `.pdf` file
+- confirm the exported PDF uses standard letter portrait sizing with condensed visuals/tables so numbers and images fit within page bounds
 - edit a program, refresh the browser, and verify the program values restore from local storage
 - when the state endpoint is deployed, edit a program, wait for autosave, reopen the board URL in a fresh session, and verify the latest shared state loads
 - confirm CTA buttons and meaningful interactions call `flzAnalytic`
