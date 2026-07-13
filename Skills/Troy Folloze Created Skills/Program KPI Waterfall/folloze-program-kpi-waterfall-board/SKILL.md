@@ -23,6 +23,7 @@ Build a Folloze MCP board that gives customers the same capabilities as the prog
 - link the hero `View waterfalls` CTA to a generated cumulative pipeline-waterfall image that updates from the live model
 - include an `Output to slides` control that exports the live planner state as slide-ready JSON and opens the generated Google Slides deck when a deck URL is available
 - include an `Output to sheets` control that exports the live planner state as sheet-ready JSON and opens the generated Google Sheet when a sheet URL is available
+- include a `Pull Impact Dashboard` control that filters the configured Salesforce Impact Dashboard and customer report by the board customer name and renders the view in an Impact Dashboard section with an open-in-Salesforce fallback
 
 ## Required MCP Flow
 
@@ -37,9 +38,10 @@ Build a Folloze MCP board that gives customers the same capabilities as the prog
 7. Replace every `CUSTOMER_NAME_PLACEHOLDER` token with the HTML-escaped customer name.
 8. If a Google Slides deck has been generated, replace `SLIDES_DECK_URL_PLACEHOLDER` with the verified Google Slides edit URL. If no deck exists yet, leave the placeholder in the skill template but do not save a board with a broken external link.
 9. If a Google Sheet output has been generated, copy the full JDP template workbook, title the copy with the customer name, populate `Customer Program Form` and `Programs and KPIs` using the board payload, and replace `SHEETS_OUTPUT_URL_PLACEHOLDER` with the verified Google Sheets edit URL. If no sheet exists yet, leave the placeholder in the skill template but do not save a board with a broken external link.
-10. Keep the returned `themeId` for save.
-11. QA the local HTML before save.
-12. Save with `save_folloze_board_from_file`.
+10. Replace `SALESFORCE_IMPACT_DASHBOARD_URL_PLACEHOLDER` with the verified Salesforce Impact Dashboard URL and `SALESFORCE_CUSTOMER_REPORT_URL_PLACEHOLDER` with the verified Salesforce customer report URL. The current default internal Impact Dashboard is `https://folloze.my.salesforce.com/lightning/r/Dashboard/01Z2I000000ls2WUAQ/view`; the customer report fallback is `https://folloze.my.salesforce.com/lightning/r/Report/00OQj00000fvQO3MAM/view`.
+11. Keep the returned `themeId` for save.
+12. QA the local HTML before save.
+13. Save with `save_folloze_board_from_file`.
 
 ## Template
 
@@ -76,6 +78,7 @@ The template is a single self-contained HTML file with:
 - overflow-safe number formatting so large values fit inside cards and tables
 - slide-output button that downloads the current planner state as `folloze-program-kpi-slide-output.json` and opens the verified Google Slides deck URL
 - sheet-output button that downloads the current planner state as `folloze-program-kpi-sheet-output.json` shaped for `Customer Program Form` and `Programs and KPIs`, then opens the verified customer-named JDP-template Google Sheet URL
+- impact-dashboard button and section that use the customer name in the hero title to filter Salesforce with `fv0=<customer name>`, embed the configured Impact Dashboard, and expose a direct Salesforce link when Lightning blocks iframe rendering
 - analytics wiring for CTAs, nav, tab switches, model updates, add/remove actions
 - local `flzAnalytic` fallback for browser QA
 
@@ -100,6 +103,7 @@ Before saving:
 - confirm the hero headline includes the customer name
 - confirm any saved board no longer contains `SLIDES_DECK_URL_PLACEHOLDER` if the slide-output button is visible
 - confirm any saved board no longer contains `SHEETS_OUTPUT_URL_PLACEHOLDER` if the sheet-output button is visible
+- confirm any saved board no longer contains `SALESFORCE_IMPACT_DASHBOARD_URL_PLACEHOLDER` or `SALESFORCE_CUSTOMER_REPORT_URL_PLACEHOLDER` if the impact-dashboard button is visible
 - confirm there are no placeholder `href="#"` or `javascript:void(0)` links
 - render desktop and mobile widths
 - confirm no horizontal overflow at 390px and 320px
@@ -120,6 +124,7 @@ Before saving:
 - click `View waterfalls` and verify it lands on the cumulative pipeline-waterfall image, not only the detailed waterfall section
 - click `Output to slides` and verify it calls analytics, exports JSON, and opens the verified deck URL when present
 - click `Output to sheets` and verify it calls analytics, exports JSON, and opens the verified JDP-template sheet URL when present
+- click `Pull Impact Dashboard` and verify the Impact Dashboard section scrolls into view, the iframe/link URLs include `fv0=<customer name>`, and the open-in-Salesforce fallback is available
 - confirm CTA buttons and meaningful interactions call `flzAnalytic`
 
 Suggested local Playwright-style check:
