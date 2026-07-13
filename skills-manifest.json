@@ -89,7 +89,7 @@
     },
     {
       "name": "folloze-program-kpi-waterfall-board",
-      "path": "Skills/Troy Folloze Created Skills/folloze-program-kpi-waterfall-board",
+      "path": "Skills/Troy Folloze Created Skills/Program KPI Waterfall/folloze-program-kpi-waterfall-board",
       "enabled": true,
       "requires_restart": true
     },
@@ -125,7 +125,7 @@
     },
     {
       "name": "program-kpi-waterfall-workbook",
-      "path": "Skills/Troy Folloze Created Skills/program-kpi-waterfall-workbook",
+      "path": "Skills/Troy Folloze Created Skills/Program KPI Waterfall/program-kpi-waterfall-workbook",
       "enabled": true,
       "requires_restart": true
     },
