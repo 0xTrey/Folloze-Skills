@@ -23,7 +23,7 @@ Build a Folloze MCP board that gives customers the same capabilities as the prog
 - link the hero `View waterfalls` CTA to a generated cumulative pipeline-waterfall image that updates from the live model
 - include an `Output to slides` control that exports the live planner state as slide-ready JSON and opens the generated Google Slides deck when a deck URL is available
 - include an `Output to sheets` control that posts the live planner state to the sheet-builder web app, copies the JDP template workbook, populates the customer-specific program tabs, and opens the generated customer Google Sheet
-- include an `Export PDF` control that opens the browser print/save-to-PDF flow with print-specific styling for the full board
+- include an `Export PDF` control that generates and downloads a full-board PDF from the live board content
 
 ## Required MCP Flow
 
@@ -78,7 +78,7 @@ The template is a single self-contained HTML file with:
 - slide-output button that downloads the current planner state as `folloze-program-kpi-slide-output.json` and opens the verified Google Slides deck URL
 - sheet-output button that submits the current planner state to the configured sheet-builder web app; the web app copies the JDP template workbook, writes `Customer Program Form` rows and `Programs and KPIs` sections from the live board data, then opens the generated customer-named Google Sheet
 - the visible `Output to sheets` button must never download a JSON file as its normal behavior; if the sheet-builder endpoint is missing, show a setup-needed state rather than opening the generic template or downloading JSON
-- PDF-output button that calls the browser print/save-to-PDF flow and uses print CSS to hide interactive controls while preserving program, rollup, and waterfall sections
+- PDF-output button that loads the PDF renderer on demand, hides interactive controls during capture, and downloads a full-board `.pdf` while preserving program, rollup, and waterfall sections
 - analytics wiring for CTAs, nav, tab switches, model updates, add/remove actions
 - local `flzAnalytic` fallback for browser QA
 
@@ -124,7 +124,7 @@ Before saving:
 - click `Output to slides` and verify it calls analytics, exports JSON, and opens the verified deck URL when present
 - click `Output to sheets` and verify it calls analytics, posts the board payload to the sheet-builder endpoint, and opens a newly generated customer workbook populated from the board data
 - confirm `Output to sheets` does not download `folloze-program-kpi-sheet-output.json` from the live board
-- click `Export PDF` and verify it calls analytics and opens the browser print/save-to-PDF flow
+- click `Export PDF` and verify it calls analytics, builds the PDF, and downloads a `.pdf` file
 - confirm CTA buttons and meaningful interactions call `flzAnalytic`
 
 Suggested local Playwright-style check:

@@ -1088,6 +1088,20 @@
       width: 100% !important;
     }
   }
+  body.pdf-exporting {
+    background: #ffffff !important;
+  }
+  body.pdf-exporting .topbar,
+  body.pdf-exporting .hero-actions,
+  body.pdf-exporting .section-actions,
+  body.pdf-exporting .list-actions,
+  body.pdf-exporting .delete-tab-btn,
+  body.pdf-exporting .drag-handle {
+    display: none !important;
+  }
+  body.pdf-exporting .program-list {
+    position: static !important;
+  }
 </style>
 
 <a href="#planner" class="skip-link">Skip to planner</a>
@@ -2405,15 +2419,62 @@
     safeAnalytic('sheets_export', { text: 'Google Sheets output', area: 'sheet output', sheetBuilderConfigured: String(canUseSheetBuilder()) });
   }
 
-  function exportPdfContent(button) {
+  const pdfLibraryUrl = 'https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js';
+  let pdfLibraryPromise = null;
+
+  function loadPdfLibrary() {
+    if (window.html2pdf) return Promise.resolve();
+    if (pdfLibraryPromise) return pdfLibraryPromise;
+    pdfLibraryPromise = new Promise((resolve, reject) => {
+      const script = document.createElement('script');
+      script.src = pdfLibraryUrl;
+      script.async = true;
+      script.onload = resolve;
+      script.onerror = () => reject(new Error('PDF generator failed to load'));
+      document.body.appendChild(script);
+    });
+    return pdfLibraryPromise;
+  }
+
+  function pdfFileName() {
+    const name = customerNameForSheet();
+    const base = name === 'Customer' ? 'folloze-joint-deployment-program-template-board' : `${name}-joint-deployment-program`;
+    return `${base.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')}.pdf`;
+  }
+
+  async function exportPdfContent(button) {
     const original = button.textContent;
-    button.textContent = 'Preparing PDF';
+    button.textContent = 'Building PDF';
+    button.disabled = true;
     flzAnalytic('cta_click', { text: original.trim(), area: 'pdf output' }, button);
-    safeAnalytic('pdf_export', { text: 'Full board PDF export', area: 'pdf output', customerName: customerNameForSheet() });
-    setTimeout(() => {
-      window.print();
-      button.textContent = original;
-    }, 120);
+    safeAnalytic('pdf_export_start', { text: 'Full board PDF export', area: 'pdf output', customerName: customerNameForSheet() });
+    try {
+      await loadPdfLibrary();
+      document.body.classList.add('pdf-exporting');
+      await new Promise(resolve => requestAnimationFrame(resolve));
+      const source = document.getElementById('main');
+      const options = {
+        margin: [0.35, 0.35, 0.35, 0.35],
+        filename: pdfFileName(),
+        image: { type: 'jpeg', quality: 0.96 },
+        html2canvas: { scale: 2, useCORS: true, backgroundColor: '#ffffff', scrollY: 0 },
+        jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' },
+        pagebreak: { mode: ['css', 'legacy'], avoid: ['.stat', '.summary-card', '.quarter-section', '.visual-card'] }
+      };
+      await window.html2pdf().set(options).from(source).save();
+      safeAnalytic('pdf_export_complete', { text: 'Full board PDF downloaded', area: 'pdf output', customerName: customerNameForSheet() });
+      button.textContent = 'PDF downloaded';
+    } catch (error) {
+      console.error(error);
+      button.textContent = 'PDF unavailable';
+      safeAnalytic('pdf_export_error', { text: error.message || 'PDF export failed', area: 'pdf output', customerName: customerNameForSheet() });
+    } finally {
+      document.body.classList.remove('pdf-exporting');
+      setTimeout(() => {
+        button.textContent = original;
+        button.disabled = false;
+      }, 1800);
+    }
   }
 
   function render() {
