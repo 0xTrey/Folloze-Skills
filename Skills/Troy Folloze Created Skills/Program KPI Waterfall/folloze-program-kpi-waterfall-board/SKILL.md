@@ -26,7 +26,7 @@ Build a Folloze MCP board that gives customers the same capabilities as the prog
 
 ## Required MCP Flow
 
-1. Ask for the customer's name if the user has not already provided it. Do not save a board with the literal `CUSTOMER_NAME_PLACEHOLDER`.
+1. Ask for the customer's name if the user has not already provided it. Use it for customer-specific exports and, when appropriate, the customer name/logo placeholder near the board title.
 2. Read the active Folloze landing page creation guide with `get_folloze_landing_page_creation_guide`.
 3. Ask the user whether to use the Folloze company theme before calling `get_company_theme`.
    - Recommend `yes` for Folloze-owned/customer-planning boards.
@@ -34,7 +34,7 @@ Build a Folloze MCP board that gives customers the same capabilities as the prog
 4. Call `get_company_theme` with the user-authorized `use_folloze_theme` value.
 5. Copy `assets/program-kpi-waterfall-board-template.html` to a durable workspace path.
 6. Replace `THEME_URL_PLACEHOLDER` in the copied HTML with the returned `themeUrl`.
-7. Replace every `CUSTOMER_NAME_PLACEHOLDER` token with the HTML-escaped customer name.
+7. Keep the hero headline as the neutral 12-month JDP planning headline. If creating a customer-specific derivative, update the customer name/logo placeholder with the HTML-escaped customer name.
 8. If a Google Slides deck has been generated, replace `SLIDES_DECK_URL_PLACEHOLDER` with the verified Google Slides edit URL. If no deck exists yet, leave the placeholder in the skill template but do not save a board with a broken external link.
 9. Deploy `assets/google-sheets-output-webapp.gs` as a Google Apps Script web app with access to the Folloze Google Drive account. Replace `SHEET_BUILDER_ENDPOINT_URL_PLACEHOLDER` with the deployed web app URL. The web app copies the JDP template workbook, titles the copy with the customer name, populates `Customer Program Form` and `Programs and KPIs` from the board payload, and returns the generated customer workbook URL. Do not use `SHEETS_OUTPUT_URL_PLACEHOLDER` as a generic template link for the `Output to sheets` button.
 10. Keep the returned `themeId` for save.
@@ -54,7 +54,7 @@ Resolve the template path from the installed skill directory first. If the skill
 The template is a single self-contained HTML file with:
 
 - Folloze-branded header and first-screen planner positioning
-- customer-name placeholder in the hero headline and subcopy
+- neutral 12-month planning headline and subcopy with actual-data reconciliation language
 - customer CSM dropdown in the top-right header
 - interactive program list
 - add, duplicate, drag-to-reorder, and delete program controls
@@ -86,7 +86,7 @@ Use customer-ready language. Keep the page focused on the planner itself, not on
 
 Preferred framing:
 
-- `Plan [Customer]'s one-year program mix from engagement to pipeline.`
+- `Plan your next 12 months program mix from engagement to pipeline.`
 - `Build the year by quarter, tune benchmarks, model the waterfall.`
 - `Every quarter gets ready-to-share program waterfalls.`
 
@@ -97,8 +97,8 @@ Avoid visible terms such as `demo`, `template`, `internal`, `agent`, or `proof o
 Before saving:
 
 - confirm the theme link in `<head>` is no longer `THEME_URL_PLACEHOLDER`
-- confirm the HTML no longer contains `CUSTOMER_NAME_PLACEHOLDER`
-- confirm the hero headline includes the customer name
+- confirm the customer name/logo placeholder is generic for the reusable template board or customer-specific for a derivative board
+- confirm the hero headline says `Plan your next 12 months program mix from engagement to pipeline.`
 - confirm any saved board no longer contains `SLIDES_DECK_URL_PLACEHOLDER` if the slide-output button is visible
 - confirm any saved board no longer contains `SHEET_BUILDER_ENDPOINT_URL_PLACEHOLDER` when the sheet-output button is expected to create Google Sheets directly
 - confirm there are no placeholder `href="#"` or `javascript:void(0)` links

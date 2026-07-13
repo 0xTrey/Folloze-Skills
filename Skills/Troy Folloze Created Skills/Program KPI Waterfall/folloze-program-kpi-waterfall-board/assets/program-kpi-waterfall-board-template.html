@@ -1095,8 +1095,8 @@
     <div class="hero-inner">
       <div>
         <div class="eyebrow">Build. Activate. Signal.</div>
-        <h1 id="hero-title">Plan CUSTOMER_NAME_PLACEHOLDER's one-year program mix from engagement to pipeline.</h1>
-        <p>Use this waterfall model to plan CUSTOMER_NAME_PLACEHOLDER's customer programs by quarter. Add program sections, choose standard or custom benchmarks, and see quarterly, cumulative, and full-year impact update in real time.</p>
+        <h1 id="hero-title">Plan your next 12 months program mix from engagement to pipeline.</h1>
+        <p>Use this waterfall model to plan programs by quarter. Add program sections, choose standard or custom benchmarks, and see quarterly, cumulative, and full-year impact update in real time. Reconcile programs with your actual data once a program is live to compare against projections.</p>
         <div class="hero-actions">
           <a class="primary-btn" href="#add-program-section" onclick="return scrollToPrograms(this, event, 'main hero banner', 'cta_click')">Start planning</a>
           <a class="secondary-btn" href="#pipelineWaterfallImage" onclick="return viewWaterfallsImage(this, event)">View waterfalls</a>
@@ -1365,8 +1365,12 @@
   function customerNameFromHero() {
     const headline = document.getElementById('hero-title').textContent.trim();
     const match = headline.match(/^Plan (.+?)'s one-year/i);
-    if (!match) return 'Customer';
-    const name = match[1].replace(/^your customer$/i, 'Customer').trim();
+    const placeholder = document.querySelector('.customer-placeholder strong');
+    const placeholderName = placeholder ? placeholder.textContent.trim() : '';
+    const name = (match ? match[1] : placeholderName)
+      .replace(/^your customer$/i, 'Customer')
+      .replace(/^customer name\s*\/\s*logo$/i, 'Customer')
+      .trim();
     return name || 'Customer';
   }
 

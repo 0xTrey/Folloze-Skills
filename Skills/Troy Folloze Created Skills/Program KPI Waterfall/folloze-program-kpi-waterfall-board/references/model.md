@@ -50,7 +50,7 @@ Each interaction should either track `cta_click` when it is a CTA/button or a de
 
 ## Customer Name Personalization
 
-Before saving a Folloze board, ask for the customer's name if it is not already provided. Replace `CUSTOMER_NAME_PLACEHOLDER` in the HTML template with the customer name so the first viewport is personalized.
+Before saving a Folloze board, ask for the customer's name if it is not already provided. Keep the reusable template hero neutral, and use the customer name for exports plus the customer name/logo placeholder when creating a customer-specific derivative.
 
 ## Program Type Options
 
