@@ -1227,19 +1227,18 @@
       <div>
         <div class="eyebrow">Salesforce impact</div>
         <h2 id="impact-dashboard-title">Pull the customer Impact Dashboard into this plan.</h2>
-        <p>When the Salesforce account name matches the customer name on this board, the Impact Dashboard opens filtered to that customer. If Salesforce blocks embedded display, use the open-in-Salesforce button.</p>
+        <p>When the Salesforce account name matches the customer name on this board, the Impact Dashboard loads filtered to that customer inside this section.</p>
       </div>
       <button class="primary-btn" type="button" onclick="loadImpactDashboard(this, event, 'impact dashboard', 'cta_click')">Pull Impact Dashboard</button>
     </div>
     <div class="impact-panel">
       <div class="impact-toolbar">
         <p id="impactDashboardStatus">Impact Dashboard has not been loaded yet.</p>
-        <a class="secondary-btn" id="impactDashboardLink" href="SALESFORCE_IMPACT_DASHBOARD_URL_PLACEHOLDER" target="_blank" rel="noopener" onclick="flzAnalytic('cta_click', { text: this.innerText.trim(), area: 'impact dashboard' }, this)">Open in Salesforce</a>
       </div>
       <div class="impact-frame-wrap" id="impactDashboardFrameWrap">
         <div class="impact-empty">
           <strong>Connect to Salesforce to view customer impact.</strong>
-          <p>Click Pull Impact Dashboard to match this board's customer name against the Salesforce report and load the Impact Dashboard view.</p>
+          <p>Click Pull Impact Dashboard to match this board's customer name and load the Impact Dashboard view.</p>
           <button class="primary-btn" type="button" onclick="loadImpactDashboard(this, event, 'impact dashboard empty state', 'cta_click')">Pull Impact Dashboard</button>
         </div>
       </div>
@@ -1401,7 +1400,6 @@
   const slidesDeckUrl = 'SLIDES_DECK_URL_PLACEHOLDER';
   const sheetsOutputUrl = 'SHEETS_OUTPUT_URL_PLACEHOLDER';
   const salesforceImpactDashboardUrl = 'SALESFORCE_IMPACT_DASHBOARD_URL_PLACEHOLDER';
-  const salesforceCustomerReportUrl = 'SALESFORCE_CUSTOMER_REPORT_URL_PLACEHOLDER';
 
   function money(value) {
     const amount = Number(value) || 0;
@@ -1433,35 +1431,27 @@
   function impactDashboardUrls() {
     const customerName = customerNameFromHero();
     const dashboardUrl = salesforceUrlWithCustomerFilter(salesforceImpactDashboardUrl, customerName);
-    const reportUrl = salesforceUrlWithCustomerFilter(salesforceCustomerReportUrl, customerName);
-    return { customerName, dashboardUrl, reportUrl, preferredUrl: dashboardUrl || reportUrl };
+    return { customerName, dashboardUrl, preferredUrl: dashboardUrl };
   }
 
   function loadImpactDashboard(button, event, area = 'impact dashboard', action = 'cta_click') {
     if (event) event.preventDefault();
-    const { customerName, dashboardUrl, reportUrl, preferredUrl } = impactDashboardUrls();
+    const { customerName, dashboardUrl, preferredUrl } = impactDashboardUrls();
     const section = document.getElementById('impact-dashboard');
     const status = document.getElementById('impactDashboardStatus');
-    const link = document.getElementById('impactDashboardLink');
     const wrap = document.getElementById('impactDashboardFrameWrap');
     safeAnalytic(action, { text: button ? button.innerText.trim() : 'Pull Impact Dashboard', area, customerName }, button);
     if (section) {
       section.scrollIntoView({ behavior: 'smooth', block: 'start' });
       history.pushState(null, '', '#impact-dashboard');
     }
-    if (!preferredUrl || !wrap || !status || !link) {
+    if (!preferredUrl || !wrap || !status) {
       if (status) status.textContent = 'Salesforce Impact Dashboard URL is not configured for this board yet.';
       return false;
     }
-    link.href = preferredUrl;
     status.textContent = `Loading Impact Dashboard for ${customerName}. Salesforce may ask you to sign in.`;
-    wrap.innerHTML = `<iframe title="Salesforce Impact Dashboard for ${escapeHtml(customerName)}" src="${escapeHtml(preferredUrl)}" loading="lazy"></iframe>
-      <div class="impact-empty">
-        <strong>Having trouble seeing the embedded Salesforce view?</strong>
-        <p>Salesforce Lightning may block embedded dashboards in some browsers. The button above opens the same customer-filtered view directly in Salesforce.</p>
-        ${reportUrl ? `<a class="secondary-btn" href="${escapeHtml(reportUrl)}" target="_blank" rel="noopener" onclick="flzAnalytic('cta_click', { text: this.innerText.trim(), area: 'impact dashboard' }, this)">Open customer report</a>` : ''}
-      </div>`;
-    safeAnalytic('impact_dashboard_load', { text: customerName, area: 'impact dashboard', dashboardUrl, reportUrl });
+    wrap.innerHTML = `<iframe title="Salesforce Impact Dashboard for ${escapeHtml(customerName)}" src="${escapeHtml(preferredUrl)}" loading="lazy"></iframe>`;
+    safeAnalytic('impact_dashboard_load', { text: customerName, area: 'impact dashboard', dashboardUrl });
     return false;
   }
 
