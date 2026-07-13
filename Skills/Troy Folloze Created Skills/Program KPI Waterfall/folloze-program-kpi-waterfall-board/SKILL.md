@@ -149,7 +149,7 @@ NODE /absolute/path/to/copied-board.html
 
 Use `save_folloze_board_from_file` with:
 
-- `name`: a clear board name, usually `Program KPI Waterfall Planner`
+- `name`: `Folloze Joint Deployment Program Template Board` for the reusable JDP template board, or a customer-specific derivative name when the user asks for a named customer board
 - `path`: absolute path to the QA'd local HTML file
 - `themeId`: returned from `get_company_theme`
 - `analyticsAcknowledgements.readGuide`: true only after reading the MCP guide
