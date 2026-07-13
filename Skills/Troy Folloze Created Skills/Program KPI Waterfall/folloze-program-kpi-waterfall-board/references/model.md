@@ -44,7 +44,7 @@ The board should show:
 - switch benchmark mode between Standard and Custom
 - edit custom benchmark values
 - output to slides by exporting the current planner state and opening the generated Google Slides deck URL
-- output to sheets by exporting the current planner state and opening the generated JDP-template Google Sheet URL
+- output to sheets by posting the current planner state to the sheet-builder web app, copying the JDP template workbook, and opening the generated customer workbook populated from the board data
 
 Each interaction should either track `cta_click` when it is a CTA/button or a descriptive custom event such as `model_update`, `tab-switch`, `program_add`, `program_remove`, `slides_export`, or `sheets_export`.
 

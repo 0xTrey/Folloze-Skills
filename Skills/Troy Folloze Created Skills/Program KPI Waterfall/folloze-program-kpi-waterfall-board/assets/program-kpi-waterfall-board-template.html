@@ -1421,6 +1421,8 @@
   const pct = new Intl.NumberFormat('en-US', { style: 'percent', maximumFractionDigits: 0 });
   const slidesDeckUrl = 'SLIDES_DECK_URL_PLACEHOLDER';
   const sheetsOutputUrl = 'SHEETS_OUTPUT_URL_PLACEHOLDER';
+  const sheetBuilderEndpoint = 'SHEET_BUILDER_ENDPOINT_URL_PLACEHOLDER';
+  const sheetTemplateUrl = 'https://docs.google.com/spreadsheets/d/1IQNrquCt4rRdaUcSAiUvMLf1Icu6YOzuikSQLYpIvyQ/edit';
   const salesforceImpactDashboardUrl = 'SALESFORCE_IMPACT_DASHBOARD_URL_PLACEHOLDER';
 
   function money(value) {
@@ -2320,7 +2322,9 @@
     return {
       ...base,
       customerName: customerNameForSheet(),
-      outputWorkbookUrl: sheetsOutputUrl,
+      outputWorkbookUrl: '',
+      templateWorkbookUrl: sheetTemplateUrl,
+      sheetBuilderEndpoint,
       templateSourceTabs: ['Programs and KPIs', 'Customer Program Form'],
       outputTabs: {
         customerProgramForm: {
@@ -2420,6 +2424,25 @@
     URL.revokeObjectURL(url);
   }
 
+  function canUseSheetBuilder() {
+    return Boolean(sheetBuilderEndpoint && !sheetBuilderEndpoint.includes('PLACEHOLDER'));
+  }
+
+  function submitSheetBuilder(payload) {
+    const form = document.createElement('form');
+    form.method = 'POST';
+    form.action = sheetBuilderEndpoint;
+    form.target = '_blank';
+    form.style.display = 'none';
+    const input = document.createElement('textarea');
+    input.name = 'payload';
+    input.value = JSON.stringify(payload);
+    form.appendChild(input);
+    document.body.appendChild(form);
+    form.submit();
+    form.remove();
+  }
+
   function exportSlideContent(button) {
     const payload = slideExportPayload();
     downloadJson('folloze-program-kpi-slide-output.json', payload);
@@ -2435,15 +2458,17 @@
 
   function exportSheetContent(button) {
     const payload = sheetExportPayload();
-    downloadJson('folloze-program-kpi-sheet-output.json', payload);
-    if (sheetsOutputUrl && !sheetsOutputUrl.includes('PLACEHOLDER')) {
-      window.open(sheetsOutputUrl, '_blank', 'noopener');
-    }
     const original = button.textContent;
-    button.textContent = 'Sheets output ready';
+    if (canUseSheetBuilder()) {
+      submitSheetBuilder(payload);
+      button.textContent = 'Creating customer sheet';
+    } else {
+      downloadJson('folloze-program-kpi-sheet-output.json', payload);
+      button.textContent = 'Sheet builder not configured';
+    }
     setTimeout(() => { button.textContent = original; }, 1800);
     flzAnalytic('cta_click', { text: original.trim(), area: 'sheet output' }, button);
-    safeAnalytic('sheets_export', { text: 'Google Sheets output', area: 'sheet output', sheetUrl: sheetsOutputUrl });
+    safeAnalytic('sheets_export', { text: 'Google Sheets output', area: 'sheet output', sheetBuilderConfigured: String(canUseSheetBuilder()) });
   }
 
   function render() {
