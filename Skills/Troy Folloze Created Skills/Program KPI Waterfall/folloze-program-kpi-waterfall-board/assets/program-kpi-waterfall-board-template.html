@@ -2463,8 +2463,8 @@
       submitSheetBuilder(payload);
       button.textContent = 'Creating customer sheet';
     } else {
-      downloadJson('folloze-program-kpi-sheet-output.json', payload);
-      button.textContent = 'Sheet builder not configured';
+      button.textContent = 'Sheet builder setup needed';
+      safeAnalytic('sheets_export_blocked', { text: 'Sheet builder endpoint missing', area: 'sheet output', customerName: payload.customerName });
     }
     setTimeout(() => { button.textContent = original; }, 1800);
     flzAnalytic('cta_click', { text: original.trim(), area: 'sheet output' }, button);

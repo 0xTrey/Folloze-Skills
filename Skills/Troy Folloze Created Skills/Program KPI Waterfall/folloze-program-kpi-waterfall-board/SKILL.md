@@ -78,6 +78,7 @@ The template is a single self-contained HTML file with:
 - overflow-safe number formatting so large values fit inside cards and tables
 - slide-output button that downloads the current planner state as `folloze-program-kpi-slide-output.json` and opens the verified Google Slides deck URL
 - sheet-output button that submits the current planner state to the configured sheet-builder web app; the web app copies the JDP template workbook, writes `Customer Program Form` rows and `Programs and KPIs` sections from the live board data, then opens the generated customer-named Google Sheet
+- the visible `Output to sheets` button must never download a JSON file as its normal behavior; if the sheet-builder endpoint is missing, show a setup-needed state rather than opening the generic template or downloading JSON
 - impact-dashboard button and section that use the customer name in the hero title to filter Salesforce with `fv0=<customer name>` and embed the configured Impact Dashboard
 - analytics wiring for CTAs, nav, tab switches, model updates, add/remove actions
 - local `flzAnalytic` fallback for browser QA
@@ -124,6 +125,7 @@ Before saving:
 - click `View waterfalls` and verify it lands on the cumulative pipeline-waterfall image, not only the detailed waterfall section
 - click `Output to slides` and verify it calls analytics, exports JSON, and opens the verified deck URL when present
 - click `Output to sheets` and verify it calls analytics, posts the board payload to the sheet-builder endpoint, and opens a newly generated customer workbook populated from the board data
+- confirm `Output to sheets` does not download `folloze-program-kpi-sheet-output.json` from the live board
 - click `Pull Impact Dashboard` and verify the Impact Dashboard section scrolls into view and the iframe URL includes `fv0=<customer name>`
 - confirm CTA buttons and meaningful interactions call `flzAnalytic`
 
