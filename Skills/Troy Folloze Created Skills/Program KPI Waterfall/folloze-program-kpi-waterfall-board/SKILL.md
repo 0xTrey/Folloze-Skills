@@ -65,7 +65,7 @@ The template is a single self-contained HTML file with:
 - per-program year dropdown with `2026`, `2027`, `2028`, and `2029`
 - Q1, Q2, Q3, and Q4 assignment per program
 - fiscal quarter sequencing that can wrap Q1 to the end of the company year
-- collapsed multi-select channel picker that shows selected channels first and expands only when editing
+- collapsed multi-select channel picker that shows selected channels first, expands with an Edit button, and commits selections with a Submit button
 - standard benchmark model: `100% -> 30% -> 10% -> 50% -> 30%`
 - custom benchmark inputs
 - projected live board and published board tracking
@@ -114,7 +114,7 @@ Before saving:
 - move programs between Q1, Q2, Q3, and Q4 and verify quarterly and cumulative totals update
 - change the company year start to Q2 and verify the displayed period order becomes `Q2 -> Q3 -> Q4 -> Q1`
 - choose program years `2026`, `2027`, `2028`, and `2029` and verify the year appears in quarter rollups, waterfall sections, and sheet export payloads
-- select more than one channel and verify the program stores/exports all selected channels
+- click the channel Edit button, select more than one channel, click Submit, and verify the program stores/exports all selected channels
 - enter projected live boards and published boards and verify board growth, attainment, quarter cards, and YTD totals update
 - enter actual pipeline and bookings and verify actual-vs-projected attainment updates
 - delete a program and verify the count, active editor, quarterly rollups, and waterfall sections update

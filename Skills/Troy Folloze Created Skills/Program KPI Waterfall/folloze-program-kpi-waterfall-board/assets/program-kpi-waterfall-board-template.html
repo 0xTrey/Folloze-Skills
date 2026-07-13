@@ -527,22 +527,31 @@
     background: #fff;
     overflow: hidden;
   }
-  .channel-picker summary {
-    display: block;
+  .channel-picker-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
     color: var(--flz-navy);
     font-weight: 900;
     font-size: 13px;
     padding: 11px 12px;
-    cursor: pointer;
   }
-  .channel-picker summary::-webkit-details-marker { display: none; }
-  .channel-picker summary::after {
-    content: "Edit";
-    float: right;
+  .channel-picker-head span {
+    overflow-wrap: anywhere;
+  }
+  .channel-edit-btn, .channel-submit-btn {
+    border: 1px solid #b8d7ee;
+    background: #f4fbff;
     color: var(--flz-blue);
+    border-radius: 999px;
+    min-height: 30px;
+    padding: 6px 10px;
     font-size: 11px;
     letter-spacing: .07em;
     text-transform: uppercase;
+    font-weight: 900;
+    cursor: pointer;
   }
   .channel-options {
     display: grid;
@@ -566,6 +575,17 @@
     width: auto;
     min-height: auto;
     accent-color: var(--flz-blue);
+  }
+  .channel-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    padding: 0 10px 10px;
+  }
+  .channel-submit-btn {
+    background: var(--flz-blue);
+    border-color: var(--flz-blue);
+    color: white;
   }
   .actuals-panel {
     margin-top: 18px;
@@ -1392,6 +1412,8 @@
     startQuarter: 'Q1',
     activeYear: '2026'
   };
+  let channelEditorOpen = {};
+  let channelDrafts = {};
 
   const currency = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
   const compactCurrency = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', notation: 'compact', maximumFractionDigits: 1 });
@@ -1675,16 +1697,34 @@
     safeAnalytic('model_update', { text: key, area: 'program planner settings', value: String(value) });
   }
 
-  function updateChannels(id, channel, checked) {
+  function openChannelEditor(id) {
     const program = programs.find(p => p.id === id);
     if (!program || program.locked) return;
-    const selected = new Set(normalizeChannels(program.channels));
+    channelEditorOpen[id] = true;
+    channelDrafts[id] = normalizeChannels(program.channels);
+    renderEditor();
+    safeAnalytic('channel_editor_open', { text: 'Edit channels', area: 'program planner' });
+  }
+
+  function toggleDraftChannel(id, channel, checked) {
+    const program = programs.find(p => p.id === id);
+    if (!program || program.locked) return;
+    const selected = new Set(channelDrafts[id] || normalizeChannels(program.channels));
     if (checked) {
       selected.add(channel);
     } else {
       selected.delete(channel);
     }
-    program.channels = Array.from(selected);
+    channelDrafts[id] = Array.from(selected);
+    safeAnalytic('channel_draft_update', { text: 'channels', area: 'program planner', value: channelsLabel(channelDrafts[id]) });
+  }
+
+  function submitChannels(id) {
+    const program = programs.find(p => p.id === id);
+    if (!program || program.locked) return;
+    program.channels = normalizeChannels(channelDrafts[id] || program.channels);
+    channelEditorOpen[id] = false;
+    delete channelDrafts[id];
     renderLiveOutputs();
     renderEditor();
     safeAnalytic('model_update', { text: 'channels', area: 'program planner', value: channelsLabel(program.channels) });
@@ -1780,6 +1820,8 @@
       return;
     }
     programs = programs.filter(p => p.id !== id);
+    delete channelEditorOpen[id];
+    delete channelDrafts[id];
     activeId = programs[0] ? programs[0].id : null;
     render();
     flzAnalytic('cta_click', { text: button ? button.innerText.trim() : 'Delete', area: 'program planner' }, button);
@@ -1823,21 +1865,32 @@
   }
 
   function channelField(program) {
-    const selected = new Set(normalizeChannels(program.channels));
+    const isOpen = Boolean(channelEditorOpen[program.id]) && !program.locked;
+    const draft = isOpen ? normalizeChannels(channelDrafts[program.id] || program.channels) : normalizeChannels(program.channels);
+    const selected = new Set(draft);
     const disabled = program.locked ? 'disabled' : '';
+    const buttonDisabled = program.locked ? 'disabled' : '';
     return `<div class="wide-field">
       <label>Channels</label>
-      <details class="channel-picker">
-        <summary>${escapeHtml(channelsLabel(program.channels))}</summary>
-        <div class="channel-options">
-          ${marketingChannels.map(channel => `
-            <label>
-              <input type="checkbox" ${disabled} ${selected.has(channel) ? 'checked' : ''} onchange="updateChannels('${program.id}', '${escapeHtml(channel)}', this.checked)">
-              ${escapeHtml(channel)}
-            </label>
-          `).join('')}
+      <div class="channel-picker">
+        <div class="channel-picker-head">
+          <span>${escapeHtml(channelsLabel(program.channels))}</span>
+          <button class="channel-edit-btn" type="button" ${buttonDisabled} onclick="openChannelEditor('${program.id}')">Edit</button>
         </div>
-      </details>
+        ${isOpen ? `
+          <div class="channel-options">
+            ${marketingChannels.map(channel => `
+              <label>
+                <input type="checkbox" ${disabled} value="${escapeHtml(channel)}" ${selected.has(channel) ? 'checked' : ''} onchange="toggleDraftChannel('${program.id}', this.value, this.checked)">
+                ${escapeHtml(channel)}
+              </label>
+            `).join('')}
+          </div>
+          <div class="channel-actions">
+            <button class="channel-submit-btn" type="button" ${buttonDisabled} onclick="submitChannels('${program.id}')">Submit</button>
+          </div>
+        ` : ''}
+      </div>
     </div>`;
   }
 
