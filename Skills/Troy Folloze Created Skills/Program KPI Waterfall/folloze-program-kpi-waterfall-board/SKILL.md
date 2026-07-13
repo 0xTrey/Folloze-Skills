@@ -26,6 +26,7 @@ Build a Folloze MCP board that gives customers the same capabilities as the prog
 - include an `Export PDF` control that generates and downloads a full-board PDF from the live board content
 - autosave program inputs, quarter settings, active program order, CSM selection, actuals, and benchmark changes to browser `localStorage`
 - when deployed with the state web app, save and restore the same board state from shared durable Google Drive storage so users can return to the board later from another session
+- for customer-facing boards that must maintain history across devices/users, create or link the board through the Vercel app in `troy-folloze-customer-success-vercel-projects/apps/jdp-board-portal`; it provides email login, per-user board ownership, local autosave, and Vercel Blob-backed durable state
 
 ## Required MCP Flow
 
@@ -41,9 +42,32 @@ Build a Folloze MCP board that gives customers the same capabilities as the prog
 8. If a Google Slides deck has been generated, replace `SLIDES_DECK_URL_PLACEHOLDER` with the verified Google Slides edit URL. If no deck exists yet, leave the placeholder in the skill template but do not save a board with a broken external link.
 9. Deploy `assets/google-sheets-output-webapp.gs` as a Google Apps Script web app with access to the Folloze Google Drive account. Replace `SHEET_BUILDER_ENDPOINT_URL_PLACEHOLDER` with the deployed web app URL. The web app copies the JDP template workbook, titles the copy with the customer name, populates `Customer Program Form` and `Programs and KPIs` from the board payload, and returns the generated customer workbook URL. Do not use `SHEETS_OUTPUT_URL_PLACEHOLDER` as a generic template link for the `Output to sheets` button.
 10. Deploy `assets/program-kpi-board-state-webapp.gs` as a Google Apps Script web app with access to the Folloze Google Drive account. Replace `BOARD_STATE_ENDPOINT_URL_PLACEHOLDER` with the deployed web app URL. The web app stores board state as JSON files in a Google Drive folder named `Folloze JDP Board State`, keyed by board URL/path.
-11. Keep the returned `themeId` for save.
-12. QA the local HTML before save.
-13. Save with `save_folloze_board_from_file`.
+11. If the user asks for durable customer history, use the Vercel portal route instead of relying only on the static Folloze board. Create the customer board in the Vercel app and share/link the `/boards/[boardId]` URL; Vercel handles email login and persisted customer data.
+12. Keep the returned `themeId` for save.
+13. QA the local HTML before save.
+14. Save with `save_folloze_board_from_file`.
+
+## Durable Vercel Boards
+
+Use `/Users/troysmith/Documents/Troy Folloze Customer Success vercel-projects/apps/jdp-board-portal` when the board needs user login and durable state.
+
+The Vercel app provides:
+
+- email-address login with a signed session cookie
+- customer board creation from the dashboard
+- ownership checks so an email only sees its own boards
+- `/boards/[boardId]` hosted planner pages
+- local browser autosave plus server persistence
+- Vercel Blob storage in production through `BLOB_READ_WRITE_TOKEN`
+- local `.data/` JSON fallback for development
+
+Vercel project setup:
+
+- Root Directory: `apps/jdp-board-portal`
+- `AUTH_SECRET`: long random session-signing secret
+- `BLOB_READ_WRITE_TOKEN`: Vercel Blob read/write token
+
+Use this hosted path for customer-facing board links when the user says the board must remember edits after returning later, must connect to a customer login, or must preserve history across sessions.
 
 ## Template
 
