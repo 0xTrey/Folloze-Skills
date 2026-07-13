@@ -42,6 +42,7 @@ function populateCustomerProgramForm_(spreadsheet, payload) {
   const width = Math.max(headers.length, ...rows.map(row => row.length), 1);
   const maxRows = Math.max(sheet.getMaxRows() - 3, rows.length, 1);
 
+  ensureSheetSize_(sheet, Math.max(rows.length + 3, 4), width);
   sheet.getRange(1, 1).setValue(`${payload.customerName || 'Customer'} Program Waterfall Form`);
   sheet.getRange(2, 1).setValue('Created from the Folloze Program KPI Planner board.');
   sheet.getRange(3, 1, maxRows + 1, width).clearContent();
@@ -72,9 +73,7 @@ function populateProgramsAndKpis_(spreadsheet, payload) {
   if (!rows.length) rows.push(['No programs exported from the board yet.']);
   const width = Math.max(...rows.map(row => row.length), 8);
   const requiredRows = Math.max(rows.length, 1);
-  if (sheet.getMaxRows() < requiredRows) {
-    sheet.insertRowsAfter(sheet.getMaxRows(), requiredRows - sheet.getMaxRows());
-  }
+  ensureSheetSize_(sheet, requiredRows, width);
   sheet.getRange(1, 1, sheet.getMaxRows(), Math.min(sheet.getMaxColumns(), width)).clearContent();
   sheet.getRange(1, 1, requiredRows, width).setValues(rows.map(row => padRow_(row, width)));
   sheet.autoResizeColumns(1, Math.min(width, 8));
@@ -82,6 +81,15 @@ function populateProgramsAndKpis_(spreadsheet, payload) {
 
 function getOrCreateSheet_(spreadsheet, name) {
   return spreadsheet.getSheetByName(name) || spreadsheet.insertSheet(name);
+}
+
+function ensureSheetSize_(sheet, rowCount, columnCount) {
+  if (sheet.getMaxRows() < rowCount) {
+    sheet.insertRowsAfter(sheet.getMaxRows(), rowCount - sheet.getMaxRows());
+  }
+  if (sheet.getMaxColumns() < columnCount) {
+    sheet.insertColumnsAfter(sheet.getMaxColumns(), columnCount - sheet.getMaxColumns());
+  }
 }
 
 function padRow_(row, width) {
