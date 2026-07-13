@@ -26,7 +26,7 @@ Build a Folloze MCP board that gives customers the same capabilities as the prog
 - include an `Export PDF` control that generates and downloads a full-board PDF from the live board content
 - autosave program inputs, quarter settings, active program order, CSM selection, actuals, and benchmark changes to browser `localStorage`
 - when deployed with the state web app, save and restore the same board state from shared durable Google Drive storage so users can return to the board later from another session
-- for customer-facing boards that must maintain history across devices/users, create or link the board through the Vercel app in `troy-folloze-customer-success-vercel-projects/apps/jdp-board-portal`; it provides email login, per-user board ownership, local autosave, and private Vercel Blob-backed durable state
+- for customer-facing boards that must maintain history across devices/users, create or link the board through the Vercel app in `troy-folloze-customer-success-vercel-projects/apps/jdp-board-portal`; it provides email login, per-user board ownership, explicit authorized-customer email access, local autosave, and private Vercel Blob-backed durable state
 
 ## Required MCP Flow
 
@@ -54,8 +54,9 @@ Use `/Users/troysmith/Documents/Troy Folloze Customer Success vercel-projects/ap
 The Vercel app provides:
 
 - email-address login with a signed session cookie
-- customer board creation from the dashboard
-- ownership checks so an email only sees its own boards
+- customer board creation from the dashboard with optional authorized customer emails
+- ownership and allowlist checks so a board is only accessible by the owner email or emails explicitly granted access by the owner
+- owner-only access management for adding or removing authorized customer emails after creation
 - `/boards/[boardId]` hosted pages that redirect to the full skill-template board runtime
 - the copied skill template at `apps/jdp-board-portal/public/program-kpi-waterfall-board-template.html`
 - Vercel API-backed replacements for the board template's shared save/load hooks
@@ -69,7 +70,7 @@ Vercel project setup:
 - `AUTH_SECRET`: long random session-signing secret
 - `BLOB_READ_WRITE_TOKEN`: private Vercel Blob read/write token
 
-Use this hosted path for customer-facing board links when the user says the board must remember edits after returning later, must connect to a customer login, or must preserve history across sessions.
+Use this hosted path for customer-facing board links when the user says the board must remember edits after returning later, must connect to a customer login, or must preserve history across sessions. New customer boards are private by default; only the creator/owner login can open them until the owner adds authorized customer emails. Shared users can open and edit the board, but cannot manage the access list.
 
 ## Template
 
