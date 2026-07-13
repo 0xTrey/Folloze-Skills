@@ -1402,7 +1402,11 @@
   const slidesDeckUrl = 'SLIDES_DECK_URL_PLACEHOLDER';
   const sheetsOutputUrl = 'SHEETS_OUTPUT_URL_PLACEHOLDER';
   const sheetBuilderEndpoint = 'SHEET_BUILDER_ENDPOINT_URL_PLACEHOLDER';
+  const boardStateEndpoint = 'BOARD_STATE_ENDPOINT_URL_PLACEHOLDER';
   const sheetTemplateUrl = 'https://docs.google.com/spreadsheets/d/1IQNrquCt4rRdaUcSAiUvMLf1Icu6YOzuikSQLYpIvyQ/edit';
+  let stateSaveTimer = null;
+  let remoteStateTimer = null;
+  let restoringState = false;
 
   function money(value) {
     const amount = Number(value) || 0;
@@ -1413,6 +1417,151 @@
     if (typeof flzAnalytic === 'function') {
       flzAnalytic(action, payload, el);
     }
+  }
+
+  function boardStateKey() {
+    const path = `${window.location.origin || 'file'}${window.location.pathname || document.title}`;
+    return `folloze-jdp-board-state:${path}`;
+  }
+
+  function canUseBoardStateEndpoint() {
+    return Boolean(boardStateEndpoint && !boardStateEndpoint.includes('PLACEHOLDER'));
+  }
+
+  function stateSnapshot() {
+    return {
+      version: 1,
+      boardKey: boardStateKey(),
+      customerName: customerNameForSheet(),
+      selectedCsm,
+      activeId,
+      planSettings: { ...planSettings },
+      programs: programs.map(program => ({
+        ...program,
+        channels: normalizeChannels(program.channels),
+        custom: { ...standardBenchmarks, ...(program.custom || {}) },
+        actual: { liveBoards: 0, engaged: 0, meetings: 0, pipelineOpps: 0, closedDeals: 0, pipelineGoal: 0, bookings: 0, ...(program.actual || {}) }
+      })),
+      updatedAt: new Date().toISOString()
+    };
+  }
+
+  function normalizeProgramState(program, index) {
+    return {
+      id: program.id || (crypto.randomUUID ? crypto.randomUUID() : String(Date.now() + index)),
+      quarter: quarters.includes(program.quarter) ? program.quarter : 'Q1',
+      programYear: programYears.includes(String(program.programYear)) ? String(program.programYear) : planSettings.activeYear,
+      type: program.type || '1:few ABM',
+      name: program.name || `Program ${index + 1}`,
+      segment: program.segment || '',
+      subSegment: program.subSegment || '',
+      channels: normalizeChannels(program.channels),
+      content: program.content || '',
+      secondaryContent: program.secondaryContent || '',
+      notes: program.notes || '',
+      locked: Boolean(program.locked),
+      mode: program.mode === 'Custom' ? 'Custom' : 'Standard',
+      accounts: Number(program.accounts) || 0,
+      dealSize: Number(program.dealSize) || 0,
+      projectedBoards: Number(program.projectedBoards) || 0,
+      actual: { liveBoards: 0, engaged: 0, meetings: 0, pipelineOpps: 0, closedDeals: 0, pipelineGoal: 0, bookings: 0, ...(program.actual || {}) },
+      custom: { ...standardBenchmarks, ...(program.custom || {}) }
+    };
+  }
+
+  function saveLocalState(snapshot = stateSnapshot()) {
+    try {
+      localStorage.setItem(boardStateKey(), JSON.stringify(snapshot));
+      safeAnalytic('state_local_save', { text: 'Local board state saved', area: 'program planner', customerName: snapshot.customerName });
+    } catch (error) {
+      safeAnalytic('state_local_save_error', { text: error.message || 'Local save failed', area: 'program planner' });
+    }
+  }
+
+  function remoteSaveState(snapshot) {
+    if (!canUseBoardStateEndpoint()) return;
+    const body = new URLSearchParams();
+    body.set('action', 'save');
+    body.set('boardKey', boardStateKey());
+    body.set('payload', JSON.stringify(snapshot));
+    fetch(boardStateEndpoint, { method: 'POST', mode: 'no-cors', body }).catch(error => {
+      safeAnalytic('state_remote_save_error', { text: error.message || 'Remote save failed', area: 'program planner' });
+    });
+  }
+
+  function persistState() {
+    if (restoringState) return;
+    const snapshot = stateSnapshot();
+    saveLocalState(snapshot);
+    clearTimeout(remoteStateTimer);
+    remoteStateTimer = setTimeout(() => remoteSaveState(snapshot), 900);
+  }
+
+  function persistStateDebounced() {
+    if (restoringState) return;
+    clearTimeout(stateSaveTimer);
+    stateSaveTimer = setTimeout(persistState, 350);
+  }
+
+  function applySavedState(state, source = 'local') {
+    if (!state || !Array.isArray(state.programs) || !state.programs.length) return false;
+    restoringState = true;
+    programs = state.programs.map(normalizeProgramState);
+    planSettings = { ...planSettings, ...(state.planSettings || {}) };
+    selectedCsm = state.selectedCsm || selectedCsm;
+    activeId = programs.some(program => program.id === state.activeId) ? state.activeId : programs[0].id;
+    channelEditorOpen = {};
+    channelDrafts = {};
+    render();
+    saveLocalState({ ...state, boardKey: boardStateKey(), updatedAt: state.updatedAt || new Date().toISOString() });
+    safeAnalytic('state_restore', { text: `Board state restored from ${source}`, area: 'program planner', customerName: state.customerName || customerNameForSheet() });
+    restoringState = false;
+    return true;
+  }
+
+  function restoreLocalState() {
+    try {
+      const saved = localStorage.getItem(boardStateKey());
+      return saved ? applySavedState(JSON.parse(saved), 'local storage') : false;
+    } catch (error) {
+      safeAnalytic('state_local_restore_error', { text: error.message || 'Local restore failed', area: 'program planner' });
+      return false;
+    }
+  }
+
+  function loadRemoteState() {
+    if (!canUseBoardStateEndpoint()) return;
+    const callbackName = `follozeBoardState_${Date.now()}_${Math.floor(Math.random() * 100000)}`;
+    const script = document.createElement('script');
+    const cleanup = () => {
+      delete window[callbackName];
+      script.remove();
+    };
+    window[callbackName] = response => {
+      clearTimeout(script._stateTimeout);
+      if (response && response.payload) {
+        const local = JSON.parse(localStorage.getItem(boardStateKey()) || 'null');
+        const remoteUpdated = Date.parse(response.payload.updatedAt || 0);
+        const localUpdated = Date.parse(local && local.updatedAt ? local.updatedAt : 0);
+        if (!local || remoteUpdated >= localUpdated) applySavedState(response.payload, 'shared storage');
+      }
+      cleanup();
+    };
+    const url = new URL(boardStateEndpoint);
+    url.searchParams.set('action', 'load');
+    url.searchParams.set('boardKey', boardStateKey());
+    url.searchParams.set('callback', callbackName);
+    script.src = url.toString();
+    script._stateTimeout = setTimeout(() => {
+      cleanup();
+      safeAnalytic('state_remote_load_timeout', { text: 'Shared state load timed out', area: 'program planner' });
+    }, 7000);
+    script.onerror = () => {
+      clearTimeout(script._stateTimeout);
+      cleanup();
+      safeAnalytic('state_remote_load_error', { text: 'Shared state load failed', area: 'program planner' });
+    };
+    document.body.appendChild(script);
   }
 
   function customerNameFromHero() {
@@ -1618,6 +1767,7 @@
     if (key === 'locked') {
       program.locked = value === true || value === 'true';
       render();
+      persistStateDebounced();
       safeAnalytic('program_lock_toggle', { text: program.locked ? 'Lock program' : 'Unlock program', area: 'program planner', value: String(program.locked) });
       return;
     }
@@ -1638,12 +1788,14 @@
       renderEditor();
     }
     renderLiveOutputs();
+    persistStateDebounced();
     safeAnalytic('model_update', { text: key, area: 'program planner', value: String(value) });
   }
 
   function updatePlanSetting(key, value) {
     planSettings[key] = value;
     render();
+    persistStateDebounced();
     safeAnalytic('model_update', { text: key, area: 'program planner settings', value: String(value) });
   }
 
@@ -1677,12 +1829,14 @@
     delete channelDrafts[id];
     renderLiveOutputs();
     renderEditor();
+    persistStateDebounced();
     safeAnalytic('model_update', { text: 'channels', area: 'program planner', value: channelsLabel(program.channels) });
   }
 
   function updateCsm(value) {
     selectedCsm = value;
     renderSections();
+    persistStateDebounced();
     safeAnalytic('model_update', { text: 'Your Customer Success Manager', area: 'main nav header bar', value });
   }
 
@@ -1710,6 +1864,7 @@
     programs.push(next);
     activeId = next.id;
     render();
+    persistStateDebounced();
     safeAnalytic('program_add', { text: next.type, area: 'program planner' });
   }
 
@@ -1733,6 +1888,7 @@
     const [moved] = programs.splice(from, 1);
     programs.splice(to, 0, moved);
     render();
+    persistStateDebounced();
     safeAnalytic('program_reorder', { text: moved.name || moved.type, area: 'program planner', from: from + 1, to: to + 1 });
   }
 
@@ -1774,6 +1930,7 @@
     delete channelDrafts[id];
     activeId = programs[0] ? programs[0].id : null;
     render();
+    persistStateDebounced();
     flzAnalytic('cta_click', { text: button ? button.innerText.trim() : 'Delete', area: 'program planner' }, button);
     safeAnalytic('program_remove', { text: doomed ? doomed.name : 'program', area: 'program planner' });
   }
@@ -1781,6 +1938,7 @@
   function setActive(id, button) {
     activeId = id;
     render();
+    persistStateDebounced();
     safeAnalytic('tab-switch', { text: button.innerText.trim(), area: 'program planner' }, button);
   }
 
@@ -2006,6 +2164,7 @@
     if (program.locked) return;
     program.custom = { ...standardBenchmarks };
     render();
+    persistStateDebounced();
     flzAnalytic('cta_click', { text: button.innerText.trim(), area: 'program planner' }, button);
     safeAnalytic('model_update', { text: 'Reset benchmarks', area: 'program planner', value: 'standard' });
   }
@@ -2501,7 +2660,8 @@
       .replace(/'/g, '&#039;');
   }
 
-  render();
+  if (!restoreLocalState()) render();
+  loadRemoteState();
 </script>
 </body>
 </html>
