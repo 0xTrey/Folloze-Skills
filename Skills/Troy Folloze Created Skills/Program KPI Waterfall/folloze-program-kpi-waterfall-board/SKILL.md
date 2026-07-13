@@ -23,7 +23,6 @@ Build a Folloze MCP board that gives customers the same capabilities as the prog
 - link the hero `View waterfalls` CTA to a generated cumulative pipeline-waterfall image that updates from the live model
 - include an `Output to slides` control that exports the live planner state as slide-ready JSON and opens the generated Google Slides deck when a deck URL is available
 - include an `Output to sheets` control that posts the live planner state to the sheet-builder web app, copies the JDP template workbook, populates the customer-specific program tabs, and opens the generated customer Google Sheet
-- include a `Pull Impact Dashboard` control that filters the configured Salesforce Impact Dashboard by the board customer name and renders the view directly in an Impact Dashboard section
 
 ## Required MCP Flow
 
@@ -38,10 +37,9 @@ Build a Folloze MCP board that gives customers the same capabilities as the prog
 7. Replace every `CUSTOMER_NAME_PLACEHOLDER` token with the HTML-escaped customer name.
 8. If a Google Slides deck has been generated, replace `SLIDES_DECK_URL_PLACEHOLDER` with the verified Google Slides edit URL. If no deck exists yet, leave the placeholder in the skill template but do not save a board with a broken external link.
 9. Deploy `assets/google-sheets-output-webapp.gs` as a Google Apps Script web app with access to the Folloze Google Drive account. Replace `SHEET_BUILDER_ENDPOINT_URL_PLACEHOLDER` with the deployed web app URL. The web app copies the JDP template workbook, titles the copy with the customer name, populates `Customer Program Form` and `Programs and KPIs` from the board payload, and returns the generated customer workbook URL. Do not use `SHEETS_OUTPUT_URL_PLACEHOLDER` as a generic template link for the `Output to sheets` button.
-10. Replace `SALESFORCE_IMPACT_DASHBOARD_URL_PLACEHOLDER` with the verified Salesforce Impact Dashboard URL. The current default internal Impact Dashboard is `https://folloze.my.salesforce.com/lightning/r/Dashboard/01Z2I000000ls2WUAQ/view`.
-11. Keep the returned `themeId` for save.
-12. QA the local HTML before save.
-13. Save with `save_folloze_board_from_file`.
+10. Keep the returned `themeId` for save.
+11. QA the local HTML before save.
+12. Save with `save_folloze_board_from_file`.
 
 ## Template
 
@@ -79,7 +77,6 @@ The template is a single self-contained HTML file with:
 - slide-output button that downloads the current planner state as `folloze-program-kpi-slide-output.json` and opens the verified Google Slides deck URL
 - sheet-output button that submits the current planner state to the configured sheet-builder web app; the web app copies the JDP template workbook, writes `Customer Program Form` rows and `Programs and KPIs` sections from the live board data, then opens the generated customer-named Google Sheet
 - the visible `Output to sheets` button must never download a JSON file as its normal behavior; if the sheet-builder endpoint is missing, show a setup-needed state rather than opening the generic template or downloading JSON
-- impact-dashboard button and section that use the customer name in the hero title to filter Salesforce with `fv0=<customer name>` and embed the configured Impact Dashboard
 - analytics wiring for CTAs, nav, tab switches, model updates, add/remove actions
 - local `flzAnalytic` fallback for browser QA
 
@@ -104,7 +101,6 @@ Before saving:
 - confirm the hero headline includes the customer name
 - confirm any saved board no longer contains `SLIDES_DECK_URL_PLACEHOLDER` if the slide-output button is visible
 - confirm any saved board no longer contains `SHEET_BUILDER_ENDPOINT_URL_PLACEHOLDER` when the sheet-output button is expected to create Google Sheets directly
-- confirm any saved board no longer contains `SALESFORCE_IMPACT_DASHBOARD_URL_PLACEHOLDER` if the impact-dashboard button is visible
 - confirm there are no placeholder `href="#"` or `javascript:void(0)` links
 - render desktop and mobile widths
 - confirm no horizontal overflow at 390px and 320px
@@ -126,7 +122,6 @@ Before saving:
 - click `Output to slides` and verify it calls analytics, exports JSON, and opens the verified deck URL when present
 - click `Output to sheets` and verify it calls analytics, posts the board payload to the sheet-builder endpoint, and opens a newly generated customer workbook populated from the board data
 - confirm `Output to sheets` does not download `folloze-program-kpi-sheet-output.json` from the live board
-- click `Pull Impact Dashboard` and verify the Impact Dashboard section scrolls into view and the iframe URL includes `fv0=<customer name>`
 - confirm CTA buttons and meaningful interactions call `flzAnalytic`
 
 Suggested local Playwright-style check:

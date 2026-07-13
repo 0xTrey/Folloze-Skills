@@ -869,55 +869,6 @@
     color: var(--flz-slate);
     font-size: 14px;
   }
-  .impact-panel {
-    border: 1px solid var(--flz-line);
-    border-radius: var(--radius);
-    background: white;
-    box-shadow: var(--shadow);
-    overflow: hidden;
-  }
-  .impact-toolbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 14px;
-    padding: 14px;
-    border-bottom: 1px solid var(--flz-line);
-    background: var(--flz-soft);
-  }
-  .impact-toolbar p {
-    margin: 0;
-    color: var(--flz-slate);
-    font-weight: 800;
-  }
-  .impact-frame-wrap {
-    min-height: 560px;
-    background: #f8fbfe;
-  }
-  .impact-frame-wrap iframe {
-    display: block;
-    width: 100%;
-    min-height: 640px;
-    border: 0;
-    background: white;
-  }
-  .impact-empty {
-    padding: 42px 20px;
-    color: var(--flz-slate);
-    text-align: center;
-  }
-  .impact-empty strong {
-    display: block;
-    color: var(--flz-navy);
-    font-size: 22px;
-    margin-bottom: 8px;
-  }
-  .impact-empty p {
-    max-width: 720px;
-    margin: 0 auto 16px;
-    color: var(--flz-muted);
-  }
-
   .sections-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1126,7 +1077,6 @@
     <div class="navlinks">
       <a href="#add-program-section" onclick="return scrollToPrograms(this, event, 'main nav header bar', 'anchor-click')">Planner</a>
       <a href="#pipelineWaterfallImage" onclick="return viewWaterfallsImage(this, event, 'main nav header bar', 'anchor-click')">Waterfalls</a>
-      <a href="#impact-dashboard" onclick="return loadImpactDashboard(this, event, 'main nav header bar', 'anchor-click')">Impact Dashboard</a>
       <div class="csm-picker">
         <label for="customerCsm">Your Customer Success Manager</label>
         <select id="customerCsm" onchange="updateCsm(this.value)">
@@ -1150,7 +1100,6 @@
         <div class="hero-actions">
           <a class="primary-btn" href="#add-program-section" onclick="return scrollToPrograms(this, event, 'main hero banner', 'cta_click')">Start planning</a>
           <a class="secondary-btn" href="#pipelineWaterfallImage" onclick="return viewWaterfallsImage(this, event)">View waterfalls</a>
-          <button class="ghost-btn" type="button" onclick="loadImpactDashboard(this, event, 'main hero banner', 'cta_click')">Pull Impact Dashboard</button>
           <button class="ghost-btn" type="button" onclick="exportSlideContent(this)">Output to slides</button>
           <button class="ghost-btn" type="button" onclick="exportSheetContent(this)">Output to sheets</button>
         </div>
@@ -1241,29 +1190,6 @@
       <div class="cumulative-table" id="cumulativeSummary" aria-label="Cumulative quarterly summary"></div>
     </section>
   </div>
-
-  <section class="section" id="impact-dashboard" aria-labelledby="impact-dashboard-title">
-    <div class="section-head">
-      <div>
-        <div class="eyebrow">Salesforce impact</div>
-        <h2 id="impact-dashboard-title">Pull the customer Impact Dashboard into this plan.</h2>
-        <p>When the Salesforce account name matches the customer name on this board, the Impact Dashboard loads filtered to that customer inside this section.</p>
-      </div>
-      <button class="primary-btn" type="button" onclick="loadImpactDashboard(this, event, 'impact dashboard', 'cta_click')">Pull Impact Dashboard</button>
-    </div>
-    <div class="impact-panel">
-      <div class="impact-toolbar">
-        <p id="impactDashboardStatus">Impact Dashboard has not been loaded yet.</p>
-      </div>
-      <div class="impact-frame-wrap" id="impactDashboardFrameWrap">
-        <div class="impact-empty">
-          <strong>Connect to Salesforce to view customer impact.</strong>
-          <p>Click Pull Impact Dashboard to match this board's customer name and load the Impact Dashboard view.</p>
-          <button class="primary-btn" type="button" onclick="loadImpactDashboard(this, event, 'impact dashboard empty state', 'cta_click')">Pull Impact Dashboard</button>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <section class="section waterfall-visual-section" id="pipeline-waterfall" aria-labelledby="pipeline-waterfall-title">
     <div class="section-head">
@@ -1424,7 +1350,6 @@
   const sheetsOutputUrl = 'SHEETS_OUTPUT_URL_PLACEHOLDER';
   const sheetBuilderEndpoint = 'SHEET_BUILDER_ENDPOINT_URL_PLACEHOLDER';
   const sheetTemplateUrl = 'https://docs.google.com/spreadsheets/d/1IQNrquCt4rRdaUcSAiUvMLf1Icu6YOzuikSQLYpIvyQ/edit';
-  const salesforceImpactDashboardUrl = 'SALESFORCE_IMPACT_DASHBOARD_URL_PLACEHOLDER';
 
   function money(value) {
     const amount = Number(value) || 0;
@@ -1443,41 +1368,6 @@
     if (!match) return 'Customer';
     const name = match[1].replace(/^your customer$/i, 'Customer').trim();
     return name || 'Customer';
-  }
-
-  function salesforceUrlWithCustomerFilter(baseUrl, customerName) {
-    if (!baseUrl || baseUrl.includes('PLACEHOLDER')) return '';
-    const url = new URL(baseUrl, window.location.href);
-    url.searchParams.set('fv0', customerName);
-    url.searchParams.set('customerName', customerName);
-    return url.toString();
-  }
-
-  function impactDashboardUrls() {
-    const customerName = customerNameFromHero();
-    const dashboardUrl = salesforceUrlWithCustomerFilter(salesforceImpactDashboardUrl, customerName);
-    return { customerName, dashboardUrl, preferredUrl: dashboardUrl };
-  }
-
-  function loadImpactDashboard(button, event, area = 'impact dashboard', action = 'cta_click') {
-    if (event) event.preventDefault();
-    const { customerName, dashboardUrl, preferredUrl } = impactDashboardUrls();
-    const section = document.getElementById('impact-dashboard');
-    const status = document.getElementById('impactDashboardStatus');
-    const wrap = document.getElementById('impactDashboardFrameWrap');
-    safeAnalytic(action, { text: button ? button.innerText.trim() : 'Pull Impact Dashboard', area, customerName }, button);
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      history.pushState(null, '', '#impact-dashboard');
-    }
-    if (!preferredUrl || !wrap || !status) {
-      if (status) status.textContent = 'Salesforce Impact Dashboard URL is not configured for this board yet.';
-      return false;
-    }
-    status.textContent = `Loading Impact Dashboard for ${customerName}. Salesforce may ask you to sign in.`;
-    wrap.innerHTML = `<iframe title="Salesforce Impact Dashboard for ${escapeHtml(customerName)}" src="${escapeHtml(preferredUrl)}" loading="lazy"></iframe>`;
-    safeAnalytic('impact_dashboard_load', { text: customerName, area: 'impact dashboard', dashboardUrl });
-    return false;
   }
 
   function viewWaterfallsImage(link, event, area = 'main hero banner', action = 'cta_click') {
