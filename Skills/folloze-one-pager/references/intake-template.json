@@ -1,0 +1,250 @@
+{
+  "schema_version": "1.0",
+  "kind": "folloze.prospect_one_pager_intake",
+  "metadata": {
+    "intake_id": "",
+    "brief_version": 1,
+    "state": "collecting",
+    "created_at": "",
+    "updated_at": ""
+  },
+  "seller_inputs": {
+    "seller": {
+      "name": "",
+      "email": "",
+      "role": "",
+      "motion": "sdr_net_new"
+    },
+    "prospect": {
+      "account_name": "",
+      "domain": "",
+      "entity_confirmed": false,
+      "relationship": "prospect",
+      "industry": "",
+      "official_logo_url": ""
+    },
+    "audience": {
+      "primary_persona": "",
+      "primary_role_or_title": "",
+      "secondary_personas": [],
+      "named_stakeholders": [],
+      "lifecycle_stage": "unknown"
+    },
+    "business_context": {
+      "initiative": "",
+      "challenges": [],
+      "desired_outcomes": [],
+      "why_now": "",
+      "account_signal": "",
+      "objections_or_proof_needs": [],
+      "deadline_or_event": "",
+      "current_approach_or_stack": "",
+      "forbidden_topics": []
+    },
+    "page_goal": {
+      "page_job": "",
+      "personalization_mode": "account_specific",
+      "requested_delivery": "local_preview",
+      "meta_description": "",
+      "meta_description_source_ids": [],
+      "primary_cta": {
+        "type": "meeting",
+        "label": "Book a Meeting",
+        "destination": ""
+      },
+      "secondary_cta": null,
+      "approved_resources": [],
+      "requested_modules": [
+        "hero",
+        "desired_outcome",
+        "folloze_capabilities",
+        "proof",
+        "cta"
+      ],
+      "modules_to_omit": []
+    },
+    "visual_preferences": {
+      "brand_owner": "Folloze",
+      "account_accent": {
+        "mode": "folloze_default",
+        "hex": "#5B5BFF",
+        "source_id": "",
+        "source_fact": ""
+      },
+      "logo_policy": "official_public",
+      "visual_authority": "live_folloze_site",
+      "theme_mode": "pending"
+    }
+  },
+  "research_policy": {
+    "default_private_use": "strategy_only",
+    "stage2_may_refresh_public_sources": false,
+    "stage2_may_read_private_sources": false,
+    "source_permissions": [
+      {
+        "source": "rep_input",
+        "read": "allow",
+        "buyer_use": "per_item"
+      },
+      {
+        "source": "skill_reference",
+        "read": "allow",
+        "buyer_use": "per_item"
+      },
+      {
+        "source": "public_web",
+        "read": "allow",
+        "buyer_use": "public_fact"
+      },
+      {
+        "source": "salesforce",
+        "read": "deny",
+        "buyer_use": "strategy_only"
+      },
+      {
+        "source": "granola",
+        "read": "deny",
+        "buyer_use": "strategy_only"
+      },
+      {
+        "source": "google_drive",
+        "read": "deny",
+        "buyer_use": "strategy_only"
+      },
+      {
+        "source": "gmail",
+        "read": "deny",
+        "buyer_use": "strategy_only"
+      },
+      {
+        "source": "calendar",
+        "read": "deny",
+        "buyer_use": "strategy_only"
+      },
+      {
+        "source": "slack_channels",
+        "read": "deny",
+        "buyer_use": "strategy_only"
+      },
+      {
+        "source": "slack_dms",
+        "read": "deny",
+        "buyer_use": "strategy_only"
+      }
+    ],
+    "source_ledger": []
+  },
+  "claims_policy": {
+    "numeric_claims": "verified_only",
+    "approved_proof_ids": [],
+    "approved_claim_ids": [],
+    "approved_proof_content": [],
+    "approved_claim_content": [],
+    "blocked_claims": [],
+    "qualitative_fallback": true,
+    "assumptions_requiring_approval": []
+  },
+  "normalized_brief": {
+    "buyer_situation": "",
+    "holistic_page_goal": "",
+    "message_spine": {
+      "account_context": "",
+      "buyer_priority": "",
+      "why_change": "",
+      "why_now": "",
+      "folloze_promise": "",
+      "proof_strategy": "",
+      "next_action": ""
+    },
+    "selected_folloze_pillars": [],
+    "message_fit_matrix": [],
+    "recommended_sections": [],
+    "unresolved_gaps": [],
+    "buyer_visible_assumptions": []
+  },
+  "approval": {
+    "decision": "pending",
+    "brief_version": 1,
+    "approved_by": "",
+    "approved_at": "",
+    "approval_text": "",
+    "approval_digest": "",
+    "approved_scope": "local_build"
+  },
+  "stage2_handoff": {
+    "accepted_contract": "folloze.prospect_one_pager_handoff.v1",
+    "intake_id": "",
+    "approved_brief_version": 0,
+    "audience_mode": "buyer_facing",
+    "motion": "one_to_one",
+    "constraints": {
+      "private_inputs_strategy_only": true,
+      "verified_numeric_proof_only": true,
+      "qualitative_proof_fallback": true,
+      "visible_register": "Build. Activate. Signal.",
+      "prohibited_visible_terms": [
+        "activation layer",
+        "campaign agent",
+        "activation agent",
+        "insight agent",
+        "call notes",
+        "meeting recap",
+        "template"
+      ]
+    },
+    "output": {
+      "format": "responsive_self_contained_html",
+      "local_preview_first": true,
+      "optional_pdf": true
+    },
+    "preview_approval": {
+      "decision": "pending",
+      "brief_version": 0,
+      "approved_by": "",
+      "approved_at": "",
+      "approval_text": "",
+      "html_digest": ""
+    },
+    "mcp_state": {
+      "save_intent": "local_only",
+      "save_authorized_by": "",
+      "save_authorized_at": "",
+      "save_authorization_text": "",
+      "authorization_digest": "",
+      "board_name": "",
+      "board_id": null,
+      "local_html_path": "",
+      "theme_mode": "pending",
+      "theme_authorized": false,
+      "theme_id": null,
+      "theme_url": null,
+      "designer_url": null,
+      "save_result_status": "not_recorded",
+      "save_result_recorded_by": "",
+      "save_result_recorded_at": "",
+      "save_result_account_name": "",
+      "save_result_board_id": null,
+      "save_result_designer_url": null,
+      "save_result_evidence": "",
+      "save_result_digest": "",
+      "public_url_status": "pending",
+      "public_url": null,
+      "public_deployment_authorized_by": "",
+      "public_deployment_authorized_at": "",
+      "public_deployment_authorization_text": "",
+      "public_deployment_authorization_digest": "",
+      "public_verification_method": "not_run",
+      "public_verified_by": "",
+      "public_verified_at": "",
+      "public_verification_account_name": "",
+      "public_verification_board_id": null,
+      "public_verification_evidence": "",
+      "public_verification_digest": "",
+      "manual_share_status": "not_shared",
+      "manual_share_reported_by": "",
+      "manual_share_reported_at": "",
+      "tracker_status": "not_in_scope",
+      "qa_status": "not_started"
+    }
+  }
+}

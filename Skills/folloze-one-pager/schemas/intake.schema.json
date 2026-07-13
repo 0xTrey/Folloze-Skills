@@ -1,0 +1,1269 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skills.folloze.com/folloze-one-pager/intake.schema.json",
+  "title": "Folloze Prospect One-Pager Intake",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "kind",
+    "metadata",
+    "seller_inputs",
+    "research_policy",
+    "claims_policy",
+    "normalized_brief",
+    "approval",
+    "stage2_handoff"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "kind": {
+      "const": "folloze.prospect_one_pager_intake"
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "intake_id",
+        "brief_version",
+        "state",
+        "created_at",
+        "updated_at"
+      ],
+      "properties": {
+        "intake_id": {
+          "type": "string"
+        },
+        "brief_version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "state": {
+          "enum": [
+            "collecting",
+            "permissions_confirmed",
+            "researching",
+            "brief_ready",
+            "revision_requested",
+            "intake_approved",
+            "stage2_building",
+            "local_preview_ready",
+            "local_preview_approved",
+            "mcp_save_authorized",
+            "mcp_saved",
+            "public_deployment_pending",
+            "public_verified"
+          ]
+        },
+        "created_at": {
+          "type": "string"
+        },
+        "updated_at": {
+          "type": "string"
+        }
+      }
+    },
+    "seller_inputs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "seller",
+        "prospect",
+        "audience",
+        "business_context",
+        "page_goal",
+        "visual_preferences"
+      ],
+      "properties": {
+        "seller": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "name",
+            "email",
+            "role",
+            "motion"
+          ],
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "email": {
+              "type": "string"
+            },
+            "role": {
+              "type": "string"
+            },
+            "motion": {
+              "enum": [
+                "sdr_net_new",
+                "ae_active_deal"
+              ]
+            }
+          }
+        },
+        "prospect": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "account_name",
+            "domain",
+            "entity_confirmed",
+            "relationship",
+            "industry",
+            "official_logo_url"
+          ],
+          "properties": {
+            "account_name": {
+              "type": "string"
+            },
+            "domain": {
+              "type": "string"
+            },
+            "entity_confirmed": {
+              "type": "boolean"
+            },
+            "relationship": {
+              "enum": [
+                "prospect",
+                "customer",
+                "partner",
+                "unknown"
+              ]
+            },
+            "industry": {
+              "type": "string"
+            },
+            "official_logo_url": {
+              "type": "string"
+            }
+          }
+        },
+        "audience": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "primary_persona",
+            "primary_role_or_title",
+            "secondary_personas",
+            "named_stakeholders",
+            "lifecycle_stage"
+          ],
+          "properties": {
+            "primary_persona": {
+              "type": "string"
+            },
+            "primary_role_or_title": {
+              "type": "string"
+            },
+            "secondary_personas": {
+              "type": "array",
+              "maxItems": 2,
+              "items": {
+                "type": "string"
+              }
+            },
+            "named_stakeholders": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "lifecycle_stage": {
+              "enum": [
+                "prospecting",
+                "discovery",
+                "evaluation",
+                "decision",
+                "expansion",
+                "renewal",
+                "unknown"
+              ]
+            }
+          }
+        },
+        "business_context": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "initiative",
+            "challenges",
+            "desired_outcomes",
+            "why_now",
+            "account_signal",
+            "objections_or_proof_needs",
+            "deadline_or_event",
+            "current_approach_or_stack",
+            "forbidden_topics"
+          ],
+          "properties": {
+            "initiative": {
+              "type": "string"
+            },
+            "challenges": {
+              "type": "array",
+              "maxItems": 1,
+              "items": {
+                "type": "string"
+              }
+            },
+            "desired_outcomes": {
+              "type": "array",
+              "maxItems": 1,
+              "items": {
+                "type": "string"
+              }
+            },
+            "why_now": {
+              "type": "string"
+            },
+            "account_signal": {
+              "type": "string"
+            },
+            "objections_or_proof_needs": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "deadline_or_event": {
+              "type": "string"
+            },
+            "current_approach_or_stack": {
+              "type": "string"
+            },
+            "forbidden_topics": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "page_goal": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "page_job",
+            "personalization_mode",
+            "requested_delivery",
+            "meta_description",
+            "meta_description_source_ids",
+            "primary_cta",
+            "secondary_cta",
+            "approved_resources",
+            "requested_modules",
+            "modules_to_omit"
+          ],
+          "properties": {
+            "page_job": {
+              "type": "string"
+            },
+            "personalization_mode": {
+              "enum": [
+                "account_specific",
+                "account_generalized"
+              ]
+            },
+            "requested_delivery": {
+              "enum": [
+                "local_preview",
+                "mcp_save",
+                "public_share"
+              ]
+            },
+            "meta_description": {
+              "type": "string"
+            },
+            "meta_description_source_ids": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string"
+              }
+            },
+            "primary_cta": {
+              "$ref": "#/$defs/cta"
+            },
+            "secondary_cta": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/cta"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "approved_resources": {
+              "type": "array",
+              "maxItems": 2,
+              "uniqueItems": true,
+              "items": {
+                "$ref": "#/$defs/resource"
+              }
+            },
+        "requested_modules": {
+          "type": "array",
+          "minItems": 5,
+          "maxItems": 5,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "hero",
+              "desired_outcome",
+              "folloze_capabilities",
+              "proof",
+              "cta"
+            ]
+          }
+        },
+            "modules_to_omit": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "visual_preferences": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "brand_owner",
+            "account_accent",
+            "logo_policy",
+            "visual_authority",
+            "theme_mode"
+          ],
+          "properties": {
+            "brand_owner": {
+              "const": "Folloze"
+            },
+            "account_accent": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "mode",
+                "hex",
+                "source_id",
+                "source_fact"
+              ],
+              "properties": {
+                "mode": {
+                  "enum": [
+                    "folloze_default",
+                    "verified_prospect"
+                  ]
+                },
+                "hex": {
+                  "type": "string",
+                  "pattern": "^#[0-9A-Fa-f]{6}$"
+                },
+                "source_id": {
+                  "type": "string"
+                },
+                "source_fact": {
+                  "type": "string"
+                }
+              }
+            },
+            "logo_policy": {
+              "enum": [
+                "official_public",
+                "seller_supplied",
+                "text_only"
+              ]
+            },
+            "visual_authority": {
+              "enum": [
+                "live_folloze_site",
+                "supplied_screenshot",
+                "named_brand_guide"
+              ]
+            },
+            "theme_mode": {
+              "enum": [
+                "pending",
+                "yes",
+                "no"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "research_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "default_private_use",
+        "stage2_may_refresh_public_sources",
+        "stage2_may_read_private_sources",
+        "source_permissions",
+        "source_ledger"
+      ],
+      "properties": {
+        "default_private_use": {
+          "const": "strategy_only"
+        },
+        "stage2_may_refresh_public_sources": {
+          "type": "boolean"
+        },
+        "stage2_may_read_private_sources": {
+          "type": "boolean"
+        },
+        "source_permissions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/source_permission"
+          }
+        },
+        "source_ledger": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/source_ledger_entry"
+          }
+        }
+      }
+    },
+    "claims_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "numeric_claims",
+        "approved_proof_ids",
+        "approved_claim_ids",
+        "approved_proof_content",
+        "approved_claim_content",
+        "blocked_claims",
+        "qualitative_fallback",
+        "assumptions_requiring_approval"
+      ],
+      "properties": {
+        "numeric_claims": {
+          "const": "verified_only"
+        },
+        "approved_proof_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "approved_claim_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "approved_proof_content": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/approved_proof_content"
+          }
+        },
+        "approved_claim_content": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/approved_claim_content"
+          }
+        },
+        "blocked_claims": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "qualitative_fallback": {
+          "type": "boolean"
+        },
+        "assumptions_requiring_approval": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "normalized_brief": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "buyer_situation",
+        "holistic_page_goal",
+        "message_spine",
+        "selected_folloze_pillars",
+        "message_fit_matrix",
+        "recommended_sections",
+        "unresolved_gaps",
+        "buyer_visible_assumptions"
+      ],
+      "properties": {
+        "buyer_situation": {
+          "type": "string"
+        },
+        "holistic_page_goal": {
+          "type": "string"
+        },
+        "message_spine": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "account_context",
+            "buyer_priority",
+            "why_change",
+            "why_now",
+            "folloze_promise",
+            "proof_strategy",
+            "next_action"
+          ],
+          "properties": {
+            "account_context": {
+              "type": "string"
+            },
+            "buyer_priority": {
+              "type": "string"
+            },
+            "why_change": {
+              "type": "string"
+            },
+            "why_now": {
+              "type": "string"
+            },
+            "folloze_promise": {
+              "type": "string"
+            },
+            "proof_strategy": {
+              "type": "string"
+            },
+            "next_action": {
+              "type": "string"
+            }
+          }
+        },
+        "selected_folloze_pillars": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "Build",
+              "Activate",
+              "Signal"
+            ]
+          }
+        },
+        "message_fit_matrix": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/message_fit_row"
+          }
+        },
+        "recommended_sections": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "unresolved_gaps": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "buyer_visible_assumptions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "approval": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "decision",
+        "brief_version",
+        "approved_by",
+        "approved_at",
+        "approval_text",
+        "approval_digest",
+        "approved_scope"
+      ],
+      "properties": {
+        "decision": {
+          "enum": [
+            "pending",
+            "revise",
+            "approved",
+            "invalidated"
+          ]
+        },
+        "brief_version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "approved_by": {
+          "type": "string"
+        },
+        "approved_at": {
+          "type": "string"
+        },
+        "approval_text": {
+          "type": "string"
+        },
+        "approval_digest": {
+          "type": "string",
+          "pattern": "^$|^sha256:[a-f0-9]{64}$"
+        },
+        "approved_scope": {
+          "const": "local_build"
+        }
+      }
+    },
+    "stage2_handoff": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "accepted_contract",
+        "intake_id",
+        "approved_brief_version",
+        "audience_mode",
+        "motion",
+        "constraints",
+        "output",
+        "preview_approval",
+        "mcp_state"
+      ],
+      "properties": {
+        "accepted_contract": {
+          "const": "folloze.prospect_one_pager_handoff.v1"
+        },
+        "intake_id": {
+          "type": "string"
+        },
+        "approved_brief_version": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "audience_mode": {
+          "const": "buyer_facing"
+        },
+        "motion": {
+          "const": "one_to_one"
+        },
+        "constraints": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "private_inputs_strategy_only",
+            "verified_numeric_proof_only",
+            "qualitative_proof_fallback",
+            "visible_register",
+            "prohibited_visible_terms"
+          ],
+          "properties": {
+            "private_inputs_strategy_only": {
+              "type": "boolean"
+            },
+            "verified_numeric_proof_only": {
+              "type": "boolean"
+            },
+            "qualitative_proof_fallback": {
+              "type": "boolean"
+            },
+            "visible_register": {
+              "const": "Build. Activate. Signal."
+            },
+            "prohibited_visible_terms": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "output": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "format",
+            "local_preview_first",
+            "optional_pdf"
+          ],
+          "properties": {
+            "format": {
+              "const": "responsive_self_contained_html"
+            },
+            "local_preview_first": {
+              "const": true
+            },
+            "optional_pdf": {
+              "type": "boolean"
+            }
+          }
+        },
+        "preview_approval": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "decision",
+            "brief_version",
+            "approved_by",
+            "approved_at",
+            "approval_text",
+            "html_digest"
+          ],
+          "properties": {
+            "decision": {
+              "enum": [
+                "pending",
+                "revise",
+                "approved",
+                "invalidated"
+              ]
+            },
+            "brief_version": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "approved_by": {
+              "type": "string"
+            },
+            "approved_at": {
+              "type": "string"
+            },
+            "approval_text": {
+              "type": "string"
+            },
+            "html_digest": {
+              "type": "string",
+              "pattern": "^$|^sha256:[a-f0-9]{64}$"
+            }
+          }
+        },
+        "mcp_state": {
+          "$ref": "#/$defs/mcp_state"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "cta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "label",
+        "destination"
+      ],
+      "properties": {
+        "type": {
+          "enum": [
+            "url",
+            "mailto",
+            "meeting"
+          ]
+        },
+        "label": {
+          "type": "string"
+        },
+        "destination": {
+          "type": "string"
+        }
+      }
+    },
+    "resource": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "resource_id",
+        "label",
+        "url",
+        "source_ids"
+      ],
+      "properties": {
+        "resource_id": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "source_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "source_permission": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source",
+        "read",
+        "buyer_use"
+      ],
+      "properties": {
+          "source": {
+            "enum": [
+              "rep_input",
+              "skill_reference",
+              "public_web",
+            "salesforce",
+            "granola",
+            "google_drive",
+            "gmail",
+            "calendar",
+              "slack_channels",
+              "slack_dms"
+          ]
+        },
+        "read": {
+          "enum": [
+            "allow",
+            "deny",
+            "not_available"
+          ]
+        },
+        "buyer_use": {
+          "enum": [
+            "per_item",
+            "public_fact",
+            "paraphrase_only",
+            "strategy_only",
+            "exact_use",
+            "blocked"
+          ]
+        }
+      }
+    },
+    "source_ledger_entry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_id",
+        "source_type",
+        "locator",
+        "classification",
+        "buyer_use",
+        "confidence",
+        "approved_by",
+        "approved_at",
+        "extracted_facts",
+        "conflicts_with"
+      ],
+      "properties": {
+        "source_id": {
+          "type": "string"
+        },
+          "source_type": {
+            "enum": [
+              "rep_input",
+              "skill_reference",
+              "public_web",
+            "salesforce",
+            "granola",
+            "google_drive",
+            "gmail",
+            "calendar",
+              "slack_channels",
+              "slack_dms"
+          ]
+        },
+        "locator": {
+          "type": "string"
+        },
+        "classification": {
+          "enum": [
+            "public",
+            "internal",
+            "confidential",
+            "restricted_customer"
+          ]
+        },
+        "buyer_use": {
+          "enum": [
+            "public_fact",
+            "paraphrase_only",
+            "strategy_only",
+            "exact_use",
+            "blocked"
+          ]
+        },
+        "confidence": {
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "approved_by": {
+          "type": "string"
+        },
+        "approved_at": {
+          "type": "string"
+        },
+        "extracted_facts": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "conflicts_with": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "approved_proof_content": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "proof_id",
+        "approved_display_text",
+        "source_ids"
+      ],
+      "properties": {
+        "proof_id": {
+          "type": "string"
+        },
+        "approved_display_text": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "source_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "approved_claim_content": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "claim_id",
+        "pillar",
+        "approved_display_text",
+        "source_ids"
+      ],
+      "properties": {
+        "claim_id": {
+          "type": "string"
+        },
+        "pillar": {
+          "enum": [
+            "Build",
+            "Activate",
+            "Signal"
+          ]
+        },
+        "approved_display_text": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "source_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "message_fit_row": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "account_signal",
+        "source_id",
+        "source_use",
+        "folloze_value_prop_id",
+        "buyer_safe_claim",
+        "placement"
+      ],
+      "properties": {
+        "account_signal": {
+          "type": "string"
+        },
+        "source_id": {
+          "type": "string"
+        },
+        "source_use": {
+          "enum": [
+            "public_fact",
+            "paraphrase_only",
+            "exact_use"
+          ]
+        },
+        "folloze_value_prop_id": {
+          "type": "string"
+        },
+        "buyer_safe_claim": {
+          "type": "string"
+        },
+        "placement": {
+          "enum": [
+            "hero",
+            "buyer_challenge",
+            "desired_outcome",
+            "proof",
+            "folloze_capabilities",
+            "path_build",
+            "path_activate",
+            "path_signal",
+            "cta",
+            "resource",
+            "metadata"
+          ]
+        }
+      }
+    },
+    "mcp_state": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "save_intent",
+        "save_authorized_by",
+        "save_authorized_at",
+        "save_authorization_text",
+        "authorization_digest",
+        "board_name",
+        "board_id",
+        "local_html_path",
+        "theme_mode",
+        "theme_authorized",
+        "theme_id",
+        "theme_url",
+        "designer_url",
+        "save_result_status",
+        "save_result_recorded_by",
+        "save_result_recorded_at",
+        "save_result_account_name",
+        "save_result_board_id",
+        "save_result_designer_url",
+        "save_result_evidence",
+        "save_result_digest",
+        "public_url_status",
+        "public_url",
+        "public_deployment_authorized_by",
+        "public_deployment_authorized_at",
+        "public_deployment_authorization_text",
+        "public_deployment_authorization_digest",
+        "public_verification_method",
+        "public_verified_by",
+        "public_verified_at",
+        "public_verification_account_name",
+        "public_verification_board_id",
+        "public_verification_evidence",
+        "public_verification_digest",
+        "manual_share_status",
+        "manual_share_reported_by",
+        "manual_share_reported_at",
+        "tracker_status",
+        "qa_status"
+      ],
+      "properties": {
+        "save_intent": {
+          "enum": [
+            "local_only",
+            "net_new",
+            "update"
+          ]
+        },
+        "save_authorized_by": {
+          "type": "string"
+        },
+        "save_authorized_at": {
+          "type": "string"
+        },
+        "save_authorization_text": {
+          "type": "string"
+        },
+        "authorization_digest": {
+          "type": "string",
+          "pattern": "^$|^sha256:[a-f0-9]{64}$"
+        },
+        "board_name": {
+          "type": "string"
+        },
+        "board_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "local_html_path": {
+          "type": "string"
+        },
+        "theme_mode": {
+          "enum": [
+            "pending",
+            "yes",
+            "no"
+          ]
+        },
+        "theme_authorized": {
+          "type": "boolean"
+        },
+        "theme_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "theme_url": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "designer_url": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "save_result_status": {
+          "enum": [
+            "not_recorded",
+            "saved"
+          ]
+        },
+        "save_result_recorded_by": {
+          "type": "string"
+        },
+        "save_result_recorded_at": {
+          "type": "string"
+        },
+        "save_result_account_name": {
+          "type": "string"
+        },
+        "save_result_board_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "save_result_designer_url": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "save_result_evidence": {
+          "type": "string"
+        },
+        "save_result_digest": {
+          "type": "string",
+          "pattern": "^$|^sha256:[a-f0-9]{64}$"
+        },
+        "public_url_status": {
+          "enum": [
+            "pending",
+            "returned",
+            "user_supplied",
+            "verified"
+          ]
+        },
+        "public_url": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "public_deployment_authorized_by": {
+          "type": "string"
+        },
+        "public_deployment_authorized_at": {
+          "type": "string"
+        },
+        "public_deployment_authorization_text": {
+          "type": "string"
+        },
+        "public_deployment_authorization_digest": {
+          "type": "string",
+          "pattern": "^$|^sha256:[a-f0-9]{64}$"
+        },
+        "public_verification_method": {
+          "enum": [
+            "not_run",
+            "folloze_readback",
+            "public_http_readback"
+          ]
+        },
+        "public_verified_by": {
+          "type": "string"
+        },
+        "public_verified_at": {
+          "type": "string"
+        },
+        "public_verification_account_name": {
+          "type": "string"
+        },
+        "public_verification_board_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "public_verification_evidence": {
+          "type": "string"
+        },
+        "public_verification_digest": {
+          "type": "string",
+          "pattern": "^$|^sha256:[a-f0-9]{64}$"
+        },
+        "manual_share_status": {
+          "enum": [
+            "not_shared",
+            "seller_reported_shared"
+          ]
+        },
+        "manual_share_reported_by": {
+          "type": "string"
+        },
+        "manual_share_reported_at": {
+          "type": "string"
+        },
+        "tracker_status": {
+          "type": "string"
+        },
+        "qa_status": {
+          "enum": [
+            "not_started",
+            "local_pass",
+            "browser_pass",
+            "ready",
+            "failed"
+          ]
+        }
+      }
+    }
+  }
+}

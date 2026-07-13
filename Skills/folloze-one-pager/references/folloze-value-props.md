@@ -15,7 +15,8 @@ Use this visible structure for most one-pagers:
 - Build: create personalized microsites, campaign emails, on-behalf sales emails, LinkedIn ads, and other account destinations from a brief or AI-generated content.
 - Activate: deploy, schedule, segment, personalize, and route content across campaign, sales, partner, and web motions with governance applied.
 - Signal: capture first-party engagement signals and show who engaged, what they consumed, where they came from, and what should move next.
-- Govern: support enterprise-ready programs with brand control, security review, permissions, scalability, and repeatable launch operations.
+
+Brand control, security review, permissions, scalability, and repeatable launch operations are supporting capabilities. Weave them into Build or Activate when relevant; never present Govern as a fourth buyer-facing pillar.
 
 ## Value Prop Menu
 
@@ -31,6 +32,22 @@ Use this visible structure for most one-pagers:
 | Teams need a repeatable launch model | Standardize the build, activation, and signal path so each program starts from a proven system | Launch motion in action |
 | Leadership asks how this helps pipeline | Tie engagement depth, content consumption, and account heat back to pipeline-ready follow-up | Signal every key-account journey |
 
+## Stable Value Prop IDs
+
+Use these opaque IDs in the intake message-fit matrix:
+
+| ID | Pillar | Buyer problem |
+|---|---|---|
+| `folloze.build.speed` | Build | Launch bottlenecks and web backlog |
+| `folloze.build.ai_to_experience` | Build | AI content has no governed deployment path |
+| `folloze.activate.relevance` | Activate | Generic account and persona journeys |
+| `folloze.activate.multichannel` | Activate | Disconnected campaign, sales, partner, web, or event paths |
+| `folloze.signal.first_party` | Signal | Engagement is shallow or disconnected |
+| `folloze.signal.sales_followup` | Signal | Sellers do not know what should happen next |
+| `folloze.govern.brand_control` | Activate | Brand and approval consistency |
+| `folloze.govern.enterprise` | Activate | Security, access, region, or procurement readiness |
+| `folloze.govern.repeatability` | Build | Programs cannot scale across teams or clients |
+
 ## Numeric Claim Discipline
 
 Do not introduce new metrics casually.
@@ -40,19 +57,20 @@ Allowed sources for numeric claims:
 - user-approved prior one-pagers
 - current Folloze sales material
 - verified customer proof or public case studies
-- explicit user-provided assumptions for that account
+- explicit, source-backed account data the user confirms is accurate and buyer-safe
 
 If no approved numeric claim exists, use non-numeric value language. For example, use `faster campaign creation` instead of `5x faster campaign creation`.
 
-## Default Value Cards
+## Default Qualitative Outcomes
 
-The Folloze-blue one-pager template can start with these cards when the user has approved them for the motion:
+Use these only when they map to the approved brief:
 
-- `5x` faster campaign creation without rebuilding each landing page
-- `4-5x` more relevant buyer engagement from account and persona personalization
-- `3 hours` typical build window once assets and brand are ready
+- launch personalized account experiences with fewer web and design handoffs
+- make campaign and sales destinations more relevant by account, persona, source, or stage
+- turn first-party engagement into a clearer next move for sales and marketing
+- preserve brand, governance, and repeatability as programs scale
 
-Replace these when the account conversation points to stronger goals, objections, or proof needs. If the claim source is unclear, remove the number and keep the directional claim.
+Numeric claims have no default. Every visible number requires an approved proof ID, exact approved display text, and the same opaque proof ID on the HTML element. A qualitative claim ID never authorizes a number.
 
 ## Default Motion Rows
 

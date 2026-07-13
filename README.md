@@ -121,7 +121,7 @@ Turns Zoom recaps, meeting-assets emails, and deal context into buyer-safe Follo
 Builds and updates vendor-branded Folloze MCP microsites, account-specific solution pages, demo boards, and buyer experiences from a single self-contained HTML page, with MCP guide compliance, analytics hooks, design QA defaults, real CTA/link requirements, source-page brand extraction, browser-comment iteration, and operator-scoped tracker logging after successful MCP saves.
 
 ### `folloze-one-pager`
-Turns real account call notes, Salesforce and Drive context, prior conversations, and account research into an editable Folloze-branded HTML one-pager first, then exports a verified one-page PDF when ready for email sharing.
+Runs a two-stage AE/SDR prospect workflow: first build and approve an adaptive brief from authorized active-deal context or net-new public research, then create a short-scroll Folloze one-pager with one challenge, one desired outcome, Build/Activate/Signal capabilities, approved proof, and a role-specific CTA. Local preview, MCP save, AE-only public deployment, manual sharing, and PDF export remain separate states.
 
 ### `folloze-sales-handoff`
 Generates the O&E-facing new-logo Folloze Sales Handoff DOCX from Drive, Salesforce, Granola, and web context, using the approved fixed template, consistent `-- needs review --` gaps, prompt-injection screening, and a Slack-ready heads-up draft.

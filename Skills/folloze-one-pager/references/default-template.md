@@ -1,51 +1,99 @@
-# Default Template
+# Default Templates
 
-Use `assets/one-pager-template.html` as the default starting point.
+The default deliverable is a responsive short-scroll microsite. The printable template is optional.
+
+## Responsive Microsite
+
+Start from `assets/one-pager-microsite-template.html`.
+
+Use when:
+
+- the one-pager will be reviewed or shared as HTML
+- Folloze MCP may be used after approval
+- mobile viewing matters
+- the page needs a buyer-facing Promise, Proof, Path narrative
+- the page should feel like a concise digital white paper rather than a feature-heavy campaign page
+
+Required structure:
+
+1. sticky header with Folloze and prospect identity
+2. `#promise` Hero with one account-specific argument and the role-specific primary CTA
+3. Desired outcome treatment with exactly one buyer challenge and one desired outcome
+4. `#proof` with approved numeric evidence when available or an approved qualitative reason to believe
+5. `#path` with only the relevant Build, Activate, and Signal capabilities
+6. `#next-step` CTA with the same approved action
+
+These are the standard buyer-facing modules: Hero, Desired outcome, Folloze capabilities, Proof, and CTA. Preserve `Promise -> Proof -> Path` as the underlying argument.
+
+Use `references/microsite-content-contract.md` for the safe renderer workflow, token mapping, content limits, and claim rules.
+
+## Printable/PDF Template
+
+Use `assets/one-pager-pdf-template.html` only when the user explicitly requests:
+
+- a fixed one-screen leave-behind
+- a landscape PDF
+- an email attachment
+
+Do not use the fixed layout as the default MCP source. Do not overload it when the approved story needs more room.
 
 ## Visual System
 
-Default one-pagers should look primarily Folloze-branded, not account-branded.
+Folloze is the default brand owner.
 
-- Use Folloze navy, deep blue, bright blue, cyan, white, and pale blue as the dominant palette.
-- Use the account or vendor palette as an accent only: one highlighted word, a signal/proof cue, a small chip, or one limited card treatment.
-- Avoid large pink, purple, orange, or account-color panels unless the user asks for that direction.
-- Keep the right-side motion panel as the primary Folloze system surface: blue/navy gradient, white text, and restrained account-color accents only when the message needs them.
+Provisional current public-site tokens:
 
-## Structure
+- deep navy: `#071428`
+- slate: `#2C3D59`
+- indigo: `#5B5BFF`
+- strong indigo: `#3B3BE0`
+- muted blue-gray: `#6B7E9D`
+- white and pale tinted surfaces
+- Instrument Sans when available
+- restrained editorial surfaces
+- filled and outline pill CTAs
 
-1. Header lockup: Folloze logo, small joiner, account/company logo or wordmark.
-2. Hero panel: narrow label, large outcome headline, short account-specific subhead, three value cards.
-3. Motion panel: account-specific title, short promise, three Folloze mechanism rows.
-4. Capability chips: four one-line capability labels.
-5. Bottom grid: four focused cards covering the account's program, identity/personalization, route/model, and proof/security needs.
+Keep these as CSS variables. The current official Folloze site and bundled `folloze-brand-kit` are the shared authority. Do not make Figma access a prerequisite for using or maintaining the template.
 
-## Default Section Mapping
+Use only the exact source-backed account accent approved in the intake. Otherwise retain the approved Folloze default.
 
-| Template area | Use it for |
-|---|---|
-| Hero headline | Account outcome or next business move |
-| Hero subhead | Why Folloze is relevant after the conversation |
-| Value cards | 2-3 measurable or directional reasons to use Folloze |
-| Motion panel row 1 | Build: account experience creation |
-| Motion panel row 2 | Activate: personalization, deployment, routing, and governance |
-| Motion panel row 3 | Signal: first-party engagement insight and sales follow-up |
-| Bottom card 1 | Main program or launch motion |
-| Bottom card 2 | Identity, signals, or personalization |
-| Bottom card 3 | Route to production, partner/client path, or rollout model |
-| Bottom card 4 | Proof, security, governance, or procurement readiness |
+Favor a simple white-paper feel: short scroll, generous whitespace, readable type, restrained borders, and minimal decorative treatment.
 
-Keep the page to one 16:9 landscape screen-height friendly composition when possible. If the account needs deeper content, build a second page or a Folloze board instead of overloading the one-pager.
+## Template Rules
 
-## Visible Copy Guardrails
+- Start from `references/render-values-template.json` and use `scripts/render_one_pager.py --brief <approved-intake.json>`; do not perform raw token replacement or bypass the approval gate.
+- Select every optional module explicitly so the renderer removes unused content and linked controls.
+- Use real official logos or a text fallback.
+- Keep source URLs and proof provenance in the intake sidecar.
+- Attach one explicit proof-or-claim evidence kind and opaque ID to each proof card.
+- Bind every visible proof and Folloze claim string to the exact approved display-content registry entry for that ID.
+- Trace buyer-visible account claims with opaque source IDs.
+- Do not use external scripts.
+- Do not use raw in-page hash links.
+- Do not leave dead arrows, buttons, or links.
+- Keep custom CSS and JavaScript inline.
+- Add the exact MCP-returned theme link only during an authorized save flow.
 
-- Use `Build`, `Activate`, and `Signal` as the default motion row tags.
-- Do not show internal agent names in the page unless the user explicitly asks for an internal-facing asset.
-- Do not show `activation layer` in customer-facing copy.
-- Avoid placeholder proof in final visible copy. If proof is missing, use qualitative language instead.
+## QA
 
-## QA Expectations
+Microsite QA:
 
-- Render the HTML at a 1536 x 864 desktop viewport and a narrow mobile viewport.
-- Export the PDF as a one-page landscape PDF and inspect a rendered PDF preview, not only the file metadata.
-- Check that the PDF preview has no clipped cards, crowded overlays, unreadable logo treatments, or off-brand dominant color blocks.
-- Regenerate the PDF and screenshots after visual feedback before sending the corrected artifact.
+- 1440 x 900
+- 1024 x 768
+- 768 x 1024
+- 414 x 896
+- 390 x 844
+- 320 x 568
+- no horizontal overflow
+- correct scroll-control behavior
+- CTA and resource-click analytics plus compatibility with Folloze native analytics
+- keyboard focus
+- reduced-motion behavior
+
+PDF QA:
+
+- 1536 x 864 source viewport
+- one landscape page
+- no clipped cards or overlays
+- readable logos and text
+- rendered PDF or PNG inspection, not metadata alone

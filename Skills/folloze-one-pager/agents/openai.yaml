@@ -1,4 +1,4 @@
 interface:
   display_name: "Folloze One-Pager"
-  short_description: "Turn account call notes and research into editable Folloze HTML one-pagers and shareable PDFs"
-  default_prompt: "Use $folloze-one-pager to turn real account call notes, Salesforce and Drive context, prior conversations, and account research into an editable Folloze-branded HTML one-pager first, aligned to the current Build, Activate, Signal messaging, then export a verified one-page PDF when ready for email sharing."
+  short_description: "Build an approved AE or SDR Folloze prospect one-pager"
+  default_prompt: "Use $folloze-one-pager in two stages. First choose the adaptive lane: synthesize authorized deal context for an AE active deal, or use public research plus rep-approved hypotheses for an SDR net-new prospect. Approve a brief with one buyer challenge, one desired outcome, exact claim and proof wording, and the role-specific CTA. Then build a short-scroll, white-paper-style Folloze microsite with Hero, Desired outcome, Folloze capabilities, Proof, and CTA. Keep local preview, MCP save, AE-only public deployment, manual link sharing, and PDF output as separate approvals and states."

@@ -1,0 +1,1113 @@
+<!doctype html>
+<html lang="en" data-template="folloze-prospect-one-pager">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>[[PAGE_TITLE]]</title>
+  <meta name="description" content="[[META_DESCRIPTION]]">
+  <!-- FOLLOZE_THEME_LINK_SLOT: replace with the exact MCP-returned link before an authorized save. -->
+  <style>
+    :root {
+      --color-ink: #071428;
+      --color-navy: #071428;
+      --color-brand: #5b5bff;
+      --color-brand-strong: #3b3be0;
+      --color-accent: #00adff;
+      --color-account-accent: [[ACCOUNT_ACCENT]];
+      --color-surface: #ffffff;
+      --color-surface-muted: #f4f6fb;
+      --color-surface-tint: #eef0ff;
+      --color-border: #dce2ef;
+      --color-muted: #6b7e9d;
+      --color-white: #ffffff;
+      --font-display: "Instrument Sans", "Avenir Next", "Segoe UI", sans-serif;
+      --font-body: "Instrument Sans", "Avenir Next", "Segoe UI", sans-serif;
+      --radius-sm: 10px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --radius-pill: 999px;
+      --shadow-card: 0 24px 70px rgba(7, 20, 40, 0.1);
+      --content-max: 1060px;
+      --header-offset: 94px;
+      --space-1: 0.375rem;
+      --space-2: 0.625rem;
+      --space-3: 0.875rem;
+      --space-4: 1.25rem;
+      --space-5: 1.75rem;
+      --space-6: 2.5rem;
+      --space-7: 4rem;
+      --space-8: 5rem;
+      color-scheme: light;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--color-surface);
+    }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      overflow-x: hidden;
+      color: var(--color-ink);
+      background: var(--color-surface);
+      font-family: var(--font-body);
+      font-size: 1rem;
+      line-height: 1.6;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img,
+    svg {
+      display: block;
+      max-width: 100%;
+    }
+
+    button,
+    a {
+      font: inherit;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    button {
+      border: 0;
+    }
+
+    :focus-visible {
+      outline: 3px solid var(--color-account-accent);
+      outline-offset: 4px;
+    }
+
+    .skip-control {
+      position: fixed;
+      top: var(--space-3);
+      left: var(--space-3);
+      z-index: 100;
+      padding: 0.75rem 1rem;
+      color: var(--color-white);
+      background: var(--color-navy);
+      border-radius: var(--radius-pill);
+      transform: translateY(-180%);
+      transition: transform 180ms ease;
+    }
+
+    .skip-control:focus-visible {
+      transform: translateY(0);
+    }
+
+    .shell {
+      width: min(calc(100% - 3rem), var(--content-max));
+      margin-inline: auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid rgba(220, 226, 239, 0.84);
+      background: rgba(255, 255, 255, 0.91);
+      backdrop-filter: blur(18px);
+    }
+
+    .header-inner {
+      display: grid;
+      grid-template-columns: minmax(220px, 1fr) auto auto;
+      gap: var(--space-5);
+      align-items: center;
+      min-height: 78px;
+    }
+
+    .brand-lockup {
+      display: flex;
+      min-width: 0;
+      gap: var(--space-3);
+      align-items: center;
+    }
+
+    .folloze-logo {
+      width: 116px;
+      height: auto;
+      flex: 0 0 auto;
+    }
+
+    .brand-joiner {
+      color: var(--color-muted);
+      font-size: 1.1rem;
+      line-height: 1;
+    }
+
+    .account-mark {
+      display: flex;
+      min-width: 0;
+      align-items: center;
+    }
+
+    .account-logo {
+      width: auto;
+      max-width: 150px;
+      height: 32px;
+      object-fit: contain;
+      object-position: left center;
+    }
+
+    .account-name {
+      overflow: hidden;
+      color: var(--color-ink);
+      font-weight: 700;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .account-name-narrow {
+      display: none;
+      overflow: hidden;
+      max-width: 16ch;
+      color: var(--color-ink);
+      font-size: 0.82rem;
+      font-weight: 750;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .header-nav {
+      display: flex;
+      gap: var(--space-1);
+      align-items: center;
+    }
+
+    .scroll-control {
+      padding: 0.65rem 0.8rem;
+      color: var(--color-muted);
+      background: transparent;
+      border-radius: var(--radius-pill);
+      cursor: pointer;
+      font-size: 0.86rem;
+      font-weight: 700;
+      transition:
+        color 160ms ease,
+        background-color 160ms ease;
+    }
+
+    .scroll-control:hover {
+      color: var(--color-ink);
+      background: var(--color-surface-muted);
+    }
+
+    .button {
+      display: inline-flex;
+      min-height: 48px;
+      padding: 0.8rem 1.15rem;
+      gap: 0.65rem;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-white);
+      background: var(--color-brand);
+      border: 1px solid var(--color-brand);
+      border-radius: var(--radius-pill);
+      cursor: pointer;
+      font-size: 0.92rem;
+      font-weight: 750;
+      line-height: 1;
+      text-decoration: none;
+      transition:
+        background-color 160ms ease,
+        border-color 160ms ease,
+        transform 160ms ease,
+        box-shadow 160ms ease;
+    }
+
+    .button:hover {
+      background: var(--color-brand-strong);
+      border-color: var(--color-brand-strong);
+      box-shadow: 0 12px 28px rgba(59, 59, 224, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .button-light {
+      color: var(--color-navy);
+      background: var(--color-white);
+      border-color: var(--color-white);
+    }
+
+    .button-light:hover {
+      color: var(--color-white);
+      background: transparent;
+      border-color: var(--color-white);
+    }
+
+    .button-outline {
+      color: var(--color-ink);
+      background: transparent;
+      border-color: var(--color-border);
+    }
+
+    .button-outline:hover {
+      color: var(--color-brand-strong);
+      background: var(--color-surface-tint);
+      border-color: var(--color-brand);
+    }
+
+    .button-arrow {
+      font-size: 1.1em;
+      transform: translateY(-0.02em);
+    }
+
+    main {
+      overflow: clip;
+    }
+
+    section {
+      scroll-margin-top: var(--header-offset);
+    }
+
+    .hero {
+      position: relative;
+      padding: clamp(3.5rem, 7vw, 5.5rem) 0 var(--space-8);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.12fr) minmax(340px, 0.88fr);
+      gap: clamp(2.5rem, 6vw, 5rem);
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      width: fit-content;
+      margin: 0 0 var(--space-5);
+      padding: 0.45rem 0.75rem;
+      color: var(--color-brand-strong);
+      background: var(--color-surface-tint);
+      border: 1px solid rgba(91, 91, 255, 0.2);
+      border-radius: var(--radius-pill);
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: var(--font-display);
+      letter-spacing: -0.045em;
+      overflow-wrap: anywhere;
+    }
+
+    h1 {
+      max-width: 15ch;
+      margin-bottom: var(--space-5);
+      font-size: clamp(2.75rem, 5vw, 4.6rem);
+      font-weight: 720;
+      line-height: 0.94;
+    }
+
+    .hero-support {
+      max-width: 60ch;
+      margin-bottom: var(--space-6);
+      color: var(--color-muted);
+      font-size: clamp(1.08rem, 1.8vw, 1.35rem);
+      line-height: 1.55;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: var(--space-3);
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .hero-visual {
+      position: relative;
+      overflow: hidden;
+      color: var(--color-ink);
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 18px 54px rgba(7, 20, 40, 0.07);
+    }
+
+    .hero-visual::before,
+    .hero-visual::after {
+      display: none;
+    }
+
+    .visual-copy {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      gap: var(--space-5);
+      padding: clamp(2rem, 4vw, 3rem);
+    }
+
+    .visual-kicker {
+      margin: 0;
+      color: var(--color-brand-strong);
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .outcome-item {
+      padding-top: var(--space-4);
+      border-top: 1px solid var(--color-border);
+    }
+
+    .outcome-item-primary {
+      padding: var(--space-4);
+      background: var(--color-surface-tint);
+      border: 1px solid rgba(91, 91, 255, 0.18);
+      border-radius: var(--radius-md);
+    }
+
+    .outcome-label {
+      margin-bottom: var(--space-2);
+      color: var(--color-muted);
+      font-size: 0.72rem;
+      font-weight: 850;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .outcome-copy {
+      margin: 0;
+      font-size: clamp(1.05rem, 2vw, 1.28rem);
+      font-weight: 680;
+      line-height: 1.45;
+    }
+
+    .section {
+      padding: var(--space-8) 0;
+    }
+
+    .section-muted {
+      background: var(--color-surface-muted);
+    }
+
+    .section-heading {
+      display: grid;
+      grid-template-columns: minmax(0, 0.72fr) minmax(280px, 0.28fr);
+      gap: var(--space-7);
+      align-items: end;
+      margin-bottom: var(--space-7);
+    }
+
+    .section-label {
+      margin-bottom: var(--space-3);
+      color: var(--color-brand-strong);
+      font-size: 0.75rem;
+      font-weight: 850;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      max-width: 18ch;
+      margin-bottom: 0;
+      font-size: clamp(2.1rem, 4vw, 3.7rem);
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .section-intro {
+      margin-bottom: 0;
+      color: var(--color-muted);
+      font-size: 1.05rem;
+    }
+
+    .proof-section {
+      position: relative;
+      color: var(--color-ink);
+      background: var(--color-surface-muted);
+    }
+
+    .proof-section .section-label {
+      color: var(--color-brand-strong);
+    }
+
+    .proof-section .section-intro {
+      color: var(--color-muted);
+    }
+
+    .proof-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+      gap: var(--space-4);
+    }
+
+    .proof-card {
+      min-height: 240px;
+      padding: clamp(1.5rem, 3vw, 2.35rem);
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+    }
+
+    .proof-value {
+      margin: 0 0 var(--space-5);
+      color: var(--color-ink);
+      font-size: clamp(2.1rem, 4vw, 4rem);
+      font-weight: 720;
+      letter-spacing: -0.06em;
+      line-height: 1;
+    }
+
+    .proof-copy {
+      margin-bottom: 0;
+      color: var(--color-muted);
+    }
+
+    .path-list {
+      position: relative;
+      display: grid;
+      gap: 0;
+      border-top: 1px solid var(--color-border);
+    }
+
+    .path-step {
+      display: grid;
+      grid-template-columns: 84px minmax(220px, 0.38fr) minmax(0, 0.62fr);
+      gap: var(--space-5);
+      align-items: start;
+      padding: clamp(2rem, 5vw, 3.75rem) 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .path-index {
+      display: grid;
+      width: 52px;
+      height: 52px;
+      place-items: center;
+      color: var(--color-brand-strong);
+      background: var(--color-surface-tint);
+      border-radius: 50%;
+      font-size: 0.78rem;
+      font-weight: 850;
+    }
+
+    .path-title {
+      margin-bottom: 0;
+      font-size: clamp(1.7rem, 3vw, 2.8rem);
+      font-weight: 700;
+      line-height: 1.05;
+    }
+
+    .path-copy {
+      max-width: 64ch;
+      margin-bottom: 0;
+      color: var(--color-muted);
+      font-size: 1.05rem;
+    }
+
+    .next-step {
+      padding: var(--space-8) 0;
+    }
+
+    .next-step-panel {
+      position: relative;
+      isolation: isolate;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: var(--space-6);
+      align-items: center;
+      overflow: hidden;
+      padding: clamp(2.5rem, 7vw, 5.75rem);
+      color: var(--color-white);
+      background: var(--color-navy);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 24px 64px rgba(7, 20, 40, 0.16);
+    }
+
+    .next-step-panel::after {
+      position: absolute;
+      z-index: -1;
+      width: 300px;
+      height: 300px;
+      right: -120px;
+      bottom: -180px;
+      content: "";
+      background: rgba(255, 255, 255, 0.12);
+      border-radius: 50%;
+    }
+
+    .next-step h2 {
+      max-width: 16ch;
+      margin-bottom: var(--space-4);
+    }
+
+    .next-step-copy {
+      max-width: 62ch;
+      margin-bottom: var(--space-4);
+      color: rgba(255, 255, 255, 0.78);
+    }
+
+    .seller-line {
+      margin-bottom: 0;
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 0.9rem;
+    }
+
+    .resource-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+      margin-top: var(--space-4);
+    }
+
+    .resource-link {
+      color: var(--color-white);
+      font-size: 0.9rem;
+      font-weight: 750;
+      text-decoration: underline;
+      text-decoration-color: rgba(255, 255, 255, 0.42);
+      text-underline-offset: 0.24em;
+    }
+
+    .site-footer {
+      padding: var(--space-5) 0 var(--space-6);
+      color: var(--color-muted);
+      font-size: 0.8rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: var(--space-4);
+      border-top: 1px solid var(--color-border);
+      padding-top: var(--space-5);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition:
+        opacity 620ms ease,
+        transform 620ms ease;
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 980px) {
+      .header-inner {
+        grid-template-columns: minmax(0, 1fr) auto;
+      }
+
+      .header-nav {
+        display: none;
+      }
+
+      .hero {
+        min-height: auto;
+      }
+
+      .hero-grid,
+      .section-heading,
+      .next-step-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .section-heading {
+        gap: var(--space-4);
+      }
+
+      .proof-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .proof-card {
+        min-height: auto;
+      }
+
+      .path-step {
+        grid-template-columns: 64px minmax(0, 1fr);
+      }
+
+      .path-copy {
+        grid-column: 2;
+      }
+
+      .next-step-panel .button {
+        width: fit-content;
+      }
+    }
+
+    @media (max-width: 680px) {
+      :root {
+        --space-8: 4.5rem;
+        --header-offset: 82px;
+      }
+
+      .shell {
+        width: min(calc(100% - 2rem), var(--content-max));
+      }
+
+      .header-inner {
+        min-height: 68px;
+        gap: var(--space-3);
+      }
+
+      .folloze-logo {
+        width: 96px;
+      }
+
+      .account-logo {
+        max-width: 92px;
+        height: 26px;
+      }
+
+      .header-cta {
+        max-width: 136px;
+        overflow: hidden;
+        min-height: 42px;
+        padding: 0.7rem 0.9rem;
+        font-size: 0.8rem;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .hero {
+        padding-top: var(--space-7);
+      }
+
+      .hero-grid {
+        gap: var(--space-7);
+      }
+
+      h1 {
+        font-size: clamp(2.6rem, 14vw, 4.2rem);
+      }
+
+      .hero-actions {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .hero-actions .button {
+        width: 100%;
+      }
+
+      .hero-visual,
+      .next-step-panel {
+        border-radius: var(--radius-lg);
+      }
+
+      .path-step {
+        grid-template-columns: 48px minmax(0, 1fr);
+        gap: var(--space-3);
+      }
+
+      .path-index {
+        width: 42px;
+        height: 42px;
+      }
+
+      .next-step-panel {
+        padding: 2rem 1.5rem;
+      }
+
+      .next-step-panel .button {
+        width: 100%;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .brand-joiner,
+      .account-logo,
+      .account-name {
+        display: none;
+      }
+
+      .account-name-narrow {
+        display: block;
+      }
+
+      .header-cta .button-arrow {
+        display: none;
+      }
+
+      .folloze-logo {
+        width: 84px;
+      }
+
+      .account-name-narrow {
+        max-width: 8ch;
+      }
+
+      .header-inner {
+        gap: 0.55rem;
+      }
+
+      .header-cta {
+        max-width: 104px;
+        padding-inline: 0.65rem;
+      }
+
+      .visual-copy {
+        padding: 1.5rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <button class="skip-control" type="button" data-scroll-target="main" aria-controls="main">
+    Skip to main content
+  </button>
+
+  <header class="site-header" data-component="site-header">
+    <div class="shell header-inner">
+      <div class="brand-lockup">
+        <img
+          class="folloze-logo"
+          data-role="folloze-logo"
+          src="https://cdn.prod.website-files.com/6464087fdf877a12a8bd4cd6/6464087fdf877a12a8bd4d26_folloze-logo.svg"
+          alt="Folloze"
+        >
+        <span class="brand-joiner" aria-hidden="true">×</span>
+        <span class="account-mark">
+          <!-- OPTIONAL:account_logo:START -->
+          <img
+            class="account-logo"
+            data-role="account-logo"
+            src="[[ACCOUNT_LOGO_URL]]"
+            alt="[[ACCOUNT_NAME]] logo"
+          >
+          <!-- OPTIONAL:account_logo:END -->
+          <span class="account-name" data-role="account-name" data-non-claim-number hidden>[[ACCOUNT_NAME]]</span>
+          <span class="account-name-narrow" data-role="account-name" data-non-claim-number>[[ACCOUNT_NAME]]</span>
+        </span>
+      </div>
+
+      <nav class="header-nav" aria-label="One-pager sections">
+        <!-- OPTIONAL:proof:START -->
+        <button class="scroll-control" type="button" data-scroll-target="proof" aria-controls="proof">Proof</button>
+        <!-- OPTIONAL:proof:END -->
+        <button class="scroll-control" type="button" data-scroll-target="path" aria-controls="path">Capabilities</button>
+        <button class="scroll-control" type="button" data-scroll-target="next-step" aria-controls="next-step">Next step</button>
+      </nav>
+
+      <!-- CTA:external:START -->
+      <a
+        class="button header-cta"
+        data-cta="primary"
+        data-non-claim-number
+        data-cta-type="[[PRIMARY_CTA_TYPE]]"
+        data-cta-label="[[PRIMARY_CTA_LABEL]]"
+        href="[[PRIMARY_CTA_URL]]"
+        target="_blank"
+        rel="noopener"
+        onclick="flzAnalytic('cta_click', {text:this.dataset.ctaLabel, area:'header', url:this.href}, this)"
+      >
+        [[PRIMARY_CTA_LABEL]]
+        <span class="button-arrow" aria-hidden="true">↗</span>
+      </a>
+      <!-- CTA:external:END -->
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="promise" aria-labelledby="promise-title">
+      <div class="shell hero-grid">
+        <div class="hero-copy reveal">
+          <p class="eyebrow" data-placement="hero" data-source-ids="[[HERO_SOURCE_IDS]]">[[ACCOUNT_CONTEXT]]</p>
+          <h1 id="promise-title" data-placement="hero" data-source-ids="[[HERO_SOURCE_IDS]]">[[HERO_HEADLINE]]</h1>
+          <p class="hero-support" data-placement="hero" data-source-ids="[[HERO_SOURCE_IDS]]">[[HERO_SUPPORT]]</p>
+          <div class="hero-actions">
+            <!-- CTA:external:START -->
+            <a
+              class="button"
+              data-cta="primary"
+              data-non-claim-number
+              data-cta-type="[[PRIMARY_CTA_TYPE]]"
+              data-cta-label="[[PRIMARY_CTA_LABEL]]"
+              href="[[PRIMARY_CTA_URL]]"
+              target="_blank"
+              rel="noopener"
+              onclick="flzAnalytic('cta_click', {text:this.dataset.ctaLabel, area:'hero', url:this.href}, this)"
+            >
+              [[PRIMARY_CTA_LABEL]]
+              <span class="button-arrow" aria-hidden="true">↗</span>
+            </a>
+            <!-- CTA:external:END -->
+            <button
+              class="button button-outline"
+              type="button"
+              data-scroll-target="path"
+              aria-controls="path"
+            >
+              See the path
+            </button>
+          </div>
+        </div>
+
+        <aside class="hero-visual reveal" aria-label="Buyer challenge and desired outcome">
+          <div class="visual-copy">
+            <p class="visual-kicker">Desired outcome</p>
+            <div class="outcome-item">
+              <p class="outcome-label">Buyer challenge</p>
+              <p class="outcome-copy buyer-challenge-copy" data-placement="buyer_challenge" data-source-ids="[[BUYER_CHALLENGE_SOURCE_IDS]]">[[BUYER_CHALLENGE]]</p>
+            </div>
+            <div class="outcome-item outcome-item-primary">
+              <p class="outcome-label">What changes with Folloze</p>
+              <p class="outcome-copy desired-outcome-copy" data-placement="desired_outcome" data-source-ids="[[DESIRED_OUTCOME_SOURCE_IDS]]">[[DESIRED_OUTCOME]]</p>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- OPTIONAL:proof:START -->
+    <section class="section proof-section" id="proof" aria-labelledby="proof-title">
+      <div class="shell">
+        <div class="section-heading reveal">
+          <div>
+            <p class="section-label">Proof</p>
+            <h2 id="proof-title" data-placement="proof" data-source-ids="[[PROOF_SOURCE_IDS]]">[[PROOF_HEADLINE]]</h2>
+          </div>
+          <p class="section-intro proof-intro" data-placement="proof" data-source-ids="[[PROOF_SOURCE_IDS]]">[[PROOF_INTRO]]</p>
+        </div>
+
+        <div class="proof-grid">
+          <!-- OPTIONAL:proof_1:START -->
+          <article class="proof-card reveal" data-placement="proof" data-evidence-kind="[[PROOF_1_KIND]]" data-evidence-id="[[PROOF_1_ID]]" data-source-ids="[[PROOF_1_SOURCE_IDS]]">
+            <p class="proof-value">[[PROOF_1_VALUE]]</p>
+            <p class="proof-copy">[[PROOF_1_COPY]]</p>
+          </article>
+          <!-- OPTIONAL:proof_1:END -->
+          <!-- OPTIONAL:proof_2:START -->
+          <article class="proof-card reveal" data-placement="proof" data-evidence-kind="[[PROOF_2_KIND]]" data-evidence-id="[[PROOF_2_ID]]" data-source-ids="[[PROOF_2_SOURCE_IDS]]">
+            <p class="proof-value">[[PROOF_2_VALUE]]</p>
+            <p class="proof-copy">[[PROOF_2_COPY]]</p>
+          </article>
+          <!-- OPTIONAL:proof_2:END -->
+          <!-- OPTIONAL:proof_3:START -->
+          <article class="proof-card reveal" data-placement="proof" data-evidence-kind="[[PROOF_3_KIND]]" data-evidence-id="[[PROOF_3_ID]]" data-source-ids="[[PROOF_3_SOURCE_IDS]]">
+            <p class="proof-value">[[PROOF_3_VALUE]]</p>
+            <p class="proof-copy">[[PROOF_3_COPY]]</p>
+          </article>
+          <!-- OPTIONAL:proof_3:END -->
+        </div>
+      </div>
+    </section>
+    <!-- OPTIONAL:proof:END -->
+
+    <section class="section" id="path" aria-labelledby="path-title">
+      <div class="shell">
+        <div class="section-heading reveal">
+          <div>
+            <p class="section-label">Folloze capabilities</p>
+            <h2 id="path-title" data-placement="folloze_capabilities" data-source-ids="[[PATH_SOURCE_IDS]]">[[PATH_HEADLINE]]</h2>
+          </div>
+          <p class="section-intro capabilities-intro" data-placement="folloze_capabilities" data-source-ids="[[PATH_SOURCE_IDS]]">[[PATH_INTRO]]</p>
+        </div>
+
+        <div class="path-list">
+          <!-- OPTIONAL:build:START -->
+          <article class="path-step reveal" data-placement="path_build" data-pillar="Build" data-claim-id="[[BUILD_CLAIM_ID]]" data-source-ids="[[BUILD_SOURCE_IDS]]">
+            <span class="path-index" data-non-claim-number>[[BUILD_STEP_INDEX]]</span>
+            <h3 class="path-title">[[BUILD_HEADLINE]]</h3>
+            <p class="path-copy">[[BUILD_COPY]]</p>
+          </article>
+          <!-- OPTIONAL:build:END -->
+          <!-- OPTIONAL:activate:START -->
+          <article class="path-step reveal" data-placement="path_activate" data-pillar="Activate" data-claim-id="[[ACTIVATE_CLAIM_ID]]" data-source-ids="[[ACTIVATE_SOURCE_IDS]]">
+            <span class="path-index" data-non-claim-number>[[ACTIVATE_STEP_INDEX]]</span>
+            <h3 class="path-title">[[ACTIVATE_HEADLINE]]</h3>
+            <p class="path-copy">[[ACTIVATE_COPY]]</p>
+          </article>
+          <!-- OPTIONAL:activate:END -->
+          <!-- OPTIONAL:signal:START -->
+          <article class="path-step reveal" data-placement="path_signal" data-pillar="Signal" data-claim-id="[[SIGNAL_CLAIM_ID]]" data-source-ids="[[SIGNAL_SOURCE_IDS]]">
+            <span class="path-index" data-non-claim-number>[[SIGNAL_STEP_INDEX]]</span>
+            <h3 class="path-title">[[SIGNAL_HEADLINE]]</h3>
+            <p class="path-copy">[[SIGNAL_COPY]]</p>
+          </article>
+          <!-- OPTIONAL:signal:END -->
+        </div>
+      </div>
+    </section>
+
+    <section class="next-step" id="next-step" aria-labelledby="next-step-title">
+      <div class="shell">
+        <div class="next-step-panel reveal">
+          <div>
+            <p class="section-label">Next step</p>
+            <h2 id="next-step-title" data-placement="cta" data-source-ids="[[NEXT_STEP_SOURCE_IDS]]">[[NEXT_STEP_HEADLINE]]</h2>
+            <p class="next-step-copy" data-placement="cta" data-source-ids="[[NEXT_STEP_SOURCE_IDS]]">[[NEXT_STEP_COPY]]</p>
+            <p class="seller-line" data-role="seller-line">[[SELLER_NAME]] · [[SELLER_ROLE]]</p>
+            <div class="resource-links">
+              <!-- OPTIONAL:resource_1:START -->
+              <a
+                class="resource-link"
+                data-resource="[[RESOURCE_1_ID]]"
+                data-placement="resource"
+                data-source-ids="[[RESOURCE_1_SOURCE_IDS]]"
+                href="[[RESOURCE_1_URL]]"
+                target="_blank"
+                rel="noopener"
+                onclick="flzAnalytic('resource_click', {text:this.innerText.trim(), area:'resources', url:this.href}, this)"
+              >[[RESOURCE_1_LABEL]]</a>
+              <!-- OPTIONAL:resource_1:END -->
+              <!-- OPTIONAL:resource_2:START -->
+              <a
+                class="resource-link"
+                data-resource="[[RESOURCE_2_ID]]"
+                data-placement="resource"
+                data-source-ids="[[RESOURCE_2_SOURCE_IDS]]"
+                href="[[RESOURCE_2_URL]]"
+                target="_blank"
+                rel="noopener"
+                onclick="flzAnalytic('resource_click', {text:this.innerText.trim(), area:'resources', url:this.href}, this)"
+              >[[RESOURCE_2_LABEL]]</a>
+              <!-- OPTIONAL:resource_2:END -->
+            </div>
+          </div>
+          <!-- CTA:external:START -->
+          <a
+            class="button button-light"
+            data-cta="primary"
+            data-non-claim-number
+            data-cta-type="[[PRIMARY_CTA_TYPE]]"
+            data-cta-label="[[PRIMARY_CTA_LABEL]]"
+            href="[[PRIMARY_CTA_URL]]"
+            target="_blank"
+            rel="noopener"
+            onclick="flzAnalytic('cta_click', {text:this.dataset.ctaLabel, area:'next step', url:this.href}, this)"
+          >
+            [[PRIMARY_CTA_LABEL]]
+            <span class="button-arrow" aria-hidden="true">↗</span>
+          </a>
+          <!-- CTA:external:END -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-inner">
+      <span>Folloze</span>
+    </div>
+  </footer>
+
+  <script>
+    window.flzAnalytic = window.flzAnalytic || function () {};
+
+    (function () {
+      var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+      var scrollControls = document.querySelectorAll("[data-scroll-target]");
+      var accountLogo = document.querySelector('[data-role="account-logo"]');
+      var accountNameFallback = document.querySelector(".account-name");
+
+      if (accountLogo && accountNameFallback) {
+        accountLogo.addEventListener("error", function () {
+          accountLogo.hidden = true;
+          accountNameFallback.hidden = false;
+        });
+      }
+
+      scrollControls.forEach(function (control) {
+        control.addEventListener("click", function () {
+          var targetId = control.getAttribute("data-scroll-target");
+          var target = document.getElementById(targetId);
+
+          if (!target) {
+            return;
+          }
+
+          flzAnalytic(
+            "anchor_click",
+            {
+              text: control.innerText.trim(),
+              area: "navigation",
+              target: targetId
+            },
+            control
+          );
+
+          target.scrollIntoView({
+            behavior: reduceMotion.matches ? "auto" : "smooth",
+            block: "start"
+          });
+
+          if (typeof target.focus === "function") {
+            target.setAttribute("tabindex", "-1");
+            target.focus({ preventScroll: true });
+          }
+        });
+      });
+
+      var revealItems = document.querySelectorAll(".reveal");
+
+      if (reduceMotion.matches || !("IntersectionObserver" in window)) {
+        revealItems.forEach(function (item) {
+          item.classList.add("is-visible");
+        });
+        return;
+      }
+
+      var observer = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        {
+          threshold: 0.16
+        }
+      );
+
+      revealItems.forEach(function (item) {
+        observer.observe(item);
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -2,17 +2,22 @@
 
 Use this reference to keep Folloze one-pagers aligned with approved messaging while still adapting to the account conversation.
 
+Read `brand-source-manifest.md` when exact source freshness, Tyler guidance, current website design, or a source conflict matters.
+
 ## Source Priority
 
 Use Folloze messaging sources in this order:
 
 1. User-provided current messaging, sales deck, campaign direction, or review comments for this specific one-pager.
-2. Bundled `folloze-brand-kit` references, especially `content-system-v3-2.md`, `brand-foundation.md`, `messaging-library.md`, `claims-and-proof.md`, `voice-and-style.md`, and `visual-identity.md`.
-3. Current Folloze website or active public messaging if the Brand Kit appears stale.
-4. Approved prior one-pagers or sales assets that the user explicitly wants to reuse.
-5. This skill's `folloze-value-props.md` reference as the lightweight fallback menu.
+2. Current approved Folloze team sources when connected and authorized.
+3. Current official Folloze website or active public messaging.
+4. Bundled `folloze-brand-kit` references, especially `content-system-v3-2.md`, `brand-foundation.md`, `messaging-library.md`, `claims-and-proof.md`, `voice-and-style.md`, and customer-ready product capabilities.
+5. Approved prior one-pagers or sales assets that the user explicitly wants to reuse.
+6. This skill's `folloze-value-props.md` reference as the lightweight fallback menu.
 
 Do not use restricted customer-specific materials by default. Use them only when the current account, seller, or user explicitly authorizes them.
+
+The bundled v3.2 snapshot was captured on 2026-06-01. Do not treat it as proof that newer approved team guidance or public-site language does not exist.
 
 ## Current Messaging Guardrails
 
@@ -22,6 +27,9 @@ These should be verified against `folloze-brand-kit` and any newer user-provided
 - External display register: `Build. Activate. Signal.`
 - External prose pattern: `[Your AI does X]. [Folloze does Y].`
 - Lead with what happens: deploy, host, govern, personalize, capture signal.
+- Lead with the prospect's operating reality and one real gap before Folloze.
+- Use `Promise -> Proof -> Path` for the page argument.
+- Use one clear primary ask.
 - Avoid external `activation layer` language.
 - Avoid external customer-facing agent-name-led messaging.
 - Use concrete, buyer-safe claims and proof.
@@ -40,21 +48,23 @@ Definitions:
 - `Source`: call notes, Salesforce, Drive, Gmail/Calendar, or public research.
 - `Folloze value prop`: approved Folloze message, product capability, proof point, or pillar.
 - `Buyer-facing claim`: the sentence or phrase safe to show on the one-pager.
-- `Page placement`: hero, value card, motion row, chip, bottom card, CTA, or proof area.
+- `Page placement`: Hero, Desired outcome, Folloze capabilities, Proof, or CTA.
 
 The matrix prevents two common failures:
 
 - dumping generic Folloze messaging into every page
 - creating a beautiful page that does not answer the account's real goals or objections
 
+Every source should use an opaque source ID. Keep internal locators in the intake sidecar, not in buyer-facing HTML.
+
 ## Example Mapping
 
 | Account signal | Folloze value prop | Buyer-facing claim | Page placement |
 |---|---|---|---|
-| Team needs to launch a campaign quickly with limited resources | Build | Build personalized account experiences without rebuilding each destination | Value card |
-| The account is using AI but lacks a governed route to market | Bring your own AI, Govern | Your AI creates the content. Folloze deploys it with brand and governance applied | Motion row |
-| Leadership needs evidence that engagement matters | Signal, deep engagement intelligence | Show which accounts engaged, what they consumed, and what should move to sales | Motion row |
-| Security and governance review may slow momentum | Enterprise-grade governance | Package security, governance, and proof details early for review | Bottom card |
+| Team needs to launch a campaign quickly with limited resources | Build | Build personalized account experiences without rebuilding each destination | Folloze capabilities |
+| The account is using AI but lacks a governed route to market | Build and Activate | Your AI creates the content. Folloze deploys it with brand and governance applied | Folloze capabilities |
+| Leadership needs evidence that engagement matters | Signal, deep engagement intelligence | Show which accounts engaged, what they consumed, and what should move to sales | Folloze capabilities |
+| Security and governance review may slow momentum | Enterprise-ready activation | Package security, governance, and proof details early for review | Proof |
 
 Only include the rows that matter for the account. A strong one-pager usually uses 5-8 rows, not every possible Folloze value prop.
 

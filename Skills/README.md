@@ -10,7 +10,7 @@ This directory contains standalone Folloze skill projects.
 - `folloze-campaign-board-builder` - customer-facing marketer workflow from campaign brief to design context, approved wireframe, local editable HTML, automatic QA, and Folloze publish readiness
 - `folloze-zoom-deal-room` - Zoom recap intake, buyer-safe deal-room briefs, and MCP/API Folloze board routing
 - `Folloze-MCP-Demo-Builder` - vendor-branded Folloze MCP microsite, account page, demo board, and buyer experience builder
-- `folloze-one-pager` - account-specific Folloze follow-up one-pagers from call notes, Salesforce, Drive, and account research
+- `folloze-one-pager` - adaptive AE active-deal or SDR net-new intake followed by a short-scroll Folloze value microsite with exact claim/proof controls and separate local, MCP, AE-public-deployment, manual-sharing, and PDF gates
 - `folloze-sales-handoff` - O&E-facing new-logo Sales Handoff DOCX generation from deal sources and the approved fixed template
 - `sales-to-cs-internal-handoff-folloze` - closed-won sales-to-CS handoff docs, kickoff deck, and instance request workflow
 - `Salesforce-Update` - evidence-backed Salesforce opportunity updates with manual-only stage recommendations
