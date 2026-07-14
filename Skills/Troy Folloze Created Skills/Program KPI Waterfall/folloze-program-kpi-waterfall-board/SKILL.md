@@ -57,6 +57,8 @@ The Vercel app provides:
 - customer board creation from the dashboard with optional authorized customer emails
 - ownership and allowlist checks so a board is only accessible by the owner email or emails explicitly granted access by the owner
 - owner-only access management for adding or removing authorized customer emails after creation
+- owner-only board deletion from the login hub/dashboard; deleting a board removes it from every authorized user's saved board list
+- saved board lists are only visible after a successful email login
 - `/boards/[boardId]` hosted pages that redirect to the full skill-template board runtime
 - the copied skill template at `apps/jdp-board-portal/public/program-kpi-waterfall-board-template.html`
 - Vercel API-backed replacements for the board template's shared save/load hooks
