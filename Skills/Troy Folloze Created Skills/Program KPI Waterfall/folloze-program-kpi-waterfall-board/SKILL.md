@@ -58,6 +58,7 @@ The Vercel app provides:
 - ownership and allowlist checks so a board is only accessible by the owner email or emails explicitly granted access by the owner
 - owner-only access management for adding or removing authorized customer emails after creation
 - board owner designation and transfer from the login hub/dashboard
+- owner-only Folloze designer/edit URL storage with a direct `Edit in Folloze` dashboard link; Folloze still enforces the editor's Folloze account permissions
 - permanent board deletion from the login hub/dashboard only for the designated board owner
 - hide/remove-from-my-view controls for non-owner users with access; hiding removes the board from that user's saved board list without deleting it for anyone else
 - custom board naming from the login hub/dashboard for any board the signed-in user can access
