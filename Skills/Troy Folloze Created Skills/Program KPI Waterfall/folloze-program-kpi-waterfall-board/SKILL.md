@@ -1,6 +1,6 @@
 ---
 name: folloze-program-kpi-waterfall-board
-description: Build and save interactive Folloze MCP boards for program KPI waterfall planning. Use when a user asks to turn the Program KPI workbook, spreadsheet waterfall model, or customer program planning form into a visually polished Folloze board with add-program controls, standard/custom benchmarks, live waterfall calculations, portfolio totals, and MCP analytics.
+description: Build and save interactive Folloze MCP boards for program KPI waterfall planning. Use when a user asks to turn the Program KPI workbook, spreadsheet waterfall model, or customer program planning form into a visually polished Folloze board with add-program controls, standard/customer benchmarks, live waterfall calculations, portfolio totals, and MCP analytics.
 ---
 
 # Folloze Program KPI Waterfall Board
@@ -16,7 +16,7 @@ Build a Folloze MCP board that gives customers the same capabilities as the prog
 - enter program year, quarter, program type, program name, primary segment/audience, sub-category segment/audience, multi-select marketing channels, primary and secondary content/messaging category dropdowns, notes, accounts targeted, average deal size, and projected live boards
 - delete any added program section
 - select the customer success manager from `Meghan Richardson`, `Matthew Brown`, `Steven Nguyen`, or `Flor Estrada`
-- choose standard or custom benchmarks per program
+- choose standard or customer benchmarks per program; editing any benchmark value automatically switches that program to Customer benchmark mode
 - calculate account-to-pipeline waterfall values in real time
 - track published boards, actual funnel counts, actual pipeline, and actual bookings against the projected benchmark model for each program
 - show quarter-only rollups, fiscal year-to-date totals, full-year totals, board-creation growth by quarter, projected-vs-actual totals, and shareable waterfall sections
@@ -98,7 +98,7 @@ The template is a single self-contained HTML file with:
 - fiscal quarter sequencing that can wrap Q1 to the end of the company year
 - collapsed multi-select channel picker that shows selected channels first, expands with an Edit button, and commits selections with a Submit button
 - standard benchmark model: `100% -> 30% -> 10% -> 50% -> 30%`
-- custom benchmark inputs
+- customer benchmark inputs that automatically toggle Benchmark Mode to Customer when edited
 - projected live board and published board tracking
 - actuals inputs for engaged accounts, meetings, pipeline opportunities, closed deals, pipeline, and bookings
 - live full-year totals for programs, projected boards, published boards, pipeline goal, actual pipeline, bookings, actual bookings, and meetings
@@ -153,7 +153,8 @@ Before saving:
 - enter actual pipeline and bookings and verify actual-vs-projected attainment updates
 - delete a program and verify the count, active editor, quarterly rollups, and waterfall sections update
 - choose each customer CSM and verify the waterfall sections show the selected CSM
-- switch a program to `Custom`, change a benchmark, and verify totals update
+- switch a program to `Customer`, change a benchmark, and verify totals update
+- edit any benchmark percentage while in Standard mode and verify Benchmark Mode immediately switches to Customer
 - confirm generated waterfall sections are grouped by quarter and match the program count
 - click `View waterfalls` and verify it lands on the cumulative pipeline-waterfall image, not only the detailed waterfall section
 - click `Output to slides` and verify it calls analytics, exports JSON, and opens the verified deck URL when present
