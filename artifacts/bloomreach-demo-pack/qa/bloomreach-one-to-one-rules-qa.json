@@ -1,0 +1,435 @@
+{
+  "qaType": "Bloomreach 1:1 Demo Builder rules pass",
+  "createdAt": "2026-07-15T14:57:59.236Z",
+  "sourceFile": "/Users/treyharnden/Projects/Folloze-Skills/artifacts/bloomreach-demo-pack/bloomreach-one-to-one-tfg-bash.html",
+  "localUrl": "file:///Users/treyharnden/Projects/Folloze-Skills/artifacts/bloomreach-demo-pack/bloomreach-one-to-one-tfg-bash.html",
+  "viewportsTested": [
+    {
+      "name": "desktop",
+      "width": 1440,
+      "height": 1100
+    },
+    {
+      "name": "mobile-390",
+      "width": 390,
+      "height": 1200
+    },
+    {
+      "name": "mobile-320",
+      "width": 320,
+      "height": 1200
+    }
+  ],
+  "status": "pass",
+  "checks": {
+    "blockedVisibleTerms": [],
+    "externalLinkIssues": [],
+    "imageIssues": [],
+    "overflowIssues": [],
+    "navIssues": [],
+    "headerIssues": [],
+    "consoleIssues": []
+  },
+  "computedSamples": [
+    {
+      "viewport": "desktop",
+      "title": "Bloomreach | Bash PLP Guidance Plan",
+      "screenshot": "/Users/treyharnden/Projects/Folloze-Skills/artifacts/bloomreach-demo-pack/qa/bloomreach-one-to-one-tfg-bash-desktop.png",
+      "screenshotSize": 1258207,
+      "header": {
+        "height": 77,
+        "ctaText": "Read Bash Proof",
+        "brandWidth": 190,
+        "ctaWidth": 161,
+        "overlap": false
+      },
+      "nav": [
+        {
+          "label": "Black Friday Proof",
+          "targetId": "proof",
+          "targetExists": true,
+          "headline": "The PDP test proved shoppers act when guidance arrives in time.",
+          "visible": true,
+          "clickTest": {
+            "scrolled": true,
+            "targetTop": 99.875,
+            "headerHeight": 77,
+            "targetNearViewport": true,
+            "analyticsFired": true
+          }
+        },
+        {
+          "label": "Move Upstream",
+          "targetId": "path",
+          "targetExists": true,
+          "headline": "The next move is not more chat. It is earlier confidence on the product-listing page.",
+          "visible": true,
+          "clickTest": {
+            "scrolled": true,
+            "targetTop": 99.6875,
+            "headerHeight": 77,
+            "targetNearViewport": true,
+            "analyticsFired": true
+          }
+        },
+        {
+          "label": "Team Proof",
+          "targetId": "teams",
+          "targetExists": true,
+          "headline": "Give each team the proof it needs before Bash expands the assistant.",
+          "visible": true,
+          "clickTest": {
+            "scrolled": true,
+            "targetTop": 100.1875,
+            "headerHeight": 77,
+            "targetNearViewport": true,
+            "analyticsFired": true
+          }
+        },
+        {
+          "label": "Plan PLP Test",
+          "targetId": "workshop",
+          "targetExists": true,
+          "headline": "Prove the PLP move with controls, not a broad rollout.",
+          "visible": true,
+          "clickTest": {
+            "scrolled": true,
+            "targetTop": 99.5625,
+            "headerHeight": 77,
+            "targetNearViewport": true,
+            "analyticsFired": true
+          }
+        }
+      ],
+      "radii": [
+        {
+          "selector": ".evidence-panel",
+          "borderRadius": "24px"
+        },
+        {
+          "selector": ".proof-tile",
+          "borderRadius": "16px"
+        },
+        {
+          "selector": ".stage",
+          "borderRadius": "16px"
+        },
+        {
+          "selector": ".team-card",
+          "borderRadius": "16px"
+        },
+        {
+          "selector": ".source-card",
+          "borderRadius": "24px"
+        },
+        {
+          "selector": ".workshop article",
+          "borderRadius": "16px"
+        },
+        {
+          "selector": ".cta",
+          "borderRadius": "999px"
+        }
+      ],
+      "externalLinks": [
+        {
+          "text": "Read Bash Proof",
+          "href": "https://www.bloomreach.com/en/case-studies/tfg-boosts-online-conversion-rate-with-bloomreach",
+          "target": "_blank",
+          "rel": "noopener",
+          "hasDirectAnalytics": true
+        },
+        {
+          "text": "Read the Bash Proof",
+          "href": "https://www.bloomreach.com/en/case-studies/tfg-boosts-online-conversion-rate-with-bloomreach",
+          "target": "_blank",
+          "rel": "noopener",
+          "hasDirectAnalytics": true
+        },
+        {
+          "text": "See Conversational Agent",
+          "href": "https://www.bloomreach.com/en/products/loomi-conversational-agent",
+          "target": "_blank",
+          "rel": "noopener",
+          "hasDirectAnalytics": true
+        },
+        {
+          "text": "Read the June Update",
+          "href": "https://www.bloomreach.com/en/news/2026/bloomreach-transforms-customer-conversation-into-ecommerce-insight-with-conversational-agent/",
+          "target": "_blank",
+          "rel": "noopener",
+          "hasDirectAnalytics": true
+        },
+        {
+          "text": "Open the Case Study",
+          "href": "https://www.bloomreach.com/en/case-studies/tfg-boosts-online-conversion-rate-with-bloomreach",
+          "target": "_blank",
+          "rel": "noopener",
+          "hasDirectAnalytics": true
+        },
+        {
+          "text": "See Conversational Agent",
+          "href": "https://www.bloomreach.com/en/products/loomi-conversational-agent",
+          "target": "_blank",
+          "rel": "noopener",
+          "hasDirectAnalytics": true
+        },
+        {
+          "text": "Review the June Update",
+          "href": "https://www.bloomreach.com/en/news/2026/bloomreach-transforms-customer-conversation-into-ecommerce-insight-with-conversational-agent/",
+          "target": "_blank",
+          "rel": "noopener",
+          "hasDirectAnalytics": true
+        }
+      ]
+    },
+    {
+      "viewport": "mobile-390",
+      "title": "Bloomreach | Bash PLP Guidance Plan",
+      "screenshot": "/Users/treyharnden/Projects/Folloze-Skills/artifacts/bloomreach-demo-pack/qa/bloomreach-one-to-one-tfg-bash-mobile-390.png",
+      "screenshotSize": 851261,
+      "header": {
+        "height": 69,
+        "ctaText": "Read Bash Proof",
+        "brandWidth": 148,
+        "ctaWidth": 134,
+        "overlap": false
+      },
+      "nav": [
+        {
+          "label": "Black Friday Proof",
+          "targetId": "proof",
+          "targetExists": true,
+          "headline": "The PDP test proved shoppers act when guidance arrives in time.",
+          "visible": false
+        },
+        {
+          "label": "Move Upstream",
+          "targetId": "path",
+          "targetExists": true,
+          "headline": "The next move is not more chat. It is earlier confidence on the product-listing page.",
+          "visible": false
+        },
+        {
+          "label": "Team Proof",
+          "targetId": "teams",
+          "targetExists": true,
+          "headline": "Give each team the proof it needs before Bash expands the assistant.",
+          "visible": false
+        },
+        {
+          "label": "Plan PLP Test",
+          "targetId": "workshop",
+          "targetExists": true,
+          "headline": "Prove the PLP move with controls, not a broad rollout.",
+          "visible": false
+        }
+      ],
+      "radii": [
+        {
+          "selector": ".evidence-panel",
+          "borderRadius": "24px"
+        },
+        {
+          "selector": ".proof-tile",
+          "borderRadius": "16px"
+        },
+        {
+          "selector": ".stage",
+          "borderRadius": "16px"
+        },
+        {
+          "selector": ".team-card",
+          "borderRadius": "16px"
+        },
+        {
+          "selector": ".source-card",
+          "borderRadius": "24px"
+        },
+        {
+          "selector": ".workshop article",
+          "borderRadius": "16px"
+        },
+        {
+          "selector": ".cta",
+          "borderRadius": "999px"
+        }
+      ],
+      "externalLinks": [
+        {
+          "text": "Read Bash Proof",
+          "href": "https://www.bloomreach.com/en/case-studies/tfg-boosts-online-conversion-rate-with-bloomreach",
+          "target": "_blank",
+          "rel": "noopener",
+          "hasDirectAnalytics": true
+        },
+        {
+          "text": "Read the Bash Proof",
+          "href": "https://www.bloomreach.com/en/case-studies/tfg-boosts-online-conversion-rate-with-bloomreach",
+          "target": "_blank",
+          "rel": "noopener",
+          "hasDirectAnalytics": true
+        },
+        {
+          "text": "See Conversational Agent",
+          "href": "https://www.bloomreach.com/en/products/loomi-conversational-agent",
+          "target": "_blank",
+          "rel": "noopener",
+          "hasDirectAnalytics": true
+        },
+        {
+          "text": "Read the June Update",
+          "href": "https://www.bloomreach.com/en/news/2026/bloomreach-transforms-customer-conversation-into-ecommerce-insight-with-conversational-agent/",
+          "target": "_blank",
+          "rel": "noopener",
+          "hasDirectAnalytics": true
+        },
+        {
+          "text": "Open the Case Study",
+          "href": "https://www.bloomreach.com/en/case-studies/tfg-boosts-online-conversion-rate-with-bloomreach",
+          "target": "_blank",
+          "rel": "noopener",
+          "hasDirectAnalytics": true
+        },
+        {
+          "text": "See Conversational Agent",
+          "href": "https://www.bloomreach.com/en/products/loomi-conversational-agent",
+          "target": "_blank",
+          "rel": "noopener",
+          "hasDirectAnalytics": true
+        },
+        {
+          "text": "Review the June Update",
+          "href": "https://www.bloomreach.com/en/news/2026/bloomreach-transforms-customer-conversation-into-ecommerce-insight-with-conversational-agent/",
+          "target": "_blank",
+          "rel": "noopener",
+          "hasDirectAnalytics": true
+        }
+      ]
+    },
+    {
+      "viewport": "mobile-320",
+      "title": "Bloomreach | Bash PLP Guidance Plan",
+      "screenshot": "/Users/treyharnden/Projects/Folloze-Skills/artifacts/bloomreach-demo-pack/qa/bloomreach-one-to-one-tfg-bash-mobile-320.png",
+      "screenshotSize": 799506,
+      "header": {
+        "height": 69,
+        "ctaText": "Read Bash Proof",
+        "brandWidth": 136,
+        "ctaWidth": 134,
+        "overlap": false
+      },
+      "nav": [
+        {
+          "label": "Black Friday Proof",
+          "targetId": "proof",
+          "targetExists": true,
+          "headline": "The PDP test proved shoppers act when guidance arrives in time.",
+          "visible": false
+        },
+        {
+          "label": "Move Upstream",
+          "targetId": "path",
+          "targetExists": true,
+          "headline": "The next move is not more chat. It is earlier confidence on the product-listing page.",
+          "visible": false
+        },
+        {
+          "label": "Team Proof",
+          "targetId": "teams",
+          "targetExists": true,
+          "headline": "Give each team the proof it needs before Bash expands the assistant.",
+          "visible": false
+        },
+        {
+          "label": "Plan PLP Test",
+          "targetId": "workshop",
+          "targetExists": true,
+          "headline": "Prove the PLP move with controls, not a broad rollout.",
+          "visible": false
+        }
+      ],
+      "radii": [
+        {
+          "selector": ".evidence-panel",
+          "borderRadius": "24px"
+        },
+        {
+          "selector": ".proof-tile",
+          "borderRadius": "16px"
+        },
+        {
+          "selector": ".stage",
+          "borderRadius": "16px"
+        },
+        {
+          "selector": ".team-card",
+          "borderRadius": "16px"
+        },
+        {
+          "selector": ".source-card",
+          "borderRadius": "24px"
+        },
+        {
+          "selector": ".workshop article",
+          "borderRadius": "16px"
+        },
+        {
+          "selector": ".cta",
+          "borderRadius": "999px"
+        }
+      ],
+      "externalLinks": [
+        {
+          "text": "Read Bash Proof",
+          "href": "https://www.bloomreach.com/en/case-studies/tfg-boosts-online-conversion-rate-with-bloomreach",
+          "target": "_blank",
+          "rel": "noopener",
+          "hasDirectAnalytics": true
+        },
+        {
+          "text": "Read the Bash Proof",
+          "href": "https://www.bloomreach.com/en/case-studies/tfg-boosts-online-conversion-rate-with-bloomreach",
+          "target": "_blank",
+          "rel": "noopener",
+          "hasDirectAnalytics": true
+        },
+        {
+          "text": "See Conversational Agent",
+          "href": "https://www.bloomreach.com/en/products/loomi-conversational-agent",
+          "target": "_blank",
+          "rel": "noopener",
+          "hasDirectAnalytics": true
+        },
+        {
+          "text": "Read the June Update",
+          "href": "https://www.bloomreach.com/en/news/2026/bloomreach-transforms-customer-conversation-into-ecommerce-insight-with-conversational-agent/",
+          "target": "_blank",
+          "rel": "noopener",
+          "hasDirectAnalytics": true
+        },
+        {
+          "text": "Open the Case Study",
+          "href": "https://www.bloomreach.com/en/case-studies/tfg-boosts-online-conversion-rate-with-bloomreach",
+          "target": "_blank",
+          "rel": "noopener",
+          "hasDirectAnalytics": true
+        },
+        {
+          "text": "See Conversational Agent",
+          "href": "https://www.bloomreach.com/en/products/loomi-conversational-agent",
+          "target": "_blank",
+          "rel": "noopener",
+          "hasDirectAnalytics": true
+        },
+        {
+          "text": "Review the June Update",
+          "href": "https://www.bloomreach.com/en/news/2026/bloomreach-transforms-customer-conversation-into-ecommerce-insight-with-conversational-agent/",
+          "target": "_blank",
+          "rel": "noopener",
+          "hasDirectAnalytics": true
+        }
+      ]
+    }
+  ]
+}
