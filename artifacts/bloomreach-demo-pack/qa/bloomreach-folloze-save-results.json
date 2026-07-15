@@ -1,0 +1,33 @@
+{
+  "savedAt": "2026-07-15",
+  "vendor": "Bloomreach",
+  "themeMode": "no Folloze company theme",
+  "themeId": "5374",
+  "themeUrl": "https://cdn.folloze.com/theme/2/5374.css?v=1767691946",
+  "publicDeploymentStatus": "pending; MCP returned signed-in designer URLs only",
+  "preSaveQa": "artifacts/bloomreach-demo-pack/qa/bloomreach-presave-folloze-qa.json",
+  "boards": [
+    {
+      "lane": "campaign",
+      "name": "Bloomreach | Turn Campaign Ideas Into Live Lifecycle Flows",
+      "boardId": 247735,
+      "designerUrl": "https://app.folloze.com/app/board/247735/designer",
+      "sourceFile": "artifacts/bloomreach-demo-pack/bloomreach-campaign-landing.html"
+    },
+    {
+      "lane": "one-to-one",
+      "name": "Bloomreach | Bash PLP Guidance Plan",
+      "boardId": 247736,
+      "designerUrl": "https://app.folloze.com/app/board/247736/designer",
+      "sourceFile": "artifacts/bloomreach-demo-pack/bloomreach-one-to-one-tfg-bash.html"
+    },
+    {
+      "lane": "event",
+      "name": "Bloomreach | The Edge Summit Los Angeles",
+      "boardId": 247737,
+      "designerUrl": "https://app.folloze.com/app/board/247737/designer",
+      "sourceFile": "artifacts/bloomreach-demo-pack/bloomreach-edge-summit-la.html"
+    }
+  ],
+  "trackerStatus": "written to MCP Demo Environments - May 2026, Demo Environments rows 96-98"
+}

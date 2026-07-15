@@ -49,13 +49,17 @@ Sections:
 
 Active board state:
 
-- Save intent: local-only 1:1 update. No Folloze MCP save, publish, tracker write, or theme change requested.
+- Save intent: Folloze save completed on 2026-07-15 after local-only 1:1 update.
 - Source of truth: artifacts/bloomreach-demo-pack/bloomreach-one-to-one-tfg-bash.html
 - Vendor: Bloomreach.
 - Target account: TFG / Bash.
 - Motion: existing-customer expansion from proven PDP assistance to controlled PLP guidance.
-- Public deployment status: not updated in this pass.
-- Theme state: inherited local preview styling; no live Folloze save flow in scope.
+- Public deployment status: pending; MCP returned the signed-in designer URL only.
+- Theme state: no Folloze company theme, per Trey. Theme ID `5374`; stylesheet `https://cdn.folloze.com/theme/2/5374.css?v=1767691946`.
+- Board name: Bloomreach | Bash PLP Guidance Plan.
+- Board ID: `247736`.
+- Designer URL: `https://app.folloze.com/app/board/247736/designer`.
+- Tracker status: written to `MCP Demo Environments - May 2026`, tab `Demo Environments`, row `97`.
 
 Message spine:
 

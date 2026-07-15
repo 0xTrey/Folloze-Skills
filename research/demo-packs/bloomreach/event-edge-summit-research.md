@@ -44,3 +44,15 @@ Sections:
 - The page title in one snippet mentioned September 8-9, but the Bloomreach event hub and Edge page body both state September 9-10. Use September 9-10 and note this if saving/publishing.
 - Do not invent speaker details beyond Musa Tariq, Bloomreach CEO Raj De Datta, Xun Wang, and Google participant details shown on the source page.
 - Do not claim registration deadlines, ticket prices, or sponsor benefits unless rechecked directly before save.
+
+## 2026-07-15 Folloze Save
+
+- Save status: created new Folloze board from local source file.
+- Board name: Bloomreach | The Edge Summit Los Angeles.
+- Board ID: `247737`.
+- Designer URL: `https://app.folloze.com/app/board/247737/designer`.
+- Public deployment URL: pending; MCP returned the signed-in designer URL only.
+- Theme mode: no Folloze company theme, per Trey. Theme ID `5374`; stylesheet `https://cdn.folloze.com/theme/2/5374.css?v=1767691946`.
+- Source file: artifacts/bloomreach-demo-pack/bloomreach-edge-summit-la.html.
+- QA status: pre-save Folloze QA passed in artifacts/bloomreach-demo-pack/qa/bloomreach-presave-folloze-qa.json.
+- Tracker status: written to `MCP Demo Environments - May 2026`, tab `Demo Environments`, row `98`.

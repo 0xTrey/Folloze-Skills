@@ -39,3 +39,15 @@ Sections:
 - Do not imply every customer gets the same metric lift.
 - Do not say Loomi Marketing Agent replaces the team; position it as campaign execution capacity with human review and approval.
 - Do not present pricing, security, or certification claims beyond the product page wording unless rechecked during Folloze save.
+
+## 2026-07-15 Folloze Save
+
+- Save status: created new Folloze board from local source file.
+- Board name: Bloomreach | Turn Campaign Ideas Into Live Lifecycle Flows.
+- Board ID: `247735`.
+- Designer URL: `https://app.folloze.com/app/board/247735/designer`.
+- Public deployment URL: pending; MCP returned the signed-in designer URL only.
+- Theme mode: no Folloze company theme, per Trey. Theme ID `5374`; stylesheet `https://cdn.folloze.com/theme/2/5374.css?v=1767691946`.
+- Source file: artifacts/bloomreach-demo-pack/bloomreach-campaign-landing.html.
+- QA status: pre-save Folloze QA passed in artifacts/bloomreach-demo-pack/qa/bloomreach-presave-folloze-qa.json.
+- Tracker status: written to `MCP Demo Environments - May 2026`, tab `Demo Environments`, row `96`.

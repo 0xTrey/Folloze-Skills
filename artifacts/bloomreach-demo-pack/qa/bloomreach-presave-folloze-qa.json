@@ -1,0 +1,1500 @@
+{
+  "qaType": "Bloomreach demo pack pre-Folloze-save QA",
+  "createdAt": "2026-07-15T15:05:23.577Z",
+  "themeMode": "no Folloze company theme",
+  "themeId": "5374",
+  "themeUrl": "https://cdn.folloze.com/theme/2/5374.css?v=1767691946",
+  "guideRead": true,
+  "status": "pass",
+  "issues": [],
+  "pages": [
+    {
+      "slug": "campaign",
+      "name": "Bloomreach | Turn Campaign Ideas Into Live Lifecycle Flows",
+      "file": "/Users/treyharnden/Projects/Folloze-Skills/artifacts/bloomreach-demo-pack/bloomreach-campaign-landing.html",
+      "staticIssues": [],
+      "pageIssues": [],
+      "viewports": [
+        {
+          "viewport": "desktop",
+          "width": 1440,
+          "height": 1100,
+          "screenshot": "/Users/treyharnden/Projects/Folloze-Skills/artifacts/bloomreach-demo-pack/qa/bloomreach-campaign-desktop.png",
+          "screenshotSize": 957164,
+          "consoleIssues": [],
+          "title": "Bloomreach | Turn Campaign Ideas Into Live Lifecycle Flows",
+          "themeLinkPresent": true,
+          "overflow": false,
+          "scrollWidth": 1440,
+          "clientWidth": 1440,
+          "links": [
+            {
+              "text": "See It Live",
+              "href": "https://www.bloomreach.com/en/products/loomi-marketing-agent",
+              "target": "_blank",
+              "rel": "noopener",
+              "onclick": "flzAnalytic('cta_click', {text:this.innerText.trim(), area:'header', url:this.href}, this)"
+            },
+            {
+              "text": "Explore Marketing Agent",
+              "href": "https://www.bloomreach.com/en/products/loomi-marketing-agent",
+              "target": "_blank",
+              "rel": "noopener",
+              "onclick": "flzAnalytic('cta_click', {text:this.innerText.trim(), area:'hero', url:this.href}, this)"
+            },
+            {
+              "text": "Read 260 Sample Sale",
+              "href": "https://www.bloomreach.com/en/case-studies/260-sample-sale",
+              "target": "_blank",
+              "rel": "noopener",
+              "onclick": "flzAnalytic('cta_click', {text:this.innerText.trim(), area:'hero', url:this.href}, this)"
+            },
+            {
+              "text": "Watch the Agent Build",
+              "href": "https://www.bloomreach.com/en/products/loomi-marketing-agent",
+              "target": "_blank",
+              "rel": "noopener",
+              "onclick": "flzAnalytic('cta_click', {text:this.innerText.trim(), area:'workbench', url:this.href}, this)"
+            },
+            {
+              "text": "Read the case study",
+              "href": "https://www.bloomreach.com/en/case-studies/260-sample-sale",
+              "target": "_blank",
+              "rel": "noopener",
+              "onclick": "flzAnalytic('cta_click', {text:this.innerText.trim(), area:'customer proof', url:this.href}, this)"
+            },
+            {
+              "text": "Read the Sideshow story",
+              "href": "https://www.bloomreach.com/en/case-studies/sideshow-campaign-agents",
+              "target": "_blank",
+              "rel": "noopener",
+              "onclick": "flzAnalytic('cta_click', {text:this.innerText.trim(), area:'customer proof', url:this.href}, this)"
+            },
+            {
+              "text": "Read the beauty story",
+              "href": "https://www.bloomreach.com/en/case-studies/revolution-beauty-campaign-agents",
+              "target": "_blank",
+              "rel": "noopener",
+              "onclick": "flzAnalytic('cta_click', {text:this.innerText.trim(), area:'customer proof', url:this.href}, this)"
+            },
+            {
+              "text": "Schedule a 30-Minute Demo",
+              "href": "https://www.bloomreach.com/en/products/loomi-marketing-agent",
+              "target": "_blank",
+              "rel": "noopener",
+              "onclick": "flzAnalytic('cta_click', {text:this.innerText.trim(), area:'final', url:this.href}, this)"
+            },
+            {
+              "text": "Read the GA News",
+              "href": "https://www.bloomreach.com/en/news/2026/bloomreach-announces-the-general-availability-of-loomi-marketing-agent/",
+              "target": "_blank",
+              "rel": "noopener",
+              "onclick": "flzAnalytic('cta_click', {text:this.innerText.trim(), area:'final', url:this.href}, this)"
+            }
+          ],
+          "badLinks": [],
+          "images": [
+            {
+              "alt": "",
+              "src": "https://www.bloomreach.com/wp-content/themes/hello-theme-child-master/assets/img/bloomreach-logo-icon.svg",
+              "loaded": true,
+              "naturalWidth": 40,
+              "naturalHeight": 40
+            },
+            {
+              "alt": "Bloomreach",
+              "src": "https://www.bloomreach.com/wp-content/themes/hello-theme-child-master/assets/img/bloomreach-logo-text.svg",
+              "loaded": true,
+              "naturalWidth": 136,
+              "naturalHeight": 18
+            },
+            {
+              "alt": "Bloomreach Loomi Marketing Agent interface preview",
+              "src": "https://www.bloomreach.com/wp-content/uploads/2025/09/Marketing-Agent-OG-Image.jpg",
+              "loaded": true,
+              "naturalWidth": 1200,
+              "naturalHeight": 630
+            },
+            {
+              "alt": "",
+              "src": "https://www.bloomreach.com/wp-content/themes/hello-theme-child-master/assets/img/bloomreach-logo-icon.svg",
+              "loaded": true,
+              "naturalWidth": 40,
+              "naturalHeight": 40
+            },
+            {
+              "alt": "Bloomreach",
+              "src": "https://www.bloomreach.com/wp-content/themes/hello-theme-child-master/assets/img/bloomreach-logo-text.svg",
+              "loaded": true,
+              "naturalWidth": 136,
+              "naturalHeight": 18
+            }
+          ],
+          "badImages": [],
+          "nav": [
+            {
+              "label": "Proof",
+              "targetId": "proof",
+              "targetExists": true,
+              "visible": true,
+              "clickTest": {
+                "scrolled": true,
+                "targetTop": 102.015625,
+                "analyticsFired": true
+              }
+            },
+            {
+              "label": "Build Flow",
+              "targetId": "workbench",
+              "targetExists": true,
+              "visible": true,
+              "clickTest": {
+                "scrolled": true,
+                "targetTop": 101.75,
+                "analyticsFired": true
+              }
+            },
+            {
+              "label": "Use Cases",
+              "targetId": "use-cases",
+              "targetExists": true,
+              "visible": true,
+              "clickTest": {
+                "scrolled": true,
+                "targetTop": 102.46875,
+                "analyticsFired": true
+              }
+            },
+            {
+              "label": "Results",
+              "targetId": "customer-proof",
+              "targetExists": true,
+              "visible": true,
+              "clickTest": {
+                "scrolled": true,
+                "targetTop": 101.5625,
+                "analyticsFired": true
+              }
+            }
+          ],
+          "headerHeight": 77
+        },
+        {
+          "viewport": "mobile390",
+          "width": 390,
+          "height": 1200,
+          "screenshot": "/Users/treyharnden/Projects/Folloze-Skills/artifacts/bloomreach-demo-pack/qa/bloomreach-campaign-mobile-390.png",
+          "screenshotSize": 709503,
+          "consoleIssues": [],
+          "title": "Bloomreach | Turn Campaign Ideas Into Live Lifecycle Flows",
+          "themeLinkPresent": true,
+          "overflow": false,
+          "scrollWidth": 390,
+          "clientWidth": 390,
+          "links": [
+            {
+              "text": "See It Live",
+              "href": "https://www.bloomreach.com/en/products/loomi-marketing-agent",
+              "target": "_blank",
+              "rel": "noopener",
+              "onclick": "flzAnalytic('cta_click', {text:this.innerText.trim(), area:'header', url:this.href}, this)"
+            },
+            {
+              "text": "Explore Marketing Agent",
+              "href": "https://www.bloomreach.com/en/products/loomi-marketing-agent",
+              "target": "_blank",
+              "rel": "noopener",
+              "onclick": "flzAnalytic('cta_click', {text:this.innerText.trim(), area:'hero', url:this.href}, this)"
+            },
+            {
+              "text": "Read 260 Sample Sale",
+              "href": "https://www.bloomreach.com/en/case-studies/260-sample-sale",
+              "target": "_blank",
+              "rel": "noopener",
+              "onclick": "flzAnalytic('cta_click', {text:this.innerText.trim(), area:'hero', url:this.href}, this)"
+            },
+            {
+              "text": "Watch the Agent Build",
+              "href": "https://www.bloomreach.com/en/products/loomi-marketing-agent",
+              "target": "_blank",
+              "rel": "noopener",
+              "onclick": "flzAnalytic('cta_click', {text:this.innerText.trim(), area:'workbench', url:this.href}, this)"
+            },
+            {
+              "text": "Read the case study",
+              "href": "https://www.bloomreach.com/en/case-studies/260-sample-sale",
+              "target": "_blank",
+              "rel": "noopener",
+              "onclick": "flzAnalytic('cta_click', {text:this.innerText.trim(), area:'customer proof', url:this.href}, this)"
+            },
+            {
+              "text": "Read the Sideshow story",
+              "href": "https://www.bloomreach.com/en/case-studies/sideshow-campaign-agents",
+              "target": "_blank",
+              "rel": "noopener",
+              "onclick": "flzAnalytic('cta_click', {text:this.innerText.trim(), area:'customer proof', url:this.href}, this)"
+            },
+            {
+              "text": "Read the beauty story",
+              "href": "https://www.bloomreach.com/en/case-studies/revolution-beauty-campaign-agents",
+              "target": "_blank",
+              "rel": "noopener",
+              "onclick": "flzAnalytic('cta_click', {text:this.innerText.trim(), area:'customer proof', url:this.href}, this)"
+            },
+            {
+              "text": "Schedule a 30-Minute Demo",
+              "href": "https://www.bloomreach.com/en/products/loomi-marketing-agent",
+              "target": "_blank",
+              "rel": "noopener",
+              "onclick": "flzAnalytic('cta_click', {text:this.innerText.trim(), area:'final', url:this.href}, this)"
+            },
+            {
+              "text": "Read the GA News",
+              "href": "https://www.bloomreach.com/en/news/2026/bloomreach-announces-the-general-availability-of-loomi-marketing-agent/",
+              "target": "_blank",
+              "rel": "noopener",
+              "onclick": "flzAnalytic('cta_click', {text:this.innerText.trim(), area:'final', url:this.href}, this)"
+            }
+          ],
+          "badLinks": [],
+          "images": [
+            {
+              "alt": "",
+              "src": "https://www.bloomreach.com/wp-content/themes/hello-theme-child-master/assets/img/bloomreach-logo-icon.svg",
+              "loaded": true,
+              "naturalWidth": 40,
+              "naturalHeight": 40
+            },
+            {
+              "alt": "Bloomreach",
+              "src": "https://www.bloomreach.com/wp-content/themes/hello-theme-child-master/assets/img/bloomreach-logo-text.svg",
+              "loaded": true,
+              "naturalWidth": 136,
+              "naturalHeight": 18
+            },
+            {
+              "alt": "Bloomreach Loomi Marketing Agent interface preview",
+              "src": "https://www.bloomreach.com/wp-content/uploads/2025/09/Marketing-Agent-OG-Image.jpg",
+              "loaded": true,
+              "naturalWidth": 1200,
+              "naturalHeight": 630
+            },
+            {
+              "alt": "",
+              "src": "https://www.bloomreach.com/wp-content/themes/hello-theme-child-master/assets/img/bloomreach-logo-icon.svg",
+              "loaded": true,
+              "naturalWidth": 40,
+              "naturalHeight": 40
+            },
+            {
+              "alt": "Bloomreach",
+              "src": "https://www.bloomreach.com/wp-content/themes/hello-theme-child-master/assets/img/bloomreach-logo-text.svg",
+              "loaded": true,
+              "naturalWidth": 136,
+              "naturalHeight": 18
+            }
+          ],
+          "badImages": [],
+          "nav": [
+            {
+              "label": "Proof",
+              "targetId": "proof",
+              "targetExists": true,
+              "visible": false
+            },
+            {
+              "label": "Build Flow",
+              "targetId": "workbench",
+              "targetExists": true,
+              "visible": false
+            },
+            {
+              "label": "Use Cases",
+              "targetId": "use-cases",
+              "targetExists": true,
+              "visible": false
+            },
+            {
+              "label": "Results",
+              "targetId": "customer-proof",
+              "targetExists": true,
+              "visible": false
+            }
+          ],
+          "headerHeight": 69
+        },
+        {
+          "viewport": "mobile320",
+          "width": 320,
+          "height": 1200,
+          "screenshot": "/Users/treyharnden/Projects/Folloze-Skills/artifacts/bloomreach-demo-pack/qa/bloomreach-campaign-mobile-320.png",
+          "screenshotSize": 647899,
+          "consoleIssues": [],
+          "title": "Bloomreach | Turn Campaign Ideas Into Live Lifecycle Flows",
+          "themeLinkPresent": true,
+          "overflow": false,
+          "scrollWidth": 320,
+          "clientWidth": 320,
+          "links": [
+            {
+              "text": "See It Live",
+              "href": "https://www.bloomreach.com/en/products/loomi-marketing-agent",
+              "target": "_blank",
+              "rel": "noopener",
+              "onclick": "flzAnalytic('cta_click', {text:this.innerText.trim(), area:'header', url:this.href}, this)"
+            },
+            {
+              "text": "Explore Marketing Agent",
+              "href": "https://www.bloomreach.com/en/products/loomi-marketing-agent",
+              "target": "_blank",
+              "rel": "noopener",
+              "onclick": "flzAnalytic('cta_click', {text:this.innerText.trim(), area:'hero', url:this.href}, this)"
+            },
+            {
+              "text": "Read 260 Sample Sale",
+              "href": "https://www.bloomreach.com/en/case-studies/260-sample-sale",
+              "target": "_blank",
+              "rel": "noopener",
+              "onclick": "flzAnalytic('cta_click', {text:this.innerText.trim(), area:'hero', url:this.href}, this)"
+            },
+            {
+              "text": "Watch the Agent Build",
+              "href": "https://www.bloomreach.com/en/products/loomi-marketing-agent",
+              "target": "_blank",
+              "rel": "noopener",
+              "onclick": "flzAnalytic('cta_click', {text:this.innerText.trim(), area:'workbench', url:this.href}, this)"
+            },
+            {
+              "text": "Read the case study",
+              "href": "https://www.bloomreach.com/en/case-studies/260-sample-sale",
+              "target": "_blank",
+              "rel": "noopener",
+              "onclick": "flzAnalytic('cta_click', {text:this.innerText.trim(), area:'customer proof', url:this.href}, this)"
+            },
+            {
+              "text": "Read the Sideshow story",
+              "href": "https://www.bloomreach.com/en/case-studies/sideshow-campaign-agents",
+              "target": "_blank",
+              "rel": "noopener",
+              "onclick": "flzAnalytic('cta_click', {text:this.innerText.trim(), area:'customer proof', url:this.href}, this)"
+            },
+            {
+              "text": "Read the beauty story",
+              "href": "https://www.bloomreach.com/en/case-studies/revolution-beauty-campaign-agents",
+              "target": "_blank",
+              "rel": "noopener",
+              "onclick": "flzAnalytic('cta_click', {text:this.innerText.trim(), area:'customer proof', url:this.href}, this)"
+            },
+            {
+              "text": "Schedule a 30-Minute Demo",
+              "href": "https://www.bloomreach.com/en/products/loomi-marketing-agent",
+              "target": "_blank",
+              "rel": "noopener",
+              "onclick": "flzAnalytic('cta_click', {text:this.innerText.trim(), area:'final', url:this.href}, this)"
+            },
+            {
+              "text": "Read the GA News",
+              "href": "https://www.bloomreach.com/en/news/2026/bloomreach-announces-the-general-availability-of-loomi-marketing-agent/",
+              "target": "_blank",
+              "rel": "noopener",
+              "onclick": "flzAnalytic('cta_click', {text:this.innerText.trim(), area:'final', url:this.href}, this)"
+            }
+          ],
+          "badLinks": [],
+          "images": [
+            {
+              "alt": "",
+              "src": "https://www.bloomreach.com/wp-content/themes/hello-theme-child-master/assets/img/bloomreach-logo-icon.svg",
+              "loaded": true,
+              "naturalWidth": 40,
+              "naturalHeight": 40
+            },
+            {
+              "alt": "Bloomreach",
+              "src": "https://www.bloomreach.com/wp-content/themes/hello-theme-child-master/assets/img/bloomreach-logo-text.svg",
+              "loaded": true,
+              "naturalWidth": 136,
+              "naturalHeight": 18
+            },
+            {
+              "alt": "Bloomreach Loomi Marketing Agent interface preview",
+              "src": "https://www.bloomreach.com/wp-content/uploads/2025/09/Marketing-Agent-OG-Image.jpg",
+              "loaded": true,
+              "naturalWidth": 1200,
+              "naturalHeight": 630
+            },
+            {
+              "alt": "",
+              "src": "https://www.bloomreach.com/wp-content/themes/hello-theme-child-master/assets/img/bloomreach-logo-icon.svg",
+              "loaded": true,
+              "naturalWidth": 40,
+              "naturalHeight": 40
+            },
+            {
+              "alt": "Bloomreach",
+              "src": "https://www.bloomreach.com/wp-content/themes/hello-theme-child-master/assets/img/bloomreach-logo-text.svg",
+              "loaded": true,
+              "naturalWidth": 136,
+              "naturalHeight": 18
+            }
+          ],
+          "badImages": [],
+          "nav": [
+            {
+              "label": "Proof",
+              "targetId": "proof",
+              "targetExists": true,
+              "visible": false
+            },
+            {
+              "label": "Build Flow",
+              "targetId": "workbench",
+              "targetExists": true,
+              "visible": false
+            },
+            {
+              "label": "Use Cases",
+              "targetId": "use-cases",
+              "targetExists": true,
+              "visible": false
+            },
+            {
+              "label": "Results",
+              "targetId": "customer-proof",
+              "targetExists": true,
+              "visible": false
+            }
+          ],
+          "headerHeight": 69
+        }
+      ]
+    },
+    {
+      "slug": "one-to-one",
+      "name": "Bloomreach | Bash PLP Guidance Plan",
+      "file": "/Users/treyharnden/Projects/Folloze-Skills/artifacts/bloomreach-demo-pack/bloomreach-one-to-one-tfg-bash.html",
+      "staticIssues": [],
+      "pageIssues": [],
+      "viewports": [
+        {
+          "viewport": "desktop",
+          "width": 1440,
+          "height": 1100,
+          "screenshot": "/Users/treyharnden/Projects/Folloze-Skills/artifacts/bloomreach-demo-pack/qa/bloomreach-one-to-one-tfg-bash-desktop.png",
+          "screenshotSize": 1258207,
+          "consoleIssues": [],
+          "title": "Bloomreach | Bash PLP Guidance Plan",
+          "themeLinkPresent": true,
+          "overflow": false,
+          "scrollWidth": 1440,
+          "clientWidth": 1440,
+          "links": [
+            {
+              "text": "Read Bash Proof",
+              "href": "https://www.bloomreach.com/en/case-studies/tfg-boosts-online-conversion-rate-with-bloomreach",
+              "target": "_blank",
+              "rel": "noopener",
+              "onclick": "flzAnalytic('cta_click', {text:this.innerText.trim(), area:'header', url:this.href}, this)"
+            },
+            {
+              "text": "Read the Bash Proof",
+              "href": "https://www.bloomreach.com/en/case-studies/tfg-boosts-online-conversion-rate-with-bloomreach",
+              "target": "_blank",
+              "rel": "noopener",
+              "onclick": "flzAnalytic('cta_click', {text:this.innerText.trim(), area:'hero', url:this.href}, this)"
+            },
+            {
+              "text": "See Conversational Agent",
+              "href": "https://www.bloomreach.com/en/products/loomi-conversational-agent",
+              "target": "_blank",
+              "rel": "noopener",
+              "onclick": "flzAnalytic('cta_click', {text:this.innerText.trim(), area:'hero', url:this.href}, this)"
+            },
+            {
+              "text": "Read the June Update",
+              "href": "https://www.bloomreach.com/en/news/2026/bloomreach-transforms-customer-conversation-into-ecommerce-insight-with-conversational-agent/",
+              "target": "_blank",
+              "rel": "noopener",
+              "onclick": "flzAnalytic('cta_click', {text:this.innerText.trim(), area:'move upstream', url:this.href}, this)"
+            },
+            {
+              "text": "Open the Case Study",
+              "href": "https://www.bloomreach.com/en/case-studies/tfg-boosts-online-conversion-rate-with-bloomreach",
+              "target": "_blank",
+              "rel": "noopener",
+              "onclick": "flzAnalytic('cta_click', {text:this.innerText.trim(), area:'plp test plan', url:this.href}, this)"
+            },
+            {
+              "text": "See Conversational Agent",
+              "href": "https://www.bloomreach.com/en/products/loomi-conversational-agent",
+              "target": "_blank",
+              "rel": "noopener",
+              "onclick": "flzAnalytic('cta_click', {text:this.innerText.trim(), area:'final', url:this.href}, this)"
+            },
+            {
+              "text": "Review the June Update",
+              "href": "https://www.bloomreach.com/en/news/2026/bloomreach-transforms-customer-conversation-into-ecommerce-insight-with-conversational-agent/",
+              "target": "_blank",
+              "rel": "noopener",
+              "onclick": "flzAnalytic('cta_click', {text:this.innerText.trim(), area:'final', url:this.href}, this)"
+            }
+          ],
+          "badLinks": [],
+          "images": [
+            {
+              "alt": "",
+              "src": "https://www.bloomreach.com/wp-content/themes/hello-theme-child-master/assets/img/bloomreach-logo-icon.svg",
+              "loaded": true,
+              "naturalWidth": 40,
+              "naturalHeight": 40
+            },
+            {
+              "alt": "Bloomreach",
+              "src": "https://www.bloomreach.com/wp-content/themes/hello-theme-child-master/assets/img/bloomreach-logo-text.svg",
+              "loaded": true,
+              "naturalWidth": 136,
+              "naturalHeight": 18
+            },
+            {
+              "alt": "Bloomreach",
+              "src": "https://www.bloomreach.com/wp-content/themes/hello-theme-child-master/assets/img/bloomreach-logo-text.svg",
+              "loaded": true,
+              "naturalWidth": 136,
+              "naturalHeight": 18
+            },
+            {
+              "alt": "TFG",
+              "src": "https://www.bloomreach.com/wp-content/uploads/2025/01/TFG.png",
+              "loaded": true,
+              "naturalWidth": 1460,
+              "naturalHeight": 816
+            },
+            {
+              "alt": "",
+              "src": "https://www.bloomreach.com/wp-content/themes/hello-theme-child-master/assets/img/bloomreach-logo-icon.svg",
+              "loaded": true,
+              "naturalWidth": 40,
+              "naturalHeight": 40
+            },
+            {
+              "alt": "Bloomreach",
+              "src": "https://www.bloomreach.com/wp-content/themes/hello-theme-child-master/assets/img/bloomreach-logo-text.svg",
+              "loaded": true,
+              "naturalWidth": 136,
+              "naturalHeight": 18
+            }
+          ],
+          "badImages": [],
+          "nav": [
+            {
+              "label": "Black Friday Proof",
+              "targetId": "proof",
+              "targetExists": true,
+              "visible": true,
+              "clickTest": {
+                "scrolled": true,
+                "targetTop": 99.875,
+                "analyticsFired": true
+              }
+            },
+            {
+              "label": "Move Upstream",
+              "targetId": "path",
+              "targetExists": true,
+              "visible": true,
+              "clickTest": {
+                "scrolled": true,
+                "targetTop": 99.6875,
+                "analyticsFired": true
+              }
+            },
+            {
+              "label": "Team Proof",
+              "targetId": "teams",
+              "targetExists": true,
+              "visible": true,
+              "clickTest": {
+                "scrolled": true,
+                "targetTop": 100.1875,
+                "analyticsFired": true
+              }
+            },
+            {
+              "label": "Plan PLP Test",
+              "targetId": "workshop",
+              "targetExists": true,
+              "visible": true,
+              "clickTest": {
+                "scrolled": true,
+                "targetTop": 99.5625,
+                "analyticsFired": true
+              }
+            }
+          ],
+          "headerHeight": 77
+        },
+        {
+          "viewport": "mobile390",
+          "width": 390,
+          "height": 1200,
+          "screenshot": "/Users/treyharnden/Projects/Folloze-Skills/artifacts/bloomreach-demo-pack/qa/bloomreach-one-to-one-tfg-bash-mobile-390.png",
+          "screenshotSize": 851261,
+          "consoleIssues": [],
+          "title": "Bloomreach | Bash PLP Guidance Plan",
+          "themeLinkPresent": true,
+          "overflow": false,
+          "scrollWidth": 390,
+          "clientWidth": 390,
+          "links": [
+            {
+              "text": "Read Bash Proof",
+              "href": "https://www.bloomreach.com/en/case-studies/tfg-boosts-online-conversion-rate-with-bloomreach",
+              "target": "_blank",
+              "rel": "noopener",
+              "onclick": "flzAnalytic('cta_click', {text:this.innerText.trim(), area:'header', url:this.href}, this)"
+            },
+            {
+              "text": "Read the Bash Proof",
+              "href": "https://www.bloomreach.com/en/case-studies/tfg-boosts-online-conversion-rate-with-bloomreach",
+              "target": "_blank",
+              "rel": "noopener",
+              "onclick": "flzAnalytic('cta_click', {text:this.innerText.trim(), area:'hero', url:this.href}, this)"
+            },
+            {
+              "text": "See Conversational Agent",
+              "href": "https://www.bloomreach.com/en/products/loomi-conversational-agent",
+              "target": "_blank",
+              "rel": "noopener",
+              "onclick": "flzAnalytic('cta_click', {text:this.innerText.trim(), area:'hero', url:this.href}, this)"
+            },
+            {
+              "text": "Read the June Update",
+              "href": "https://www.bloomreach.com/en/news/2026/bloomreach-transforms-customer-conversation-into-ecommerce-insight-with-conversational-agent/",
+              "target": "_blank",
+              "rel": "noopener",
+              "onclick": "flzAnalytic('cta_click', {text:this.innerText.trim(), area:'move upstream', url:this.href}, this)"
+            },
+            {
+              "text": "Open the Case Study",
+              "href": "https://www.bloomreach.com/en/case-studies/tfg-boosts-online-conversion-rate-with-bloomreach",
+              "target": "_blank",
+              "rel": "noopener",
+              "onclick": "flzAnalytic('cta_click', {text:this.innerText.trim(), area:'plp test plan', url:this.href}, this)"
+            },
+            {
+              "text": "See Conversational Agent",
+              "href": "https://www.bloomreach.com/en/products/loomi-conversational-agent",
+              "target": "_blank",
+              "rel": "noopener",
+              "onclick": "flzAnalytic('cta_click', {text:this.innerText.trim(), area:'final', url:this.href}, this)"
+            },
+            {
+              "text": "Review the June Update",
+              "href": "https://www.bloomreach.com/en/news/2026/bloomreach-transforms-customer-conversation-into-ecommerce-insight-with-conversational-agent/",
+              "target": "_blank",
+              "rel": "noopener",
+              "onclick": "flzAnalytic('cta_click', {text:this.innerText.trim(), area:'final', url:this.href}, this)"
+            }
+          ],
+          "badLinks": [],
+          "images": [
+            {
+              "alt": "",
+              "src": "https://www.bloomreach.com/wp-content/themes/hello-theme-child-master/assets/img/bloomreach-logo-icon.svg",
+              "loaded": true,
+              "naturalWidth": 40,
+              "naturalHeight": 40
+            },
+            {
+              "alt": "Bloomreach",
+              "src": "https://www.bloomreach.com/wp-content/themes/hello-theme-child-master/assets/img/bloomreach-logo-text.svg",
+              "loaded": true,
+              "naturalWidth": 136,
+              "naturalHeight": 18
+            },
+            {
+              "alt": "Bloomreach",
+              "src": "https://www.bloomreach.com/wp-content/themes/hello-theme-child-master/assets/img/bloomreach-logo-text.svg",
+              "loaded": true,
+              "naturalWidth": 136,
+              "naturalHeight": 18
+            },
+            {
+              "alt": "TFG",
+              "src": "https://www.bloomreach.com/wp-content/uploads/2025/01/TFG.png",
+              "loaded": true,
+              "naturalWidth": 1460,
+              "naturalHeight": 816
+            },
+            {
+              "alt": "",
+              "src": "https://www.bloomreach.com/wp-content/themes/hello-theme-child-master/assets/img/bloomreach-logo-icon.svg",
+              "loaded": true,
+              "naturalWidth": 40,
+              "naturalHeight": 40
+            },
+            {
+              "alt": "Bloomreach",
+              "src": "https://www.bloomreach.com/wp-content/themes/hello-theme-child-master/assets/img/bloomreach-logo-text.svg",
+              "loaded": true,
+              "naturalWidth": 136,
+              "naturalHeight": 18
+            }
+          ],
+          "badImages": [],
+          "nav": [
+            {
+              "label": "Black Friday Proof",
+              "targetId": "proof",
+              "targetExists": true,
+              "visible": false
+            },
+            {
+              "label": "Move Upstream",
+              "targetId": "path",
+              "targetExists": true,
+              "visible": false
+            },
+            {
+              "label": "Team Proof",
+              "targetId": "teams",
+              "targetExists": true,
+              "visible": false
+            },
+            {
+              "label": "Plan PLP Test",
+              "targetId": "workshop",
+              "targetExists": true,
+              "visible": false
+            }
+          ],
+          "headerHeight": 69
+        },
+        {
+          "viewport": "mobile320",
+          "width": 320,
+          "height": 1200,
+          "screenshot": "/Users/treyharnden/Projects/Folloze-Skills/artifacts/bloomreach-demo-pack/qa/bloomreach-one-to-one-tfg-bash-mobile-320.png",
+          "screenshotSize": 799506,
+          "consoleIssues": [],
+          "title": "Bloomreach | Bash PLP Guidance Plan",
+          "themeLinkPresent": true,
+          "overflow": false,
+          "scrollWidth": 320,
+          "clientWidth": 320,
+          "links": [
+            {
+              "text": "Read Bash Proof",
+              "href": "https://www.bloomreach.com/en/case-studies/tfg-boosts-online-conversion-rate-with-bloomreach",
+              "target": "_blank",
+              "rel": "noopener",
+              "onclick": "flzAnalytic('cta_click', {text:this.innerText.trim(), area:'header', url:this.href}, this)"
+            },
+            {
+              "text": "Read the Bash Proof",
+              "href": "https://www.bloomreach.com/en/case-studies/tfg-boosts-online-conversion-rate-with-bloomreach",
+              "target": "_blank",
+              "rel": "noopener",
+              "onclick": "flzAnalytic('cta_click', {text:this.innerText.trim(), area:'hero', url:this.href}, this)"
+            },
+            {
+              "text": "See Conversational Agent",
+              "href": "https://www.bloomreach.com/en/products/loomi-conversational-agent",
+              "target": "_blank",
+              "rel": "noopener",
+              "onclick": "flzAnalytic('cta_click', {text:this.innerText.trim(), area:'hero', url:this.href}, this)"
+            },
+            {
+              "text": "Read the June Update",
+              "href": "https://www.bloomreach.com/en/news/2026/bloomreach-transforms-customer-conversation-into-ecommerce-insight-with-conversational-agent/",
+              "target": "_blank",
+              "rel": "noopener",
+              "onclick": "flzAnalytic('cta_click', {text:this.innerText.trim(), area:'move upstream', url:this.href}, this)"
+            },
+            {
+              "text": "Open the Case Study",
+              "href": "https://www.bloomreach.com/en/case-studies/tfg-boosts-online-conversion-rate-with-bloomreach",
+              "target": "_blank",
+              "rel": "noopener",
+              "onclick": "flzAnalytic('cta_click', {text:this.innerText.trim(), area:'plp test plan', url:this.href}, this)"
+            },
+            {
+              "text": "See Conversational Agent",
+              "href": "https://www.bloomreach.com/en/products/loomi-conversational-agent",
+              "target": "_blank",
+              "rel": "noopener",
+              "onclick": "flzAnalytic('cta_click', {text:this.innerText.trim(), area:'final', url:this.href}, this)"
+            },
+            {
+              "text": "Review the June Update",
+              "href": "https://www.bloomreach.com/en/news/2026/bloomreach-transforms-customer-conversation-into-ecommerce-insight-with-conversational-agent/",
+              "target": "_blank",
+              "rel": "noopener",
+              "onclick": "flzAnalytic('cta_click', {text:this.innerText.trim(), area:'final', url:this.href}, this)"
+            }
+          ],
+          "badLinks": [],
+          "images": [
+            {
+              "alt": "",
+              "src": "https://www.bloomreach.com/wp-content/themes/hello-theme-child-master/assets/img/bloomreach-logo-icon.svg",
+              "loaded": true,
+              "naturalWidth": 40,
+              "naturalHeight": 40
+            },
+            {
+              "alt": "Bloomreach",
+              "src": "https://www.bloomreach.com/wp-content/themes/hello-theme-child-master/assets/img/bloomreach-logo-text.svg",
+              "loaded": true,
+              "naturalWidth": 136,
+              "naturalHeight": 18
+            },
+            {
+              "alt": "Bloomreach",
+              "src": "https://www.bloomreach.com/wp-content/themes/hello-theme-child-master/assets/img/bloomreach-logo-text.svg",
+              "loaded": true,
+              "naturalWidth": 136,
+              "naturalHeight": 18
+            },
+            {
+              "alt": "TFG",
+              "src": "https://www.bloomreach.com/wp-content/uploads/2025/01/TFG.png",
+              "loaded": true,
+              "naturalWidth": 1460,
+              "naturalHeight": 816
+            },
+            {
+              "alt": "",
+              "src": "https://www.bloomreach.com/wp-content/themes/hello-theme-child-master/assets/img/bloomreach-logo-icon.svg",
+              "loaded": true,
+              "naturalWidth": 40,
+              "naturalHeight": 40
+            },
+            {
+              "alt": "Bloomreach",
+              "src": "https://www.bloomreach.com/wp-content/themes/hello-theme-child-master/assets/img/bloomreach-logo-text.svg",
+              "loaded": true,
+              "naturalWidth": 136,
+              "naturalHeight": 18
+            }
+          ],
+          "badImages": [],
+          "nav": [
+            {
+              "label": "Black Friday Proof",
+              "targetId": "proof",
+              "targetExists": true,
+              "visible": false
+            },
+            {
+              "label": "Move Upstream",
+              "targetId": "path",
+              "targetExists": true,
+              "visible": false
+            },
+            {
+              "label": "Team Proof",
+              "targetId": "teams",
+              "targetExists": true,
+              "visible": false
+            },
+            {
+              "label": "Plan PLP Test",
+              "targetId": "workshop",
+              "targetExists": true,
+              "visible": false
+            }
+          ],
+          "headerHeight": 69
+        }
+      ]
+    },
+    {
+      "slug": "event",
+      "name": "Bloomreach | The Edge Summit Los Angeles",
+      "file": "/Users/treyharnden/Projects/Folloze-Skills/artifacts/bloomreach-demo-pack/bloomreach-edge-summit-la.html",
+      "staticIssues": [],
+      "pageIssues": [],
+      "viewports": [
+        {
+          "viewport": "desktop",
+          "width": 1440,
+          "height": 1100,
+          "screenshot": "/Users/treyharnden/Projects/Folloze-Skills/artifacts/bloomreach-demo-pack/qa/bloomreach-edge-summit-la-desktop.png",
+          "screenshotSize": 2383459,
+          "consoleIssues": [],
+          "title": "Bloomreach | The Edge Summit Los Angeles",
+          "themeLinkPresent": true,
+          "overflow": false,
+          "scrollWidth": 1440,
+          "clientWidth": 1440,
+          "links": [
+            {
+              "text": "Get Tickets",
+              "href": "https://theedgesummit.com/north-america",
+              "target": "_blank",
+              "rel": "noopener",
+              "onclick": "flzAnalytic('cta_click', {text:this.innerText.trim(), area:'header', url:this.href}, this)"
+            },
+            {
+              "text": "Get Tickets",
+              "href": "https://theedgesummit.com/north-america",
+              "target": "_blank",
+              "rel": "noopener",
+              "onclick": "flzAnalytic('cta_click', {text:this.innerText.trim(), area:'hero', url:this.href}, this)"
+            },
+            {
+              "text": "View Bloomreach Events",
+              "href": "https://www.bloomreach.com/en/library/events-webinars",
+              "target": "_blank",
+              "rel": "noopener",
+              "onclick": "flzAnalytic('cta_click', {text:this.innerText.trim(), area:'hero', url:this.href}, this)"
+            },
+            {
+              "text": "See the Program",
+              "href": "https://theedgesummit.com/north-america",
+              "target": "_blank",
+              "rel": "noopener",
+              "onclick": "flzAnalytic('cta_click', {text:this.innerText.trim(), area:'keynote', url:this.href}, this)"
+            },
+            {
+              "text": "Plan Your Attendance",
+              "href": "https://theedgesummit.com/north-america",
+              "target": "_blank",
+              "rel": "noopener",
+              "onclick": "flzAnalytic('cta_click', {text:this.innerText.trim(), area:'venue', url:this.href}, this)"
+            },
+            {
+              "text": "Get Tickets",
+              "href": "https://theedgesummit.com/north-america",
+              "target": "_blank",
+              "rel": "noopener",
+              "onclick": "flzAnalytic('cta_click', {text:this.innerText.trim(), area:'final', url:this.href}, this)"
+            },
+            {
+              "text": "Browse Bloomreach Events",
+              "href": "https://www.bloomreach.com/en/library/events-webinars",
+              "target": "_blank",
+              "rel": "noopener",
+              "onclick": "flzAnalytic('cta_click', {text:this.innerText.trim(), area:'final', url:this.href}, this)"
+            }
+          ],
+          "badLinks": [],
+          "images": [
+            {
+              "alt": "",
+              "src": "https://www.bloomreach.com/wp-content/themes/hello-theme-child-master/assets/img/bloomreach-logo-icon.svg",
+              "loaded": true,
+              "naturalWidth": 40,
+              "naturalHeight": 40
+            },
+            {
+              "alt": "Bloomreach",
+              "src": "https://www.bloomreach.com/wp-content/themes/hello-theme-child-master/assets/img/bloomreach-logo-text.svg",
+              "loaded": true,
+              "naturalWidth": 136,
+              "naturalHeight": 18
+            },
+            {
+              "alt": "The Edge Summit 2026",
+              "src": "https://theedgesummit.com/hubfs/raw_assets/public/Bloomreach%20-%20Global/img/edge26/logo-the-edge-summit-26.svg",
+              "loaded": true,
+              "naturalWidth": 277,
+              "naturalHeight": 26
+            },
+            {
+              "alt": "Musa Tariq",
+              "src": "https://theedgesummit.com/hubfs/musa-tariq.jpg",
+              "loaded": true,
+              "naturalWidth": 798,
+              "naturalHeight": 734
+            },
+            {
+              "alt": "InterContinental Los Angeles venue view",
+              "src": "https://theedgesummit.com/hubfs/location-la-2.jpg",
+              "loaded": true,
+              "naturalWidth": 421,
+              "naturalHeight": 330
+            },
+            {
+              "alt": "Red Bull",
+              "src": "https://theedgesummit.com/hubfs/logo-redbull.svg",
+              "loaded": true,
+              "naturalWidth": 150,
+              "naturalHeight": 24
+            },
+            {
+              "alt": "Miami Heat",
+              "src": "https://theedgesummit.com/hubfs/logo-miami-heat.svg",
+              "loaded": true,
+              "naturalWidth": 65,
+              "naturalHeight": 68
+            },
+            {
+              "alt": "Levi's",
+              "src": "https://theedgesummit.com/hubfs/logo-levis.svg",
+              "loaded": true,
+              "naturalWidth": 82,
+              "naturalHeight": 34
+            },
+            {
+              "alt": "Champion",
+              "src": "https://theedgesummit.com/hubfs/logo-champion.svg",
+              "loaded": true,
+              "naturalWidth": 134,
+              "naturalHeight": 25
+            },
+            {
+              "alt": "Lands' End",
+              "src": "https://theedgesummit.com/hubfs/logo-lands-end.svg",
+              "loaded": true,
+              "naturalWidth": 131,
+              "naturalHeight": 22
+            },
+            {
+              "alt": "Foot Locker",
+              "src": "https://theedgesummit.com/hubfs/logo-foot-locker.svg",
+              "loaded": true,
+              "naturalWidth": 157,
+              "naturalHeight": 25
+            },
+            {
+              "alt": "",
+              "src": "https://www.bloomreach.com/wp-content/themes/hello-theme-child-master/assets/img/bloomreach-logo-icon.svg",
+              "loaded": true,
+              "naturalWidth": 40,
+              "naturalHeight": 40
+            },
+            {
+              "alt": "Bloomreach",
+              "src": "https://www.bloomreach.com/wp-content/themes/hello-theme-child-master/assets/img/bloomreach-logo-text.svg",
+              "loaded": true,
+              "naturalWidth": 136,
+              "naturalHeight": 18
+            }
+          ],
+          "badImages": [],
+          "nav": [
+            {
+              "label": "Why Attend",
+              "targetId": "why",
+              "targetExists": true,
+              "visible": true,
+              "clickTest": {
+                "scrolled": true,
+                "targetTop": 100.1875,
+                "analyticsFired": true
+              }
+            },
+            {
+              "label": "Tracks",
+              "targetId": "tracks",
+              "targetExists": true,
+              "visible": true,
+              "clickTest": {
+                "scrolled": true,
+                "targetTop": 100.09375,
+                "analyticsFired": true
+              }
+            },
+            {
+              "label": "Agenda",
+              "targetId": "agenda",
+              "targetExists": true,
+              "visible": true,
+              "clickTest": {
+                "scrolled": true,
+                "targetTop": 100.125,
+                "analyticsFired": true
+              }
+            },
+            {
+              "label": "Venue",
+              "targetId": "venue",
+              "targetExists": true,
+              "visible": true,
+              "clickTest": {
+                "scrolled": true,
+                "targetTop": 99.65625,
+                "analyticsFired": true
+              }
+            }
+          ],
+          "headerHeight": 77
+        },
+        {
+          "viewport": "mobile390",
+          "width": 390,
+          "height": 1200,
+          "screenshot": "/Users/treyharnden/Projects/Folloze-Skills/artifacts/bloomreach-demo-pack/qa/bloomreach-edge-summit-la-mobile-390.png",
+          "screenshotSize": 1066254,
+          "consoleIssues": [],
+          "title": "Bloomreach | The Edge Summit Los Angeles",
+          "themeLinkPresent": true,
+          "overflow": false,
+          "scrollWidth": 390,
+          "clientWidth": 390,
+          "links": [
+            {
+              "text": "Get Tickets",
+              "href": "https://theedgesummit.com/north-america",
+              "target": "_blank",
+              "rel": "noopener",
+              "onclick": "flzAnalytic('cta_click', {text:this.innerText.trim(), area:'header', url:this.href}, this)"
+            },
+            {
+              "text": "Get Tickets",
+              "href": "https://theedgesummit.com/north-america",
+              "target": "_blank",
+              "rel": "noopener",
+              "onclick": "flzAnalytic('cta_click', {text:this.innerText.trim(), area:'hero', url:this.href}, this)"
+            },
+            {
+              "text": "View Bloomreach Events",
+              "href": "https://www.bloomreach.com/en/library/events-webinars",
+              "target": "_blank",
+              "rel": "noopener",
+              "onclick": "flzAnalytic('cta_click', {text:this.innerText.trim(), area:'hero', url:this.href}, this)"
+            },
+            {
+              "text": "See the Program",
+              "href": "https://theedgesummit.com/north-america",
+              "target": "_blank",
+              "rel": "noopener",
+              "onclick": "flzAnalytic('cta_click', {text:this.innerText.trim(), area:'keynote', url:this.href}, this)"
+            },
+            {
+              "text": "Plan Your Attendance",
+              "href": "https://theedgesummit.com/north-america",
+              "target": "_blank",
+              "rel": "noopener",
+              "onclick": "flzAnalytic('cta_click', {text:this.innerText.trim(), area:'venue', url:this.href}, this)"
+            },
+            {
+              "text": "Get Tickets",
+              "href": "https://theedgesummit.com/north-america",
+              "target": "_blank",
+              "rel": "noopener",
+              "onclick": "flzAnalytic('cta_click', {text:this.innerText.trim(), area:'final', url:this.href}, this)"
+            },
+            {
+              "text": "Browse Bloomreach Events",
+              "href": "https://www.bloomreach.com/en/library/events-webinars",
+              "target": "_blank",
+              "rel": "noopener",
+              "onclick": "flzAnalytic('cta_click', {text:this.innerText.trim(), area:'final', url:this.href}, this)"
+            }
+          ],
+          "badLinks": [],
+          "images": [
+            {
+              "alt": "",
+              "src": "https://www.bloomreach.com/wp-content/themes/hello-theme-child-master/assets/img/bloomreach-logo-icon.svg",
+              "loaded": true,
+              "naturalWidth": 40,
+              "naturalHeight": 40
+            },
+            {
+              "alt": "Bloomreach",
+              "src": "https://www.bloomreach.com/wp-content/themes/hello-theme-child-master/assets/img/bloomreach-logo-text.svg",
+              "loaded": true,
+              "naturalWidth": 136,
+              "naturalHeight": 18
+            },
+            {
+              "alt": "The Edge Summit 2026",
+              "src": "https://theedgesummit.com/hubfs/raw_assets/public/Bloomreach%20-%20Global/img/edge26/logo-the-edge-summit-26.svg",
+              "loaded": true,
+              "naturalWidth": 277,
+              "naturalHeight": 26
+            },
+            {
+              "alt": "Musa Tariq",
+              "src": "https://theedgesummit.com/hubfs/musa-tariq.jpg",
+              "loaded": true,
+              "naturalWidth": 798,
+              "naturalHeight": 734
+            },
+            {
+              "alt": "InterContinental Los Angeles venue view",
+              "src": "https://theedgesummit.com/hubfs/location-la-2.jpg",
+              "loaded": true,
+              "naturalWidth": 421,
+              "naturalHeight": 330
+            },
+            {
+              "alt": "Red Bull",
+              "src": "https://theedgesummit.com/hubfs/logo-redbull.svg",
+              "loaded": true,
+              "naturalWidth": 150,
+              "naturalHeight": 24
+            },
+            {
+              "alt": "Miami Heat",
+              "src": "https://theedgesummit.com/hubfs/logo-miami-heat.svg",
+              "loaded": true,
+              "naturalWidth": 65,
+              "naturalHeight": 68
+            },
+            {
+              "alt": "Levi's",
+              "src": "https://theedgesummit.com/hubfs/logo-levis.svg",
+              "loaded": true,
+              "naturalWidth": 82,
+              "naturalHeight": 34
+            },
+            {
+              "alt": "Champion",
+              "src": "https://theedgesummit.com/hubfs/logo-champion.svg",
+              "loaded": true,
+              "naturalWidth": 134,
+              "naturalHeight": 25
+            },
+            {
+              "alt": "Lands' End",
+              "src": "https://theedgesummit.com/hubfs/logo-lands-end.svg",
+              "loaded": true,
+              "naturalWidth": 131,
+              "naturalHeight": 22
+            },
+            {
+              "alt": "Foot Locker",
+              "src": "https://theedgesummit.com/hubfs/logo-foot-locker.svg",
+              "loaded": true,
+              "naturalWidth": 157,
+              "naturalHeight": 25
+            },
+            {
+              "alt": "",
+              "src": "https://www.bloomreach.com/wp-content/themes/hello-theme-child-master/assets/img/bloomreach-logo-icon.svg",
+              "loaded": true,
+              "naturalWidth": 40,
+              "naturalHeight": 40
+            },
+            {
+              "alt": "Bloomreach",
+              "src": "https://www.bloomreach.com/wp-content/themes/hello-theme-child-master/assets/img/bloomreach-logo-text.svg",
+              "loaded": true,
+              "naturalWidth": 136,
+              "naturalHeight": 18
+            }
+          ],
+          "badImages": [],
+          "nav": [
+            {
+              "label": "Why Attend",
+              "targetId": "why",
+              "targetExists": true,
+              "visible": false
+            },
+            {
+              "label": "Tracks",
+              "targetId": "tracks",
+              "targetExists": true,
+              "visible": false
+            },
+            {
+              "label": "Agenda",
+              "targetId": "agenda",
+              "targetExists": true,
+              "visible": false
+            },
+            {
+              "label": "Venue",
+              "targetId": "venue",
+              "targetExists": true,
+              "visible": false
+            }
+          ],
+          "headerHeight": 69
+        },
+        {
+          "viewport": "mobile320",
+          "width": 320,
+          "height": 1200,
+          "screenshot": "/Users/treyharnden/Projects/Folloze-Skills/artifacts/bloomreach-demo-pack/qa/bloomreach-edge-summit-la-mobile-320.png",
+          "screenshotSize": 920624,
+          "consoleIssues": [],
+          "title": "Bloomreach | The Edge Summit Los Angeles",
+          "themeLinkPresent": true,
+          "overflow": false,
+          "scrollWidth": 320,
+          "clientWidth": 320,
+          "links": [
+            {
+              "text": "Get Tickets",
+              "href": "https://theedgesummit.com/north-america",
+              "target": "_blank",
+              "rel": "noopener",
+              "onclick": "flzAnalytic('cta_click', {text:this.innerText.trim(), area:'header', url:this.href}, this)"
+            },
+            {
+              "text": "Get Tickets",
+              "href": "https://theedgesummit.com/north-america",
+              "target": "_blank",
+              "rel": "noopener",
+              "onclick": "flzAnalytic('cta_click', {text:this.innerText.trim(), area:'hero', url:this.href}, this)"
+            },
+            {
+              "text": "View Bloomreach Events",
+              "href": "https://www.bloomreach.com/en/library/events-webinars",
+              "target": "_blank",
+              "rel": "noopener",
+              "onclick": "flzAnalytic('cta_click', {text:this.innerText.trim(), area:'hero', url:this.href}, this)"
+            },
+            {
+              "text": "See the Program",
+              "href": "https://theedgesummit.com/north-america",
+              "target": "_blank",
+              "rel": "noopener",
+              "onclick": "flzAnalytic('cta_click', {text:this.innerText.trim(), area:'keynote', url:this.href}, this)"
+            },
+            {
+              "text": "Plan Your Attendance",
+              "href": "https://theedgesummit.com/north-america",
+              "target": "_blank",
+              "rel": "noopener",
+              "onclick": "flzAnalytic('cta_click', {text:this.innerText.trim(), area:'venue', url:this.href}, this)"
+            },
+            {
+              "text": "Get Tickets",
+              "href": "https://theedgesummit.com/north-america",
+              "target": "_blank",
+              "rel": "noopener",
+              "onclick": "flzAnalytic('cta_click', {text:this.innerText.trim(), area:'final', url:this.href}, this)"
+            },
+            {
+              "text": "Browse Bloomreach Events",
+              "href": "https://www.bloomreach.com/en/library/events-webinars",
+              "target": "_blank",
+              "rel": "noopener",
+              "onclick": "flzAnalytic('cta_click', {text:this.innerText.trim(), area:'final', url:this.href}, this)"
+            }
+          ],
+          "badLinks": [],
+          "images": [
+            {
+              "alt": "",
+              "src": "https://www.bloomreach.com/wp-content/themes/hello-theme-child-master/assets/img/bloomreach-logo-icon.svg",
+              "loaded": true,
+              "naturalWidth": 40,
+              "naturalHeight": 40
+            },
+            {
+              "alt": "Bloomreach",
+              "src": "https://www.bloomreach.com/wp-content/themes/hello-theme-child-master/assets/img/bloomreach-logo-text.svg",
+              "loaded": true,
+              "naturalWidth": 136,
+              "naturalHeight": 18
+            },
+            {
+              "alt": "The Edge Summit 2026",
+              "src": "https://theedgesummit.com/hubfs/raw_assets/public/Bloomreach%20-%20Global/img/edge26/logo-the-edge-summit-26.svg",
+              "loaded": true,
+              "naturalWidth": 277,
+              "naturalHeight": 26
+            },
+            {
+              "alt": "Musa Tariq",
+              "src": "https://theedgesummit.com/hubfs/musa-tariq.jpg",
+              "loaded": true,
+              "naturalWidth": 798,
+              "naturalHeight": 734
+            },
+            {
+              "alt": "InterContinental Los Angeles venue view",
+              "src": "https://theedgesummit.com/hubfs/location-la-2.jpg",
+              "loaded": true,
+              "naturalWidth": 421,
+              "naturalHeight": 330
+            },
+            {
+              "alt": "Red Bull",
+              "src": "https://theedgesummit.com/hubfs/logo-redbull.svg",
+              "loaded": true,
+              "naturalWidth": 150,
+              "naturalHeight": 24
+            },
+            {
+              "alt": "Miami Heat",
+              "src": "https://theedgesummit.com/hubfs/logo-miami-heat.svg",
+              "loaded": true,
+              "naturalWidth": 65,
+              "naturalHeight": 68
+            },
+            {
+              "alt": "Levi's",
+              "src": "https://theedgesummit.com/hubfs/logo-levis.svg",
+              "loaded": true,
+              "naturalWidth": 82,
+              "naturalHeight": 34
+            },
+            {
+              "alt": "Champion",
+              "src": "https://theedgesummit.com/hubfs/logo-champion.svg",
+              "loaded": true,
+              "naturalWidth": 134,
+              "naturalHeight": 25
+            },
+            {
+              "alt": "Lands' End",
+              "src": "https://theedgesummit.com/hubfs/logo-lands-end.svg",
+              "loaded": true,
+              "naturalWidth": 131,
+              "naturalHeight": 22
+            },
+            {
+              "alt": "Foot Locker",
+              "src": "https://theedgesummit.com/hubfs/logo-foot-locker.svg",
+              "loaded": true,
+              "naturalWidth": 157,
+              "naturalHeight": 25
+            },
+            {
+              "alt": "",
+              "src": "https://www.bloomreach.com/wp-content/themes/hello-theme-child-master/assets/img/bloomreach-logo-icon.svg",
+              "loaded": true,
+              "naturalWidth": 40,
+              "naturalHeight": 40
+            },
+            {
+              "alt": "Bloomreach",
+              "src": "https://www.bloomreach.com/wp-content/themes/hello-theme-child-master/assets/img/bloomreach-logo-text.svg",
+              "loaded": true,
+              "naturalWidth": 136,
+              "naturalHeight": 18
+            }
+          ],
+          "badImages": [],
+          "nav": [
+            {
+              "label": "Why Attend",
+              "targetId": "why",
+              "targetExists": true,
+              "visible": false
+            },
+            {
+              "label": "Tracks",
+              "targetId": "tracks",
+              "targetExists": true,
+              "visible": false
+            },
+            {
+              "label": "Agenda",
+              "targetId": "agenda",
+              "targetExists": true,
+              "visible": false
+            },
+            {
+              "label": "Venue",
+              "targetId": "venue",
+              "targetExists": true,
+              "visible": false
+            }
+          ],
+          "headerHeight": 69
+        }
+      ]
+    }
+  ]
+}
