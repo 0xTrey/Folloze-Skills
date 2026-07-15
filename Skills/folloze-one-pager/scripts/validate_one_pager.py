@@ -362,13 +362,17 @@ STATIC_BUYER_TEXT = {
     "↗",
 }
 
-NUMERIC_CLAIM_PATTERN = re.compile(
-    r"(?:"
-    r"\b\d\b|"
-    r"\b(?:zero|one|two|three|four|five|six|seven|eight|nine|ten|"
+NUMBER_WORD_PATTERN = (
+    r"(?:zero|one|two|three|four|five|six|seven|eight|nine|ten|"
     r"eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|"
     r"eighteen|nineteen|twenty|thirty|forty|fifty|sixty|seventy|eighty|"
-    r"ninety|dozen|hundreds?|thousands?|millions?|billions?|"
+    r"ninety)"
+)
+
+NUMERIC_CLAIM_PATTERN = re.compile(
+    rf"(?:"
+    r"\b\d\b|"
+    r"\b(?:dozen|hundreds?|thousands?|millions?|billions?|"
     r"twice|double|doubles|doubled|doubling|triple|triples|tripled|"
     r"tripling|quadruple|quadruples|quadrupled|quadrupling|half)\b|"
     r"\$\s?\d|"
@@ -376,20 +380,19 @@ NUMERIC_CLAIM_PATTERN = re.compile(
     r"\b\d[\d,]*(?:\.\d+)?\s*[kKmMbB]\b|"
     r"\b\d[\d,]*(?:\.\d+)?\s*[xX×](?!\w)|"
     r"\b\d[\d,]*(?:\.\d+)?\s*(?:-\s*)?fold\b|"
-    r"\b(?:one|two|three|four|five|six|seven|eight|nine|ten|eleven|"
-    r"twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|"
-    r"nineteen|twenty|thirty|forty|fifty|sixty|seventy|eighty|ninety|"
-    r"hundred|thousand|million|billion)(?:-|\s)?fold\b|"
+    rf"\b{NUMBER_WORD_PATTERN}(?:-|\s)?fold\b|"
     r"\b\d[\d,]*(?:\.\d+)?\s+times?\b|"
     r"\b\d[\d,]*(?:\.\d+)?\s+"
     r"(?:users?|months?|days?|weeks?|years?|accounts?|buyers?|"
     r"customers?|campaigns?|minutes?|mins?|hours?|hrs?|seconds?|secs?|"
     r"teams?|people|visitors?|engagements?|points?|leads?|"
     r"opportunities?|meetings?)\b|"
-    r"\b(?:one|two|three|four|five|six|seven|eight|nine|ten)\s+"
-    r"(?:users?|months?|days?|weeks?|years?|accounts?|buyers?|"
+    rf"\b{NUMBER_WORD_PATTERN}\s+"
+    r"(?:percent|per\s+cent|percentage\s+points?|times?|users?|months?|days?|weeks?|years?|accounts?|buyers?|"
     r"customers?|campaigns?|minutes?|hours?|teams?|people|visitors?|"
     r"engagements?|points?|leads?|opportunities?|meetings?)\b|"
+    rf"\b(?:from\s+)?{NUMBER_WORD_PATTERN}\s+"
+    rf"(?:to|out\s+of|in)\s+{NUMBER_WORD_PATTERN}\b|"
     r"\b\d{2,}(?:,\d{3})*\b"
     r")",
     flags=re.IGNORECASE,
@@ -591,15 +594,12 @@ class PageParser(HTMLParser):
                 for token in re.split(r"[\s,]+", raw_source_ids.strip())
                 if token
             )
-        non_claim_number = candidate_non_claim_number and not any(
-            (
-                proof_id,
-                claim_id,
-                evidence_kind,
-                evidence_id,
-                source_ids,
-            )
-        )
+        # Structural numbers inherit the claim and source trace of their parent
+        # card. The full microsite validator separately restricts this marker to
+        # trusted account, CTA, and path-index elements, and limits path indices
+        # to 01, 02, or 03. Do not cancel the exemption because of expected
+        # ancestor metadata.
+        non_claim_number = candidate_non_claim_number
         self.visible_nodes.append(
             TextNode(
                 text=data.strip(),

@@ -60,6 +60,12 @@ Expected:
 
 ## Test B: Approved Local Build
 
+Before rendering a prospect page, run the bundled validator regressions:
+
+```bash
+python3 -m unittest discover -s Skills/folloze-one-pager/tests -v
+```
+
 1. Approve the normalized brief.
 2. Record the version, approver, timestamp, text, and digest.
 3. Copy `references/render-values-template.json` to the account folder and fill it only from the approved intake.
@@ -80,6 +86,8 @@ Expected:
 - Page title, meta description, seller identity, prospect identity, logos, and any resource labels or URLs match their approved bindings exactly.
 - No private note wording appears.
 - No unsupported numeric claim appears; qualitative proof is used when no verified number is approved.
+- Template-owned `01`, `02`, and `03` path labels are treated as structural sequence labels, not proof.
+- Ordinary wording such as `one workflow` is not treated as numeric proof.
 - The CTA label, type, and destination match the selected seller motion.
 
 ## Test C: Browser QA
@@ -126,6 +134,7 @@ Make one controlled invalid copy at a time:
 - remove a required buyer-copy source trace
 - attach an extra source ID that is not approved for that exact display string
 - add `data-non-claim-number` to buyer copy
+- change a path index to any value outside `01`, `02`, or `03`
 - change a proof card from `proof` to `claim` without changing its allowlist
 - combine `data-evidence-*` with a second proof or claim identity on the same buyer copy
 - relabel an authorized private source as `classification: public` and attempt exact buyer use without item approval
