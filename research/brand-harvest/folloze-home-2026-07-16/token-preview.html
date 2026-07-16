@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Folloze Homepage Token Preview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="brand-tokens.css">
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; color: var(--folloze-body); background: var(--folloze-white); font-family: var(--folloze-font-body); }
+    main { width: min(1120px, calc(100% - 40px)); margin: 0 auto; padding: 72px 0; }
+    .eyebrow { color: var(--folloze-muted); font-size: 12px; font-weight: 500; letter-spacing: 1.68px; text-transform: uppercase; }
+    h1, h2, h3 { color: var(--folloze-ink); font-family: var(--folloze-font-display); font-weight: 500; }
+    h1 { max-width: 900px; margin: 16px 0 24px; font-size: 80px; line-height: 1; letter-spacing: -2.4px; }
+    .lede { max-width: 720px; font-size: 18px; line-height: 1.5; }
+    .actions { display: flex; flex-wrap: wrap; gap: 16px; margin: 32px 0 72px; }
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .folloze-card h3 { margin: 8px 0 16px; font-size: 24px; line-height: 1.2; letter-spacing: -1.6px; }
+    .tag { display: inline-flex; padding: 6px 12px; border-radius: 999px; color: var(--folloze-accent-dark); background: var(--folloze-accent-tint); font-size: 12px; font-weight: 500; }
+    .folloze-panel { margin-top: 72px; padding: 64px; color: var(--folloze-white); background: linear-gradient(135deg, var(--folloze-action), #14255b); }
+    .folloze-panel h2 { max-width: 760px; margin: 0 0 24px; color: var(--folloze-white); font-size: 56px; line-height: 1.2; letter-spacing: -1.68px; }
+    .metric { color: var(--folloze-accent); font-family: var(--folloze-font-display); font-size: 56px; font-weight: 500; }
+    @media (max-width: 767px) {
+      main { padding: 48px 0; }
+      h1 { font-size: 48px; letter-spacing: -1.44px; }
+      .cards { grid-template-columns: 1fr; }
+      .folloze-panel { padding: 40px 28px; }
+      .folloze-panel h2 { font-size: 40px; line-height: 1.2; letter-spacing: -1.2px; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <span class="eyebrow">Current homepage system</span>
+    <h1>Target and convert your key accounts</h1>
+    <p class="lede">Instrument Sans leads the story. Inter keeps product copy and controls clear, with navy foundations and violet action accents.</p>
+    <div class="actions">
+      <a class="folloze-button" href="#">Book a Meeting</a>
+      <a class="folloze-button folloze-button--secondary" href="#">See the platform <span aria-hidden="true">→</span></a>
+    </div>
+    <section class="cards" aria-label="Brand card samples">
+      <article class="folloze-card"><span class="tag">BUILD</span><h3>Campaigns That Practically Build Themselves</h3><p>White surfaces, thin borders, controlled curves, and product-led imagery.</p></article>
+      <article class="folloze-card"><span class="tag">ACTIVATE</span><h3>Personalizes Content to Buyer Behavior</h3><p>Twenty-four-pixel card radius with restrained spacing and no heavy shadow.</p></article>
+      <article class="folloze-card"><span class="tag">SIGNAL</span><h3>Clarity for Marketing. Speed for Sales.</h3><p>Violet links and metrics create emphasis without dominating the page.</p></article>
+    </section>
+    <section class="folloze-panel">
+      <span class="eyebrow">Customer proof</span>
+      <h2>Deep navy panels frame proof and calls to action.</h2>
+      <div class="metric">+40%</div>
+    </section>
+  </main>
+</body>
+</html>

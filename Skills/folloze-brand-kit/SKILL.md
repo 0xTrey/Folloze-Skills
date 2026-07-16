@@ -45,7 +45,7 @@ For most work:
 7. Use `references/voice-and-style.md` for tone, words to use, and words to avoid.
 8. Use `references/content-brief-template.md` when creating new campaign, page, sales, or thought-leadership content from scratch.
 9. Use `references/campaign-board-design-context.md` when Folloze is the brand owner for a campaign board or Folloze-owned buyer experience.
-10. Use `references/visual-identity.md` and `assets/logos/` for logo and color usage.
+10. Use `references/visual-identity.md` and `assets/logos/` for current logo, color, typography, curvature, and control usage. Load `references/live-homepage-design-system-2026-07.md` when exact computed values or provenance are needed.
 
 Do not load every reference by default. Use only what the task needs.
 

@@ -12,9 +12,16 @@ Active messaging source:
 - Google Doc ID: `1gwztgTSaWCJ7tgkFjuSPPiDq0hxw6AM8G97WrJbvn2I`
 - Captured into this kit: 2026-06-01
 
+Active visual source:
+
+- Live Folloze homepage: `https://www.folloze.com/`
+- Browser-computed desktop/mobile capture: `research/brand-harvest/folloze-home-2026-07-16/`
+- Curated design-system evidence: `references/live-homepage-design-system-2026-07.md`
+- Captured into this kit: 2026-07-16
+
 This kit intentionally excludes restricted customer-specific folders and deal-specific artifacts.
 
-Last reviewed: 2026-06-01
+Last reviewed: 2026-07-16
 
 ## References
 
@@ -31,7 +38,8 @@ Last reviewed: 2026-06-01
 | `voice-and-style.md` | Need tone, style, words to use, words to avoid, or copy-quality checks |
 | `content-brief-template.md` | Need a reusable brief shape for campaign, page, sales, thought-leadership, or one-pager content |
 | `campaign-board-design-context.md` | Need Folloze-specific campaign board design context, campaign registers, anti-references, or board design gates |
-| `visual-identity.md` | Need colors, logo selection, logo file names, or visual usage guidance |
+| `visual-identity.md` | Need current colors, fonts, curvature, controls, logo selection, or visual usage guidance |
+| `live-homepage-design-system-2026-07.md` | Need the browser-computed evidence, exact button/card recipes, responsive type scale, or provenance behind the current visual guidance |
 
 ## Assets
 

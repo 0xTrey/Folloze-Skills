@@ -1,0 +1,85 @@
+/*
+ * Folloze homepage tokens
+ * Source: https://www.folloze.com/
+ * Captured: 2026-07-16
+ * Curated from browser-computed styles; excludes cookie and embedded demo CSS.
+ */
+
+:root {
+  --folloze-ink: #1c293f;
+  --folloze-deep-ink: #071428;
+  --folloze-action: #0a1230;
+  --folloze-body: #2c3d59;
+  --folloze-muted: #6b7e9d;
+  --folloze-accent: #5b5bff;
+  --folloze-accent-dark: #3b3be0;
+  --folloze-accent-tint: #eeeeff;
+  --folloze-border: #e6e8f0;
+  --folloze-soft: #fafafb;
+  --folloze-white: #ffffff;
+
+  --folloze-font-display: "Instrument Sans", system-ui, sans-serif;
+  --folloze-font-body: Inter, system-ui, sans-serif;
+  --folloze-font-nav: "Open Sans Variable", "Open Sans", system-ui, sans-serif;
+
+  --folloze-radius-control: 999px;
+  --folloze-radius-card: 24px;
+  --folloze-radius-panel: 32px;
+
+  --folloze-button-padding-desktop: 14px 24px;
+  --folloze-button-padding-mobile: 16px 24px;
+  --folloze-button-font-size: 16px;
+  --folloze-button-line-height: 24px;
+  --folloze-transition-control: all 200ms cubic-bezier(.645, .045, .355, 1);
+}
+
+.folloze-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: var(--folloze-button-padding-desktop);
+  border: 1px solid var(--folloze-action);
+  border-radius: var(--folloze-radius-control);
+  background: var(--folloze-action);
+  color: var(--folloze-white);
+  font: 400 var(--folloze-button-font-size) / var(--folloze-button-line-height) var(--folloze-font-body);
+  text-decoration: none;
+  transition: var(--folloze-transition-control);
+}
+
+.folloze-button:hover {
+  border-color: var(--folloze-accent);
+  background: var(--folloze-accent);
+}
+
+.folloze-button--secondary {
+  border-color: var(--folloze-border);
+  background: var(--folloze-white);
+  color: var(--folloze-action);
+}
+
+.folloze-button--secondary:hover {
+  border-color: var(--folloze-border);
+  background: var(--folloze-white);
+  color: var(--folloze-accent);
+}
+
+.folloze-card {
+  padding: 40px 28px;
+  border: 1px solid var(--folloze-border);
+  border-radius: var(--folloze-radius-card);
+  background: var(--folloze-white);
+  color: var(--folloze-ink);
+}
+
+.folloze-panel {
+  border-radius: var(--folloze-radius-panel);
+  overflow: hidden;
+}
+
+@media (max-width: 767px) {
+  .folloze-button {
+    padding: var(--folloze-button-padding-mobile);
+  }
+}
