@@ -1,0 +1,13 @@
+:root {
+  --brand-primary: #193A29;
+  --brand-accent: #000000;
+  --brand-text: #111827;
+  --brand-surface: #FFFFFF;
+  --brand-font-display: mono, "mono Fallback", -apple-system, Arial, sans-serif;
+  --brand-font-body: aeonik, "aeonik Fallback", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --brand-button-radius: 0px;
+  --brand-button-padding: 0px;
+  --brand-button-font-weight: 500;
+  --brand-card-radius: 32px;
+  --brand-card-shadow: none;
+}

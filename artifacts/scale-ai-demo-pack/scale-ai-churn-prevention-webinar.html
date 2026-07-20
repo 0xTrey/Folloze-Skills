@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Scale AI | The Future of Churn Prevention</title>
+  <meta name="description" content="Join Scale AI on July 28, 2026 to learn why the next era of churn prevention runs on experimentation, causal measurement, and continuous decision optimization.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23050505'/%3E%3Cpath d='M7 7h18v5H14l11 11v2H7v-5h11L7 9z' fill='white'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="https://cdn.folloze.com/theme/135433/4.css?v=1764160175">
+</head>
+<body>
+  <script>document.documentElement.classList.add("js");</script>
+  <style>
+    :root {
+      --black: #050505;
+      --ink: #0c0e13;
+      --deep: #111c17;
+      --green: #193a29;
+      --mint: #c9f7d3;
+      --white: #ffffff;
+      --paper: #f4f4f0;
+      --soft: #e8ebe8;
+      --muted: #666b68;
+      --line: rgba(12, 14, 19, 0.16);
+      --line-dark: rgba(255, 255, 255, 0.18);
+      --max: 1180px;
+      --header: 76px;
+      --radius: 8px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+      color-scheme: light;
+    }
+
+    body {
+      margin: 0;
+      overflow-x: hidden;
+      background: var(--white);
+      color: var(--ink);
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    button, a { font: inherit; -webkit-tap-highlight-color: transparent; }
+    button { color: inherit; }
+    img { display: block; max-width: 100%; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2, h3 { text-wrap: balance; }
+    p { color: var(--muted); }
+
+    :focus-visible {
+      outline: 3px solid #72ce7b;
+      outline-offset: 3px;
+    }
+
+    .skip {
+      position: fixed;
+      top: 8px;
+      left: 8px;
+      z-index: 100;
+      padding: 10px 14px;
+      transform: translateY(-160%);
+      background: var(--white);
+      color: var(--black);
+      border-radius: 4px;
+    }
+
+    .skip:focus { transform: translateY(0); }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      min-height: var(--header);
+      background: rgba(5, 5, 5, 0.96);
+      border-bottom: 1px solid var(--line-dark);
+      backdrop-filter: blur(16px);
+    }
+
+    .nav {
+      width: min(100%, calc(var(--max) + 40px));
+      min-height: var(--header);
+      margin: 0 auto;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      width: 104px;
+      min-height: 42px;
+      display: inline-flex;
+      align-items: center;
+      flex: 0 0 auto;
+    }
+
+    .brand img { width: 100px; height: auto; }
+
+    .navlinks {
+      min-width: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2px;
+    }
+
+    .navlinks button {
+      min-height: 42px;
+      padding: 8px 10px;
+      border: 0;
+      border-radius: 6px;
+      background: transparent;
+      color: #c9cbc9;
+      cursor: pointer;
+      font-size: 13px;
+      transition: background 160ms ease, color 160ms ease;
+    }
+
+    .navlinks button:hover,
+    .navlinks button:focus-visible {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--white);
+    }
+
+    .button {
+      min-height: 48px;
+      max-width: 100%;
+      padding: 12px 20px;
+      border: 1px solid transparent;
+      border-radius: var(--radius);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1.2;
+      cursor: pointer;
+      transition: transform 160ms ease, background 160ms ease, border-color 160ms ease;
+    }
+
+    .button:hover { transform: translateY(-2px); }
+    .button--light { background: var(--white); color: var(--ink); }
+    .button--dark { background: var(--ink); color: var(--white); }
+    .button--mint { background: var(--mint); color: var(--deep); }
+    .button--outline-dark { border-color: rgba(12, 14, 19, 0.45); background: transparent; color: var(--ink); }
+    .button--outline-light { border-color: rgba(255, 255, 255, 0.5); background: transparent; color: var(--white); }
+    .button--header { min-height: 44px; padding: 10px 17px; }
+
+    .container {
+      width: min(100%, var(--max));
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .section {
+      padding: 104px 0;
+      scroll-margin-top: calc(var(--header) + 18px);
+    }
+
+    .section--paper { background: var(--paper); }
+    .section--dark { background: var(--ink); color: var(--white); }
+    .section--green { background: var(--green); color: var(--white); }
+
+    .eyebrow {
+      margin-bottom: 18px;
+      color: inherit;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .hero {
+      min-height: calc(100vh - var(--header));
+      padding: 58px 0 68px;
+      display: flex;
+      align-items: center;
+      background:
+        radial-gradient(circle at 80% 22%, rgba(114, 206, 123, 0.18), transparent 28%),
+        var(--black);
+      color: var(--white);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(380px, 0.92fr);
+      align-items: center;
+      gap: 58px;
+    }
+
+    .hero h1 {
+      max-width: 760px;
+      margin-bottom: 24px;
+      font-size: clamp(54px, 6.4vw, 92px);
+      font-weight: 400;
+      line-height: 0.98;
+      letter-spacing: -0.055em;
+    }
+
+    .hero-copy {
+      max-width: 690px;
+      margin-bottom: 30px;
+      color: #c8ccc9;
+      font-size: 20px;
+      line-height: 1.48;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .event-meta {
+      margin-bottom: 25px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .event-meta span {
+      padding: 8px 11px;
+      border: 1px solid rgba(255, 255, 255, 0.23);
+      border-radius: 999px;
+      color: #e7eae8;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 12px;
+    }
+
+    .hero-media {
+      position: relative;
+      min-width: 0;
+    }
+
+    .hero-media::before {
+      content: "";
+      position: absolute;
+      inset: 20px -18px -18px 20px;
+      border: 1px solid rgba(201, 247, 211, 0.42);
+      border-radius: 16px;
+    }
+
+    .hero-media img {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      aspect-ratio: 600 / 314;
+      object-fit: cover;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 12px;
+      background: #17191e;
+    }
+
+    .trust-strip {
+      padding: 20px 0;
+      border-top: 1px solid var(--line-dark);
+      background: var(--black);
+      color: #c4c8c5;
+    }
+
+    .trust-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+    }
+
+    .statement h2,
+    .section-head h2 {
+      margin-bottom: 24px;
+      font-size: clamp(44px, 6vw, 82px);
+      font-weight: 400;
+      line-height: 1.02;
+      letter-spacing: -0.05em;
+    }
+
+    .statement p {
+      max-width: 760px;
+      font-size: 20px;
+      line-height: 1.55;
+    }
+
+    .learning-grid {
+      margin-top: 54px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .learning-card {
+      min-height: 330px;
+      padding: 30px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      display: flex;
+      flex-direction: column;
+      background: var(--white);
+    }
+
+    .number {
+      width: 44px;
+      height: 44px;
+      margin-bottom: 46px;
+      border: 1px solid var(--ink);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 13px;
+    }
+
+    .learning-card h3 {
+      margin-bottom: 12px;
+      font-size: 25px;
+      font-weight: 500;
+      line-height: 1.18;
+      letter-spacing: -0.025em;
+    }
+
+    .learning-card p { margin-bottom: 0; }
+
+    .path-shell {
+      margin-top: 48px;
+      display: grid;
+      grid-template-columns: 310px minmax(0, 1fr);
+      gap: 18px;
+    }
+
+    .path-tabs {
+      padding: 14px;
+      border: 1px solid var(--line-dark);
+      border-radius: var(--radius);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .path-tab {
+      width: 100%;
+      min-height: 62px;
+      padding: 14px 16px;
+      border: 1px solid transparent;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: transparent;
+      color: #b8bdb9;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .path-tab::after { content: "→"; }
+
+    .path-tab[aria-selected="true"] {
+      border-color: rgba(201, 247, 211, 0.48);
+      background: var(--mint);
+      color: var(--deep);
+    }
+
+    .path-panel {
+      min-height: 360px;
+      padding: 42px;
+      border-radius: var(--radius);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: var(--white);
+      color: var(--ink);
+    }
+
+    .path-panel h3 {
+      max-width: 760px;
+      margin-bottom: 18px;
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 400;
+      line-height: 1.06;
+      letter-spacing: -0.04em;
+    }
+
+    .path-panel p {
+      max-width: 720px;
+      font-size: 18px;
+    }
+
+    .question {
+      margin-top: 32px;
+      padding-top: 22px;
+      border-top: 1px solid var(--line);
+      color: var(--green);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .speakers {
+      margin-top: 48px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .speaker {
+      min-height: 270px;
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      display: grid;
+      grid-template-columns: 132px minmax(0, 1fr);
+      align-items: center;
+      gap: 26px;
+      background: var(--white);
+    }
+
+    .speaker img {
+      width: 132px;
+      height: 132px;
+      border-radius: 50%;
+      object-fit: cover;
+      filter: grayscale(100%);
+    }
+
+    .speaker h3 {
+      margin-bottom: 7px;
+      font-size: 27px;
+      font-weight: 500;
+      letter-spacing: -0.03em;
+    }
+
+    .speaker p { margin-bottom: 0; }
+
+    .agenda {
+      margin-top: 48px;
+      border-top: 1px solid var(--line-dark);
+    }
+
+    .agenda-row {
+      min-height: 126px;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--line-dark);
+      display: grid;
+      grid-template-columns: 210px minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .agenda-time {
+      color: var(--mint);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .agenda-row h3 {
+      margin-bottom: 5px;
+      font-size: 24px;
+      font-weight: 500;
+    }
+
+    .agenda-row p { margin-bottom: 0; color: #afb5b0; }
+
+    .agenda-tag {
+      padding: 7px 10px;
+      border: 1px solid var(--line-dark);
+      border-radius: 999px;
+      color: #d9ddda;
+      font-size: 12px;
+    }
+
+    .facts {
+      margin-top: 48px;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .fact {
+      min-height: 165px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: var(--white);
+    }
+
+    .fact strong {
+      font-size: 27px;
+      font-weight: 500;
+      letter-spacing: -0.03em;
+    }
+
+    .fact span { color: var(--muted); font-size: 14px; }
+
+    .final {
+      padding: 110px 0;
+      background: var(--green);
+      color: var(--white);
+    }
+
+    .final-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: end;
+      gap: 40px;
+    }
+
+    .final h2 {
+      max-width: 860px;
+      margin-bottom: 0;
+      font-size: clamp(48px, 6.5vw, 88px);
+      font-weight: 400;
+      line-height: 0.99;
+      letter-spacing: -0.055em;
+    }
+
+    footer {
+      padding: 30px 0;
+      border-top: 1px solid var(--line-dark);
+      background: var(--black);
+      color: #8f9491;
+      font-size: 12px;
+    }
+
+    .footer-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .footer-row a { color: #d8dcda; }
+
+    .reveal {
+      opacity: 1;
+      transform: none;
+    }
+
+    .js .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 560ms ease, transform 560ms ease;
+    }
+
+    .js .reveal.is-visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    @media (max-width: 980px) {
+      .navlinks { display: none; }
+      .hero { min-height: auto; }
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-media { max-width: 680px; }
+      .learning-grid { grid-template-columns: 1fr; }
+      .learning-card { min-height: 0; }
+      .number { margin-bottom: 30px; }
+      .path-shell { grid-template-columns: 1fr; }
+      .path-tabs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .path-tab { min-height: 74px; }
+      .speakers { grid-template-columns: 1fr; }
+      .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .final-grid { grid-template-columns: 1fr; align-items: start; }
+    }
+
+    @media (max-width: 640px) {
+      :root { --header: 66px; }
+      .nav { padding: 10px 16px; }
+      .brand { width: 92px; }
+      .brand img { width: 90px; }
+      .button--header { min-height: 42px; padding: 9px 12px; font-size: 12px; }
+      .container { padding: 0 18px; }
+      .section { padding: 74px 0; }
+      .hero { padding: 44px 0 55px; }
+      .hero-grid { gap: 38px; }
+      .hero h1 { font-size: clamp(48px, 14vw, 66px); }
+      .hero-copy { font-size: 17px; }
+      .hero-actions { display: grid; }
+      .hero-actions .button { width: 100%; }
+      .hero-media::before { inset: 10px -8px -8px 10px; }
+      .trust-row { align-items: flex-start; flex-direction: column; gap: 7px; }
+      .statement h2, .section-head h2 { font-size: clamp(40px, 12vw, 58px); }
+      .statement p { font-size: 17px; }
+      .learning-grid { margin-top: 36px; }
+      .learning-card { padding: 24px; }
+      .path-tabs { grid-template-columns: 1fr; }
+      .path-tab { min-height: 54px; }
+      .path-panel { min-height: 390px; padding: 26px; }
+      .path-panel h3 { font-size: 34px; }
+      .speaker { grid-template-columns: 86px minmax(0, 1fr); min-height: 0; padding: 20px; gap: 18px; }
+      .speaker img { width: 86px; height: 86px; }
+      .speaker h3 { font-size: 22px; }
+      .agenda-row { grid-template-columns: 1fr; gap: 8px; }
+      .agenda-tag { justify-self: start; }
+      .facts { grid-template-columns: 1fr; }
+      .fact { min-height: 132px; }
+      .final { padding: 82px 0; }
+      .final h2 { font-size: clamp(46px, 13vw, 65px); }
+      .final .button { width: 100%; }
+      .footer-row { align-items: flex-start; flex-direction: column; }
+    }
+
+    @media (max-width: 350px) {
+      .nav { gap: 8px; }
+      .brand { width: 78px; }
+      .brand img { width: 76px; }
+      .button--header { padding: 8px 10px; font-size: 11px; }
+      .container { padding: 0 14px; }
+      .event-meta span { font-size: 10px; }
+      .speaker { grid-template-columns: 1fr; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      .js .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+  <button class="skip" type="button" data-scroll-target="main">Skip to content</button>
+
+  <header class="topbar">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="brand" href="https://scale.com/" target="_blank" rel="noopener" aria-label="Open Scale AI" onclick="flzAnalytic('cta_click', {text:this.getAttribute('aria-label'), area:'header', url:this.href}, this)">
+        <img src="https://cdn.gradual.com/images/https://d2xo500swnpgl1.cloudfront.net/uploads/scale/Scale-Logo-Horizontal-White-800w02-af6ee28a-fc0b-4784-b9a9-fb8fc333c93d-1782944261138.png?fit=scale-down&amp;width=100" alt="Scale AI">
+      </a>
+      <div class="navlinks" role="group" aria-label="Page sections">
+        <button type="button" data-scroll-target="why">Why change</button>
+        <button type="button" data-scroll-target="learn">What you'll learn</button>
+        <button type="button" data-scroll-target="path">Build your path</button>
+        <button type="button" data-scroll-target="speakers">Meet the speakers</button>
+        <button type="button" data-scroll-target="agenda">Agenda</button>
+      </div>
+      <a class="button button--light button--header" href="https://learn.scale.com/public/events/why-the-future-of-churn-prevention-is-experimentation-not-prediction-hqv5yrr6ts" target="_blank" rel="noopener" onclick="flzAnalytic('cta_click', {text:this.innerText.trim(), area:'header', url:this.href}, this)">Register</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="reveal">
+          <p class="eyebrow">Scale AI Webinar</p>
+          <div class="event-meta" role="group" aria-label="Event details">
+            <span>July 28, 2026</span>
+            <span>12:00–1:00 PM CDT</span>
+            <span>Online</span>
+          </div>
+          <h1>Stop predicting churn. Start preventing it.</h1>
+          <p class="hero-copy">Move beyond churn scores and discounts. See how uplift modeling, causal measurement, and AI-enabled experimentation create a retention system that keeps learning.</p>
+          <div class="hero-actions">
+            <a class="button button--light" href="https://learn.scale.com/public/events/why-the-future-of-churn-prevention-is-experimentation-not-prediction-hqv5yrr6ts" target="_blank" rel="noopener" onclick="flzAnalytic('cta_click', {text:this.innerText.trim(), area:'hero', url:this.href}, this)">Register for the webinar</a>
+            <button class="button button--outline-light" type="button" data-scroll-target="path">Build my session path</button>
+          </div>
+        </div>
+        <div class="hero-media reveal">
+          <img src="https://cdn.gradual.com/images/https://d2xo500swnpgl1.cloudfront.net/uploads/scale/Jul-28-RetainOS-Webinar-2--0feb9f74-791e-4772-aa2e-ca20b0d6aa2f-1784031584165.jpeg?fit=scale-down&amp;width=600" alt="Why the Future of Churn Prevention Is Experimentation, Not Prediction">
+        </div>
+      </div>
+    </section>
+
+    <div class="trust-strip">
+      <div class="container trust-row">
+        <span>Organized by Scale Events</span>
+        <span>Presentation + live Q&amp;A</span>
+        <span>Registration on the official event page</span>
+      </div>
+    </div>
+
+    <section class="section" id="why">
+      <div class="container statement reveal">
+        <p class="eyebrow">Prediction is only the first question</p>
+        <h2>A risk score tells you who may leave. It does not tell you what will change their mind.</h2>
+        <p>Retention improves when teams can test actions, measure incremental lift, and feed every result into the next decision. That is the shift from watching churn to changing it.</p>
+      </div>
+    </section>
+
+    <section class="section section--paper" id="learn">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Three decisions to improve</p>
+          <h2>Leave with a retention system—not another dashboard.</h2>
+        </div>
+        <div class="learning-grid">
+          <article class="learning-card reveal">
+            <div class="number">01</div>
+            <h3>Know why accuracy is not enough</h3>
+            <p>See why even a strong prediction model can waste incentives when it cannot distinguish customers whose behavior can be changed.</p>
+          </article>
+          <article class="learning-card reveal">
+            <div class="number">02</div>
+            <h3>Optimize the intervention</h3>
+            <p>Use uplift modeling and causal measurement to identify which action creates incremental retention—not merely correlation.</p>
+          </article>
+          <article class="learning-card reveal">
+            <div class="number">03</div>
+            <h3>Build the learning loop</h3>
+            <p>Connect experiments and outcomes so AI continuously improves the next best action for every customer.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--dark" id="path">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Build your session path</p>
+          <h2>Bring one decision your team needs to make better.</h2>
+        </div>
+        <div class="path-shell reveal">
+          <div class="path-tabs" role="tablist" aria-label="Choose your role">
+            <button class="path-tab" id="path-tab-retention" type="button" role="tab" aria-selected="true" aria-controls="path-panel" tabindex="0" data-path="retention">Retention leader</button>
+            <button class="path-tab" id="path-tab-data" type="button" role="tab" aria-selected="false" aria-controls="path-panel" tabindex="-1" data-path="data">Data scientist</button>
+            <button class="path-tab" id="path-tab-operations" type="button" role="tab" aria-selected="false" aria-controls="path-panel" tabindex="-1" data-path="operations">Customer operations</button>
+          </div>
+          <div class="path-panel" id="path-panel" role="tabpanel" aria-live="polite" aria-labelledby="path-tab-retention">
+            <div>
+              <p class="eyebrow" id="path-kicker">For retention leaders</p>
+              <h3 id="path-title">Move budget from broad discounts to actions that create incremental retention.</h3>
+              <p id="path-copy">Listen for the operating model that connects intervention design, experiment cadence, causal measurement, and the next-best-action decision.</p>
+            </div>
+            <p class="question" id="path-question">Question to bring: Which customer action absorbs the most budget without proving incremental lift?</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="speakers">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Meet the speakers</p>
+          <h2>Product strategy meets production execution.</h2>
+        </div>
+        <div class="speakers">
+          <article class="speaker reveal">
+            <img src="https://cdn.gradual.com/images/https://d2xo500swnpgl1.cloudfront.net/uploads/scale/IMG-4409-e8b47cac-14f4-41df-b47f-d3ece11939da-1762836386280.jpeg?fit=scale-down&amp;width=180" alt="Monica Mishra">
+            <div>
+              <h3>Monica Mishra</h3>
+              <p>Product Marketing<br>Scale AI</p>
+            </div>
+          </article>
+          <article class="speaker reveal">
+            <img src="https://cdn.gradual.com/images/https://d2xo500swnpgl1.cloudfront.net/uploads/scale/Untitled-design-59d712a0-aaff-4022-98bc-6e7a42867512-1784030885682.png?fit=scale-down&amp;width=180" alt="Ahmad Elshenawy">
+            <div>
+              <h3>Ahmad Elshenawy</h3>
+              <p>Enterprise Solutions Engineer<br>Scale AI</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--green" id="agenda">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">July 28 · Online</p>
+          <h2>One focused hour. One better retention question.</h2>
+        </div>
+        <div class="agenda reveal">
+          <article class="agenda-row">
+            <div class="agenda-time">12:00–12:40 PM CDT</div>
+            <div>
+              <h3>Experimentation, not prediction</h3>
+              <p>Uplift modeling, causal measurement, and the closed-loop retention system.</p>
+            </div>
+            <span class="agenda-tag">Presentation</span>
+          </article>
+          <article class="agenda-row">
+            <div class="agenda-time">12:40–1:00 PM CDT</div>
+            <div>
+              <h3>Put your retention decision on the table</h3>
+              <p>Ask the Scale team how the framework applies to your program and operating constraints.</p>
+            </div>
+            <span class="agenda-tag">Live Q&amp;A</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--paper" id="facts">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Event facts</p>
+          <h2>Everything you need to make the hour count.</h2>
+        </div>
+        <div class="facts">
+          <div class="fact reveal"><strong>July 28</strong><span>Tuesday, 2026</span></div>
+          <div class="fact reveal"><strong>12 PM</strong><span>Central Daylight Time</span></div>
+          <div class="fact reveal"><strong>Online</strong><span>Join from your browser</span></div>
+          <div class="fact reveal"><strong>Live Q&amp;A</strong><span>Bring one real retention decision</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="final">
+      <div class="container final-grid">
+        <h2 class="reveal">Predict less. Learn faster. Keep more of the right customers.</h2>
+        <a class="button button--mint reveal" href="https://learn.scale.com/public/events/why-the-future-of-churn-prevention-is-experimentation-not-prediction-hqv5yrr6ts" target="_blank" rel="noopener" onclick="flzAnalytic('cta_click', {text:this.innerText.trim(), area:'final registration', url:this.href}, this)">Register now</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-row">
+      <span>Scale AI · Reliable AI for the world's most important decisions</span>
+      <a href="https://scale.com/legal/privacy" target="_blank" rel="noopener" onclick="flzAnalytic('cta_click', {text:this.innerText.trim(), area:'footer', url:this.href}, this)">Privacy</a>
+    </div>
+  </footer>
+
+  <script>
+    window.flzAnalytic = window.flzAnalytic || function(action, payload) {
+      if (window.console && console.debug) console.debug("Folloze analytics", action, payload || {});
+    };
+
+    (function() {
+      var scrollControls = Array.prototype.slice.call(document.querySelectorAll("[data-scroll-target]"));
+      scrollControls.forEach(function(control) {
+        control.addEventListener("click", function() {
+          var targetId = control.getAttribute("data-scroll-target");
+          var target = document.getElementById(targetId);
+          if (!target) return;
+          flzAnalytic(control.classList.contains("button") ? "cta_click" : "anchor_click", {
+            text: control.innerText.trim(),
+            area: "in-page navigation",
+            target: targetId
+          }, control);
+          target.scrollIntoView({behavior: "smooth", block: "start"});
+        });
+      });
+
+      var paths = {
+        retention: {
+          kicker: "For retention leaders",
+          title: "Move budget from broad discounts to actions that create incremental retention.",
+          copy: "Listen for the operating model that connects intervention design, experiment cadence, causal measurement, and the next-best-action decision.",
+          question: "Question to bring: Which customer action absorbs the most budget without proving incremental lift?"
+        },
+        data: {
+          kicker: "For data scientists",
+          title: "Turn a churn model into a causal system that can learn what works.",
+          copy: "Focus on uplift modeling, experiment design, treatment and control discipline, and the measures that separate accurate prediction from changed behavior.",
+          question: "Question to bring: Where does your current model confuse likelihood to churn with persuadability?"
+        },
+        operations: {
+          kicker: "For customer operations",
+          title: "Give every team a clearer next action—without flooding customers with offers.",
+          copy: "Look for the connection between service signals, treatment design, operational constraints, and a feedback loop that improves each intervention.",
+          question: "Question to bring: Which intervention is hardest to execute consistently across channels and teams?"
+        }
+      };
+
+      var tabs = Array.prototype.slice.call(document.querySelectorAll(".path-tab"));
+      var panel = document.getElementById("path-panel");
+      function selectPath(key, tab) {
+        var data = paths[key];
+        if (!data) return;
+        tabs.forEach(function(item) {
+          var selected = item === tab;
+          item.setAttribute("aria-selected", String(selected));
+          item.tabIndex = selected ? 0 : -1;
+        });
+        document.getElementById("path-kicker").textContent = data.kicker;
+        document.getElementById("path-title").textContent = data.title;
+        document.getElementById("path-copy").textContent = data.copy;
+        document.getElementById("path-question").textContent = data.question;
+        panel.setAttribute("aria-labelledby", tab.id);
+        flzAnalytic("path_select", {text: tab.innerText.trim(), area: "session path", value: key}, tab);
+      }
+
+      tabs.forEach(function(tab, index) {
+        tab.addEventListener("click", function() { selectPath(tab.getAttribute("data-path"), tab); });
+        tab.addEventListener("keydown", function(event) {
+          if (event.key !== "ArrowRight" && event.key !== "ArrowLeft" && event.key !== "ArrowDown" && event.key !== "ArrowUp") return;
+          event.preventDefault();
+          var direction = event.key === "ArrowRight" || event.key === "ArrowDown" ? 1 : -1;
+          var next = tabs[(index + direction + tabs.length) % tabs.length];
+          next.focus();
+          selectPath(next.getAttribute("data-path"), next);
+        });
+      });
+
+      if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        var observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        }, {threshold: 0.12});
+        document.querySelectorAll(".reveal").forEach(function(element) { observer.observe(element); });
+      } else {
+        document.querySelectorAll(".reveal").forEach(function(element) { element.classList.add("is-visible"); });
+      }
+    })();
+  </script>
+</body>
+</html>

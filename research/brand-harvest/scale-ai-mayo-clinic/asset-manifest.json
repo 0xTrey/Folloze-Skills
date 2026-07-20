@@ -1,0 +1,74 @@
+{
+  "logos": [],
+  "images": [
+    {
+      "src": "https://scale.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2F50zba0eo%2Fproduction%2F7dba1e09ebf0ec7d950e98a9d0acd105d5e321eb-1200x675.png%3Fauto%3Dformat%26q%3D80&w=1200&q=75",
+      "alt": "Mayo Clinic + Scale: Reliable AI for Better Healthcare",
+      "className": "object-cover",
+      "width": 1200,
+      "height": 675,
+      "rect": {
+        "x": 144,
+        "y": 446,
+        "width": 1152,
+        "height": 648
+      }
+    },
+    {
+      "src": "https://scale.com/static/img/reskin/prefooter.jpg?dpl=dpl_GryGatz6MbYsxsTcLRuZNWCZg4eN",
+      "alt": "",
+      "className": "opacity-100 object-cover",
+      "width": 0,
+      "height": 0,
+      "rect": {
+        "x": 16,
+        "y": 2524,
+        "width": 1408,
+        "height": 720
+      }
+    },
+    {
+      "src": "https://cdn.sanity.io/images/50zba0eo/production/777236d99c2ab67069cdd0a29117dd5a47366ec7-16x16.svg?auto=format&w=1920&width=1920",
+      "alt": "",
+      "className": "opacity-100 object-cover",
+      "width": 0,
+      "height": 0,
+      "rect": {
+        "x": 40,
+        "y": 4097,
+        "width": 16,
+        "height": 16
+      }
+    },
+    {
+      "src": "https://cdn.sanity.io/images/50zba0eo/production/6ce2239ab36209947167f2ccac45d8eebfe7fe9f-16x16.svg?auto=format&w=1920&width=1920",
+      "alt": "",
+      "className": "opacity-100 object-cover",
+      "width": 0,
+      "height": 0,
+      "rect": {
+        "x": 96,
+        "y": 4097,
+        "width": 16,
+        "height": 16
+      }
+    }
+  ],
+  "background_images": [],
+  "brandfetch_logos": [],
+  "screenshots": {
+    "desktop_full": {
+      "path": "research/brand-harvest/scale-ai-mayo-clinic/screenshots/homepage-desktop-full.png",
+      "width": 1440,
+      "height": 4153,
+      "clipped": false
+    },
+    "mobile_full": {
+      "path": "research/brand-harvest/scale-ai-mayo-clinic/screenshots/homepage-mobile-full.png",
+      "width": 390,
+      "height": 4658,
+      "clipped": false
+    }
+  },
+  "manual_screenshots": []
+}

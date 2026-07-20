@@ -1,0 +1,1923 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#071c13">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23071c13'/%3E%3Cpath d='M7 8h18L19 14H7zM7 18h12l6 6H7z' fill='white'/%3E%3C/svg%3E">
+  <title>Scale AI | Put AI to Work in Production</title>
+  <meta name="description" content="Connect enterprise data, agents, evaluation, and expert feedback in one production system with Scale AI.">
+  <link rel="stylesheet" href="https://cdn.folloze.com/theme/135433/4.css?v=1764160175">
+</head>
+<body>
+  <style>
+    :root {
+      --black: #000000;
+      --ink: #101512;
+      --forest-950: #071c13;
+      --forest-900: #0b261a;
+      --forest-800: #133b2a;
+      --forest-700: #1d5039;
+      --sage-300: #9bbda9;
+      --sage-200: #c7dbce;
+      --sage-100: #e5efe8;
+      --mint-50: #f3f8f4;
+      --paper: #f7f7f2;
+      --white: #ffffff;
+      --gray-700: #454c48;
+      --gray-600: #5b625e;
+      --gray-400: #929894;
+      --gray-250: #c8cdc9;
+      --gray-150: #e0e4e1;
+      --gray-100: #eceeec;
+      --line-dark: rgba(255, 255, 255, 0.18);
+      --line-light: rgba(16, 21, 18, 0.16);
+      --display: "Helvetica Neue", "Segoe UI", Helvetica, Arial, sans-serif;
+      --mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+      --radius: 8px;
+      --radius-large: 28px;
+      --rail: 1240px;
+      --header-height: 76px;
+      --shadow: 0 26px 80px rgba(0, 0, 0, 0.16);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      background: var(--black);
+      scroll-behavior: smooth;
+      overflow-x: clip;
+    }
+
+    body {
+      margin: 0;
+      min-width: 0;
+      color: var(--ink);
+      background: var(--white);
+      font-family: var(--display);
+      font-size: 16px;
+      line-height: 1.5;
+      overflow-x: clip;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    body,
+    button,
+    a {
+      font-family: var(--display);
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    button {
+      color: inherit;
+    }
+
+    img,
+    svg {
+      display: block;
+      max-width: 100%;
+    }
+
+    .skip-link {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      z-index: 100;
+      padding: 11px 14px;
+      color: var(--black);
+      background: var(--white);
+      border-radius: var(--radius);
+      font-weight: 650;
+      text-decoration: none;
+      transform: translateY(-160%);
+      transition: transform 160ms ease;
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+    }
+
+    :focus-visible {
+      outline: 3px solid #85d6a4;
+      outline-offset: 3px;
+    }
+
+    .rail {
+      width: min(calc(100% - 48px), var(--rail));
+      margin-inline: auto;
+    }
+
+    .section {
+      scroll-margin-top: calc(var(--header-height) + 24px);
+    }
+
+    .section-pad {
+      padding: 112px 0;
+    }
+
+    .kicker {
+      margin: 0;
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 650;
+      line-height: 1.3;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      max-width: 1040px;
+      margin: 0;
+      font-size: clamp(42px, 6vw, 88px);
+      font-weight: 430;
+      line-height: 0.98;
+      letter-spacing: -0.055em;
+      text-wrap: balance;
+      overflow-wrap: anywhere;
+    }
+
+    .body-large {
+      margin: 0;
+      font-size: clamp(18px, 2vw, 24px);
+      line-height: 1.42;
+      letter-spacing: -0.018em;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 20px;
+      border: 1px solid transparent;
+      border-radius: var(--radius);
+      font-size: 15px;
+      font-weight: 650;
+      line-height: 1;
+      letter-spacing: -0.01em;
+      text-decoration: none;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: transform 160ms ease, background-color 160ms ease, color 160ms ease, border-color 160ms ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .button-light {
+      color: var(--forest-950);
+      background: var(--white);
+    }
+
+    .button-light:hover {
+      background: var(--sage-100);
+    }
+
+    .button-outline-light {
+      color: var(--white);
+      background: transparent;
+      border-color: rgba(255, 255, 255, 0.56);
+    }
+
+    .button-outline-light:hover {
+      background: rgba(255, 255, 255, 0.09);
+      border-color: var(--white);
+    }
+
+    .button-dark {
+      color: var(--white);
+      background: var(--black);
+    }
+
+    .button-dark:hover {
+      background: var(--forest-800);
+    }
+
+    .button-outline-dark {
+      color: var(--black);
+      background: transparent;
+      border-color: rgba(0, 0, 0, 0.42);
+    }
+
+    .button-outline-dark:hover {
+      color: var(--white);
+      background: var(--black);
+      border-color: var(--black);
+    }
+
+    .button-arrow::after {
+      content: "↗";
+      margin-left: 11px;
+      font-size: 17px;
+      line-height: 1;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      color: var(--white);
+      background: rgba(0, 0, 0, 0.92);
+      border-bottom: 1px solid var(--line-dark);
+      backdrop-filter: blur(18px);
+    }
+
+    .nav {
+      min-height: var(--header-height);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      flex: 0 0 auto;
+      min-width: 100px;
+      color: var(--white);
+      text-decoration: none;
+    }
+
+    .brand img {
+      width: 92px;
+      height: 42px;
+      object-fit: contain;
+      object-position: left center;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      margin-left: auto;
+    }
+
+    .nav-links button {
+      min-height: 42px;
+      padding: 0 13px;
+      color: rgba(255, 255, 255, 0.76);
+      background: transparent;
+      border: 0;
+      border-radius: var(--radius);
+      font-size: 14px;
+      font-weight: 530;
+      line-height: 1;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: color 160ms ease, background-color 160ms ease;
+    }
+
+    .nav-links button:hover,
+    .nav-links button:focus-visible {
+      color: var(--white);
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .header-cta {
+      min-height: 42px;
+      padding-inline: 16px;
+      flex: 0 0 auto;
+    }
+
+    .hero {
+      position: relative;
+      isolation: isolate;
+      min-height: calc(100vh - var(--header-height));
+      color: var(--white);
+      background:
+        radial-gradient(circle at 78% 20%, rgba(69, 143, 99, 0.28), transparent 30%),
+        linear-gradient(142deg, #000000 8%, #071c13 64%, #0b281b 100%);
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      opacity: 0.42;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.065) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.065) 1px, transparent 1px);
+      background-size: 72px 72px;
+      mask-image: linear-gradient(110deg, transparent 0%, black 52%, black 100%);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: -180px;
+      bottom: -320px;
+      z-index: -1;
+      width: 760px;
+      height: 760px;
+      border: 1px solid rgba(255, 255, 255, 0.19);
+      border-radius: 50%;
+      box-shadow:
+        0 0 0 84px rgba(255, 255, 255, 0.025),
+        0 0 0 168px rgba(255, 255, 255, 0.018);
+    }
+
+    .hero-inner {
+      padding-top: clamp(68px, 8vw, 122px);
+      padding-bottom: 62px;
+    }
+
+    .hero-kicker {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 28px;
+      color: var(--sage-300);
+    }
+
+    .hero-kicker::before {
+      content: "";
+      width: 34px;
+      height: 1px;
+      background: currentColor;
+    }
+
+    .hero h1 {
+      max-width: 1120px;
+      margin: 0;
+      font-size: clamp(58px, 9.4vw, 140px);
+      font-weight: 400;
+      line-height: 0.86;
+      letter-spacing: -0.068em;
+      text-wrap: balance;
+      overflow-wrap: anywhere;
+    }
+
+    .hero-copy-row {
+      display: grid;
+      grid-template-columns: minmax(0, 0.76fr) minmax(300px, 0.54fr);
+      gap: clamp(36px, 8vw, 108px);
+      align-items: end;
+      margin-top: clamp(46px, 6vw, 82px);
+    }
+
+    .hero-copy {
+      max-width: 660px;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .hero-loop {
+      position: relative;
+      min-width: 0;
+      padding: 30px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: var(--radius-large);
+      background: rgba(0, 0, 0, 0.26);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    }
+
+    .hero-loop-label {
+      margin: 0 0 24px;
+      color: var(--sage-300);
+    }
+
+    .mini-loop {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1px;
+      overflow: hidden;
+      border: 1px solid var(--line-dark);
+      border-radius: 14px;
+      background: var(--line-dark);
+    }
+
+    .mini-loop-item {
+      min-height: 108px;
+      padding: 18px;
+      background: rgba(7, 28, 19, 0.92);
+    }
+
+    .mini-loop-item span {
+      display: block;
+      margin-bottom: 19px;
+      color: var(--sage-300);
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+    }
+
+    .mini-loop-item strong {
+      display: block;
+      color: var(--white);
+      font-size: 16px;
+      font-weight: 540;
+      line-height: 1.2;
+    }
+
+    .tension {
+      background: var(--paper);
+      border-bottom: 1px solid var(--line-light);
+    }
+
+    .tension-title {
+      max-width: 1180px;
+      margin-bottom: 76px;
+    }
+
+    .tension-grid {
+      display: grid;
+      grid-template-columns: minmax(280px, 0.68fr) minmax(0, 1.32fr);
+      gap: clamp(54px, 9vw, 132px);
+      align-items: start;
+    }
+
+    .tension-copy {
+      position: sticky;
+      top: calc(var(--header-height) + 40px);
+    }
+
+    .tension-copy p {
+      max-width: 450px;
+      color: var(--gray-700);
+    }
+
+    .fault-list {
+      border-top: 1px solid var(--black);
+    }
+
+    .fault {
+      display: grid;
+      grid-template-columns: 74px minmax(0, 1fr);
+      gap: 26px;
+      padding: 28px 0 34px;
+      border-bottom: 1px solid var(--line-light);
+    }
+
+    .fault-number {
+      padding-top: 5px;
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+    }
+
+    .fault h3 {
+      margin: 0 0 12px;
+      font-size: clamp(24px, 3vw, 38px);
+      font-weight: 470;
+      line-height: 1.08;
+      letter-spacing: -0.035em;
+    }
+
+    .fault p {
+      max-width: 700px;
+      margin: 0;
+      color: var(--gray-600);
+      font-size: 17px;
+    }
+
+    .system {
+      color: var(--white);
+      background: var(--black);
+    }
+
+    .system-heading-row {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 36px;
+      margin-bottom: 72px;
+    }
+
+    .system-heading-row .kicker {
+      flex: 0 0 auto;
+      padding-bottom: 10px;
+      color: var(--sage-300);
+    }
+
+    .system-loop {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      border-top: 1px solid rgba(255, 255, 255, 0.5);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    }
+
+    .system-step {
+      position: relative;
+      min-height: 340px;
+      padding: 28px 28px 34px;
+      border-right: 1px solid var(--line-dark);
+    }
+
+    .system-step:last-child {
+      border-right: 0;
+    }
+
+    .system-step::after {
+      content: "→";
+      position: absolute;
+      top: 25px;
+      right: -13px;
+      z-index: 2;
+      width: 26px;
+      height: 26px;
+      color: var(--black);
+      background: var(--white);
+      border-radius: 50%;
+      font-size: 16px;
+      line-height: 26px;
+      text-align: center;
+    }
+
+    .system-step:last-child::after {
+      content: "↺";
+      right: 25px;
+      color: var(--forest-950);
+      background: var(--sage-200);
+    }
+
+    .step-index {
+      display: inline-grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      margin-bottom: 86px;
+      color: var(--sage-200);
+      border: 1px solid rgba(199, 219, 206, 0.48);
+      border-radius: 50%;
+      font-family: var(--mono);
+      font-size: 12px;
+    }
+
+    .system-step h3 {
+      margin: 0 0 12px;
+      font-size: clamp(22px, 2.1vw, 31px);
+      font-weight: 470;
+      line-height: 1.08;
+      letter-spacing: -0.035em;
+    }
+
+    .system-step p {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.62);
+      font-size: 15px;
+    }
+
+    .workbench-section {
+      color: var(--ink);
+      background: var(--sage-100);
+    }
+
+    .workbench-header {
+      margin-bottom: 66px;
+    }
+
+    .workbench-header .section-title {
+      max-width: 1120px;
+    }
+
+    .workbench {
+      display: grid;
+      grid-template-columns: 320px minmax(0, 1fr);
+      min-height: 620px;
+      overflow: hidden;
+      color: var(--white);
+      background: var(--forest-950);
+      border-radius: var(--radius-large);
+      box-shadow: var(--shadow);
+    }
+
+    .workflow-tabs {
+      display: flex;
+      flex-direction: column;
+      padding: 22px;
+      border-right: 1px solid var(--line-dark);
+      background: rgba(0, 0, 0, 0.2);
+    }
+
+    .tabs-label {
+      padding: 9px 10px 24px;
+      color: var(--sage-300);
+    }
+
+    .workflow-tab {
+      position: relative;
+      display: grid;
+      grid-template-columns: 38px minmax(0, 1fr);
+      gap: 12px;
+      align-items: center;
+      min-height: 76px;
+      padding: 12px 14px;
+      color: rgba(255, 255, 255, 0.62);
+      background: transparent;
+      border: 0;
+      border-top: 1px solid var(--line-dark);
+      text-align: left;
+      cursor: pointer;
+      transition: color 180ms ease, background-color 180ms ease;
+    }
+
+    .workflow-tab:last-of-type {
+      border-bottom: 1px solid var(--line-dark);
+    }
+
+    .workflow-tab::before {
+      content: attr(data-index);
+      display: grid;
+      place-items: center;
+      width: 32px;
+      height: 32px;
+      color: inherit;
+      border: 1px solid currentColor;
+      border-radius: 50%;
+      font-family: var(--mono);
+      font-size: 11px;
+    }
+
+    .workflow-tab::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: -22px;
+      width: 3px;
+      background: transparent;
+    }
+
+    .workflow-tab:hover {
+      color: var(--white);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .workflow-tab[aria-selected="true"] {
+      color: var(--white);
+      background: rgba(199, 219, 206, 0.1);
+    }
+
+    .workflow-tab[aria-selected="true"]::before {
+      color: var(--forest-950);
+      background: var(--sage-200);
+      border-color: var(--sage-200);
+    }
+
+    .workflow-tab[aria-selected="true"]::after {
+      background: var(--sage-200);
+    }
+
+    .tab-note {
+      margin: auto 10px 6px;
+      color: rgba(255, 255, 255, 0.46);
+      font-family: var(--mono);
+      font-size: 11px;
+      line-height: 1.5;
+    }
+
+    .workflow-panel {
+      min-width: 0;
+      padding: clamp(34px, 5vw, 70px);
+    }
+
+    .workflow-panel[aria-busy="true"] {
+      opacity: 0.72;
+    }
+
+    .workflow-heading {
+      display: flex;
+      align-items: start;
+      justify-content: space-between;
+      gap: 24px;
+      padding-bottom: 36px;
+      border-bottom: 1px solid var(--line-dark);
+    }
+
+    .workflow-heading-copy {
+      min-width: 0;
+    }
+
+    .workflow-mode {
+      margin-bottom: 18px;
+      color: var(--sage-300);
+    }
+
+    .workflow-heading h3 {
+      max-width: 740px;
+      margin: 0;
+      font-size: clamp(38px, 5vw, 68px);
+      font-weight: 420;
+      line-height: 0.98;
+      letter-spacing: -0.055em;
+      text-wrap: balance;
+      overflow-wrap: anywhere;
+    }
+
+    .workflow-signal {
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      width: 88px;
+      height: 88px;
+      border: 1px solid rgba(199, 219, 206, 0.45);
+      border-radius: 50%;
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.06em;
+    }
+
+    .signal-core {
+      width: 24px;
+      height: 24px;
+      background: var(--sage-200);
+      border-radius: 50%;
+      box-shadow: 0 0 0 11px rgba(199, 219, 206, 0.09);
+    }
+
+    .workflow-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1px;
+      margin-top: 36px;
+      border: 1px solid var(--line-dark);
+      background: var(--line-dark);
+    }
+
+    .workflow-detail {
+      min-height: 176px;
+      padding: 26px;
+      background: var(--forest-950);
+    }
+
+    .workflow-detail dt {
+      margin: 0 0 17px;
+      color: var(--sage-300);
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 650;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+    }
+
+    .workflow-detail dd {
+      margin: 0;
+      color: var(--white);
+      font-size: clamp(17px, 1.7vw, 21px);
+      line-height: 1.34;
+      letter-spacing: -0.02em;
+    }
+
+    .workflow-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 36px;
+    }
+
+    .results {
+      background: var(--white);
+    }
+
+    .results-intro {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 44px;
+      margin-bottom: 72px;
+    }
+
+    .results-note {
+      max-width: 380px;
+      margin: 0 0 5px;
+      color: var(--gray-600);
+      font-size: 15px;
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      border-top: 1px solid var(--black);
+      border-bottom: 1px solid var(--black);
+    }
+
+    .metric {
+      grid-column: span 3;
+      min-height: 360px;
+      padding: 28px 24px 34px;
+      border-right: 1px solid var(--line-light);
+    }
+
+    .metric:last-child {
+      border-right: 0;
+    }
+
+    .metric-value {
+      min-height: 122px;
+      margin: 0 0 68px;
+      font-size: clamp(54px, 6vw, 86px);
+      font-weight: 420;
+      line-height: 0.94;
+      letter-spacing: -0.06em;
+    }
+
+    .metric h3 {
+      margin: 0 0 10px;
+      font-size: 20px;
+      font-weight: 570;
+      line-height: 1.2;
+      letter-spacing: -0.025em;
+    }
+
+    .metric p {
+      margin: 0;
+      color: var(--gray-600);
+      font-size: 15px;
+    }
+
+    .team-value {
+      color: var(--white);
+      background: var(--forest-900);
+    }
+
+    .team-title {
+      margin-bottom: 76px;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1px;
+      border: 1px solid var(--line-dark);
+      background: var(--line-dark);
+    }
+
+    .team-card {
+      min-height: 330px;
+      padding: clamp(28px, 4vw, 52px);
+      background: var(--forest-900);
+    }
+
+    .team-card:nth-child(2),
+    .team-card:nth-child(3) {
+      background: var(--forest-950);
+    }
+
+    .team-icon {
+      display: grid;
+      place-items: center;
+      width: 48px;
+      height: 48px;
+      margin-bottom: 64px;
+      color: var(--forest-950);
+      background: var(--sage-200);
+      border-radius: 50%;
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .team-card h3 {
+      margin: 0 0 15px;
+      font-size: clamp(26px, 3vw, 40px);
+      font-weight: 440;
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+    }
+
+    .team-card p {
+      max-width: 510px;
+      margin: 0;
+      color: rgba(255, 255, 255, 0.64);
+      font-size: 17px;
+    }
+
+    .resources {
+      background: var(--paper);
+    }
+
+    .resources-title {
+      margin-bottom: 70px;
+    }
+
+    .resource-list {
+      border-top: 1px solid var(--black);
+    }
+
+    .resource-row {
+      display: grid;
+      grid-template-columns: 76px minmax(0, 1fr) minmax(170px, 0.34fr) 48px;
+      gap: 24px;
+      align-items: center;
+      min-height: 148px;
+      padding: 25px 0;
+      color: var(--ink);
+      border-bottom: 1px solid var(--line-light);
+      text-decoration: none;
+      transition: color 170ms ease, padding-left 170ms ease, background-color 170ms ease;
+    }
+
+    .resource-row:hover,
+    .resource-row:focus-visible {
+      padding-left: 14px;
+      color: var(--forest-700);
+      background: rgba(229, 239, 232, 0.58);
+    }
+
+    .resource-index {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+    }
+
+    .resource-row h3 {
+      margin: 0;
+      font-size: clamp(25px, 3.2vw, 42px);
+      font-weight: 450;
+      line-height: 1.04;
+      letter-spacing: -0.04em;
+    }
+
+    .resource-type {
+      color: var(--gray-600);
+      font-family: var(--mono);
+      font-size: 11px;
+      line-height: 1.5;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .resource-arrow {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      border: 1px solid currentColor;
+      border-radius: 50%;
+      font-size: 18px;
+    }
+
+    .final-cta {
+      position: relative;
+      isolation: isolate;
+      color: var(--white);
+      background: var(--black);
+      overflow: hidden;
+    }
+
+    .final-cta::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      z-index: -1;
+      width: 46%;
+      height: 100%;
+      opacity: 0.26;
+      background:
+        radial-gradient(circle at center, rgba(157, 201, 173, 0.46), transparent 48%),
+        repeating-linear-gradient(90deg, transparent 0 38px, rgba(255, 255, 255, 0.08) 38px 39px);
+    }
+
+    .final-cta-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(300px, 0.58fr);
+      gap: 70px;
+      align-items: end;
+    }
+
+    .final-cta h2 {
+      max-width: 900px;
+      margin: 0;
+      font-size: clamp(56px, 8.7vw, 126px);
+      font-weight: 400;
+      line-height: 0.88;
+      letter-spacing: -0.065em;
+      text-wrap: balance;
+      overflow-wrap: anywhere;
+    }
+
+    .final-copy {
+      padding-bottom: 10px;
+    }
+
+    .final-copy p {
+      margin: 0 0 28px;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 18px;
+    }
+
+    .site-footer {
+      color: rgba(255, 255, 255, 0.62);
+      background: var(--black);
+      border-top: 1px solid var(--line-dark);
+    }
+
+    .footer-inner {
+      min-height: 110px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .footer-inner p {
+      margin: 0;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 22px;
+    }
+
+    .footer-links a {
+      color: inherit;
+      font-size: 13px;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+    }
+
+    .footer-links a:hover {
+      color: var(--white);
+    }
+
+    @media (max-width: 1060px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero h1 {
+        font-size: clamp(58px, 11vw, 108px);
+      }
+
+      .hero-copy-row {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-loop {
+        max-width: 720px;
+      }
+
+      .tension-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .tension-copy {
+        position: static;
+      }
+
+      .system-loop {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .system-step:nth-child(2) {
+        border-right: 0;
+      }
+
+      .system-step:nth-child(-n + 2) {
+        border-bottom: 1px solid var(--line-dark);
+      }
+
+      .system-step:nth-child(2)::after {
+        content: "↓";
+        top: auto;
+        right: 24px;
+        bottom: -13px;
+      }
+
+      .workbench {
+        grid-template-columns: 260px minmax(0, 1fr);
+      }
+
+      .metrics {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .metric {
+        grid-column: auto;
+      }
+
+      .metric:nth-child(2) {
+        border-right: 0;
+      }
+
+      .metric:nth-child(-n + 2) {
+        border-bottom: 1px solid var(--line-light);
+      }
+
+      .resource-row {
+        grid-template-columns: 60px minmax(0, 1fr) 48px;
+      }
+
+      .resource-type {
+        display: none;
+      }
+
+      .final-cta-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .final-copy {
+        max-width: 560px;
+      }
+    }
+
+    @media (max-width: 760px) {
+      :root {
+        --header-height: 68px;
+      }
+
+      .rail {
+        width: min(calc(100% - 32px), var(--rail));
+      }
+
+      .section-pad {
+        padding: 78px 0;
+      }
+
+      .section-title {
+        font-size: clamp(38px, 12.2vw, 64px);
+        line-height: 0.98;
+      }
+
+      .nav {
+        min-height: var(--header-height);
+        gap: 14px;
+      }
+
+      .brand img {
+        width: 82px;
+        height: 38px;
+      }
+
+      .header-cta {
+        min-height: 40px;
+        padding-inline: 13px;
+        font-size: 13px;
+      }
+
+      .hero {
+        min-height: auto;
+      }
+
+      .hero-inner {
+        padding-top: 58px;
+        padding-bottom: 46px;
+      }
+
+      .hero-kicker {
+        margin-bottom: 20px;
+      }
+
+      .hero h1 {
+        font-size: clamp(54px, 16.2vw, 88px);
+        line-height: 0.88;
+      }
+
+      .hero-copy-row {
+        margin-top: 44px;
+        gap: 42px;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .hero-actions .button {
+        width: 100%;
+      }
+
+      .hero-loop {
+        padding: 22px;
+        border-radius: 20px;
+      }
+
+      .mini-loop {
+        grid-template-columns: 1fr;
+      }
+
+      .mini-loop-item {
+        min-height: 88px;
+      }
+
+      .mini-loop-item span {
+        margin-bottom: 9px;
+      }
+
+      .tension-title {
+        margin-bottom: 50px;
+      }
+
+      .fault {
+        grid-template-columns: 42px minmax(0, 1fr);
+        gap: 16px;
+        padding-block: 22px 27px;
+      }
+
+      .fault h3 {
+        font-size: 26px;
+      }
+
+      .system-heading-row,
+      .results-intro {
+        align-items: start;
+        flex-direction: column;
+        margin-bottom: 46px;
+      }
+
+      .system-loop {
+        grid-template-columns: 1fr;
+      }
+
+      .system-step {
+        min-height: 240px;
+        border-right: 0;
+        border-bottom: 1px solid var(--line-dark);
+      }
+
+      .system-step:nth-child(-n + 2) {
+        border-bottom: 1px solid var(--line-dark);
+      }
+
+      .system-step:last-child {
+        border-bottom: 0;
+      }
+
+      .system-step::after,
+      .system-step:nth-child(2)::after {
+        content: "↓";
+        top: auto;
+        right: 24px;
+        bottom: -13px;
+      }
+
+      .system-step:last-child::after {
+        content: "↺";
+        top: 24px;
+        right: 24px;
+        bottom: auto;
+      }
+
+      .step-index {
+        margin-bottom: 52px;
+      }
+
+      .workbench-header {
+        margin-bottom: 44px;
+      }
+
+      .workbench {
+        grid-template-columns: 1fr;
+        border-radius: 20px;
+      }
+
+      .workflow-tabs {
+        flex-direction: row;
+        overflow-x: auto;
+        padding: 14px;
+        border-right: 0;
+        border-bottom: 1px solid var(--line-dark);
+        scrollbar-width: thin;
+      }
+
+      .tabs-label,
+      .tab-note {
+        display: none;
+      }
+
+      .workflow-tab {
+        flex: 0 0 auto;
+        grid-template-columns: 28px auto;
+        min-height: 56px;
+        padding: 9px 12px;
+        border-top: 0;
+        border-right: 1px solid var(--line-dark);
+        white-space: nowrap;
+      }
+
+      .workflow-tab:last-of-type {
+        border-right: 0;
+        border-bottom: 0;
+      }
+
+      .workflow-tab::before {
+        width: 26px;
+        height: 26px;
+      }
+
+      .workflow-tab::after {
+        top: auto;
+        right: 0;
+        bottom: -14px;
+        left: 0;
+        width: auto;
+        height: 3px;
+      }
+
+      .workflow-panel {
+        padding: 30px 20px 26px;
+      }
+
+      .workflow-heading {
+        align-items: end;
+      }
+
+      .workflow-signal {
+        width: 58px;
+        height: 58px;
+      }
+
+      .signal-core {
+        width: 18px;
+        height: 18px;
+      }
+
+      .workflow-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .workflow-detail {
+        min-height: 0;
+        padding: 23px;
+      }
+
+      .workflow-actions {
+        flex-direction: column;
+      }
+
+      .workflow-actions .button {
+        width: 100%;
+      }
+
+      .metrics {
+        grid-template-columns: 1fr;
+      }
+
+      .metric {
+        min-height: 290px;
+        padding: 24px 4px 30px;
+        border-right: 0;
+        border-bottom: 1px solid var(--line-light);
+      }
+
+      .metric:nth-child(-n + 2) {
+        border-bottom: 1px solid var(--line-light);
+      }
+
+      .metric:last-child {
+        border-bottom: 0;
+      }
+
+      .metric-value {
+        min-height: 0;
+        margin-bottom: 56px;
+      }
+
+      .team-title {
+        margin-bottom: 46px;
+      }
+
+      .team-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .team-card,
+      .team-card:nth-child(2),
+      .team-card:nth-child(3) {
+        min-height: 300px;
+        background: var(--forest-900);
+      }
+
+      .team-card:nth-child(even) {
+        background: var(--forest-950);
+      }
+
+      .team-icon {
+        margin-bottom: 54px;
+      }
+
+      .resources-title {
+        margin-bottom: 46px;
+      }
+
+      .resource-row {
+        grid-template-columns: 34px minmax(0, 1fr) 38px;
+        gap: 12px;
+        min-height: 126px;
+      }
+
+      .resource-row:hover,
+      .resource-row:focus-visible {
+        padding-left: 0;
+      }
+
+      .resource-row h3 {
+        font-size: 25px;
+      }
+
+      .resource-arrow {
+        width: 36px;
+        height: 36px;
+      }
+
+      .final-cta::after {
+        width: 100%;
+        opacity: 0.18;
+      }
+
+      .final-cta h2 {
+        font-size: clamp(54px, 16vw, 84px);
+      }
+
+      .final-copy .button {
+        width: 100%;
+      }
+
+      .footer-inner {
+        min-height: 150px;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 350px) {
+      .rail {
+        width: min(calc(100% - 24px), var(--rail));
+      }
+
+      .brand img {
+        width: 72px;
+      }
+
+      .header-cta {
+        padding-inline: 11px;
+        font-size: 12px;
+      }
+
+      .hero h1 {
+        font-size: 51px;
+      }
+
+      .workflow-heading {
+        display: block;
+      }
+
+      .workflow-signal {
+        display: none;
+      }
+
+      .resource-row {
+        grid-template-columns: 28px minmax(0, 1fr);
+      }
+
+      .resource-arrow {
+        display: none;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+  <button class="skip-link" type="button" data-scroll-target="main-content">Skip to main content</button>
+
+  <header class="site-header">
+    <div class="rail nav">
+      <a class="brand" href="https://scale.com/" target="_blank" rel="noopener" aria-label="Visit Scale AI" onclick="flzAnalytic('cta_click', {text:'Scale AI home', area:'header', url:this.href}, this)">
+        <img src="https://cdn.gradual.com/images/https://d2xo500swnpgl1.cloudfront.net/uploads/scale/Scale-Logo-Horizontal-White-800w02-af6ee28a-fc0b-4784-b9a9-fb8fc333c93d-1782944261138.png?fit=scale-down&amp;width=260" alt="Scale AI" width="92" height="42">
+      </a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <button type="button" data-scroll-target="system">See the system</button>
+        <button type="button" data-scroll-target="workbench">Choose a workflow</button>
+        <button type="button" data-scroll-target="results">See the outcomes</button>
+        <button type="button" data-scroll-target="team-value">Value by team</button>
+      </nav>
+      <a class="button button-light header-cta" href="https://scale.com/demo" target="_blank" rel="noopener" onclick="flzAnalytic('cta_click', {text:this.innerText.trim(), area:'header', url:this.href}, this)">Map a workflow</a>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="hero section" aria-labelledby="hero-title">
+      <div class="rail hero-inner">
+        <p class="kicker hero-kicker">AI systems for production</p>
+        <h1 id="hero-title">The model is not the system.</h1>
+        <div class="hero-copy-row">
+          <div>
+            <p class="body-large hero-copy">Scale connects your data, agents, evaluation, and expert judgment—so AI can perform when the business depends on it.</p>
+            <div class="hero-actions">
+              <a class="button button-light button-arrow" href="https://scale.com/demo" target="_blank" rel="noopener" onclick="flzAnalytic('cta_click', {text:this.innerText.trim(), area:'hero', url:this.href}, this)">Map a production workflow</a>
+              <a class="button button-outline-light button-arrow" href="https://scale.com/genai-platform" target="_blank" rel="noopener" onclick="flzAnalytic('cta_click', {text:this.innerText.trim(), area:'hero', url:this.href}, this)">See the GenAI Platform</a>
+            </div>
+          </div>
+          <div class="hero-loop" role="group" aria-label="Scale production system loop">
+            <p class="kicker hero-loop-label">One connected operating loop</p>
+            <div class="mini-loop">
+              <div class="mini-loop-item">
+                <span>01 / GROUND</span>
+                <strong>Connect proprietary data</strong>
+              </div>
+              <div class="mini-loop-item">
+                <span>02 / EXECUTE</span>
+                <strong>Build and run agents</strong>
+              </div>
+              <div class="mini-loop-item">
+                <span>03 / PROVE</span>
+                <strong>Evaluate and monitor</strong>
+              </div>
+              <div class="mini-loop-item">
+                <span>04 / IMPROVE</span>
+                <strong>Learn from expert feedback</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="tension section section-pad" id="pressure" aria-labelledby="pressure-title">
+      <div class="rail">
+        <h2 class="section-title tension-title" id="pressure-title">Another isolated AI initiative will not close the gap between model potential and operating reality.</h2>
+        <div class="tension-grid">
+          <div class="tension-copy">
+            <p class="body-large">Production AI breaks at the handoffs: where enterprise context, reliable execution, measurement, and human judgment live in separate tools.</p>
+          </div>
+          <div class="fault-list">
+            <article class="fault">
+              <span class="fault-number">01</span>
+              <div>
+                <h3>Context without control</h3>
+                <p>Proprietary knowledge may be connected, but teams still need traceability, permissions, and source-cited answers they can defend.</p>
+              </div>
+            </article>
+            <article class="fault">
+              <span class="fault-number">02</span>
+              <div>
+                <h3>Agents without a reliability loop</h3>
+                <p>A workflow can execute quickly and still fail quietly. Evaluation has to follow every release, edge case, and business rule.</p>
+              </div>
+            </article>
+            <article class="fault">
+              <span class="fault-number">03</span>
+              <div>
+                <h3>Feedback without improvement</h3>
+                <p>Expert review becomes overhead when it cannot sharpen data, rubrics, and agent behavior in the next production cycle.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="system section section-pad" id="system" aria-labelledby="system-title">
+      <div class="rail">
+        <div class="system-heading-row">
+          <h2 class="section-title" id="system-title">Build the loop. Then let every run make the system stronger.</h2>
+          <p class="kicker">The Scale GenAI Platform</p>
+        </div>
+        <div class="system-loop">
+          <article class="system-step">
+            <span class="step-index">01</span>
+            <h3>Connect the right data</h3>
+            <p>Ground each workflow in proprietary knowledge, structured inputs, permissions, and the business context the model cannot infer.</p>
+          </article>
+          <article class="system-step">
+            <span class="step-index">02</span>
+            <h3>Execute real work</h3>
+            <p>Build agents around the decisions, tools, and exception paths that move an operating process—not a standalone prompt.</p>
+          </article>
+          <article class="system-step">
+            <span class="step-index">03</span>
+            <h3>Evaluate every release</h3>
+            <p>Combine automated testing and expert evaluation with custom rubrics, monitoring, and evidence for the behavior that matters.</p>
+          </article>
+          <article class="system-step">
+            <span class="step-index">04</span>
+            <h3>Improve with experts</h3>
+            <p>Turn review into better data, sharper evaluation, and a continuous feedback cycle that improves production performance.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="workbench-section section section-pad" id="workbench" aria-labelledby="workbench-title">
+      <div class="rail">
+        <div class="workbench-header">
+          <h2 class="section-title" id="workbench-title">Pick the workflow where reliability has a business consequence.</h2>
+        </div>
+        <div class="workbench">
+          <div class="workflow-tabs" role="tablist" aria-label="Production workflow selector" aria-orientation="vertical">
+            <p class="kicker tabs-label">Select a workflow</p>
+            <button class="workflow-tab" id="workflow-tab-contracts" type="button" role="tab" aria-selected="true" aria-controls="workflow-panel" tabindex="0" data-workflow="contracts" data-index="01">Contract review</button>
+            <button class="workflow-tab" id="workflow-tab-customer" type="button" role="tab" aria-selected="false" aria-controls="workflow-panel" tabindex="-1" data-workflow="customer" data-index="02">Customer operations</button>
+            <button class="workflow-tab" id="workflow-tab-investment" type="button" role="tab" aria-selected="false" aria-controls="workflow-panel" tabindex="-1" data-workflow="investment" data-index="03">Investment intelligence</button>
+            <button class="workflow-tab" id="workflow-tab-knowledge" type="button" role="tab" aria-selected="false" aria-controls="workflow-panel" tabindex="-1" data-workflow="knowledge" data-index="04">Enterprise knowledge</button>
+            <p class="tab-note">Use arrow keys to compare workflows.</p>
+          </div>
+
+          <div class="workflow-panel" id="workflow-panel" role="tabpanel" aria-labelledby="workflow-tab-contracts" aria-live="polite">
+            <div class="workflow-heading">
+              <div class="workflow-heading-copy">
+                <p class="kicker workflow-mode" id="workflow-mode">Contract review</p>
+                <h3 id="workflow-outcome">Move from document queues to source-grounded decisions.</h3>
+              </div>
+              <div class="workflow-signal" aria-hidden="true">
+                <span class="signal-core"></span>
+              </div>
+            </div>
+
+            <dl class="workflow-grid">
+              <div class="workflow-detail">
+                <dt>Ground it in</dt>
+                <dd id="workflow-data">Contracts, clause libraries, playbooks, approval policies, and prior decisions.</dd>
+              </div>
+              <div class="workflow-detail">
+                <dt>Prove reliability with</dt>
+                <dd id="workflow-proof">Clause-level citations, custom legal rubrics, exception testing, and expert review.</dd>
+              </div>
+              <div class="workflow-detail">
+                <dt>The next decision</dt>
+                <dd id="workflow-decision">Choose one agreement type and define the accuracy, cycle-time, and escalation threshold that production must meet.</dd>
+              </div>
+              <div class="workflow-detail">
+                <dt>System advantage</dt>
+                <dd id="workflow-advantage">Every reviewed exception can sharpen the next evaluation set and approval path.</dd>
+              </div>
+            </dl>
+
+            <div class="workflow-actions">
+              <a class="button button-light button-arrow" href="https://scale.com/demo" target="_blank" rel="noopener" onclick="flzAnalytic('cta_click', {text:this.innerText.trim(), area:'workflow workbench', url:this.href}, this)">Map this workflow</a>
+              <a class="button button-outline-light button-arrow" href="https://scale.com/evaluation/enterprise" target="_blank" rel="noopener" onclick="flzAnalytic('cta_click', {text:this.innerText.trim(), area:'workflow workbench', url:this.href}, this)">Explore enterprise evaluation</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="results section section-pad" id="results" aria-labelledby="results-title">
+      <div class="rail">
+        <div class="results-intro">
+          <h2 class="section-title" id="results-title">Production changes the metric.</h2>
+          <p class="results-note">Scale-published outcomes across enterprise work. Bring your baseline to define a defensible target.</p>
+        </div>
+        <div class="metrics">
+          <article class="metric">
+            <p class="metric-value">93%</p>
+            <h3>Faster contract review</h3>
+            <p>Speed matters when evaluation and expert escalation remain part of the operating path.</p>
+          </article>
+          <article class="metric">
+            <p class="metric-value">$64M+</p>
+            <h3>Revenue growth</h3>
+            <p>GenAI recommendations become valuable when they connect to the decisions teams already make.</p>
+          </article>
+          <article class="metric">
+            <p class="metric-value">Cited</p>
+            <h3>Answers built for auditability</h3>
+            <p>Source grounding gives reviewers evidence to verify, challenge, and approve.</p>
+          </article>
+          <article class="metric">
+            <p class="metric-value">6 weeks</p>
+            <h3>From scope to production</h3>
+            <p>A focused workflow can establish the system, evaluation, and improvement loop before expansion.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="team-value section section-pad" id="team-value" aria-labelledby="team-title">
+      <div class="rail">
+        <h2 class="section-title team-title" id="team-title">Every team gets a reason to move beyond isolated experimentation.</h2>
+        <div class="team-grid">
+          <article class="team-card">
+            <span class="team-icon" aria-hidden="true">EX</span>
+            <h3>Executive leaders</h3>
+            <p>Start with one operating outcome, make the control points visible, and scale only after the workflow proves measurable business value.</p>
+          </article>
+          <article class="team-card">
+            <span class="team-icon" aria-hidden="true">AI</span>
+            <h3>AI platform teams</h3>
+            <p>Connect data, models, tools, agent execution, and evaluation without locking the enterprise into one model or cloud path.</p>
+          </article>
+          <article class="team-card">
+            <span class="team-icon" aria-hidden="true">OP</span>
+            <h3>Operations owners</h3>
+            <p>Define the decisions, exceptions, and review thresholds that turn an AI capability into a workflow people can trust.</p>
+          </article>
+          <article class="team-card">
+            <span class="team-icon" aria-hidden="true">RS</span>
+            <h3>Risk and security</h3>
+            <p>Evaluate with business-specific rubrics, monitor production behavior, and preserve the evidence required for oversight.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="resources section section-pad" id="resources" aria-labelledby="resources-title">
+      <div class="rail">
+        <h2 class="section-title resources-title" id="resources-title">Take the system apart before you put it to work.</h2>
+        <div class="resource-list">
+          <a class="resource-row" href="https://scale.com/genai-platform" target="_blank" rel="noopener" onclick="flzAnalytic('cta_click', {text:this.innerText.trim(), area:'production resources', url:this.href}, this)">
+            <span class="resource-index">01</span>
+            <h3>Explore the GenAI Platform</h3>
+            <span class="resource-type">Platform overview</span>
+            <span class="resource-arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="resource-row" href="https://scale.com/evaluation/enterprise" target="_blank" rel="noopener" onclick="flzAnalytic('cta_click', {text:this.innerText.trim(), area:'production resources', url:this.href}, this)">
+            <span class="resource-index">02</span>
+            <h3>See how enterprise evaluation works</h3>
+            <span class="resource-type">Evaluation system</span>
+            <span class="resource-arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="resource-row" href="https://scale.com/guides/generative-ai" target="_blank" rel="noopener" onclick="flzAnalytic('cta_click', {text:this.innerText.trim(), area:'production resources', url:this.href}, this)">
+            <span class="resource-index">03</span>
+            <h3>Read the enterprise GenAI guide</h3>
+            <span class="resource-type">Enterprise guide</span>
+            <span class="resource-arrow" aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="final-cta section section-pad" id="next-step" aria-labelledby="final-title">
+      <div class="rail final-cta-inner">
+        <h2 id="final-title">Put one workflow under production pressure.</h2>
+        <div class="final-copy">
+          <p>Bring the data, decisions, exceptions, and success threshold. Leave with a sharper path from AI ambition to operating system.</p>
+          <a class="button button-light button-arrow" href="https://scale.com/demo" target="_blank" rel="noopener" onclick="flzAnalytic('cta_click', {text:this.innerText.trim(), area:'final call to action', url:this.href}, this)">Map a production workflow</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="rail footer-inner">
+      <p>Scale AI · Reliable AI systems</p>
+      <div class="footer-links">
+        <a href="https://scale.com/" target="_blank" rel="noopener" onclick="flzAnalytic('cta_click', {text:this.innerText.trim(), area:'footer', url:this.href}, this)">Scale.com</a>
+        <a href="https://scale.com/security" target="_blank" rel="noopener" onclick="flzAnalytic('cta_click', {text:this.innerText.trim(), area:'footer', url:this.href}, this)">Security</a>
+        <a href="https://scale.com/legal/privacy" target="_blank" rel="noopener" onclick="flzAnalytic('cta_click', {text:this.innerText.trim(), area:'footer', url:this.href}, this)">Privacy</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    window.flzAnalytic = window.flzAnalytic || function(action, payload) {
+      if (window.console && window.console.debug) {
+        window.console.debug("flzAnalytic", action, payload);
+      }
+    };
+
+    (function() {
+      "use strict";
+
+      var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+      var scrollControls = Array.prototype.slice.call(document.querySelectorAll("[data-scroll-target]"));
+
+      scrollControls.forEach(function(control) {
+        control.addEventListener("click", function() {
+          var targetId = control.getAttribute("data-scroll-target");
+          var target = document.getElementById(targetId);
+          if (!target) return;
+
+          flzAnalytic("anchor_click", {
+            text: control.innerText.trim(),
+            area: "main navigation",
+            target: targetId
+          }, control);
+
+          target.scrollIntoView({
+            behavior: prefersReducedMotion.matches ? "auto" : "smooth",
+            block: "start"
+          });
+        });
+      });
+
+      var workflows = {
+        contracts: {
+          label: "Contract review",
+          outcome: "Move from document queues to source-grounded decisions.",
+          data: "Contracts, clause libraries, playbooks, approval policies, and prior decisions.",
+          proof: "Clause-level citations, custom legal rubrics, exception testing, and expert review.",
+          decision: "Choose one agreement type and define the accuracy, cycle-time, and escalation threshold that production must meet.",
+          advantage: "Every reviewed exception can sharpen the next evaluation set and approval path."
+        },
+        customer: {
+          label: "Customer operations",
+          outcome: "Give every customer decision context, action, and a measurable feedback loop.",
+          data: "Interaction history, product signals, policies, knowledge, and service workflows.",
+          proof: "Resolution-quality rubrics, policy adherence tests, escalation monitoring, and operator review.",
+          decision: "Select one high-volume journey and define the outcome, guardrails, and human handoff before automation expands.",
+          advantage: "Each resolved or escalated case becomes evidence for better recommendations and safer execution."
+        },
+        investment: {
+          label: "Investment intelligence",
+          outcome: "Turn scattered research into traceable analysis your team can challenge.",
+          data: "Filings, market research, internal theses, portfolio context, and approved data sources.",
+          proof: "Source citations, completeness checks, reasoning rubrics, red-team questions, and analyst review.",
+          decision: "Choose one repeatable research question and set the standard for source coverage, freshness, and analyst confidence.",
+          advantage: "Analyst corrections improve the next research cycle instead of disappearing into one-off documents."
+        },
+        knowledge: {
+          label: "Enterprise knowledge",
+          outcome: "Move from search results to governed answers that can drive action.",
+          data: "Policies, product documentation, operating procedures, permissions, and business systems.",
+          proof: "Grounded-answer tests, retrieval evaluation, citation checks, access controls, and domain-expert scoring.",
+          decision: "Pick one knowledge domain and define who can ask, what sources count, and when the system must defer.",
+          advantage: "Queries, misses, and expert corrections reveal exactly where knowledge and evaluation need to improve."
+        }
+      };
+
+      var tabs = Array.prototype.slice.call(document.querySelectorAll(".workflow-tab"));
+      var panel = document.getElementById("workflow-panel");
+      var mode = document.getElementById("workflow-mode");
+      var outcome = document.getElementById("workflow-outcome");
+      var data = document.getElementById("workflow-data");
+      var proof = document.getElementById("workflow-proof");
+      var decision = document.getElementById("workflow-decision");
+      var advantage = document.getElementById("workflow-advantage");
+
+      function selectWorkflow(tab, shouldFocus) {
+        var key = tab.getAttribute("data-workflow");
+        var content = workflows[key];
+        if (!content) return;
+
+        tabs.forEach(function(candidate) {
+          var selected = candidate === tab;
+          candidate.setAttribute("aria-selected", selected ? "true" : "false");
+          candidate.setAttribute("tabindex", selected ? "0" : "-1");
+        });
+
+        panel.setAttribute("aria-busy", "true");
+        panel.setAttribute("aria-labelledby", tab.id);
+        mode.textContent = content.label;
+        outcome.textContent = content.outcome;
+        data.textContent = content.data;
+        proof.textContent = content.proof;
+        decision.textContent = content.decision;
+        advantage.textContent = content.advantage;
+        panel.setAttribute("aria-busy", "false");
+
+        flzAnalytic("workflow_select", {
+          text: content.label,
+          area: "production workflow selector",
+          value: key
+        }, tab);
+
+        if (shouldFocus) {
+          tab.focus();
+        }
+      }
+
+      tabs.forEach(function(tab, index) {
+        tab.addEventListener("click", function() {
+          selectWorkflow(tab, false);
+        });
+
+        tab.addEventListener("keydown", function(event) {
+          var targetIndex = null;
+          if (event.key === "ArrowRight" || event.key === "ArrowDown") {
+            targetIndex = (index + 1) % tabs.length;
+          } else if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
+            targetIndex = (index - 1 + tabs.length) % tabs.length;
+          } else if (event.key === "Home") {
+            targetIndex = 0;
+          } else if (event.key === "End") {
+            targetIndex = tabs.length - 1;
+          }
+
+          if (targetIndex !== null) {
+            event.preventDefault();
+            selectWorkflow(tabs[targetIndex], true);
+          }
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

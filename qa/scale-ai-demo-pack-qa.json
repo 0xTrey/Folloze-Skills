@@ -1,0 +1,114 @@
+{
+  "generatedAt": "2026-07-20T16:09:38Z",
+  "updatedAt": "2026-07-20T19:01:12Z",
+  "scope": "published Scale AI Folloze demo pack",
+  "saveState": {
+    "localSource": "complete",
+    "browserQa": "complete",
+    "follozeSave": "complete",
+    "follozeBoardIds": [
+      248053,
+      248055,
+      248056
+    ],
+    "designerPublish": "complete",
+    "publicDeployment": "three vanity URLs anonymously verified",
+    "trackerUpdate": "Demo Environments rows 107-109 written and verified",
+    "gitCommit": "complete",
+    "gitPush": "not requested"
+  },
+  "sharedChecks": {
+    "viewports": [
+      {
+        "width": 1440,
+        "height": 1000
+      },
+      {
+        "width": 390,
+        "height": 844
+      },
+      {
+        "width": 320,
+        "height": 780
+      }
+    ],
+    "horizontalOverflow": false,
+    "brokenImages": 0,
+    "consoleErrors": 0,
+    "externalLinkHttpFailures": 0,
+    "rawHashAnchors": 0,
+    "missingSecureExternalLinkAttributes": 0,
+    "missingInlineCtaAnalytics": 0,
+    "placeholderCopyMatches": 0,
+    "reducedMotionSupport": true,
+    "analyticsFallback": true,
+    "scriptParse": "passed",
+    "gitDiffCheck": "passed"
+  },
+  "experiences": [
+    {
+      "name": "Production Systems Campaign",
+      "motion": "one-to-many campaign",
+      "file": "artifacts/scale-ai-demo-pack/scale-ai-production-systems-campaign.html",
+      "boardId": 248053,
+      "designerUrl": "https://app.folloze.com/app/board/248053/designer",
+      "publicUrl": "https://experience.folloze.com/scale-ai-production-systems",
+      "trackerRow": 107,
+      "published": true,
+      "anonymousHttpStatus": 200,
+      "verifiedImages": 1,
+      "externalLinks": 13,
+      "interaction": "workflow selector changed the selected tab and panel content",
+      "screenshots": [
+        "qa/scale-ai-campaign-desktop.png",
+        "qa/scale-ai-campaign-mobile390.png",
+        "qa/scale-ai-campaign-mobile320.png"
+      ]
+    },
+    {
+      "name": "Mayo Clinic Reliable Care",
+      "motion": "one-to-one account page",
+      "file": "artifacts/scale-ai-demo-pack/scale-ai-mayo-clinic-reliable-care.html",
+      "boardId": 248055,
+      "designerUrl": "https://app.folloze.com/app/board/248055/designer",
+      "publicUrl": "https://experience.folloze.com/scale-ai-mayo-reliable-care",
+      "trackerRow": 108,
+      "published": true,
+      "anonymousHttpStatus": 200,
+      "verifiedImages": 1,
+      "externalLinks": 8,
+      "interaction": "Prepare, Protect, and Extend workbench changed the selected tab and panel content",
+      "screenshots": [
+        "qa/scale-ai-mayo-desktop.png",
+        "qa/scale-ai-mayo-mobile390.png",
+        "qa/scale-ai-mayo-mobile320.png"
+      ]
+    },
+    {
+      "name": "Churn Prevention Webinar",
+      "motion": "event promotion",
+      "file": "artifacts/scale-ai-demo-pack/scale-ai-churn-prevention-webinar.html",
+      "boardId": 248056,
+      "designerUrl": "https://app.folloze.com/app/board/248056/designer",
+      "publicUrl": "https://experience.folloze.com/scale-ai-churn-prevention",
+      "trackerRow": 109,
+      "published": true,
+      "anonymousHttpStatus": 200,
+      "verifiedImages": 4,
+      "externalLinks": 5,
+      "interaction": "role selector changed the selected tab and learning-path panel",
+      "screenshots": [
+        "qa/scale-ai-event-desktop.png",
+        "qa/scale-ai-event-mobile390.png",
+        "qa/scale-ai-event-mobile320.png"
+      ]
+    }
+  ],
+  "notes": [
+    "All outbound URLs returned HTTP 200 during the final link pass.",
+    "Full-page screenshot capture hid off-canvas skip controls and forced reveal animations visible only in the QA browser; the saved HTML was not changed for those capture-only adjustments.",
+    "All three boards are published with clear vanity URLs and anonymous HTTP 200 plus page-identity verification.",
+    "Canonical tracker rows 107-109 were written in one bounded update and visually verified in Google Sheets.",
+    "GitHub remote push was not requested."
+  ]
+}

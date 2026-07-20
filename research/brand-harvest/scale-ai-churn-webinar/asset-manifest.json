@@ -1,0 +1,140 @@
+{
+  "logos": [
+    {
+      "src": "https://cdn.gradual.com/images/https://d2xo500swnpgl1.cloudfront.net/uploads/scale/Scale-Logo-Horizontal-White-800w02-af6ee28a-fc0b-4784-b9a9-fb8fc333c93d-1782944261138.png?fit=scale-down&width=100",
+      "alt": "Scale Events",
+      "className": "",
+      "width": 100,
+      "height": 50,
+      "rect": {
+        "x": 20,
+        "y": 10,
+        "width": 100,
+        "height": 50
+      }
+    },
+    {
+      "src": "https://cdn.gradual.com/images/https://d2xo500swnpgl1.cloudfront.net/uploads/scale/Scale-Logo-Vertical-White-800w-c86d7ce0-a816-45f7-adcf-a30424c89c87-1782944402518.png?fit=scale-down&width=64",
+      "alt": "user's Avatar",
+      "className": "",
+      "width": 64,
+      "height": 64,
+      "rect": {
+        "x": 1044,
+        "y": 716,
+        "width": 32,
+        "height": 32
+      }
+    }
+  ],
+  "images": [
+    {
+      "src": "https://cdn.gradual.com/images/https://d2xo500swnpgl1.cloudfront.net/uploads/scale/Scale-Logo-Horizontal-White-800w02-af6ee28a-fc0b-4784-b9a9-fb8fc333c93d-1782944261138.png?fit=scale-down&width=100",
+      "alt": "Scale Events",
+      "className": "",
+      "width": 100,
+      "height": 50,
+      "rect": {
+        "x": 20,
+        "y": 10,
+        "width": 100,
+        "height": 50
+      }
+    },
+    {
+      "src": "https://cdn.gradual.com/images/https://d2xo500swnpgl1.cloudfront.net/uploads/scale/Jul-28-RetainOS-Webinar-2--0feb9f74-791e-4772-aa2e-ca20b0d6aa2f-1784031584165.jpeg?fit=scale-down&width=600",
+      "alt": "Why the Future of Churn Prevention Is Experimentation, Not Prediction",
+      "className": "",
+      "width": 600,
+      "height": 314,
+      "rect": {
+        "x": 230,
+        "y": 100,
+        "width": 575,
+        "height": 301
+      }
+    },
+    {
+      "src": "https://cdn.gradual.com/images/https://d2xo500swnpgl1.cloudfront.net/uploads/scale/IMG-4409-e8b47cac-14f4-41df-b47f-d3ece11939da-1762836386280.jpeg?fit=scale-down&width=180",
+      "alt": "user's Avatar",
+      "className": "",
+      "width": 180,
+      "height": 180,
+      "rect": {
+        "x": 297,
+        "y": 1191,
+        "width": 90,
+        "height": 90
+      }
+    },
+    {
+      "src": "https://cdn.gradual.com/images/https://d2xo500swnpgl1.cloudfront.net/uploads/scale/Untitled-design-59d712a0-aaff-4022-98bc-6e7a42867512-1784030885682.png?fit=scale-down&width=180",
+      "alt": "user's Avatar",
+      "className": "",
+      "width": 180,
+      "height": 180,
+      "rect": {
+        "x": 540,
+        "y": 1191,
+        "width": 90,
+        "height": 90
+      }
+    },
+    {
+      "src": "https://cdn.gradual.com/images/https://d2xo500swnpgl1.cloudfront.net/uploads/scale/Untitled-design-59d712a0-aaff-4022-98bc-6e7a42867512-1784030885682.png?fit=scale-down&width=100",
+      "alt": "user's Avatar",
+      "className": "",
+      "width": 100,
+      "height": 100,
+      "rect": {
+        "x": 434,
+        "y": 1610,
+        "width": 50,
+        "height": 50
+      }
+    },
+    {
+      "src": "https://cdn.gradual.com/images/https://d2xo500swnpgl1.cloudfront.net/uploads/scale/IMG-4409-e8b47cac-14f4-41df-b47f-d3ece11939da-1762836386280.jpeg?fit=scale-down&width=100",
+      "alt": "user's Avatar",
+      "className": "",
+      "width": 100,
+      "height": 100,
+      "rect": {
+        "x": 489,
+        "y": 1610,
+        "width": 50,
+        "height": 50
+      }
+    },
+    {
+      "src": "https://cdn.gradual.com/images/https://d2xo500swnpgl1.cloudfront.net/uploads/scale/Scale-Logo-Vertical-White-800w-c86d7ce0-a816-45f7-adcf-a30424c89c87-1782944402518.png?fit=scale-down&width=64",
+      "alt": "user's Avatar",
+      "className": "",
+      "width": 64,
+      "height": 64,
+      "rect": {
+        "x": 1044,
+        "y": 716,
+        "width": 32,
+        "height": 32
+      }
+    }
+  ],
+  "background_images": [],
+  "brandfetch_logos": [],
+  "screenshots": {
+    "desktop_full": {
+      "path": "research/brand-harvest/scale-ai-churn-webinar/screenshots/homepage-desktop-full.png",
+      "width": 1440,
+      "height": 1956,
+      "clipped": false
+    },
+    "mobile_full": {
+      "path": "research/brand-harvest/scale-ai-churn-webinar/screenshots/homepage-mobile-full.png",
+      "width": 390,
+      "height": 2968,
+      "clipped": false
+    }
+  },
+  "manual_screenshots": []
+}

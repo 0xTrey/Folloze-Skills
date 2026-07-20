@@ -1,0 +1,48 @@
+{
+  "logos": [],
+  "images": [
+    {
+      "src": "https://cdn.sanity.io/images/50zba0eo/production/777236d99c2ab67069cdd0a29117dd5a47366ec7-16x16.svg?auto=format&w=640&width=640",
+      "alt": "",
+      "className": "opacity-100 object-cover",
+      "width": 11,
+      "height": 11,
+      "rect": {
+        "x": 40,
+        "y": 1877,
+        "width": 16,
+        "height": 16
+      }
+    },
+    {
+      "src": "https://cdn.sanity.io/images/50zba0eo/production/6ce2239ab36209947167f2ccac45d8eebfe7fe9f-16x16.svg?auto=format&w=640&width=640",
+      "alt": "",
+      "className": "opacity-100 object-cover",
+      "width": 11,
+      "height": 11,
+      "rect": {
+        "x": 96,
+        "y": 1877,
+        "width": 16,
+        "height": 16
+      }
+    }
+  ],
+  "background_images": [],
+  "brandfetch_logos": [],
+  "screenshots": {
+    "desktop_full": {
+      "path": "research/brand-harvest/scale-ai-home/screenshots/homepage-desktop-full.png",
+      "width": 1440,
+      "height": 1933,
+      "clipped": false
+    },
+    "mobile_full": {
+      "path": "research/brand-harvest/scale-ai-home/screenshots/homepage-mobile-full.png",
+      "width": 390,
+      "height": 2321,
+      "clipped": false
+    }
+  },
+  "manual_screenshots": []
+}

@@ -1,0 +1,13 @@
+:root {
+  --brand-primary: #8F92A3;
+  --brand-accent: #839CB2;
+  --brand-text: #111827;
+  --brand-surface: #FFFFFF;
+  --brand-font-display: Inter, -apple-system, "system-ui", "Helvetica Neue", "Segoe UI", "Noto Sans", ui-sans-serif, system-ui, "Apple Color Emoji", "Segoe UI Emoji";
+  --brand-font-body: Inter, -apple-system, "system-ui", "Helvetica Neue", "Segoe UI", "Noto Sans", ui-sans-serif, system-ui, "Apple Color Emoji", "Segoe UI Emoji";
+  --brand-button-radius: 0px;
+  --brand-button-padding: 0px;
+  --brand-button-font-weight: 500;
+  --brand-card-radius: 0px;
+  --brand-card-shadow: none;
+}
