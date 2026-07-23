@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import importlib.util
+import subprocess
 import sys
 import tempfile
 import unittest
@@ -73,6 +74,34 @@ class PrepareKaiaExportTests(unittest.TestCase):
                     output_dir=root / "prepared",
                     max_uncompressed_bytes=10,
                 )
+
+    def test_cli_deletes_only_input_zip_after_success(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            archive_path = root / "export.zip"
+            unrelated_zip = root / "keep.zip"
+            with ZipFile(archive_path, "w") as archive:
+                archive.writestr("call.mp4", b"video bytes")
+            with ZipFile(unrelated_zip, "w") as archive:
+                archive.writestr("other.txt", "keep me")
+
+            result = subprocess.run(
+                [
+                    sys.executable,
+                    str(SCRIPT_PATH),
+                    str(archive_path),
+                    "--output-dir",
+                    str(root / "prepared"),
+                    "--delete-zip-after-success",
+                ],
+                capture_output=True,
+                text=True,
+                check=False,
+            )
+
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertFalse(archive_path.exists())
+            self.assertTrue(unrelated_zip.exists())
 
 
 if __name__ == "__main__":

@@ -58,6 +58,11 @@ def parse_args() -> argparse.Namespace:
         default=DEFAULT_MAX_UNCOMPRESSED_BYTES,
         help="Reject archives whose declared uncompressed size exceeds this limit",
     )
+    parser.add_argument(
+        "--delete-zip-after-success",
+        action="store_true",
+        help="Delete only the exact input ZIP after successful extraction and hashing",
+    )
     return parser.parse_args()
 
 
@@ -221,7 +226,17 @@ def main() -> int:
         print(json.dumps({"status": "error", "error": str(exc)}))
         return 1
 
-    print(json.dumps({"status": "prepared", **asdict(result)}, indent=2))
+    zip_deleted = False
+    if args.delete_zip_after_success:
+        args.zip_path.expanduser().resolve().unlink()
+        zip_deleted = True
+
+    print(
+        json.dumps(
+            {"status": "prepared", **asdict(result), "zip_deleted": zip_deleted},
+            indent=2,
+        )
+    )
     return 0
 
 

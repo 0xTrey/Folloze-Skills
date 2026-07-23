@@ -1,6 +1,6 @@
 # July 2026 Native Deal Room Template Map
 
-Use this reference with board `248319`, the current July 2026 native Folloze deal-room template candidate.
+Use this reference with board `248319`, the universal July 2026 native Folloze deal-room template. API readback confirmed `is_template: true` on July 23, 2026.
 
 ## Live Structure Observed On July 23, 2026
 
@@ -28,7 +28,7 @@ Search every visible text field, item title, description, alt label, link, logo,
 - `biotech`
 - `Folloze Presentation for Tru Technologies`
 
-The live inspection showed prior-customer residue in the hero subtext, presentation title, value-section title, integration heading, case-study heading, and secondary logo. Do not assume copying the template clears any of it.
+The pre-refresh inspection showed prior-customer residue in the hero subtext, presentation title, value-section title, integration heading, case-study heading, and secondary logo. The July 23 corporate-brand refresh removed it from the universal template. Continue running this audit on every copied room.
 
 ## Section Intent
 
@@ -74,6 +74,6 @@ Select proof that matches the buyer's industry, motion, team structure, or goal.
 
 - Compare desktop and narrow layouts.
 - Confirm both logos are crisp and legible against the same background.
-- Replace a light customer logo on a light background with an approved dark or full-color variant; do not apply arbitrary CSS filters when an official variant exists.
+- Harvest official full-color, dark, and light customer-logo variants when available. Replace a light logo on a light background with an approved dark or full-color variant; do not apply arbitrary CSS filters when an official variant exists.
 - Check that dashboards, screenshots, thumbnails, and cards are level, centered, and not clipped.
 - Confirm text that appears once in the visual layout is not mistaken for a duplicate merely because the designer DOM contains responsive or carousel variants.

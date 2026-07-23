@@ -1,260 +1,269 @@
 ---
 name: folloze-post-call-deal-room-producer
-description: Produce a Folloze-owned post-call digital deal room from completed meeting context, including Outreach Kaia recording export, emailed ZIP retrieval, safe local MP3 or MP4 preparation, native Folloze media upload, template duplication, buyer-safe content updates, QA, publish, and public verification. Use when a Folloze seller asks to turn a completed demo, discovery, or intro call into a native Folloze resource center or deal room with the actual call recording.
+description: Manually produce and publish a Folloze-owned post-call digital deal room from completed meeting context, including Outreach Kaia export, emailed ZIP retrieval, pre-call trimming, native Folloze recording upload, Luke deck collection, customer-logo harvesting, Board 248319 duplication, buyer-safe updates, internal seller review, and customer-share approval. Use when Trey asks to turn a completed demo, discovery, or intro call into a native Folloze resource center with the actual recording.
 ---
 
 # Folloze Post-Call Deal Room Producer
 
-Use this skill for the full post-call production flow when a native Folloze deal room must include the actual Outreach Kaia recording as a Folloze content item.
+Use this skill as a manual, seller-initiated production run. Do not attach it to Salesforce, Hermes, cron, Calendar polling, or automatic call detection.
 
-This skill is the orchestration layer. It coordinates:
+The operator can begin the deal-room draft as soon as the call ends. The production run is not complete until the Kaia recording has been exported, prepared, edited when necessary, uploaded to Folloze, and verified on the published board.
 
-- completed-call discovery and buyer-safe source synthesis
-- the asynchronous Kaia recording export and Outreach email handoff
-- safe, local ZIP processing into an MP3 or MP4 upload artifact
-- the existing `Folloze-Digital-Deal-Room-Internal` native board writer
-- Browser Control for current Folloze binary media upload
-- explicit QA, publish, public verification, and cleanup checkpoints
-
-Do not embed the Kaia recording page, viewer URL, share URL, or emailed download URL. Download the export, prepare its media file locally, and upload that media as a native Folloze content item.
+The board should publish automatically after production QA. Publication is not customer delivery. Share the published room only with Luke or another internal seller for review. Never send it to an end customer until the seller explicitly approves external sharing.
 
 ## Ownership Boundaries
 
-- This skill owns the completed-call-to-live-room production state machine.
-- `folloze-post-intro-dsr-automation` may detect and qualify the event, then hand off here.
-- `Folloze-Digital-Deal-Room-Internal` owns native board copy, component configuration, API writeback, publish, and public readback.
-- `folloze-zoom-deal-room` remains the Zoom-recap intake path when Kaia is not the recording system.
-- `folloze-brand-kit` supplies current Folloze positioning and buyer-safe language.
-- The helper script in this skill owns deterministic ZIP inspection and media preparation only. It never authenticates to Outreach or Folloze.
+- This skill owns the complete manual post-call production run.
+- `Folloze-Digital-Deal-Room-Internal` owns native board copy, configuration, direct API save, publish, and readback.
+- Browser Control is always part of the run for Kaia export, Folloze media handling when required, designer QA, and public playback verification.
+- `folloze-brand-kit` supplies Folloze positioning and buyer-safe language.
+- `brand-harvester` supplies the official customer logo and light/dark alternatives.
+- The local helpers in this skill validate the Kaia ZIP and perform approved recording edits. They never authenticate to Outreach or Folloze.
 
-Do not collapse these responsibilities into one opaque browser macro. Each checkpoint must be independently observable and resumable.
+Do not use Salesforce. Do not hand the run to Hermes. Do not create or resume a background job.
+
+## Fixed V1 Decisions
+
+- Invocation: manual only.
+- Universal native template: Board `248319`.
+- Draft timing: begin immediately after the call.
+- Required completion dependency: edited recording uploaded and playable.
+- Deck owner: Luke always creates a new account-specific deck.
+- Missing deck: send Luke an automated Slack request and keep the deck checkpoint open.
+- Recording preference: MP4 video first; audio only when no usable video exists.
+- Transcript: ignore it and never upload it.
+- ZIP retention: delete the exact downloaded ZIP after successful media extraction and hash verification.
+- Recording title: `[Account Name] + Folloze Demo + [recording date]`.
+- Customer logo: always harvest the official logo and choose the light/dark variant that passes contrast QA.
+- Publish: automatic after saved-board and designer QA.
+- Delivery: internal Luke review only; external sharing requires explicit seller approval.
+- Reruns and historical QA migration: out of scope for v1.
 
 ## Required Safety Rules
 
-- State the working goal before material writes: account, completed meeting, source systems, Folloze template, target board or new-board intent, recording state, publish authorization, and private-data boundary.
-- Treat Gmail, Granola, Kaia, Calendar, Salesforce, Slack, raw transcripts, ZIP exports, and local media as private inputs.
-- Translate call context into buyer-safe messaging. Never paste raw objections, private notes, pricing commentary, internal tasks, or unapproved transcript excerpts into the room.
-- Never commit a ZIP, recording, transcript, token, cookie, signed download URL, or auth header to Git.
-- Use the Outreach email's signed link only to retrieve the export. Never surface it in board content, logs, manifests, or handoff notes.
-- Do not upload the ZIP itself. Upload a prepared video or audio file.
-- Do not upload or expose a transcript unless the user explicitly authorizes it.
-- Prefer MP4 or another supported video export when available so the buyer retains the demo screen share. Use MP3, M4A, or another supported audio file only as fallback.
-- Stop before publish unless publish is explicitly authorized by the request or the approved automation policy.
-- Never infer public verification from a successful save or publish response. Verify the anonymous public page and media playback separately.
+- State the manual working goal before writes: account, meeting, template `248319`, target board intent, recording state, deck state, publish state, and customer-share state.
+- Treat Gmail, Granola, Kaia, Calendar, Drive, Slack, ZIPs, raw media, and meeting notes as private inputs.
+- Translate call context into buyer-safe messaging. Never expose raw objections, pricing commentary, private notes, internal tasks, or transcript excerpts.
+- Never commit recordings, ZIPs, transcripts, signed links, tokens, cookies, or auth headers.
+- Do not embed the Kaia viewer, share URL, or emailed download URL.
+- Do not upload the ZIP. Upload the final edited MP4 or approved audio fallback.
+- Never send a customer-facing email or Slack message from this skill.
+- Any internal Slack message sent by the skill must explicitly say it is an automated message from Codex.
+- Treat `published`, `internally_shared`, `seller_approved`, and `customer_shared` as separate states.
 
-## Default July 2026 Template
+## Universal Template And Corporate Brand
 
-The current default native template candidate is:
+Use Board `248319`, `[Account Name] - Folloze Resource Center - July 2026 Template`, as the universal template.
 
-- board ID: `248319`
-- public vanity path: `folloze-deal-room-template-july-2026`
-- expected designer title: `[Account Name] - Folloze Resource Center - July 2026 Template`
+Before every copy, confirm through the API that:
 
-Before copying it, use the current Folloze template-list or board-read API to confirm that board `248319` exists, is accessible, and is marked as a template. A title or public vanity URL containing the word “template” is not sufficient proof.
+- board ID is exactly `248319`
+- `is_template` is `true`
+- the board is accessible
+- the expected published version exists
 
-If direct API authentication is stale, refresh through the approved Folloze OAuth path. Browser inspection may confirm the visual structure, but do not scrape browser cookies or tokens to bypass the supported authentication flow.
+Read:
 
-If `248319` is missing or is not marked as a template, stop before creating a board and report the exact failed preflight.
+- `references/july-2026-template-map.md`
+- `references/current-corporate-brand.md`
 
-Read `references/july-2026-template-map.md` before editing a board copied from this template.
+The template should use Folloze's current corporate system: deep navy surfaces, electric violet accents, white and pale-blue supporting surfaces, Instrument Sans/Inter-style typography, rounded cards, restrained shadows, and official Folloze imagery.
 
-## Resumable State Machine
+For every copied room:
 
-Track the run with these ordered statuses:
+1. Harvest the account's official public logo.
+2. Collect a full-color, dark, and light/white variant when available.
+3. Select the variant with sufficient contrast on the active header background.
+4. Do not use CSS filters to manufacture a logo variant when an official one exists.
+5. Hide the customer-logo slot when no safe official logo can be found.
 
-1. `source_pack_ready`
-2. `recording_export_requested`
-3. `awaiting_export_email`
-4. `export_zip_downloaded`
-5. `media_prepared`
-6. `board_draft_saved`
-7. `media_uploaded`
-8. `designer_qa_passed`
-9. `published`
-10. `public_verified`
+## Manual Run States
 
-Store only buyer-safe, non-secret run metadata in the durable run record:
+Track these checkpoints:
 
-- account and meeting title
-- meeting date and stable Kaia recording ID
-- requested export timestamp and recipient address
-- status and last successful checkpoint
-- Folloze template and target board IDs
-- prepared media basename, MIME type, byte size, SHA-256 hash, and optional duration
-- publish state, designer URL, public URL, and verification timestamps
-- blocker, retry count, and next action
+1. `manual_run_started`
+2. `source_pack_ready`
+3. `board_draft_saved`
+4. `deck_present` or `deck_requested_from_luke`
+5. `recording_export_requested`
+6. `export_zip_downloaded`
+7. `media_prepared`
+8. `trim_reviewed`
+9. `media_edited`
+10. `media_uploaded`
+11. `designer_qa_passed`
+12. `published`
+13. `public_verified`
+14. `seller_review_sent`
+15. `seller_approved_for_external_share`
+16. `customer_shared`
 
-Do not store the signed email link, local absolute file path, transcript text, ZIP contents, or raw media in the durable record.
+The production run may finish at `seller_review_sent`. The last two states are separate seller-controlled delivery steps.
+
+Store only non-secret run metadata: meeting identity, Kaia recording ID, board ID, deck status, media basename/hash/size/duration, publish state, public URL, verification timestamps, and internal-review status.
 
 ## Workflow
 
-### 1. Resolve The Completed Call
+### 1. Start The Draft After The Call
 
-Use the narrowest source path first:
+Use the exact meeting title, account, date, Granola note, Gmail context, and any promised resources supplied by the seller. Calendar and Drive can clarify the meeting or deck, but no Salesforce lookup is needed.
 
-1. Start from the exact meeting title, account, and date supplied by the user.
-2. Read the matching Granola note or other approved meeting note.
-3. Resolve supporting Gmail, Calendar, Salesforce, Drive, Slack, and deck context only as needed.
-4. Separate findings into `buyer_safe`, `internal_only`, and `missing` fields.
-5. Record promised resources, demo examples, recording need, owners, next step, and unresolved approvals.
+Separate facts into:
 
-When resolving Kaia, match on more than account name. Require the best available combination of exact meeting title, meeting date, account, attendees, duration, and stable recording ID. If two recordings remain plausible, stop and ask for the right one.
+- `buyer_safe`
+- `internal_only`
+- `missing`
 
-### 2. Request The Kaia Export With Browser Control
+Build the draft immediately from Board `248319`. The recording and deck can remain open checkpoints while copy, account priorities, examples, integrations, and case studies are prepared.
 
-Use the authenticated Outreach Web App because the export is currently a UI-led asynchronous workflow:
+### 2. Resolve Luke's Account-Specific Deck
+
+Search Drive and Gmail for a newly created deck matching the account and call. Do not treat the template presentation as the final deck.
+
+If the deck is missing, send Luke this internal Slack message through the approved Slack connector:
+
+```text
+Automated message from Codex: Hi Luke — the [Account] Folloze deal-room draft is in progress. Please share the new account-specific presentation deck when it is ready so I can add it before the room is sent for your review.
+```
+
+Record `deck_requested_from_luke`. Continue the rest of the draft, but do not mark the deck checkpoint complete until the real deck is attached and opens correctly.
+
+### 3. Request The Kaia Export
+
+Use Browser Control in the authenticated Outreach Web App:
 
 1. Open `https://web.outreach.io/kaia/recordings?smart_view=0`.
-2. Search for the resolved meeting title.
-3. Open the matching recording and re-check date, account, attendees, and duration.
-4. Open **Meeting actions** and choose **Download**.
-5. Read the confirmation modal and record the recipient, request time, and stated expiry window.
-6. Dismiss the modal after the confirmation has been captured.
-7. Set `recording_export_requested`, then `awaiting_export_email`.
+2. Search by exact meeting title.
+3. Confirm date, account, attendees, duration, and stable recording ID.
+4. Choose **Meeting actions** → **Download**.
+5. Record the recipient, request time, and expiry window.
+6. Dismiss the confirmation modal.
 
-Do not repeatedly click Download while waiting. A retry is appropriate only after the chosen timeout or after evidence that the first request failed.
+Do not click Download repeatedly. This remains a foreground manual run; pause and resume the same task when the email arrives.
 
-### 3. Resume From The Outreach Email
+### 4. Download And Prepare The ZIP
 
-Prefer the Gmail connector for structured search and message reading. Use Browser Control only when the connector cannot expose the needed link or current session context.
-
-Match the email using:
-
-- sender: Outreach Kaia or `no-reply@outreach.io`
-- exact meeting title
-- received after `recording_export_requested`
-- body stating that the meeting is available to download
-- a download-link expiry date
-
-The email's **Download** link points to a ZIP export. Download it to the user's normal download location or an approved temporary location, then set `export_zip_downloaded`.
-
-A live July 23, 2026 export contained `info.json`, `transcript.txt`, and `meeting.mp4`. The package was roughly 868 MiB for a 69-minute recording, so download time, local disk space, Folloze upload limits, and any approved compression policy must be treated as real workflow concerns. Do not hard-code this package shape; validate every archive.
-
-If the email has not arrived, keep the run at `awaiting_export_email`. A scheduled runner such as Hermes may resume the run and check again. Do not keep a browser session blocked indefinitely.
-
-### 4. Prepare The Media Safely
+Match the Outreach Kaia email by sender, exact meeting title, received time, availability language, and expiry date. The signed link is private.
 
 Run:
 
 ```bash
-python3 Skills/folloze-post-call-deal-room-producer/scripts/prepare_kaia_export.py ~/Downloads/<export>.zip
+python3 Skills/folloze-post-call-deal-room-producer/scripts/prepare_kaia_export.py \
+  ~/Downloads/<export>.zip \
+  --delete-zip-after-success
 ```
 
-The helper:
+The helper validates the archive, rejects unsafe members, selects video before audio, extracts only the selected media, hashes it, probes it with `ffprobe` when available, ignores the transcript, and deletes only the exact input ZIP after success when the flag is present.
 
-- validates the ZIP before extraction
-- rejects traversal paths, symlinks, encrypted members, and oversized archives
-- chooses video first, then audio
-- extracts only the selected media file
-- writes a private temporary manifest with the media hash and metadata
-- leaves transcripts and unrelated files inside the ZIP
+Never use `transcript.txt` in the workflow.
 
-Review the JSON output. Confirm the selected MIME type and file size are supported by the current Folloze upload UI. If `ffprobe` is available, also confirm duration, codecs, and video dimensions.
+### 5. Review And Edit The Recording
 
-Set `media_prepared` only after a valid audio or video candidate exists. Do not place the prepared media inside the skill repo.
+Review the opening minutes in a local video player. Remove:
 
-### 5. Build The Native Board
+- pre-call chatter between Folloze employees
+- setup time with no customer value
+- long, useless internal conversation before the buyer joins
 
-Hand the source pack to `Folloze-Digital-Deal-Room-Internal` and use board `248319` only after the template preflight passes.
+Do not remove substantive buyer conversation, customer questions, product context, or promised demo content.
 
-The writer should:
+Record the timestamp where the useful customer-facing conversation begins. Then run:
 
-1. Copy the template into a new native board or resolve the explicitly named existing target board.
-2. Set the account title, description, theme, owner, and vanity path.
-3. Replace every template placeholder and customer-specific residue.
-4. Populate the essentials, account-specific value propositions, demo examples, integration guides, case studies, and CTA from real call context.
-5. Preserve the template's native layout unless the user requests a structural change.
-6. Save and read back the board before media upload.
+```bash
+python3 Skills/folloze-post-call-deal-room-producer/scripts/trim_kaia_recording.py \
+  <prepared-video>.mp4 \
+  --account "<Account Name>" \
+  --recording-date YYYY-MM-DD \
+  --start HH:MM:SS
+```
 
-Set `board_draft_saved` only after API readback confirms the target board ID and saved configuration.
+The default exact-cut path re-encodes to H.264/AAC with fast-start metadata. This also generally reduces the very large Kaia export. Use `--copy-codecs` only when speed matters more than frame-exact trimming.
 
-### 6. Upload The Recording As A Native Folloze Item
+Review the edited beginning and confirm audio/video sync. Set `media_edited` only after that playback check.
 
-Binary media upload is not currently a proven public direct-API contract in this workflow. Use Browser Control for the upload until the live Folloze request sequence has been captured and validated.
+The final filename must follow:
 
-In the authenticated Folloze designer:
+```text
+[Account Name] - Folloze Demo - YYYY-MM-DD.mp4
+```
 
-1. Open the target board by exact board ID.
-2. Navigate to the recording resource in **Resources From Our Calls**.
-3. Replace the template placeholder named **Folloze Demo Call Recording**, or create one native video/audio item if the placeholder is absent.
-4. Upload the prepared MP4 or MP3/M4A file, not the ZIP.
-5. Give it a buyer-safe title such as `[Account] + Folloze Demo Recording`.
-6. Add a concise description and approved thumbnail when the UI supports them.
-7. Confirm the item is attached to the intended section/category and visible in the designer.
-8. Save, refresh, and open the item to verify playback.
+### 6. Finish The Native Board
 
-If the upload fails due to file size or encoding, stop and report the actual limit or error. Do not silently transcode or reduce quality without an approved media policy.
+Delegate native configuration to `Folloze-Digital-Deal-Room-Internal`:
 
-Set `media_uploaded` only after native item readback or designer playback succeeds.
+1. Confirm Board `248319` is still a template.
+2. Copy it into a new non-template board.
+3. Set the account name, buyer-safe description, official customer logo, and vanity path.
+4. Replace every placeholder and prior-account residue.
+5. Add Luke's real deck.
+6. Add the approved demo-example URLs.
+7. Select only relevant integration guides and case studies.
+8. Save and read back the native config.
 
-### 7. Designer QA
+### 7. Upload The Final Recording
 
-Check desktop and narrow layouts. At minimum verify:
+Prefer the verified Folloze Content Upload or Content8Upload API when it is available and supports the final file. Do not invent an endpoint or reuse link-item APIs for binary media.
 
-- no template placeholder or prior-customer residue remains
-- logo pairing is legible on the active background
-- the header and CTA match the target account
-- the recording card is native, visible, and playable
-- promised slides and all approved demo-example URLs are present
-- content titles and links are correct
-- account priorities use buyer-safe wording
-- cards, dashboard visuals, and media are aligned rather than tilted, clipped, or crowded
-- no internal notes, signed links, file-system paths, or production labels are exposed
+Browser Control is always required:
 
-Set `designer_qa_passed` only after the saved designer state is re-opened and checked.
+- use it as the upload fallback when the binary API is unavailable
+- open the exact target board after any API upload
+- confirm the item exists in **Resources From Our Calls**
+- confirm the title matches the naming convention
+- save and play the uploaded recording in the designer
 
-### 8. Publish And Verify
+Do not consider an API response alone sufficient proof of upload.
 
-Publish only with authorization. After the publish response:
+### 8. QA, Publish, And Internal Handoff
 
-1. Read back board metadata and published state.
-2. Open the public vanity URL in an anonymous or unauthenticated context.
-3. Verify the correct board, account branding, final vanity path, resource links, and native recording item.
-4. Play enough of the recording to confirm that the public media asset loads.
-5. Record `published` and `public_verified` as separate timestamps.
+Before publishing, verify:
 
-If the board publishes but public playback fails, the run is not complete.
+- official Folloze and customer logos are crisp and readable
+- no template, Tru Technologies, ModoMind, pharma, or biotech residue remains
+- the account deck opens
+- every approved demo-example URL works
+- the final edited recording plays from the intended card
+- the recording starts at a useful customer-facing moment
+- cards, dashboards, media, and headings are level and unclipped
+- no transcript, signed URL, file path, or internal production note is exposed
 
-### 9. Cleanup And Handoff
+Publish automatically after QA. Then verify the public vanity URL and recording playback in a public/anonymous context.
 
-After public media verification:
+Send Luke an internal Slack message:
 
-- delete the temporary extracted media and temporary manifest unless the user selected a retention policy
-- move or delete the downloaded ZIP according to the approved retention policy
-- keep only the basename, hash, MIME type, size, and verification evidence in the durable run record
-- report the target board ID, designer URL, public vanity URL, media status, source-document status, and any remaining buyer-safe follow-up
+```text
+Automated message from Codex: The [Account] Folloze deal room is published and ready for your review: [URL]. The account deck and edited demo recording are included. It has not been shared with the customer. Please approve or send edits before external delivery.
+```
 
-Treat Salesforce update, tracker update, Slack delivery, and follow-up email as separately authorized actions.
+Set `seller_review_sent`. Do not contact the customer.
 
-## Automation Boundaries
+## Execution Boundaries
 
-Read `references/automation-boundaries.md` before proposing a new API shortcut.
+Read `references/automation-boundaries.md` for the v1 interface split.
 
-The default split is:
-
-- Hermes or a scheduled runner: resume state, poll for export email, enforce retries, and notify
-- Browser Control: Kaia export request and current Folloze binary upload
-- Gmail connector: email matching and message inspection
-- deterministic local helper: ZIP validation, media selection, hash, and metadata
-- Folloze API: template validation, board copy, metadata/configuration, native link-item management where proven, publish, and readback
-
-Do not guess a Folloze media endpoint. A future API uploader must be based on an observed supported request contract and must retain Browser Control fallback.
+- Manual operator: starts and resumes the run.
+- Browser Control: Kaia, Folloze media fallback, designer QA, and public playback.
+- Gmail/Drive/Slack connectors: email matching, deck retrieval, and internal Luke messages.
+- Local Python helpers: ZIP and video processing.
+- Folloze API: template validation, board copy, config, proven item operations, publish, and readback.
+- Hermes, cron, Salesforce, and automatic meeting detection: disabled for v1.
 
 ## Completion Contract
 
-A run is complete only when the response separately reports:
+Report separately:
 
-- exact source meeting and recording ID
-- Outreach export status and expiry, without exposing the signed URL
-- ZIP download and media-preparation status
-- prepared media type, size, hash, and duration when available
-- template preflight result
+- source meeting and recording ID
+- deck status and Luke request status
+- ZIP download and deletion status
+- original and edited media metadata
+- trim start and playback verification
+- template preflight
+- customer-logo source and selected contrast variant
 - target board ID and saved-board readback
-- native media upload and playback verification
-- designer QA result
-- published state
-- anonymous public verification result
-- cleanup/retention state
-- remaining slide, content, or approval gaps
+- native media upload/playback
+- published state and public verification
+- internal Luke review message
+- seller external-share approval
+- customer-share status
 
-Never summarize an intermediate state as “done.”
+Never call the production run complete before the edited recording is uploaded and verified. Never imply the customer received the room merely because it was published.
