@@ -30,6 +30,8 @@ Search every visible text field, item title, description, alt label, link, logo,
 
 The pre-refresh inspection showed prior-customer residue in the hero subtext, presentation title, value-section title, integration heading, case-study heading, and secondary logo. The July 23 corporate-brand refresh removed it from the universal template. Continue running this audit on every copied room.
 
+The prior Tru-specific presentation item is not assigned to a visible template category. Add Luke's new account-specific deck to every copied room before seller review; do not reactivate the prior deck as a placeholder.
+
 ## Section Intent
 
 ### Header

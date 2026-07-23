@@ -197,7 +197,7 @@ function itemPayload(item, updates) {
     availability: item.availability,
     item_visibility: item.item_visibility || { status: 1, start_date: null, end_date: null },
     audience_permissions: item.audience_permissions || {},
-    categories_ids: item.categories_ids || [],
+    categories_ids: updates.categories_ids ?? item.categories_ids ?? [],
     snapshot_disabled: Boolean(item.snapshot_disabled),
     image: item.image,
   };
@@ -269,6 +269,7 @@ async function main() {
       title: "Folloze Overview Presentation",
       description:
         "A concise overview of the Folloze platform, capabilities, and buyer experience.",
+      categories_ids: [],
     })
   );
   await api(
@@ -312,11 +313,16 @@ async function main() {
       residue,
       deck_title: afterDeck.title,
       deck_url_preserved: afterDeck.url === deckItem.url,
+      stale_deck_hidden_from_categories:
+        Array.isArray(afterDeck.categories_ids) && afterDeck.categories_ids.length === 0,
     },
   };
 
   if (result.readback.is_template !== true) throw new Error("Template flag changed unexpectedly");
   if (result.readback.residue.length) throw new Error(`Template residue remains: ${residue.join(", ")}`);
+  if (!result.readback.stale_deck_hidden_from_categories) {
+    throw new Error("The stale account-specific deck remains visible in a template category");
+  }
   if (publish && !result.readback.hashes_match) throw new Error("Published and unpublished hashes differ");
   console.log(JSON.stringify(result, null, 2));
 }
