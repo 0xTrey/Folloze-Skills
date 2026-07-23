@@ -70,6 +70,13 @@
       "requires_restart": true
     },
     {
+      "name": "folloze-post-call-deal-room-producer",
+      "path": "Skills/folloze-post-call-deal-room-producer",
+      "description": "Produces native Folloze post-call deal rooms through Kaia export, emailed ZIP retrieval, safe local media preparation, board updates, native media upload, QA, publish, and public verification.",
+      "enabled": true,
+      "requires_restart": true
+    },
+    {
       "name": "Folloze-MCP-Demo-Builder",
       "path": "Skills/Folloze-MCP-Demo-Builder",
       "enabled": true,
