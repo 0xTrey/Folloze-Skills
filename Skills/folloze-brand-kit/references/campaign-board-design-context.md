@@ -13,8 +13,8 @@ Campaign design context:
 - Source design inputs: Folloze brand kit, Folloze website, approved campaign assets, approved product screenshots, and current Folloze messaging references
 - Audience mood: crisp, practical, enterprise-ready, modern, revenue-focused, confident without hype
 - Typography: clean sans-serif system fallback unless an approved Folloze web font is available; large clear display headlines; compact labels; readable body copy
-- Color system: Folloze primary blues and cyan, dark navy, pale blue, white, slate, and restrained pink/green/orange/yellow accents
-- Surface rhythm: mostly white and pale blue surfaces, occasional dark navy panels for orchestration, proof, or system views
+- Color system: Folloze white and soft-gray canvases, dark navy foundations, violet actions, and the approved extended campaign/event palette in `visual-identity.md`
+- Surface rhythm: mostly white or `#FAFAFB` surfaces, `#F4F4FB` alternating bands, and bounded dark navy panels for orchestration, proof, or system views
 - Button system: clear filled primary CTA, bordered secondary CTA, precise labels, no decorative arrows unless source design supports them
 - Card and module style: crisp bordered cards, 8px or smaller radius, restrained shadow, no cards inside cards
 - Imagery and media: approved Folloze logos, product screenshots, campaign visuals, or simple workflow diagrams; avoid generic stock imagery
@@ -30,22 +30,31 @@ Campaign design context:
 
 Use `references/visual-identity.md` for the canonical logo and color source.
 
-Preferred board palette:
+Core board palette:
 
 - `#FFFFFF` white
-- `#F3F9FD` pale blue
-- `#D8ECFA` light blue gray
+- `#FAFAFB` soft canvas
+- `#F4F4FB` tinted section band
+- `#F4F4FF` pale violet hero surface
 - `#2C3D59` slate
 - `#1C293F` navy
 - `#071428` deep navy
-- `#00CCFF` cyan
-- `#00ADFF` bright blue
-- `#0077FF` primary blue
-- `#0048DE` deep blue
-- `#FF469E` pink accent
+- `#0A1230` action navy
+- `#5B5BFF` primary violet accent
 - `#11D175` green accent
 
-Use accent colors for emphasis, state, and wayfinding. Do not let the page become a one-note blue or purple gradient.
+Approved extended campaign backgrounds:
+
+- dark bands: `#0C1330` to `#070B1F`
+- CTA/proof bands: `#0C1740` to `#070B22`
+- cyber navy: `#070B1E`
+- orbit light: `#FBFBFE`
+- editorial cream: `#F4EEE1`
+- sunset: `#FF8A5C` to `#FF5C7A` to `#C8398F`
+- terminal black: `#0A0A12`
+- cobalt: `#1560FF` to `#0A2ECC` to `#061C8F`
+
+Use accent colors for emphasis, state, and wayfinding. Use expressive themes to create one coherent campaign world or to distinguish examples in a deliberate sequence. Do not scatter the full palette across an ordinary page or default to a one-note blue or purple gradient.
 
 ## Folloze Campaign Registers
 

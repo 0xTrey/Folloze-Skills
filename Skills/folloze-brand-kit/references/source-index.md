@@ -19,9 +19,16 @@ Active visual source:
 - Curated design-system evidence: `references/live-homepage-design-system-2026-07.md`
 - Captured into this kit: 2026-07-16
 
+Extended campaign and event color source:
+
+- Live Folloze Events experience: `https://engage.folloze.com/for-events`
+- Extracted color tokens: `research/brand-harvest/folloze-events-2026-07-24/brand-tokens.css`
+- Curated usage guidance: `references/live-events-experience-palette-2026-07.md`
+- Captured into this kit: 2026-07-24
+
 This kit intentionally excludes restricted customer-specific folders and deal-specific artifacts.
 
-Last reviewed: 2026-07-16
+Last reviewed: 2026-07-24
 
 ## References
 
@@ -40,6 +47,7 @@ Last reviewed: 2026-07-16
 | `campaign-board-design-context.md` | Need Folloze-specific campaign board design context, campaign registers, anti-references, or board design gates |
 | `visual-identity.md` | Need current colors, fonts, curvature, controls, logo selection, or visual usage guidance |
 | `live-homepage-design-system-2026-07.md` | Need the browser-computed evidence, exact button/card recipes, responsive type scale, or provenance behind the current visual guidance |
+| `live-events-experience-palette-2026-07.md` | Need approved campaign backgrounds, section gradients, utility surfaces, event-card themes, or provenance from the Folloze Events experience |
 
 ## Assets
 

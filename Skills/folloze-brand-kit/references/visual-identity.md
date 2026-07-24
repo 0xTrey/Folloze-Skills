@@ -6,12 +6,14 @@ Use this file for Folloze logo, color, typography, curvature, button, and layout
 
 The current visual system is derived from the live Folloze homepage at `https://www.folloze.com/`, captured with browser-computed styles and desktop/mobile screenshots on 2026-07-16. Treat it as the interim visual source of truth until an approved replacement brand book is available.
 
-Evidence bundle:
+Evidence bundles:
 
 - `research/brand-harvest/folloze-home-2026-07-16/brand.json`
 - `research/brand-harvest/folloze-home-2026-07-16/brand-tokens.css`
 - `research/brand-harvest/folloze-home-2026-07-16/screenshots/`
 - `references/live-homepage-design-system-2026-07.md`
+- `research/brand-harvest/folloze-events-2026-07-24/brand-tokens.css`
+- `references/live-events-experience-palette-2026-07.md`
 
 Do not copy the homepage layout pixel for pixel. Reuse its design language: typography, color relationships, curvature, controls, spacing, and surface treatments.
 
@@ -60,7 +62,47 @@ Use these colors as a relationship, not as an invitation to fill every surface w
 | Soft surface | `--folloze-soft` | `#FAFAFB` | Subtle section and placeholder surfaces |
 | White | `--folloze-white` | `#FFFFFF` | Main background and card surfaces |
 
-The website still exposes legacy product variables such as `#00CCFF`, `#00A0FF`, `#0077FF`, `#004BDE`, pink, purple, green, orange, and yellow. Those remain available for product diagrams or established assets, but the live homepage's dominant marketing system is navy, white, and violet. Do not use the legacy rainbow as the default page palette.
+The live `Folloze for Events` experience expands this core system with approved campaign backgrounds and expressive event themes. Use the extended palette below when a campaign, event, product story, or visual sequence needs greater range. Keep the homepage palette as the default for general corporate pages.
+
+## Extended Campaign And Event Palette
+
+Source: `https://engage.folloze.com/for-events`, captured 2026-07-24. Exact CSS recipes and provenance are in `references/live-events-experience-palette-2026-07.md`.
+
+### Page And Section Surfaces
+
+| Role | Token | Value | Typical use |
+|---|---|---|---|
+| Canvas | `--folloze-canvas` | `#FAFAFB` | Default page background |
+| Card | `--folloze-card` | `#FFFFFF` | Cards, panels, controls |
+| Tinted band | `--folloze-band` | `#F4F4FB` | Section alternation, format bands |
+| Hero start | `--folloze-hero-start` | `#F4F4FF` | Hero gradient origin |
+| Dark band start | `--folloze-dark-band-start` | `#0C1330` | Pipeline and orchestration sections |
+| Dark band end | `--folloze-dark-band-end` | `#070B1F` | Pipeline and orchestration sections |
+| CTA start | `--folloze-cta-start` | `#0C1740` | Final CTA and proof panels |
+| CTA end | `--folloze-cta-end` | `#070B22` | Final CTA and proof panels |
+
+### Utility Surfaces
+
+| Role | Value | Typical use |
+|---|---|---|
+| Purple chip | `#F0F0FF` | Eyebrows and selected labels |
+| Muted control | `#F0F1F7` | URL bars, disabled or passive controls |
+| Positive state | `#E8F8EF` | Success and active-signal backgrounds |
+
+### Expressive Event Themes
+
+These are approved Folloze colors for distinct event-page or campaign-card worlds. Use one theme per module or coherent sequence; do not combine every theme on one ordinary corporate page.
+
+| Theme | Background recipe |
+|---|---|
+| Cyber navy | `#070B1E` |
+| Orbit light | `#FBFBFE` |
+| Editorial cream | `#F4EEE1` |
+| Sunset | `linear-gradient(155deg, #FF8A5C 0%, #FF5C7A 55%, #C8398F 100%)` |
+| Terminal black | `#0A0A12` |
+| Cobalt | `linear-gradient(155deg, #1560FF 0%, #0A2ECC 60%, #061C8F 100%)` |
+
+Use these colors as purposeful campaign registers, not decoration. Preserve readable foreground contrast, keep gradients inside bounded storytelling surfaces, and avoid unstructured multi-color backgrounds.
 
 ## Typography
 
@@ -141,10 +183,11 @@ Folloze-branded assets should feel modern, precise, enterprise-ready, motion-ori
 Recommended patterns:
 
 - centered, outcome-led headlines with generous white space
-- mostly white page surfaces with navy text and violet actions
+- mostly white or `#FAFAFB` page surfaces with navy text and violet actions
 - a restrained `Build / Activate / Signal` card sequence
 - soft pastel product imagery inside white cards
 - deep navy proof bands with violet metrics and white copy
+- approved event themes when a campaign needs a distinct visual world
 - compact uppercase eyebrows to orient sections
 - logos, screenshots, and actual product states instead of generic decoration
 - clear responsive stacking; mobile keeps the typography strong and increases button vertical padding
@@ -157,7 +200,7 @@ Avoid:
 - cards inside cards
 - excessively rounded page sections
 - unreadable small logos or invented logo marks
-- treating embedded demo/widget CSS as the homepage brand system
+- treating every embedded demo/widget color as a default corporate-page color; use only the approved Events palette documented here
 
 ## PDF And HTML Checks
 

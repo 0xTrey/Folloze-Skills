@@ -1,0 +1,73 @@
+/*
+ * Folloze Events experience palette
+ * Source: https://engage.folloze.com/for-events
+ * Board: 248331
+ * Captured: 2026-07-24
+ */
+
+:root {
+  --folloze-canvas: #fafafb;
+  --folloze-card: #ffffff;
+  --folloze-band: #f4f4fb;
+  --folloze-hero-start: #f4f4ff;
+  --folloze-chip-purple: #f0f0ff;
+  --folloze-control-muted: #f0f1f7;
+  --folloze-state-positive: #e8f8ef;
+
+  --folloze-dark-band-start: #0c1330;
+  --folloze-dark-band-end: #070b1f;
+  --folloze-cta-start: #0c1740;
+  --folloze-cta-end: #070b22;
+
+  --folloze-event-cyber: #070b1e;
+  --folloze-event-orbit: #fbfbfe;
+  --folloze-event-paper: #f4eee1;
+  --folloze-event-terminal: #0a0a12;
+
+  --folloze-event-sunset-start: #ff8a5c;
+  --folloze-event-sunset-mid: #ff5c7a;
+  --folloze-event-sunset-end: #c8398f;
+
+  --folloze-event-cobalt-start: #1560ff;
+  --folloze-event-cobalt-mid: #0a2ecc;
+  --folloze-event-cobalt-end: #061c8f;
+}
+
+.folloze-surface-hero {
+  background:
+    radial-gradient(820px 520px at 82% 8%, rgba(91, 91, 255, .14), transparent 62%),
+    radial-gradient(640px 480px at 8% 90%, rgba(255, 107, 92, .08), transparent 60%),
+    linear-gradient(180deg, var(--folloze-hero-start) 0%, var(--folloze-canvas) 88%);
+}
+
+.folloze-surface-dark-band {
+  background:
+    radial-gradient(900px 520px at 80% 8%, rgba(91, 91, 255, .24), transparent 60%),
+    radial-gradient(700px 500px at 6% 96%, rgba(255, 107, 92, .12), transparent 62%),
+    linear-gradient(160deg, var(--folloze-dark-band-start), var(--folloze-dark-band-end));
+}
+
+.folloze-surface-cta {
+  background:
+    radial-gradient(760px 460px at 80% 6%, rgba(91, 91, 255, .34), transparent 60%),
+    radial-gradient(620px 460px at 10% 96%, rgba(0, 173, 255, .16), transparent 62%),
+    linear-gradient(150deg, var(--folloze-cta-start), var(--folloze-cta-end));
+}
+
+.folloze-theme-sunset {
+  background: linear-gradient(
+    155deg,
+    var(--folloze-event-sunset-start) 0%,
+    var(--folloze-event-sunset-mid) 55%,
+    var(--folloze-event-sunset-end) 100%
+  );
+}
+
+.folloze-theme-cobalt {
+  background: linear-gradient(
+    155deg,
+    var(--folloze-event-cobalt-start),
+    var(--folloze-event-cobalt-mid) 60%,
+    var(--folloze-event-cobalt-end)
+  );
+}
