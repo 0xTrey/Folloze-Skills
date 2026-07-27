@@ -88,3 +88,16 @@ QA:
   - artifacts/bloomreach-demo-pack/qa/bloomreach-one-to-one-tfg-bash-mobile-390.png
   - artifacts/bloomreach-demo-pack/qa/bloomreach-one-to-one-tfg-bash-mobile-320.png
 - Status: pass on visible-term scan, external link safety, direct CTA analytics, navigation targets and anchor analytics, image rendering, card radius samples, header overlap, console issues, and horizontal overflow.
+
+## 2026-07-27 Navbar Logo Pass
+
+- Save intent: local-only source update. Existing Folloze board `247736` was not repushed in this pass.
+- Change: added the `TFG / Bash` account wordmark into the navbar lockup next to the Bloomreach mark.
+- Asset decision: inspected Bloomreach-hosted `TFG.png`; it is a case-study image with an overlaid TFG mark, not a compact navbar logo asset. The navbar uses the existing buyer-safe `TFG / Bash` wordmark treatment instead.
+- Responsive behavior: desktop shows Bloomreach plus `TFG / Bash` with the header CTA; narrow mobile keeps the account wordmark in the navbar and hides the header utility CTA to prevent overlap.
+- QA record: artifacts/bloomreach-demo-pack/qa/bloomreach-one-to-one-nav-logo-qa.json
+- Refreshed screenshots:
+  - artifacts/bloomreach-demo-pack/qa/bloomreach-one-to-one-tfg-bash-desktop.png
+  - artifacts/bloomreach-demo-pack/qa/bloomreach-one-to-one-tfg-bash-mobile-390.png
+  - artifacts/bloomreach-demo-pack/qa/bloomreach-one-to-one-tfg-bash-mobile-320.png
+- Status: pass on nav account visibility, header overlap, horizontal overflow, image rendering, external link safety, navigation targets, and console checks.

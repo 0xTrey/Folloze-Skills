@@ -1,0 +1,662 @@
+{
+  "qaType": "Bloomreach 1:1 navbar TFG/Bash logo QA",
+  "createdAt": "2026-07-27T15:36:24.660Z",
+  "sourceFile": "/Users/treyharnden/Projects/Folloze-Skills/artifacts/bloomreach-demo-pack/bloomreach-one-to-one-tfg-bash.html",
+  "boardId": 247736,
+  "saveIntent": "local-only; Folloze board not repushed in this pass",
+  "status": "pass",
+  "issues": [],
+  "results": [
+    {
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 1100,
+      "title": "Bloomreach | Bash PLP Guidance Plan",
+      "overflow": false,
+      "scrollWidth": 1440,
+      "clientWidth": 1440,
+      "brand": {
+        "selector": ".brand",
+        "text": "TFG / Bash",
+        "left": 152,
+        "top": 21,
+        "right": 445,
+        "bottom": 55,
+        "width": 293,
+        "height": 34,
+        "display": "flex",
+        "visibility": "visible",
+        "borderRadius": "0px",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(5, 5, 5)",
+        "fontSize": "16px",
+        "fontWeight": "400"
+      },
+      "navAccount": {
+        "selector": ".nav-account-logo",
+        "text": "TFG / Bash",
+        "left": 352,
+        "top": 21,
+        "right": 445,
+        "bottom": 55,
+        "width": 92,
+        "height": 34,
+        "display": "flex",
+        "visibility": "visible",
+        "borderRadius": "8px",
+        "backgroundColor": "rgb(255, 255, 255)",
+        "color": "rgb(0, 40, 64)",
+        "fontSize": "13px",
+        "fontWeight": "600"
+      },
+      "bloomreachWordmark": {
+        "selector": ".brand img[alt=\"Bloomreach\"]",
+        "text": "",
+        "left": 192,
+        "top": 29,
+        "right": 328,
+        "bottom": 47,
+        "width": 136,
+        "height": 18,
+        "display": "block",
+        "visibility": "visible",
+        "borderRadius": "0px",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(5, 5, 5)",
+        "fontSize": "16px",
+        "fontWeight": "400"
+      },
+      "headerCta": {
+        "selector": ".nav .cta",
+        "text": "Read Bash Proof",
+        "left": 1127,
+        "top": 17,
+        "right": 1288,
+        "bottom": 59,
+        "width": 161,
+        "height": 42,
+        "display": "flex",
+        "visibility": "visible",
+        "borderRadius": "999px",
+        "backgroundColor": "rgb(254, 237, 27)",
+        "color": "rgb(5, 5, 5)",
+        "fontSize": "16px",
+        "fontWeight": "600"
+      },
+      "topbar": {
+        "selector": ".topbar",
+        "text": "TFG / Bash\n      \n      \n        Black Friday Proof\n        Move Upstream\n        Team Proof\n        Plan PLP Test\n      \n      Read Bash Proof",
+        "left": 0,
+        "top": 0,
+        "right": 1440,
+        "bottom": 77,
+        "width": 1440,
+        "height": 77,
+        "display": "block",
+        "visibility": "visible",
+        "borderRadius": "0px",
+        "backgroundColor": "rgba(255, 255, 255, 0.96)",
+        "color": "rgb(5, 5, 5)",
+        "fontSize": "16px",
+        "fontWeight": "400"
+      },
+      "overlaps": [],
+      "links": [
+        {
+          "text": "Read Bash Proof",
+          "href": "https://www.bloomreach.com/en/case-studies/tfg-boosts-online-conversion-rate-with-bloomreach",
+          "target": "_blank",
+          "rel": "noopener",
+          "hasAnalytics": true
+        },
+        {
+          "text": "Read the Bash Proof",
+          "href": "https://www.bloomreach.com/en/case-studies/tfg-boosts-online-conversion-rate-with-bloomreach",
+          "target": "_blank",
+          "rel": "noopener",
+          "hasAnalytics": true
+        },
+        {
+          "text": "See Conversational Agent",
+          "href": "https://www.bloomreach.com/en/products/loomi-conversational-agent",
+          "target": "_blank",
+          "rel": "noopener",
+          "hasAnalytics": true
+        },
+        {
+          "text": "Read the June Update",
+          "href": "https://www.bloomreach.com/en/news/2026/bloomreach-transforms-customer-conversation-into-ecommerce-insight-with-conversational-agent/",
+          "target": "_blank",
+          "rel": "noopener",
+          "hasAnalytics": true
+        },
+        {
+          "text": "Open the Case Study",
+          "href": "https://www.bloomreach.com/en/case-studies/tfg-boosts-online-conversion-rate-with-bloomreach",
+          "target": "_blank",
+          "rel": "noopener",
+          "hasAnalytics": true
+        },
+        {
+          "text": "See Conversational Agent",
+          "href": "https://www.bloomreach.com/en/products/loomi-conversational-agent",
+          "target": "_blank",
+          "rel": "noopener",
+          "hasAnalytics": true
+        },
+        {
+          "text": "Review the June Update",
+          "href": "https://www.bloomreach.com/en/news/2026/bloomreach-transforms-customer-conversation-into-ecommerce-insight-with-conversational-agent/",
+          "target": "_blank",
+          "rel": "noopener",
+          "hasAnalytics": true
+        }
+      ],
+      "badLinks": [],
+      "nav": [
+        {
+          "label": "Black Friday Proof",
+          "targetId": "proof",
+          "targetExists": true
+        },
+        {
+          "label": "Move Upstream",
+          "targetId": "path",
+          "targetExists": true
+        },
+        {
+          "label": "Team Proof",
+          "targetId": "teams",
+          "targetExists": true
+        },
+        {
+          "label": "Plan PLP Test",
+          "targetId": "workshop",
+          "targetExists": true
+        }
+      ],
+      "images": [
+        {
+          "alt": "",
+          "src": "https://www.bloomreach.com/wp-content/themes/hello-theme-child-master/assets/img/bloomreach-logo-icon.svg",
+          "loaded": true,
+          "naturalWidth": 40,
+          "naturalHeight": 40
+        },
+        {
+          "alt": "Bloomreach",
+          "src": "https://www.bloomreach.com/wp-content/themes/hello-theme-child-master/assets/img/bloomreach-logo-text.svg",
+          "loaded": true,
+          "naturalWidth": 136,
+          "naturalHeight": 18
+        },
+        {
+          "alt": "Bloomreach",
+          "src": "https://www.bloomreach.com/wp-content/themes/hello-theme-child-master/assets/img/bloomreach-logo-text.svg",
+          "loaded": true,
+          "naturalWidth": 136,
+          "naturalHeight": 18
+        },
+        {
+          "alt": "TFG",
+          "src": "https://www.bloomreach.com/wp-content/uploads/2025/01/TFG.png",
+          "loaded": true,
+          "naturalWidth": 1460,
+          "naturalHeight": 816
+        },
+        {
+          "alt": "",
+          "src": "https://www.bloomreach.com/wp-content/themes/hello-theme-child-master/assets/img/bloomreach-logo-icon.svg",
+          "loaded": true,
+          "naturalWidth": 40,
+          "naturalHeight": 40
+        },
+        {
+          "alt": "Bloomreach",
+          "src": "https://www.bloomreach.com/wp-content/themes/hello-theme-child-master/assets/img/bloomreach-logo-text.svg",
+          "loaded": true,
+          "naturalWidth": 136,
+          "naturalHeight": 18
+        }
+      ],
+      "badImages": [],
+      "screenshot": "/Users/treyharnden/Projects/Folloze-Skills/artifacts/bloomreach-demo-pack/qa/bloomreach-one-to-one-tfg-bash-desktop.png",
+      "screenshotSize": 1260241,
+      "consoleIssues": []
+    },
+    {
+      "viewport": "mobile-390",
+      "width": 390,
+      "height": 1200,
+      "title": "Bloomreach | Bash PLP Guidance Plan",
+      "overflow": false,
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "brand": {
+        "selector": ".brand",
+        "text": "TFG / Bash",
+        "left": 16,
+        "top": 18,
+        "right": 287,
+        "bottom": 50,
+        "width": 271,
+        "height": 32,
+        "display": "flex",
+        "visibility": "visible",
+        "borderRadius": "0px",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(5, 5, 5)",
+        "fontSize": "16px",
+        "fontWeight": "400"
+      },
+      "navAccount": {
+        "selector": ".nav-account-logo",
+        "text": "TFG / Bash",
+        "left": 207,
+        "top": 18,
+        "right": 287,
+        "bottom": 50,
+        "width": 79,
+        "height": 32,
+        "display": "flex",
+        "visibility": "visible",
+        "borderRadius": "8px",
+        "backgroundColor": "rgb(255, 255, 255)",
+        "color": "rgb(0, 40, 64)",
+        "fontSize": "12px",
+        "fontWeight": "600"
+      },
+      "bloomreachWordmark": {
+        "selector": ".brand img[alt=\"Bloomreach\"]",
+        "text": "",
+        "left": 54,
+        "top": 25,
+        "right": 190,
+        "bottom": 43,
+        "width": 136,
+        "height": 18,
+        "display": "block",
+        "visibility": "visible",
+        "borderRadius": "0px",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(5, 5, 5)",
+        "fontSize": "16px",
+        "fontWeight": "400"
+      },
+      "headerCta": {
+        "selector": ".nav .cta",
+        "text": "Read Bash Proof",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "width": 0,
+        "height": 0,
+        "display": "none",
+        "visibility": "visible",
+        "borderRadius": "999px",
+        "backgroundColor": "rgb(254, 237, 27)",
+        "color": "rgb(5, 5, 5)",
+        "fontSize": "14px",
+        "fontWeight": "600"
+      },
+      "topbar": {
+        "selector": ".topbar",
+        "text": "TFG / Bash\n      \n      \n        Black Friday Proof\n        Move Upstream\n        Team Proof\n        Plan PLP Test\n      \n      Read Bash Proof",
+        "left": 0,
+        "top": 0,
+        "right": 390,
+        "bottom": 69,
+        "width": 390,
+        "height": 69,
+        "display": "block",
+        "visibility": "visible",
+        "borderRadius": "0px",
+        "backgroundColor": "rgba(255, 255, 255, 0.96)",
+        "color": "rgb(5, 5, 5)",
+        "fontSize": "16px",
+        "fontWeight": "400"
+      },
+      "overlaps": [],
+      "links": [
+        {
+          "text": "Read Bash Proof",
+          "href": "https://www.bloomreach.com/en/case-studies/tfg-boosts-online-conversion-rate-with-bloomreach",
+          "target": "_blank",
+          "rel": "noopener",
+          "hasAnalytics": true
+        },
+        {
+          "text": "Read the Bash Proof",
+          "href": "https://www.bloomreach.com/en/case-studies/tfg-boosts-online-conversion-rate-with-bloomreach",
+          "target": "_blank",
+          "rel": "noopener",
+          "hasAnalytics": true
+        },
+        {
+          "text": "See Conversational Agent",
+          "href": "https://www.bloomreach.com/en/products/loomi-conversational-agent",
+          "target": "_blank",
+          "rel": "noopener",
+          "hasAnalytics": true
+        },
+        {
+          "text": "Read the June Update",
+          "href": "https://www.bloomreach.com/en/news/2026/bloomreach-transforms-customer-conversation-into-ecommerce-insight-with-conversational-agent/",
+          "target": "_blank",
+          "rel": "noopener",
+          "hasAnalytics": true
+        },
+        {
+          "text": "Open the Case Study",
+          "href": "https://www.bloomreach.com/en/case-studies/tfg-boosts-online-conversion-rate-with-bloomreach",
+          "target": "_blank",
+          "rel": "noopener",
+          "hasAnalytics": true
+        },
+        {
+          "text": "See Conversational Agent",
+          "href": "https://www.bloomreach.com/en/products/loomi-conversational-agent",
+          "target": "_blank",
+          "rel": "noopener",
+          "hasAnalytics": true
+        },
+        {
+          "text": "Review the June Update",
+          "href": "https://www.bloomreach.com/en/news/2026/bloomreach-transforms-customer-conversation-into-ecommerce-insight-with-conversational-agent/",
+          "target": "_blank",
+          "rel": "noopener",
+          "hasAnalytics": true
+        }
+      ],
+      "badLinks": [],
+      "nav": [
+        {
+          "label": "Black Friday Proof",
+          "targetId": "proof",
+          "targetExists": true
+        },
+        {
+          "label": "Move Upstream",
+          "targetId": "path",
+          "targetExists": true
+        },
+        {
+          "label": "Team Proof",
+          "targetId": "teams",
+          "targetExists": true
+        },
+        {
+          "label": "Plan PLP Test",
+          "targetId": "workshop",
+          "targetExists": true
+        }
+      ],
+      "images": [
+        {
+          "alt": "",
+          "src": "https://www.bloomreach.com/wp-content/themes/hello-theme-child-master/assets/img/bloomreach-logo-icon.svg",
+          "loaded": true,
+          "naturalWidth": 40,
+          "naturalHeight": 40
+        },
+        {
+          "alt": "Bloomreach",
+          "src": "https://www.bloomreach.com/wp-content/themes/hello-theme-child-master/assets/img/bloomreach-logo-text.svg",
+          "loaded": true,
+          "naturalWidth": 136,
+          "naturalHeight": 18
+        },
+        {
+          "alt": "Bloomreach",
+          "src": "https://www.bloomreach.com/wp-content/themes/hello-theme-child-master/assets/img/bloomreach-logo-text.svg",
+          "loaded": true,
+          "naturalWidth": 136,
+          "naturalHeight": 18
+        },
+        {
+          "alt": "TFG",
+          "src": "https://www.bloomreach.com/wp-content/uploads/2025/01/TFG.png",
+          "loaded": true,
+          "naturalWidth": 1460,
+          "naturalHeight": 816
+        },
+        {
+          "alt": "",
+          "src": "https://www.bloomreach.com/wp-content/themes/hello-theme-child-master/assets/img/bloomreach-logo-icon.svg",
+          "loaded": true,
+          "naturalWidth": 40,
+          "naturalHeight": 40
+        },
+        {
+          "alt": "Bloomreach",
+          "src": "https://www.bloomreach.com/wp-content/themes/hello-theme-child-master/assets/img/bloomreach-logo-text.svg",
+          "loaded": true,
+          "naturalWidth": 136,
+          "naturalHeight": 18
+        }
+      ],
+      "badImages": [],
+      "screenshot": "/Users/treyharnden/Projects/Folloze-Skills/artifacts/bloomreach-demo-pack/qa/bloomreach-one-to-one-tfg-bash-mobile-390.png",
+      "screenshotSize": 850812,
+      "consoleIssues": []
+    },
+    {
+      "viewport": "mobile-320",
+      "width": 320,
+      "height": 1200,
+      "title": "Bloomreach | Bash PLP Guidance Plan",
+      "overflow": false,
+      "scrollWidth": 320,
+      "clientWidth": 320,
+      "brand": {
+        "selector": ".brand",
+        "text": "TFG / Bash",
+        "left": 16,
+        "top": 18,
+        "right": 279,
+        "bottom": 50,
+        "width": 263,
+        "height": 32,
+        "display": "flex",
+        "visibility": "visible",
+        "borderRadius": "0px",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(5, 5, 5)",
+        "fontSize": "16px",
+        "fontWeight": "400"
+      },
+      "navAccount": {
+        "selector": ".nav-account-logo",
+        "text": "TFG / Bash",
+        "left": 207,
+        "top": 18,
+        "right": 279,
+        "bottom": 50,
+        "width": 72,
+        "height": 32,
+        "display": "flex",
+        "visibility": "visible",
+        "borderRadius": "8px",
+        "backgroundColor": "rgb(255, 255, 255)",
+        "color": "rgb(0, 40, 64)",
+        "fontSize": "11px",
+        "fontWeight": "600"
+      },
+      "bloomreachWordmark": {
+        "selector": ".brand img[alt=\"Bloomreach\"]",
+        "text": "",
+        "left": 54,
+        "top": 25,
+        "right": 190,
+        "bottom": 43,
+        "width": 136,
+        "height": 18,
+        "display": "block",
+        "visibility": "visible",
+        "borderRadius": "0px",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(5, 5, 5)",
+        "fontSize": "16px",
+        "fontWeight": "400"
+      },
+      "headerCta": {
+        "selector": ".nav .cta",
+        "text": "Read Bash Proof",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "width": 0,
+        "height": 0,
+        "display": "none",
+        "visibility": "visible",
+        "borderRadius": "999px",
+        "backgroundColor": "rgb(254, 237, 27)",
+        "color": "rgb(5, 5, 5)",
+        "fontSize": "12px",
+        "fontWeight": "600"
+      },
+      "topbar": {
+        "selector": ".topbar",
+        "text": "TFG / Bash\n      \n      \n        Black Friday Proof\n        Move Upstream\n        Team Proof\n        Plan PLP Test\n      \n      Read Bash Proof",
+        "left": 0,
+        "top": 0,
+        "right": 320,
+        "bottom": 69,
+        "width": 320,
+        "height": 69,
+        "display": "block",
+        "visibility": "visible",
+        "borderRadius": "0px",
+        "backgroundColor": "rgba(255, 255, 255, 0.96)",
+        "color": "rgb(5, 5, 5)",
+        "fontSize": "16px",
+        "fontWeight": "400"
+      },
+      "overlaps": [],
+      "links": [
+        {
+          "text": "Read Bash Proof",
+          "href": "https://www.bloomreach.com/en/case-studies/tfg-boosts-online-conversion-rate-with-bloomreach",
+          "target": "_blank",
+          "rel": "noopener",
+          "hasAnalytics": true
+        },
+        {
+          "text": "Read the Bash Proof",
+          "href": "https://www.bloomreach.com/en/case-studies/tfg-boosts-online-conversion-rate-with-bloomreach",
+          "target": "_blank",
+          "rel": "noopener",
+          "hasAnalytics": true
+        },
+        {
+          "text": "See Conversational Agent",
+          "href": "https://www.bloomreach.com/en/products/loomi-conversational-agent",
+          "target": "_blank",
+          "rel": "noopener",
+          "hasAnalytics": true
+        },
+        {
+          "text": "Read the June Update",
+          "href": "https://www.bloomreach.com/en/news/2026/bloomreach-transforms-customer-conversation-into-ecommerce-insight-with-conversational-agent/",
+          "target": "_blank",
+          "rel": "noopener",
+          "hasAnalytics": true
+        },
+        {
+          "text": "Open the Case Study",
+          "href": "https://www.bloomreach.com/en/case-studies/tfg-boosts-online-conversion-rate-with-bloomreach",
+          "target": "_blank",
+          "rel": "noopener",
+          "hasAnalytics": true
+        },
+        {
+          "text": "See Conversational Agent",
+          "href": "https://www.bloomreach.com/en/products/loomi-conversational-agent",
+          "target": "_blank",
+          "rel": "noopener",
+          "hasAnalytics": true
+        },
+        {
+          "text": "Review the June Update",
+          "href": "https://www.bloomreach.com/en/news/2026/bloomreach-transforms-customer-conversation-into-ecommerce-insight-with-conversational-agent/",
+          "target": "_blank",
+          "rel": "noopener",
+          "hasAnalytics": true
+        }
+      ],
+      "badLinks": [],
+      "nav": [
+        {
+          "label": "Black Friday Proof",
+          "targetId": "proof",
+          "targetExists": true
+        },
+        {
+          "label": "Move Upstream",
+          "targetId": "path",
+          "targetExists": true
+        },
+        {
+          "label": "Team Proof",
+          "targetId": "teams",
+          "targetExists": true
+        },
+        {
+          "label": "Plan PLP Test",
+          "targetId": "workshop",
+          "targetExists": true
+        }
+      ],
+      "images": [
+        {
+          "alt": "",
+          "src": "https://www.bloomreach.com/wp-content/themes/hello-theme-child-master/assets/img/bloomreach-logo-icon.svg",
+          "loaded": true,
+          "naturalWidth": 40,
+          "naturalHeight": 40
+        },
+        {
+          "alt": "Bloomreach",
+          "src": "https://www.bloomreach.com/wp-content/themes/hello-theme-child-master/assets/img/bloomreach-logo-text.svg",
+          "loaded": true,
+          "naturalWidth": 136,
+          "naturalHeight": 18
+        },
+        {
+          "alt": "Bloomreach",
+          "src": "https://www.bloomreach.com/wp-content/themes/hello-theme-child-master/assets/img/bloomreach-logo-text.svg",
+          "loaded": true,
+          "naturalWidth": 136,
+          "naturalHeight": 18
+        },
+        {
+          "alt": "TFG",
+          "src": "https://www.bloomreach.com/wp-content/uploads/2025/01/TFG.png",
+          "loaded": true,
+          "naturalWidth": 1460,
+          "naturalHeight": 816
+        },
+        {
+          "alt": "",
+          "src": "https://www.bloomreach.com/wp-content/themes/hello-theme-child-master/assets/img/bloomreach-logo-icon.svg",
+          "loaded": true,
+          "naturalWidth": 40,
+          "naturalHeight": 40
+        },
+        {
+          "alt": "Bloomreach",
+          "src": "https://www.bloomreach.com/wp-content/themes/hello-theme-child-master/assets/img/bloomreach-logo-text.svg",
+          "loaded": true,
+          "naturalWidth": 136,
+          "naturalHeight": 18
+        }
+      ],
+      "badImages": [],
+      "screenshot": "/Users/treyharnden/Projects/Folloze-Skills/artifacts/bloomreach-demo-pack/qa/bloomreach-one-to-one-tfg-bash-mobile-320.png",
+      "screenshotSize": 798977,
+      "consoleIssues": []
+    }
+  ]
+}

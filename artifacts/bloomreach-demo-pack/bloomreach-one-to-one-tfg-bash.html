@@ -73,10 +73,31 @@
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      min-width: 190px;
+      min-width: 280px;
     }
     .brand img:first-child { width: 30px; height: 30px; }
     .brand img:last-child { width: 122px; height: auto; }
+    .nav-account-divider {
+      width: 1px;
+      height: 24px;
+      background: rgba(0, 40, 64, 0.18);
+      margin-left: 3px;
+    }
+    .nav-account-logo {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 34px;
+      padding: 0 12px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-small);
+      color: var(--deep);
+      background: var(--white);
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 1;
+      white-space: nowrap;
+    }
     .navlinks {
       display: flex;
       align-items: center;
@@ -363,6 +384,7 @@
     .footer small { color: rgba(255, 255, 255, 0.58); }
     @media (max-width: 1000px) {
       .navlinks { display: none; }
+      .brand { min-width: 0; }
       .hero-inner,
       .split { grid-template-columns: 1fr; }
       .proof-row { grid-template-columns: repeat(3, minmax(0, 1fr)); }
@@ -373,8 +395,10 @@
     @media (max-width: 680px) {
       :root { --header: 68px; }
       .nav { padding: 12px 16px; min-height: var(--header); }
-      .brand { min-width: 0; }
+      .brand { gap: 8px; }
       .brand img:last-child { width: 108px; }
+      .nav-account-divider { height: 20px; margin-left: 0; }
+      .nav-account-logo { min-height: 32px; padding: 0 9px; font-size: 12px; }
       .nav .cta { min-height: 38px; padding: 0 12px; font-size: 14px; }
       .hero { padding: 52px 18px 42px; }
       h1 { font-size: clamp(42px, 13vw, 58px); }
@@ -387,6 +411,16 @@
       .band { padding: 58px 18px; }
       .stage { grid-template-columns: 44px 1fr; padding: 18px; }
     }
+    @media (max-width: 430px) {
+      .brand img:last-child { display: none; }
+      .nav-account-logo { padding: 0 8px; }
+      .nav .cta { display: none; }
+    }
+    @media (max-width: 340px) {
+      .nav { gap: 10px; }
+      .nav-account-logo { padding: 0 7px; font-size: 11px; }
+      .nav .cta { padding: 0 8px; font-size: 12px; }
+    }
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       .cta, .navlinks button { transition: none; }
@@ -396,9 +430,11 @@
 <body>
   <header class="topbar">
     <nav class="nav" aria-label="Bloomreach account navigation">
-      <div class="brand" aria-label="Bloomreach">
+      <div class="brand" aria-label="Bloomreach and TFG Bash">
         <img src="https://www.bloomreach.com/wp-content/themes/hello-theme-child-master/assets/img/bloomreach-logo-icon.svg" alt="">
         <img src="https://www.bloomreach.com/wp-content/themes/hello-theme-child-master/assets/img/bloomreach-logo-text.svg" alt="Bloomreach">
+        <span class="nav-account-divider" aria-hidden="true"></span>
+        <span class="nav-account-logo" aria-label="TFG and Bash">TFG / Bash</span>
       </div>
       <div class="navlinks" aria-label="Page sections">
         <button type="button" data-scroll-target="proof">Black Friday Proof</button>
