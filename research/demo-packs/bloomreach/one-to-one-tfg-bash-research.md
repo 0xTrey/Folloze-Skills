@@ -101,3 +101,19 @@ QA:
   - artifacts/bloomreach-demo-pack/qa/bloomreach-one-to-one-tfg-bash-mobile-390.png
   - artifacts/bloomreach-demo-pack/qa/bloomreach-one-to-one-tfg-bash-mobile-320.png
 - Status: pass on nav account visibility, header overlap, horizontal overflow, image rendering, external link safety, navigation targets, and console checks.
+
+## 2026-07-27 Real Account Logo Pass
+
+- Save intent: local-only source update. Existing Folloze board `247736` was not repushed in this pass.
+- Browser comment: replace the selected `TFG / Bash` text treatment with the real account logo.
+- Change: replaced the navbar account chip and hero account wordmark with official TFG and Bash logo assets.
+- Official logo sources:
+  - TFG: https://tfglimited.co.za/wp-content/uploads/2023/09/TFG-Logo.svg
+  - Bash: https://thefoschini.vtexassets.com/assets/vtex/assets-builder/thefoschini.store-theme/12.3.162/header-images/bash-beta-128___b5b799fd87cb443a6c07b13ff0c8f119.svg
+- Responsive behavior: desktop shows Bloomreach plus the real TFG/Bash logo pair in the navbar and hero lockup; narrow mobile keeps the compact account logo pair and hides the header utility CTA to prevent overlap.
+- QA record: artifacts/bloomreach-demo-pack/qa/bloomreach-one-to-one-nav-logo-qa.json
+- Refreshed screenshots:
+  - artifacts/bloomreach-demo-pack/qa/bloomreach-one-to-one-tfg-bash-desktop.png
+  - artifacts/bloomreach-demo-pack/qa/bloomreach-one-to-one-tfg-bash-mobile-390.png
+  - artifacts/bloomreach-demo-pack/qa/bloomreach-one-to-one-tfg-bash-mobile-320.png
+- Status: pass on official logo image rendering, selected hero lockup visibility, navbar visibility, header overlap, horizontal overflow, legacy wordmark removal, external link safety, and console checks.

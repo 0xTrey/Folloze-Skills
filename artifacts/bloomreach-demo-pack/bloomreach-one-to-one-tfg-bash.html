@@ -75,8 +75,8 @@
       gap: 10px;
       min-width: 280px;
     }
-    .brand img:first-child { width: 30px; height: 30px; }
-    .brand img:last-child { width: 122px; height: auto; }
+    .brand-logo-icon { width: 30px; height: 30px; }
+    .brand-logo-text { width: 122px; height: auto; }
     .nav-account-divider {
       width: 1px;
       height: 24px;
@@ -88,15 +88,18 @@
       align-items: center;
       justify-content: center;
       min-height: 34px;
-      padding: 0 12px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius-small);
-      color: var(--deep);
-      background: var(--white);
-      font-size: 13px;
-      font-weight: 600;
+      gap: 8px;
+      padding: 0 2px;
       line-height: 1;
-      white-space: nowrap;
+    }
+    .nav-account-logo img { display: block; width: auto; object-fit: contain; flex: 0 0 auto; }
+    .nav-account-logo .tfg-mark { width: 24px; height: 24px; }
+    .nav-account-logo .bash-mark { height: 22px; max-width: 92px; }
+    .nav-logo-separator {
+      width: 1px;
+      height: 22px;
+      background: rgba(0, 40, 64, 0.16);
+      flex: 0 0 auto;
     }
     .navlinks {
       display: flex;
@@ -170,11 +173,22 @@
       place-items: center;
     }
     .account-logo img { max-height: 34px; width: auto; }
-    .account-wordmark {
-      color: var(--deep);
-      font-weight: 600;
-      font-size: 18px;
-      white-space: nowrap;
+    .account-logo.account-pair {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      min-width: 176px;
+      padding: 10px 14px;
+    }
+    .account-logo.account-pair img { display: block; width: auto; object-fit: contain; flex: 0 0 auto; }
+    .account-logo.account-pair .tfg-mark { width: 34px; height: 34px; max-height: none; }
+    .account-logo.account-pair .bash-mark { height: 29px; max-height: 29px; max-width: 116px; }
+    .account-logo-separator {
+      width: 1px;
+      height: 32px;
+      background: rgba(0, 40, 64, 0.16);
+      flex: 0 0 auto;
     }
     .plus { color: var(--yellow); font-weight: 600; }
     .eyebrow {
@@ -396,15 +410,22 @@
       :root { --header: 68px; }
       .nav { padding: 12px 16px; min-height: var(--header); }
       .brand { gap: 8px; }
-      .brand img:last-child { width: 108px; }
+      .brand-logo-text { width: 108px; }
       .nav-account-divider { height: 20px; margin-left: 0; }
-      .nav-account-logo { min-height: 32px; padding: 0 9px; font-size: 12px; }
+      .nav-account-logo { min-height: 32px; gap: 7px; }
+      .nav-account-logo .tfg-mark { width: 22px; height: 22px; }
+      .nav-account-logo .bash-mark { height: 20px; max-width: 84px; }
+      .nav-logo-separator { height: 19px; }
       .nav .cta { min-height: 38px; padding: 0 12px; font-size: 14px; }
       .hero { padding: 52px 18px 42px; }
       h1 { font-size: clamp(42px, 13vw, 58px); }
       h2 { font-size: clamp(32px, 10vw, 44px); }
       .account-lockup { gap: 10px; }
       .account-logo { min-height: 48px; padding: 9px 12px; }
+      .account-logo.account-pair { min-width: 152px; gap: 10px; padding: 8px 12px; }
+      .account-logo.account-pair .tfg-mark { width: 30px; height: 30px; }
+      .account-logo.account-pair .bash-mark { height: 25px; max-height: 25px; max-width: 100px; }
+      .account-logo-separator { height: 28px; }
       .proof-row,
       .team-grid,
       .workshop { grid-template-columns: 1fr; }
@@ -412,13 +433,15 @@
       .stage { grid-template-columns: 44px 1fr; padding: 18px; }
     }
     @media (max-width: 430px) {
-      .brand img:last-child { display: none; }
-      .nav-account-logo { padding: 0 8px; }
+      .brand-logo-text { display: none; }
       .nav .cta { display: none; }
     }
     @media (max-width: 340px) {
       .nav { gap: 10px; }
-      .nav-account-logo { padding: 0 7px; font-size: 11px; }
+      .nav-account-logo { gap: 5px; }
+      .nav-account-logo .tfg-mark { width: 21px; height: 21px; }
+      .nav-account-logo .bash-mark { height: 18px; max-width: 78px; }
+      .nav-logo-separator { height: 17px; }
       .nav .cta { padding: 0 8px; font-size: 12px; }
     }
     @media (prefers-reduced-motion: reduce) {
@@ -431,10 +454,14 @@
   <header class="topbar">
     <nav class="nav" aria-label="Bloomreach account navigation">
       <div class="brand" aria-label="Bloomreach and TFG Bash">
-        <img src="https://www.bloomreach.com/wp-content/themes/hello-theme-child-master/assets/img/bloomreach-logo-icon.svg" alt="">
-        <img src="https://www.bloomreach.com/wp-content/themes/hello-theme-child-master/assets/img/bloomreach-logo-text.svg" alt="Bloomreach">
+        <img class="brand-logo-icon" src="https://www.bloomreach.com/wp-content/themes/hello-theme-child-master/assets/img/bloomreach-logo-icon.svg" alt="">
+        <img class="brand-logo-text" src="https://www.bloomreach.com/wp-content/themes/hello-theme-child-master/assets/img/bloomreach-logo-text.svg" alt="Bloomreach">
         <span class="nav-account-divider" aria-hidden="true"></span>
-        <span class="nav-account-logo" aria-label="TFG and Bash">TFG / Bash</span>
+        <span class="nav-account-logo" aria-label="TFG and Bash">
+          <img class="tfg-mark" src="https://tfglimited.co.za/wp-content/uploads/2023/09/TFG-Logo.svg" alt="TFG">
+          <span class="nav-logo-separator" aria-hidden="true"></span>
+          <img class="bash-mark" src="https://thefoschini.vtexassets.com/assets/vtex/assets-builder/thefoschini.store-theme/12.3.162/header-images/bash-beta-128___b5b799fd87cb443a6c07b13ff0c8f119.svg" alt="Bash">
+        </span>
       </div>
       <div class="navlinks" aria-label="Page sections">
         <button type="button" data-scroll-target="proof">Black Friday Proof</button>
@@ -455,8 +482,10 @@
               <img src="https://www.bloomreach.com/wp-content/themes/hello-theme-child-master/assets/img/bloomreach-logo-text.svg" alt="Bloomreach">
             </div>
             <span class="plus">+</span>
-            <div class="account-logo">
-              <span class="account-wordmark">TFG / Bash</span>
+            <div class="account-logo account-pair" aria-label="TFG and Bash">
+              <img class="tfg-mark" src="https://tfglimited.co.za/wp-content/uploads/2023/09/TFG-Logo.svg" alt="TFG">
+              <span class="account-logo-separator" aria-hidden="true"></span>
+              <img class="bash-mark" src="https://thefoschini.vtexassets.com/assets/vtex/assets-builder/thefoschini.store-theme/12.3.162/header-images/bash-beta-128___b5b799fd87cb443a6c07b13ff0c8f119.svg" alt="Bash">
             </div>
           </div>
           <p class="eyebrow">For Bash and TFG</p>
