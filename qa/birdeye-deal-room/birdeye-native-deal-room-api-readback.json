@@ -1,0 +1,133 @@
+{
+  "account": "BirdEye",
+  "source_brief": "research/birdeye-deal-room/birdeye-digital-deal-room-brief.md",
+  "generated_asset_commit": "ee38e1fcad16c9f655bce022dbb1c488f3551aaa",
+  "template": {
+    "id": 248623,
+    "preserved": true
+  },
+  "board": {
+    "id": 248645,
+    "name": "BirdEye | Folloze Resource Center",
+    "designer_url": "https://app.folloze.com/app/board/248645/designer",
+    "public_link": "https://experience.folloze.com/3ccf1c",
+    "externally_shared": false
+  },
+  "source_context": {
+    "granola_meeting_id": "27276912-58be-4f96-b16e-6ed91dd42cc7",
+    "granola_meeting_date": "2026-07-21",
+    "slides_id": "1rwcxlBeq5-5U96WssCSgtIU2ys-tt0cXmi0yXmlDt8E",
+    "slides_edit_url": "https://docs.google.com/presentation/d/1rwcxlBeq5-5U96WssCSgtIU2ys-tt0cXmi0yXmlDt8E/edit",
+    "kaia_viewer_url": "https://web.outreach.io/kaia/record/Of3Bk0RqT7q1WsgpUGSDvQ"
+  },
+  "native_items": {
+    "deck": {
+      "id": 2345175,
+      "title": "Folloze Presentation for BirdEye",
+      "url": "https://docs.google.com/presentation/d/1rwcxlBeq5-5U96WssCSgtIU2ys-tt0cXmi0yXmlDt8E/preview",
+      "category_id": 479610
+    },
+    "demos": [
+      {
+        "id": 2345176,
+        "title": "AI Visibility Campaign",
+        "url": "https://experience.folloze.com/birdeye-every-location-the-answer",
+        "image": {
+          "id": 4278286,
+          "url": "https://images.folloze.com/image/upload/hvtovasva7emzo51pcfe.png",
+          "fit": "cover",
+          "transformation": {},
+          "displayable_section": null,
+          "alt_text": null
+        },
+        "category_id": 479611
+      },
+      {
+        "id": 2345177,
+        "title": "Sutter Health One-to-One",
+        "url": "https://experience.folloze.com/birdeye-sutter-access-visibility",
+        "image": {
+          "id": 4278288,
+          "url": "https://images.folloze.com/image/upload/xyrrb7xhbw4ockern3f2.png",
+          "fit": "cover",
+          "transformation": {},
+          "displayable_section": null,
+          "alt_text": null
+        },
+        "category_id": 479611
+      },
+      {
+        "id": 2345178,
+        "title": "View 2026 Event Promotion",
+        "url": "https://experience.folloze.com/birdeye-view-2026",
+        "image": {
+          "id": 4278290,
+          "url": "https://images.folloze.com/image/upload/bjehnn4r5mzfxewlfy25.png",
+          "fit": "cover",
+          "transformation": {},
+          "displayable_section": null,
+          "alt_text": null
+        },
+        "category_id": 479611
+      }
+    ]
+  },
+  "api": {
+    "copy_status": "skipped_existing_board",
+    "save_status": 200,
+    "publish_status": 208,
+    "metadata_path": "/api/v1/boards/248645",
+    "metadata_status": 200,
+    "new_hash": "a4bdf9dcb587862608d9a66a59b7c8793e702e1f",
+    "published_hash": "a4bdf9dcb587862608d9a66a59b7c8793e702e1f",
+    "unpublished_hash": "a4bdf9dcb587862608d9a66a59b7c8793e702e1f"
+  },
+  "route_verification": {
+    "public_board": {
+      "url": "https://experience.folloze.com/3ccf1c",
+      "status": 302,
+      "redirect_location": "https://experience.folloze.com/authorization?auth_id=229545"
+    },
+    "demos": [
+      {
+        "url": "https://experience.folloze.com/birdeye-every-location-the-answer",
+        "status": 200,
+        "redirect_location": null
+      },
+      {
+        "url": "https://experience.folloze.com/birdeye-sutter-access-visibility",
+        "status": 200,
+        "redirect_location": null
+      },
+      {
+        "url": "https://experience.folloze.com/birdeye-view-2026",
+        "status": 200,
+        "redirect_location": null
+      }
+    ]
+  },
+  "verification": {
+    "template_id_is_248623": true,
+    "published_contains_birdeye_logo": true,
+    "published_contains_hero_title": true,
+    "published_contains_hero_subheader": true,
+    "approved_value_heading_preserved": true,
+    "value_intro_updated": true,
+    "card_two_updated": true,
+    "old_value_intro_removed": true,
+    "old_card_two_title_removed": true,
+    "roi_calculator_byte_equivalent": true,
+    "all_six_baseline_examples_preserved": true,
+    "all_three_birdeye_examples_appended": true,
+    "tailored_deck_present": true,
+    "recording_present": false,
+    "published_and_unpublished_hashes_match": true
+  },
+  "caveats": [
+    "The room is published for live QA but has not been sent or otherwise shared externally.",
+    "The tailored deck is present under Featured Assets.",
+    "The call recording is intentionally omitted because no edited buyer-safe export was available; the skill completion gate remains open until it is uploaded and verified.",
+    "The ROI calculator data object was preserved byte-for-byte."
+  ],
+  "created_at": "2026-07-28T18:27:00.660Z"
+}

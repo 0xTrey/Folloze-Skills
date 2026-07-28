@@ -170,7 +170,13 @@ function digest(value) {
 
 function replaceExactlyOnce(source, before, after, label) {
   const count = source.split(before).length - 1;
-  if (count !== 1) throw new Error(`${label} replacement count was ${count}, expected 1.`);
+  const existingCount = source.split(after).length - 1;
+  if (count === 0 && existingCount === 1) return source;
+  if (count !== 1 || existingCount !== 0) {
+    throw new Error(
+      `${label} replacement counts were before=${count}, after=${existingCount}; expected one approved state.`
+    );
+  }
   return source.replace(before, after);
 }
 
@@ -325,7 +331,7 @@ function personalizeConfig(config, nativeItems) {
   essentials.sources.flz_category_ids = [nativeItems.featured.id];
   essentials.subtitle =
     "<div>Start with Luke Rafferty's tailored presentation. The edited call recording will be added here once its buyer-safe export is available.</div>";
-  essentials.visibility.subtitle = true;
+  essentials.visibility.subtitle = false;
 
   let newValueHtml = replaceExactlyOnce(
     originalValueHtml,
@@ -344,7 +350,10 @@ function personalizeConfig(config, nativeItems) {
   const normalizedValue = newValueHtml
     .replace(VALUE_INTRO_AFTER, VALUE_INTRO_BEFORE)
     .replace(CARD_TWO_AFTER, CARD_TWO_BEFORE);
-  if (normalizedValue !== originalValueHtml) {
+  const normalizedOriginalValue = originalValueHtml
+    .replace(VALUE_INTRO_AFTER, VALUE_INTRO_BEFORE)
+    .replace(CARD_TWO_AFTER, CARD_TWO_BEFORE);
+  if (normalizedValue !== normalizedOriginalValue) {
     throw new Error("Value HTML changed outside the two approved replacements.");
   }
 

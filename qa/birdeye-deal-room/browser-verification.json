@@ -1,0 +1,54 @@
+{
+  "board_id": 248645,
+  "designer_url": "https://app.folloze.com/app/board/248645/designer",
+  "public_url": "https://experience.folloze.com/3ccf1c",
+  "verified_at": "2026-07-28T18:27:00-05:00",
+  "desktop": {
+    "rendered": true,
+    "viewport": "default desktop",
+    "logo_and_navigation_visible": true,
+    "hero_copy_visible": true,
+    "essentials_deck_visible": true,
+    "hidden_essentials_subtitle_confirmed": true,
+    "value_section_visible": true,
+    "example_section_visible": true,
+    "roi_section_present_in_accessibility_snapshot": true
+  },
+  "mobile": {
+    "rendered": true,
+    "viewport": "390x844",
+    "hero_wraps_without_horizontal_overflow": true,
+    "essentials_heading_and_deck_visible": true,
+    "value_card_copy_present": true,
+    "birdeye_example_copy_present": true
+  },
+  "content_checks": {
+    "hero_contains_11000_account_value_prop": true,
+    "approved_value_heading_preserved": true,
+    "card_two_contains_11000_pages_copy": true,
+    "tailored_deck_present": true,
+    "six_baseline_examples_present": true,
+    "three_birdeye_examples_present": true,
+    "roi_calculator_present": true
+  },
+  "final_publish_readback": {
+    "published_hash": "a4bdf9dcb587862608d9a66a59b7c8793e702e1f",
+    "unpublished_hash": "a4bdf9dcb587862608d9a66a59b7c8793e702e1f",
+    "hashes_match": true,
+    "publish_status": 208
+  },
+  "route_checks": {
+    "public_board_status": 302,
+    "public_board_redirect": "https://experience.folloze.com/authorization?auth_id=229545",
+    "all_three_birdeye_demo_routes_status_200": true
+  },
+  "completion_gate": {
+    "edited_call_recording_present": false,
+    "reason": "The Outreach Kaia viewer redirected to sign-in and no edited buyer-safe export was available. The viewer link was intentionally not exposed in the room."
+  },
+  "external_delivery": {
+    "sent_to_buyer": false,
+    "shared_in_slack": false,
+    "tracker_updated": false
+  }
+}
