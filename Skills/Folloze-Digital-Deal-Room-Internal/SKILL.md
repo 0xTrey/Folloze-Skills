@@ -5,190 +5,186 @@ description: Build and publish Folloze-owned digital deal rooms from internal de
 
 # Folloze Digital Deal Room Internal
 
-Use this skill to turn Gmail, Granola, Zoom, Salesforce, Slack, Drive, and pasted deal notes into a buyer-safe Folloze-owned digital deal room, then push it into Folloze through the direct API and a native template.
+Use this skill to turn Gmail, Granola, Zoom, Kaia/Outreach, Slack, Drive, and pasted deal notes into a buyer-safe Folloze-owned digital deal room, then push it into Folloze through the direct API and a native template.
 
-This is a direct API/native-template workflow. Do not use an MCP save tool as the publishing path. Do not package the page as raw HTML, `html-section`, or a full-page custom script unless the user explicitly changes scope.
+This is a direct API/native-template workflow. Do not use an MCP save tool as the publishing path. The approved July 2026 template already contains two embedded HTML widgets; preserve and narrowly edit those existing widgets instead of packaging or rebuilding the room as raw HTML.
 
 ## Operating Rules
 
 - State the working goal before material edits: account, target template, source context, repo artifact, board-create/update intent, public status, and private-note boundary.
-- Start from the real source context. Use Gmail, Granola or Zoom notes, Salesforce, Slack, Drive, or pasted notes when available instead of generic account copy.
+- Start from the real source context. Use Gmail, Granola or Zoom notes, Kaia/Outreach, Slack, Drive, or pasted notes when available instead of generic account copy.
 - Treat internal notes as strategy inputs. Do not expose raw meeting-note language, internal tasks, pricing commentary, budget details, personal notes, or unapproved objections in buyer-facing copy.
 - Translate private deal facts into buyer-safe copy: priorities, proof needs, recommended resources, next steps, and value themes.
 - Keep durable briefs, scripts, and readback notes in a git-backed repo. Do not store API tokens, cookies, auth headers, or raw sensitive exports in the skill package or repo artifacts.
 - Resolve whether this is a net-new board, template duplicate, or existing-board update before writing to Folloze.
+- Use Board `248623`, `Folloze Resource Center / Digital Deal Room Template - July 2026 Folloze Resource Center`, as the universal template until Trey names a replacement. Confirm `is_template: true` before copying it, and never personalize or publish the template board itself.
+- Audit every copied board for inherited account residue before personalization. Preserve the copied template's structure unless this skill explicitly marks a field as personalized.
+- Keep this workflow manual. Ignore Salesforce unless Trey explicitly adds it back to the workflow.
+- A deal-room draft can begin as soon as the call ends. The task is not complete until the edited Kaia call recording is uploaded to Folloze as a real media content item.
+- Publish to Folloze automatically after validation; seller approval is not required for publish. Never share the room with an end customer until the seller approves it.
+- Prefer the direct API or approved content-upload automation for supported updates, but always use browser control for WYSIWYG-only work and final visual validation.
 - Use `folloze-brand-kit` for Folloze positioning and approved buyer-facing product language when the deal room is Folloze-owned.
 - Use `folloze-zoom-deal-room` for intake if the request starts from Zoom or meeting notes; this skill owns the direct API/native Folloze write path.
-- Stop before publish if the account identity, template identity, source ownership, or buyer-facing approval boundary is unclear.
+- Stop before publish if the account identity, template identity, or source ownership is unclear. Stop before external sharing if seller approval is unclear or missing.
 
 ## Source-To-Room Workflow
 
 1. Gather deal context from the narrowest reliable source first.
 2. Write a compact internal brief with account state, buyer goals, stakeholders, pain, proof needs, promised follow-ups, resources, decision path, and next step.
 3. Separate source evidence into `buyer-safe`, `internal-only`, and `missing`.
-4. Draft the native room map: hero, executive message, buyer priorities, resource rows, mutual action plan, stakeholder proof, security or integration proof, and CTA.
+4. Map the source context to the July template's fixed surfaces: company logo, company-name headline, call-derived hero subheader, Essentials assets, two narrow value-widget substitutions, demo examples, and the untouched ROI calculator.
 5. Keep buyer copy concise and action-oriented. The room should read like a working sales room, not a transcript summary or production note.
 6. Push through the direct Folloze API only after the brief and room map are coherent enough for a live board.
 
 ## Template Section Rules
 
-### Header
+Board `248623` currently uses these widget IDs. A duplicated board should retain them, but always confirm the widget type and content marker before editing:
 
-Use the template's existing header structure and CTA buttons. Do not rename, relink, reorder, remove, or restyle the header CTAs unless the user explicitly asks for a CTA change.
+- navigation/header shell: `w_086848fc`
+- hero: `w_aa3c2917`
+- Essentials: `w_da2f8d2f`
+- embedded value section: `w_dacd1645`
+- Example Folloze Boards: `w_0dbb4e9a`
+- ROI calculator: `w_3fb95f3a`
+
+### Section 1: Navigation And Hero
+
+Preserve the template's navigation structure and spacing. Keep the Folloze logo, plus sign, and these two anchor tabs exactly as they are:
+
+- `ROI Calculator` -> `roi`
+- `Example Boards` -> `examples`
+
+Replace only the generic company logo in the secondary-logo slot with the target company's approved logo. Keep the Folloze logo in the primary-logo slot. Use a transparent, high-resolution logo with enough contrast against the white navigation background, set useful alt text such as `[Company] logo`, and visually confirm that it is not clipped, stretched, or invisible. Do not rename, relink, reorder, remove, or restyle the navigation tabs unless Trey explicitly asks.
 
 Set the header headline to this pattern:
 
 ```text
-[Account], Welcome to Your Folloze Resource Center.
+[Company Name], Welcome to Your Folloze Resource Center.
 ```
 
-Style the account name with the account's primary brand accent color. For Jitterbit, use the orange brand accent for `Jitterbit` instead of the default template color. Keep the rest of the headline in the template's existing header text style.
+The company-name callout belongs in this headline, not in the navigation bar. Style the company name with the company's primary brand accent color when contrast is accessible; keep the rest of the headline in the template's existing style.
 
-Write the header subtext from the call-note problem context. It should describe the room as a focused or custom resource center that helps the buyer validate or solve the main problem surfaced in discovery.
+The hero subheader is the main call-derived personalization surface. Write one concise buyer-safe statement explaining how Folloze will help the company reach the goals surfaced in discovery. Match the value proposition to the company's actual priorities, motion, audience, and desired business outcome. Do not name individual buyers, sellers, or attendees, enumerate the entire call, or leave template guidance/example text visible.
 
 Use this pattern:
 
 ```text
-A custom resource center to help you [validate/solve/evaluate] [the buyer's main problem, initiative, or decision] with the right Folloze resources in one place.
+Explore how Folloze can help your team [company-specific goal] by [relevant Folloze value proposition and outcome].
 ```
 
-For example, if call notes show the buyer is validating ABM scale and first-party engagement signals, the subtext can be:
+For example, if call notes show that the buyer wants to scale account-based programs and prove revenue impact, the subheadline can be:
 
 ```text
-A custom resource center to help you validate ABM scale, first-party engagement signal, CRM fit, and the next launch motion.
+Explore how Folloze can help your team scale personalized buyer engagement, improve conversion, and turn engagement into measurable pipeline impact.
 ```
+
+Keep the subheader concise enough to remain a clean two- or three-line hero at the target desktop and mobile breakpoints.
 
 ### Section 2: Start With The Essentials
 
-Keep section 2 as the template's essentials/resource-card section. Preserve the section title exactly:
+Board `248623` currently provides the Essentials section shell but no populated template cards. Preserve the section title exactly:
 
 ```text
-Start With The Essentials
+Start with the Essentials
 ```
 
-Use this section for the first resources a buyer should open after landing in the room. Choose the cards from the most relevant approved Folloze resources for the account's call-note context, but keep the template card layout, spacing, image treatment, and interaction pattern.
+Populate it with the core post-call assets the buyer should open first. Keep the copied section's native layout, spacing, image treatment, and interaction pattern.
 
-The cards should prioritize:
+The required core set is:
 
-- the highest-signal product or platform overview for the buyer's main question
-- analytics, engagement-signal, or campaign proof when the call notes mention validation, reporting, or ABM scale
-- case studies or examples that match the buyer's industry, use case, or decision concern
-- a deck, demo recording, guide, or technical resource promised in the call notes
+1. The edited Kaia demo call recording uploaded to Folloze as an MP3 or MP4 content item.
+2. Luke's account-specific follow-up deck, uploaded to Folloze as its own content item.
 
-Do not turn this section into a generic content library. Keep it to the essential starting set and avoid more than the template's visible card count unless the template itself supports additional native rows.
+Add Folloze Case Studies, the Folloze MCP Launch Film, an order form, or another promised resource only when it is relevant to the call and the native layout has room. Do not treat any of those optional items as a substitute for the recording or deck.
 
-### Section 3: Hyper-Specific Value Props
+Use accurate, asset-specific cards and previews:
 
-Use this section for call-note-derived value-prop cards that explain why Folloze is specifically useful for this account. Preserve the template's card format, icon treatment, and four-card rhythm when present.
+- use `assets/demo-call-recording-cover.png` for the Kaia recording
+- use the exported deck's own first slide when it is suitable; otherwise use `assets/presentation-deck-cover.png`
+- use `assets/order-form-cover.png` only for an order form
+- never reuse one stock cover for an unrelated asset type, demo example, guide, or walkthrough
 
-Use this title pattern:
+For the Kaia recording:
+
+1. Open the call in the Outreach Kaia web app and request the recording download.
+2. Wait for Outreach's emailed ZIP export, then download it to the local machine.
+3. Extract the MP3 or MP4 from the ZIP. Do not use the transcript as a required deliverable.
+4. Remove pre-call or front-of-call chatter that is only between Folloze employees and cut other clearly useless internal opening chatter.
+5. Name the finished media item using `Account Name + Folloze Demo + Recording Date`.
+6. Upload the finished MP3 or MP4 as a Folloze content item. Never embed or link the Outreach/Kaia viewer as the buyer-facing asset.
+7. Verify playback, title, cover, and card destination in Folloze, then delete the downloaded ZIP. Keep the edited media only as long as needed by the approved local workflow.
+
+For Luke's deck, use the supplied deck when available. Export or prepare an approved upload format, upload it to Folloze, and attach the Folloze-hosted content item to the card instead of linking directly to Google Slides. If the deck is missing, send Luke an automated Slack request that explicitly states it is an automated message from Codex. A missing deck does not prevent the first draft, but the request must be tracked.
+
+Do not turn this section into a generic content library. Keep only the true essentials supported by the template's native card capacity. The deal-room task remains incomplete until the edited recording is uploaded and verified.
+
+### Section 3: Embedded Value Section
+
+Preserve the existing `flz-13863-html-section` whose unique heading is:
 
 ```text
-How Folloze Will Help [Company] Crush Their Marketing Goals
+From brief to live campaign. In minutes, not sprints.
 ```
 
-If the account or sales tone calls for a more formal register, keep the same meaning but soften the verb:
+This is an approved template component, not a prompt to build a new HTML section. On Board `248623` it is widget `w_dacd1645`; on a copied board, locate it by the unique heading and widget type instead of trusting the ID alone. Assert that exactly one widget matches.
+
+Keep the existing wrapper, CSS, responsive behavior, four-card structure, inline SVG artwork, eyebrow, main heading, cards 1, 3, and 4, and all proof lines unchanged. Do not regenerate, paste over, or rebuild the entire widget.
+
+Make only these narrow, source-grounded text substitutions:
+
+1. Replace the section subheader with the account's scale and cohort strategy:
 
 ```text
-How Folloze Will Help [Company] Hit Their Marketing Goals
+Scale personalized ABM across [account count or defensible range] [industry, segment, region, or cohort] accounts without creating one page for every account.
 ```
 
-Write each card from a real problem, initiative, validation need, tool-fit question, or proof gap found in the call notes. Each card should have:
+Use the exact account count when it was stated in the call or ABM plan. If the count is unknown, use a grounded non-numeric phrase such as `priority enterprise accounts`; never invent a number.
 
-- a short outcome heading, ideally two to four words
-- a specific buyer context line from the call notes, rewritten safely
-- one concise explanation of how Folloze helps with that exact point
-
-Good cards sound like account-specific reasons to work with Folloze, not generic product capabilities. Prefer concrete themes such as ABM scale, first-party engagement signal, content activation speed, CRM or MAP workflow fit, campaign proof, stakeholder-ready reporting, buyer journey personalization, or executive-ready evidence when those themes are grounded in the source notes.
-
-Do not quote private call notes directly. Do not mention internal uncertainty, sales strategy, pricing, or objections. Translate those inputs into buyer-safe value props that make the buyer feel understood.
-
-### Text-Only Section Above The Funnel Visual
-
-Use the text-only section above the funnel or `Yesterday/Today` visual as a strategic narrative bridge. Keep the section focused on how Folloze helps the customer:
-
-- scale their marketing program
-- target and convert key accounts
-- do more with less across marketing, sales, and web teams
-
-Ground the headline and paragraph in those three themes while weaving in the specific problem Folloze is helping solve from the call notes. The section should connect Folloze's broader value to the buyer's actual evaluation context, not repeat generic ABM language.
-
-Use this headline direction:
+2. Update the account-count phrase in card 2's heading:
 
 ```text
-Helping [Company] Scale Key-Account Marketing Without Scaling The Work
+1:1 relevance without [account count] separate pages.
 ```
 
-Alternative headline patterns are acceptable if they keep the same meaning:
+When a number would be misleading, use:
 
 ```text
-Helping [Company] Target, Convert, And Scale Key Accounts
+1:1 relevance without a separate page for every account.
 ```
 
-```text
-Doing More With Less Across [Company]'s Key-Account Programs
-```
+Slightly adjust card 2's body only when the company's operating model requires different 1:1, 1:few, or 1:many language. Preserve its meaning, length, and proof line. Do not personalize the other three cards merely to make the section feel more bespoke.
 
-Use this paragraph pattern:
+Before saving, compare the original and edited HTML strings and reject any change outside the approved subheader and card 2 text nodes. If the widget source cannot be read or uniquely identified, stop and ask Trey for the source HTML rather than rebuilding the component.
 
-```text
-Folloze helps [Company] scale personalized marketing programs, focus every interaction on the accounts that matter most, and convert more buying teams with less manual effort. Based on our conversations, this room focuses on [call-note-specific problem or initiative] so your team can move from [current constraint] to [desired outcome].
-```
+### Section 4: Example Folloze Boards
 
-Keep the language buyer-safe. Do not quote raw call notes, name internal blockers, or expose sales strategy. Translate the source context into a clear business outcome.
+Preserve the section title, carousel behavior, card styling, and existing curated items. Board `248623` currently contains these six baseline items in this order:
 
-### Section 4: Resources From Our Calls
+1. `Website Resource Center - Check Point Security`
+2. `White Paper to Experience - Cisco`
+3. `Acquisition ABM - Instructure`
+4. `Field Event Promotion - Bloomreach`
+5. `Expansion ABM - Aprio`
+6. `Product Promotion - Lenovo`
 
-Use this section for follow-up assets, recordings, custom examples, and materials created or discussed during the sales process. Preserve the liked header style:
+The live template and Trey's reference screenshot say `Check Point Security`, not `Checkmarx`. Preserve the live Check Point item unless Trey explicitly requests a replacement. The screenshot shows five cards because of its viewport crop; the live template also contains Lenovo.
 
-```text
-Resources From Our Calls
-```
+Add the real Folloze MCP demo examples created for the account's demo calls after the baseline items. Every added card must point to a real, verified destination and use its own accurate title and preview.
 
-If the template or prior version says `Resources For Our Calls`, preserve that wording unless the user asks to change it. Do not make the title overly specific to one meeting.
+Create each new demo-example tile in the same pattern as the baseline covers:
 
-Use a general-purpose subtext that explains the section without naming individual attendees by default:
+- `1672 x 941` landscape PNG
+- company logo at the top
+- short motion or use-case label centered below
+- account-appropriate gradient or brand color
+- subtle geometric texture consistent with the existing set
+- no screenshots, dense body copy, fabricated logos, or generic recording/deck artwork
 
-```text
-Additional information, follow-up materials, and custom examples based on our conversations to help your team evaluate Folloze and plan the next step.
-```
+Keep the source/editable asset and final PNG in the deal's git-backed repo. Use a clear filename such as `[company]-[motion]-example-tile.png`. Upload the final tile to the correct Folloze content item, then verify the carousel crop at desktop and mobile sizes.
 
-Only name specific people in the subtext when the user explicitly asks or when the named stakeholder context is clearly buyer-safe and useful. Otherwise, keep the subtext team-oriented and reusable.
+### Section 5: ROI Calculator
 
-Card choices can include call recordings, recap decks, custom mockups, example rooms, proposal follow-ups, integration notes, security materials, or requested proof. Every card must point to a real asset or approved placeholder in the native template content system; do not invent recordings or documents.
-
-Do not link buyer-facing cards directly to external Google Slides, Google Docs, Zoom, Kaia, Outreach, Drive, or other third-party URLs. Treat those URLs as source locations only. Before adding the card to this section, upload or create the asset as a Folloze content item and attach the card to that Folloze content item.
-
-For Folloze presentations, decks, or Google Slides discussed in the call, export or otherwise prepare the approved deck format, upload it as a Folloze content item, and use that content item in `Resources From Our Calls`. Do not use the external presentation URL as the card link.
-
-For call recordings from Zoom or Kaia/Outreach, upload the approved recording as a Folloze content item when the recording is available and appropriate to share. Permissioned or expiring recording URLs should not be used as the buyer-facing destination. If the recording cannot be uploaded or approved, omit the card or label the missing asset in the internal brief instead of linking externally.
-
-Record the uploaded content item name and ID in the internal brief so the final board readback can confirm that the resource card points to Folloze-hosted content.
-
-### Integration Guides
-
-Use this section for integration guides that match the buyer's actual systems and evaluation questions. Select integration cards from the best available source evidence in this priority order:
-
-1. Call notes, meeting recaps, and email notes that mention tools, systems, integrations, routing paths, or data-flow questions.
-2. Salesforce opportunity, account, or contact tech-stack fields when the notes do not mention a conflicting stack.
-3. Public or inferred tech-stack signals only when neither notes nor Salesforce provide enough detail, and mark the assumption internally.
-
-When sources conflict, assume call notes and email notes are more accurate than Salesforce. Use Salesforce as supporting context, not the source of truth, if notes or emails name a different tool.
-
-Choose only integration guides that map to confirmed or strongly implied systems, such as CRM, marketing automation, sales engagement, intent, web analytics, enrichment, chat, data warehouse, or content systems. Do not include a generic integration guide just to fill a card slot.
-
-If an integration is important but no approved guide or native content item exists, either use an approved placeholder card labeled internally for follow-up or omit the card and note the missing asset in the internal brief. Do not invent integration documentation.
-
-### Folloze Team
-
-Treat the Folloze team section as a template-preserved section. Keep the four existing template cards for:
-
-- Trey Harnden
-- Luke Rafferty
-- Etai Beck
-- Troy Bullard
-
-Do not edit the section title, card count, order, headshots, names, roles, body copy, links, CTAs, card styling, layout, or spacing unless the user explicitly asks for a team-section change. If the template contains those four cards, leave the section as-is during account personalization.
+Leave the ROI calculator exactly as it exists in the universal template. Do not personalize its title, copy, inputs, ranges, formulas, styling, outputs, or default assumptions. Confirm only that the untouched calculator still renders and functions after the rest of the board is edited.
 
 ## Direct API Sequence
 
@@ -218,7 +214,7 @@ Select the exact requested template by name and confirm:
 - `is_template: true`
 - expected public or preview link, if present
 
-Default to the approved `Folloze Digital Deal Room Template` only when the user did not name another template.
+When the user does not name another template, default to Board `248623`, `Folloze Resource Center / Digital Deal Room Template - July 2026 Folloze Resource Center`.
 
 ### 2. Create A Board From The Template
 
@@ -272,7 +268,7 @@ Read the board config:
 GET /api/v1/boards/:boardId/config
 ```
 
-Modify `unpublished_config` by updating native widgets and their existing fields. Preserve the template's native structure where possible.
+Modify `unpublished_config` by updating existing widgets and their existing fields. Preserve the template structure.
 
 Allowed changes:
 
@@ -280,15 +276,21 @@ Allowed changes:
 - section ordering when the config already supports it
 - image, logo, and resource references when they are approved and reachable
 - native content widgets, item references, or content rows when supported by the template schema
-- navigation labels and anchors that point to real sections
-- contact or team modules with approved names and roles
+- the approved text nodes inside the copied value-section HTML widget, under the narrow rules above
 
 Do not add:
 
-- `html-section`
+- new `html-section` widgets
 - full-page HTML payloads
 - raw custom-script widgets as the primary room body
 - placeholder CTAs, fake documents, fake meeting links, or dead anchors
+
+Board `248623` intentionally contains two existing `flz-13863-html-section` widgets:
+
+- the value section beginning `From brief to live campaign. In minutes, not sprints.`
+- the ROI calculator beginning `Estimate potential pipeline and revenue.`
+
+Preserve both. Edit only the approved value-section text nodes, and do not change any ROI widget content.
 
 ### 5. Save The Config With A Real Hash Change
 
@@ -335,8 +337,15 @@ A direct API push is not done until these pass:
 - Public/activation fields show the intended state, such as `is_public: true`, online activation, and a published version when publishing was requested.
 - `published_config` contains the account-specific buyer copy after publish.
 - `unpublished_config` and `published_config` hashes match when no unpublished changes remain.
-- The config does not contain `html-section` unless the user explicitly changed scope.
+- The config contains the two approved embedded HTML widgets from Board `248623`, with the value widget structurally unchanged outside the approved text nodes and the ROI widget's `data.content` byte-for-byte unchanged.
+- No new embedded HTML widget, full-page HTML payload, or custom-script body was added.
 - The config does not contain raw full-page HTML as the room body.
+- The generic company logo is gone and the approved company logo renders correctly.
+- The hero contains no template bracket text, example copy, attendee names, or unsupported claims.
+- Essentials includes the real Folloze-hosted edited recording and deck, with correct covers and working destinations.
+- The value-section subheader and card 2 account-count language agree with each other and with the sourced ABM strategy.
+- The baseline example-board cards remain present in order, and each added demo example has a real destination and correctly cropped tile.
+- The untouched ROI calculator still renders and calculates at its original defaults.
 - The returned public link or designer link is recorded with its state.
 
 Public Folloze links can show email verification or access gating to anonymous visitors. Do not call that a failed publish when API metadata confirms the board is public, online, and published; instead, report the gating state separately.
@@ -361,9 +370,12 @@ For a skill or workflow iteration, return:
 
 ## Common Failure Modes
 
-- Wrong route: using MCP Save or custom HTML when the user asked for API/native template.
+- Wrong route: using MCP Save or rebuilding the room as custom HTML when the user asked for the API/native template.
 - Wrong object: editing a copied board but publishing the original template.
 - Hash no-op: saving config without recomputing the designer-compatible hash, often returning `208`.
+- Template drift: following the old `248319` section map or adding legacy integration, customer-story, or team sections that are not in Board `248623`.
+- Broad HTML rewrite: replacing the approved value widget instead of changing only its subheader and card 2 text nodes.
+- Asset mismatch: using the recording cover for a deck, order form, or demo example, or adding a new example without a matching landscape tile.
 - Private leakage: copying raw call notes, internal objections, budget comments, or next-step tasks directly into buyer-facing text.
 - False live claim: treating a designer URL, local file, or gated public URL as the same state as a published public board.
 - Source drift: relying on old endpoint knowledge after the Folloze app bundle has changed; inspect current app behavior when API calls start failing.
