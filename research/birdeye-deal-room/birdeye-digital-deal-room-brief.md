@@ -56,4 +56,3 @@ All three use new `1672x941` BirdEye-branded tile images in `artifacts/birdeye-d
 
 - Rough demo-quality notes, brand-pull problems, API/ad limitations, commercial and budget discussion, signature or proposal timing, and Salesforce-access friction.
 - No unverified industry names or verticals; the call only established industry and sales-segment cohorts.
-

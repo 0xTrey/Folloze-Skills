@@ -77,7 +77,7 @@ const BASELINE_EXAMPLE_TITLES = [
   "Acquisition ABM - Instructure",
   "Field Event Promotion - Bloomreach",
   "Expansion ABM - Aprio",
-  "Experience Page - Lenovo",
+  "Product Promotion - Lenovo",
 ];
 
 function readAccessToken() {
@@ -264,7 +264,12 @@ async function ensureNativeItems(boardId) {
   const seedItem = originalItems.find((item) => item.item_type === "link" && item.url);
   if (!seedItem) throw new Error("Could not find a native link item to use as a seed.");
 
-  const deck = await createLinkItem(boardId, seedItem, featured, {
+  const ensureResource = (category, resource) => {
+    const existing = originalItems.find((item) => item.url === resource.url);
+    return existing || createLinkItem(boardId, seedItem, category, resource);
+  };
+
+  const deck = await ensureResource(featured, {
     title: "Folloze Presentation for BirdEye",
     description:
       "Luke Rafferty's tailored Folloze presentation for BirdEye's evaluation of scalable ABM personalization, analytics, integrations, and campaign execution.",
@@ -274,7 +279,7 @@ async function ensureNativeItems(boardId) {
   });
 
   const demoItems = [];
-  for (const demo of DEMOS) demoItems.push(await createLinkItem(boardId, seedItem, examples, demo));
+  for (const demo of DEMOS) demoItems.push(await ensureResource(examples, demo));
   const refreshed = await readBoardItems(boardId);
   return { categories, featured, examples, deck, demoItems, items: refreshed };
 }
@@ -542,4 +547,3 @@ main().catch((error) => {
   console.error(error.message);
   process.exit(1);
 });
-
