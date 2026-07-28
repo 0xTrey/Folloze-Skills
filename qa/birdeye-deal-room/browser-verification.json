@@ -50,5 +50,12 @@
     "sent_to_buyer": false,
     "shared_in_slack": false,
     "tracker_updated": false
+  },
+  "unused_recovery_copy": {
+    "board_id": 248646,
+    "name": "[UNUSED] BirdEye template-copy recovery draft - 2026-07-28",
+    "is_public": false,
+    "has_published_version": false,
+    "purpose": "Clearly labeled offline copy retained after recovery of the asynchronous template-copy poll; it is not the live test board."
   }
 }
