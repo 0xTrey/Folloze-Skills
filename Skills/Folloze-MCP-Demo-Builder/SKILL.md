@@ -9,6 +9,7 @@ Use this skill for Folloze MCP board and microsite work where the output is a po
 
 ## Operating Rules
 
+- Treat `folloze-mcp` / `mcp__folloze_mcp__*` as the default Demo-instance connection for all Folloze builds, saves, and updates. Use `folloze-engage` / `mcp__folloze_engage__*` only when Trey explicitly asks for the Engage instance. Never fall back from one connection to the other after an authentication or save failure, and never reuse a board ID across the two instances.
 - Start from the real business context named by the user: vendor site, target account, live board ID, source page, screenshots, Salesforce context if allowed, and any existing designer URL.
 - The deliverable is a repo-backed, vendor-faithful sales experience with measurable interaction QA. It is not a Folloze-specific experience unless the user explicitly asks for Folloze branding or Folloze-owned positioning.
 - For vendor-owned account pages, keep Folloze invisible in buyer-facing copy unless the user explicitly wants a Folloze-branded sales asset.
