@@ -117,6 +117,12 @@ Guides customer marketers from campaign brief to campaign design context, mandat
 ### `folloze-zoom-deal-room`
 Turns Zoom recaps, meeting-assets emails, and deal context into buyer-safe Folloze deal-room briefs, then routes the build to MCP rich HTML or the external board API when the user asks to create a live board.
 
+### `folloze-post-call-deal-room-producer`
+Manually produces native Folloze post-call deal rooms from completed call context. It covers Board 248319 duplication, Luke deck collection, Outreach Kaia export, safe ZIP cleanup, approved pre-call trimming, native media upload, official customer-logo handling, automatic publish, public verification, and an internal seller-review gate before any customer share.
+
+### `Folloze-Digital-Deal-Room-Internal`
+Writes buyer-safe Folloze-owned deal-room copy and native configuration through the direct Folloze API and an approved native template. The post-call producer delegates native board writing here while retaining recording-export and media-upload orchestration.
+
 ### `Folloze-MCP-Demo-Builder`
 Builds and updates vendor-branded Folloze MCP microsites, account-specific solution pages, demo boards, and buyer experiences from a single self-contained HTML page, with MCP guide compliance, analytics hooks, design QA defaults, real CTA/link requirements, source-page brand extraction, browser-comment iteration, and operator-scoped tracker logging after successful MCP saves.
 
