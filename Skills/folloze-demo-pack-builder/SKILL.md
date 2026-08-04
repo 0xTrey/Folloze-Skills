@@ -17,6 +17,25 @@ Every pack contains three separate experiences:
 
 Kick off each experience separately with `Folloze-MCP-Demo-Builder`. Each one needs its own board identity, source truth, motion, local source path, QA record, save status, and final handoff. Do not collapse the pack into one board, one HTML file, or one shared generic story.
 
+Every company also gets exactly one persistent Codex deal task:
+
+- Title: `Deal | <Company>`
+- Stable dedupe key: `deal:<normalized-company>`
+- Scope: pre-call research, all three demo experiences, post-call digital sales room, and later sales-cycle materials
+
+If the current task already has that exact deal title, continue in it. Otherwise create or resume the company task before doing pack work. Never create dated or phase-specific demo tasks for the same company.
+
+For Trey's demo-pack runs, the delivery defaults are mandatory and pre-authorized:
+
+- Use no Folloze company theme. Call the theme tool with `use_folloze_theme: "no"`; do not ask again.
+- Save every board to Folloze after QA.
+- Publish every saved board.
+- Assign or update a unique, descriptive vanity URL for every board.
+- Verify the public URL anonymously before calling the board complete.
+- Create or update the canonical tracker row with the board ID, designer URL, public URL, and QA/public-verification status.
+
+Do not stop at local preview or wait for a separate publish instruction unless Trey explicitly overrides these defaults for a specific run.
+
 ## Skill Routing
 
 - Use `brand-harvester` first when public brand/source DNA is needed and the source is reachable.
@@ -28,13 +47,13 @@ Kick off each experience separately with `Folloze-MCP-Demo-Builder`. Each one ne
 ## Working Order
 
 1. Resolve the company: canonical name, homepage, product/category, aliases, and disambiguation risks.
-2. Decide pack mode: local-preview only, Folloze save intended, or existing-board update. If save/publish is intended, follow `Folloze-MCP-Demo-Builder` theme-mode and MCP guide requirements before any live save.
+2. Resolve the persistent `Deal | <Company>` task, then classify each board as net-new or an existing-board update. Demo-pack mode always intends a Folloze save and publish.
 3. Build a source ledger with public, user-approved, internal-planning-only, and blocked evidence labels.
 4. Launch bounded subagents when available and useful. Keep source lanes distinct so agents do not duplicate research.
 5. Synthesize the research into one pack strategy, then three separate experience briefs.
 6. Run `Folloze-MCP-Demo-Builder` separately for the campaign page, one-to-one page, and event page.
 7. Run the demo pack quality loop on each board independently, then compare the pack side by side.
-8. Save to Folloze only after the user explicitly asks to save, publish, update, or push to Folloze. The main agent owns all MCP saves, tracker writes, git commits, and final status reporting.
+8. After each board passes QA, the main agent saves it to Folloze, publishes it, assigns or updates its vanity URL, verifies it anonymously, and updates the canonical tracker row.
 
 ## Source Rules
 
