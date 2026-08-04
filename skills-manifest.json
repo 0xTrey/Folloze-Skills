@@ -63,7 +63,7 @@
       "requires_restart": true
     },
     {
-      "name": "Folloze-Digital-Deal-Room-Internal",
+      "name": "folloze-digital-deal-room-internal",
       "path": "Skills/Folloze-Digital-Deal-Room-Internal",
       "enabled": true,
       "requires_restart": true
