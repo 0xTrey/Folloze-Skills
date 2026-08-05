@@ -86,6 +86,40 @@ test("Luke handoff blocks unless editor transport is preflighted", async (contex
   assert(receipt.blockers.some((blocker) => blocker.code === "editor_transport_unverified"));
 });
 
+test("keyed Folloze template readback is accepted after auth warmup", async (context) => {
+  const data = fixture();
+  context.after(() => fs.rmSync(data.root, { recursive: true, force: true }));
+  const receipt = await runPreflight(
+    {
+      account: "Example Co",
+      operator: "luke",
+      package: data.handoff,
+      deck: data.deck,
+      meetingMatchConfirmed: true,
+      noAccountExamples: true,
+      networkReadback: true,
+      editorReady: true,
+      budgetSeconds: 30,
+    },
+    {
+      env: { FOLLOZE_ACCESS_TOKEN: "redacted-test-token", FOLLOZE_MCP_PROFILE: "engage" },
+      fetch: async () => ({
+        ok: true,
+        json: async () => ({
+          "248623": {
+            id: 248623,
+            name: "Folloze Resource Center / Digital Deal Room Template - July 2026 Folloze Resource Center",
+            is_template: true,
+          },
+        }),
+      }),
+    }
+  );
+  assert.equal(receipt.ready, true);
+  assert.equal(receipt.auth.template.remote_readback.verified, true);
+  assert.equal(receipt.auth.template.remote_readback.template_id, 248623);
+});
+
 test("ambiguous transcripts fail closed", async (context) => {
   const data = fixture();
   context.after(() => fs.rmSync(data.root, { recursive: true, force: true }));

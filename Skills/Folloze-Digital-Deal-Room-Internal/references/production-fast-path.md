@@ -24,8 +24,8 @@ Complete these checks concurrently where possible:
 3. The deck is available or its allowed pending behavior is recorded.
 4. The Salesforce Opportunity ID resolves uniquely, or `prototype_override=true` is explicit.
 5. Board `248623` resolves by ID and exact name, is still a template, and contains the expected widgets.
-6. The Experience API token is unexpired and passes one compact authenticated read.
-7. The current editor-invite transport is known, an authenticated app session or supported API path is available, and Luke Rafferty's stable organization user/invite ID plus current registered email or alias resolves. Do not hardcode `luke@folloze.com`; search eligibility alone is not invitation proof.
+6. Warm the selected Folloze MCP profile with its refresh-capable `auth_login(force=false)` path, then require the resulting Experience API access token to pass one compact authenticated read. Short-lived access-token expiry is expected; a valid stored refresh token should rotate it without manual login. Use interactive authentication only when the refresh grant fails.
+7. The current editor-invite transport is known, an authenticated app session or supported API path is available, and Luke Rafferty's stable organization user/invite ID resolves with normalized email `luke@folloze.com` and display name `Luke Rafferty`. The email is Trey's confirmed lookup identity, but email or search eligibility alone is not invitation proof.
 8. The canonical tracker metadata/header and only the candidate account rows are readable.
 9. The shared Drive tile folder and only the required tile files are readable; write access is confirmed when a local tile must be uploaded.
 10. Brand logo and accent sources are resolved from first-party material.

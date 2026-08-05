@@ -339,9 +339,25 @@ function tokenCacheDetails(env, issuer) {
   const expiresAt = Number(tokenSet.expires_at || 0);
   const expiresAtMs = expiresAt && expiresAt < 1_000_000_000_000 ? expiresAt * 1000 : expiresAt;
   if (expiresAtMs && expiresAtMs <= Date.now() + 60_000) {
-    throw new PreflightError("auth_token_expired", "Folloze access token is expired or expires within 60 seconds.");
+    if (tokenSet.refresh_token) {
+      throw new PreflightError(
+        "auth_refresh_required",
+        `Folloze access token for profile ${profile} needs rotation. Run that profile's auth_login with force=false so the stored refresh token can rotate it, then rerun preflight.`
+      );
+    }
+    throw new PreflightError(
+      "auth_token_expired",
+      `Folloze access token for profile ${profile} is expired or expires within 60 seconds and no refresh token is available.`
+    );
   }
-  return { source: "cache", profile, auth_path: authPath, expires_at_ms: expiresAtMs || null, token: tokenSet.access_token };
+  return {
+    source: "cache",
+    profile,
+    auth_path: authPath,
+    expires_at_ms: expiresAtMs || null,
+    refresh_token_present: Boolean(tokenSet.refresh_token),
+    token: tokenSet.access_token,
+  };
 }
 
 async function readOnlyTemplateCheck({ issuer, templateId, token, timeoutMs, fetchImpl }) {
@@ -357,10 +373,16 @@ async function readOnlyTemplateCheck({ issuer, templateId, token, timeoutMs, fet
       throw new PreflightError("auth_remote_failed", `Read-only template check returned HTTP ${response.status}.`);
     }
     const data = await response.json();
-    if (Number(data.id) !== Number(templateId) || data.is_template !== true) {
+    const board = data?.[String(templateId)] || data?.board || data;
+    if (Number(board?.id) !== Number(templateId) || board?.is_template !== true) {
       throw new PreflightError("template_identity_failed", `Board ${templateId} was not returned as a template.`);
     }
-    return { verified: true, template_id: Number(data.id), is_template: true };
+    return {
+      verified: true,
+      template_id: Number(board.id),
+      template_name: board.name || null,
+      is_template: true,
+    };
   } catch (error) {
     if (error.name === "AbortError") {
       throw new PreflightError("auth_remote_timeout", "Read-only Folloze auth/template check timed out.");
@@ -517,6 +539,7 @@ async function runPreflight(options, runtime = {}) {
       source: tokenDetails.source,
       profile: tokenDetails.profile,
       expires_at_ms: tokenDetails.expires_at_ms || null,
+      refresh_token_present: Boolean(tokenDetails.refresh_token_present),
       template: { id: templateId, remote_readback: remote },
       editor_transport_verified: Boolean(options.editorReady),
     };
