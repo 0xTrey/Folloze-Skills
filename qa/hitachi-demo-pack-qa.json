@@ -78,5 +78,16 @@
     "campaign": {"board_id": 249545, "designer_url": "https://app.folloze.com/app/board/249545/designer", "public_url": "https://engage.folloze.com/hitachi-ai-ready-data-foundation", "save": "pass", "publish": "pass", "public_qa": "pass", "anonymous_guest": true, "http_status": 200, "redirects": 0, "published_hash": "d2a309c37ecff00de75ce63c0dfaea5567b9fd73", "tracker_row": 156},
     "one_to_one_abm": {"board_id": 249544, "designer_url": "https://app.folloze.com/app/board/249544/designer", "public_url": "https://engage.folloze.com/hitachi-bmw-production-data-foundation", "save": "pass", "publish": "pass", "public_qa": "pass", "anonymous_guest": true, "http_status": 200, "redirects": 0, "published_hash": "ad56b865d299a5accfb9f079c5bca00fbbbdd94e", "tracker_row": 157},
     "event": {"board_id": 249546, "designer_url": "https://app.folloze.com/app/board/249546/designer", "public_url": "https://engage.folloze.com/hitachi-ai-data-foundation-on-demand", "save": "pass", "publish": "pass", "public_qa": "pass", "anonymous_guest": true, "http_status": 200, "redirects": 0, "published_hash": "85bc0e7f62188a68bae16e99cfd945985a7fc999", "tracker_row": 158}
+  },
+  "delivery": {
+    "recipient": "Troy Smith",
+    "slack_user_id": "U08FTRBFX1R",
+    "dm_channel_id": "D08GUFP2CKB",
+    "published_url_message": "https://folloze.slack.com/archives/D08GUFP2CKB/p1785954662635929",
+    "asset_delivery_message": "https://folloze.slack.com/archives/D08GUFP2CKB/p1785954678900189",
+    "automated_message_disclosure": "pass",
+    "binary_attachment_upload": "unavailable: connected Slack account lacks files:write:user",
+    "drive_fallback": "pass",
+    "direct_reader_permissions_granted": 3
   }
 }

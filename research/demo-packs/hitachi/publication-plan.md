@@ -19,3 +19,11 @@ All three covers follow the Folloze digital sales room contract: 1672 by 941 PNG
 | Campaign | `artifacts/hitachi-demo-pack/cards/249545-hitachi-vantara-ai-ready-data-campaign-tile.png` | `1_gvqSf50yRGuACA0r0s-EwGmE4j1qDcs` |
 | One-to-one | `artifacts/hitachi-demo-pack/cards/249544-hitachi-vantara-bmw-production-data-abm-tile.png` | `1Fidex0fbcydiDfVuVCLtIhXTnNpaYXgn` |
 | Event | `artifacts/hitachi-demo-pack/cards/249546-hitachi-vantara-ai-data-foundation-event-tile.png` | `12oIzIkFIIma52v8bsaS34RsvGH_rs__L` |
+
+## Slack delivery
+
+- Recipient: Troy Smith (`U08FTRBFX1R`), direct-message channel `D08GUFP2CKB`.
+- Published URL message: https://folloze.slack.com/archives/D08GUFP2CKB/p1785954662635929
+- Asset delivery message: https://folloze.slack.com/archives/D08GUFP2CKB/p1785954678900189
+- Disclosure: both messages identify themselves as automated Codex delivery.
+- Asset delivery: the connected Slack account lacks `files:write:user`, so binary attachment upload was unavailable. The approved fallback was used: all three exact PNGs were linked individually from the shared Drive library, and Troy Smith was granted direct reader access to every file.
