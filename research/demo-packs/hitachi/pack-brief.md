@@ -13,9 +13,9 @@ Updated: 2026-08-05
   - One-to-one: `artifacts/hitachi-demo-pack/hitachi-bmw-production-data-foundation.html`
   - Event: `artifacts/hitachi-demo-pack/hitachi-ai-data-foundation-on-demand.html`
 - Upload-ready card assets:
-  - `artifacts/hitachi-demo-pack/cards/hitachi-ai-ready-data-foundation-card.png`
-  - `artifacts/hitachi-demo-pack/cards/hitachi-bmw-zero-downtime-ai-card.png`
-  - `artifacts/hitachi-demo-pack/cards/hitachi-ai-data-foundation-event-card.png`
+  - `artifacts/hitachi-demo-pack/cards/249545-hitachi-vantara-ai-ready-data-campaign-tile.png`
+  - `artifacts/hitachi-demo-pack/cards/249544-hitachi-vantara-bmw-production-data-abm-tile.png`
+  - `artifacts/hitachi-demo-pack/cards/249546-hitachi-vantara-ai-data-foundation-event-tile.png`
 
 ## Campaign experience
 
