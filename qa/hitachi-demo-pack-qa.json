@@ -1,0 +1,82 @@
+{
+  "checked_at": "2026-08-05T19:20:00Z",
+  "theme": {
+    "theme_id": "5374",
+    "stylesheet": "https://cdn.folloze.com/theme/2/5374.css?v=1767691946",
+    "font_loaded": "Open Sans",
+    "mode": "Folloze theme variables only"
+  },
+  "pages": {
+    "campaign": {
+      "file": "artifacts/hitachi-demo-pack/hitachi-ai-ready-data-foundation.html",
+      "h1": "Your AI strategy is only as ready as the data beneath it.",
+      "viewports": ["1440x900", "390x844", "320x800"],
+      "no_horizontal_overflow": true,
+      "broken_images": 0,
+      "minimum_visible_cta_height_px": 44,
+      "script_parse": "ok",
+      "duplicate_ids": 0,
+      "raw_hash_links": 0,
+      "external_links": 9,
+      "external_links_with_blank_noopener": 9,
+      "diagnostic_tab_interaction": "pass",
+      "mobile_carousel_interaction": "pass",
+      "folloze_runtime_contrast": "pass",
+      "folloze_runtime_screenshot": "qa/hitachi-demo-pack/campaign-folloze-runtime-full-contrast.jpg"
+    },
+    "one_to_one_abm": {
+      "file": "artifacts/hitachi-demo-pack/hitachi-bmw-production-data-foundation.html",
+      "h1": "The data foundation already protects production. Now make it ready for the next AI workload.",
+      "viewports": ["1440x900", "390x844", "320x800"],
+      "no_horizontal_overflow": true,
+      "broken_images": 0,
+      "minimum_visible_cta_height_px": 48,
+      "script_parse": "ok",
+      "duplicate_ids": 0,
+      "raw_hash_links": 0,
+      "external_links": 6,
+      "external_links_with_blank_noopener": 6,
+      "workload_mapper_interaction": "pass",
+      "folloze_runtime_contrast": "pass",
+      "folloze_runtime_screenshot": "qa/hitachi-demo-pack/bmw-folloze-runtime-full-contrast.jpg"
+    },
+    "event": {
+      "file": "artifacts/hitachi-demo-pack/hitachi-ai-data-foundation-on-demand.html",
+      "h1": "AI success starts with the right data foundation.",
+      "viewports": ["1440x900", "390x844", "320x800"],
+      "no_horizontal_overflow": true,
+      "broken_images": 0,
+      "minimum_visible_cta_height_px": 44,
+      "script_parse": "ok",
+      "duplicate_ids": 0,
+      "raw_hash_links": 0,
+      "external_links": 7,
+      "external_links_with_blank_noopener": 7,
+      "session_path_interaction": "pass",
+      "folloze_runtime_contrast": "pass",
+      "folloze_runtime_screenshot": "qa/hitachi-demo-pack/event-folloze-runtime-full-contrast.jpg"
+    }
+  },
+  "cards": [
+    {
+      "file": "artifacts/hitachi-demo-pack/cards/249545-hitachi-vantara-ai-ready-data-campaign-tile.png",
+      "dimensions": "1672x941",
+      "drive_file_id": "1_gvqSf50yRGuACA0r0s-EwGmE4j1qDcs"
+    },
+    {
+      "file": "artifacts/hitachi-demo-pack/cards/249544-hitachi-vantara-bmw-production-data-abm-tile.png",
+      "dimensions": "1672x941",
+      "drive_file_id": "1Fidex0fbcydiDfVuVCLtIhXTnNpaYXgn"
+    },
+    {
+      "file": "artifacts/hitachi-demo-pack/cards/249546-hitachi-vantara-ai-data-foundation-event-tile.png",
+      "dimensions": "1672x941",
+      "drive_file_id": "12oIzIkFIIma52v8bsaS34RsvGH_rs__L"
+    }
+  ],
+  "publication": {
+    "campaign": {"board_id": 249545, "designer_url": "https://app.folloze.com/app/board/249545/designer", "public_url": "https://engage.folloze.com/hitachi-ai-ready-data-foundation", "save": "pass", "publish": "pass", "public_qa": "pass", "anonymous_guest": true, "http_status": 200, "redirects": 0, "published_hash": "d2a309c37ecff00de75ce63c0dfaea5567b9fd73", "tracker_row": 156},
+    "one_to_one_abm": {"board_id": 249544, "designer_url": "https://app.folloze.com/app/board/249544/designer", "public_url": "https://engage.folloze.com/hitachi-bmw-production-data-foundation", "save": "pass", "publish": "pass", "public_qa": "pass", "anonymous_guest": true, "http_status": 200, "redirects": 0, "published_hash": "ad56b865d299a5accfb9f079c5bca00fbbbdd94e", "tracker_row": 157},
+    "event": {"board_id": 249546, "designer_url": "https://app.folloze.com/app/board/249546/designer", "public_url": "https://engage.folloze.com/hitachi-ai-data-foundation-on-demand", "save": "pass", "publish": "pass", "public_qa": "pass", "anonymous_guest": true, "http_status": 200, "redirects": 0, "published_hash": "85bc0e7f62188a68bae16e99cfd945985a7fc999", "tracker_row": 158}
+  }
+}

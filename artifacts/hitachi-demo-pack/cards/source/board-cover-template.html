@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=1672, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.folloze.com/theme/2/5374.css?v=1767691946">
+  <title>Hitachi Vantara Folloze board cover</title>
+  <style>
+    *{box-sizing:border-box}
+    html,body{width:1672px;height:941px;margin:0;overflow:hidden}
+    body{font-family:var(--fz-font-family-1);background:var(--fz-color-neutral-1000);color:var(--fz-color-neutral-0)}
+    .cover{position:relative;width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;background-image:url('./hitachi-dsr-blue-background.png');background-size:cover;background-position:center;isolation:isolate}
+    .cover:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(120deg,color-mix(in srgb,var(--fz-color-neutral-1000) 18%,transparent),color-mix(in srgb,var(--fz-color-primary-4) 14%,transparent))}
+    .cover[data-variant="abm"]:before{background:linear-gradient(120deg,color-mix(in srgb,var(--fz-color-neutral-1000) 10%,transparent),color-mix(in srgb,var(--fz-color-secondary-3) 24%,transparent))}
+    .cover[data-variant="event"]:before{background:linear-gradient(120deg,color-mix(in srgb,var(--fz-color-neutral-1000) 22%,transparent),color-mix(in srgb,var(--fz-color-primary-2) 20%,transparent))}
+    .logo{width:500px;height:auto;margin-top:126px;filter:brightness(0) invert(1)}
+    .rule{width:86px;height:7px;margin-top:84px;border-radius:var(--fz-border-radius-pill);background:var(--fz-color-primary-1);box-shadow:0 0 34px color-mix(in srgb,var(--fz-color-primary-1) 55%,transparent)}
+    .label{margin:37px 90px 0;text-align:center;font-size:68px;font-weight:400;line-height:1.08;letter-spacing:-.025em;text-wrap:balance;color:var(--fz-color-neutral-0);text-shadow:0 4px 18px color-mix(in srgb,var(--fz-color-neutral-1000) 55%,transparent)}
+    .cover[data-variant="event"] .rule{background:var(--fz-color-primary-2)}
+    .cover[data-variant="abm"] .rule{background:var(--fz-color-secondary-2)}
+  </style>
+</head>
+<body>
+  <main class="cover" id="cover" data-variant="campaign" aria-label="Hitachi Vantara Folloze demo board cover">
+    <img class="logo" src="https://www.hitachivantara.com/content/dam/hvac/hv-nav-logo-2025.svg" alt="Hitachi Vantara">
+    <div class="rule" aria-hidden="true"></div>
+    <div class="label" id="label">AI-Ready Data Campaign</div>
+  </main>
+  <script>
+    var variants={
+      campaign:'AI-Ready Data Campaign',
+      abm:'BMW Production Data ABM',
+      event:'AI Data Foundation Event'
+    };
+    var requested=new URLSearchParams(location.search).get('variant')||'campaign';
+    var variant=variants[requested]?requested:'campaign';
+    document.getElementById('cover').dataset.variant=variant;
+    document.getElementById('label').textContent=variants[variant];
+  </script>
+</body>
+</html>

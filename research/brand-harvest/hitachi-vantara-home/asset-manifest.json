@@ -1,0 +1,627 @@
+{
+  "logos": [
+    {
+      "src": "https://www.hitachivantara.com/content/dam/hvac/hv-nav-logo-2025.svg",
+      "alt": "Hitachi Vantara - Home",
+      "className": "",
+      "width": 260,
+      "height": 45,
+      "rect": {
+        "x": 131,
+        "y": 43,
+        "width": 200,
+        "height": 35
+      }
+    },
+    {
+      "src": "https://s7d9.scene7.com/is/image/hitachivantara/BMW-Group-Logo-New?fmt=webp",
+      "alt": "BMW Group",
+      "className": "logo-feature__logo",
+      "width": 164,
+      "height": 62,
+      "rect": {
+        "x": 84,
+        "y": 1195,
+        "width": 119,
+        "height": 45
+      }
+    },
+    {
+      "src": "https://s7d9.scene7.com/is/image/hitachivantara/university-of-kent-logo?fmt=webp",
+      "alt": "University of Kent",
+      "className": "logo-feature__logo",
+      "width": 163,
+      "height": 163,
+      "rect": {
+        "x": -70,
+        "y": 1322,
+        "width": 119,
+        "height": 119
+      }
+    },
+    {
+      "src": "https://s7d9.scene7.com/is/image/hitachivantara/ywca-cropped?fmt=webp",
+      "alt": "YWMCA",
+      "className": "logo-feature__logo",
+      "width": 228,
+      "height": 95,
+      "rect": {
+        "x": 84,
+        "y": 1520,
+        "width": 119,
+        "height": 49
+      }
+    },
+    {
+      "src": "https://s7d9.scene7.com/is/image/hitachivantara/magyar-telekom-logo?fmt=webp",
+      "alt": "Magyar Telekom",
+      "className": "logo-feature__logo",
+      "width": 800,
+      "height": 418,
+      "rect": {
+        "x": -70,
+        "y": 1677,
+        "width": 119,
+        "height": 62
+      }
+    },
+    {
+      "src": "https://s7d9.scene7.com/is/image/hitachivantara/malayala-manorama-logo-cropped?fmt=webp",
+      "alt": "Malayala Manorama",
+      "className": "logo-feature__logo",
+      "width": 201,
+      "height": 86,
+      "rect": {
+        "x": 84,
+        "y": 1847,
+        "width": 119,
+        "height": 51
+      }
+    },
+    {
+      "src": "https://s7d9.scene7.com/is/image/hitachivantara/schneider-electric-china-logo-cropped?fmt=webp",
+      "alt": "Schneider Electric",
+      "className": "logo-feature__logo",
+      "width": 1178,
+      "height": 354,
+      "rect": {
+        "x": 1238,
+        "y": 1199,
+        "width": 119,
+        "height": 36
+      }
+    },
+    {
+      "src": "https://s7d9.scene7.com/is/image/hitachivantara/original?fmt=webp",
+      "alt": "IAG",
+      "className": "logo-feature__logo",
+      "width": 250,
+      "height": 250,
+      "rect": {
+        "x": 1391,
+        "y": 1322,
+        "width": 119,
+        "height": 119
+      }
+    },
+    {
+      "src": "https://s7d9.scene7.com/is/image/hitachivantara/spp-logo2?fmt=webp",
+      "alt": "SPP",
+      "className": "logo-feature__logo",
+      "width": 164,
+      "height": 164,
+      "rect": {
+        "x": 1238,
+        "y": 1485,
+        "width": 119,
+        "height": 119
+      }
+    },
+    {
+      "src": "https://www.hitachivantara.com/content/dam/hvac/images/corporate/customer-logos/banorte-logo.svg",
+      "alt": "Banorte",
+      "className": "logo-feature__logo",
+      "width": 247,
+      "height": 30,
+      "rect": {
+        "x": 1391,
+        "y": 1701,
+        "width": 119,
+        "height": 14
+      }
+    },
+    {
+      "src": "https://s7d9.scene7.com/is/image/hitachivantara/city-of-moreno-valley-logo1-1ratio?fmt=webp",
+      "alt": "City of Moreno Valley",
+      "className": "logo-feature__logo",
+      "width": 836,
+      "height": 836,
+      "rect": {
+        "x": 1238,
+        "y": 1813,
+        "width": 119,
+        "height": 119
+      }
+    },
+    {
+      "src": "https://s7d9.scene7.com/is/image/hitachivantara/republic-of-panama?fmt=webp&wid=90",
+      "alt": "",
+      "className": "customer-story-carousel__logo",
+      "width": 90,
+      "height": 26,
+      "rect": {
+        "x": 186,
+        "y": 4924,
+        "width": 90,
+        "height": 26
+      }
+    },
+    {
+      "src": "https://s7d9.scene7.com/is/image/hitachivantara/st-galler-logo?fmt=webp&wid=90",
+      "alt": "",
+      "className": "customer-story-carousel__logo",
+      "width": 90,
+      "height": 48,
+      "rect": {
+        "x": 1366,
+        "y": 4902,
+        "width": 90,
+        "height": 48
+      }
+    },
+    {
+      "src": "https://s7d9.scene7.com/is/image/hitachivantara/logo-dzbank?fmt=webp&wid=90",
+      "alt": "",
+      "className": "customer-story-carousel__logo",
+      "width": 90,
+      "height": 25,
+      "rect": {
+        "x": 2546,
+        "y": 4954,
+        "width": 90,
+        "height": 25
+      }
+    },
+    {
+      "src": "https://s7d9.scene7.com/is/image/hitachivantara/logo-ama?fmt=webp&wid=90",
+      "alt": "",
+      "className": "customer-story-carousel__logo",
+      "width": 90,
+      "height": 30,
+      "rect": {
+        "x": 3726,
+        "y": 4920,
+        "width": 90,
+        "height": 30
+      }
+    },
+    {
+      "src": "https://cdn.cookielaw.org/logos/826a223b-4c9f-4eb1-b4ee-f8d4081220bc/018e1882-7fbb-7a59-8f3b-eaffd8dd0a7b/a8baed4e-e618-44e3-9da2-2cfdfdac41e6/logo.jpg",
+      "alt": "Hitachi Vantara Logo",
+      "className": "ot-bnr-logo",
+      "width": 200,
+      "height": 200,
+      "rect": {
+        "x": 45,
+        "y": 861,
+        "width": 64,
+        "height": 64
+      }
+    }
+  ],
+  "images": [
+    {
+      "src": "https://www.hitachivantara.com/content/dam/hvac/hv-nav-small1.svg",
+      "alt": "Hitachi",
+      "className": "",
+      "width": 61,
+      "height": 18,
+      "rect": {
+        "x": 131,
+        "y": 10,
+        "width": 61,
+        "height": 18
+      }
+    },
+    {
+      "src": "https://www.hitachivantara.com/content/dam/hvac/hv-nav-logo-2025.svg",
+      "alt": "Hitachi Vantara - Home",
+      "className": "",
+      "width": 260,
+      "height": 45,
+      "rect": {
+        "x": 131,
+        "y": 43,
+        "width": 200,
+        "height": 35
+      }
+    },
+    {
+      "src": "https://www.hitachivantara.com/etc.clientlibs/hvac/clientlibs/clientlib-site/resources/images/globe-icon.svg",
+      "alt": "Language Selector",
+      "className": "",
+      "width": 20,
+      "height": 22,
+      "rect": {
+        "x": 1066,
+        "y": 49,
+        "width": 20,
+        "height": 22
+      }
+    },
+    {
+      "src": "https://s7d9.scene7.com/is/image/hitachivantara/homepage-vspone-tab:tabsimage?fmt=webp",
+      "alt": "",
+      "className": "media-rt",
+      "width": 526,
+      "height": 395,
+      "rect": {
+        "x": 810,
+        "y": 642,
+        "width": 500,
+        "height": 375
+      }
+    },
+    {
+      "src": "https://s7d9.scene7.com/is/image/hitachivantara/BMW-Group-Logo-New?fmt=webp",
+      "alt": "BMW Group",
+      "className": "logo-feature__logo",
+      "width": 164,
+      "height": 62,
+      "rect": {
+        "x": 84,
+        "y": 1195,
+        "width": 119,
+        "height": 45
+      }
+    },
+    {
+      "src": "https://s7d9.scene7.com/is/image/hitachivantara/university-of-kent-logo?fmt=webp",
+      "alt": "University of Kent",
+      "className": "logo-feature__logo",
+      "width": 163,
+      "height": 163,
+      "rect": {
+        "x": -70,
+        "y": 1322,
+        "width": 119,
+        "height": 119
+      }
+    },
+    {
+      "src": "https://s7d9.scene7.com/is/image/hitachivantara/ywca-cropped?fmt=webp",
+      "alt": "YWMCA",
+      "className": "logo-feature__logo",
+      "width": 228,
+      "height": 95,
+      "rect": {
+        "x": 84,
+        "y": 1520,
+        "width": 119,
+        "height": 49
+      }
+    },
+    {
+      "src": "https://s7d9.scene7.com/is/image/hitachivantara/magyar-telekom-logo?fmt=webp",
+      "alt": "Magyar Telekom",
+      "className": "logo-feature__logo",
+      "width": 800,
+      "height": 418,
+      "rect": {
+        "x": -70,
+        "y": 1677,
+        "width": 119,
+        "height": 62
+      }
+    },
+    {
+      "src": "https://s7d9.scene7.com/is/image/hitachivantara/malayala-manorama-logo-cropped?fmt=webp",
+      "alt": "Malayala Manorama",
+      "className": "logo-feature__logo",
+      "width": 201,
+      "height": 86,
+      "rect": {
+        "x": 84,
+        "y": 1847,
+        "width": 119,
+        "height": 51
+      }
+    },
+    {
+      "src": "https://s7d9.scene7.com/is/image/hitachivantara/schneider-electric-china-logo-cropped?fmt=webp",
+      "alt": "Schneider Electric",
+      "className": "logo-feature__logo",
+      "width": 1178,
+      "height": 354,
+      "rect": {
+        "x": 1238,
+        "y": 1199,
+        "width": 119,
+        "height": 36
+      }
+    },
+    {
+      "src": "https://s7d9.scene7.com/is/image/hitachivantara/original?fmt=webp",
+      "alt": "IAG",
+      "className": "logo-feature__logo",
+      "width": 250,
+      "height": 250,
+      "rect": {
+        "x": 1391,
+        "y": 1322,
+        "width": 119,
+        "height": 119
+      }
+    },
+    {
+      "src": "https://s7d9.scene7.com/is/image/hitachivantara/spp-logo2?fmt=webp",
+      "alt": "SPP",
+      "className": "logo-feature__logo",
+      "width": 164,
+      "height": 164,
+      "rect": {
+        "x": 1238,
+        "y": 1485,
+        "width": 119,
+        "height": 119
+      }
+    },
+    {
+      "src": "https://www.hitachivantara.com/content/dam/hvac/images/corporate/customer-logos/banorte-logo.svg",
+      "alt": "Banorte",
+      "className": "logo-feature__logo",
+      "width": 247,
+      "height": 30,
+      "rect": {
+        "x": 1391,
+        "y": 1701,
+        "width": 119,
+        "height": 14
+      }
+    },
+    {
+      "src": "https://s7d9.scene7.com/is/image/hitachivantara/city-of-moreno-valley-logo1-1ratio?fmt=webp",
+      "alt": "City of Moreno Valley",
+      "className": "logo-feature__logo",
+      "width": 836,
+      "height": 836,
+      "rect": {
+        "x": 1238,
+        "y": 1813,
+        "width": 119,
+        "height": 119
+      }
+    },
+    {
+      "src": "https://s7d9.scene7.com/is/image/hitachivantara/homepage-vspone-accordion:fullbleedhorizontal?fmt=webp",
+      "alt": "",
+      "className": "",
+      "width": 573,
+      "height": 389,
+      "rect": {
+        "x": 130,
+        "y": 2245,
+        "width": 573,
+        "height": 389
+      }
+    },
+    {
+      "src": "https://www.hitachivantara.com/en-us/content/dam/hvac/images/products/cisco-validated-design-square.jpgimgt.1200.1200/content/dam/hvac/images/products/cisco-validated-design-square.jpg./content/dam/hvac/images/products/cisco-validated-design-square.jpgwebp",
+      "alt": "",
+      "className": "cmp-image__image ",
+      "width": 0,
+      "height": 0,
+      "rect": {
+        "x": 155,
+        "y": 3049,
+        "width": 540,
+        "height": 540
+      }
+    },
+    {
+      "src": "https://s7d9.scene7.com/is/image/hitachivantara/mit-technology-review-hybrid-cloud-rectangle:tabsimage?fmt=webp&wid=406&hei=303",
+      "alt": "Hybrid cloud data platform report by MIT Technology Review with cloud computing illustration",
+      "className": "media-rt",
+      "width": 0,
+      "height": 0,
+      "rect": {
+        "x": 741,
+        "y": 3735,
+        "width": 468,
+        "height": 450
+      }
+    },
+    {
+      "src": "https://s7d9.scene7.com/is/image/hitachivantara/gap-between-ai-capable-ai-ready-aerialview:mediumvertical?fmt=webp&wid=406&hei=350",
+      "alt": "",
+      "className": "",
+      "width": 0,
+      "height": 0,
+      "rect": {
+        "x": 138,
+        "y": 4538,
+        "width": 378,
+        "height": 352
+      }
+    },
+    {
+      "src": "https://s7d9.scene7.com/is/image/hitachivantara/how-ai-inference-is-reshaping-enterprise-infrastructure-square:mediumvertical?fmt=webp&wid=406&hei=350",
+      "alt": "",
+      "className": "",
+      "width": 0,
+      "height": 0,
+      "rect": {
+        "x": 531,
+        "y": 4538,
+        "width": 378,
+        "height": 352
+      }
+    },
+    {
+      "src": "https://s7d9.scene7.com/is/image/hitachivantara/a-common-data-plane:mediumvertical?fmt=webp&wid=406&hei=350",
+      "alt": "",
+      "className": "",
+      "width": 0,
+      "height": 0,
+      "rect": {
+        "x": 924,
+        "y": 4538,
+        "width": 378,
+        "height": 352
+      }
+    },
+    {
+      "src": "https://s7d9.scene7.com/is/image/hitachivantara/republic-of-panama?fmt=webp&wid=90",
+      "alt": "",
+      "className": "customer-story-carousel__logo",
+      "width": 90,
+      "height": 26,
+      "rect": {
+        "x": 186,
+        "y": 4924,
+        "width": 90,
+        "height": 26
+      }
+    },
+    {
+      "src": "https://s7d9.scene7.com/is/image/hitachivantara/st-galler-logo?fmt=webp&wid=90",
+      "alt": "",
+      "className": "customer-story-carousel__logo",
+      "width": 90,
+      "height": 48,
+      "rect": {
+        "x": 1366,
+        "y": 4902,
+        "width": 90,
+        "height": 48
+      }
+    },
+    {
+      "src": "https://s7d9.scene7.com/is/image/hitachivantara/logo-dzbank?fmt=webp&wid=90",
+      "alt": "",
+      "className": "customer-story-carousel__logo",
+      "width": 90,
+      "height": 25,
+      "rect": {
+        "x": 2546,
+        "y": 4954,
+        "width": 90,
+        "height": 25
+      }
+    },
+    {
+      "src": "https://s7d9.scene7.com/is/image/hitachivantara/logo-ama?fmt=webp&wid=90",
+      "alt": "",
+      "className": "customer-story-carousel__logo",
+      "width": 90,
+      "height": 30,
+      "rect": {
+        "x": 3726,
+        "y": 4920,
+        "width": 90,
+        "height": 30
+      }
+    },
+    {
+      "src": "https://s7d9.scene7.com/is/image/hitachivantara/a-more-flexible-approach-to-hybrid-cloud-modernization-and-management-square:mediumvertical?fmt=webp&wid=406&hei=350",
+      "alt": "",
+      "className": "",
+      "width": 0,
+      "height": 0,
+      "rect": {
+        "x": 138,
+        "y": 6067,
+        "width": 378,
+        "height": 352
+      }
+    },
+    {
+      "src": "https://s7d9.scene7.com/is/image/hitachivantara/resources-insights-center-card-square:mediumvertical?fmt=webp&wid=406&hei=350",
+      "alt": "",
+      "className": "",
+      "width": 0,
+      "height": 0,
+      "rect": {
+        "x": 531,
+        "y": 6067,
+        "width": 378,
+        "height": 352
+      }
+    },
+    {
+      "src": "https://s7d9.scene7.com/is/image/hitachivantara/ebook-esg-genai-rectangle:mediumvertical?fmt=webp&wid=406&hei=350",
+      "alt": "",
+      "className": "",
+      "width": 0,
+      "height": 0,
+      "rect": {
+        "x": 924,
+        "y": 6067,
+        "width": 378,
+        "height": 352
+      }
+    },
+    {
+      "src": "https://s7d9.scene7.com/is/image/hitachivantara/homepage-footer?fmt=png-alpha",
+      "alt": "Banner Image",
+      "className": "",
+      "width": 0,
+      "height": 0,
+      "rect": {
+        "x": 0,
+        "y": 6627,
+        "width": 1440,
+        "height": 525
+      }
+    },
+    {
+      "src": "https://cdn.cookielaw.org/logos/826a223b-4c9f-4eb1-b4ee-f8d4081220bc/018e1882-7fbb-7a59-8f3b-eaffd8dd0a7b/a8baed4e-e618-44e3-9da2-2cfdfdac41e6/logo.jpg",
+      "alt": "Hitachi Vantara Logo",
+      "className": "ot-bnr-logo",
+      "width": 200,
+      "height": 200,
+      "rect": {
+        "x": 45,
+        "y": 861,
+        "width": 64,
+        "height": 64
+      }
+    }
+  ],
+  "background_images": [
+    {
+      "urls": [
+        "https://www.hitachivantara.com/content/dam/hvac/images/homepage/hero-homepage-v2.jpg"
+      ],
+      "tag": "div",
+      "className": "hero-media full-background-img",
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 690
+      },
+      "style": {
+        "backgroundColor": null,
+        "backgroundSize": "cover",
+        "backgroundPosition": "0% 0%"
+      }
+    }
+  ],
+  "brandfetch_logos": [],
+  "screenshots": {
+    "desktop_full": {
+      "path": "research/brand-harvest/hitachi-vantara-home/screenshots/homepage-desktop-full.png",
+      "width": 1510,
+      "height": 8088,
+      "clipped": false
+    },
+    "mobile_full": {
+      "path": "research/brand-harvest/hitachi-vantara-home/screenshots/homepage-mobile-full.png",
+      "width": 390,
+      "height": 12479,
+      "clipped": false
+    }
+  },
+  "manual_screenshots": []
+}

@@ -1,0 +1,270 @@
+{
+  "logos": [
+    {
+      "src": "https://www.hitachivantara.com/content/dam/hvac/hv-nav-logo-2025.svg",
+      "alt": "Hitachi Vantara - Home",
+      "className": "",
+      "width": 260,
+      "height": 45,
+      "rect": {
+        "x": 131,
+        "y": 43,
+        "width": 200,
+        "height": 35
+      }
+    },
+    {
+      "src": "https://www.hitachivantara.com/content/dam/hvac/images/footer-logos/hv-footer-logo-2025.svg",
+      "alt": "Hitachi Vantara",
+      "className": "",
+      "width": 462,
+      "height": 63,
+      "rect": {
+        "x": 489,
+        "y": 1605,
+        "width": 462,
+        "height": 63
+      }
+    },
+    {
+      "src": "https://www.hitachivantara.com/content/dam/hvac/images/footer-logos/x-twitter.svg",
+      "alt": "Follow us on Twitter",
+      "className": "",
+      "width": 33,
+      "height": 34,
+      "rect": {
+        "x": 558,
+        "y": 1694,
+        "width": 33,
+        "height": 34
+      }
+    },
+    {
+      "src": "https://www.hitachivantara.com/content/dam/hvac/images/footer-logos/facebook.svg",
+      "alt": "Follow us on Facebook",
+      "className": "",
+      "width": 33,
+      "height": 33,
+      "rect": {
+        "x": 631,
+        "y": 1694,
+        "width": 33,
+        "height": 33
+      }
+    },
+    {
+      "src": "https://www.hitachivantara.com/content/dam/hvac/images/footer-logos/linkedin.svg",
+      "alt": "Follow us on Linkedin",
+      "className": "",
+      "width": 33,
+      "height": 33,
+      "rect": {
+        "x": 704,
+        "y": 1694,
+        "width": 33,
+        "height": 33
+      }
+    },
+    {
+      "src": "https://www.hitachivantara.com/content/dam/hvac/images/footer-logos/youtube.svg",
+      "alt": "Follow us on Youtube",
+      "className": "",
+      "width": 33,
+      "height": 33,
+      "rect": {
+        "x": 777,
+        "y": 1694,
+        "width": 33,
+        "height": 33
+      }
+    },
+    {
+      "src": "https://www.hitachivantara.com/content/dam/hvac/images/footer-logos/instagram.svg",
+      "alt": "Follow us on Instagram",
+      "className": "",
+      "width": 33,
+      "height": 33,
+      "rect": {
+        "x": 850,
+        "y": 1694,
+        "width": 33,
+        "height": 33
+      }
+    },
+    {
+      "src": "https://cdn.cookielaw.org/logos/826a223b-4c9f-4eb1-b4ee-f8d4081220bc/018e1882-7fbb-7a59-8f3b-eaffd8dd0a7b/a8baed4e-e618-44e3-9da2-2cfdfdac41e6/logo.jpg",
+      "alt": "Hitachi Vantara Logo",
+      "className": "ot-bnr-logo",
+      "width": 200,
+      "height": 200,
+      "rect": {
+        "x": 45,
+        "y": 861,
+        "width": 64,
+        "height": 64
+      }
+    }
+  ],
+  "images": [
+    {
+      "src": "https://www.hitachivantara.com/content/dam/hvac/hv-nav-small1.svg",
+      "alt": "Hitachi",
+      "className": "",
+      "width": 61,
+      "height": 18,
+      "rect": {
+        "x": 131,
+        "y": 10,
+        "width": 61,
+        "height": 18
+      }
+    },
+    {
+      "src": "https://www.hitachivantara.com/content/dam/hvac/hv-nav-logo-2025.svg",
+      "alt": "Hitachi Vantara - Home",
+      "className": "",
+      "width": 260,
+      "height": 45,
+      "rect": {
+        "x": 131,
+        "y": 43,
+        "width": 200,
+        "height": 35
+      }
+    },
+    {
+      "src": "https://www.hitachivantara.com/etc.clientlibs/hvac/clientlibs/clientlib-site/resources/images/globe-icon.svg",
+      "alt": "Language Selector",
+      "className": "",
+      "width": 20,
+      "height": 22,
+      "rect": {
+        "x": 1066,
+        "y": 49,
+        "width": 20,
+        "height": 22
+      }
+    },
+    {
+      "src": "https://s7d9.scene7.com/is/image/hitachivantara/webinar-hero-image-rectangular:herorightmedia?fmt=webp",
+      "alt": "",
+      "className": "media-rt",
+      "width": 530,
+      "height": 526,
+      "rect": {
+        "x": 910,
+        "y": 223,
+        "width": 530,
+        "height": 526
+      }
+    },
+    {
+      "src": "https://www.hitachivantara.com/content/dam/hvac/images/footer-logos/hv-footer-logo-2025.svg",
+      "alt": "Hitachi Vantara",
+      "className": "",
+      "width": 462,
+      "height": 63,
+      "rect": {
+        "x": 489,
+        "y": 1605,
+        "width": 462,
+        "height": 63
+      }
+    },
+    {
+      "src": "https://www.hitachivantara.com/content/dam/hvac/images/footer-logos/x-twitter.svg",
+      "alt": "Follow us on Twitter",
+      "className": "",
+      "width": 33,
+      "height": 34,
+      "rect": {
+        "x": 558,
+        "y": 1694,
+        "width": 33,
+        "height": 34
+      }
+    },
+    {
+      "src": "https://www.hitachivantara.com/content/dam/hvac/images/footer-logos/facebook.svg",
+      "alt": "Follow us on Facebook",
+      "className": "",
+      "width": 33,
+      "height": 33,
+      "rect": {
+        "x": 631,
+        "y": 1694,
+        "width": 33,
+        "height": 33
+      }
+    },
+    {
+      "src": "https://www.hitachivantara.com/content/dam/hvac/images/footer-logos/linkedin.svg",
+      "alt": "Follow us on Linkedin",
+      "className": "",
+      "width": 33,
+      "height": 33,
+      "rect": {
+        "x": 704,
+        "y": 1694,
+        "width": 33,
+        "height": 33
+      }
+    },
+    {
+      "src": "https://www.hitachivantara.com/content/dam/hvac/images/footer-logos/youtube.svg",
+      "alt": "Follow us on Youtube",
+      "className": "",
+      "width": 33,
+      "height": 33,
+      "rect": {
+        "x": 777,
+        "y": 1694,
+        "width": 33,
+        "height": 33
+      }
+    },
+    {
+      "src": "https://www.hitachivantara.com/content/dam/hvac/images/footer-logos/instagram.svg",
+      "alt": "Follow us on Instagram",
+      "className": "",
+      "width": 33,
+      "height": 33,
+      "rect": {
+        "x": 850,
+        "y": 1694,
+        "width": 33,
+        "height": 33
+      }
+    },
+    {
+      "src": "https://cdn.cookielaw.org/logos/826a223b-4c9f-4eb1-b4ee-f8d4081220bc/018e1882-7fbb-7a59-8f3b-eaffd8dd0a7b/a8baed4e-e618-44e3-9da2-2cfdfdac41e6/logo.jpg",
+      "alt": "Hitachi Vantara Logo",
+      "className": "ot-bnr-logo",
+      "width": 200,
+      "height": 200,
+      "rect": {
+        "x": 45,
+        "y": 861,
+        "width": 64,
+        "height": 64
+      }
+    }
+  ],
+  "background_images": [],
+  "brandfetch_logos": [],
+  "screenshots": {
+    "desktop_full": {
+      "path": "research/brand-harvest/hitachi-vantara-ai-event/screenshots/homepage-desktop-full.png",
+      "width": 1440,
+      "height": 2437,
+      "clipped": false
+    },
+    "mobile_full": {
+      "path": "research/brand-harvest/hitachi-vantara-ai-event/screenshots/homepage-mobile-full.png",
+      "width": 390,
+      "height": 3572,
+      "clipped": false
+    }
+  },
+  "manual_screenshots": []
+}

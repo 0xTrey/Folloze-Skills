@@ -1,0 +1,13 @@
+:root {
+  --brand-primary: #000000;
+  --brand-accent: #FFFFFF;
+  --brand-text: #111827;
+  --brand-surface: #FFFFFF;
+  --brand-font-display: sans-serif;
+  --brand-font-body: neue-haas-grotesk-display, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --brand-button-radius: 0px;
+  --brand-button-padding: 16px;
+  --brand-button-font-weight: 600;
+  --brand-card-radius: 0px;
+  --brand-card-shadow: none;
+}
