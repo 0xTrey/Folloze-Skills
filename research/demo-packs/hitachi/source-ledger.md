@@ -28,10 +28,9 @@ Updated: 2026-08-05
 
 ## Theme and build controls
 
-- Folloze company theme explicitly requested by the user.
-- Theme ID: `5374`
-- Theme stylesheet: `https://cdn.folloze.com/theme/2/5374.css?v=1767691946`
-- All page styling uses injected Folloze variables and classes. Hitachi fidelity comes from official logos, imagery, proof, product language, and narrative.
+- No Folloze company theme. The visual system is custom-built from the Hitachi Vantara harvest bundles above.
+- Hitachi design controls: black and white, Hitachi red, orange-to-magenta gradients, light-gray surfaces, Neue Haas Grotesk-style display typography, and official logos and imagery.
+- Technical MCP dependency only: theme ID `5374` and stylesheet `https://cdn.folloze.com/theme/2/5374.css?v=1767691946` remain in the save payload/head because the Folloze MCP contract requires them. The page sources use zero Folloze visual variables, and high-specificity custom Hitachi CSS owns the rendered experience.
 - Visible pages do not use private sources, internal account data, inferred intent, or unverified event details.
 
 ## Excluded or internal-only

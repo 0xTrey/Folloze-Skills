@@ -1,10 +1,14 @@
 {
-  "checked_at": "2026-08-05T19:20:00Z",
+  "checked_at": "2026-08-05T19:00:00Z",
   "theme": {
-    "theme_id": "5374",
-    "stylesheet": "https://cdn.folloze.com/theme/2/5374.css?v=1767691946",
-    "font_loaded": "Open Sans",
-    "mode": "Folloze theme variables only"
+    "mode": "no_folloze_company_theme",
+    "visual_theme": "Custom Hitachi Vantara theme harvested from current Hitachi Vantara digital properties",
+    "palette": ["#000000", "#111111", "#CC0000", "#FF8A00", "#E10000", "#C400C6", "#EEF1F5", "#FFFFFF"],
+    "font_stack": "neue-haas-grotesk-display, Helvetica Neue, Helvetica, Arial, sans-serif",
+    "folloze_visual_variables_used": 0,
+    "technical_theme_id": "5374",
+    "technical_stylesheet": "https://cdn.folloze.com/theme/2/5374.css?v=1767691946",
+    "technical_dependency_note": "Required by the Folloze MCP save contract only; high-specificity custom Hitachi CSS owns the rendered experience."
   },
   "pages": {
     "campaign": {
@@ -21,8 +25,12 @@
       "external_links_with_blank_noopener": 9,
       "diagnostic_tab_interaction": "pass",
       "mobile_carousel_interaction": "pass",
-      "folloze_runtime_contrast": "pass",
-      "folloze_runtime_screenshot": "qa/hitachi-demo-pack/campaign-folloze-runtime-full-contrast.jpg"
+      "custom_hitachi_theme": "pass",
+      "folloze_visual_variables_used": 0,
+      "local_runtime_contrast": "pass",
+      "local_runtime_screenshot": "qa/hitachi-demo-pack/campaign-custom-hitachi-desktop.png",
+      "published_runtime_contrast": "pass",
+      "published_runtime_screenshot": "qa/hitachi-demo-pack/campaign-folloze-runtime-custom-hitachi.png"
     },
     "one_to_one_abm": {
       "file": "artifacts/hitachi-demo-pack/hitachi-bmw-production-data-foundation.html",
@@ -37,8 +45,12 @@
       "external_links": 6,
       "external_links_with_blank_noopener": 6,
       "workload_mapper_interaction": "pass",
-      "folloze_runtime_contrast": "pass",
-      "folloze_runtime_screenshot": "qa/hitachi-demo-pack/bmw-folloze-runtime-full-contrast.jpg"
+      "custom_hitachi_theme": "pass",
+      "folloze_visual_variables_used": 0,
+      "local_runtime_contrast": "pass",
+      "local_runtime_screenshot": "qa/hitachi-demo-pack/bmw-custom-hitachi-desktop.png",
+      "published_runtime_contrast": "pass",
+      "published_runtime_screenshot": "qa/hitachi-demo-pack/bmw-folloze-runtime-custom-hitachi.png"
     },
     "event": {
       "file": "artifacts/hitachi-demo-pack/hitachi-ai-data-foundation-on-demand.html",
@@ -53,8 +65,12 @@
       "external_links": 7,
       "external_links_with_blank_noopener": 7,
       "session_path_interaction": "pass",
-      "folloze_runtime_contrast": "pass",
-      "folloze_runtime_screenshot": "qa/hitachi-demo-pack/event-folloze-runtime-full-contrast.jpg"
+      "custom_hitachi_theme": "pass",
+      "folloze_visual_variables_used": 0,
+      "local_runtime_contrast": "pass",
+      "local_runtime_screenshot": "qa/hitachi-demo-pack/event-custom-hitachi-desktop.png",
+      "published_runtime_contrast": "pass",
+      "published_runtime_screenshot": "qa/hitachi-demo-pack/event-folloze-runtime-custom-hitachi.png"
     }
   },
   "cards": [
@@ -75,9 +91,9 @@
     }
   ],
   "publication": {
-    "campaign": {"board_id": 249545, "designer_url": "https://app.folloze.com/app/board/249545/designer", "public_url": "https://engage.folloze.com/hitachi-ai-ready-data-foundation", "save": "pass", "publish": "pass", "public_qa": "pass", "anonymous_guest": true, "http_status": 200, "redirects": 0, "published_hash": "d2a309c37ecff00de75ce63c0dfaea5567b9fd73", "tracker_row": 156},
-    "one_to_one_abm": {"board_id": 249544, "designer_url": "https://app.folloze.com/app/board/249544/designer", "public_url": "https://engage.folloze.com/hitachi-bmw-production-data-foundation", "save": "pass", "publish": "pass", "public_qa": "pass", "anonymous_guest": true, "http_status": 200, "redirects": 0, "published_hash": "ad56b865d299a5accfb9f079c5bca00fbbbdd94e", "tracker_row": 157},
-    "event": {"board_id": 249546, "designer_url": "https://app.folloze.com/app/board/249546/designer", "public_url": "https://engage.folloze.com/hitachi-ai-data-foundation-on-demand", "save": "pass", "publish": "pass", "public_qa": "pass", "anonymous_guest": true, "http_status": 200, "redirects": 0, "published_hash": "85bc0e7f62188a68bae16e99cfd945985a7fc999", "tracker_row": 158}
+    "campaign": {"board_id": 249545, "designer_url": "https://app.folloze.com/app/board/249545/designer", "public_url": "https://engage.folloze.com/hitachi-ai-ready-data-foundation", "save": "pass", "publish": "pass", "public_qa": "pass", "custom_hitachi_theme": "pass", "anonymous_guest": true, "http_status": 200, "redirects": 0, "published_hash": "529756b41dce03147ff28aa18f8e3ec675a51840", "tracker_row": 156},
+    "one_to_one_abm": {"board_id": 249544, "designer_url": "https://app.folloze.com/app/board/249544/designer", "public_url": "https://engage.folloze.com/hitachi-bmw-production-data-foundation", "save": "pass", "publish": "pass", "public_qa": "pass", "custom_hitachi_theme": "pass", "anonymous_guest": true, "http_status": 200, "redirects": 0, "published_hash": "dc3c2c9f14a3c9099dbf5a64b1704375d5e138e5", "tracker_row": 157},
+    "event": {"board_id": 249546, "designer_url": "https://app.folloze.com/app/board/249546/designer", "public_url": "https://engage.folloze.com/hitachi-ai-data-foundation-on-demand", "save": "pass", "publish": "pass", "public_qa": "pass", "custom_hitachi_theme": "pass", "anonymous_guest": true, "http_status": 200, "redirects": 0, "published_hash": "6dca20614db68a7ecbf5bd5682b1fca9c9b74c8b", "tracker_row": 158}
   },
   "delivery": {
     "recipient": "Troy Smith",
@@ -85,6 +101,7 @@
     "dm_channel_id": "D08GUFP2CKB",
     "published_url_message": "https://folloze.slack.com/archives/D08GUFP2CKB/p1785954662635929",
     "asset_delivery_message": "https://folloze.slack.com/archives/D08GUFP2CKB/p1785954678900189",
+    "custom_hitachi_theme_correction_message": "https://folloze.slack.com/archives/D08GUFP2CKB/p1785956651592609",
     "automated_message_disclosure": "pass",
     "binary_attachment_upload": "unavailable: connected Slack account lacks files:write:user",
     "drive_fallback": "pass",

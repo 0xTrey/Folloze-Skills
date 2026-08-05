@@ -7,7 +7,7 @@ Updated: 2026-08-05
 - Vendor: Hitachi Vantara (`hitachivantara.com`).
 - Category: data infrastructure, storage, hybrid cloud, data management, infrastructure as a service, and AI-ready infrastructure.
 - Pack mode: three net-new Folloze boards with independent local source, QA, save, publish, vanity, anonymous verification, and tracker states.
-- Theme mode: Folloze company theme, explicitly requested. Theme ID `5374`.
+- Theme mode: no Folloze company theme. The rendered pages use a custom Hitachi Vantara visual system harvested from current Hitachi properties: black and white, Hitachi red, orange-to-magenta gradients, light-gray surfaces, Neue Haas Grotesk-style display typography, and official Hitachi imagery. Folloze theme ID `5374` and its stylesheet link are retained only as a technical requirement of the MCP save contract.
 - Local sources:
   - Campaign: `artifacts/hitachi-demo-pack/hitachi-ai-ready-data-foundation.html`
   - One-to-one: `artifacts/hitachi-demo-pack/hitachi-bmw-production-data-foundation.html`
@@ -52,5 +52,5 @@ Updated: 2026-08-05
 - No customer-facing language about demos, examples, templates, boards, microsites, internal sales motions, or build choices.
 - External CTAs are real, open in a new tab, include `rel="noopener"`, and fire direct inline CTA analytics.
 - In-page navigation uses buttons and `scrollIntoView`, never raw hash anchors.
-- All custom styling uses the Folloze theme variables; no custom hardcoded color palette or brand font is introduced.
+- The custom Hitachi theme owns all rendered color, typography, spacing, buttons, surfaces, and contrast. The pages use zero Folloze visual variables.
 - Each board uses official Hitachi-hosted imagery and at least one image-led section.
