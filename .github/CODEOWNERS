@@ -1,0 +1,11 @@
+# Internal Folloze skill distribution is owner-reviewed.
+* @0xTrey
+
+# Security-sensitive distribution and harvesting surfaces.
+/Skills/brand-harvester/ @0xTrey
+/Skills/skills-update-folloze/ @0xTrey
+/publication-allowlist.json @0xTrey
+/scripts/publish_local_skills_to_repo.py @0xTrey
+/scripts/scan_public_release.py @0xTrey
+/scripts/sync_codex_skills.py @0xTrey
+/.github/ @0xTrey
