@@ -40,8 +40,8 @@ This is a ${run_type} run.
 Requirements:
 - Review recent incoming Gmail inbox messages and produce the real summary, not a placeholder.
 - Group results into Urgent, Needs reply soon, Waiting, and FYI.
-- Send the full summary as a Slack DM to Troy Smith using the local DAILY_EMAIL_SUMMARY_SLACK_USER_ID value or connector lookup.
-- Send the same full summary by real email to Troy.smith@folloze.com using the bundled delivery script.
+- Send the full summary as a Slack DM only to the recipient configured at runtime through DAILY_EMAIL_SUMMARY_SLACK_USER_ID or an explicit connector lookup.
+- Send the same full summary only to the recipient configured by the operator at runtime using the bundled delivery script.
 - Use subject line "${subject_label} - ${date_stamp}".
 - In the final answer, clearly state whether Slack delivery succeeded and whether email delivery succeeded.
 - End with exactly one ::inbox-item directive.

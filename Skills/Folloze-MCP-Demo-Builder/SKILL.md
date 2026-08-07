@@ -1,18 +1,20 @@
 ---
 name: Folloze-MCP-Demo-Builder
-description: Build and update vendor-branded Folloze MCP microsites, account-specific solution pages, demo boards, and buyer experiences from a single self-contained HTML page. Use when the user asks to use Folloze MCP, build a Folloze board, create a 1:1 account page, or refine an existing Folloze MCP board.
+description: Internal operator workflow for building or updating vendor-branded demo-instance Folloze boards through authorized MCP tools. Use only when the user explicitly identifies internal demo-instance work or names an existing internal demo board. For general, customer, partner, campaign, webinar, or 1:1 board requests, use the customer distribution router instead.
 ---
 
 # Folloze-MCP-Demo-Builder
 
-Use this skill for Folloze MCP board and microsite work where the output is a polished buyer-facing page saved through the Folloze MCP landing-page tools.
+Use this skill only for authorized Folloze operators working in an internal demo instance. General and customer-facing board creation belongs in the portable customer pack at `https://github.com/0xTrey/folloze-mcp-customer-skills`.
+
+If the request does not explicitly establish internal demo-instance scope, stop routing here and use the customer pack's board router and motion-specific builder.
 
 ## Operating Rules
 
 - Start from the real business context named by the user: vendor site, target account, live board ID, source page, screenshots, Salesforce context if allowed, and any existing designer URL.
 - The deliverable is a repo-backed, vendor-faithful sales experience with measurable interaction QA. It is not a Folloze-specific experience unless the user explicitly asks for Folloze branding or Folloze-owned positioning.
 - For vendor-owned account pages, keep Folloze invisible in buyer-facing copy unless the user explicitly wants a Folloze-branded sales asset.
-- For Trey's demo-board-builder work, the default theme recommendation is no Folloze company theme so the vendor's brand system stays in control. Still ask the explicit yes/no theme question required by the Folloze MCP theme tool before calling it, and record the user's answer in the local research note.
+- For internal vendor-branded demo work, recommend no Folloze company theme so the vendor's brand system stays in control. Still ask the explicit theme question required by the current Folloze MCP guide and record the answer in the local research note.
 - For Folloze-branded or Folloze-owned experiences, use `folloze-brand-kit` and its product capability references. Use customer-ready language for buyer-facing copy and internal capability context only for planning.
 - Avoid customer-facing meta language such as demo, example, proof of concept, microsite, board, or template unless the user explicitly asks for it.
 - Use the vendor's public website as the design reference: logo treatment, section rhythm, dark/light bands, card radius, typography scale, button treatment, imagery, footer structure, and CTA language. Start with the vendor's regular home page unless the user provides a more specific source page.
@@ -25,7 +27,7 @@ Use this skill for Folloze MCP board and microsite work where the output is a po
 - If the user does not know the target account, pick one credible large account and explain the account/page angle briefly before building.
 - When the user asks who a vendor targets or should target, write a short account-selection brief before building: target-account clusters, selected account rationale, public account signals, and the solution motion the vendor should sell into that account.
 - Disambiguate similar account names, acronyms, campuses, and systems before applying brand, school colors, or public claims. If a request could mean a university system, a flagship campus, or a similarly named institution, verify the intended entity from the source URL, board name, tracker row, or user-provided context before changing identity-specific styling or copy.
-- For customer demo examples, default to an HTML-driven local preview workflow until Trey explicitly says to publish or save through MCP. Local preview can be a scratch HTML file opened in the Codex app or browser; it does not require localhost unless browser tooling needs it.
+- Default to an HTML-driven local preview workflow until the operator explicitly authorizes an MCP save. Local preview can be a scratch HTML file opened in the available app or browser; it does not require localhost unless browser tooling needs it.
 - Do not invent deployment URLs. If MCP only returns a signed-in designer URL, report that and keep public deployment pending.
 
 ## Customer Demo Copy Pass
@@ -233,7 +235,7 @@ Before writing new HTML or restructuring a page, choose one experience shape usi
 - After a successful MCP save, refresh any relevant QA screenshots or QA notes from the final pushed local HTML, then commit only the board source, research note, and QA artifacts that belong to that board.
 - Treat Folloze save, tracker write, local git commit, and remote git push as separate operations. When the user says "push to Folloze", save through MCP; do not assume they also asked to push the git branch unless they explicitly ask for GitHub/remote backup.
 - If a run is interrupted after a save or tracker write, resume by checking staged files, the local research note, and the returned board ID before repeating any live operation. Do not create a duplicate board or duplicate tracker row just because the previous final response was interrupted.
-- If the current branch has unrelated local history or a dirty worktree that makes a remote push unsafe, do not push unrelated commits just to back up the current board. Commit the scoped work locally, report the branch state, and let Trey decide whether to publish the broader branch.
+- If the current branch has unrelated local history or a dirty worktree that makes a remote push unsafe, do not push unrelated commits just to back up the current board. Commit the scoped work locally and report the branch state.
 - During sequential browser-comment passes on the same board, preserve the active board identity, local source path, theme ID, QA artifacts, and latest scoped commit across comments. When several comments are present in one review cycle, batch them into one local QA, Folloze save, and scoped commit when practical instead of saving or committing after every small annotation.
 
 ## Board Identity Guard
@@ -256,7 +258,7 @@ Resolve board identity in this order before deciding whether the save is net-new
 3. The shared tracker row, searched by board ID, exact designer URL, exact board name, then company/account name.
 4. Current local source title/name and file path.
 
-Treat "push to Folloze", "push to follows", "publish", "save live", "update board", and "repush" as MCP save requests. If a board ID is found by the lookup above, update that existing board. Create a new board only when no verified board ID exists or Trey explicitly asks for a new board/duplicate.
+Treat "push to Folloze", "publish", "save live", "update board", and "repush" as MCP save requests. If a board ID is found by the lookup above, update that existing board. Create a new board only when no verified board ID exists or the operator explicitly asks for a new board or duplicate.
 
 If any identity field points to a different account, target institution, board ID, or prior example than the current user request, pause the save and resolve the mismatch. Do not overwrite a board that is being used only as a visual reference.
 
@@ -299,38 +301,15 @@ After a successful save, update the local research/result note for that board wi
 - Do not re-ask theme mode for a same-board update when the current source and prior context already establish the theme mode. Reconfirm only when the user asks to change theme behavior or the source file lacks the required theme link/theme ID.
 - After save, report the exact MCP-returned URL. Do not infer public deployment from a prior tracker URL.
 
-## Tracker Rule
+## Optional Tracker Rule
 
-- Tracker logging is operator-scoped. For Trey's local Codex runs, write Trey's shared demo-environments tracker only once: immediately after a board is created in Folloze for the first time. Do not update the Google Sheet for later edits, annotation passes, repushes, or existing-board updates unless Trey explicitly asks for that specific tracker change.
-- Tracker: `MCP Demo Environments - May 2026`, tab `Demo Environments`, spreadsheet `1s_NU2O7lO8f_QSVmP2mI5dBNOGgUh7oQo3bfenerMqk`.
-- Current Row A schema is authoritative:
-  - Column A: `Company name`
-  - Column B: `Board Name`
-  - Column C: `Deployment URL`
-  - Column D: `Designer edit URL`
-  - Column E: `Needed By Date`
-  - Column F: `Luke Feedback`
-  - Column G: `Agent Notes`
-- Before a first-create tracker write, read row 1 once and align writes by header name rather than older column positions. If row 1 differs, stop and adapt to the live headers before writing.
-- For any other operator or team member, do not write to Trey's tracker unless Trey explicitly asks for that specific run. Use a team-provided tracker if one is supplied; otherwise skip tracker logging and state that no tracker was configured.
-- If tracker logging is in scope for a first create, search existing rows first by board ID from the designer URL or notes, exact designer URL, exact board name, and company name. If a row already exists for that board, do not write again; report that the tracker was already logged.
-- Treat company-name-only tracker matches as weak matches. If the matched row's board name, board ID, designer URL, target account, or agent notes clearly refer to a different board or account motion, do not overwrite it silently. Prefer creating a new row, or ask Trey if the row should be repurposed.
-- Never use Google Sheets `appendCells` for Trey's shared tracker. The sheet can contain preallocated blank rows, so append may write below the visible working table instead of the next available row.
-- For a net-new row, read a bounded visible range such as `A1:G120` and choose the next visible blank row: the first row after the last contiguous tracker row where columns A-D contain a company name, board name, deployment URL, or designer URL. Ignore trailing preallocated rows and do not write below the visible working table just because the sheet grid has more allocated rows.
-- Write the full A:G tracker record in one bounded `updateCells` request. Do not update only Column C, Column D, or Column G unless updating an already-canonical row, and do not leave notes stranded in a separate row.
-- On first-create tracker writes, write the saved board title/name returned or passed to MCP into Column B (`Board Name`).
-- Preserve Column E (`Needed By Date`) and Column F (`Luke Feedback`) unless Trey explicitly asks to change them.
-- If MCP returns only a signed-in designer URL during first creation, write `deployment URL pending from MCP` into Column C. Do not invent deployment URLs.
-- If Trey provides a real public or published URL at the same first-create save moment, write that URL into Column C and record in Column G that it was user-supplied.
-- If Trey later supplies a real public `experience.folloze.com` URL for an already-saved board, verify it with a bounded HTTP check, update the existing canonical tracker row by board ID/designer URL, and update the local research note. Do not create a new row and do not resave the board unless Trey explicitly asks.
-- Record Column D (`Designer edit URL`) from the exact MCP returned designer URL.
-- Record Column G (`Agent Notes`) as a concise status note with board ID, date, source boundary, theme mode, QA/publish caveat, and latest material change.
-- For tracker reads, avoid parallel Google Sheets calls. Use one bounded row/header lookup, then one bounded row search if needed.
-- For first-create tracker writes, use this fallback sequence when the connector supports it: read `A1:G1` for headers, search bounded rows for the board/company, read a bounded visible table range such as `A1:G120` to find the next visible blank row, fetch spreadsheet metadata for the target `sheetId`, then write the row with a direct bounded update. This avoids broad reads and avoids append helpers that can skip to the bottom of preallocated rows.
-- If a tracker search finds the same board ID, designer URL, board name, or public URL in multiple rows, preserve the most complete row in the visible tracker table as canonical. Move missing cells into that row, then clear orphan partial rows. Do not report tracker completion until one canonical row remains, unless readback is rate-limited after a successful repair write.
-- If Sheets returns `RATE_LIMITED`, `RESOURCE_EXHAUSTED`, or `RATE_LIMIT_EXCEEDED`, pause once for the quota window and retry only narrow ranges. Do not loop on wide metadata or whole-sheet reads.
-- If the write succeeds, do not require immediate readback verification. If readback hits `RATE_LIMIT_EXCEEDED`, record that the write request succeeded and report the readback caveat instead of retrying in a loop.
-- If Google Sheets returns a quota or transient read error before the first-create write, do not loop aggressively. Use bounded backoff once or twice; otherwise report tracker logging as pending while still returning the saved board details.
+- No tracker, spreadsheet, user profile, tab, range, or operator identity is built into this skill.
+- Write tracker data only when the current operator supplies or explicitly authorizes a tracker for the current run.
+- Read the live header row and map fields by header name; never assume a stored spreadsheet ID, sheet ID, row number, or fixed person-specific column.
+- Search for an existing record by board ID, exact designer URL, exact board name, then company name before creating a row. Treat company-only matches as weak.
+- Keep the board name, board ID, exact designer URL, public deployment status, source boundary, theme mode, QA caveat, and latest material change together in one canonical record.
+- Avoid append helpers when a sheet contains preallocated rows. Use a bounded visible-range read and a bounded update supported by the active connector.
+- If no tracker is configured, skip tracker logging and state that clearly. A successful Folloze save does not depend on tracker availability.
 
 ## Design QA Defaults
 
@@ -564,7 +543,7 @@ Keep the final response short:
 - Local source file path when one exists.
 - Board ID.
 - Exact designer/live URL returned by MCP.
-- Public deployment URL when MCP returned one or Trey supplied one; otherwise say deployment is pending.
+- Public deployment URL when MCP returned one or the operator supplied one; otherwise say deployment is pending.
 - Tracker status when tracker logging is in scope.
 - Commit hash when repo-backed source changes were committed.
 - Any caveat, especially pending public deployment or signed-in-only QA.

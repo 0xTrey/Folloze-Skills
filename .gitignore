@@ -8,6 +8,15 @@ __pycache__/
 venv/
 dist/
 build/
+artifacts/
+output/
+qa/
+research/
+test-results/
+.playwright-cli/
+.env
+.env.*
+*.zip
 
 # Local private references. Do not commit pricing, order-form, or deal data.
 private/

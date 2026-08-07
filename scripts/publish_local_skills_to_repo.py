@@ -1,129 +1,139 @@
 #!/usr/bin/env python3
+"""Stage an explicitly approved local skill for public-repo review.
+
+This helper never discovers or publishes skills automatically. A skill must be named
+on the command line and pre-approved in publication-allowlist.json.
+"""
 from __future__ import annotations
 
 import argparse
+import importlib.util
 import json
 import os
 import shutil
+import subprocess
 from pathlib import Path
 
 
 DEFAULT_CODEX_HOME = Path(os.environ.get("CODEX_HOME", str(Path.home() / ".codex")))
 DEFAULT_SOURCE_ROOT = DEFAULT_CODEX_HOME / "skills"
-DEFAULT_NAMESPACE_DIR = "Troy Folloze Created Skills"
 
 
 def parse_args() -> argparse.Namespace:
     repo_root = Path(__file__).resolve().parents[1]
     parser = argparse.ArgumentParser(
-        description=(
-            "Copy local Codex skills not yet tracked in the shared repo into a "
-            "repo namespace folder and update the manifest."
-        ),
+        description="Stage explicitly allowlisted local skills for public-repo review.",
     )
-    parser.add_argument(
-        "--repo-root",
-        default=str(repo_root),
-        help="Path to the local Folloze-Skills clone.",
-    )
-    parser.add_argument(
-        "--source-root",
-        default=str(DEFAULT_SOURCE_ROOT),
-        help="Path to the local Codex skills root. Defaults to $CODEX_HOME/skills or ~/.codex/skills.",
-    )
-    parser.add_argument(
-        "--manifest",
-        help="Path to the skills manifest. Defaults to <repo-root>/skills-manifest.json.",
-    )
-    parser.add_argument(
-        "--namespace-dir",
-        default=DEFAULT_NAMESPACE_DIR,
-        help="Subdirectory under Skills/ where published skills should be copied.",
-    )
+    parser.add_argument("--repo-root", default=str(repo_root))
+    parser.add_argument("--source-root", default=str(DEFAULT_SOURCE_ROOT))
+    parser.add_argument("--manifest")
+    parser.add_argument("--allowlist")
     parser.add_argument(
         "--skill",
         action="append",
-        default=[],
-        help="Publish only the named local skill. May be passed multiple times.",
+        required=True,
+        help="Exact allowlisted skill name. May be passed multiple times.",
     )
-    parser.add_argument(
-        "--dry-run",
-        action="store_true",
-        help="Print planned actions without modifying the repo.",
-    )
+    parser.add_argument("--dry-run", action="store_true")
     return parser.parse_args()
 
 
-def load_manifest(path: Path) -> dict:
+def load_json(path: Path) -> dict:
     return json.loads(path.read_text())
 
 
-def write_manifest(path: Path, manifest: dict, dry_run: bool) -> None:
-    content = json.dumps(manifest, indent=2) + "\n"
-    if dry_run:
-        print(f"update_manifest: {path}")
-        return
-    path.write_text(content)
+def load_scanner(repo_root: Path):
+    scanner_path = repo_root / "scripts" / "scan_public_release.py"
+    spec = importlib.util.spec_from_file_location("scan_public_release", scanner_path)
+    if spec is None or spec.loader is None:
+        raise SystemExit(f"Unable to load public-release scanner: {scanner_path}")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
 
 
-def is_repo_managed_skill(path: Path, repo_root: Path) -> bool:
+def approved_entries(allowlist: dict) -> dict[str, dict]:
+    entries: dict[str, dict] = {}
+    for entry in allowlist.get("allowed_skills", []):
+        if entry.get("approved") is True and entry.get("name"):
+            entries[entry["name"]] = entry
+    return entries
+
+
+def validate_source(name: str, source_root: Path) -> Path:
+    if Path(name).name != name or name in {".", ".."}:
+        raise SystemExit(f"Unsafe publication skill name: {name}")
+    source = source_root / name
+    if source.is_symlink():
+        raise SystemExit(
+            f"Publication denied for symlinked skill {name}; copy it into a reviewed source "
+            "directory and approve that exact source instead."
+        )
+    if not source.is_dir() or not (source / "SKILL.md").is_file():
+        raise SystemExit(f"Requested local skill is missing SKILL.md: {source}")
     try:
-        target = path.resolve()
-    except FileNotFoundError:
-        return False
-    return repo_root == target or repo_root in target.parents
+        source.resolve().relative_to(source_root.resolve())
+    except ValueError as exc:
+        raise SystemExit(f"Publication source escapes the selected source root: {source}") from exc
+    return source
 
 
-def discover_local_skills(source_root: Path, repo_root: Path) -> list[tuple[str, Path]]:
-    if not source_root.exists():
-        return []
-
-    skills: list[tuple[str, Path]] = []
-    for child in sorted(source_root.iterdir()):
-        if child.name.startswith("."):
-            continue
-        skill_dir = child
-        if child.is_symlink():
-            if is_repo_managed_skill(child, repo_root):
-                continue
-            skill_dir = child.resolve()
-        if not skill_dir.is_dir():
-            continue
-        if not (skill_dir / "SKILL.md").exists():
-            continue
-        skills.append((child.name, skill_dir))
-    return skills
-
-
-def selected_skills(
-    local_skills: list[tuple[str, Path]],
-    requested: set[str],
-) -> list[tuple[str, Path]]:
-    if not requested:
-        return local_skills
-    found = {name for name, _ in local_skills}
-    missing = sorted(requested - found)
-    if missing:
-        raise SystemExit(f"Requested local skills not found: {', '.join(missing)}")
-    return [(name, path) for name, path in local_skills if name in requested]
+def require_pr_branch(repo_root: Path) -> str:
+    result = subprocess.run(
+        ["git", "-C", str(repo_root), "branch", "--show-current"],
+        check=True,
+        text=True,
+        capture_output=True,
+    )
+    branch = result.stdout.strip()
+    if not branch or branch in {"main", "master"}:
+        raise SystemExit("Publication candidates may only be staged on a non-main PR branch.")
+    status = subprocess.run(
+        ["git", "-C", str(repo_root), "status", "--porcelain"],
+        check=True,
+        text=True,
+        capture_output=True,
+    ).stdout.strip()
+    if status:
+        raise SystemExit("Publication requires a clean PR-branch worktree before staging.")
+    return branch
 
 
 def copy_skill(source: Path, dest: Path, dry_run: bool) -> None:
-    print(f"publish: {source} -> {dest}")
+    print(f"stage_publication: {source} -> {dest}")
     if dry_run:
         return
     if dest.exists():
         raise SystemExit(f"Destination already exists in repo: {dest}")
     dest.parent.mkdir(parents=True, exist_ok=True)
-    shutil.copytree(source, dest, symlinks=False)
+    shutil.copytree(
+        source,
+        dest,
+        symlinks=False,
+        ignore=shutil.ignore_patterns(
+            ".git",
+            ".env",
+            ".env.*",
+            "__pycache__",
+            "*.pyc",
+            ".pytest_cache",
+            ".playwright-cli",
+            ".folloze-managed.json",
+            "artifacts",
+            "output",
+            "test-results",
+        ),
+    )
 
 
-def manifest_entry(name: str, namespace_dir: str) -> dict:
+def manifest_entry(name: str, path: str) -> dict:
     return {
         "name": name,
-        "path": f"Skills/{namespace_dir}/{name}",
-        "enabled": True,
+        "path": path,
+        "enabled": False,
         "requires_restart": True,
+        "lifecycle": "candidate",
+        "audience": "review-required",
     }
 
 
@@ -136,35 +146,60 @@ def main() -> int:
         if args.manifest
         else repo_root / "skills-manifest.json"
     )
-
-    manifest = load_manifest(manifest_path)
-    existing_names = {skill["name"] for skill in manifest.get("skills", [])}
-    local_skills = selected_skills(
-        discover_local_skills(source_root, repo_root),
-        set(args.skill),
+    allowlist_path = (
+        Path(args.allowlist).expanduser().resolve()
+        if args.allowlist
+        else repo_root / "publication-allowlist.json"
     )
 
-    published: list[str] = []
-    for name, skill_path in local_skills:
-        if name in existing_names:
-            continue
-        dest = repo_root / "Skills" / args.namespace_dir / name
-        copy_skill(skill_path, dest, args.dry_run)
-        manifest["skills"].append(manifest_entry(name, args.namespace_dir))
-        existing_names.add(name)
-        published.append(name)
+    branch = require_pr_branch(repo_root)
+    print(f"publication_branch: {branch}")
 
-    if published:
-        manifest["skills"] = sorted(
-            manifest["skills"],
-            key=lambda item: item["name"].lower(),
+    manifest = load_json(manifest_path)
+    allowlist = load_json(allowlist_path)
+    approved = approved_entries(allowlist)
+    requested = list(dict.fromkeys(args.skill))
+    blocked = sorted(set(requested) - set(approved))
+    if blocked:
+        raise SystemExit(
+            "Publication denied; skill is not explicitly approved in publication-allowlist.json: "
+            + ", ".join(blocked)
         )
-        write_manifest(manifest_path, manifest, args.dry_run)
-        print(f"published_skills: {', '.join(published)}")
-        print(f"published_namespace: Skills/{args.namespace_dir}")
-    else:
-        print("published_skills: none")
 
+    existing_names = {skill["name"] for skill in manifest.get("skills", [])}
+    duplicate = sorted(set(requested) & existing_names)
+    if duplicate:
+        raise SystemExit("Skill is already tracked by the manifest: " + ", ".join(duplicate))
+
+    scanner = load_scanner(repo_root)
+    plans: list[tuple[str, Path, str]] = []
+    for name in requested:
+        entry = approved[name]
+        source = validate_source(name, source_root)
+        findings = scanner.scan_paths([source], display_root=source_root)
+        if findings:
+            scanner.print_findings(findings)
+            raise SystemExit(f"Public-release scan failed for {name}; nothing was copied.")
+
+        rel_path = entry.get("destination", f"Skills/Published/{name}")
+        if not rel_path.startswith("Skills/Published/") or ".." in Path(rel_path).parts:
+            raise SystemExit(f"Unsafe publication destination for {name}: {rel_path}")
+        if (repo_root / rel_path).exists():
+            raise SystemExit(f"Destination already exists in repo: {repo_root / rel_path}")
+        plans.append((name, source, rel_path))
+
+    staged: list[str] = []
+    for name, source, rel_path in plans:
+        copy_skill(source, repo_root / rel_path, args.dry_run)
+        manifest["skills"].append(manifest_entry(name, rel_path))
+        staged.append(name)
+
+    manifest["skills"] = sorted(manifest["skills"], key=lambda item: item["name"].lower())
+    if not args.dry_run:
+        manifest_path.write_text(json.dumps(manifest, indent=2) + "\n")
+    print(f"publication_candidates_staged: {', '.join(staged)}")
+    print("next_step: review the candidate, run validation and public-release scanning, then open a PR")
+    print("automatic_commit_or_push: disabled")
     return 0
 
 

@@ -63,10 +63,10 @@ Other Folloze skills should reference this package instead of copying brand rule
 
 - `folloze-one-pager`: source approved value props, claims, proof, logos, and voice rules.
 - `folloze-order-form-builder`: use internal capability references for package-row interpretation, while current order-form evidence takes priority.
-- `Folloze-MCP-Demo-Builder`: use logo assets and public Folloze positioning only when the user explicitly wants a Folloze-branded experience.
+- `Folloze-MCP-Demo-Builder`: use only for explicit authorized internal demo-instance work; general board work routes through the customer pack.
 - `folloze-sales-doc`: use claim, proof, and voice references for customer-facing Folloze documents.
 - `folloze-zoom-deal-room` and board-production skills: use product capability references to ground buyer-safe deal-room structure and board briefs.
-- `folloze-campaign-board-builder`: use `campaign-board-design-context.md` only when Folloze is the brand owner; for customer-owned boards, capture the customer's design context instead.
+- `folloze-campaign-board-builder`: deprecated learning source. New customer work routes through the customer pack; use `campaign-board-design-context.md` only when Folloze is the brand owner.
 - outbound or follow-up skills: use the message pillars and proof library, then adapt to the account context.
 
 If a downstream skill creates a reusable message pattern, objection pattern, proof pairing, or content brief field, add the generic version here once it has worked in more than one account context.

@@ -5,6 +5,8 @@ description: Guide marketers from campaign brief to approved wireframe, local ed
 
 # Folloze Campaign Board Builder
 
+> Deprecated learning source. Do not route new board requests here. Use the portable customer pack at `https://github.com/0xTrey/folloze-mcp-customer-skills`, which owns the current strategy, brand, motion routing, and builder workflow. This folder remains to preserve historical material and is disabled in `skills-manifest.json`.
+
 Use this customer-facing skill to help marketers turn a campaign idea into a Folloze-ready buyer experience.
 
 This is a thin-harness, fat-skill workflow:

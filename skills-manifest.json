@@ -1,6 +1,16 @@
 {
-  "version": 1,
+  "version": 2,
   "channel": "stable",
+  "repository_role": "internal-development-and-learning",
+  "recommended_customer_distribution": "https://github.com/0xTrey/folloze-mcp-customer-skills",
+  "publication_policy": "publication-allowlist.json",
+  "deprecated_aliases": [
+    {
+      "name": "skills-updater",
+      "replacement": "skills-update-folloze",
+      "migration": "Install skills-update-folloze; existing local files are not deleted automatically."
+    }
+  ],
   "skills": [
     {
       "name": "account-org-chart",
@@ -54,8 +64,11 @@
     {
       "name": "folloze-campaign-board-builder",
       "path": "Skills/folloze-campaign-board-builder",
-      "enabled": true,
-      "requires_restart": true
+      "enabled": false,
+      "requires_restart": true,
+      "lifecycle": "deprecated",
+      "replacement": "https://github.com/0xTrey/folloze-mcp-customer-skills",
+      "migration": "Use the customer pack router and motion-specific builders. Existing local installs are preserved unless the operator explicitly prunes managed symlinks."
     },
     {
       "name": "folloze-zoom-deal-room",
@@ -73,7 +86,10 @@
       "name": "Folloze-MCP-Demo-Builder",
       "path": "Skills/Folloze-MCP-Demo-Builder",
       "enabled": true,
-      "requires_restart": true
+      "requires_restart": true,
+      "lifecycle": "internal",
+      "audience": "authorized Folloze operators working in a demo instance",
+      "not_for": "general customer board requests; use the customer distribution router"
     },
     {
       "name": "folloze-morning-brief",
@@ -133,7 +149,9 @@
       "name": "skills-update-folloze",
       "path": "Skills/skills-update-folloze",
       "enabled": true,
-      "requires_restart": true
+      "requires_restart": true,
+      "lifecycle": "current",
+      "replaces": "skills-updater"
     },
     {
       "name": "weekly-customer-action-items",

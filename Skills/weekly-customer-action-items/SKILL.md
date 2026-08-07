@@ -1,6 +1,6 @@
 ---
 name: weekly-customer-action-items
-description: Build a consolidated Monday-through-Friday America/New_York summary of outstanding or unanswered customer action items across Granola notes, Gmail, and Slack. Use when the user asks for weekly customer follow-ups, unresolved tasks, unanswered asks, open action items, or a by-account summary of what still needs attention. Deduplicate repeated items across sources, ignore promotional or sales email, ignore email threads where meghan@folloze.com is not a participant, and present one grouped summary by customer account with clear ownership.
+description: Build a consolidated Monday-through-Friday summary of outstanding or unanswered customer action items across approved meeting, email, and collaboration sources. Use when the user asks for weekly customer follow-ups, unresolved tasks, unanswered asks, open action items, or a by-account summary of what still needs attention. Deduplicate repeated items, ignore promotional email, apply the operator's configured participant filter, and present one grouped summary by customer account with clear ownership.
 ---
 
 # Weekly Customer Action Items
@@ -20,9 +20,9 @@ Use this skill to compile one weekly customer-action summary from Granola, Gmail
   - waiting on Folloze
 - Combine duplicates from multiple sources into one canonical action item.
 - Group the final summary by customer account.
-- Label each item with an owner when possible: `Meghan`, `customer`, `teammate`, `shared`, or `unclear`.
+- Label each item with an owner when possible: `current teammate`, `customer`, `teammate`, `shared`, or `unclear`.
 - Ignore promotional, newsletter, and bulk marketing email.
-- Ignore any email thread where `meghan@folloze.com` is not in the participant list.
+- Ignore any email thread that does not match the operator's configured participant filter.
 
 ## Output
 
@@ -43,10 +43,10 @@ Use this shape:
 Week: 2026-04-06 to 2026-04-10 (America/New_York)
 
 ## Account: Acme
-Summary: Two unresolved items remain. Meghan owes a follow-up recap, and the customer still owes pricing feedback.
+Summary: Two unresolved items remain. The current teammate owes a follow-up recap, and the customer still owes pricing feedback.
 
 - Action item: Send recap with integration answers
-  Owner: Meghan
+  Owner: Current teammate
   Status: Unanswered / outbound follow-up still needed
   Last touch: 2026-04-08
   Evidence: Granola notes cited the recap as a next step [[0]](...); Slack DM asked whether it had been sent; no matching sent email found
@@ -109,12 +109,12 @@ For the business week of Monday through Friday in America/New_York, list all cus
 - Search both inbound and sent mail for the chosen week.
 - Focus on customer accounts found in Step 2.
 - Capture two categories:
-  - unreplied inbound asks Meghan owes
+  - unreplied inbound asks the current teammate owes
   - threads where the next move belongs to the customer or another teammate
 - Ignore:
   - promotional or newsletter messages
   - automated marketing mail
-  - any thread where `meghan@folloze.com` is not in `from`, `to`, or `cc`
+  - any thread that does not match the configured participant filter in `from`, `to`, or `cc`
 
 Use Gmail query syntax where helpful, for example:
 
@@ -125,8 +125,8 @@ after:2026-04-06 before:2026-04-12 -category:promotions -category:social
 Then filter the returned threads manually for customer relevance and outstanding status.
 
 Email heuristics:
-- `Unanswered by Meghan`: inbound request with no meaningful reply from Meghan in the thread
-- `Waiting on customer`: Meghan replied or sent a follow-up, but the customer has not answered
+- `Unanswered by current teammate`: inbound request with no meaningful reply from the configured teammate in the thread
+- `Waiting on customer`: the configured teammate replied or sent a follow-up, but the customer has not answered
 - `Waiting on teammate`: an internal handoff or request is still pending
 - `Closed`: clear completion or explicit confirmation; exclude it
 
@@ -219,7 +219,7 @@ Use the strongest available ownership signal in this order:
 4. fallback `unclear`
 
 Use these owner buckets:
-- `Meghan`
+- `Current teammate`
 - `Customer`
 - `Teammate`
 - `Shared`
@@ -228,7 +228,7 @@ Use these owner buckets:
 ### 8. Format the final summary by account
 
 Order accounts by urgency:
-1. accounts with unresolved Meghan-owned items
+1. accounts with unresolved current-teammate-owned items
 2. accounts blocked on customer response
 3. accounts waiting on internal teammates
 4. unmapped items
@@ -236,7 +236,7 @@ Order accounts by urgency:
 Within each account, list the most urgent or stale items first.
 
 Statuses should be short and consistent:
-- `Needs Meghan reply`
+- `Needs current teammate reply`
 - `Waiting on customer`
 - `Waiting on teammate`
 - `Blocked`

@@ -25,9 +25,9 @@ Use this skill for recurring or test email-summary runs that must both analyze i
 
 ## Delivery workflow
 
-- Send the final summary as a Slack DM to Troy Smith using the local `DAILY_EMAIL_SUMMARY_SLACK_USER_ID` value or connector lookup.
+- Send the final summary as a Slack DM only to the recipient configured at runtime through `DAILY_EMAIL_SUMMARY_SLACK_USER_ID` or an explicit connector lookup.
 - Use the Slack connector to actually send the DM. Do not merely mention that Slack delivery should happen.
-- Send the final summary by real email to `Troy.smith@folloze.com`.
+- Send the final summary only to the recipient configured by the operator at runtime.
 - Prefer the bundled script `scripts/send_daily_email_summary_email.sh` for email delivery when `gws` is available and authenticated.
 - Write the email body to a temporary text file, then call:
   `scripts/send_daily_email_summary_email.sh <to_email> <subject> <body_file>`

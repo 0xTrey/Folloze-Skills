@@ -3,11 +3,11 @@
     "org_alias": "folloze"
   },
   "rep": {
-    "email": "trey.harnden@folloze.com",
+    "email": "operator@example.com",
     "initials": "TH"
   },
   "notifications": {
-    "failure_alert_to": "trey.harnden@folloze.com"
+    "failure_alert_to": "operator@example.com"
   },
   "defaults": {
     "lookback_hours": 72

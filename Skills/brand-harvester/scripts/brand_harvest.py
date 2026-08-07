@@ -5,6 +5,7 @@ import argparse
 import base64
 import datetime as dt
 import html.parser
+import ipaddress
 import json
 import os
 import random
@@ -65,6 +66,56 @@ def ensure_url(value: str) -> str:
     return value
 
 
+def validate_public_url(url: str) -> str:
+    """Return a normalized public HTTP(S) URL or raise before network access."""
+    normalized = ensure_url(url)
+    parsed = urllib.parse.urlparse(normalized)
+    if parsed.scheme not in {"http", "https"}:
+        raise ValueError(f"Only public http/https URLs are allowed: {url}")
+    if parsed.username or parsed.password:
+        raise ValueError("URLs containing embedded credentials are not allowed")
+    host = (parsed.hostname or "").rstrip(".").lower()
+    if not host or host == "localhost" or host.endswith(".localhost"):
+        raise ValueError(f"Local or missing host is not allowed: {host or '(missing)'}")
+
+    try:
+        literal = ipaddress.ip_address(host)
+        addresses = [literal]
+    except ValueError:
+        try:
+            addresses = [
+                ipaddress.ip_address(item[4][0])
+                for item in socket.getaddrinfo(host, parsed.port or (443 if parsed.scheme == "https" else 80))
+            ]
+        except socket.gaierror as exc:
+            raise ValueError(f"Unable to resolve public host {host}: {exc}") from exc
+
+    blocked = [address for address in addresses if not address.is_global]
+    if blocked:
+        raise ValueError(f"Private, local, reserved, or metadata address is not allowed: {blocked[0]}")
+    return normalized
+
+
+class PublicOnlyRedirectHandler(urllib.request.HTTPRedirectHandler):
+    def redirect_request(self, req, fp, code, msg, headers, newurl):  # type: ignore[no-untyped-def]
+        safe_url = validate_public_url(urllib.parse.urljoin(req.full_url, newurl))
+        old_host = (urllib.parse.urlparse(req.full_url).hostname or "").lower()
+        new_host = (urllib.parse.urlparse(safe_url).hostname or "").lower()
+        if req.has_header("Authorization") and new_host != old_host:
+            raise ValueError("Authenticated cross-host redirects are not allowed")
+        return super().redirect_request(req, fp, code, msg, headers, safe_url)
+
+
+PUBLIC_URL_OPENER = urllib.request.build_opener(PublicOnlyRedirectHandler())
+
+
+def public_urlopen(request: urllib.request.Request, timeout: float):
+    validate_public_url(request.full_url)
+    response = PUBLIC_URL_OPENER.open(request, timeout=timeout)
+    validate_public_url(response.geturl())
+    return response
+
+
 def domain_from_url(url: str) -> str:
     parsed = urllib.parse.urlparse(ensure_url(url))
     domain = (parsed.netloc or parsed.path).split("/")[0].lower()
@@ -87,6 +138,7 @@ def looks_like_url(value: str) -> bool:
 
 
 def fetch_text(url: str, timeout: float = 12.0, limit: int = 2_000_000) -> tuple[str, str]:
+    url = validate_public_url(url)
     req = urllib.request.Request(
         url,
         headers={
@@ -94,7 +146,7 @@ def fetch_text(url: str, timeout: float = 12.0, limit: int = 2_000_000) -> tuple
             "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
         },
     )
-    with urllib.request.urlopen(req, timeout=timeout) as resp:
+    with public_urlopen(req, timeout=timeout) as resp:
         final_url = resp.geturl()
         content = resp.read(limit)
         charset = resp.headers.get_content_charset() or "utf-8"
@@ -102,13 +154,17 @@ def fetch_text(url: str, timeout: float = 12.0, limit: int = 2_000_000) -> tuple
 
 
 def http_probe(url: str, timeout: float = 4.0) -> tuple[bool, str | None]:
+    try:
+        safe_url = validate_public_url(url)
+    except ValueError:
+        return False, None
     req = urllib.request.Request(
-        ensure_url(url),
+        safe_url,
         headers={"User-Agent": USER_AGENT, "Accept": "text/html,*/*"},
         method="GET",
     )
     try:
-        with urllib.request.urlopen(req, timeout=timeout) as resp:
+        with public_urlopen(req, timeout=timeout) as resp:
             if 200 <= resp.status < 400:
                 return True, resp.geturl()
     except Exception:
@@ -129,7 +185,7 @@ def brandfetch_brand(domain: str, token: str | None, timeout: float) -> dict[str
         },
     )
     try:
-        with urllib.request.urlopen(req, timeout=timeout) as resp:
+        with public_urlopen(req, timeout=timeout) as resp:
             return {"status": "ok", "data": json.loads(resp.read().decode("utf-8"))}
     except urllib.error.HTTPError as exc:
         return {"status": "error", "code": exc.code, "reason": exc.reason}
@@ -261,6 +317,9 @@ def resolve_input(query: str, source_url: str | None, timeout: float) -> dict[st
         resolved_url, notes = search_account_domain(query, timeout)
 
     domain = domain_from_url(resolved_url) if resolved_url else None
+    if resolved_url:
+        resolved_url = validate_public_url(resolved_url)
+        domain = domain_from_url(resolved_url)
     return {
         "raw": raw,
         "query": query,
@@ -686,6 +745,7 @@ class ChromeCDP:
         self.proc: subprocess.Popen[bytes] | None = None
         self.ws: WebSocketClient | None = None
         self.message_id = 0
+        self.fetch_interception = False
 
     def __enter__(self) -> "ChromeCDP":
         self.start()
@@ -731,6 +791,8 @@ class ChromeCDP:
         self.call("Runtime.enable")
         self.call("Network.enable")
         self.call("Network.setUserAgentOverride", {"userAgent": USER_AGENT})
+        self.call("Fetch.enable", {"patterns": [{"urlPattern": "*", "requestStage": "Request"}]})
+        self.fetch_interception = True
 
     def stop(self) -> None:
         if self.ws:
@@ -759,13 +821,34 @@ class ChromeCDP:
             if remaining <= 0:
                 raise TimeoutError(f"Timed out waiting for CDP method {method}")
             message = self.ws.recv_json(timeout=remaining)
+            if message.get("method") == "Fetch.requestPaused" and self.fetch_interception:
+                self._handle_paused_request(message.get("params", {}))
+                continue
             if message.get("id") != request_id:
                 continue
             if "error" in message:
                 raise RuntimeError(f"CDP {method} failed: {message['error']}")
             return message.get("result", {})
 
+    def _handle_paused_request(self, params: dict[str, Any]) -> None:
+        if not self.ws:
+            return
+        request_id = params.get("requestId")
+        url = str(params.get("request", {}).get("url", ""))
+        allowed_non_network = url.startswith(("data:", "blob:", "about:"))
+        try:
+            if not allowed_non_network:
+                validate_public_url(url)
+            method = "Fetch.continueRequest"
+            command_params = {"requestId": request_id}
+        except (ValueError, OSError):
+            method = "Fetch.failRequest"
+            command_params = {"requestId": request_id, "errorReason": "BlockedByClient"}
+        self.message_id += 1
+        self.ws.send_json({"id": self.message_id, "method": method, "params": command_params})
+
     def navigate(self, url: str, width: int, height: int, mobile: bool = False) -> None:
+        validate_public_url(url)
         self.call(
             "Emulation.setDeviceMetricsOverride",
             {
@@ -779,6 +862,8 @@ class ChromeCDP:
         )
         self.call("Page.navigate", {"url": url}, timeout=self.timeout)
         self.wait_ready()
+        final_url = str(self.evaluate("document.location.href"))
+        validate_public_url(final_url)
 
     def wait_ready(self) -> None:
         deadline = time.time() + self.timeout
@@ -1289,6 +1374,10 @@ def run(args: argparse.Namespace) -> int:
         domain = resolved["domain"]
         brandfetch = brandfetch_brand(domain, args.brandfetch_token or os.environ.get("BRANDFETCH_API_KEY"), args.timeout)
         basic = basic_html_harvest(resolved["source_url"], args.timeout)
+        if basic.get("status") == "ok" and basic.get("final_url"):
+            final_url = validate_public_url(basic["final_url"])
+            resolved["source_url"] = final_url
+            resolved["domain"] = domain_from_url(final_url)
         devtools = devtools_harvest(
             resolved["source_url"],
             screenshots_dir=screenshots_dir,

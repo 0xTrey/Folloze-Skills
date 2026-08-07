@@ -12,7 +12,7 @@ This is an intake and orchestration skill. It should use:
 - Gmail or pasted notes for the Zoom recap source.
 - Salesforce read-only context for account and opportunity resolution when available.
 - `folloze-brand-kit` for Folloze positioning, buyer-facing language, and product capability references.
-- `Folloze-MCP-Demo-Builder` for rich custom HTML pages saved through Folloze MCP.
+- The customer pack router for general or customer-facing rich HTML pages. Use `Folloze-MCP-Demo-Builder` only for explicit authorized internal demo-instance work.
 - The existing external board creation API path only for fast template-based boards where custom HTML is not needed.
 
 ## Operating Rules
@@ -22,7 +22,7 @@ This is an intake and orchestration skill. It should use:
 - Treat Zoom notes, Gmail, Calendar, Granola, Salesforce, Slack, and Drive as private strategy inputs unless the user explicitly approves external use.
 - Do not quote meeting notes, expose raw objections, expose budget commentary, or mention internal tasks in buyer-facing page copy.
 - If the account identity is unresolved or ambiguous, build the internal brief but stop before Folloze save.
-- If the user asks for a Folloze-owned deal room, use Folloze positioning and deal-room structure. If the user asks for a vendor-owned account page, hand off to `Folloze-MCP-Demo-Builder` and keep Folloze invisible.
+- If the user asks for a Folloze-owned deal room, use Folloze positioning and deal-room structure. If the user asks for a vendor-owned account page, hand off to the customer pack router and keep Folloze invisible; use the internal demo builder only when internal demo-instance scope is explicit.
 - Do not save, publish, update a live board, or write tracker rows unless the user explicitly asks for a Folloze save/update/publish or the request is clearly a create-board request.
 - When saving through MCP, follow the current MCP guide returned by the tool over this skill's local memory.
 - Keep durable HTML source and notes in an obvious git-backed repo before saving through MCP or API.
