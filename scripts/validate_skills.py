@@ -2,13 +2,14 @@
 from __future__ import annotations
 
 import json
+import os
 import subprocess
 import sys
+import tempfile
 from pathlib import Path
 
 
 FORBIDDEN_TEXT_PATTERNS = (
-    "/Users/treyharnden",
     "/Users/",
 )
 
@@ -28,6 +29,14 @@ def validate_manifest(root: Path, manifest: dict, errors: list[str]) -> list[dic
         errors.append("skills-manifest.json must contain a non-empty 'skills' list.")
         return []
 
+    if manifest.get("repository_role") != "internal-development-and-learning":
+        errors.append("Manifest must declare repository_role=internal-development-and-learning.")
+    if not manifest.get("recommended_customer_distribution"):
+        errors.append("Manifest must name the recommended customer distribution.")
+    if manifest.get("publication_policy") != "publication-allowlist.json":
+        errors.append("Manifest must point to publication-allowlist.json.")
+
+    seen_paths: set[str] = set()
     for skill in skills:
         name = skill.get("name")
         rel_path = skill.get("path")
@@ -38,6 +47,17 @@ def validate_manifest(root: Path, manifest: dict, errors: list[str]) -> list[dic
             errors.append(f"Duplicate manifest skill name: {name}")
             continue
         seen.add(name)
+        if "/" in name or "\\" in name or name in {".", ".."}:
+            errors.append(f"Unsafe manifest skill name: {name}")
+        rel = Path(rel_path)
+        if rel.is_absolute() or ".." in rel.parts or not rel.parts or rel.parts[0] != "Skills":
+            errors.append(f"Unsafe manifest path for {name}: {rel_path}")
+            continue
+        if rel_path in seen_paths:
+            errors.append(f"Duplicate manifest path: {rel_path}")
+        seen_paths.add(rel_path)
+        if skill.get("lifecycle") == "deprecated" and skill.get("enabled", True):
+            errors.append(f"Deprecated skill must not be enabled: {name}")
 
         skill_dir = root / rel_path
         if not skill_dir.exists():
@@ -47,6 +67,36 @@ def validate_manifest(root: Path, manifest: dict, errors: list[str]) -> list[dic
             errors.append(f"Missing SKILL.md for {name}: {skill_dir / 'SKILL.md'}")
 
     return skills
+
+
+def validate_publication_allowlist(root: Path, errors: list[str]) -> None:
+    path = root / "publication-allowlist.json"
+    if not path.exists():
+        errors.append("Missing publication-allowlist.json.")
+        return
+    try:
+        policy = load_manifest(path)
+    except json.JSONDecodeError as exc:
+        errors.append(f"Invalid publication allowlist JSON: {exc}")
+        return
+    if policy.get("policy") != "fail-closed":
+        errors.append("Publication allowlist must use fail-closed policy.")
+    entries = policy.get("allowed_skills")
+    if not isinstance(entries, list):
+        errors.append("Publication allowlist must contain an allowed_skills list.")
+        return
+    seen: set[str] = set()
+    for entry in entries:
+        name = entry.get("name")
+        destination = entry.get("destination", f"Skills/Published/{name}")
+        if not name or entry.get("approved") is not True:
+            errors.append(f"Publication entry must be named and explicitly approved: {entry!r}")
+            continue
+        if name in seen:
+            errors.append(f"Duplicate publication allowlist name: {name}")
+        seen.add(name)
+        if not destination.startswith("Skills/Published/") or ".." in Path(destination).parts:
+            errors.append(f"Unsafe publication destination for {name}: {destination}")
 
 
 def scan_for_forbidden_paths(root: Path, errors: list[str]) -> None:
@@ -71,7 +121,10 @@ def compile_python(root: Path, errors: list[str]) -> None:
     if not python_files:
         return
     cmd = [sys.executable, "-m", "py_compile", *[str(path) for path in python_files]]
-    result = subprocess.run(cmd, capture_output=True, text=True)
+    with tempfile.TemporaryDirectory(prefix="folloze-skills-pyc-") as pycache:
+        env = os.environ.copy()
+        env["PYTHONPYCACHEPREFIX"] = pycache
+        result = subprocess.run(cmd, capture_output=True, text=True, env=env)
     if result.returncode != 0:
         errors.append(result.stderr.strip() or "Python compilation failed.")
 
@@ -86,6 +139,8 @@ def main() -> int:
     else:
         manifest = load_manifest(manifest_path)
         validate_manifest(root, manifest, errors)
+
+    validate_publication_allowlist(root, errors)
 
     scan_for_forbidden_paths(root, errors)
     compile_python(root, errors)

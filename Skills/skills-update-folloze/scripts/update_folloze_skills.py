@@ -19,6 +19,12 @@ DEFAULT_REPO_ROOT = Path(
         str(Path.home() / "Projects" / "Folloze-Skills"),
     )
 )
+DEFAULT_SYNC_REPO_ROOT = Path(
+    os.environ.get(
+        "FOLLOZE_SKILLS_SYNC_REPO_ROOT",
+        str(Path.home() / ".cache" / "folloze-skills" / "Folloze-Skills-sync"),
+    )
+)
 DEFAULT_BRANCH = os.environ.get("FOLLOZE_SKILLS_REPO_BRANCH", "main")
 DEFAULT_CODEX_HOME = Path(os.environ.get("CODEX_HOME", str(Path.home() / ".codex")))
 DEFAULT_DEST = DEFAULT_CODEX_HOME / "skills"
@@ -30,70 +36,41 @@ MORNING_BRIEF_AUTOMATION_TEMPLATE = (
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Bootstrap, pull, and sync shared Folloze Codex skills.",
+        description="Bootstrap, safely pull, and sync shared Folloze Codex skills.",
     )
+    parser.add_argument("--repo-root", default=str(DEFAULT_REPO_ROOT))
     parser.add_argument(
-        "--repo-root",
-        default=str(DEFAULT_REPO_ROOT),
-        help="Local clone path for the Folloze-Skills repository.",
+        "--sync-repo-root",
+        default=str(DEFAULT_SYNC_REPO_ROOT),
+        help=(
+            "Dedicated clean clone used when --repo-root is dirty, on another branch, "
+            "or ahead/diverged from origin."
+        ),
     )
-    parser.add_argument(
-        "--repo-url",
-        default=DEFAULT_REPO_URL,
-        help="GitHub repo URL used when cloning for the first time.",
-    )
-    parser.add_argument(
-        "--branch",
-        default=DEFAULT_BRANCH,
-        help="Branch to track. Defaults to main.",
-    )
-    parser.add_argument(
-        "--dest",
-        default=str(DEFAULT_DEST),
-        help="Destination skills directory. Defaults to $CODEX_HOME/skills or ~/.codex/skills.",
-    )
+    parser.add_argument("--repo-url", default=DEFAULT_REPO_URL)
+    parser.add_argument("--branch", default=DEFAULT_BRANCH)
+    parser.add_argument("--dest", default=str(DEFAULT_DEST))
     parser.add_argument(
         "--mode",
         choices=("symlink", "copy"),
-        default="symlink",
-        help="Install mode passed through to sync_codex_skills.py.",
+        default="copy",
+        help="Install mode. Copy is the safe default so installs never point at a development checkout.",
     )
-    parser.add_argument(
-        "--skill",
-        action="append",
-        default=[],
-        help="Refresh only the named skill. May be passed multiple times.",
-    )
-    parser.add_argument(
-        "--all",
-        action="store_true",
-        help="Refresh all enabled skills even if only some changed.",
-    )
-    parser.add_argument(
-        "--dry-run",
-        action="store_true",
-        help="Print planned actions without making changes.",
-    )
+    parser.add_argument("--skill", action="append", default=[])
+    parser.add_argument("--all", action="store_true")
+    parser.add_argument("--dry-run", action="store_true")
     return parser.parse_args()
 
 
 def run(
     cmd: list[str],
     *,
-    cwd: Path | None = None,
     dry_run: bool = False,
-    capture_output: bool = False,
 ) -> subprocess.CompletedProcess[str] | None:
     print(f"$ {' '.join(cmd)}")
     if dry_run:
         return None
-    return subprocess.run(
-        cmd,
-        cwd=str(cwd) if cwd else None,
-        check=True,
-        text=True,
-        capture_output=capture_output,
-    )
+    return subprocess.run(cmd, check=True, text=True)
 
 
 def git_output(repo_root: Path, *args: str) -> str:
@@ -106,28 +83,120 @@ def git_output(repo_root: Path, *args: str) -> str:
     return result.stdout.strip()
 
 
-def ensure_repo(repo_root: Path, repo_url: str, branch: str, dry_run: bool) -> bool:
-    if repo_root.exists():
-        try:
-            git_output(repo_root, "rev-parse", "--show-toplevel")
-        except subprocess.CalledProcessError as exc:
-            raise SystemExit(f"Existing path is not a git repo: {repo_root}") from exc
+def is_git_repo(path: Path) -> bool:
+    if not path.exists():
         return False
+    result = subprocess.run(
+        ["git", "-C", str(path), "rev-parse", "--is-inside-work-tree"],
+        text=True,
+        capture_output=True,
+    )
+    return result.returncode == 0 and result.stdout.strip() == "true"
 
+
+def clone_repo(repo_root: Path, repo_url: str, branch: str, dry_run: bool) -> None:
     run(
-        ["git", "clone", "--branch", branch, repo_url, str(repo_root)],
+        ["git", "clone", "--branch", branch, "--single-branch", repo_url, str(repo_root)],
         dry_run=dry_run,
     )
-    return True
 
 
-def ensure_clean_worktree(repo_root: Path) -> None:
+def prepare_existing_repo(repo_root: Path, branch: str, dry_run: bool) -> None:
+    run(["git", "-C", str(repo_root), "fetch", "origin", branch], dry_run=dry_run)
+
+
+def repo_requires_clean_clone(repo_root: Path, branch: str) -> tuple[bool, str]:
     status = git_output(repo_root, "status", "--porcelain")
     if status:
+        return True, "working tree has local changes"
+
+    current_branch = git_output(repo_root, "branch", "--show-current")
+    if current_branch != branch:
+        return True, f"checked out branch is {current_branch or '(detached HEAD)'}, not {branch}"
+
+    result = subprocess.run(
+        [
+            "git",
+            "-C",
+            str(repo_root),
+            "rev-list",
+            "--left-right",
+            "--count",
+            f"HEAD...origin/{branch}",
+        ],
+        check=True,
+        text=True,
+        capture_output=True,
+    )
+    ahead, _behind = (int(value) for value in result.stdout.split())
+    if ahead:
+        return True, f"local branch is {ahead} commit(s) ahead or diverged"
+    return False, "clean fast-forwardable clone"
+
+
+def prepare_clean_sync_clone(
+    sync_root: Path,
+    repo_url: str,
+    branch: str,
+    dry_run: bool,
+) -> bool:
+    if not sync_root.exists():
+        clone_repo(sync_root, repo_url, branch, dry_run)
+        return True
+    if not is_git_repo(sync_root):
+        raise SystemExit(f"Clean sync path exists but is not a git repo: {sync_root}")
+    configured_remote = git_output(sync_root, "remote", "get-url", "origin")
+    if configured_remote.rstrip("/") != repo_url.rstrip("/"):
         raise SystemExit(
-            "Local Folloze-Skills clone has uncommitted changes. "
-            "Use a clean clone for updater runs."
+            f"Dedicated sync clone origin does not match the configured repository URL: {sync_root}"
         )
+    if git_output(sync_root, "status", "--porcelain"):
+        raise SystemExit(
+            f"Dedicated sync clone has local changes: {sync_root}. "
+            "Move those changes to a development checkout or choose another --sync-repo-root."
+        )
+    prepare_existing_repo(sync_root, branch, dry_run)
+    if not dry_run:
+        current_branch = git_output(sync_root, "branch", "--show-current")
+        if current_branch != branch:
+            run(["git", "-C", str(sync_root), "checkout", branch])
+        run(["git", "-C", str(sync_root), "pull", "--ff-only", "origin", branch])
+    return False
+
+
+def select_sync_repo(
+    repo_root: Path,
+    sync_root: Path,
+    repo_url: str,
+    branch: str,
+    dry_run: bool,
+) -> tuple[Path, bool]:
+    if not repo_root.exists():
+        clone_repo(repo_root, repo_url, branch, dry_run)
+        return repo_root, True
+    if not is_git_repo(repo_root):
+        raise SystemExit(f"Existing path is not a git repo: {repo_root}")
+
+    prepare_existing_repo(repo_root, branch, dry_run)
+    if dry_run:
+        dirty = bool(git_output(repo_root, "status", "--porcelain"))
+        branch_name = git_output(repo_root, "branch", "--show-current")
+        if dirty or branch_name != branch:
+            reason = "working tree has local changes" if dirty else f"checked out branch is {branch_name}"
+            print(f"primary_repo_not_used: {reason}")
+            print(f"clean_sync_repo: {sync_root}")
+            return sync_root, not sync_root.exists()
+        return repo_root, False
+
+    use_clean, reason = repo_requires_clean_clone(repo_root, branch)
+    if use_clean:
+        print(f"primary_repo_preserved: {repo_root} ({reason})")
+        cloned = prepare_clean_sync_clone(sync_root, repo_url, branch, dry_run=False)
+        print(f"sync_repo: {sync_root}")
+        return sync_root, cloned
+
+    run(["git", "-C", str(repo_root), "pull", "--ff-only", "origin", branch])
+    return repo_root, False
 
 
 def changed_files(repo_root: Path, old_head: str | None, new_head: str) -> list[str]:
@@ -145,21 +214,17 @@ def enabled_skills(manifest: dict) -> set[str]:
     return {skill["name"] for skill in manifest["skills"] if skill.get("enabled", True)}
 
 
-def changed_skill_names(files: list[str]) -> set[str]:
-    names: set[str] = set()
-    for rel_path in files:
-        parts = Path(rel_path).parts
-        if len(parts) >= 2 and parts[0] == "Skills":
-            names.add(parts[1])
-    return names
+def changed_skill_names(files: list[str], manifest: dict) -> set[str]:
+    changed: set[str] = set()
+    for skill in manifest["skills"]:
+        prefix = Path(skill["path"])
+        if any(Path(rel_path) == prefix or prefix in Path(rel_path).parents for rel_path in files):
+            changed.add(skill["name"])
+    return changed
 
 
 def missing_installed_skills(dest: Path, enabled_names: set[str]) -> set[str]:
-    missing: set[str] = set()
-    for skill_name in enabled_names:
-        if not (dest / skill_name).exists():
-            missing.add(skill_name)
-    return missing
+    return {name for name in enabled_names if not (dest / name).exists()}
 
 
 def sync_skills(
@@ -170,10 +235,9 @@ def sync_skills(
     prune: bool,
     dry_run: bool,
 ) -> None:
-    sync_script = repo_root / "scripts" / "sync_codex_skills.py"
     cmd = [
         sys.executable,
-        str(sync_script),
+        str(repo_root / "scripts" / "sync_codex_skills.py"),
         "--repo-root",
         str(repo_root),
         "--dest",
@@ -186,141 +250,82 @@ def sync_skills(
         cmd.append("--prune")
     if dry_run:
         cmd.append("--dry-run")
-    if skill_names:
-        for skill_name in skill_names:
-            cmd.extend(["--skill", skill_name])
-    run(cmd, dry_run=False)
+    for skill_name in skill_names or []:
+        cmd.extend(["--skill", skill_name])
+    run(cmd)
 
 
 def print_install_triggered_automation_notice(repo_root: Path, dest: Path) -> None:
-    if not (dest / MORNING_BRIEF_SKILL).exists():
-        return
     template = repo_root / MORNING_BRIEF_AUTOMATION_TEMPLATE
-    if not template.exists():
-        return
-    print("install_triggered_automation: Folloze Morning Brief")
-    print(f"automation_template: {template}")
-    print(
-        "next_step: create or update the local Codex automation from this template "
-        "so the morning brief runs daily at 7:00 AM local time."
-    )
+    if (dest / MORNING_BRIEF_SKILL).exists() and template.exists():
+        print("install_triggered_automation: Folloze Morning Brief")
+        print(f"automation_template: {template}")
 
 
 def main() -> int:
     args = parse_args()
-    repo_root = Path(args.repo_root).expanduser().resolve()
+    requested_repo = Path(args.repo_root).expanduser().resolve()
+    clean_sync_repo = Path(args.sync_repo_root).expanduser().resolve()
     dest = Path(args.dest).expanduser().resolve()
     requested = set(args.skill)
 
-    cloned = ensure_repo(repo_root, args.repo_url, args.branch, args.dry_run)
-    if args.dry_run and cloned and not repo_root.exists():
-        print("Repo does not exist locally yet. First updater run would clone it, then perform a full sync.")
+    old_head = None
+    if is_git_repo(requested_repo):
+        old_head = git_output(requested_repo, "rev-parse", "HEAD")
+
+    repo_root, cloned = select_sync_repo(
+        requested_repo,
+        clean_sync_repo,
+        args.repo_url,
+        args.branch,
+        args.dry_run,
+    )
+    if args.dry_run and not repo_root.exists():
+        print("Dry run: a clean clone and full sync would be performed.")
         return 0
 
-    ensure_clean_worktree(repo_root)
+    if args.dry_run and repo_root == requested_repo:
+        new_head = git_output(repo_root, "rev-parse", f"origin/{args.branch}")
+    else:
+        new_head = git_output(repo_root, "rev-parse", "HEAD")
+    if repo_root != requested_repo or cloned:
+        old_head = None
 
-    manifest_before = load_manifest(repo_root)
-    enabled_before = enabled_skills(manifest_before)
-    old_head = None if cloned else git_output(repo_root, "rev-parse", "HEAD")
+    manifest = load_manifest(repo_root)
+    enabled = enabled_skills(manifest)
+    files = changed_files(repo_root, old_head, new_head)
+    changed = changed_skill_names(files, manifest)
+    missing = missing_installed_skills(dest, enabled)
 
-    run(["git", "-C", str(repo_root), "fetch", "origin", args.branch], dry_run=args.dry_run)
+    print(f"repo_used: {repo_root}")
+    print(f"old_head: {old_head or '(clean clone)'}")
+    print(f"new_head: {new_head}")
 
     if args.dry_run:
-        if old_head is None:
-            print("Dry run: first install would perform a full sync after clone.")
-            return 0
-        remote_head = git_output(repo_root, "rev-parse", f"origin/{args.branch}")
-        files = changed_files(repo_root, old_head, remote_head)
-        skills = sorted(changed_skill_names(files))
-        manifest = load_manifest(repo_root)
-        missing = sorted(missing_installed_skills(dest, enabled_skills(manifest)))
-        print(f"current_head: {old_head}")
-        print(f"remote_head: {remote_head}")
         if files:
             print("changed_files:")
-            for rel_path in files:
-                print(f"- {rel_path}")
-        else:
-            print("No upstream changes detected.")
-        if skills:
-            print("changed_skills:")
-            for skill_name in skills:
-                print(f"- {skill_name}")
+            for path in files:
+                print(f"- {path}")
         if missing:
-            print("missing_installed_skills:")
-            for skill_name in missing:
-                print(f"- {skill_name}")
-        if args.all:
-            print("Dry run: would perform a full sync.")
-        elif requested:
-            print(f"Dry run: would sync requested skills: {', '.join(sorted(requested))}")
-        elif missing:
-            print(f"Dry run: would sync missing skills: {', '.join(missing)}")
+            print(f"missing_installed_skills: {', '.join(sorted(missing))}")
         return 0
 
-    if old_head is None:
-        new_head = git_output(repo_root, "rev-parse", "HEAD")
-    else:
-        run(
-            ["git", "-C", str(repo_root), "pull", "--ff-only", "origin", args.branch],
-            dry_run=False,
-        )
-        new_head = git_output(repo_root, "rev-parse", "HEAD")
-
-    manifest_after = load_manifest(repo_root)
-    enabled_after = enabled_skills(manifest_after)
-    files = changed_files(repo_root, old_head, new_head)
-    skill_changes = changed_skill_names(files)
-    missing_skills = missing_installed_skills(dest, enabled_after)
-
-    manifest_changed = "skills-manifest.json" in files or enabled_before != enabled_after
-    sync_all = cloned or args.all or (not requested and manifest_changed)
-
+    manifest_changed = "skills-manifest.json" in files
+    sync_all = cloned or repo_root != requested_repo or args.all or (not requested and manifest_changed)
     if requested:
-        skills_to_sync = sorted(requested)
+        selected = sorted(requested)
     elif sync_all:
-        skills_to_sync = []
+        selected = []
     else:
-        skills_to_sync = sorted(skill_changes | missing_skills)
+        selected = sorted(changed | missing)
 
-    print(f"old_head: {old_head or '(new clone)'}")
-    print(f"new_head: {new_head}")
-    if missing_skills:
-        print(f"missing_installed_skills: {', '.join(sorted(missing_skills))}")
-
-    if not cloned and old_head == new_head and not args.all and not requested and not missing_skills:
+    if not sync_all and not selected:
         print("Repo already up to date. No skill changes to sync.")
         return 0
 
-    if sync_all:
-        print("Performing full skill sync.")
-        sync_skills(
-            repo_root=repo_root,
-            dest=dest,
-            mode=args.mode,
-            skill_names=None,
-            prune=True,
-            dry_run=False,
-        )
-        print_install_triggered_automation_notice(repo_root, dest)
-        print("Restart Codex if you want the updated skills to be reloaded immediately.")
-        return 0
-
-    if not skills_to_sync:
-        print("Repo updated, but no skill directory changes were detected.")
-        return 0
-
-    print(f"Syncing changed skills: {', '.join(skills_to_sync)}")
-    sync_skills(
-        repo_root=repo_root,
-        dest=dest,
-        mode=args.mode,
-        skill_names=skills_to_sync,
-        prune=False,
-        dry_run=False,
-    )
+    sync_skills(repo_root, dest, args.mode, selected or None, sync_all, False)
     print_install_triggered_automation_notice(repo_root, dest)
-    print("Restart Codex if you want the updated skills to be reloaded immediately.")
+    print("Restart Codex to reload updated skills.")
     return 0
 
 

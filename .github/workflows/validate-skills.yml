@@ -20,3 +20,12 @@ jobs:
 
       - name: Validate skill repo
         run: python3 scripts/validate_skills.py
+
+      - name: Test distribution tools
+        run: python3 -m unittest discover -s tests -v
+
+      - name: Test Brand Harvester network safety
+        run: python3 -m unittest discover -s Skills/brand-harvester/tests -v
+
+      - name: Scan public release surface
+        run: python3 scripts/scan_public_release.py

@@ -1,0 +1,11 @@
+#!/bin/sh
+set -eu
+python3 scripts/scan_public_release.py
+if command -v gitleaks >/dev/null 2>&1; then
+  if git rev-parse --verify origin/main >/dev/null 2>&1; then
+    gitleaks git --log-opts="origin/main..HEAD" --redact .
+  else
+    gitleaks git --redact .
+  fi
+fi
+python3 scripts/validate_skills.py

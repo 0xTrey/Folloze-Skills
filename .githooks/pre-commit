@@ -1,0 +1,7 @@
+#!/bin/sh
+set -eu
+python3 scripts/scan_public_release.py --staged
+if command -v gitleaks >/dev/null 2>&1; then
+  gitleaks git --staged --redact .
+fi
+python3 scripts/validate_skills.py

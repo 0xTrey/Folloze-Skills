@@ -1,160 +1,98 @@
 # Folloze Skills
 
-Central source of truth for Folloze Codex skills and the team rollout pattern behind them.
+Public source for Folloze internal skill development, operator workflows, and reusable learning material.
 
-This repo is the managed distribution point for the GTM team's shared AI skills. Skills live here, updates are reviewed here, and each teammate syncs this repo into `~/.codex/skills` from one clean local clone.
+This broad repository is **not the recommended customer or Etai install**. Customer, partner, Claude, Codex, campaign, webinar, and 1:1 board-building agents should use the portable [Folloze MCP Customer Skills](https://github.com/0xTrey/folloze-mcp-customer-skills) pack. That pack owns the customer routing layer, ABM Strategist, mandatory Brand Harvester gate, and motion-specific builders without inheriting private operational assumptions.
 
-## Why The Repo Clone Matters
+## Repository Roles
 
-Cloning the repo locally is the correct model for this rollout.
+| Repository | Recommended use |
+| --- | --- |
+| `folloze-mcp-customer-skills` | Etai, customers, partners, Claude/Codex board agents, and general board creation. |
+| `Folloze-Skills` (this repo) | Internal development, reusable Folloze brand material, authorized demo-instance operations, and reviewed internal workflows. |
 
-You are centralizing skill ownership and updates for the wider GTM team. A stable local clone gives each teammate:
+General requests such as “build a Folloze board,” “make a 1:1,” “build a campaign landing page,” or “promote a webinar” should route to the customer pack. `Folloze-MCP-Demo-Builder` is intentionally narrower: it is only for an authorized internal operator working in a named demo instance or updating a known internal demo board.
 
-- one source of truth to pull from
-- a clean git worktree the updater can verify before syncing
-- a disposable local install under `~/.codex/skills` that can be refreshed from the repo instead of hand-edited
+## Safe Internal Install
 
-This is more reliable than treating the GitHub installer as the update channel. GitHub install is useful for initial access, but the repo clone is what makes ongoing managed updates predictable.
-
-## Recommended Team Setup
-
-Use this repo as the only place where skill code and instructions are edited. Do not hand-edit skills separately in each person's `~/.codex/skills` directory.
-
-The recommended rollout model is:
-
-1. Each teammate clones this repo to a stable local path such as `~/Projects/Folloze-Skills`
-2. They run `python3 scripts/sync_codex_skills.py --overwrite`
-3. The sync script links or copies each repo skill into `~/.codex/skills`
-4. They create the recurring Codex automation defined in `AutomationTemplates/folloze-skills-weekly-update/template.json`
-5. Teammates restart Codex after skill updates so the app reloads the changed skill files
-
-This repo is the source of truth. The recommended automatic update path is a Codex automation, not `launchd`.
-
-If someone wants the setup to be callable from inside Codex instead of shell-first, use the `skills-update-folloze` skill in this repo. That skill is the conversational entrypoint for both one-off refreshes and creating the weekly updater automation.
-
-## What "Automatic Update" Means Here
-
-GitHub push alone will not update a teammate's installed skills.
-
-To make updates propagate automatically, you need two layers:
-
-- this repo as the source of truth
-- a local scheduled sync mechanism on each machine that pulls the repo and refreshes `~/.codex/skills`
-
-The repo now includes:
-
-- `skills-manifest.json`
-- `scripts/sync_codex_skills.py`
-- `scripts/validate_skills.py`
-- `AutomationTemplates/folloze-skills-weekly-update/template.json`
-- `ops/launchd/com.folloze.codex-skills-sync.plist.template`
-
-The Codex automation template is the recommended default. The `launchd` plist remains here as a machine-level fallback for teammates who specifically want OS-managed scheduling instead of a Codex automation.
-
-## Initial Rollout
-
-From a teammate machine:
+Clone a clean copy and install only skills enabled in `skills-manifest.json`:
 
 ```bash
 git clone https://github.com/0xTrey/Folloze-Skills.git ~/Projects/Folloze-Skills
 cd ~/Projects/Folloze-Skills
-python3 scripts/sync_codex_skills.py --overwrite
+python3 scripts/sync_codex_skills.py --client codex --mode copy
 ```
 
-Then create the recurring Codex automation described in `AutomationTemplates/folloze-skills-weekly-update/template.json`.
+Claude and dual-client installs are also supported for authorized internal users:
 
-The standard automation is:
+```bash
+python3 scripts/sync_codex_skills.py --client claude --mode copy
+python3 scripts/sync_codex_skills.py --client both --mode copy
+```
 
-- name: `Folloze Skills Weekly Update`
-- schedule: every Wednesday at 12:00 PM in the teammate's local time zone
-- scope: only the shared Folloze skills repo and the local Codex skills install
+Copy mode is preferred because the active agent never points at a dirty development checkout. The installer refuses to overwrite an existing user-owned skill directory. It only replaces a repo-managed symlink or a copy carrying the Folloze management marker.
 
-For teammates who prefer a lower-level machine scheduler instead of Codex automation:
+## Safe Updates
 
-1. Copy the `launchd` template in `ops/launchd/`
-2. Replace `__REPO_ROOT__` with that teammate's local clone path
-3. Load it with `launchctl`
+`skills-update-folloze` is pull/install-only. It does not inspect local skill directories, publish local work, commit, or push.
 
-## Governance
+If the preferred development checkout is dirty, ahead/diverged, detached, or on another branch, the updater preserves it exactly and uses a dedicated clean sync clone configured by `FOLLOZE_SKILLS_SYNC_REPO_ROOT`. The default clean clone lives under the current user's cache directory.
 
-Use normal software delivery rules here:
+```bash
+python3 Skills/skills-update-folloze/scripts/update_folloze_skills.py --dry-run
+python3 Skills/skills-update-folloze/scripts/update_folloze_skills.py
+```
 
-- Protect `main`
-- Require PR review for skill changes
-- Run validation on every PR
-- Avoid machine-specific absolute paths in skills
-- Keep secrets and personal tokens out of the repo
+The weekly pull/install-only automation is defined in `AutomationTemplates/folloze-skills-weekly-update/template.json`.
 
-If these skills include internal sales process, GTM workflow, or customer-specific implementation details, this repo should be private before full team rollout.
+## Publication Is Explicit And PR-Only
+
+There is no automatic local-skill discovery or publish-before-sync step.
+
+`scripts/publish_local_skills_to_repo.py` requires all of the following:
+
+- a clean, non-main PR branch;
+- one or more explicit `--skill` names;
+- matching approvals in `publication-allowlist.json`;
+- a real source directory rather than a symlink;
+- a passing secret, PII, local-path, and exclusion scan;
+- a destination under `Skills/Published/`.
+
+The helper stages a review candidate in the worktree and manifest only. It never commits or pushes. An empty publication allowlist means no skill is approved for staging.
+
+## Public-Release Gates
+
+Enable the versioned local hooks once per clone:
+
+```bash
+git config core.hooksPath .githooks
+```
+
+The pre-commit hook scans staged content and validates the manifest. The pre-push hook scans all tracked public content and validates again. CI runs both gates on every pull request and `main` push.
+
+Manual equivalents:
+
+```bash
+python3 scripts/validate_skills.py
+python3 scripts/scan_public_release.py
+python3 -m unittest discover -s tests -v
+```
+
+Generated artifacts, browser state, QA output, research bundles, environment files, caches, archives, and private material are excluded from new commits. Existing historical artifacts are not deleted by this cleanup.
+
+## Board Builder Lifecycle
+
+- `folloze-campaign-board-builder` is deprecated and disabled in the manifest. Its files remain as historical learning material; customer builds should use the customer pack router.
+- `Folloze-MCP-Demo-Builder` remains enabled for explicit internal demo-instance work only. It contains no default person, tracker, spreadsheet, tab, row, or profile ID.
+- The old `skills-updater` alias is deprecated in favor of the pull/install-only `skills-update-folloze`. Existing local files are never deleted automatically.
 
 ## Structure
 
-- `Skills/`
-- `AutomationTemplates/`
-- `scripts/`
-- `ops/`
-- `.github/workflows/`
+- `Skills/`: internal and reusable skill sources.
+- `skills-manifest.json`: explicit install allowlist and lifecycle metadata.
+- `publication-allowlist.json`: fail-closed list of reviewed public publication candidates.
+- `scripts/`: install, update, validation, publication, and security helpers.
+- `AutomationTemplates/`: managed Codex automation templates.
+- `.githooks/` and `.github/workflows/`: local and CI public-release gates.
 
-Each skill lives in its own subdirectory so it can carry its own `SKILL.md`, scripts, references, and agent config.
-
-## Included Skills
-
-### `account-org-chart`
-Builds a company org chart workbook across Marketing, Sales, IT, Digital, AI, Strategy, and Product Marketing, then uploads the result into the correct company folder in Google Drive as a native Google Sheet.
-
-### `folloze-sales-doc`
-Builds branded Folloze sales and customer lifecycle documents such as discovery prep docs, stakeholder maps, onboarding plans, QBRs, renewal prep docs, and account summaries using the shared Folloze design system.
-
-### `folloze-morning-brief`
-Builds a read-only daily Folloze GTM brief for the current teammate from calendar, Granola, Gmail, Google Drive, Salesforce, and available account context, with outbound follow-up verification before tasks are listed as open.
-
-### `folloze-brand-kit`
-Provides reusable Folloze v3.2 brand, positioning, product capability, messaging, claims, proof, voice, color, and logo source material for other Folloze skills. Includes internal, customer-ready, and public-safe product capability references so downstream skills can choose the right source boundary.
-
-### `folloze-campaign-board-builder`
-Guides customer marketers from campaign brief to campaign design context, mandatory wireframe approval, local editable HTML, automatic QA, and Folloze publish readiness for ABM microsites, campaign landing pages, demand generation pages, event follow-up experiences, resource hubs, and other buyer experiences.
-
-### `folloze-zoom-deal-room`
-Turns Zoom recaps, meeting-assets emails, and deal context into buyer-safe Folloze deal-room briefs, then routes the build to MCP rich HTML or the external board API when the user asks to create a live board.
-
-### `Folloze-MCP-Demo-Builder`
-Builds and updates vendor-branded Folloze MCP microsites, account-specific solution pages, demo boards, and buyer experiences from a single self-contained HTML page, with MCP guide compliance, analytics hooks, design QA defaults, real CTA/link requirements, source-page brand extraction, browser-comment iteration, and operator-scoped tracker logging after successful MCP saves.
-
-### `folloze-one-pager`
-Turns real account call notes, Salesforce and Drive context, prior conversations, and account research into an editable Folloze-branded HTML one-pager first, then exports a verified one-page PDF when ready for email sharing.
-
-### `folloze-sales-handoff`
-Generates the O&E-facing new-logo Folloze Sales Handoff DOCX from Drive, Salesforce, Granola, and web context, using the approved fixed template, consistent `-- needs review --` gaps, prompt-injection screening, and a Slack-ready heads-up draft.
-
-### `sales-to-cs-internal-handoff-folloze`
-Runs the Folloze closed-won Sales to Customer Success internal handoff workflow, creating the internal handoff doc, instance request, onboarding kickoff deck, Drive artifacts, and Slack handoff links.
-
-### `Salesforce-Update`
-Manually reconciles Salesforce open opportunities from Gmail, Google Calendar, and Granola evidence, writes validated non-stage updates through the local Salesforce helper flow, and reports stage movement as manual recommendations.
-
-### `skills-update-folloze`
-Bootstraps or updates the shared Folloze skills repo on a teammate machine, then runs or helps create the standard weekly Codex updater automation for the team.
-
-### `weekly-customer-action-items`
-Builds a weekly by-account summary of unresolved or unanswered customer action items across Granola, Gmail, and Slack for customer follow-up review.
-
-## Conventions
-
-- Put each skill in `Skills/<skill-name>/`
-- Keep the runnable instructions in `SKILL.md`
-- Put helper scripts in `scripts/` when the skill needs automation
-- Put reference docs and examples in `references/`
-- Keep skills machine-independent and avoid user-specific absolute paths
-- Avoid generated artifacts and local caches in git
-
-## Reference Source Boundaries
-
-The shared skills repo can include public-safe reusable source material and internal pointers, but it should not copy restricted deal artifacts into GitHub.
-
-For Folloze product capability guidance:
-
-- `Skills/folloze-brand-kit/references/product-capabilities-internal.md` points internal agents to the access-controlled Google Doc and canonical markdown source.
-- `Skills/folloze-brand-kit/references/product-capabilities-customer-ready.md` is the customer-facing fallback for sales docs, one-pagers, deal rooms, and board copy.
-- `Skills/folloze-brand-kit/references/product-capabilities-public-safe.md` is the public/no-Drive fallback for prompts, public repos, and contexts where internal Drive access is unavailable.
-
-Downstream skills should reference `folloze-brand-kit` instead of copying these capability definitions into their own folders.
+Keep restricted deal material, credentials, tokens, cookies, private policies, operator-specific identifiers, and customer data out of this public repository. Use pointers to access-controlled sources where internal context is required.

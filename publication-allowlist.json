@@ -1,0 +1,8 @@
+{
+  "version": 1,
+  "visibility": "public",
+  "policy": "fail-closed",
+  "destination_root": "Skills/Published",
+  "allowed_skills": [],
+  "instructions": "Add a named candidate through review before running the publication helper. Empty means no local skill is approved for public staging."
+}

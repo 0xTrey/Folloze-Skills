@@ -53,7 +53,8 @@ python3 Skills/brand-harvester/scripts/brand_harvest.py younion.live --source-ur
 ## Harvest Layers
 
 1. Input resolver:
-   - Accepts domain, source URL, or account name.
+   - Accepts a public HTTP(S) domain/source URL or account name.
+   - Rejects local files, localhost, loopback, RFC1918, link-local/metadata, reserved, private IPv6, and redirects to non-public destinations before capture.
    - For account names, tries likely domains and a bounded search fallback.
 
 2. Brandfetch:
@@ -77,7 +78,7 @@ python3 Skills/brand-harvester/scripts/brand_harvest.py younion.live --source-ur
 
 Use `source-dna.md`, `folloze-board-brief.md`, `brand-tokens.css`, `asset-manifest.json`, and screenshots before writing page HTML. The output is working context, not buyer-facing copy.
 
-For Trey's demo-board-builder work, brand harvest is the default first step for new vendor-branded boards and material redesigns unless the source is blocked, private, unavailable, or the user explicitly asks not to. Preserve the harvest bundle with the board source and QA artifacts so future updates can reuse the same brand evidence.
+For authorized internal demo-builder work, brand harvest is the default first step for new vendor-branded boards and material redesigns unless the source is blocked, private, unavailable, or the user explicitly asks not to. Preserve the harvest bundle with the board source and QA artifacts so future updates can reuse the same brand evidence.
 
 Before saving through Folloze MCP, still run the normal gates:
 

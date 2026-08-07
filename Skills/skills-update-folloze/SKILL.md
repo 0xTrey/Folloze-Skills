@@ -1,141 +1,104 @@
 ---
 name: skills-update-folloze
-description: Update the shared Folloze Codex skills from the central GitHub repository into the local ~/.codex/skills installation, create the standard weekly Codex automation that keeps those skills current, and create install-triggered automations such as Folloze Morning Brief. Use when someone says "update my skills", "sync the Folloze skills", "pull the latest shared skills", "refresh our Codex skills", installs a shared Folloze skill, or asks Codex to set up the recurring team updater or morning brief automation.
+description: Pull and install the reviewed Folloze internal skills manifest into a local Codex environment without publishing local skills. Use for one-off Folloze skill refreshes or the managed weekly updater. Customer and partner board-building agents should install the portable customer pack instead.
 ---
 
 # Skills Update Folloze
 
-Use this skill to refresh the locally installed Folloze skills from the central GitHub repo.
+This is a pull/install-only updater for the broad Folloze internal development and learning repository.
 
-This skill is the user-facing entrypoint for the shared-skill distribution flow:
+For Etai, customers, partners, Claude users, and general board-building agents, use the portable customer distribution instead:
 
-- it can publish newly created local Codex skills into the shared repo under `Skills/Troy Folloze Created Skills/`
-- it ensures the team repo exists locally
-- it fast-forwards the repo from GitHub
-- it detects which `Skills/<name>/` folders changed
-- it syncs those changes into `${CODEX_HOME:-$HOME/.codex}/skills`
+`https://github.com/0xTrey/folloze-mcp-customer-skills`
 
-By default it assumes the local clone lives at `~/Projects/Folloze-Skills`. Override that with `FOLLOZE_SKILLS_REPO_ROOT` if needed.
+That customer pack is the recommended route for ABM strategy, mandatory brand harvesting, and motion-specific customer board builders. This broad repo may contain internal operator workflows, deprecated learning sources, and skills that require private systems.
 
-## When To Use
+## Safety Contract
 
-Use this skill when the user wants any of the following:
+- Never inspect or auto-discover untracked local skills before an update.
+- Never copy local skills into this repository as part of an update.
+- Never commit or push from the updater.
+- Preserve a dirty, ahead, diverged, or differently checked-out development clone exactly as found.
+- When the development clone is unsuitable for a fast-forward pull, use the dedicated clean sync clone.
+- Install from the explicit enabled entries in `skills-manifest.json` only.
+- Copy installs are the safe default; they do not point the active agent at a dirty development checkout.
+- Do not overwrite an unowned local skill directory. The sync helper only replaces repo-managed symlinks or directories carrying its management marker.
 
-- update shared Folloze skills
-- sync newly added skills from the repo
-- pull the latest skill changes from GitHub
-- refresh the local Codex skill installation after another teammate updated a skill
-- create the standard recurring Codex automation for team skill updates
-- create the local daily Folloze Morning Brief automation after `folloze-morning-brief` is installed
+## Default Update
 
-## One-Time Assumptions
-
-- Each teammate should have one clean local clone of the shared repo
-- That clone should be used for syncing, not for ad hoc edits
-- If the repo is private, the machine must already have GitHub access configured
-
-## Recommended Team Pattern
-
-For the GTM team, the recommended automation pattern is:
-
-- clone the repo once to a stable local path
-- sync the skills into `~/.codex/skills`
-- create a Codex cron automation named `Folloze Skills Weekly Update`
-- schedule it for every Wednesday at 12:00 PM in the teammate's local time zone
-- if `folloze-morning-brief` is installed, create a Codex cron automation named `Folloze Morning Brief`
-- schedule the morning brief for every day at 7:00 AM in the teammate's local time zone
-
-Prefer the Codex automation route over a raw `launchd` job when the user wants a managed summary after each run.
-
-## Default Command
-
-Run the helper script shipped with this skill:
+Run the helper shipped inside this skill:
 
 ```bash
-python3 "${CODEX_HOME:-$HOME/.codex}/skills/skills-update-folloze/scripts/publish_local_skills_to_repo.py"
 python3 "${CODEX_HOME:-$HOME/.codex}/skills/skills-update-folloze/scripts/update_folloze_skills.py"
 ```
 
-The helper will:
+The updater uses these portable overrides when set:
 
-- scan `${CODEX_HOME:-$HOME/.codex}/skills` for local skills that are not yet in the shared repo manifest
-- copy those new local skills into `Skills/Troy Folloze Created Skills/<name>/`
-- add them to `skills-manifest.json` with the nested repo path
-- clone `Folloze-Skills` into `~/Projects/Folloze-Skills` if it does not exist
-- fetch and fast-forward `main`
-- sync only changed skills when possible
-- fall back to a full sync when the manifest changes or on first install
-- print a follow-up notice when the morning brief automation should be created
+- `FOLLOZE_SKILLS_REPO_ROOT`: preferred development clone.
+- `FOLLOZE_SKILLS_SYNC_REPO_ROOT`: dedicated clean sync clone.
+- `FOLLOZE_SKILLS_REPO_URL`: remote repository URL.
+- `FOLLOZE_SKILLS_REPO_BRANCH`: reviewed branch, normally `main`.
+- `CODEX_HOME`: Codex data root.
 
-Product capability reference updates are delivered through the `folloze-brand-kit` skill. When `folloze-brand-kit` changes, the sync should refresh its full folder, including `references/product-capabilities-internal.md`, `references/product-capabilities-customer-ready.md`, and `references/product-capabilities-public-safe.md`.
+If the preferred clone is dirty, ahead/diverged, detached, or on another branch, the updater reports the reason and syncs from the clean clone without cleaning, resetting, switching, or committing the development checkout.
 
-## Useful Variants
-
-Dry run:
+Useful variants:
 
 ```bash
+# Preview the selected source and planned refresh.
 python3 "${CODEX_HOME:-$HOME/.codex}/skills/skills-update-folloze/scripts/update_folloze_skills.py" --dry-run
-```
 
-Force a full refresh:
-
-```bash
+# Refresh all enabled internal skills.
 python3 "${CODEX_HOME:-$HOME/.codex}/skills/skills-update-folloze/scripts/update_folloze_skills.py" --all
+
+# Refresh one enabled skill.
+python3 "${CODEX_HOME:-$HOME/.codex}/skills/skills-update-folloze/scripts/update_folloze_skills.py" \
+  --skill folloze-brand-kit
 ```
 
-Refresh only specific skills:
+## Direct Repo Install
+
+The repo-level installer supports both agent clients:
 
 ```bash
-python3 "${CODEX_HOME:-$HOME/.codex}/skills/skills-update-folloze/scripts/update_folloze_skills.py" \
-  --skill account-org-chart \
-  --skill Salesforce-Update
+python3 scripts/sync_codex_skills.py --client codex --mode copy
+python3 scripts/sync_codex_skills.py --client claude --mode copy
+python3 scripts/sync_codex_skills.py --client both --mode copy
 ```
 
-## Create The Standard Automation
+This broad install is for authorized internal users. Customer-facing agents should follow the customer repo installer rather than installing every internal skill.
 
-If the user asks for ongoing team updates, create a recurring Codex automation with this spec:
+## Explicit Publication Is Separate
 
-- name: `Folloze Skills Weekly Update`
-- schedule: every Wednesday at 12:00 PM in the user's local time zone
-- workspace root: the user's home directory
-- scope: only the shared Folloze skills repo and the local Codex skills install
+Publishing is never part of update or sync. A maintainer may stage a reviewed candidate only from a clean non-main PR branch by:
 
-Use this task prompt:
+1. Adding its exact name and destination to `publication-allowlist.json` through review.
+2. Placing a real, non-symlinked source directory under an explicitly selected source root.
+3. Running the repo-level helper with `--skill <exact-name>`.
+4. Running validation and the public-release scanner.
+5. Reviewing the diff and opening a PR.
 
-```text
-Use the shared Folloze skills repo as the source of truth. Prefer FOLLOZE_SKILLS_REPO_ROOT if it is set; otherwise use ~/Projects/Folloze-Skills. Prefer FOLLOZE_SKILLS_REPO_URL if it is set; otherwise use https://github.com/0xTrey/Folloze-Skills.git. Track the main branch. Before pulling from GitHub, inspect ${CODEX_HOME:-$HOME/.codex}/skills for user-created skills that are not already tracked in the repo manifest and are not system or plugin-managed skills. Copy any such new local skills into Skills/Troy Folloze Created Skills/<name>/ in the repo, add them to skills-manifest.json as enabled skills, and report which skills were newly staged for GitHub. If the local repo clone does not exist, clone it. If it does exist, verify it is a git repo and use that clone. Do not overwrite, repair, or clean a dirty repo; if the local clone has uncommitted changes, use a clean sync clone for repo-to-local refresh work, but still report the dirty working repo because it may contain unpublished local skills. Update the clean sync repo from origin/main with a fast-forward pull. Sync Codex skills from the repo into ${CODEX_HOME:-$HOME/.codex}/skills. Prefer using the installed helper at ${CODEX_HOME:-$HOME/.codex}/skills/skills-update-folloze/scripts/update_folloze_skills.py when available. During migration from older installs, ${CODEX_HOME:-$HOME/.codex}/skills/skills-updater/scripts/update_folloze_skills.py is also acceptable. If neither installed helper is available yet, run the repo helper with equivalent behavior. Make sure the sync includes both changed existing skills and newly added skills from the repo manifest. If the manifest changed or a new skill was added, do a full refresh so new skills are installed automatically, including folloze-morning-brief and weekly-customer-action-items when present. If GitHub auth is available and the repo has newly staged local skills, commit and push those manifest and skill-folder changes to origin/main; if GitHub auth is blocked, report that explicitly. After syncing, if folloze-morning-brief is installed, ensure a local Codex automation named Folloze Morning Brief exists using AutomationTemplates/folloze-morning-brief-daily/template.json. Return a short inbox summary stating whether the repo was updated or already current, which skills were refreshed, which new local skills were staged for GitHub, which new skills were installed, which install-triggered automations were created or already present, and whether Codex should be restarted. Only touch the shared Folloze skills repo, the local Codex skills install, and the Folloze Morning Brief automation.
+```bash
+python3 scripts/publish_local_skills_to_repo.py \
+  --source-root /path/to/reviewed/skills \
+  --skill exact-approved-name
+python3 scripts/validate_skills.py
+python3 scripts/scan_public_release.py
 ```
 
-## Create The Morning Brief Automation
+The publisher refuses automatic discovery, external symlinks, dirty/main-branch worktrees, non-allowlisted names, secrets, hardcoded personal email addresses, and machine-specific home paths. It never commits or pushes.
 
-If `folloze-morning-brief` is installed or the user asks to set up the morning brief, create or update a recurring Codex automation from `AutomationTemplates/folloze-morning-brief-daily/template.json`.
+## Weekly Automation
 
-Use this behavior:
-
-- name: `Folloze Morning Brief`
-- schedule: every day at 7:00 AM in the user's local time zone
-- workspace root: the user's home directory
-- delivery: Codex inbox/thread
-- scope: read-only Folloze GTM brief for the current authenticated teammate
-- no delivery outside the Codex inbox/thread in v1
-
-If the automation tool is unavailable in the current Codex session, report that the skill was installed and the morning-brief automation still needs to be created from the repo template.
-
-## Guardrails
-
-- If the local repo clone has uncommitted changes, stop and tell the user to use a clean clone for updates
-- Do not edit `~/.codex/skills` by hand as part of normal updates; use the helper script
-- Do not create unrelated automations when setting up the morning brief
-- Do not copy internal Google Doc contents, pricing guides, order forms, or private deal materials into the GitHub repo. Keep internal product capability detail behind the access-controlled Google Doc pointer in `folloze-brand-kit`.
-- After a successful update, tell the user whether Codex should be restarted
+Use `AutomationTemplates/folloze-skills-weekly-update/template.json`. The automation is pull/install-only and uses this helper. It must not publish, commit, push, prune user-owned directories, or repair the development checkout.
 
 ## Expected Response
 
-Return a short summary:
+Report:
 
-- repo updated or already current
-- which new local skills were staged into `Skills/Troy Folloze Created Skills/`
-- which skills were refreshed
-- which new skills were installed
-- whether the Folloze Morning Brief automation was created, updated, already present, or still needs setup
-- whether a Codex restart is needed
+- development clone status and whether it was preserved;
+- exact sync clone used;
+- old and new commit IDs;
+- skills refreshed or already current;
+- any unmanaged destination that requires the operator to move or back up;
+- whether Codex should be restarted.

@@ -27,7 +27,7 @@ This is HTML-first. Build the local HTML source before PDF export so the teammat
 - Create a message-fit matrix before writing page copy. Each visible Folloze claim should map to an account signal, an approved Folloze message, and a page placement.
 - Keep messaging separate from layout. The template defines where content goes; the message-fit matrix decides what belongs there.
 - Do not use numeric claims unless they come from an approved source, a user-approved prior one-pager, or current Folloze sales material. If uncertain, use qualitative value language or `[PROOF]` in working notes, not in buyer-facing final copy.
-- Do not publish through Folloze MCP or update a tracker unless the user explicitly asks. If they ask for a board/microsite save, hand off to `Folloze-MCP-Demo-Builder`.
+- Do not publish through Folloze MCP or update a tracker unless the user explicitly asks. For a general or customer board/microsite save, hand off to the customer pack router. Use `Folloze-MCP-Demo-Builder` only when authorized internal demo-instance scope is explicit.
 
 ## Workflow
 
