@@ -156,7 +156,7 @@
     {
       "name": "folloze-demandbase-personalization-qa",
       "path": "Skills/support/folloze-demandbase-personalization-qa",
-      "description": "Troubleshoot Folloze personalization that depends on the Demandbase data-service integration. Local Chrome DevTools. Do not treat first-party URL params as Demandbase proof.",
+      "description": "QA Demandbase-driven personalization rules on live Folloze boards using a discovery-first four-phase workflow. Folloze MCP plus browser DevTools evaluate. Do not treat first-party URL params as Demandbase proof.",
       "enabled": true,
       "requires_restart": true,
       "lifecycle": "internal",
