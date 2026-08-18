@@ -17,4 +17,6 @@ Board routing:
 - explicit authorized internal demo-instance build or known internal demo-board update → `Folloze-MCP-Demo-Builder`;
 - `folloze-campaign-board-builder` → deprecated historical source.
 
+CS and support troubleshooting skills live under `Skills/support/`. They are not board builders.
+
 For Folloze-owned experiences, enabled internal workflows may use `folloze-brand-kit`. For any other brand, use Brand Harvester and require validated brand evidence before visual work.
