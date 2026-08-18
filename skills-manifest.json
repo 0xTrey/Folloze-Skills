@@ -154,6 +154,15 @@
       "replaces": "skills-updater"
     },
     {
+      "name": "folloze-demandbase-personalization-qa",
+      "path": "Skills/support/folloze-demandbase-personalization-qa",
+      "description": "Troubleshoot Folloze personalization that depends on the Demandbase data-service integration. Local Chrome DevTools. Do not treat first-party URL params as Demandbase proof.",
+      "enabled": true,
+      "requires_restart": true,
+      "lifecycle": "internal",
+      "audience": "Folloze CS and support operators"
+    },
+    {
       "name": "weekly-customer-action-items",
       "path": "Skills/weekly-customer-action-items",
       "enabled": true,
