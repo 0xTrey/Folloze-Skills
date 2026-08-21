@@ -19,8 +19,8 @@
       "requires_restart": true
     },
     {
-      "name": "customer-renewal-board",
-      "path": "Skills/Troy Folloze Created Skills/customer-renewal-board",
+      "name": "brand-harvester",
+      "path": "Skills/brand-harvester",
       "enabled": true,
       "requires_restart": true
     },
@@ -28,6 +28,12 @@
       "name": "build-customer-abx-program",
       "path": "Skills/Troy Folloze Created Skills/build-customer-abx-program",
       "description": "Builds customer-specific 12-month ABX strategies and implementation workbooks from the Folloze Academy Blueprint, reusable templates, and customer source folders.",
+      "enabled": true,
+      "requires_restart": true
+    },
+    {
+      "name": "customer-renewal-board",
+      "path": "Skills/Troy Folloze Created Skills/customer-renewal-board",
       "enabled": true,
       "requires_restart": true
     },
@@ -50,18 +56,6 @@
       "requires_restart": true
     },
     {
-      "name": "Folloze-Customer-Watchlist",
-      "path": "Skills/Troy Folloze Created Skills/Folloze-Customer-Watchlist",
-      "enabled": true,
-      "requires_restart": true
-    },
-    {
-      "name": "brand-harvester",
-      "path": "Skills/brand-harvester",
-      "enabled": true,
-      "requires_restart": true
-    },
-    {
       "name": "folloze-campaign-board-builder",
       "path": "Skills/folloze-campaign-board-builder",
       "enabled": false,
@@ -71,8 +65,8 @@
       "migration": "Use the customer pack router and motion-specific builders. Existing local installs are preserved unless the operator explicitly prunes managed symlinks."
     },
     {
-      "name": "folloze-zoom-deal-room",
-      "path": "Skills/folloze-zoom-deal-room",
+      "name": "Folloze-Customer-Watchlist",
+      "path": "Skills/Troy Folloze Created Skills/Folloze-Customer-Watchlist",
       "enabled": true,
       "requires_restart": true
     },
@@ -110,6 +104,12 @@
       "requires_restart": true
     },
     {
+      "name": "folloze-program-kpi-waterfall-board",
+      "path": "Skills/Troy Folloze Created Skills/Program KPI Waterfall/folloze-program-kpi-waterfall-board",
+      "enabled": true,
+      "requires_restart": true
+    },
+    {
       "name": "folloze-sales-doc",
       "path": "Skills/folloze-sales-doc",
       "enabled": true,
@@ -122,6 +122,12 @@
       "requires_restart": true
     },
     {
+      "name": "folloze-zoom-deal-room",
+      "path": "Skills/folloze-zoom-deal-room",
+      "enabled": true,
+      "requires_restart": true
+    },
+    {
       "name": "gainsight-mcp-connector",
       "path": "Skills/Troy Folloze Created Skills/gainsight-mcp-connector",
       "enabled": true,
@@ -130,6 +136,12 @@
     {
       "name": "linkedin-operator-content",
       "path": "Skills/Troy Folloze Created Skills/linkedin-operator-content",
+      "enabled": true,
+      "requires_restart": true
+    },
+    {
+      "name": "program-kpi-waterfall-workbook",
+      "path": "Skills/Troy Folloze Created Skills/Program KPI Waterfall/program-kpi-waterfall-workbook",
       "enabled": true,
       "requires_restart": true
     },
