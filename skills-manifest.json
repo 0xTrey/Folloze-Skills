@@ -134,6 +134,12 @@
       "requires_restart": true
     },
     {
+      "name": "monthly-folloze-adoption-reports",
+      "path": "Skills/Troy Folloze Created Skills/monthly-folloze-adoption-reports",
+      "enabled": true,
+      "requires_restart": true
+    },
+    {
       "name": "sales-to-cs-internal-handoff-folloze",
       "path": "Skills/sales-to-cs-internal-handoff-folloze",
       "enabled": true,

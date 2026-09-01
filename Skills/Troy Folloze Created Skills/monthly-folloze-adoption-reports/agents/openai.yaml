@@ -1,0 +1,4 @@
+interface:
+  display_name: "Monthly Folloze Adoption Reports"
+  short_description: "Run monthly customer adoption PDFs to Slack"
+  default_prompt: "Use $monthly-folloze-adoption-reports to run the monthly adoption PDF workflow for matched customer Slack channels."
