@@ -35,13 +35,15 @@ Use this skill to generate one-page Folloze adoption PDFs for the matched custom
 
 ## Local Scripts
 
-The current implementation lives in `/Users/troysmith/Documents/Playground`:
+The current implementation defaults to `~/Documents/Playground`. Set `FOLLOZE_ADOPTION_WORKSPACE` when the scripts live elsewhere:
 
 - `batch_adoption_reports.py`: builds PDFs and `manifest.json` from prepared roster, Salesforce contract/subscription exports, contract-document entitlement extraction, and PX user CSV.
 - `create_slack_posting_manifest.py`: maps generated PDFs to Slack channels and writes `slack_posting_manifest.json`.
 
 Environment knobs:
 
+- `FOLLOZE_ADOPTION_WORKSPACE`: workspace containing the report scripts and `output/pdf` folder.
+- `FOLLOZE_ADOPTION_AUTOMATION_TOML`: automation definition path when it is not in the default Codex automation folder.
 - `RUN_DATE`: ISO date/datetime override for test runs.
 - `OUT_DIR`: output folder override.
 - `PX_USERS_CSV`: Gainsight PX users CSV path override.
