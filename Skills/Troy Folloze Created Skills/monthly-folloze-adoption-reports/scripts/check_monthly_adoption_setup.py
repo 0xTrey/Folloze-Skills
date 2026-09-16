@@ -1,10 +1,16 @@
 #!/usr/bin/env python3
 import json
+import os
 from pathlib import Path
 
 
-ROOT = Path("/Users/troysmith/Documents/Playground")
-AUTOMATION = Path("/Users/troysmith/.codex/automations/monthly-folloze-adoption-reports-to-customer-slack-channels/automation.toml")
+ROOT = Path(os.environ.get("FOLLOZE_ADOPTION_WORKSPACE", Path.home() / "Documents/Playground")).expanduser()
+AUTOMATION = Path(
+    os.environ.get(
+        "FOLLOZE_ADOPTION_AUTOMATION_TOML",
+        Path.home() / ".codex/automations/monthly-folloze-adoption-reports-to-customer-slack-channels/automation.toml",
+    )
+).expanduser()
 REQUIRED = [
     ROOT / "batch_adoption_reports.py",
     ROOT / "create_slack_posting_manifest.py",

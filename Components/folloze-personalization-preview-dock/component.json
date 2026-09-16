@@ -1,0 +1,19 @@
+{
+  "name": "folloze-personalization-preview-dock",
+  "displayName": "Folloze Personalization Preview Dock",
+  "version": "1.0.0",
+  "type": "folloze-html-section-component",
+  "lifecycle": "internal-reusable",
+  "entrypoint": "src/index.mjs",
+  "configSchema": "src/config.schema.json",
+  "events": {
+    "change": "folloze:personalization-preview-change",
+    "contentOpen": "folloze:content-item-open"
+  },
+  "contentItemTriggerAttribute": "data-folloze-content-item",
+  "renderers": [
+    "renderPersonalizationPreviewDock",
+    "renderPersonalizationPreviewFragment"
+  ],
+  "runtimeDependencies": []
+}

@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Folloze Personalization Preview Dock",
+  "description": "Portable render contract for a manual Folloze personalization preview dock.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["rootClass", "analyticsArea", "activeKey", "config", "views"],
+  "properties": {
+    "rootClass": {
+      "type": "string",
+      "pattern": "^\\.[a-z][a-z0-9-]*$",
+      "description": "Unique root selector for the owning board section."
+    },
+    "analyticsArea": {"type": "string", "minLength": 1},
+    "activeKey": {"type": "string", "pattern": "^[a-z][a-z0-9-]*$"},
+    "config": {"$ref": "#/$defs/dockConfig"},
+    "views": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 6,
+      "items": {"$ref": "#/$defs/view"}
+    }
+  },
+  "$defs": {
+    "dockConfig": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["proofHeadline", "signalLabel", "signals"],
+      "properties": {
+        "proofHeadline": {"type": "string", "minLength": 1},
+        "signalLabel": {"type": "string", "minLength": 1},
+        "signals": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 6,
+          "items": {"$ref": "#/$defs/signal"}
+        }
+      }
+    },
+    "signal": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["key", "label"],
+      "properties": {
+        "key": {"type": "string", "pattern": "^[a-z][a-z0-9-]*$"},
+        "label": {"type": "string", "minLength": 1},
+        "color": {"type": "string", "pattern": "^#[0-9A-Fa-f]{6}$"}
+      }
+    },
+    "view": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["key", "label", "pickerContext", "pickerTrigger", "pickerSignals"],
+      "properties": {
+        "key": {"type": "string", "pattern": "^[a-z][a-z0-9-]*$"},
+        "label": {"type": "string", "minLength": 1},
+        "pickerContext": {"type": "string", "minLength": 1},
+        "pickerTrigger": {"type": "string", "minLength": 1},
+        "pickerSignals": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"type": "string", "pattern": "^[a-z][a-z0-9-]*$"}
+        }
+      }
+    }
+  }
+}
