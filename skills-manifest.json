@@ -19,8 +19,8 @@
       "requires_restart": true
     },
     {
-      "name": "customer-renewal-board",
-      "path": "Skills/Troy Folloze Created Skills/customer-renewal-board",
+      "name": "brand-harvester",
+      "path": "Skills/brand-harvester",
       "enabled": true,
       "requires_restart": true
     },
@@ -28,6 +28,12 @@
       "name": "build-customer-abx-program",
       "path": "Skills/Troy Folloze Created Skills/build-customer-abx-program",
       "description": "Builds customer-specific 12-month ABX strategies and implementation workbooks from the Folloze Academy Blueprint, reusable templates, and customer source folders.",
+      "enabled": true,
+      "requires_restart": true
+    },
+    {
+      "name": "customer-renewal-board",
+      "path": "Skills/Troy Folloze Created Skills/customer-renewal-board",
       "enabled": true,
       "requires_restart": true
     },
@@ -50,18 +56,6 @@
       "requires_restart": true
     },
     {
-      "name": "Folloze-Customer-Watchlist",
-      "path": "Skills/Troy Folloze Created Skills/Folloze-Customer-Watchlist",
-      "enabled": true,
-      "requires_restart": true
-    },
-    {
-      "name": "brand-harvester",
-      "path": "Skills/brand-harvester",
-      "enabled": true,
-      "requires_restart": true
-    },
-    {
       "name": "folloze-campaign-board-builder",
       "path": "Skills/folloze-campaign-board-builder",
       "enabled": false,
@@ -71,10 +65,19 @@
       "migration": "Use the customer pack router and motion-specific builders. Existing local installs are preserved unless the operator explicitly prunes managed symlinks."
     },
     {
-      "name": "folloze-zoom-deal-room",
-      "path": "Skills/folloze-zoom-deal-room",
+      "name": "Folloze-Customer-Watchlist",
+      "path": "Skills/Troy Folloze Created Skills/Folloze-Customer-Watchlist",
       "enabled": true,
       "requires_restart": true
+    },
+    {
+      "name": "folloze-demandbase-personalization-qa",
+      "path": "Skills/support/folloze-demandbase-personalization-qa",
+      "description": "Troubleshoot Folloze personalization that depends on the Demandbase data-service integration. Local Chrome DevTools. Do not treat first-party URL params as Demandbase proof.",
+      "enabled": true,
+      "requires_restart": true,
+      "lifecycle": "internal",
+      "audience": "Folloze CS and support operators"
     },
     {
       "name": "Folloze-Digital-Deal-Room-Internal",
@@ -98,6 +101,14 @@
       "requires_restart": true
     },
     {
+      "name": "folloze-native-content-lightbox",
+      "path": "Skills/Published/folloze-native-content-lightbox",
+      "enabled": false,
+      "requires_restart": true,
+      "lifecycle": "candidate",
+      "audience": "review-required"
+    },
+    {
       "name": "folloze-one-pager",
       "path": "Skills/folloze-one-pager",
       "enabled": true,
@@ -118,6 +129,12 @@
     {
       "name": "folloze-sales-handoff",
       "path": "Skills/folloze-sales-handoff",
+      "enabled": true,
+      "requires_restart": true
+    },
+    {
+      "name": "folloze-zoom-deal-room",
+      "path": "Skills/folloze-zoom-deal-room",
       "enabled": true,
       "requires_restart": true
     },
@@ -158,15 +175,6 @@
       "requires_restart": true,
       "lifecycle": "current",
       "replaces": "skills-updater"
-    },
-    {
-      "name": "folloze-demandbase-personalization-qa",
-      "path": "Skills/support/folloze-demandbase-personalization-qa",
-      "description": "Troubleshoot Folloze personalization that depends on the Demandbase data-service integration. Local Chrome DevTools. Do not treat first-party URL params as Demandbase proof.",
-      "enabled": true,
-      "requires_restart": true,
-      "lifecycle": "internal",
-      "audience": "Folloze CS and support operators"
     },
     {
       "name": "weekly-customer-action-items",

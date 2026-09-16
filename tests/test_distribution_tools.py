@@ -88,10 +88,14 @@ class PublisherPolicyTests(unittest.TestCase):
             with self.assertRaises(SystemExit):
                 publisher.require_pr_branch(repo)
 
-    def test_allowlist_is_fail_closed_by_default(self) -> None:
+    def test_allowlist_rejects_unapproved_skills(self) -> None:
         policy = json.loads((ROOT / "publication-allowlist.json").read_text())
         self.assertEqual(policy["policy"], "fail-closed")
-        self.assertEqual(publisher.approved_entries(policy), {})
+        self.assertEqual(publisher.approved_entries({"allowed_skills": []}), {})
+        self.assertEqual(
+            publisher.approved_entries({"allowed_skills": [{"name": "unreviewed", "approved": False}]}),
+            {},
+        )
 
     def test_publisher_has_no_push_operation(self) -> None:
         source = (ROOT / "scripts" / "publish_local_skills_to_repo.py").read_text()
