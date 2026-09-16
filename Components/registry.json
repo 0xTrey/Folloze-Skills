@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "components": [
+    {
+      "name": "folloze-personalization-preview-dock",
+      "displayName": "Folloze Personalization Preview Dock",
+      "path": "Components/folloze-personalization-preview-dock",
+      "version": "1.0.0",
+      "lifecycle": "internal-reusable",
+      "type": "folloze-html-section-component"
+    }
+  ]
+}
