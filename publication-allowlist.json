@@ -3,6 +3,12 @@
   "visibility": "public",
   "policy": "fail-closed",
   "destination_root": "Skills/Published",
-  "allowed_skills": [],
+  "allowed_skills": [
+    {
+      "name": "folloze-native-content-lightbox",
+      "destination": "Skills/Published/folloze-native-content-lightbox",
+      "approved": true
+    }
+  ],
   "instructions": "Add a named candidate through review before running the publication helper. Empty means no local skill is approved for public staging."
 }
