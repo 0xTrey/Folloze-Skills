@@ -89,6 +89,7 @@ Generated artifacts, browser state, QA output, research bundles, environment fil
 ## Structure
 
 - `Skills/`: internal and reusable skill sources.
+- `Skills/support/`: CS and support troubleshooting skills.
 - `skills-manifest.json`: explicit install allowlist and lifecycle metadata.
 - `publication-allowlist.json`: fail-closed list of reviewed public publication candidates.
 - `scripts/`: install, update, validation, publication, and security helpers.
