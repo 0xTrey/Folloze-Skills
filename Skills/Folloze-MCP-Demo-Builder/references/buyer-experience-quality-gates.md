@@ -23,6 +23,7 @@ Run these gates before local preview and again before saving through Folloze MCP
 
 - Every visible button, nav item, card CTA, arrow, resource action, "Read more" control, tab, slider, modal opener, and calculator control does real work.
 - No `href="#"`, placeholder URL, `javascript:void(0)`, or dead decorative arrow remains.
+- Folloze-hosted in-page section navigation does not use raw hash links such as `href="#workflow"`. Use `<button type="button" data-scroll-target="section-id">`, stable target IDs, `scroll-margin-top`, `scrollIntoView()`, and `anchor_click` analytics so the hosted shell does not route visitors to content unavailable.
 - Every external URL is real, source-owned or vendor-owned when possible, and uses `target="_blank" rel="noopener"`.
 - Primary CTAs and resource CTAs call `flzAnalytic('cta_click', ...)` with useful `text`, `area`, and `url`.
 - Meaningful interactions call descriptive analytics events with useful payloads: modal opens/closes, tab changes, scenario selectors, FAQ expands, anchor clicks, sliders, calculators, and model updates.
