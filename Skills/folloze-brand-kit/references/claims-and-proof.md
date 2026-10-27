@@ -1,5 +1,7 @@
 # Claims And Proof
 
+V3.3 messaging does not change proof permission. The Live Customer Proof Library remains v1.1. Do not treat an updated story as approval for customer names, quotes, metrics, or logos. Use the current Live library for exact approval state.
+
 Use this file before adding numeric claims, customer outcomes, customer names, benchmark claims, or proof points to Folloze assets.
 
 ## Claim Discipline

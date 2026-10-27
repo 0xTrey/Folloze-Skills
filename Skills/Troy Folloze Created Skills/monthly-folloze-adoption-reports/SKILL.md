@@ -35,7 +35,7 @@ Use this skill to generate one-page Folloze adoption PDFs for the matched custom
 
 ## Local Scripts
 
-The current implementation lives in `/Users/troysmith/Documents/Playground`:
+The current implementation lives in `~/Documents/Playground`. Set `MONTHLY_ADOPTION_WORKSPACE` when the workspace is elsewhere. The setup check resolves the current user's home directory and honors `CODEX_HOME` for the automation location.
 
 - `batch_adoption_reports.py`: builds PDFs and `manifest.json` from prepared roster, Salesforce contract/subscription exports, contract-document entitlement extraction, and PX user CSV.
 - `create_slack_posting_manifest.py`: maps generated PDFs to Slack channels and writes `slack_posting_manifest.json`.

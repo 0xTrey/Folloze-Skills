@@ -54,7 +54,7 @@ Website engagement can bring Folloze-powered personalized experiences into a com
 
 ### Events
 
-Folloze can support digital destinations for event promotion, event engagement, and post-event follow-up.
+Folloze can support digital destinations for event promotion, registration, live engagement, and post-event follow-up. Where enabled, event teams can manage attendee lists and statuses, check in attendees, export event data, and automatically capture registration, attendance, and recording-view activity. Event status can also sync with a connected Marketo Event Program when the required configuration is in place.
 
 ### User Roles
 

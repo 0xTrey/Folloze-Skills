@@ -2,6 +2,14 @@
 
 Use this file for approved Folloze value props, proof pillars, reusable copy blocks, and account-message mapping.
 
+## AI-Driven ABM
+
+Lead with AI-driven ABM and define it: your AI researches and writes; Folloze turns it into campaigns for accounts across the funnel, using a governed experience that adapts by account, persona, and stage and captures engagement to guide the next move.
+
+Promise "feels one-to-one" or "one-to-one impact at segment-level effort." Never promise one-to-one production at scale or unlimited output. Microsite names the output, not Folloze's category.
+
+When explaining how it works, include who engaged, with what, for how long, and what that informs next. See content-system-v3-3.md for the full alignment.
+
 ## Core Message
 
 Folloze helps teams target and convert key accounts.
@@ -44,7 +52,7 @@ Use these as opener seeds or value-prop anchors, adapting them to the brief and 
 | Primary | Default for most content | You target and convert your key accounts at the personalization and speed AI now makes possible. |
 | Efficiency-led | CMO, budget-constrained demand gen, pipeline pressure | You hit your pipeline target without growing your team or rebuilding your stack. |
 | Speed-led | Demand gen, web bottleneck, scale pressure | You launch personalized campaigns for every account on your list, in hours instead of weeks. |
-| Signal-led | RevOps, CMO, sales-adjacent content, first-party data | You see what every account actually engages with, and every campaign gets smarter from the last. |
+| Signal-led | RevOps, CMO, sales-adjacent content, first-party data | You know which accounts are leaning in, what they read, and what to send next. Every campaign gets smarter from the last. |
 | Leadership-led | Competitive content, procurement decks, RFP responses | You get comprehensive use-case coverage, an open execution platform, and market-leading first-party signal in one platform. |
 
 Do not use these as the default external frame:
@@ -138,7 +146,7 @@ Use these as the current public-facing proof structure.
 |---|---|---|
 | Personalization at scale | Account-level experiences from segment rules, 1:1 inputs, or AI-generated content | The buyer needs more relevant experiences without adding headcount |
 | Bring your own AI | Folloze activates content built in any tool or agent | The buyer already uses Claude, ChatGPT, Gemini, Perplexity, internal models, or custom agents |
-| Deep engagement intelligence | First-party signals beyond clicks, including feature, use case, persona, account, and buying-group context | Sales needs better follow-up or marketing needs better proof |
+| Deep engagement intelligence | First-party signals beyond clicks, showing who engaged, with what, for how long, and from which channel, with supported routing to MAP, CRM, sales, and the next campaign | Sales needs better follow-up or marketing needs better proof |
 | Enterprise-grade governance | Brand compliance, audit, control, and consistency across decentralized teams | Procurement, InfoSec, regional rollout, or client-program control matters |
 
 ## Common Account Signals To Value Props
