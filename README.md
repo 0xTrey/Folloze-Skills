@@ -4,6 +4,10 @@ Public source for Folloze internal skill development, operator workflows, and re
 
 This broad repository is **not the recommended customer or Etai install**. Customer, partner, Claude, Codex, campaign, webinar, and 1:1 board-building agents should use the portable [Folloze MCP Customer Skills](https://github.com/0xTrey/folloze-mcp-customer-skills) pack. That pack owns the customer routing layer, ABM Strategist, mandatory Brand Harvester gate, and motion-specific builders without inheriting private operational assumptions.
 
+## Current Brand Messaging
+
+The [Folloze Brand Kit](Skills/folloze-brand-kit/SKILL.md) follows the approved October 26, 2026 v3.3 update: define AI-driven ABM, promise one-to-one impact, and include engagement signal when explaining how it works. Older messaging references are historical.
+
 ## Repository Roles
 
 | Repository | Recommended use |

@@ -34,7 +34,7 @@ The internal reference explains the capability labels used in current package an
 - MAP, CRM, CDP, and ABM integration categories
 - Global Scalability, including localization, governed asset management, data warehouse access, and SSO
 - Website Engagement and Website Engager
-- Events
+- Events, including the Event Management attendee workflow, automatic status tracking, check-in, export, Pulse/reporting consistency, and configured Marketo Event Program synchronization
 - Creators, Collaborators, Collaborator Pro, and Associates
 - Folloze AI/Data credits
 - Commercial module rows and package interpretation notes
@@ -48,6 +48,12 @@ For internal Folloze work:
 3. Use the local markdown source if Drive is unavailable but local repo access exists.
 4. Use `product-capabilities-customer-ready.md` for buyer-facing wording.
 5. Use `product-capabilities-public-safe.md` for public, repo-safe, or no-Drive contexts.
+
+Current Event Management source:
+
+- Folloze Help Center, `Event Management Tab`
+- URL: https://help.folloze.com/s/article/Event-management-tab
+- Verified: 2026-09-21
 
 ## Usage Rules
 

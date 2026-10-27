@@ -9,7 +9,7 @@ The brief keeps messaging separate from layout. Fill it before writing polished 
 | Field | What to capture |
 |---|---|
 | Content type | One-pager, landing page, blog, email, LinkedIn post, ad, sales follow-up, board copy, slide, or other format |
-| Primary persona | CMO / VP Marketing, demand gen / campaign marketer, rev ops / marketing ops, AE / SDR for expansion, or other |
+| Primary persona | CMO / VP Marketing, demand gen / campaign marketer, rev ops / marketing ops, Field marketing, CEO, AE / SDR for expansion, or other |
 | Lead hook | The opening angle or tension |
 | Funnel stage | TOFU, MOFU, BOFU, expansion, renewal, partner, or customer enablement |
 | Pain point | The real problem the piece must answer |
@@ -45,6 +45,10 @@ Rules:
 Pick only the options that fit the brief.
 
 ### Core Frame
+
+- Lead with AI-driven ABM and define it. Your AI researches and writes; Folloze turns it into governed account campaigns across the funnel and captures engagement.
+- Use one-to-one for impact or one named-account build, never production volume. Include signal whenever explaining how it works.
+
 
 - Folloze helps teams target and convert key accounts.
 - Bring your AI to create. Folloze deploys the content, hosts the experience, captures engagement signals, and helps every campaign learn from the last.
@@ -82,6 +86,11 @@ Before drafting, decide:
 - whether the output is external, internal, or partner-facing
 
 ## Quality Gate
+
+- Is AI-driven ABM defined?
+- Does one-to-one describe impact or one named-account build?
+- Does an explanation of how it works include engagement signal?
+
 
 Before final delivery:
 

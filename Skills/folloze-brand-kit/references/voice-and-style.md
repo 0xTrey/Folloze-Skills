@@ -2,6 +2,22 @@
 
 Use this file for Folloze tone, language, and copy quality checks.
 
+## Positioning Guardrails, V3.3
+
+- Lead with AI-driven ABM and define it in the piece.
+- Your AI researches and writes. Folloze makes it a campaign and captures engagement.
+- Promise impact: "feels one-to-one" or "one-to-one impact at segment-level effort."
+- Do not promise "1:1 for every account," "1:1 at scale," "one-to-one at scale," "unlimited," or "without limits."
+- A one-to-one build can describe one named-account experience, such as a deal room.
+- Microsite names the output. Do not call Folloze a landing page builder.
+- Avoid headless and open architecture externally. Describe the actual workflow.
+- Do not claim Folloze replaces 6sense or Demandbase.
+- Lead the signal story with what the team learns and does next.
+- Include engagement signal whenever explaining how it works.
+- AI readiness stays an internal discovery lens.
+- Visual assets start with one headline. No eyebrow, headline, and explanatory subtitle stack; no leading zeros for 1 through 9.
+- See content-system-v3-3.md for source priority and proof limits.
+
 ## North Star
 
 Folloze sounds like a direct, experienced peer who has been in the trenches with B2B marketers.

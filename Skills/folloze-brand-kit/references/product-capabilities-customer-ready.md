@@ -115,6 +115,12 @@ Events are Folloze-powered experiences for webinars, field events, virtual event
 
 Teams can use Folloze to create a governed digital destination before, during, and after the event, then use engagement data to guide nurture, retargeting, sales follow-up, and account scoring.
 
+When Registration Pages & Tracking is enabled, the Event Management tab gives teams one place to manage the attendee workflow from the board backoffice. Teams can import or add attendees, track registration and attendance KPIs, check in attendees individually or in bulk, update statuses, search and export the attendee list, and open the related Pulse record.
+
+Folloze can automatically update an attendee to `Registered`, `Attended`, or `Viewed Recording` based on live board activity. Event status stays consistent across the Event tab, Pulse, Report Center, and CSV exports. When a board is mapped to a connected Marketo Event Program, supported standard and matching custom statuses can also sync to Marketo.
+
+Event Management availability and Marketo synchronization depend on account configuration.
+
 ## Creators And Collaborators
 
 Folloze user licenses control what users can do.

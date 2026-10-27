@@ -1,5 +1,7 @@
 # Folloze Content System V3.2
 
+Historical reference. Superseded for new work by content-system-v3-3.md (October 26, 2026).
+
 Use this file first for current Folloze marketing, content, outbound, and agent-output alignment.
 
 Source: Google Doc `Folloze Content System - Live`

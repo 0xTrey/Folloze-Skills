@@ -1,6 +1,6 @@
 ---
 name: folloze-brand-kit
-description: Reusable Folloze public-facing brand, v3.2 messaging, claims, proof, visual identity, and logo source material for other Folloze skills. Use when a teammate asks for Folloze positioning, value props, brand voice, approved claims, proof points, logo assets, campaign messaging, or when another Folloze skill needs a portable brand source of truth.
+description: Reusable Folloze public-facing brand, v3.3 messaging, claims, proof, visual identity, and logo source material for other Folloze skills. Use when a teammate asks for Folloze positioning, value props, brand voice, approved claims, proof points, logo assets, campaign messaging, or when another Folloze skill needs a portable brand source of truth.
 ---
 
 # Folloze Brand Kit
@@ -11,9 +11,12 @@ This package contains public-facing, generally reusable Folloze brand material. 
 
 ## Current Messaging Source
 
-The active messaging alignment is `references/content-system-v3-2.md`, derived from the live team-review doc `Folloze Content System - Live`.
+The active messaging alignment is `references/content-system-v3-3.md`, derived from the live team-review doc `Folloze Content System - Live`.
 
 Core external frame:
+
+- Lead with AI-driven ABM and define it: your AI researches and writes; Folloze turns it into governed campaigns across the funnel and captures engagement to guide the next move.
+- Promise one-to-one impact, never one-to-one production at scale. Include engagement signal whenever explaining how Folloze works.
 
 - Folloze helps teams target and convert key accounts.
 - Bring your AI to create. Folloze deploys the content, hosts the experience, captures engagement signals, and helps every campaign learn from the last.
@@ -37,7 +40,7 @@ The internal Google Doc is access-controlled and should guide Folloze employees 
 For most work:
 
 1. Read `references/source-index.md` to choose the minimum relevant references.
-2. Use `references/content-system-v3-2.md` for current messaging alignment, source priority, and external/internal language boundaries.
+2. Use `references/content-system-v3-3.md` for current messaging alignment, source priority, and external/internal language boundaries.
 3. Use the product capability references when the task involves product features, modules, user roles, integrations, global scalability, Website Engagement, Events, or AI/Data credits.
 4. Use `references/brand-foundation.md` for category, positioning, audience, and narrative rules.
 5. Use `references/messaging-library.md` for value props, proof pillars, approved phrases, and module copy options.
@@ -45,13 +48,13 @@ For most work:
 7. Use `references/voice-and-style.md` for tone, words to use, and words to avoid.
 8. Use `references/content-brief-template.md` when creating new campaign, page, sales, or thought-leadership content from scratch.
 9. Use `references/campaign-board-design-context.md` when Folloze is the brand owner for a campaign board or Folloze-owned buyer experience.
-10. Use `references/visual-identity.md` and `assets/logos/` for logo and color usage.
+10. Use `references/visual-identity.md` and `assets/logos/` for current logo, color, typography, curvature, and control usage. Load `references/live-homepage-design-system-2026-07.md` for homepage provenance and `references/live-events-experience-palette-2026-07.md` for the approved extended campaign and event palette.
 
 Do not load every reference by default. Use only what the task needs.
 
 ## Source Priority
 
-Use current user-provided direction first when it is clearly intended for the asset being created. Then use this bundled brand kit, with `content-system-v3-2.md` as the active messaging layer. If the user provides a newer approved Folloze deck, website copy, or messaging guide that conflicts with this package, follow the newer source and note the conflict in the working summary.
+Use current user-provided direction first when it is clearly intended for the asset being created. Then use this bundled brand kit, with `content-system-v3-3.md` as the active messaging layer. If the user provides a newer approved Folloze deck, website copy, or messaging guide that conflicts with this package, follow the newer source and note the conflict in the working summary.
 
 For account-specific assets, pair this brand kit with the account research and call-note evidence. Do not let generic Folloze messaging override what the account actually cares about.
 
@@ -63,10 +66,10 @@ Other Folloze skills should reference this package instead of copying brand rule
 
 - `folloze-one-pager`: source approved value props, claims, proof, logos, and voice rules.
 - `folloze-order-form-builder`: use internal capability references for package-row interpretation, while current order-form evidence takes priority.
-- `Folloze-MCP-Demo-Builder`: use only for explicit authorized internal demo-instance work; general board work routes through the customer pack.
+- `Folloze-MCP-Demo-Builder`: use logo assets and public Folloze positioning only when the user explicitly wants a Folloze-branded experience.
 - `folloze-sales-doc`: use claim, proof, and voice references for customer-facing Folloze documents.
 - `folloze-zoom-deal-room` and board-production skills: use product capability references to ground buyer-safe deal-room structure and board briefs.
-- `folloze-campaign-board-builder`: deprecated learning source. New customer work routes through the customer pack; use `campaign-board-design-context.md` only when Folloze is the brand owner.
+- `folloze-campaign-board-builder`: use `campaign-board-design-context.md` only when Folloze is the brand owner; for customer-owned boards, capture the customer's design context instead.
 - outbound or follow-up skills: use the message pillars and proof library, then adapt to the account context.
 
 If a downstream skill creates a reusable message pattern, objection pattern, proof pairing, or content brief field, add the generic version here once it has worked in more than one account context.

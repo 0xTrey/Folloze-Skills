@@ -2,6 +2,14 @@
 
 Use this file for Folloze category, positioning, audience, and narrative guardrails.
 
+## AI-Driven ABM
+
+Lead with AI-driven ABM and define it: your AI researches and writes; Folloze turns it into campaigns for accounts across the funnel, using a governed experience that adapts by account, persona, and stage and captures engagement to guide the next move.
+
+Promise "feels one-to-one" or "one-to-one impact at segment-level effort." Never promise one-to-one production at scale or unlimited output. Microsite names the output, not Folloze's category.
+
+When explaining how it works, include who engaged, with what, for how long, and what that informs next. See content-system-v3-3.md for the full alignment.
+
 ## Current External Frame
 
 Folloze helps teams target and convert key accounts.
@@ -55,6 +63,7 @@ When writing externally, name what happens:
 Primary buyers:
 
 - CMO
+- CEO
 - VP Marketing
 - VP Revenue Marketing
 - Head of Demand Generation

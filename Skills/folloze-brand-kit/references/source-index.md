@@ -10,17 +10,39 @@ Active messaging source:
 
 - `Folloze Content System - Live`
 - Google Doc ID: `1gwztgTSaWCJ7tgkFjuSPPiDq0hxw6AM8G97WrJbvn2I`
-- Captured into this kit: 2026-06-01
+- Source version: v3.3, October 26, 2026
+- Captured into this kit: 2026-10-27
+
+Active visual source:
+
+- Live Folloze homepage: `https://www.folloze.com/`
+- Browser-computed desktop/mobile capture: `research/brand-harvest/folloze-home-2026-07-16/`
+- Curated design-system evidence: `references/live-homepage-design-system-2026-07.md`
+- Captured into this kit: 2026-07-16
+
+Extended campaign and event color source:
+
+- Live Folloze Events experience: `https://engage.folloze.com/for-events`
+- Extracted color tokens: `research/brand-harvest/folloze-events-2026-07-24/brand-tokens.css`
+- Curated usage guidance: `references/live-events-experience-palette-2026-07.md`
+- Captured into this kit: 2026-07-24
+
+Event Management capability source:
+
+- Folloze Help Center: `Event Management Tab`
+- URL: `https://help.folloze.com/s/article/Event-management-tab`
+- Verified: 2026-09-21
 
 This kit intentionally excludes restricted customer-specific folders and deal-specific artifacts.
 
-Last reviewed: 2026-06-01
+Last reviewed: 2026-10-27
 
 ## References
 
 | File | Use when |
 |---|---|
-| `content-system-v3-2.md` | Need the active messaging alignment, source priority, external/internal language boundary, current proof pillars, proof-library rules, content brief fields, or content-system rules |
+| `content-system-v3-3.md` | Need the active messaging alignment, source priority, external/internal language boundary, current proof pillars, proof-library rules, content brief fields, or content-system rules |
+| `content-system-v3-2.md` | Historical v3.2 alignment only; superseded by v3.3 |
 | `content-system-v3-1.md` | Historical v3.1 context only when comparing old work or diagnosing stale outputs |
 | `product-capabilities-internal.md` | Need internal Folloze capability, module, license, package-row, integration, Website Engagement, Events, Global Scalability, or AI/Data credit context and Drive/internal access is available |
 | `product-capabilities-customer-ready.md` | Need customer-facing capability descriptions without internal source notes, private provenance, pricing-guide details, or local paths |
@@ -31,7 +53,9 @@ Last reviewed: 2026-06-01
 | `voice-and-style.md` | Need tone, style, words to use, words to avoid, or copy-quality checks |
 | `content-brief-template.md` | Need a reusable brief shape for campaign, page, sales, thought-leadership, or one-pager content |
 | `campaign-board-design-context.md` | Need Folloze-specific campaign board design context, campaign registers, anti-references, or board design gates |
-| `visual-identity.md` | Need colors, logo selection, logo file names, or visual usage guidance |
+| `visual-identity.md` | Need current colors, fonts, curvature, controls, logo selection, or visual usage guidance |
+| `live-homepage-design-system-2026-07.md` | Need the browser-computed evidence, exact button/card recipes, responsive type scale, or provenance behind the current visual guidance |
+| `live-events-experience-palette-2026-07.md` | Need approved campaign backgrounds, section gradients, utility surfaces, event-card themes, or provenance from the Folloze Events experience |
 
 ## Assets
 
@@ -49,7 +73,7 @@ Last reviewed: 2026-06-01
 
 For a customer-facing Folloze asset:
 
-1. Load `content-system-v3-2.md`.
+1. Load `content-system-v3-3.md`.
 2. Load `product-capabilities-customer-ready.md` if the asset mentions product features, modules, user roles, integrations, Website Engagement, Events, Global Scalability, or AI/Data credits.
 3. Load `brand-foundation.md`.
 4. Load `messaging-library.md`.
@@ -60,7 +84,7 @@ For a customer-facing Folloze asset:
 
 For content creation from a loose request:
 
-1. Load `content-system-v3-2.md`.
+1. Load `content-system-v3-3.md`.
 2. Load `content-brief-template.md`.
 3. Ask only for missing brief fields that materially change the output.
 4. Draft in the current external register, then run `voice-and-style.md` QA.
@@ -74,7 +98,7 @@ For internal planning or skill-building:
 
 For public repo, public prompt, or no-Drive work:
 
-1. Load `content-system-v3-2.md`.
+1. Load `content-system-v3-3.md`.
 2. Load `product-capabilities-public-safe.md` if product capability context is needed.
 3. Do not rely on internal Google Docs, pricing guides, order forms, or private source material.
 

@@ -1,5 +1,7 @@
 # Folloze Content System V3.1
 
+Historical reference. Superseded for new work by content-system-v3-3.md (October 26, 2026).
+
 Use this file first for current public-facing Folloze messaging.
 
 Source: Google Doc `Folloze Content System - V3.1`
