@@ -13,6 +13,12 @@
   ],
   "skills": [
     {
+      "name": "abm-playbook-for-the-ai-era",
+      "path": "Skills/abm-playbook-for-the-ai-era",
+      "enabled": true,
+      "requires_restart": true
+    },
+    {
       "name": "account-org-chart",
       "path": "Skills/account-org-chart",
       "enabled": true,

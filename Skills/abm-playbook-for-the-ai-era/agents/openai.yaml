@@ -1,0 +1,4 @@
+interface:
+  display_name: "ABM Playbook for the AI Era"
+  short_description: "Build account-specific Folloze ABM playbooks"
+  default_prompt: "Use $abm-playbook-for-the-ai-era to build an ABM playbook for this account from the attached deal notes."

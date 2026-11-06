@@ -1,0 +1,125 @@
+<div id="abm-era-playbook" class="abm-era-playbook" data-cp-analytics-area="{{ACCOUNT}} ABM Playbook" data-cp-currency="{{CURRENCY}}" data-cp-win-rate="{{WIN_RATE}}">
+  <header class="cp-header">
+    <div class="cp-header-inner">
+      <button class="cp-lockup" type="button" data-cp-jump="start" aria-label="Folloze for {{ACCOUNT}}, back to start">
+        <img src="{{FOLLOZE_LOGO}}" width="99" height="24" alt="Folloze">
+        <span>for</span>
+        {{ACCOUNT_MARK}}
+      </button>
+      <nav class="cp-nav" aria-label="Playbook chapters">
+        <button type="button" data-cp-jump="math">Math</button>
+        <button type="button" data-cp-jump="coverage">Coverage</button>
+        <button type="button" data-cp-jump="funnel">Funnel</button>
+        <button type="button" data-cp-jump="stack">Stack + Workflow</button>
+        <button type="button" data-cp-jump="pilot">Build + Buy</button>
+      </nav>
+      <div class="cp-header-actions">
+        <details class="cp-menu">
+          <summary>Sections <span aria-hidden="true">▾</span></summary>
+          <nav aria-label="Playbook chapters">
+            <button type="button" data-cp-jump="math">Math</button>
+            <button type="button" data-cp-jump="coverage">Coverage</button>
+            <button type="button" data-cp-jump="funnel">Funnel</button>
+            <button type="button" data-cp-jump="stack">Stack + Workflow</button>
+            <button type="button" data-cp-jump="pilot">Build + Buy</button>
+          </nav>
+        </details>
+        <button class="cp-print" type="button" data-cp-print>Export PDF</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="cp-chapter-stage" id="cp-chapter-stage">
+    <div class="cp-hero" id="start" data-cp-chapter>
+      <div class="cp-hero-copy">
+        <h1>ABM Playbook for the AI Era<br><span class="cp-accent">{{ACCOUNT}}</span></h1>
+        <p>{{HERO_SUMMARY}}</p>
+      </div>
+      <button class="cp-primary" type="button" data-cp-jump="math" aria-controls="math">Start with the math <span aria-hidden="true">↓</span></button>
+    </div>
+
+    {{CALCULATOR}}
+
+    <section class="cp-section" id="coverage" data-cp-chapter aria-labelledby="cp-coverage-title">
+      <div class="cp-chapter-content">
+        <div class="cp-section-heading">
+          <h2 id="cp-coverage-title">Use 1:few for coverage.<br> <span class="cp-accent">Use 1:1 when signals justify it.</span></h2>
+        </div>
+        <div class="cp-coverage">
+          <article class="cp-coverage-card">
+            <h3>Dynamic 1:few / 1:many</h3>
+            <p>Reach more accounts by adapting campaigns for industry, persona, use case, and stage.</p>
+            <div class="cp-cohort-visual" role="img" aria-label="A campaign reaches groups of accounts with relevant variants.">
+              <div class="cp-cohort-grid" aria-hidden="true">
+                <span></span><span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span><span></span><span></span>
+              </div>
+            </div>
+            <ul class="cp-format-list"><li>Paid media cohorts</li><li>Industry pages</li><li>Nurture and events</li></ul>
+          </article>
+          <div class="cp-promote">
+            <strong>Promote to 1:1</strong>
+            <svg viewBox="0 0 96 24" aria-hidden="true"><path d="M4 12h86m-12-9 12 9-12 9" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <article class="cp-coverage-card">
+            <h3>1:1 on signal</h3>
+            <p>Give a priority account its own experience when the work is warranted.</p>
+            <div class="cp-priority-visual">
+              <span>Priority account</span>
+              <strong>Enterprise opportunity</strong>
+              <small>Illustrative signal · Multiple stakeholders engaged</small>
+            </div>
+            <ul class="cp-format-list"><li>Account microsite</li><li>Deal room</li><li>Customer hub</li></ul>
+          </article>
+        </div>
+        <div class="cp-promotion">
+          <h3>When to promote an account</h3>
+          <ul>
+            <li><strong>An open opportunity</strong><span>Give the buying group one place to review the deal and take the next step.</span></li>
+            <li><strong>A deal worth the build</strong><span>Tailor the page when the opportunity size justifies the time.</span></li>
+            <li><strong>Several engaged stakeholders</strong><span>Use their activity to choose what to show the wider buying group.</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    {{FUNNEL}}
+
+    {{STACK}}
+
+    <section class="cp-section" id="pilot" data-cp-chapter aria-labelledby="cp-pilot-title">
+      <div class="cp-chapter-content">
+        <div class="cp-section-heading">
+          <h2 id="cp-pilot-title">Build what makes {{ACCOUNT}} unique.<br> <span class="cp-accent">Buy the infrastructure to activate it.</span></h2>
+        </div>
+        <div class="cp-ownership">
+          <article class="cp-ownership-account">
+            <h3>What {{ACCOUNT}} builds</h3>
+            <ul>{{ACCOUNT_BUILDS}}</ul>
+          </article>
+          <span class="cp-ownership-plus" aria-hidden="true">+</span>
+          <article class="cp-ownership-folloze">
+            <h3>What Folloze supplies</h3>
+            <ul><li>Microsite creation, deployment, and hosting</li><li>Governed, dynamic personalization</li><li>First-party engagement signals</li><li>MCP and API connectivity</li></ul>
+          </article>
+        </div>
+        <div class="cp-pilot">
+          <div class="cp-pilot-intro">
+            <h3>Prove the approach, then expand coverage</h3>
+            <p>{{PILOT_SUMMARY}}</p>
+          </div>
+          <ol class="cp-pilot-steps">{{PILOT_STEPS}}</ol>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <nav class="cp-transport" aria-label="Previous and next chapters" hidden>
+    <button type="button" data-cp-step="-1" aria-controls="cp-chapter-stage">Previous</button>
+    <div class="cp-progress">
+      <span data-cp-position aria-live="polite"></span>
+      <progress max="6" value="1" aria-label="Playbook progress"></progress>
+    </div>
+    <button type="button" data-cp-step="1" aria-controls="cp-chapter-stage">Next</button>
+  </nav>
+</div>

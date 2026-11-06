@@ -1,0 +1,55 @@
+<section class="cp-section cp-math" id="math" data-cp-chapter aria-labelledby="cp-math-title">
+  <div class="cp-chapter-content">
+    <div class="cp-section-heading">
+      <h2 id="cp-math-title">How many accounts do you need to target<br> <span class="cp-accent">to create <span data-cp-headline-target>your target amount</span> in pipeline?</span></h2>
+      <p>Enter or adjust the planning assumptions to model your pipeline target.</p>
+    </div>
+    <div data-cp-results>
+      <div class="cp-plan-cards">
+        <article><h3>Planning requirement</h3><strong data-output="accounts">N/A</strong><p>target accounts</p></article>
+        <article><h3 data-cp-rate="engagement">Engagement rate</h3><strong data-output="engaged">N/A</strong><p>engaged accounts</p></article>
+        <article><h3 data-cp-rate="opportunity">Opportunity rate</h3><strong data-output="opportunities">N/A</strong><p>new opportunities</p></article>
+        <article><h3>{{WIN_RATE}}% illustrative win rate</h3><strong data-output="won">N/A</strong><p>modeled closed-won deals</p></article>
+      </div>
+      <p class="cp-formula" data-cp-formula></p>
+      <p class="cp-validation" data-cp-validation></p>
+      <div class="cp-sr-only" data-cp-announcement role="status"></div>
+    </div>
+    <details class="cp-assumptions">
+      <summary>Edit planning assumptions</summary>
+      <div class="cp-math-layout">
+        <form class="cp-inputs" data-cp-calculator novalidate aria-label="Pipeline target assumptions">
+          <label class="cp-field" for="cp-pipeline-target">
+            <span>Pipeline target</span><span class="cp-field-note">Planning target</span>
+            <span class="cp-input-wrap"><span aria-hidden="true">{{CURRENCY_LABEL}}</span><input id="cp-pipeline-target" name="target" type="number" min="0" step="any" value="{{TARGET}}" inputmode="numeric" aria-describedby="cp-target-error"></span>
+            <span class="cp-error" id="cp-target-error" data-error="target" aria-live="polite"></span>
+          </label>
+          <label class="cp-field" for="cp-opp-size">
+            <span>Average opportunity size</span><span class="cp-field-note">Planning assumption</span>
+            <span class="cp-input-wrap"><span aria-hidden="true">{{CURRENCY_LABEL}}</span><input id="cp-opp-size" name="opp-size" type="number" min="0" step="any" value="{{OPP_SIZE}}" inputmode="numeric" aria-describedby="cp-opp-error"></span>
+            <span class="cp-error" id="cp-opp-error" data-error="opp-size" aria-live="polite"></span>
+          </label>
+          <label class="cp-field" for="cp-engagement-rate">
+            <span>Accounts that engage</span><span class="cp-field-note">Planning assumption</span>
+            <span class="cp-input-wrap"><input id="cp-engagement-rate" name="engagement-rate" type="number" min="0" max="100" step="any" value="{{ENGAGEMENT}}" inputmode="decimal" aria-describedby="cp-engagement-error"><span aria-hidden="true">%</span></span>
+            <span class="cp-error" id="cp-engagement-error" data-error="engagement-rate" aria-live="polite"></span>
+          </label>
+          <label class="cp-field" for="cp-conversion-rate">
+            <span>Engaged accounts that become opportunities</span><span class="cp-field-note">Planning assumption</span>
+            <span class="cp-input-wrap"><input id="cp-conversion-rate" name="conversion-rate" type="number" min="0" max="100" step="any" value="{{OPPORTUNITY}}" inputmode="decimal" aria-describedby="cp-conversion-error"><span aria-hidden="true">%</span></span>
+            <span class="cp-error" id="cp-conversion-error" data-error="conversion-rate" aria-live="polite"></span>
+          </label>
+          {{BENCHMARK_NOTE}}
+        </form>
+        <div class="cp-model-details">
+          <h3>How the model works</h3>
+          <div class="cp-bar" aria-hidden="true" data-cp-bar>
+            <span class="cp-bar-segment cp-bar-target" data-bar="accounts"></span><span class="cp-bar-segment cp-bar-engaged" data-bar="engaged"></span><span class="cp-bar-segment cp-bar-opps" data-bar="opportunities"></span><span class="cp-bar-segment cp-bar-won" data-bar="won"></span>
+          </div>
+          <p>Divide the pipeline target by the average opportunity size, then by both conversion rates. Round the required account count up.</p>
+          <p>Pipeline is modeled from opportunities created. Closed won uses a separate illustrative {{WIN_RATE}}% win rate.</p>
+        </div>
+      </div>
+    </details>
+  </div>
+</section>

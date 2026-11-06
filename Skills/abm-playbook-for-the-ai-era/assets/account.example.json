@@ -1,0 +1,35 @@
+{
+  "account": "ExampleCo",
+  "hero_summary": "An illustrative pipeline plan for a fictional software company.",
+  "math": {
+    "currency": "USD",
+    "target": 12000000,
+    "opportunity_size": 150000,
+    "engagement_rate": 25,
+    "opportunity_rate": 20,
+    "illustrative_win_rate": 25,
+    "note": "Illustrative inputs for this example. Replace them with your planning assumptions."
+  },
+  "campaign_summary": "Follow an operations campaign from account selection through seller follow-up.",
+  "workflow_inputs": "Target accounts, deal stage, approved product messaging, and prior engagement",
+  "seller_action": "Share the account, the topics viewed, and a recommended next step with the account owner.",
+  "account_builds": [
+    "Account strategy and targeting",
+    "First-party data and decision rules",
+    "AI workflow and content review",
+    "Messaging and brand"
+  ],
+  "pilot_summary": "Start with one operations cohort. Compare reach, engagement, and build time before expanding.",
+  "pilot_steps": [
+    {"title": "Baseline", "detail": "Record current build and review time."},
+    {"title": "Launch", "detail": "Run one operations campaign."},
+    {"title": "Capture signals", "detail": "Confirm the seller receives the activity."},
+    {"title": "Promote", "detail": "Build a 1:1 experience where account signals warrant it."},
+    {"title": "Review", "detail": "Compare outcomes and agree whether to expand."}
+  ],
+  "stages": {
+    "acquire": {"description": "Show operations leaders the industry use cases that match their priorities."},
+    "educate": {"description": "Give the buying group an event follow-up and role-specific proof."},
+    "convert": {"description": "Bring the evaluation plan, proof, and next meeting into one deal room."}
+  }
+}
