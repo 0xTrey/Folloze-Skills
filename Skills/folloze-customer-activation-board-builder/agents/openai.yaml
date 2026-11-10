@@ -1,0 +1,4 @@
+interface:
+  display_name: "Folloze Customer Activation Board Builder"
+  short_description: "Build customer onboarding and activation boards"
+  default_prompt: "Use $folloze-customer-activation-board-builder to turn these customer calls and included features into an activation board."

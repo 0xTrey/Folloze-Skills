@@ -1,0 +1,19 @@
+{
+  "created_at": "2026-11-10T02:04:01.986766+00:00",
+  "format": "ZIP archive with .skill extension",
+  "path": "packages/folloze-customer-activation-board-builder.skill",
+  "bytes": 6262,
+  "sha256": "bb1984e7f623d6c4428a630158f06b482e5be3b5e35751316629a7c1ad842100",
+  "files": [
+    "folloze-customer-activation-board-builder/SKILL.md",
+    "folloze-customer-activation-board-builder/agents/openai.yaml",
+    "folloze-customer-activation-board-builder/assets/activation-brief.template.md",
+    "folloze-customer-activation-board-builder/references/webinar-rehearsal.md"
+  ],
+  "content_hashes": {
+    "SKILL.md": "bf1fb907cc5fb79fb7c7e0aee0b6755e1e6c193db064480d827e46aea224f3aa",
+    "agents/openai.yaml": "22df185d414e009e6124574586f171d1fa2b5026b4e55a109cba6a0fcd17fe7f",
+    "assets/activation-brief.template.md": "9855843a8df49b93cf876111a0832ea1f96ad5ab9b43f04098439ccb97669c88",
+    "references/webinar-rehearsal.md": "1d097281b4d2682f92496ba284c3845c0535892c3f9371761b90d9a3ca4ad64b"
+  }
+}
