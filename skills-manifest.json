@@ -173,6 +173,12 @@
       "path": "Skills/weekly-customer-action-items",
       "enabled": true,
       "requires_restart": true
+    },
+    {
+      "name": "folloze-customer-activation-board-builder",
+      "path": "Skills/folloze-customer-activation-board-builder",
+      "enabled": true,
+      "requires_restart": true
     }
   ]
 }

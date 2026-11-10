@@ -100,3 +100,14 @@ Generated artifacts, browser state, QA output, research bundles, environment fil
 - `.githooks/` and `.github/workflows/`: local and CI public-release gates.
 
 Keep restricted deal material, credentials, tokens, cookies, private policies, operator-specific identifiers, and customer data out of this public repository. Use pointers to access-controlled sources where internal context is required.
+
+
+### Customer Activation Board Builder
+
+Build customer-facing onboarding and activation boards from calls, verified entitlements and owned next steps. Includes a supported expansion path and neutral webinar rehearsal.
+
+- [Skill source](Skills/folloze-customer-activation-board-builder/SKILL.md)
+- [Complete skill package](packages/folloze-customer-activation-board-builder.skill), a ZIP archive with SKILL.md and its resources
+- [November 19 presenter cue](docs/customer-activation-skill/webinar-demo-flow.md)
+
+Ask Codex to install the package, reload skills, then use `$folloze-customer-activation-board-builder` with customer calls, approved package details, a reference and a real CTA. The skill is available on this branch; automatic main-branch sync includes it after review and merge.
