@@ -41,7 +41,7 @@ Fill these placeholders before saving or sharing a generated board:
 2. Generate a fresh HTML file from the bundled template when creating a customized board locally. Never overwrite the source template, demo board `244551`, or a live customer board unless the user explicitly asks.
 3. Update the customer-specific narrative by replacing generic phrases with account context from the user, Salesforce, call notes, a PDF, or approved source material.
 4. Keep the core structure unless the user asks otherwise: hero, four renewal plays, operating model, core beliefs, AI execution platform, expected impact, customer proof patterns, Folloze resource center, and recommended next step.
-5. Keep Folloze branding and theme intact unless the user explicitly requests another theme.
+5. Keep Folloze branding and theme intact unless the user explicitly requests another theme. When that request requires custom branding on native sections, invoke `$folloze-theme-builder` automatically and follow its `reference/native-board-routing.md`. Preserve native construction, the shared template, Company Theme, and existing save/publish authority. HTML-only branding stays in the HTML workflow.
 6. Keep customer proof stories generic unless the user provides approved customer-specific proof. Do not invent customer outcomes.
 7. Verify locally at desktop and mobile widths before saving: no unresolved `{{PLACEHOLDER}}` tokens, no broken images, no horizontal overflow, and interactive drawers/tabs still work.
 8. If saving to Folloze MCP, first call the Folloze landing-page creation guide, then save as a new board unless the user explicitly gives an existing board ID to update.
