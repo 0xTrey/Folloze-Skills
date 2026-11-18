@@ -6,4 +6,4 @@ These are internal operator workflows. They are not customer board builders. Kee
 
 Current skills:
 
-- `folloze-demandbase-personalization-qa`: troubleshoot personalization rules that depend on the Demandbase data-service integration.
+- `folloze-demandbase-personalization-qa`: discovery-first QA for personalization rules that depend on the Demandbase data-service integration. Folloze MCP plus browser DevTools evaluate. Do not treat first-party URL params as Demandbase proof.
